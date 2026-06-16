@@ -30,6 +30,46 @@ Two planes. **Authoring/truth plane** = this repo: Hermit Crab ruleset (XML), le
 set, issue backlog, change-sets, skills — all plain files in git. **FLEx sync plane** = a separate
 Windows effort that ingests our change-sets. Keep them decoupled.
 
+Three axes, don't conflate: **data/two-plane** (above), **maturity/three-stage** and
+**runtime/offline-online** (below). Full design:
+`docs/superpowers/specs/2026-06-16-runtime-and-staging-architecture-design.md`.
+
+## Maturity stages — this repo holds stages 1 and 2
+
+1. **`research/` — Python playground.** Idea iteration (prompts/skills, RAG, evaluation). Promotes
+   out when it reliably emits valid change-sets that pass the golden gate.
+2. **`src/` — C#/.NET 10 validation program.** Builds/validates HC rules, makes LLM calls, parses,
+   produces/applies change-sets, plus a **sample UI**. This is the stage agents mostly work in.
+3. **Product split-off (downstream).** The proven C# **core** → NuGet package or migration into
+   FieldWorks / FieldWorks Lite / Paratext 10.
+
+Rules for agents:
+
+- **Target `net10.0`** for all C# (the TFM FwLite uses, so the core can later be referenced in-process).
+- **The sample UI is throwaway; the engine is the asset.** Keep the core in UI-free, individually
+  packable libraries (`HermitCrab`, `ChangeSets`, `Proposer`); the web host (`Console`) is a
+  disposable consumer that owns no logic. Do not let logic leak into the host.
+- **Cross-stage contracts are the change-set schema and portable skills** (markdown + tool contracts).
+  A skill promoted from `research/` moves as *data*, not a rewrite — keep skills provider-portable.
+- Stage boundaries are **promotion gates**, not folders: stage 1→2 = passes the golden gate; stage
+  2→3 = the loop closes measurably on a real language.
+
+## Runtime — the LLM is not co-located with the user
+
+The loop is split so only the *proposal* step needs connectivity:
+
+- **Offline half (local, no GPU):** HC parse → backlog, human review, apply deltas, the golden-set
+  gate, git. Hermit Crab is managed .NET — the oracle and safety gate never need the cloud.
+- **Online half:** proposals via a **swappable endpoint** (`Microsoft.Extensions.AI` `IChatClient`).
+  Shipped default = SIL-hosted open model; **BYOK-frontier** = opt-in connected mode.
+
+Rules for agents:
+
+- **Inject the `IChatClient`; never hardcode a provider.** Frontier/SIL-hosted/local must be a config swap.
+- **Keep everything except the proposal call offline-capable.** If a feature needs the network outside
+  step "propose," stop and flag it — it belongs in the (deferred) job-queue sync subsystem, not the core loop.
+- **Data egress is explicit, visible config**, never a side effect of which endpoint is set.
+
 ## The change-set contract
 
 Change-sets are the product. Treat their schema as a contract with the downstream ingestion effort.

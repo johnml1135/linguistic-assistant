@@ -119,6 +119,61 @@ edit/merge/round-trip runs a **validate-and-repair pass** — explicit dangling-
   project. Kept out of this repo to avoid coupling the core loop to Windows / FLEx install /
   project-locking / immature write paths.
 
+> The two-plane split is about **data ownership**. Two further axes — code *maturity* and *runtime*
+> — are described next; don't conflate them. Full detail in
+> [`docs/superpowers/specs/2026-06-16-runtime-and-staging-architecture-design.md`](docs/superpowers/specs/2026-06-16-runtime-and-staging-architecture-design.md).
+
+## Runtime & maturity architecture
+
+### Where the LLM runs — offline review, online proposal
+
+The differentiator is the judgment/skills layer, which wants a *frontier* LLM — but many users are
+**offline for weeks**, and the small models that run offline are weakest at exactly the
+morphology/agreement reasoning this project needs. So **the LLM is not co-located with the user.**
+The loop is split so the *only* step needing connectivity is the creative proposal:
+
+- **Offline half** (field laptop, no GPU): HC parse → backlog, human review of proposals, apply
+  approved deltas, the golden-set regression gate, git history. Hermit Crab is managed .NET and needs
+  no GPU, so **the oracle and the safety gate never depend on the cloud.**
+- **Online half** (wherever compute is): skills + RAG generate change-set *proposals* via a
+  **swappable endpoint** — a `Microsoft.Extensions.AI` `IChatClient`. Shipped default is a
+  **SIL-hosted** open model (Serval-style, keeps a community's data in SIL's trust boundary);
+  **BYOK-frontier** is the opt-in connected mode. Data egress is explicit, visible config — not an
+  accident of which endpoint is set.
+
+### Three maturity stages (this repo holds 1 and 2)
+
+1. **Research playground — Python (`research/`).** Where ideas iterate (prompts/skills, RAG,
+   evaluation). An idea is *proven* when it reliably emits valid change-sets that pass the golden gate.
+2. **Validation program — C#/.NET 10 (`src/`).** Builds/validates HC rules, makes the LLM calls,
+   runs the parser, produces/applies change-sets, and ships a **sample UI** (the loop console below).
+   *Proven* when the loop closes measurably — fewer unparsed words, no golden-set regressions.
+3. **Product split-off (downstream).** The proven C# **core** becomes a NuGet package or migrates
+   into an official product (FieldWorks, **FieldWorks Lite**, or **Paratext 10**). The sample UI is
+   **throwaway**; only the engine libraries migrate.
+
+Stage boundaries are **promotion gates**, not folders. The cross-stage contracts are the
+**change-set schema** (stage 1 emits it, stage 2 validates/applies it, downstream ingests it) and
+**portable skills** (markdown + tool contracts — promoted from research as data, not rewritten).
+
+### Slice 1 — the local "loop console"
+
+A single **`net10.0`** process (`dotnet run`) serving a thin web UI at `localhost` (browser/webview —
+the FwLite pattern). It drives one end-to-end cycle — **parse → propose → review → gate → commit** —
+where everything is local and offline except the single proposal call. First user: the
+linguist-developer, proving the loop on one language.
+
+The core is three UI-free, individually packable libraries targeting `net10.0` (so a future FwLite
+panel or Paratext plugin can reference them in-process); the web host is a deliberately disposable
+consumer of them:
+
+| Project | Role |
+|---|---|
+| `SIL.LinguisticAssistant.HermitCrab` | parse → backlog; golden-set parse **and** generate; dangling-ref/strata checks |
+| `SIL.LinguisticAssistant.ChangeSets` | change-set schema; validate · apply · validate-and-repair |
+| `SIL.LinguisticAssistant.Proposer` | backlog + RAG + portable skill → change-set ops, via an injected `IChatClient` |
+| `SIL.LinguisticAssistant.Console` *(host)* | minimal-API + thin web UI; orchestrates the three — **throwaway** |
+
 ## Ecosystem context
 
 | Component | Role | Repo |
@@ -131,16 +186,26 @@ edit/merge/round-trip runs a **validate-and-repair pass** — explicit dangling-
 
 ## First milestone
 
-A non-interactive, cross-platform spike on one language with existing FLEx data:
+**Slice 1 — the loop console** (see the runtime/staging design above): a `net10.0` app that drives
+one end-to-end cycle on one language with existing FLEx data, everything local except the proposal call:
 
-1. Export the lexicon and a small interlinear corpus.
+1. Export the lexicon and a small interlinear corpus (a stage-1/input step, outside the core loop).
 2. Generate a Hermit Crab grammar from the current lexicon/rules.
 3. Run the corpus through Hermit Crab; collect unparsed words into a structured **issue backlog**
    (with frequency-based impact and a confidence field).
-4. Have a skill propose lexeme / allomorph / phonological-rule fixes for the top issues, emitted
-   as `morphophonology/*` and `lexical/*` change-set operations.
-5. Re-run, gated by the golden `word → gloss` set, and report: failures resolved vs. regressions
-   introduced.
+4. Have a skill propose lexeme / allomorph / phonological-rule fixes for the top issues — the single
+   online call — emitted as `morphophonology/*` and `lexical/*` change-set operations for review.
+5. Apply approved ops and re-run, gated by the golden `word → gloss` set; report: failures resolved
+   vs. regressions introduced; commit to git or revert.
 
-If that loop closes — measurably reducing unparsed words without regressions — the rest of the
-vision (interactive native-speaker prompts, richer skills, skill promotion) hangs off it.
+If that loop closes — measurably reducing unparsed words without regressions — the pipeline is proven
+(stage 2→3), and the rest of the vision (job-queue sync for offline batch, interactive native-speaker
+prompts, richer skills, skill promotion, embedding into FwLite/Paratext) hangs off it.
+
+## References
+
+LingGym - https://github.com/changbingY/LingGym - https://arxiv.org/html/2511.00343v1
+
+FieldWorks Lite - https://github.com/sillsdev/languageforge-lexbox
+
+LibLCM - 

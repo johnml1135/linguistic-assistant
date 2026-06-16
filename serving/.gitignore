@@ -1,0 +1,3 @@
+# Local build tree and the installer's recorded binary path — machine-specific.
+.cache/
+.ik_llama_server_path.txt
