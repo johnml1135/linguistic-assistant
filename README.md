@@ -7,17 +7,25 @@ An AI assistant for field linguists working with **FieldWorks** / **LibLCM** dat
 
 ## What it is
 
-Field linguists use SIL [FieldWorks Language Explorer (FLEx)](https://software.sil.org/fieldworks/)
-to build dictionaries and morphological analyses of (usually low-resource) languages. FLEx
-already runs a parser-in-the-loop: a morphological parser proposes analyses of words, and a
-trained linguist approves or rejects them, word by word.
+Field linguists and Bible-translation teams use SIL
+[FieldWorks Language Explorer (FLEx)](https://software.sil.org/fieldworks/) to build dictionaries and
+morphological analyses of (usually low-resource) languages, and to check translated texts. FLEx
+already runs a parser-in-the-loop: a morphological parser proposes analyses of words, and a trained
+linguist approves or rejects them, word by word.
 
-This project aims to **supercharge that loop** — not replace it. The goal is an AI layer that:
+This project is an AI **quality-assurance and language-documentation assistant** for that work — it
+is **not** a translation system. (Translation itself is done separately by a fine-tuned **NLLB-200**
+encoder-decoder model — SIL's [Serval](https://ai.sil.org/projects/serval) stack; this tool *checks*
+the translations that process produces and *documents* the language behind them.) The goal is an AI
+layer that:
 
-- **Proposes** lexical entries and morphophonological rules from corpus evidence, rather than
-  just running a fixed parser.
-- Works through a **batch backlog of issues** (unparsed words, conflicting analyses) with
-  prioritization by confidence and impact, instead of grinding word-by-word in a UI.
+- **Proposes** lexical entries, senses, and morphophonological rules from corpus **and parallel-text**
+  evidence, rather than just running a fixed parser.
+- **Checks translations and documentation against parallel data** — e.g. *"this parallel data
+  suggests this word is missing a sense,"* or *"this word is singular in the source but plural here —
+  is that correct?"*
+- Works through a **batch backlog of issues** (unparsed words, conflicting analyses, parallel-derived
+  flags) prioritized by confidence and impact, instead of grinding word-by-word in a UI.
 - Makes contribution **accessible** — surfacing decisions a *non-linguist native speaker* can
   answer ("which of these three readings is right?"), not only ones requiring a trained linguist.
 - Knows when to **guess, ask, or defer**: "I know enough to make a good guess" vs. "present
@@ -28,12 +36,30 @@ skills), not the parser itself.
 
 ## Scope
 
-**In scope (v1):** word-level morphology and phonology — glossing, lexeme/allomorph discovery,
-and morphophonological rule proposal.
+The product is **quality assurance + language documentation**: enriching the lexicon, validating and
+glossing wordforms, and reviewing translated text against parallel sources. The virtuous cycle is
+**Bible-translation teams working through highly parallel literature** (the New Testament and similar).
 
-**Out of scope:** sentence syntax / full "grammar" induction. The target engine (Hermit Crab) is
-a *word-level* morphophonological parser; there is no syntactic engine here. We deliberately do
-**not** use the word "grammar" for this reason — it is word parsing.
+**In scope:**
+
+- **Lexicon QA and enrichment** — senses, entries, examples, POS, semantic domains; sense/concept
+  coverage checks. *(The largest share of the work — see the breakdown below.)*
+- **Morphology & phonology** via Hermit Crab — interlinearization, lexeme/allomorph discovery,
+  morphophonological rule proposal, and **validity / spell-checking** (Hermit Crab *generate* mode).
+- **Parallel-aware checking** — first-class from v1: missing-sense detection, sense-correctness, and
+  feature/agreement checks (e.g. number/agreement mismatches).
+
+**Out of scope:**
+
+- **Generating translations / machine translation.** That is the separate fine-tuned NLLB-200 model;
+  we never produce target text, and we do **not** build Apertium or transfer rules. (FLExTrans /
+  Apertium were evaluated and ruled out for exactly this reason.)
+- **Free-standing syntactic rule induction.** We only auto-propose rules where a generative **engine
+  + a regression oracle** both exist (morphology: Hermit Crab + golden `word → gloss` set).
+  Cross-word and agreement checks borrow the **gold structure of the aligned source** (well-analyzed
+  parallel literature) rather than inducing a syntactic grammar we cannot verify. Note: the
+  morphosyntax the parser *requires* — POS, inflection class, features, affix templates — **is** in
+  scope; only sentence-syntax *induction* is out.
 
 ## How it works
 
@@ -68,8 +94,29 @@ Change-sets are two-tiered, because the SIL ecosystem treats these data differen
 | `lexical/*` | entries, senses, examples, parts of speech, semantic domains | Shaped to mirror **MiniLcm** (the model behind [LexBox](https://github.com/sillsdev/languageforge-lexbox) / Harmony CRDT sync), so the ingestion effort *can* lower them onto that path later. |
 | `morphophonology/*` | phonological rules, natural classes, allomorph environments, affix templates, inflection classes/features, strata | **Our own schema**, expressed against Hermit Crab grammar constructs. No structured delta format for this exists upstream — LexBox/Harmony deltas are lexicon-only. |
 
-Every operation carries **rationale, confidence, impact, and provenance** (a link back to the
-corpus evidence that triggered it), so the whole change-set is reviewable as plain text in git.
+Every operation carries **rationale, confidence, impact, and provenance** (a link back to the corpus
+or **parallel-text** evidence that triggered it), so the whole change-set is reviewable as plain text
+in git. Review *flags* (e.g. "missing sense here") feed the issue backlog; the *fixes* are change-set
+operations.
+
+### Parallel data and two kinds of gold set
+
+Aligned **parallel text** — a translated corpus against its source, typically the New Testament and
+similar highly parallel literature — is a **first-class input from v1**, not a later add-on. The
+highest-value checks are parallel-driven (*"this suggests a missing sense"; "singular in the source,
+plural here — correct?"*), and they exploit the fact that the source side of such literature has
+**gold morphology and known grammatical relations** — so agreement/structure checks reduce to
+comparing target features against a known backbone rather than inducing syntax.
+
+Consequently, evaluation (and LLM/skill optimization) is measured against **two kinds of gold set**:
+
+| Gold set | Used for | Nature | Metric |
+|---|---|---|---|
+| **Monolingual** `word → gloss` (Hermit Crab) | morphophonology rule changes | deterministic engine output | regressions — parses/generations broken vs. fixed |
+| **Parallel QA** (annotated aligned examples) | parallel-driven checks (missing sense, agreement, sense-correctness) | LLM judgment | precision / recall on correctly-flagged issues |
+
+The deterministic gate is a hard pass/fail; the parallel-QA eval is a scored benchmark the research
+playground iterates against.
 
 ### Sync & merge model — git for the grammar, not a CRDT
 
@@ -187,20 +234,25 @@ consumer of them:
 ## First milestone
 
 **Slice 1 — the loop console** (see the runtime/staging design above): a `net10.0` app that drives
-one end-to-end cycle on one language with existing FLEx data, everything local except the proposal call:
+one end-to-end cycle on one language with existing FLEx data **and aligned parallel text**,
+everything local except the proposal call:
 
-1. Export the lexicon and a small interlinear corpus (a stage-1/input step, outside the core loop).
+1. Export the lexicon, a small interlinear corpus, and **an aligned parallel text** (source ↔ target)
+   — a stage-1/input step, outside the core loop.
 2. Generate a Hermit Crab grammar from the current lexicon/rules.
-3. Run the corpus through Hermit Crab; collect unparsed words into a structured **issue backlog**
-   (with frequency-based impact and a confidence field).
-4. Have a skill propose lexeme / allomorph / phonological-rule fixes for the top issues — the single
-   online call — emitted as `morphophonology/*` and `lexical/*` change-set operations for review.
-5. Apply approved ops and re-run, gated by the golden `word → gloss` set; report: failures resolved
-   vs. regressions introduced; commit to git or revert.
+3. Build the **issue backlog** from two sources: (a) words Hermit Crab fails to parse; (b)
+   **parallel-derived flags** (e.g. missing sense, number/agreement mismatch) — each with
+   frequency-based impact and a confidence field.
+4. Have a skill propose fixes for the top issues — the single online call — emitted as `lexical/*`
+   and `morphophonology/*` change-set operations (e.g. add a sense, fix an allomorph) for review.
+5. Apply approved ops and re-run, gated by **both** the deterministic golden `word → gloss` set
+   (regressions) and the **parallel-QA eval** (precision/recall on flags); report results; commit to
+   git or revert.
 
-If that loop closes — measurably reducing unparsed words without regressions — the pipeline is proven
-(stage 2→3), and the rest of the vision (job-queue sync for offline batch, interactive native-speaker
-prompts, richer skills, skill promotion, embedding into FwLite/Paratext) hangs off it.
+If that loop closes — measurably improving the lexicon/parse and catching real translation issues
+without regressions — the pipeline is proven (stage 2→3), and the rest of the vision (job-queue sync
+for offline batch, interactive native-speaker prompts, richer checks, skill promotion, embedding into
+FwLite/Paratext) hangs off it.
 
 ## References
 

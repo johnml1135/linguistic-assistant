@@ -35,4 +35,10 @@ def build_client(endpoint: str | EndpointConfig, **overrides) -> LLMClient:
             **overrides,
         )
 
+    if cfg.kind == "mock":
+        from .mock import MockClient
+
+        overrides.pop("model", None)
+        return MockClient(name=cfg.name or "mock", **overrides)
+
     raise ValueError(f"unknown endpoint kind: {cfg.kind!r}")

@@ -1,0 +1,25 @@
+{
+  "endpoint": "mock",
+  "model": "mock",
+  "level": "full",
+  "preset": "greedy",
+  "max_tokens": 512,
+  "n": 800,
+  "correct": 197,
+  "accuracy": 0.24625,
+  "unparsed": 0,
+  "elapsed_s": 0.0,
+  "by_language": {
+    "Fwe": {
+      "correct": 33,
+      "total": 147,
+      "accuracy": 0.22448979591836735
+    },
+    "Gyeli": {
+      "correct": 164,
+      "total": 653,
+      "accuracy": 0.25114854517611024
+    }
+  },
+  "results_file": "C:\\Users\\johnm\\Documents\\repos\\linguistic-assistant\\research\\benchmarks\\results\\linggym_mock_20260616-144445.jsonl"
+}

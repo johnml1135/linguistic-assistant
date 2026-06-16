@@ -6,6 +6,13 @@
 > **not** revisit those decisions; it adds the layer above them: where code lives, how it matures,
 > where the LLM runs, and the first thing we build.
 
+> **Scope note (2026-06-16):** the product is **QA + language documentation, not translation**.
+> Translation is a separate fine-tuned NLLB-200 model (SIL's Serval); this tool *checks* translations
+> and *documents* the language. **Apertium / transfer-rule generation is ruled out, not deferred.**
+> **Aligned parallel text is a first-class input from v1**, and evaluation uses two gold sets —
+> deterministic monolingual `word→gloss` (Hermit Crab) and LLM-judgment **parallel QA**
+> (precision/recall). See README "Scope" and "Parallel data and two kinds of gold set".
+
 ## Three orthogonal axes (don't conflate them)
 
 The project now has three architectural axes that are easy to mix up:
@@ -115,14 +122,17 @@ the host. Migration to stage 3 is "give these libraries a different front end," 
 
 ### One cycle (driven from the UI)
 
-1. **Parse** — HC runs over the corpus locally → rebuilds the prioritized backlog (frequency/impact). *Offline.*
+1. **Scan** — HC runs over the corpus locally **and** parallel-derived checks run over the aligned
+   text → one prioritized backlog combining unparsed words and parallel flags (missing sense,
+   number/agreement mismatch), by frequency/impact. *Offline.*
 2. **Propose** — top-N issues + RAG context through a portable skill to the LLM endpoint → `lexical/*`
    and `morphophonology/*` ops, each with rationale / confidence / impact / provenance. *Only online step.*
 3. **Review** — UI shows each op with its evidence; approve / edit / reject. *Offline.*
-4. **Gate** — on approve, apply ops to a *candidate* grammar; run validate-and-repair + golden-set
-   parse-and-generate regression test. *Offline.*
-5. **Commit** — UI shows *failures resolved vs regressions introduced*; commit to git or revert.
-   Regressions block commit unless explicitly overridden. *Offline.*
+4. **Gate** — on approve, apply ops to a *candidate* grammar; run validate-and-repair + **both** gold
+   sets: the deterministic `word→gloss` parse-and-generate regression test and the parallel-QA eval
+   (precision/recall on flags). *Offline.*
+5. **Commit** — UI shows *failures resolved vs regressions introduced* (and QA-eval movement); commit
+   to git or revert. Regressions block commit unless explicitly overridden. *Offline.*
 
 ### LLM endpoint
 
@@ -171,6 +181,14 @@ may use flexlibs to export it); the core loop never takes a runtime dependency o
 - **CRDT / LexBox lexical sync** — lexical tier only, later (per README).
 - **Multi-language and skill promotion** — prove the loop on one language first.
 - **Embedding into FwLite / Avalonia / Paratext 10** — that is stage 3; the libraries are shaped for it.
+
+### Ruled out (not deferred)
+
+- **Machine translation / generating target text** — handled by the separate fine-tuned NLLB-200
+  model (Serval). Not a future slice here.
+- **Apertium / transfer-rule generation (FLExTrans-style)** — evaluated 2026-06-16 and rejected:
+  it is MT machinery, and FieldWorks does not even store Apertium data (it is external to LibLCM).
+  Our agreement/structure checks instead ride on the gold source structure of parallel text.
 
 ## Open questions / unknowns
 

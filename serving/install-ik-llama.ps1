@@ -42,6 +42,7 @@ param(
     [string]$RepoDir = (Join-Path $PSScriptRoot '.cache/ik_llama.cpp'),
     [string]$Ref = 'main',
     [switch]$NoCuda,
+    [string]$CudaArch = '',   # e.g. '86' for RTX 3090 (Ampere) — builds only that arch, much faster
     [string]$Target = 'llama-server',
     [int]$Jobs = 0
 )
@@ -79,8 +80,10 @@ $buildDir = Join-Path $RepoDir 'build'
 
 # --- Configure ----------------------------------------------------------------
 $cuda = if ($NoCuda) { 'OFF' } else { 'ON' }
-Write-Host "Configuring (GGML_CUDA=$cuda) ..."
-cmake -B $buildDir -S $RepoDir -DGGML_NATIVE=ON -DGGML_CUDA=$cuda -DCMAKE_BUILD_TYPE=Release
+$cfgArgs = @('-B', $buildDir, '-S', $RepoDir, '-DGGML_NATIVE=ON', "-DGGML_CUDA=$cuda", '-DCMAKE_BUILD_TYPE=Release')
+if ($CudaArch -and -not $NoCuda) { $cfgArgs += "-DCMAKE_CUDA_ARCHITECTURES=$CudaArch" }
+Write-Host "Configuring (GGML_CUDA=$cuda, arch=$CudaArch) ..."
+cmake @cfgArgs
 if ($LASTEXITCODE -ne 0) { throw 'cmake configure failed' }
 
 # --- Build --------------------------------------------------------------------

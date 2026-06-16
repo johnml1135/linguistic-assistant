@@ -49,4 +49,10 @@ DEFAULT_ENDPOINTS: dict[str, EndpointConfig] = {
         model="claude-opus-4-8",
         name="opus-4.8",
     ),
+    # Offline pipeline test — deterministic ~25% baseline, no model/network needed.
+    "mock": EndpointConfig(
+        kind="mock",
+        model="mock",
+        name="mock",
+    ),
 }

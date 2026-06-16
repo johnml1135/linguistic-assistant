@@ -1,0 +1,6 @@
+{"qid": "sample_questions#0", "language": "Fwe", "level": "full", "gold": "C", "pred": "B", "correct": false, "raw": "B", "input_tokens": 300, "output_tokens": 1, "latency_s": 0.0}
+{"qid": "sample_questions#1", "language": "Fwe", "level": "full", "gold": "C", "pred": "A", "correct": false, "raw": "A", "input_tokens": 295, "output_tokens": 1, "latency_s": 0.0}
+{"qid": "sample_questions#0", "language": "Fwe", "level": "full", "gold": "B", "pred": "C", "correct": false, "raw": "C", "input_tokens": 429, "output_tokens": 1, "latency_s": 0.0}
+{"qid": "sample_questions#1", "language": "Fwe", "level": "full", "gold": "B", "pred": "D", "correct": false, "raw": "D", "input_tokens": 427, "output_tokens": 1, "latency_s": 0.0}
+{"qid": "sample_questions#0", "language": "Fwe", "level": "full", "gold": "C", "pred": "C", "correct": true, "raw": "C", "input_tokens": 359, "output_tokens": 1, "latency_s": 0.0}
+{"qid": "sample_questions#1", "language": "Fwe", "level": "full", "gold": "C", "pred": "A", "correct": false, "raw": "A", "input_tokens": 383, "output_tokens": 1, "latency_s": 0.0}

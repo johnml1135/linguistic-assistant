@@ -1,0 +1,78 @@
+Question 0:
+You are a linguist specializing in Fwe. You are given a sentence along with its morpheme breakdown, gloss, and translation. Words are separated by spaces, and morphemes are separated by hyphens. However, a word and its gloss are missing and represented by an underscore. Based on your understanding, please choose the most appropriate option. 
+Sentence (with missing item): N-bu-rótu konó ___ N-bu-rótu nénja
+Gloss (with missing item): COP-NP14-good but ___ COP-NP14-good well
+The English translation of this sentence is:‘It is good, but it is not very good.’
+Here is a relevant knowledge point for this example, with the related morphemes and glosses masked: The auxiliary ri ‘be’ with a negative prefix is also used to negate nominal predicates. Affirmative nominal predicates are marked by a copulative prefix only (see \sectref{bkm:Ref489963307}). When negated with the auxiliary ri, the copulative prefix is maintained, as in (\ref{bkm:Ref99104807}--\ref{bkm:Ref99104808}).
+A: word: n-bu-rótu	 gloss: COP-NP14-good
+B: word: ka-i-oːr-é̲sek-i	 gloss: NEG-SM9-can-NEUT-NEG
+C: word: ka-rí	 gloss: NEG-be
+D: word: ka-réː	 gloss: ADV-long
+Please only return the letter (A–D). Do not say anything else.
+Correct Answer: C
+
+Question 1:
+You are a linguist specializing in Fwe. You are given a sentence along with its morpheme breakdown, gloss, and translation. Words are separated by spaces, and morphemes are separated by hyphens. However, a word and its gloss are missing and represented by an underscore. Based on your understanding, please choose the most appropriate option. 
+Sentence (with missing item): N-bu-rótu konó ka-rí ___ nénja
+Gloss (with missing item): COP-NP14-good but NEG-be ___ well
+The English translation of this sentence is:‘It is good, but it is not very good.’
+Here is a relevant knowledge point for this example, with the related morphemes and glosses masked: The auxiliary ri ‘be’ with a negative prefix is also used to negate nominal predicates. Affirmative nominal predicates are marked by a copulative prefix only (see \sectref{bkm:Ref489963307}). When negated with the auxiliary ri, the copulative prefix is maintained, as in (\ref{bkm:Ref99104807}--\ref{bkm:Ref99104808}).
+A: word: n-bu-bbí	 gloss: COP-NP14-bad
+B: word: o-bu-rótu	 gloss: AUG-NP14-good
+C: word: n-bu-rótu	 gloss: COP-NP14-good
+D: word: ka-rí	 gloss: NEG-be
+Please only return the letter (A–D). Do not say anything else.
+Correct Answer: C
+
+Question 0:
+You are a linguist specializing in Fwe. You are given a sentence along with its morpheme breakdown, gloss, and translation. Words are separated by spaces, and morphemes are separated by hyphens. However, a word and its gloss are missing and represented by an underscore. Based on your understanding, please choose the most appropriate option. 
+Sentence (with missing item): ___ ma-yíː a-bor-é̲te
+Gloss (with missing item): ___ NP6-egg SM6-rot-STAT
+The English translation of this sentence is:‘These eggs, they’re rotten.’
+Here is a relevant knowledge point for this example, with the related morphemes and glosses masked: Constituents can be moved out of their canonical position to the beginning of the clause, in which case they are morphologically and prosodically marked as a separate phrase. The prosodic marking of left dislocation is most clearly seen by the application of phrase-final tonal processes, namely the realization of underlying high tones as falling and the shift of final high tones to the penultimate mora (see \sectref{bkm:Ref445214894} on tonal processes), for instance, the final falling tone in the dislocated subject constituent in (\ref{bkm:Ref505778244}). The morphological marking of left dislocation is only seen on dislocated constituents that function as an object or locative adjunct, in which case the dislocated constituent needs to be cross-referenced by an object marker, as in (\ref{bkm:Ref505778246}), or locative clitic, as in (\ref{bkm:Ref505778247}).
+A: word: mú-kwamé	 gloss: NP1-man
+B: word: a-á	 gloss: AUG-DEM.I6
+C: word: e-cí	 gloss: AUG-DEM.I7
+D: word: ne-ndí̲-a-ya-á̲	 gloss: REM-SM1SG-PST-kill-FV<REL>
+Please only return the letter (A–D). Do not say anything else.
+Correct Answer: B
+
+Question 1:
+You are a linguist specializing in Fwe. You are given a sentence along with its morpheme breakdown, gloss, and translation. Words are separated by spaces, and morphemes are separated by hyphens. However, a word and its gloss are missing and represented by an underscore. Based on your understanding, please choose the most appropriate option. 
+Sentence (with missing item): a-á ___ a-bor-é̲te
+Gloss (with missing item): AUG-DEM.I6 ___ SM6-rot-STAT
+The English translation of this sentence is:‘These eggs, they’re rotten.’
+Here is a relevant knowledge point for this example, with the related morphemes and glosses masked: Constituents can be moved out of their canonical position to the beginning of the clause, in which case they are morphologically and prosodically marked as a separate phrase. The prosodic marking of left dislocation is most clearly seen by the application of phrase-final tonal processes, namely the realization of underlying high tones as falling and the shift of final high tones to the penultimate mora (see \sectref{bkm:Ref445214894} on tonal processes), for instance, the final falling tone in the dislocated subject constituent in (\ref{bkm:Ref505778244}). The morphological marking of left dislocation is only seen on dislocated constituents that function as an object or locative adjunct, in which case the dislocated constituent needs to be cross-referenced by an object marker, as in (\ref{bkm:Ref505778246}), or locative clitic, as in (\ref{bkm:Ref505778247}).
+A: word: e-∅-gíː	 gloss: AUG-NP5-egg
+B: word: ma-yíː	 gloss: NP6-egg
+C: word: a-á	 gloss: AUG-DEM.I6
+D: word: ndí̲-a-ya=mó̲	 gloss: SM1SG-PST-go-FV=LOC18
+Please only return the letter (A–D). Do not say anything else.
+Correct Answer: B
+
+Question 0:
+You are a linguist specializing in Fwe. You are given a sentence along with its morpheme breakdown, gloss, and translation. Words are separated by spaces, and morphemes are separated by hyphens. However, a word and its gloss are missing and represented by an underscore. Based on your understanding, please choose the most appropriate option. 
+Sentence (with missing item): na-shúm-iw-a ___
+Gloss (with missing item): SM1.PST-bite-PASS-FV ___
+The English translation of this sentence is:‘He was bitten by a dog.’
+Here is a relevant knowledge point for this example, with the related morphemes and glosses masked: The class 17 locative ku- can be used to mark an agent in a construction where an agent cannot be marked as a core argument. This is the case, for instance, for verbs with the passive derivation, as in (\ref{bkm:Ref450665409}), or nouns, as in (\ref{bkm:Ref450665567}). The class 17 prefix ku- may also be used to express less canonical agents, as in (\ref{bkm:Ref450666359}), or even peripheral arguments functioning as a reason or circumstance, rather than an agent, as in (\ref{bkm:Ref498346503}). The agentive use of the class 17 prefix is also seen in various other Bantu languages \citep{Fleisch2005}.
+A: word: hanú	 gloss: DEM.II16
+B: word: o-∅-mbwá	 gloss: AUG-NP1a-dog
+C: word: kú-∅-mbwá	 gloss: NP17-NP1a-dog
+D: word: ndu-∅-mbwá	 gloss: COP1a-NP1a-dog
+Please only return the letter (A–D). Do not say anything else.
+Correct Answer: C
+
+Question 1:
+You are a linguist specializing in Fwe. You are given a sentence along with its morpheme breakdown, gloss, and translation. Words are separated by spaces, and morphemes are separated by hyphens. However, a word and its gloss are missing and represented by an underscore. Based on your understanding, please choose the most appropriate option. 
+Sentence (with missing item): ndó-ru-fú ru-ba-nyá-muzambarara ___
+Gloss (with missing item): COP.DEF11-NP11-death PP11-NP2-mother-Muzambarara ___
+The English translation of this sentence is:‘That is the death of Mrs. Muzambarara by the elephant.’
+Here is a relevant knowledge point for this example, with the related morphemes and glosses masked: The class 17 locative ku- can be used to mark an agent in a construction where an agent cannot be marked as a core argument. This is the case, for instance, for verbs with the passive derivation, as in (\ref{bkm:Ref450665409}), or nouns, as in (\ref{bkm:Ref450665567}). The class 17 prefix ku- may also be used to express less canonical agents, as in (\ref{bkm:Ref450666359}), or even peripheral arguments functioning as a reason or circumstance, rather than an agent, as in (\ref{bkm:Ref498346503}). The agentive use of the class 17 prefix is also seen in various other Bantu languages \citep{Fleisch2005}.
+A: word: o-∅-njovú	 gloss: AUG-NP1a-elephant
+B: word: o-∅-njovu	 gloss: AUG-NP1a-elephant
+C: word: kú-∅-njovu	 gloss: NP17-NP1a-elephant
+D: word: o-zyó	 gloss: AUG-DEM.III1
+Please only return the letter (A–D). Do not say anything else.
+Correct Answer: C
+

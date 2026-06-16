@@ -5,22 +5,34 @@ read [README.md](./README.md) first.
 
 ## What this repo is
 
-A research/exploration tool: an AI assistant that helps field linguists do **word-level
-morphological and phonological analysis** of low-resource languages in the FieldWorks ecosystem.
-It produces **change-sets (text files)** that a separate effort ingests into FieldWorks.
+A research/exploration tool: an AI **quality-assurance and language-documentation assistant** for
+low-resource languages in the FieldWorks ecosystem. It helps teams enrich the lexicon, gloss and
+validate wordforms (morphology via Hermit Crab), and **review translated text against parallel
+sources**. It produces **change-sets (text files)** that a separate effort ingests into FieldWorks.
+It does **not** generate translations — that is a separate fine-tuned NLLB-200 model (SIL's Serval).
 
 ## Non-negotiable scope rules
 
-1. **Word parsing only — never syntax.** This is morphology and phonology. There is no syntactic
-   grammar engine. Do not use the word "grammar" to describe the output; it is "word parsing" /
-   "morphophonological rules." If a task drifts toward sentence-level syntax, stop and flag it.
-2. **Hermit Crab is the only engine.** Both the output format and the parse-failure oracle. **Do
-   not** add, propose, or scaffold XAmple support or a multi-engine ensemble — it was explicitly
+1. **QA + documentation, not translation.** This tool *checks* translations and *documents* the
+   language; it never *generates* target text. Machine translation is a separate fine-tuned NLLB-200
+   model (Serval). **Do not** add, propose, or scaffold MT / Apertium / transfer-rule generation —
+   FLExTrans / Apertium were evaluated and explicitly ruled out (translation is the NLLB model's job).
+2. **Auto-propose rules only where engine + oracle both exist.** Morphology qualifies (Hermit Crab +
+   golden `word → gloss` set). Do **not** induce a syntactic grammar we cannot verify; cross-word and
+   agreement checks ride on the **gold structure of the parallel source**, not on a parser we build.
+   Don't use "grammar" loosely: the morphosyntax the parser needs (POS, inflection class, features,
+   affix templates) is **in**; sentence-syntax *induction* is **out**.
+3. **Parallel alignment is core from v1 — not an add-on.** Aligned parallel text is a first-class
+   input, and evaluation uses **two gold sets**: monolingual `word → gloss` (deterministic, Hermit
+   Crab) and parallel QA (LLM-judgment, precision/recall). Many headline outputs are parallel-driven
+   (missing sense, number/agreement mismatch).
+4. **Hermit Crab is the only parser engine.** Both the output format and the parse-failure oracle.
+   **Do not** add, propose, or scaffold XAmple support or a multi-engine ensemble — it was explicitly
    killed, not deferred.
-3. **This repo writes text files, not databases.** Never write to `.fwdata`, drive the FLEx GUI,
+5. **This repo writes text files, not databases.** Never write to `.fwdata`, drive the FLEx GUI,
    or take a runtime dependency on a FieldWorks install or `flexlibs`/`FlexToolsMCP` for the core
    loop. The output is change-sets; ingestion into FLEx is a *separate* project.
-4. **Cross-platform, git-native.** The authoring/truth plane must run anywhere (the dev box here
+6. **Cross-platform, git-native.** The authoring/truth plane must run anywhere (the dev box here
    is Windows + PowerShell, but the loop itself should not require Windows). Hermit Crab is reached
    via the `dotnet tool` (`SIL.Machine.Tool`) or the `SIL.Machine` NuGet — both managed/portable.
 
