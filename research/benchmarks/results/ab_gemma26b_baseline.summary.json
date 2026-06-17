@@ -1,0 +1,10 @@
+{
+  "arm": "baseline",
+  "label": "gemma26b",
+  "n": 200,
+  "correct": 153,
+  "accuracy": 0.765,
+  "unparsed": 0,
+  "elapsed_s": 49.6,
+  "sample_seed": 13
+}
