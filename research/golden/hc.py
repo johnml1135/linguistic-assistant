@@ -186,8 +186,18 @@ class RoundTrip:
         }
 
 
+def gloss_seq(analysis: Analysis) -> tuple[str, ...]:
+    """The gloss line of an analysis — the reliable, linguistically-meaningful target.
+
+    (HermitCrab.NET's echoed morph *forms* are corrupted by a segment-reindexing bug, but
+    its Gloss line is exact; reconstructing the gloss line is also precisely the
+    agent-proposal reward — 'do the proposed lexemes make HC gloss the held-out forms right'.)
+    """
+    return tuple(g for _, g in analysis)
+
+
 def round_trip(model: LangModel, gold: list[tuple[str, Analysis]], timeout: int = 600) -> RoundTrip:
-    """Score the grammar: does each gold (underlying form -> analysis) round-trip?"""
+    """Score the grammar: does each gold (underlying form -> gloss line) round-trip?"""
     words = [w for w, _ in gold]
     parses = run_parse(model, words, timeout=timeout)
     hits = produced = amb_total = 0
@@ -199,7 +209,7 @@ def round_trip(model: LangModel, gold: list[tuple[str, Analysis]], timeout: int 
             amb_total += len(got)
         else:
             unparsed.append(w)
-        if analysis in got:
+        if gloss_seq(analysis) in {gloss_seq(a) for a in got}:
             hits += 1
     n = len(gold)
     return RoundTrip(

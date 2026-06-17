@@ -1,0 +1,25 @@
+{
+  "language": "lez",
+  "source": "lez-train-track2-uncovered",
+  "license": "CC-BY-NC-4.0",
+  "license_note": "NonCommercial: research-use gold; pipeline is the reusable asset.",
+  "counts": {
+    "code": "lez",
+    "lex_entries": 1335,
+    "affixes": 82,
+    "prefixes": 0,
+    "suffixes": 82,
+    "charset": 83,
+    "records": 701,
+    "distinct_wordforms": 1897
+  },
+  "certification": {
+    "method": "hermitcrab-gloss-round-trip",
+    "n": 1897,
+    "recall": 0.9784,
+    "parsed": 0.9826,
+    "mean_ambiguity": 9.29,
+    "n_unparsed": 33
+  },
+  "grammar_sha256_16": "804591c54a5d15ba"
+}
