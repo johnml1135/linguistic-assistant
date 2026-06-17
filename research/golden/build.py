@@ -42,9 +42,11 @@ def freeze(lang: str, igt_path: str, out_dir: str, license: str, timeout: int = 
     (out / "gold").mkdir(parents=True, exist_ok=True)
 
     # raw/: what a linguist (or the agent) would analyse — surface + translation only.
+    # Field names match proposal.contract.IGTRecord / research/eval loader (text/translation);
+    # gloss + segmentation are withheld (they are the oracle).
     with (out / "raw" / "igt.jsonl").open("w", encoding="utf-8") as f:
-        for r in records:
-            f.write(json.dumps({"surface": r.surface, "translation": r.translation},
+        for i, r in enumerate(records):
+            f.write(json.dumps({"id": str(i), "text": r.surface, "translation": r.translation},
                                ensure_ascii=False) + "\n")
 
     # gold/: lexicon (LIFT), morphology (HC grammar), per-word gold analyses.

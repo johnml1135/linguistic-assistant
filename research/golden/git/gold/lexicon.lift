@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lift version="0.13" producer="linguistic-assistant/golden">
+  <entry id="'ak̲xw_66419cd7" guid="66419cd7-a14a-50ef-8d86-0f35eaa6bf3d">
+    <lexical-unit><form lang="vern"><text>'ak̲xw</text></form></lexical-unit>
+    <sense id="faa2ebf7-9c33-5a37-9959-81c2df7db747"><grammatical-info value="root"/><gloss lang="en"><text>able</text></gloss></sense>
+  </entry>
+  <entry id="'nakw_d2c2cb8d" guid="d2c2cb8d-8cd7-5211-a787-e2a8b15fc6f6">
+    <lexical-unit><form lang="vern"><text>'nakw</text></form></lexical-unit>
+    <sense id="cf4cb5df-71d9-5b85-9811-72a07db23e66"><grammatical-info value="root"/><gloss lang="en"><text>long</text></gloss></sense>
+  </entry>
+  <entry id="'nii_6193d8e7" guid="6193d8e7-29bd-5cce-a4a7-bf67f76e5f80">
+    <lexical-unit><form lang="vern"><text>'nii</text></form></lexical-unit>
+    <sense id="a296b911-3811-5af8-8f4a-a82c3e138802"><grammatical-info value="root"/><gloss lang="en"><text>on</text></gloss></sense>
+  </entry>
+  <entry id="'wa_ea51ede0" guid="ea51ede0-caf3-5ef5-83b4-f3466ca5b6a0">
+    <lexical-unit><form lang="vern"><text>'wa</text></form></lexical-unit>
+    <sense id="8d7957b9-2ae6-5a61-9f95-087ec1838338"><grammatical-info value="root"/><gloss lang="en"><text>find</text></gloss></sense>
+  </entry>
+  <entry id="'wa_f04c431f" guid="f04c431f-bfa0-5da3-9e58-16d47d22b3e2">
+    <lexical-unit><form lang="vern"><text>'wa</text></form></lexical-unit>
+    <sense id="0df56673-47e8-5c5b-8018-1a988e6b9835"><grammatical-info value="root"/><gloss lang="en"><text>reach</text></gloss></sense>
+  </entry>
+  <entry id="'wihl_d7a9c735" guid="d7a9c735-d0a5-5c2d-bcd2-a6ece84847ab">
+    <lexical-unit><form lang="vern"><text>'wihl</text></form></lexical-unit>
+    <sense id="2bfe5041-bd56-5e31-ac71-5016fbd547a6"><grammatical-info value="root"/><gloss lang="en"><text>around</text></gloss></sense>
+  </entry>
+  <entry id="'wii_deaadff7" guid="deaadff7-c5ec-5733-8972-07108b1b7319">
+    <lexical-unit><form lang="vern"><text>'wii</text></form></lexical-unit>
+    <sense id="1865d795-0bf7-5610-9338-7cf05f021a97"><grammatical-info value="root"/><gloss lang="en"><text>big</text></gloss></sense>
+  </entry>
+  <entry id="'witxw_4cba93ae" guid="4cba93ae-e8c6-59c5-8378-da8635a92707">
+    <lexical-unit><form lang="vern"><text>'witxw</text></form></lexical-unit>
+    <sense id="87e4b9ba-a7ca-5728-aed1-a373b16cd28d"><grammatical-info value="root"/><gloss lang="en"><text>come</text></gloss></sense>
+  </entry>
+  <entry id="Canadanska_4e1d62ea" guid="4e1d62ea-3c35-5ea8-8b54-3ac12fbd17dd">
+    <lexical-unit><form lang="vern"><text>Canadanska</text></form></lexical-unit>
+    <sense id="ebb26205-33fa-5aba-8004-077b0fc837c4"><grammatical-info value="root"/><gloss lang="en"><text>Canadian</text></gloss></sense>
+  </entry>
+  <entry id="Denmark_d5bbc974" guid="d5bbc974-3e65-54f9-b43d-8feaa345ad3f">
+    <lexical-unit><form lang="vern"><text>Denmark</text></form></lexical-unit>
+    <sense id="8ca3b043-288d-5468-862f-479c1f962d42"><grammatical-info value="root"/><gloss lang="en"><text>Denmark</text></gloss></sense>
+  </entry>
+  <entry id="Spain_224a3e87" guid="224a3e87-bb09-5780-b80c-f7b846b2151c">
+    <lexical-unit><form lang="vern"><text>Spain</text></form></lexical-unit>
+    <sense id="ba0ecadd-d761-5ddd-9d47-7238ec874aaa"><grammatical-info value="root"/><gloss lang="en"><text>Spain</text></gloss></sense>
+  </entry>
+  <entry id="Stockholm_c1e25dbc" guid="c1e25dbc-3afc-5c74-a0af-aa4a622d7e37">
+    <lexical-unit><form lang="vern"><text>Stockholm</text></form></lexical-unit>
+    <sense id="a812e8a9-dbad-5e8e-9602-fb9707bec8cd"><grammatical-info value="root"/><gloss lang="en"><text>Stockholm</text></gloss></sense>
+  </entry>
+  <entry id="aam_9dd28708" guid="9dd28708-1035-5ebb-b4db-461c0fbdfbde">
+    <lexical-unit><form lang="vern"><text>aam</text></form></lexical-unit>
+    <sense id="17c15e07-502d-5abc-a400-0d8bfd0db285"><grammatical-info value="root"/><gloss lang="en"><text>good</text></gloss></sense>
+  </entry>
+  <entry id="aats'ip_dae93e43" guid="dae93e43-941e-5c8e-ad6d-6c50c58c0f6c">
+    <lexical-unit><form lang="vern"><text>aats'ip</text></form></lexical-unit>
+    <sense id="9251f564-9a40-5cc2-b617-0e7c435dae29"><grammatical-info value="root"/><gloss lang="en"><text>door</text></gloss></sense>
+  </entry>
+  <entry id="agwi_ad2f04f2" guid="ad2f04f2-d68a-5deb-a0da-fde1e6f59b28">
+    <lexical-unit><form lang="vern"><text>agwi</text></form></lexical-unit>
+    <sense id="7cde5f3e-3c47-5f72-b02c-3f77765411e8"><grammatical-info value="root"/><gloss lang="en"><text>what</text></gloss></sense>
+  </entry>
+  <entry id="agwiyukw_9759743e" guid="9759743e-43ba-5875-ba37-b339a7186a2f">
+    <lexical-unit><form lang="vern"><text>agwiyukw</text></form></lexical-unit>
+    <sense id="2a028538-9c6b-509e-b8ca-fa341cf7198c"><grammatical-info value="root"/><gloss lang="en"><text>because</text></gloss></sense>
+  </entry>
+  <entry id="aks_2c782b08" guid="2c782b08-3030-52f8-84cf-d42193a57bdd">
+    <lexical-unit><form lang="vern"><text>aks</text></form></lexical-unit>
+    <sense id="b329ce07-289a-56c9-976a-069c8b2bbfee"><grammatical-info value="root"/><gloss lang="en"><text>water</text></gloss></sense>
+  </entry>
+  <entry id="ak̲_c2dd0ed4" guid="c2dd0ed4-7590-5858-a072-97af02a993a0">
+    <lexical-unit><form lang="vern"><text>ak̲</text></form></lexical-unit>
+    <sense id="4cbadd4c-366d-5d97-bd7c-981dfb966880"><grammatical-info value="root"/><gloss lang="en"><text>lack</text></gloss></sense>
+  </entry>
+  <entry id="am_bc5f3eab" guid="bc5f3eab-ac81-5c99-874c-dcd828178ad6">
+    <lexical-unit><form lang="vern"><text>am</text></form></lexical-unit>
+    <sense id="2e228ea4-07aa-533c-b4ae-b0fd44c8cc85"><grammatical-info value="root"/><gloss lang="en"><text>good</text></gloss></sense>
+  </entry>
+  <entry id="amxsiwaa_58e1a84f" guid="58e1a84f-378b-5d5b-9746-e46d9a7b59dd">
+    <lexical-unit><form lang="vern"><text>amxsiwaa</text></form></lexical-unit>
+    <sense id="8739eab3-e941-589d-891e-2c2db69ed615"><grammatical-info value="root"/><gloss lang="en"><text>white.person</text></gloss></sense>
+  </entry>
+  <entry id="baasax̲_073e272a" guid="073e272a-b598-566d-99af-e28a2a501060">
+    <lexical-unit><form lang="vern"><text>baasax̲</text></form></lexical-unit>
+    <sense id="49de9ccc-c613-5ac6-aa6b-ed0b1345e911"><grammatical-info value="root"/><gloss lang="en"><text>separate</text></gloss></sense>
+  </entry>
+  <entry id="baasx_51193f79" guid="51193f79-42af-5a51-9584-ab92822096be">
+    <lexical-unit><form lang="vern"><text>baasx</text></form></lexical-unit>
+    <sense id="455d6833-9f37-583e-916e-c30e55748a13"><grammatical-info value="root"/><gloss lang="en"><text>fear</text></gloss></sense>
+  </entry>
+  <entry id="bakw_25552f45" guid="25552f45-9eb4-5c76-9c4d-5467df970875">
+    <lexical-unit><form lang="vern"><text>bakw</text></form></lexical-unit>
+    <sense id="507c69a6-7ff1-521c-80e3-adcb840f8f54"><grammatical-info value="root"/><gloss lang="en"><text>arrive.PL</text></gloss></sense>
+  </entry>
+  <entry id="bak̲_69ece815" guid="69ece815-388c-5caf-910b-2fd9da974305">
+    <lexical-unit><form lang="vern"><text>bak̲</text></form></lexical-unit>
+    <sense id="1fa46f35-b8a9-522d-949d-87f7f9b616df"><grammatical-info value="root"/><gloss lang="en"><text>try</text></gloss></sense>
+  </entry>
+  <entry id="bax̲_055d55ba" guid="055d55ba-fc6b-5dd2-8087-d6246a4efe9a">
+    <lexical-unit><form lang="vern"><text>bax̲</text></form></lexical-unit>
+    <sense id="f6b0ae8b-7ba1-5690-b69b-548d49efe754"><grammatical-info value="root"/><gloss lang="en"><text>run</text></gloss></sense>
+  </entry>
+  <entry id="dok̲_f61bbbc1" guid="f61bbbc1-2c7e-5047-a87a-5bc97a0ff004">
+    <lexical-unit><form lang="vern"><text>dok̲</text></form></lexical-unit>
+    <sense id="0b16ba17-3984-5038-9290-b32bd33ee837"><grammatical-info value="root"/><gloss lang="en"><text>take.PL</text></gloss></sense>
+  </entry>
+  <entry id="doosda_c4f3c289" guid="c4f3c289-5229-5635-9c61-c70689dd83c9">
+    <lexical-unit><form lang="vern"><text>doosda</text></form></lexical-unit>
+    <sense id="23862581-95af-5531-89cb-1dd7a0c522c9"><grammatical-info value="root"/><gloss lang="en"><text>across</text></gloss></sense>
+  </entry>
+  <entry id="flika_e83b7f41" guid="e83b7f41-f4b0-518a-b576-55d72339d895">
+    <lexical-unit><form lang="vern"><text>flika</text></form></lexical-unit>
+    <sense id="027b1ab7-f9ed-5f49-8312-967b147f146c"><grammatical-info value="root"/><gloss lang="en"><text>girl</text></gloss></sense>
+  </entry>
+  <entry id="geenix_be6b1649" guid="be6b1649-99d6-5190-860b-ac44ba02b12d">
+    <lexical-unit><form lang="vern"><text>geenix</text></form></lexical-unit>
+    <sense id="7fd394b8-2201-5bcc-bcf1-2fec8b78da41"><grammatical-info value="root"/><gloss lang="en"><text>upriver</text></gloss></sense>
+  </entry>
+  <entry id="gi_73b33c6f" guid="73b33c6f-1ad7-53dc-880c-27ee43e367b9">
+    <lexical-unit><form lang="vern"><text>gi</text></form></lexical-unit>
+    <sense id="7eeee2f9-a5b3-5356-bfc6-0b8866ddf5ba"><grammatical-info value="root"/><gloss lang="en"><text>place</text></gloss></sense>
+  </entry>
+  <entry id="giihl_58475d35" guid="58475d35-72c3-52d3-b309-eb0f0a4d9123">
+    <lexical-unit><form lang="vern"><text>giihl</text></form></lexical-unit>
+    <sense id="f17c673a-9776-5591-b446-acae952069e7"><grammatical-info value="root"/><gloss lang="en"><text>lay</text></gloss></sense>
+  </entry>
+  <entry id="guu_f07aeea6" guid="f07aeea6-9d86-51f6-a19c-14abd7ea494b">
+    <lexical-unit><form lang="vern"><text>guu</text></form></lexical-unit>
+    <sense id="79345d64-7bef-5fb2-a03f-fb1919c61b4d"><grammatical-info value="root"/><gloss lang="en"><text>take</text></gloss></sense>
+  </entry>
+  <entry id="guxws_5e8a9c33" guid="5e8a9c33-ea4a-53ff-898c-04fc8ba6a6e0">
+    <lexical-unit><form lang="vern"><text>guxws</text></form></lexical-unit>
+    <sense id="f663672e-6b67-5990-8fe1-c2f3b5744f32"><grammatical-info value="root"/><gloss lang="en"><text>back</text></gloss></sense>
+  </entry>
+  <entry id="gwila'l_dc7f5f44" guid="dc7f5f44-cc1d-561b-8895-3e1d6e876a86">
+    <lexical-unit><form lang="vern"><text>gwila'l</text></form></lexical-unit>
+    <sense id="52650121-636e-5f7c-862c-bbaaf5c39b7b"><grammatical-info value="root"/><gloss lang="en"><text>three</text></gloss></sense>
+  </entry>
+  <entry id="gya'a_3d6e3bd4" guid="3d6e3bd4-7284-5675-9486-61cbc204c896">
+    <lexical-unit><form lang="vern"><text>gya'a</text></form></lexical-unit>
+    <sense id="cdd910ab-0f7e-5836-8757-746c644b4279"><grammatical-info value="root"/><gloss lang="en"><text>see</text></gloss></sense>
+  </entry>
+  <entry id="g̲adaax_2618327c" guid="2618327c-f641-5795-b1a6-e48097c7a5aa">
+    <lexical-unit><form lang="vern"><text>g̲adaax</text></form></lexical-unit>
+    <sense id="d5a39d2a-3069-5c8b-9b4f-360fc842deb3"><grammatical-info value="root"/><gloss lang="en"><text>perimeter</text></gloss></sense>
+  </entry>
+  <entry id="g̲ani_70c425ae" guid="70c425ae-c101-5595-89f7-f96e2a2b69a7">
+    <lexical-unit><form lang="vern"><text>g̲ani</text></form></lexical-unit>
+    <sense id="78796e05-f4e4-523c-93c1-12a2aa265216"><grammatical-info value="root"/><gloss lang="en"><text>continually</text></gloss></sense>
+  </entry>
+  <entry id="g̲anuutxw_1067ea73" guid="1067ea73-34da-5707-9ec1-50f9ee0c8a35">
+    <lexical-unit><form lang="vern"><text>g̲anuutxw</text></form></lexical-unit>
+    <sense id="983eebdc-a463-5f7e-be15-13e39d55c031"><grammatical-info value="root"/><gloss lang="en"><text>week</text></gloss></sense>
+  </entry>
+  <entry id="g̲ook̲_ae66fffc" guid="ae66fffc-4aa2-5d0c-84d9-f00f2865e840">
+    <lexical-unit><form lang="vern"><text>g̲ook̲</text></form></lexical-unit>
+    <sense id="9632f4a6-8da9-57fb-b6ad-54160c05d3bc"><grammatical-info value="root"/><gloss lang="en"><text>first</text></gloss></sense>
+  </entry>
+  <entry id="g̲oot_17ddaa7b" guid="17ddaa7b-0e16-5e47-a21c-af0061024225">
+    <lexical-unit><form lang="vern"><text>g̲oot</text></form></lexical-unit>
+    <sense id="11ab38e0-d495-51b5-9a03-608f353c7e87"><grammatical-info value="root"/><gloss lang="en"><text>heart</text></gloss></sense>
+  </entry>
+  <entry id="ha'w_28723193" guid="28723193-e563-5174-ad17-d641306d32df">
+    <lexical-unit><form lang="vern"><text>ha'w</text></form></lexical-unit>
+    <sense id="166565bb-5b8e-5cd5-b4f1-81f4211dc8dc"><grammatical-info value="root"/><gloss lang="en"><text>go.home</text></gloss></sense>
+  </entry>
+  <entry id="hahla'lst_28f28f3a" guid="28f28f3a-328b-570d-be99-dfeaaf18fa5a">
+    <lexical-unit><form lang="vern"><text>hahla'lst</text></form></lexical-unit>
+    <sense id="cb4c860e-a114-58d6-89fc-ba8965cac096"><grammatical-info value="root"/><gloss lang="en"><text>work</text></gloss></sense>
+  </entry>
+  <entry id="he_0537fb21" guid="0537fb21-06f3-5ce5-8c4d-c5edad25ca83">
+    <lexical-unit><form lang="vern"><text>he</text></form></lexical-unit>
+    <sense id="f19552a5-fef7-5c3c-a60f-e48345e50645"><grammatical-info value="root"/><gloss lang="en"><text>say</text></gloss></sense>
+  </entry>
+  <entry id="hlgu_a1bd2a3c" guid="a1bd2a3c-d051-5da9-a620-7a19f289bc78">
+    <lexical-unit><form lang="vern"><text>hlgu</text></form></lexical-unit>
+    <sense id="bed10974-0e2b-5543-bb35-b859c5092eb4"><grammatical-info value="root"/><gloss lang="en"><text>small</text></gloss></sense>
+  </entry>
+  <entry id="hlguxws_588d363b" guid="588d363b-7e88-5c8a-8dd2-71ef6777d27d">
+    <lexical-unit><form lang="vern"><text>hlguxws</text></form></lexical-unit>
+    <sense id="f96a8492-e55d-5056-bf1d-6e4ac0054f30"><grammatical-info value="root"/><gloss lang="en"><text>unable.to</text></gloss></sense>
+  </entry>
+  <entry id="hoo_2e79e35e" guid="2e79e35e-28e8-5e99-80ac-86fd4c7168a2">
+    <lexical-unit><form lang="vern"><text>hoo</text></form></lexical-unit>
+    <sense id="33e9a287-cb28-52ac-bc69-34a51a750f85"><grammatical-info value="root"/><gloss lang="en"><text>again</text></gloss></sense>
+  </entry>
+  <entry id="ii'uxwt_fe58c9fa" guid="fe58c9fa-6588-5bd4-8522-c5572c3ee920">
+    <lexical-unit><form lang="vern"><text>ii'uxwt</text></form></lexical-unit>
+    <sense id="7fad1a36-dfe5-5735-bd6b-d09fc8bc6711"><grammatical-info value="root"/><gloss lang="en"><text>man.PL</text></gloss></sense>
+  </entry>
+  <entry id="isxw_f9272498" guid="f9272498-bd8f-5d7b-b903-d06ee9e68e6e">
+    <lexical-unit><form lang="vern"><text>isxw</text></form></lexical-unit>
+    <sense id="080f2a11-6306-5efd-a3d3-db0021eae976"><grammatical-info value="root"/><gloss lang="en"><text>pee</text></gloss></sense>
+  </entry>
+  <entry id="jap_04ffdbbf" guid="04ffdbbf-e6f8-54d6-b1a3-a3c8c92a000d">
+    <lexical-unit><form lang="vern"><text>jap</text></form></lexical-unit>
+    <sense id="6a1ddbad-d91a-5669-828f-3493362abdd5"><grammatical-info value="root"/><gloss lang="en"><text>make</text></gloss></sense>
+  </entry>
+  <entry id="jok̲_b21c05ca" guid="b21c05ca-d15f-58bc-94f5-39596eaeeca4">
+    <lexical-unit><form lang="vern"><text>jok̲</text></form></lexical-unit>
+    <sense id="ff5eee20-3a37-52c8-be74-dc24200dbdbf"><grammatical-info value="root"/><gloss lang="en"><text>live</text></gloss></sense>
+  </entry>
+  <entry id="k'i'y_d2688210" guid="d2688210-a457-51d0-95b2-7ad2d701212b">
+    <lexical-unit><form lang="vern"><text>k'i'y</text></form></lexical-unit>
+    <sense id="a5f21a55-cc3d-5d83-b6e9-233e2ce0b7fd"><grammatical-info value="root"/><gloss lang="en"><text>one</text></gloss></sense>
+  </entry>
+  <entry id="k'uuhl_2183b4a2" guid="2183b4a2-ce57-5d59-8b3c-bfcb2c8ca58e">
+    <lexical-unit><form lang="vern"><text>k'uuhl</text></form></lexical-unit>
+    <sense id="accfe1d2-f501-554e-a784-c097828efa57"><grammatical-info value="root"/><gloss lang="en"><text>year</text></gloss></sense>
+  </entry>
+  <entry id="kw'as_7d92249c" guid="7d92249c-ce12-5044-a794-534a5e58a436">
+    <lexical-unit><form lang="vern"><text>kw'as</text></form></lexical-unit>
+    <sense id="6a5c887e-9171-596d-9892-9b8b37c765bd"><grammatical-info value="root"/><gloss lang="en"><text>break</text></gloss></sense>
+  </entry>
+  <entry id="ky'aa_b72cc8ac" guid="b72cc8ac-f280-5d48-beae-7ed79470660a">
+    <lexical-unit><form lang="vern"><text>ky'aa</text></form></lexical-unit>
+    <sense id="bfda3071-b56a-5c96-aefc-0d1a85df036c"><grammatical-info value="root"/><gloss lang="en"><text>short.prepare</text></gloss></sense>
+  </entry>
+  <entry id="k̲'aa_f9a1ebf0" guid="f9a1ebf0-6526-55cc-bbcb-6050d7148c8c">
+    <lexical-unit><form lang="vern"><text>k̲'aa</text></form></lexical-unit>
+    <sense id="2343cf70-59a7-56a7-819c-7215e0bd8dc1"><grammatical-info value="root"/><gloss lang="en"><text>short.time</text></gloss></sense>
+  </entry>
+  <entry id="k̲'ak̲_141549e2" guid="141549e2-a2ca-5efb-b35f-185e1a190bf5">
+    <lexical-unit><form lang="vern"><text>k̲'ak̲</text></form></lexical-unit>
+    <sense id="048a7438-c212-514a-ba80-4e940fec9f71"><grammatical-info value="root"/><gloss lang="en"><text>open</text></gloss></sense>
+  </entry>
+  <entry id="lax̲_c6710b91" guid="c6710b91-8e3d-5f89-b8f4-ae45ccd2d085">
+    <lexical-unit><form lang="vern"><text>lax̲</text></form></lexical-unit>
+    <sense id="d27316d3-e422-55bb-bbba-122202536800"><grammatical-info value="root"/><gloss lang="en"><text>on</text></gloss></sense>
+  </entry>
+  <entry id="lax̲'ni_80c79f06" guid="80c79f06-65a8-5e22-b4bf-958000b73bbe">
+    <lexical-unit><form lang="vern"><text>lax̲'ni</text></form></lexical-unit>
+    <sense id="96afa1a3-e652-5def-83a9-22695b95b6a8"><grammatical-info value="root"/><gloss lang="en"><text>hear</text></gloss></sense>
+  </entry>
+  <entry id="luu_514d5f16" guid="514d5f16-8125-5783-ac2f-ed08cef13ccd">
+    <lexical-unit><form lang="vern"><text>luu</text></form></lexical-unit>
+    <sense id="b6059953-f2ee-567e-bd16-a02caf4debdb"><grammatical-info value="root"/><gloss lang="en"><text>in</text></gloss></sense>
+  </entry>
+  <entry id="mail'y_634f2e68" guid="634f2e68-9457-5949-911c-aa00f9aa3694">
+    <lexical-unit><form lang="vern"><text>mail'y</text></form></lexical-unit>
+    <sense id="a7aed2c7-5631-5a82-b980-b1ca28653c78"><grammatical-info value="root"/><gloss lang="en"><text>mail</text></gloss></sense>
+  </entry>
+  <entry id="naa_c6826721" guid="c6826721-e789-58da-956f-3600f4c35ec4">
+    <lexical-unit><form lang="vern"><text>naa</text></form></lexical-unit>
+    <sense id="41a9f805-e88d-52c4-9ad4-ad07979d0e39"><grammatical-info value="root"/><gloss lang="en"><text>who</text></gloss></sense>
+  </entry>
+  <entry id="naks_f6a84cb6" guid="f6a84cb6-371f-54af-94f1-45cb407527a6">
+    <lexical-unit><form lang="vern"><text>naks</text></form></lexical-unit>
+    <sense id="94ca9907-8eef-5e45-a5ef-8bdc5705796e"><grammatical-info value="root"/><gloss lang="en"><text>spouse</text></gloss></sense>
+  </entry>
+  <entry id="nee_896030e4" guid="896030e4-529b-5872-9122-395cbf71ff08">
+    <lexical-unit><form lang="vern"><text>nee</text></form></lexical-unit>
+    <sense id="5369f8c9-511b-51da-b8ff-f5504b1c6aac"><grammatical-info value="root"/><gloss lang="en"><text>not.so</text></gloss></sense>
+  </entry>
+  <entry id="no'o_032e2528" guid="032e2528-19e8-5f65-88ed-9ceb6a182e36">
+    <lexical-unit><form lang="vern"><text>no'o</text></form></lexical-unit>
+    <sense id="d2f04520-0282-53ef-8a25-688bc077c677"><grammatical-info value="root"/><gloss lang="en"><text>hole</text></gloss></sense>
+  </entry>
+  <entry id="office_e9af30eb" guid="e9af30eb-0996-55e3-bb14-73940b7dfbf9">
+    <lexical-unit><form lang="vern"><text>office</text></form></lexical-unit>
+    <sense id="640ccbad-fef1-5f59-a074-43bd690b81a7"><grammatical-info value="root"/><gloss lang="en"><text>office</text></gloss></sense>
+  </entry>
+  <entry id="oo_a08f66e7" guid="a08f66e7-98b6-5be9-b61d-5843352fa0fa">
+    <lexical-unit><form lang="vern"><text>oo</text></form></lexical-unit>
+    <sense id="43f4f102-d4e9-5431-82b8-e1c7953d190b"><grammatical-info value="root"/><gloss lang="en"><text>oh</text></gloss></sense>
+  </entry>
+  <entry id="pipe_90b8bdf5" guid="90b8bdf5-f18d-5581-b44c-0bc6d87e736a">
+    <lexical-unit><form lang="vern"><text>pipe</text></form></lexical-unit>
+    <sense id="43d5982a-6490-5bf5-8269-dcc2e26b07aa"><grammatical-info value="root"/><gloss lang="en"><text>pipe</text></gloss></sense>
+  </entry>
+  <entry id="pole_42c4f6d2" guid="42c4f6d2-bedf-5b45-b0ce-a3dfa0eb5d2f">
+    <lexical-unit><form lang="vern"><text>pole</text></form></lexical-unit>
+    <sense id="db23abf1-205d-5d70-a40a-58d396e49950"><grammatical-info value="root"/><gloss lang="en"><text>pole</text></gloss></sense>
+  </entry>
+  <entry id="sdil_f422bd91" guid="f422bd91-579f-55af-bd32-c25d85f3fdf1">
+    <lexical-unit><form lang="vern"><text>sdil</text></form></lexical-unit>
+    <sense id="57802b26-a097-5233-826c-70564ad55e4e"><grammatical-info value="root"/><gloss lang="en"><text>accompany</text></gloss></sense>
+  </entry>
+  <entry id="sgi_6277ef00" guid="6277ef00-a367-5452-8fc8-6c97b182e214">
+    <lexical-unit><form lang="vern"><text>sgi</text></form></lexical-unit>
+    <sense id="f572a90d-720b-56c3-865b-32950e0e9d7d"><grammatical-info value="root"/><gloss lang="en"><text>lie.on</text></gloss></sense>
+  </entry>
+  <entry id="sgwaa'ytxw_2e86f5eb" guid="2e86f5eb-072b-5a7b-909e-7943c6d9a8c3">
+    <lexical-unit><form lang="vern"><text>sgwaa'ytxw</text></form></lexical-unit>
+    <sense id="c7ec249c-2cb8-5449-ad12-dd32ecf5a80e"><grammatical-info value="root"/><gloss lang="en"><text>rest</text></gloss></sense>
+  </entry>
+  <entry id="sg̲a_a52ebb0f" guid="a52ebb0f-866b-554a-9dec-183d6623a670">
+    <lexical-unit><form lang="vern"><text>sg̲a</text></form></lexical-unit>
+    <sense id="66ed625f-a370-5973-bc3b-2fd603843de3"><grammatical-info value="root"/><gloss lang="en"><text>block.way</text></gloss></sense>
+  </entry>
+  <entry id="si'ix_22726a69" guid="22726a69-accb-5224-b92f-90308c425383">
+    <lexical-unit><form lang="vern"><text>si'ix</text></form></lexical-unit>
+    <sense id="fa6973d1-84d4-5458-bf7b-34916675a0cd"><grammatical-info value="root"/><gloss lang="en"><text>try</text></gloss></sense>
+  </entry>
+  <entry id="siip'_21b2843f" guid="21b2843f-5ed9-5033-8aca-87fd4b06c9f4">
+    <lexical-unit><form lang="vern"><text>siip'</text></form></lexical-unit>
+    <sense id="1879c605-9eec-54e6-bff5-fc30eb920321"><grammatical-info value="root"/><gloss lang="en"><text>like</text></gloss></sense>
+  </entry>
+  <entry id="t'aahl_1db3b1e5" guid="1db3b1e5-7d79-52bf-b39a-3311f767fe52">
+    <lexical-unit><form lang="vern"><text>t'aahl</text></form></lexical-unit>
+    <sense id="a2610e1c-5bdb-5cf9-a561-c1820755cda0"><grammatical-info value="root"/><gloss lang="en"><text>pick</text></gloss></sense>
+  </entry>
+  <entry id="t'akw_cff8df8b" guid="cff8df8b-d221-5fd8-8fad-ffb63f189ab0">
+    <lexical-unit><form lang="vern"><text>t'akw</text></form></lexical-unit>
+    <sense id="eebbabe4-1fe3-59ef-92f5-bc65182f1457"><grammatical-info value="root"/><gloss lang="en"><text>turn</text></gloss></sense>
+  </entry>
+  <entry id="t'ilx̲oo_03609fe6" guid="03609fe6-31cb-5f4a-97f4-d96cdb9a66e2">
+    <lexical-unit><form lang="vern"><text>t'ilx̲oo</text></form></lexical-unit>
+    <sense id="569588c2-cba8-5e9c-aa31-faff0ae0531a"><grammatical-info value="root"/><gloss lang="en"><text>thought</text></gloss></sense>
+  </entry>
+  <entry id="train_d578e019" guid="d578e019-3ff6-5230-944d-c2acb625b0a8">
+    <lexical-unit><form lang="vern"><text>train</text></form></lexical-unit>
+    <sense id="f94d8994-026a-5837-b4ad-6c4cf27a30b7"><grammatical-info value="root"/><gloss lang="en"><text>train</text></gloss></sense>
+  </entry>
+  <entry id="ts'im_6f369c2c" guid="6f369c2c-7b41-5319-804e-71567100f1d4">
+    <lexical-unit><form lang="vern"><text>ts'im</text></form></lexical-unit>
+    <sense id="8c4048f9-5432-54c2-83d0-13c4b12f615e"><grammatical-info value="root"/><gloss lang="en"><text>in</text></gloss></sense>
+  </entry>
+  <entry id="ts'imil_fdb49fed" guid="fdb49fed-f899-5d02-89d7-01ddf18e943f">
+    <lexical-unit><form lang="vern"><text>ts'imil</text></form></lexical-unit>
+    <sense id="5a9394fe-6b64-5095-adb3-17822c8c36b5"><grammatical-info value="root"/><gloss lang="en"><text>inside</text></gloss></sense>
+  </entry>
+  <entry id="up_640eea2d" guid="640eea2d-41e0-533d-a0f1-ea60d6d5a0b3">
+    <lexical-unit><form lang="vern"><text>up</text></form></lexical-unit>
+    <sense id="e964a888-a8f9-5e56-a074-9bd43c0afc28"><grammatical-info value="root"/><gloss lang="en"><text>in.case</text></gloss></sense>
+  </entry>
+  <entry id="wa_5cc751f7" guid="5cc751f7-57d7-56db-bdb4-f53dbf271a09">
+    <lexical-unit><form lang="vern"><text>wa</text></form></lexical-unit>
+    <sense id="c4d6158e-2c57-50c0-b576-abacdaa5d19b"><grammatical-info value="root"/><gloss lang="en"><text>name</text></gloss></sense>
+  </entry>
+  <entry id="wag̲ayt_595d1614" guid="595d1614-32ec-5d1f-9dd7-d6fe51cf6625">
+    <lexical-unit><form lang="vern"><text>wag̲ayt</text></form></lexical-unit>
+    <sense id="220b60e4-e8b3-516a-8a47-f6555a5ac4f7"><grammatical-info value="root"/><gloss lang="en"><text>completely</text></gloss></sense>
+  </entry>
+  <entry id="wan_41ca9470" guid="41ca9470-70f4-5dd5-b3c8-49592f42ffda">
+    <lexical-unit><form lang="vern"><text>wan</text></form></lexical-unit>
+    <sense id="a08fedae-a64e-5c1a-a7e2-d58be81a16f0"><grammatical-info value="root"/><gloss lang="en"><text>sit.PL</text></gloss></sense>
+  </entry>
+  <entry id="wilp_9c0aa952" guid="9c0aa952-7372-5770-8072-e0fca5686789">
+    <lexical-unit><form lang="vern"><text>wilp</text></form></lexical-unit>
+    <sense id="ca4317c4-7246-5d07-98d2-49178403db00"><grammatical-info value="root"/><gloss lang="en"><text>house</text></gloss></sense>
+  </entry>
+  <entry id="wok̲_ccc7042a" guid="ccc7042a-ee05-569e-80a4-67a35bf70135">
+    <lexical-unit><form lang="vern"><text>wok̲</text></form></lexical-unit>
+    <sense id="1ffe702c-32f3-5c6c-9b0f-921be924bf65"><grammatical-info value="root"/><gloss lang="en"><text>sleep</text></gloss></sense>
+  </entry>
+  <entry id="xhlii_e2ad9367" guid="e2ad9367-4631-5e86-a340-a6854ba78012">
+    <lexical-unit><form lang="vern"><text>xhlii</text></form></lexical-unit>
+    <sense id="4347ee54-3985-583d-a855-eb9df44d5c5c"><grammatical-info value="root"/><gloss lang="en"><text>all.the.way</text></gloss></sense>
+  </entry>
+  <entry id="xsaxw_4c539bf7" guid="4c539bf7-a847-56a0-bc55-22d73bc3b219">
+    <lexical-unit><form lang="vern"><text>xsaxw</text></form></lexical-unit>
+    <sense id="a1051ba5-9e64-5148-83a2-dc147895b2e5"><grammatical-info value="root"/><gloss lang="en"><text>go.out</text></gloss></sense>
+  </entry>
+  <entry id="xseek̲_d727289e" guid="d727289e-d947-59f0-828a-51eaf11af07b">
+    <lexical-unit><form lang="vern"><text>xseek̲</text></form></lexical-unit>
+    <sense id="a5b0bf76-a433-5605-8d5c-4c63513c09b4"><grammatical-info value="root"/><gloss lang="en"><text>go.out.PL</text></gloss></sense>
+  </entry>
+  <entry id="xsi_98597bd3" guid="98597bd3-3b92-55cc-bbc0-abb878af7d7b">
+    <lexical-unit><form lang="vern"><text>xsi</text></form></lexical-unit>
+    <sense id="d40e082a-b28d-5a49-b58a-0e67e5954049"><grammatical-info value="root"/><gloss lang="en"><text>out</text></gloss></sense>
+  </entry>
+  <entry id="yalt_57526be8" guid="57526be8-53b1-5d47-8769-ba4aeedce7dc">
+    <lexical-unit><form lang="vern"><text>yalt</text></form></lexical-unit>
+    <sense id="363c2d80-2b0d-5cf1-bbf0-ea85715fd122"><grammatical-info value="root"/><gloss lang="en"><text>return</text></gloss></sense>
+  </entry>
+  <entry id="yats_57b1302a" guid="57b1302a-44e5-5307-811e-b4381bbe3f35">
+    <lexical-unit><form lang="vern"><text>yats</text></form></lexical-unit>
+    <sense id="ec6ac811-82c1-5620-8a7b-e391ff351d5a"><grammatical-info value="root"/><gloss lang="en"><text>hit</text></gloss></sense>
+  </entry>
+  <entry id="yee_3d85f1b0" guid="3d85f1b0-3a90-564b-adbe-3cca2f3afa62">
+    <lexical-unit><form lang="vern"><text>yee</text></form></lexical-unit>
+    <sense id="0a632ebc-cb73-5a36-9894-832c8423ae02"><grammatical-info value="root"/><gloss lang="en"><text>go</text></gloss></sense>
+  </entry>
+  <entry id="yo'oxs_4c899342" guid="4c899342-dcb4-519d-b2f1-b10aaa381425">
+    <lexical-unit><form lang="vern"><text>yo'oxs</text></form></lexical-unit>
+    <sense id="34a06269-93c2-53f4-9e11-e2b602627ccf"><grammatical-info value="root"/><gloss lang="en"><text>wash</text></gloss></sense>
+  </entry>
+  <entry id="yuxw_f5e0de53" guid="f5e0de53-94f8-52b6-acd0-ee1b424d9bac">
+    <lexical-unit><form lang="vern"><text>yuxw</text></form></lexical-unit>
+    <sense id="b650440c-3677-5e4e-a801-01a405de4043"><grammatical-info value="root"/><gloss lang="en"><text>follow</text></gloss></sense>
+  </entry>
+</lift>

@@ -1,0 +1,25 @@
+{
+  "language": "git",
+  "source": "git-train-track2-uncovered",
+  "license": "CC-BY-NC-4.0",
+  "license_note": "NonCommercial: research-use gold; pipeline is the reusable asset.",
+  "counts": {
+    "code": "git",
+    "lex_entries": 95,
+    "affixes": 57,
+    "prefixes": 6,
+    "suffixes": 51,
+    "charset": 31,
+    "records": 31,
+    "distinct_wordforms": 141
+  },
+  "certification": {
+    "method": "hermitcrab-gloss-round-trip",
+    "n": 141,
+    "recall": 0.695,
+    "parsed": 0.7234,
+    "mean_ambiguity": 4.28,
+    "n_unparsed": 39
+  },
+  "grammar_sha256_16": "18cdb25b570afbe3"
+}

@@ -34,4 +34,14 @@ omitted in v1 to maximize parseability; POS lives in the lexicon for diagnostics
 Lezgi/Tsez have morphophonology (`\t кайла` ≠ `\m кун-й-ла`), so v1 verifies morpheme+gloss identity
 on the segmented underlying string; surface→underlying **phonological rules are Tier-2 enrichment**.
 
-**Status:** verifier+emitter recipe proven end-to-end (`_scratch/`); building package (phases 0–4).
+**Status (2026-06-16):** pipeline + assessment harness complete and proven end-to-end.
+- **Lezgi** frozen: 97.8% gloss round-trip / 1,897 wordforms. **Gitksan** frozen: 69.5% / 141
+  (low-resource stress case, as intended).
+- Scorer validated (empty=0, oracle≈1.0, wrong-gloss=0) and **integrated with the sibling
+  eval/proposal loop**: `golden.scorer.build_scorer()` + `golden.instances.make_instances()`
+  consume `proposal.contract` shapes (their task 6.4). Verified oracle→1.0 via their ChangeSet vocab.
+- **Scaling wall (real finding):** the flat *unordered* grammar explodes on high-affix languages —
+  Tsez (199 affixes) hit ~8 GB in `hc`; Uspanteko has **939**. Chunked parsing with a per-chunk
+  timeout (in `hc.run_parse`) bounds this (runaway words → unparsed), but the proper fix is **affix
+  templates / ordering / POS constraints** — which is itself the hardest assessment tier. Tsez/Usp
+  builds pending that enrichment (or affix-frequency pruning).

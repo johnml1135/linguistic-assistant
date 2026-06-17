@@ -153,22 +153,43 @@ def _parse_output(text: str, tl: Translit) -> dict[str, list[Analysis]]:
     return results
 
 
-def run_parse(model: LangModel, words: list[str], timeout: int = 600) -> dict[str, list[Analysis]]:
-    """Parse ``words`` (underlying forms) with the emitted grammar; return analyses."""
+def run_parse(
+    model: LangModel,
+    words: list[str],
+    timeout: int = 600,
+    chunk_size: int = 25,
+    chunk_timeout: int = 45,
+) -> dict[str, list[Analysis]]:
+    """Parse ``words`` (underlying forms) with the emitted grammar; return analyses.
+
+    Parsing is chunked with a per-chunk timeout. High-affix grammars (e.g. Tsez, Uspanteko)
+    make HC's unconstrained search explode on some words; chunking bounds time AND memory
+    (the timed-out ``hc`` process is killed) and localizes the loss — words in a timed-out
+    chunk are simply returned with no analyses (counted as unparsed). This is the scaling
+    signal that motivates the affix-template/ordering enrichment.
+    """
     tl = Translit(model.charset)
     xml = build_grammar_xml(model, tl)
+    uniq = list(dict.fromkeys(words))
+    results: dict[str, list[Analysis]] = {w: [] for w in uniq}
     with tempfile.TemporaryDirectory() as d:
         cfg = Path(d) / "g.xml"
-        scr = Path(d) / "s.txt"
-        out = Path(d) / "o.txt"
         cfg.write_text(xml, encoding="utf-8")
-        uniq = list(dict.fromkeys(words))
-        scr.write_text("\n".join(f"parse {tl.enc(w)}" for w in uniq) + "\n", encoding="utf-8")
-        subprocess.run(
-            [HC_EXE, "-i", str(cfg), "-s", str(scr), "-o", str(out), "-c"],
-            env=_ENV, capture_output=True, timeout=timeout,
-        )
-        return _parse_output(out.read_text(encoding="utf-8"), tl)
+        for start in range(0, len(uniq), chunk_size):
+            chunk = uniq[start : start + chunk_size]
+            scr = Path(d) / "s.txt"
+            out = Path(d) / "o.txt"
+            out.write_text("", encoding="utf-8")
+            scr.write_text("\n".join(f"parse {tl.enc(w)}" for w in chunk) + "\n", encoding="utf-8")
+            try:
+                subprocess.run(
+                    [HC_EXE, "-i", str(cfg), "-s", str(scr), "-o", str(out), "-c"],
+                    env=_ENV, capture_output=True, timeout=min(chunk_timeout, timeout),
+                )
+            except subprocess.TimeoutExpired:
+                continue  # chunk's words stay unparsed
+            results.update(_parse_output(out.read_text(encoding="utf-8"), tl))
+    return results
 
 
 @dataclass
