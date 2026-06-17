@@ -1,0 +1,25 @@
+{
+  "language": "ddo",
+  "source": "ddo-train-track2-uncovered",
+  "license": "CC-BY-NC-4.0",
+  "license_note": "NonCommercial: research-use gold; pipeline is the reusable asset.",
+  "counts": {
+    "code": "ddo",
+    "lex_entries": 2076,
+    "affixes": 164,
+    "prefixes": 7,
+    "suffixes": 157,
+    "charset": 58,
+    "records": 3558,
+    "distinct_wordforms": 8303
+  },
+  "certification": {
+    "method": "hermitcrab-gloss-round-trip",
+    "n": 8303,
+    "recall": 0.9071,
+    "parsed": 0.9509,
+    "mean_ambiguity": 149.41,
+    "n_unparsed": 408
+  },
+  "grammar_sha256_16": "944f6cc20946d669"
+}

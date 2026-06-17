@@ -64,7 +64,7 @@ class LangModel:
         }
 
 
-def build_model(code: str, words: list[MorphWord]) -> LangModel:
+def build_model(code: str, words: list[MorphWord], min_affix_count: int = 1) -> LangModel:
     lex_count: Counter[tuple[str, str]] = Counter()
     aff_count: Counter[tuple[str, str]] = Counter()
     aff_pos: dict[tuple[str, str], list[int]] = defaultdict(lambda: [0, 0])  # [prefix, suffix]
@@ -88,6 +88,8 @@ def build_model(code: str, words: list[MorphWord]) -> LangModel:
     ]
     affixes = []
     for (f, g), c in sorted(aff_count.items()):
+        if c < min_affix_count:
+            continue  # prune rare affixes to keep HC's unordered search tractable on high-affix langs
         pre, suf = aff_pos[(f, g)]
         affixes.append(Affix(form=f, gloss=g, kind="prefix" if pre > suf else "suffix", count=c))
     return LangModel(code=code, lexicon=lexicon, affixes=affixes)

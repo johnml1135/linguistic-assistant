@@ -22,10 +22,11 @@ from . import hc, igt
 from .grammar import build_model
 
 
-def freeze(lang: str, igt_path: str, out_dir: str, license: str, timeout: int = 900) -> dict:
+def freeze(lang: str, igt_path: str, out_dir: str, license: str, timeout: int = 900,
+           min_affix_count: int = 1) -> dict:
     records = igt.parse_file(igt_path)
     words = list(igt.iter_words(records))
-    model = build_model(lang, words)
+    model = build_model(lang, words, min_affix_count=min_affix_count)
 
     # Distinct underlying wordforms + their gold analyses.
     gold, seen = [], set()
@@ -82,8 +83,10 @@ def main() -> None:
     ap.add_argument("--out", required=True)
     ap.add_argument("--license", default="CC-BY-NC-4.0")
     ap.add_argument("--timeout", type=int, default=900)
+    ap.add_argument("--min-affix-count", type=int, default=1,
+                    help="prune affixes seen fewer than N times (tractability for high-affix langs)")
     a = ap.parse_args()
-    meta = freeze(a.lang, a.igt, a.out, a.license, a.timeout)
+    meta = freeze(a.lang, a.igt, a.out, a.license, a.timeout, a.min_affix_count)
     print(json.dumps(meta, indent=2, ensure_ascii=False))
 
 

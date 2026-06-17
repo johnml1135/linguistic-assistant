@@ -40,8 +40,16 @@ on the segmented underlying string; surface→underlying **phonological rules ar
 - Scorer validated (empty=0, oracle≈1.0, wrong-gloss=0) and **integrated with the sibling
   eval/proposal loop**: `golden.scorer.build_scorer()` + `golden.instances.make_instances()`
   consume `proposal.contract` shapes (their task 6.4). Verified oracle→1.0 via their ChangeSet vocab.
+- **Tsez** frozen (affix-pruned, `--min-affix-count 3`): 90.7% gloss round-trip / 8,303 wordforms —
+  usable gold, but **mean ambiguity 149** (the flat grammar is very loose); ambiguity reduction is
+  the enrichment, not a blocker on the gold gloss line.
 - **Scaling wall (real finding):** the flat *unordered* grammar explodes on high-affix languages —
-  Tsez (199 affixes) hit ~8 GB in `hc`; Uspanteko has **939**. Chunked parsing with a per-chunk
-  timeout (in `hc.run_parse`) bounds this (runaway words → unparsed), but the proper fix is **affix
-  templates / ordering / POS constraints** — which is itself the hardest assessment tier. Tsez/Usp
-  builds pending that enrichment (or affix-frequency pruning).
+  Tsez (199 affixes) hit ~8 GB in `hc` before pruning; **Uspanteko (939 affixes, Mayan)** stays
+  intractable even pruned to 316 (41% recall, ambiguity 1247, half the words time out) — **NOT
+  shipped**. Chunked parsing + per-chunk timeout + affix-frequency pruning bound the cost, but the
+  proper fix is **affix templates / ordering / POS constraints** — itself the hardest assessment
+  tier. Uspanteko blocked on that enrichment.
+
+**Golden sets shipped:** lez (97.8%), ddo/Tsez (90.7%), git/Gitksan (69.5%). Next: affix-template
+enrichment (unblocks Uspanteko + cuts Tsez ambiguity), then Arapaho/Natügu; Tier-2 phonology + real
+FLEx `.fwdata` ingestion per the spec.
