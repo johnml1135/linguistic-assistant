@@ -63,7 +63,7 @@ def _xid(prefix: str, n: int) -> str:
     return f"{prefix}{n}"
 
 
-def build_grammar_xml(model: LangModel, tl: Translit | None = None) -> str:
+def build_grammar_xml(model: LangModel, tl: Translit | None = None, templated: bool = True) -> str:
     tl = tl or Translit(model.charset)
     src_chars = sorted(set(model.charset))
 
@@ -107,6 +107,38 @@ def build_grammar_xml(model: LangModel, tl: Translit | None = None) -> str:
             f"</MorphologicalSubrules><Gloss>{escape(a.gloss)}</Gloss></MorphologicalRule>"
         )
 
+    # Best-practice morphotactics: group affix rules into ordered position-class slots
+    # (an HC AffixTemplate), one filler per slot, slots in inner->outer order — instead of the
+    # flat, unordered, arbitrarily-stacking rule list of v1. This is the affix-template/slot model
+    # (MoInflAffixTemplate/MoInflAffixSlot) and is what collapses the over-generation.
+    if templated and model.affixes:
+        # Known slots come from affixes carrying explicit (gold) slot evidence; an affix with no
+        # evidence (e.g. an agent-proposed one) is placed leniently in every known slot on its side.
+        known: dict[str, set[int]] = {"suffix": set(), "prefix": set()}
+        for a in model.affixes:
+            for sd, o in a.slots:
+                known[sd].add(o)
+        slot_rules: dict[tuple[str, int], list[str]] = {}
+        for i, a in enumerate(model.affixes):
+            targets = a.slots or tuple((a.kind, o) for o in sorted(known.get(a.kind, {a.slot_ord})) or [a.slot_ord])
+            for slot in (targets or (a.slot,)):
+                slot_rules.setdefault(slot, []).append(rule_ids[i])
+        suffix_ords = sorted(o for (s, o) in slot_rules if s == "suffix")
+        prefix_ords = sorted(o for (s, o) in slot_rules if s == "prefix")
+        slots_xml = ""
+        for side, ords in (("suffix", suffix_ords), ("prefix", prefix_ords)):
+            for o in ords:
+                rids = " ".join(slot_rules[(side, o)])
+                slots_xml += (f'<Slot optional="true" morphologicalRules="{rids}">'
+                              f'<Name>{side}{o}</Name></Slot>')
+        template_xml = ('<AffixTemplates><AffixTemplate final="true" requiredPartsOfSpeech="root">'
+                        f'<Name>main</Name>{slots_xml}</AffixTemplate></AffixTemplates>')
+        stratum_open = '<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="linear"><Name>main</Name>'
+    else:
+        template_xml = ""
+        stratum_open = ('<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="unordered" '
+                        f'morphologicalRules="{" ".join(rule_ids)}"><Name>main</Name>')
+
     return (
         '<?xml version="1.0" encoding="utf-8"?>\n'
         "<HermitCrabInput><Language><Name>" + escape(model.code) + "</Name>"
@@ -117,9 +149,9 @@ def build_grammar_xml(model: LangModel, tl: Translit | None = None) -> str:
         "</SegmentDefinitions></CharacterDefinitionTable>"
         f'<NaturalClasses><SegmentNaturalClass id="any"><Name>any</Name>{anyseg}'
         "</SegmentNaturalClass></NaturalClasses>"
-        f'<Strata><Stratum characterDefinitionTable="t1" morphologicalRuleOrder="unordered" '
-        f'morphologicalRules="{" ".join(rule_ids)}"><Name>main</Name>'
+        f"<Strata>{stratum_open}"
         f"<MorphologicalRuleDefinitions>{''.join(rules)}</MorphologicalRuleDefinitions>"
+        f"{template_xml}"
         f"<LexicalEntries>{''.join(entries)}</LexicalEntries>"
         "</Stratum></Strata></Language></HermitCrabInput>"
     )
@@ -159,6 +191,7 @@ def run_parse(
     timeout: int = 600,
     chunk_size: int = 25,
     chunk_timeout: int = 45,
+    templated: bool = True,
 ) -> dict[str, list[Analysis]]:
     """Parse ``words`` (underlying forms) with the emitted grammar; return analyses.
 
@@ -169,7 +202,7 @@ def run_parse(
     signal that motivates the affix-template/ordering enrichment.
     """
     tl = Translit(model.charset)
-    xml = build_grammar_xml(model, tl)
+    xml = build_grammar_xml(model, tl, templated=templated)
     uniq = list(dict.fromkeys(words))
     results: dict[str, list[Analysis]] = {w: [] for w in uniq}
     with tempfile.TemporaryDirectory() as d:
@@ -217,10 +250,11 @@ def gloss_seq(analysis: Analysis) -> tuple[str, ...]:
     return tuple(g for _, g in analysis)
 
 
-def round_trip(model: LangModel, gold: list[tuple[str, Analysis]], timeout: int = 600) -> RoundTrip:
+def round_trip(model: LangModel, gold: list[tuple[str, Analysis]], timeout: int = 600,
+               templated: bool = True) -> RoundTrip:
     """Score the grammar: does each gold (underlying form -> gloss line) round-trip?"""
     words = [w for w, _ in gold]
-    parses = run_parse(model, words, timeout=timeout)
+    parses = run_parse(model, words, timeout=timeout, templated=templated)
     hits = produced = amb_total = 0
     unparsed: list[str] = []
     for w, analysis in gold:

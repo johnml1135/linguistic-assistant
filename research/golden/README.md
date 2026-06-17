@@ -14,6 +14,35 @@ build order + status: [PLAN.md](PLAN.md).
 - `meta.json` — provenance, **license**, counts, and the HC round-trip coverage that *is*
   the certification (no human in the loop).
 
+## Grammar model — linguistic best practices (from `linguistics/`)
+
+The emitted Hermit Crab grammar follows the repo's linguistic primitives rather than a flat rule
+bag. Two refinement passes, each measured against the flat baseline:
+
+- **Pass 1 — affix templates / position classes** ([[affix-template-and-slot]]: `MoInflAffixTemplate`
+  / `MoInflAffixSlot`). Each affix is assigned a **position-class slot** (side + modal ordinal from
+  the root). The grammar emits an `<AffixTemplate>` with **ordered slots, one filler per slot**, so
+  HC can't generate *root-tense-subj* when the data shows *subj-tense-root*. Stratum
+  `morphologicalRuleOrder="linear"`.
+- **Pass 2 — multi-slot membership** ([[morphosyntactic-analysis]]: `MoInflAffMsa.Slots` is a
+  *sequence*). An affix fills **every attested slot**, not just its modal one — recovering the
+  coverage Pass 1's rigidity lost.
+
+Effect (gloss round-trip recall / mean ambiguity):
+
+| Lang | Flat (v1) | Template (best-practice) |
+|---|---|---|
+| Lezgi | 0.978 / 9.29 | 0.972 / **4.90** |
+| Gitksan | 0.695 / 4.28 | 0.674 / **1.27** |
+| Tsez | 0.907 / **149** (affix-pruned) | 0.923 / **13.6** (full inventory) |
+| Uspanteko | 0.41 / 1247 — *unshippable* | **0.799** / 180 — *shippable* |
+
+Templates **bound the search** (one filler per ordered slot) — fixing the high-affix scaling wall
+that made Uspanteko (939 affixes) intractable under the flat grammar. **Deferred (Tier-2):** POS
+gating + inflection/derivation split ([[inflection-vs-derivation]], single `root` POS today),
+feature-based [[natural-class]]es, phonological rules/allomorphy (surface≠underlying), and ordered
+[[stratum]] layering — all named in `linguistics/workflows/morphological-parser-setup.md`.
+
 ## How verification works (no human)
 
 The binding certifier is **deterministic**: HermitCrab re-parses each gold wordform and must

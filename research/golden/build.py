@@ -69,6 +69,13 @@ def freeze(lang: str, igt_path: str, out_dir: str, license: str, timeout: int = 
         "license_note": "NonCommercial: research-use gold; pipeline is the reusable asset.",
         "counts": {**model.summary(), "records": len(records),
                    "distinct_wordforms": len(gold)},
+        "grammar_model": {
+            "morphotactics": "affix-template (position-class slots, one filler/slot, ordered)",
+            "multi_slot": True,  # MoInflAffMsa.Slots is a sequence: affixes fill all attested slots
+            "min_affix_count": min_affix_count,
+            "best_practice_refs": ["linguistics/primitives/affix-template-and-slot.md",
+                                   "linguistics/primitives/morphosyntactic-analysis.md"],
+        },
         "certification": {"method": "hermitcrab-gloss-round-trip", **rt.as_dict()},
         "grammar_sha256_16": grammar_hash,
     }

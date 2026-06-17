@@ -50,6 +50,20 @@ on the segmented underlying string; surface→underlying **phonological rules ar
   proper fix is **affix templates / ordering / POS constraints** — itself the hardest assessment
   tier. Uspanteko blocked on that enrichment.
 
-**Golden sets shipped:** lez (97.8%), ddo/Tsez (90.7%), git/Gitksan (69.5%). Next: affix-template
-enrichment (unblocks Uspanteko + cuts Tsez ambiguity), then Arapaho/Natügu; Tier-2 phonology + real
-FLEx `.fwdata` ingestion per the spec.
+**Best-practice grammar (two passes, applied):** the emitter now uses **affix templates /
+position-class slots** ([[affix-template-and-slot]]) with **multi-slot membership**
+([[morphosyntactic-analysis]], `MoInflAffMsa.Slots` is a sequence) instead of a flat unordered rule
+bag. Pass 1 = ordered slots (one filler/slot); pass 2 = an affix fills every attested slot. This
+**bounds HC's search** and fixed the high-affix scaling wall:
+
+| Lang | Flat (v1) recall/amb | Template (v2) recall/amb |
+|---|---|---|
+| lez | 0.978 / 9.29 | 0.972 / 4.90 |
+| git | 0.695 / 4.28 | 0.674 / 1.27 |
+| ddo/Tsez | 0.907 / 149 (pruned) | 0.923 / 13.6 (full inventory) |
+| usp/Uspanteko | 0.41 / 1247 (unshippable) | **0.799 / 180 (shippable)** |
+
+**Golden sets shipped:** lez, git, ddo/Tsez, **usp/Uspanteko** (now viable). **Deferred Tier-2** (in
+`linguistics/workflows/morphological-parser-setup.md`): POS gating + [[inflection-vs-derivation]]
+(single `root` POS today), feature-based [[natural-class]]es, phonological rules/allomorphy,
+[[stratum]] layering; then Arapaho/Natügu and real-FLEx `.fwdata` ingestion.

@@ -10,16 +10,31 @@
     "prefixes": 0,
     "suffixes": 82,
     "charset": 83,
+    "slots": {
+      "suffix1": 77,
+      "suffix2": 34,
+      "suffix3": 15,
+      "suffix4": 5
+    },
     "records": 701,
     "distinct_wordforms": 1897
+  },
+  "grammar_model": {
+    "morphotactics": "affix-template (position-class slots, one filler/slot, ordered)",
+    "multi_slot": true,
+    "min_affix_count": 1,
+    "best_practice_refs": [
+      "linguistics/primitives/affix-template-and-slot.md",
+      "linguistics/primitives/morphosyntactic-analysis.md"
+    ]
   },
   "certification": {
     "method": "hermitcrab-gloss-round-trip",
     "n": 1897,
-    "recall": 0.9784,
-    "parsed": 0.9826,
-    "mean_ambiguity": 9.29,
-    "n_unparsed": 33
+    "recall": 0.9715,
+    "parsed": 0.9768,
+    "mean_ambiguity": 4.9,
+    "n_unparsed": 44
   },
-  "grammar_sha256_16": "804591c54a5d15ba"
+  "grammar_sha256_16": "93f35c1c11e3f621"
 }
