@@ -3,7 +3,8 @@
 > Check a translated text against its aligned source — detect missing concepts, wrong senses, and
 > agreement mismatches by leaning on the source side's gold morphology, with no MT and no target parser.
 
-**Primary tool(s):** aligned source + target in FLEx; the lexicon and Hermit Crab grammar  ·  **Mode:** mixed  ·
+**Primary tool(s):** aligned source + target in FLEx; the lexicon and Hermit Crab grammar; the
+**Apertium-alignment bridge** (bidix + HC lemma analysis) for reference-finding  ·  **Mode:** mixed  ·
 **Stage in our loop:** scan + propose + review  ·  **Parallel-aware:** yes (this is the core)
 
 ## Goal & when it runs
@@ -25,6 +26,12 @@ a translation. It runs whenever a draft exists to be checked against a trusted s
 
 ## How the assistant supports it
 
+- **Locate references first (the alignment substrate).** Sentences are reordered and inflected, so
+  surface matching fails. For a source concept: source lemma → [[cross-lingual-sense-link]] / Apertium
+  **bidix** → candidate vernacular lemma(s) → find the target token whose **Hermit Crab lemma** matches,
+  *anywhere* in the sentence. Lemma-level matching survives word order and inflection; it is
+  deterministic and adds no MT. No match ⇒ a candidate "missing concept." (See the
+  `apertium-alignment-bridge` change.)
 - **Scan** alignments and **propose** flags of three kinds: **missing concept/sense** ("source has a
   sense with no target [[lexical-entry]]"), **wrong sense** chosen for the context, and
   **agreement/feature mismatch** ("singular in source, plural here — correct?").
@@ -36,12 +43,13 @@ a translation. It runs whenever a draft exists to be checked against a trusted s
 ## Inputs
 
 The aligned source (with its gold morphology and key-term/relation data) and target texts, the current
-lexicon, and the Hermit Crab grammar for reading target [[inflection-feature]]s.
+lexicon, the Hermit Crab grammar for reading target [[inflection-feature]]s, and the bilingual
+sense-link / bidix data (from `bilingual/*`) that drives reference-finding.
 
 ## Primitives involved
 
-[[sense]], [[inflection-feature]], [[part-of-speech]], [[lexical-entry]]; sense choices feed
-[[sense-discovery-and-disambiguation]].
+[[sense]], [[inflection-feature]], [[part-of-speech]], [[lexical-entry]], [[cross-lingual-sense-link]]
+(the alignment substrate); sense choices feed [[sense-discovery-and-disambiguation]].
 
 ## Oracle / gold / metrics
 

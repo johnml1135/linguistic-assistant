@@ -53,6 +53,7 @@ Gotchas, silent-failure modes, common confusions.
 - [part-of-speech](part-of-speech.md) — `PartOfSpeech` (via MSA)
 - [semantic-domain](semantic-domain.md) — `CmSemanticDomain`; RWC
 - [lexical-relation](lexical-relation.md) — `LexReference` / `LexRefType`
+- [cross-lingual-sense-link](cross-lingual-sense-link.md) — bilingual tier: vernacular sense ↔ reference lemma (FLExTrans sense link; Apertium bidix source)
 - [complex-form](complex-form.md) — `LexEntryRef` / `LexEntryType` (compounds, derivatives, idioms)
 - [variant-form](variant-form.md) — `LexEntryRef` variant types
 - [etymology](etymology.md) — `LexEtymology`
