@@ -85,7 +85,7 @@ def parse_file(path: str | Path) -> list[LingGymItem]:
         framing = block[0]
         items.append(
             LingGymItem(
-                qid=f"{path.stem}#{m.group(1)}",
+                qid=f"{path.parent.name}/{path.stem}#{m.group(1)}",
                 language=_language_for(path, framing),
                 source_file=str(path),
                 prompt_full="".join(block),

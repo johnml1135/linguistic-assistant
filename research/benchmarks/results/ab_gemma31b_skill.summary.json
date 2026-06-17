@@ -1,0 +1,10 @@
+{
+  "arm": "skill",
+  "label": "gemma31b",
+  "n": 200,
+  "correct": 174,
+  "accuracy": 0.87,
+  "unparsed": 0,
+  "elapsed_s": 82.7,
+  "sample_seed": 13
+}

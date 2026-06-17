@@ -1,0 +1,97 @@
+{
+  "endpoint": "ik_llama",
+  "model": "ik_llama",
+  "level": "full",
+  "preset": "greedy",
+  "max_tokens": 16,
+  "sample": 600,
+  "sample_seed": 0,
+  "n": 600,
+  "correct": 505,
+  "accuracy": 0.8416666666666667,
+  "unparsed": 0,
+  "elapsed_s": 290.7,
+  "by_language": {
+    "Fwe": {
+      "correct": 6,
+      "total": 7,
+      "accuracy": 0.8571428571428571
+    },
+    "Gyeli": {
+      "correct": 15,
+      "total": 19,
+      "accuracy": 0.7894736842105263
+    },
+    "Japhug": {
+      "correct": 14,
+      "total": 16,
+      "accuracy": 0.875
+    },
+    "Kagayanen": {
+      "correct": 19,
+      "total": 21,
+      "accuracy": 0.9047619047619048
+    },
+    "Kalamang": {
+      "correct": 19,
+      "total": 22,
+      "accuracy": 0.8636363636363636
+    },
+    "Komnzo": {
+      "correct": 22,
+      "total": 27,
+      "accuracy": 0.8148148148148148
+    },
+    "Mauwake": {
+      "correct": 49,
+      "total": 62,
+      "accuracy": 0.7903225806451613
+    },
+    "Mehweb": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 0.3333333333333333
+    },
+    "Moloko": {
+      "correct": 13,
+      "total": 14,
+      "accuracy": 0.9285714285714286
+    },
+    "Palula": {
+      "correct": 35,
+      "total": 49,
+      "accuracy": 0.7142857142857143
+    },
+    "Papuan_Malay": {
+      "correct": 89,
+      "total": 101,
+      "accuracy": 0.8811881188118812
+    },
+    "Pichi": {
+      "correct": 76,
+      "total": 91,
+      "accuracy": 0.8351648351648352
+    },
+    "Rapa_Nui": {
+      "correct": 39,
+      "total": 44,
+      "accuracy": 0.8863636363636364
+    },
+    "Tuatschin": {
+      "correct": 37,
+      "total": 40,
+      "accuracy": 0.925
+    },
+    "Ulwa": {
+      "correct": 38,
+      "total": 49,
+      "accuracy": 0.7755102040816326
+    },
+    "Yauyos_Quecha": {
+      "correct": 33,
+      "total": 35,
+      "accuracy": 0.9428571428571428
+    }
+  },
+  "results_file": "benchmarks\\results\\gemma31b_qat_s600.jsonl"
+}

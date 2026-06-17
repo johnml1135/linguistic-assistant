@@ -1,0 +1,10 @@
+{
+  "arm": "logprob",
+  "label": "gemma31b",
+  "n": 200,
+  "correct": 170,
+  "accuracy": 0.85,
+  "unparsed": 0,
+  "elapsed_s": 85.4,
+  "sample_seed": 13
+}

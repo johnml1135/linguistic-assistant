@@ -46,6 +46,8 @@ param(
     [int]$Port = 8080,
     [string]$ListenHost = '127.0.0.1',
     [string]$ServerExe,
+    [switch]$Jinja,          # use the model's jinja chat template (needed by Gemma 4 / Qwen 3.6 GGUFs)
+    [switch]$NoThink,        # disable reasoning/thinking (--reasoning off) — for MC tasks like LingGym
     [switch]$WaitForReady,
     [int]$ReadyTimeoutSec = 180,
     [Parameter(ValueFromRemainingArguments = $true)][string[]]$ExtraArgs
@@ -71,6 +73,8 @@ $serverArgs = @(
     '--host', "$ListenHost",
     '--port', "$Port"
 )
+if ($Jinja) { $serverArgs += '--jinja' }
+if ($NoThink) { $serverArgs += @('--reasoning', 'off') }
 if ($ExtraArgs) { $serverArgs += $ExtraArgs }
 
 $endpoint = "http://${ListenHost}:${Port}"

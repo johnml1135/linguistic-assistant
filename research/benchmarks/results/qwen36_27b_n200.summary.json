@@ -1,0 +1,25 @@
+{
+  "endpoint": "ik_llama",
+  "model": "ik_llama",
+  "level": "full",
+  "preset": "greedy",
+  "max_tokens": 16,
+  "n": 200,
+  "correct": 169,
+  "accuracy": 0.845,
+  "unparsed": 0,
+  "elapsed_s": 123.2,
+  "by_language": {
+    "Fwe": {
+      "correct": 128,
+      "total": 147,
+      "accuracy": 0.8707482993197279
+    },
+    "Gyeli": {
+      "correct": 41,
+      "total": 53,
+      "accuracy": 0.7735849056603774
+    }
+  },
+  "results_file": "benchmarks\\results\\qwen36_27b_n200.jsonl"
+}

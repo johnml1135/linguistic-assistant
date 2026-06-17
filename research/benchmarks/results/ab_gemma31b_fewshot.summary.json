@@ -1,0 +1,10 @@
+{
+  "arm": "fewshot",
+  "label": "gemma31b",
+  "n": 200,
+  "correct": 176,
+  "accuracy": 0.88,
+  "unparsed": 0,
+  "elapsed_s": 77.4,
+  "sample_seed": 13
+}

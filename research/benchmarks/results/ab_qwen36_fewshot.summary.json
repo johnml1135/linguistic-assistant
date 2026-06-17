@@ -1,0 +1,10 @@
+{
+  "arm": "fewshot",
+  "label": "qwen36",
+  "n": 200,
+  "correct": 168,
+  "accuracy": 0.84,
+  "unparsed": 0,
+  "elapsed_s": 276.9,
+  "sample_seed": 13
+}

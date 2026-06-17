@@ -1,0 +1,10 @@
+{
+  "arm": "prior",
+  "label": "gemma31b",
+  "n": 200,
+  "correct": 170,
+  "accuracy": 0.85,
+  "unparsed": 0,
+  "elapsed_s": 86.0,
+  "sample_seed": 13
+}

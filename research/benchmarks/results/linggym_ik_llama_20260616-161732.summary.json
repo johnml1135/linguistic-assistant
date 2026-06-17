@@ -1,0 +1,20 @@
+{
+  "endpoint": "ik_llama",
+  "model": "ik_llama",
+  "level": "full",
+  "preset": "greedy",
+  "max_tokens": 1024,
+  "n": 10,
+  "correct": 5,
+  "accuracy": 0.5,
+  "unparsed": 4,
+  "elapsed_s": 243.0,
+  "by_language": {
+    "Fwe": {
+      "correct": 5,
+      "total": 10,
+      "accuracy": 0.5
+    }
+  },
+  "results_file": "C:\\Users\\johnm\\Documents\\repos\\linguistic-assistant\\research\\benchmarks\\results\\linggym_ik_llama_20260616-161732.jsonl"
+}

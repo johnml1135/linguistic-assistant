@@ -41,18 +41,25 @@ def main() -> int:
     ap.add_argument("--model", default=None, help="override the endpoint's model")
     ap.add_argument("--root", default=str(DEFAULT_ROOT), help="dir of *_questions.txt files")
     ap.add_argument("--languages", default=None, help="comma-separated language filter")
-    ap.add_argument("--limit", type=int, default=None, help="cap number of items")
+    ap.add_argument("--limit", type=int, default=None, help="cap number of items (first-N in file order)")
+    ap.add_argument("--sample", type=int, default=None, help="random sample N across the FULL dataset (representative across languages)")
+    ap.add_argument("--sample-seed", type=int, default=0, help="seed for --sample (same seed => same items)")
     ap.add_argument("--level", default="full", choices=list(promptlib.LEVELS), help="info level")
     ap.add_argument("--preset", default="greedy", choices=list(PRESETS), help="decoding preset")
     ap.add_argument("--max-tokens", type=int, default=512)
+    ap.add_argument("--prompt-suffix", default="", help="appended to every prompt (e.g. '/no_think' for Qwen)")
     ap.add_argument("--out", default=None, help="results JSONL path (default: results/linggym_<endpoint>_<ts>.jsonl)")
     args = ap.parse_args()
 
     languages = set(args.languages.split(",")) if args.languages else None
-    items = dataset.load_items(args.root, languages=languages, limit=args.limit)
+    items = dataset.load_items(args.root, languages=languages, limit=None if args.sample else args.limit)
     if not items:
         print(f"No items found under {args.root!r}", file=sys.stderr)
         return 2
+    if args.sample and args.sample < len(items):
+        import random
+        items = random.Random(args.sample_seed).sample(items, args.sample)
+        items.sort(key=lambda it: it.qid)  # stable run order
 
     overrides = {"model": args.model} if args.model else {}
     client = build_client(args.endpoint, **overrides)
@@ -73,6 +80,8 @@ def main() -> int:
     with out_path.open("w", encoding="utf-8") as fh:
         for it in items:
             text = promptlib.build_prompt(it, level=args.level)
+            if args.prompt_suffix:
+                text = text + "\n" + args.prompt_suffix
             res = client.complete([Message("user", text)], max_tokens=args.max_tokens, **decoding)
             pred = scorer.extract_letter(res.text)
             ok = scorer.score(pred, it.gold)
@@ -94,6 +103,7 @@ def main() -> int:
     summary = {
         "endpoint": args.endpoint, "model": getattr(client, "name", args.endpoint),
         "level": args.level, "preset": args.preset, "max_tokens": args.max_tokens,
+        "sample": args.sample, "sample_seed": args.sample_seed,
         "n": n, "correct": correct, "accuracy": correct / n,
         "unparsed": unparsed, "elapsed_s": round(elapsed, 1),
         "by_language": {k: {"correct": v[0], "total": v[1], "accuracy": v[0] / v[1]}

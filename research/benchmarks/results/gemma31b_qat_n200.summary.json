@@ -1,0 +1,25 @@
+{
+  "endpoint": "ik_llama",
+  "model": "ik_llama",
+  "level": "full",
+  "preset": "greedy",
+  "max_tokens": 16,
+  "n": 200,
+  "correct": 165,
+  "accuracy": 0.825,
+  "unparsed": 0,
+  "elapsed_s": 79.7,
+  "by_language": {
+    "Fwe": {
+      "correct": 120,
+      "total": 147,
+      "accuracy": 0.8163265306122449
+    },
+    "Gyeli": {
+      "correct": 45,
+      "total": 53,
+      "accuracy": 0.8490566037735849
+    }
+  },
+  "results_file": "benchmarks\\results\\gemma31b_qat_n200.jsonl"
+}

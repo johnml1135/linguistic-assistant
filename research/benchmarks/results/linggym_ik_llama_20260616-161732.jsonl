@@ -1,0 +1,10 @@
+{"qid": "min_knowledge_points_10_questions#0", "language": "Fwe", "level": "full", "gold": "D", "pred": "D", "correct": true, "raw": "D", "input_tokens": 368, "output_tokens": 589, "latency_s": 17.168815799988806}
+{"qid": "min_knowledge_points_12_questions#0", "language": "Fwe", "level": "full", "gold": "C", "pred": "C", "correct": true, "raw": "C", "input_tokens": 376, "output_tokens": 642, "latency_s": 18.757630400010385}
+{"qid": "min_knowledge_points_12_questions#1", "language": "Fwe", "level": "full", "gold": "C", "pred": "C", "correct": true, "raw": "C", "input_tokens": 364, "output_tokens": 758, "latency_s": 22.254472599946894}
+{"qid": "min_knowledge_points_12_questions#2", "language": "Fwe", "level": "full", "gold": "D", "pred": "D", "correct": true, "raw": "D", "input_tokens": 377, "output_tokens": 474, "latency_s": 14.217454500030726}
+{"qid": "min_knowledge_points_12_questions#3", "language": "Fwe", "level": "full", "gold": "A", "pred": null, "correct": false, "raw": "", "input_tokens": 369, "output_tokens": 1024, "latency_s": 29.985458800103515}
+{"qid": "min_knowledge_points_13_questions#0", "language": "Fwe", "level": "full", "gold": "B", "pred": "B", "correct": true, "raw": "B", "input_tokens": 484, "output_tokens": 667, "latency_s": 19.98930030001793}
+{"qid": "min_knowledge_points_13_questions#1", "language": "Fwe", "level": "full", "gold": "B", "pred": null, "correct": false, "raw": "", "input_tokens": 486, "output_tokens": 1024, "latency_s": 30.326114399940707}
+{"qid": "min_knowledge_points_13_questions#2", "language": "Fwe", "level": "full", "gold": "A", "pred": null, "correct": false, "raw": "", "input_tokens": 490, "output_tokens": 1024, "latency_s": 30.447756899986416}
+{"qid": "min_knowledge_points_13_questions#3", "language": "Fwe", "level": "full", "gold": "C", "pred": "A", "correct": false, "raw": "A", "input_tokens": 494, "output_tokens": 987, "latency_s": 29.334473800030537}
+{"qid": "min_knowledge_points_13_questions#4", "language": "Fwe", "level": "full", "gold": "C", "pred": null, "correct": false, "raw": "", "input_tokens": 497, "output_tokens": 1024, "latency_s": 30.561715400079265}

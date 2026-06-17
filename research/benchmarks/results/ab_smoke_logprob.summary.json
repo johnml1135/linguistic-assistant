@@ -1,0 +1,10 @@
+{
+  "arm": "logprob",
+  "label": "smoke",
+  "n": 8,
+  "correct": 8,
+  "accuracy": 1.0,
+  "unparsed": 0,
+  "elapsed_s": 1.7,
+  "sample_seed": 99
+}

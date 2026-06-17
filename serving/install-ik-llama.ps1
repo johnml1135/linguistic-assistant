@@ -62,17 +62,18 @@ if (-not $NoCuda) {
 }
 
 # --- Clone or update ----------------------------------------------------------
+# core.longpaths avoids Windows MAX_PATH failures on the repo's deep webui paths.
 if (Test-Path (Join-Path $RepoDir '.git')) {
     Write-Host "Updating existing checkout: $RepoDir"
-    git -C $RepoDir fetch --depth 1 origin $Ref;  if ($LASTEXITCODE -ne 0) { throw 'git fetch failed' }
-    git -C $RepoDir checkout $Ref;                 if ($LASTEXITCODE -ne 0) { throw 'git checkout failed' }
-    git -C $RepoDir reset --hard "origin/$Ref";    if ($LASTEXITCODE -ne 0) { throw 'git reset failed' }
+    git -C $RepoDir -c core.longpaths=true fetch --depth 1 origin $Ref;  if ($LASTEXITCODE -ne 0) { throw 'git fetch failed' }
+    git -C $RepoDir -c core.longpaths=true checkout $Ref;                if ($LASTEXITCODE -ne 0) { throw 'git checkout failed' }
+    git -C $RepoDir -c core.longpaths=true reset --hard "origin/$Ref";   if ($LASTEXITCODE -ne 0) { throw 'git reset failed' }
 }
 else {
     $parent = Split-Path $RepoDir -Parent
     if ($parent) { New-Item -ItemType Directory -Force -Path $parent | Out-Null }
     Write-Host "Cloning ik_llama.cpp ($Ref) into: $RepoDir"
-    git clone --depth 1 --branch $Ref https://github.com/ikawrakow/ik_llama.cpp.git $RepoDir
+    git -c core.longpaths=true clone --depth 1 --branch $Ref https://github.com/ikawrakow/ik_llama.cpp.git $RepoDir
     if ($LASTEXITCODE -ne 0) { throw 'git clone failed' }
 }
 
