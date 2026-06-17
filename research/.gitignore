@@ -3,8 +3,3 @@ __pycache__/
 .venv/
 *.egg-info/
 .pytest_cache/
-
-# golden-set third-party sources (CC-BY-NC, not redistributed) + scratch
-golden/_sources/
-golden/_scratch/
-golden/_safe_chars.txt
