@@ -1,8 +1,8 @@
 ## 1. References & scaffolding
 
-- [ ] 1.1 Add the 9 references (Rissanen 1978, Goldsmith 2001, Creutz & Lagus 2007, de Marcken 1996,
+- [x] 1.1 Add the 9 references (Rissanen 1978, Goldsmith 2001, Creutz & Lagus 2007, de Marcken 1996,
   Chomsky & Halle 1968, Yang 2016, Dressler et al. 1987, Batsuren et al. 2022, Carroll & Briscoe 1998)
-  to `linguistics/References.md` (new "Morphological optimization / MDL" section).
+  to `linguistics/References.md` (new §11 "Grammar evaluation — MDL, productivity, parser metrics").
 - [x] 1.2 Create `research/assess/` package; define `scorecard.py` (the deterministic JSON schema +
   content hash) shared by all measures and by the future C# analyzer.
 
@@ -20,12 +20,14 @@
 
 ## 3. Approach B — MDL objective (Python)
 
-- [ ] 3.1 `mdl.py`: `L(G)` from the documented, versioned encoding scheme (morpheme lexicon length-coding;
-  per-rule structural cost).
-- [ ] 3.2 `L(D|G)` = unigram morph NLL + `log2|hc(w)|` disambiguation term; report `L(G)`, `L(D|G)`, `DL`.
-- [ ] 3.3 Model-selection: `ΔDL` for merge / split / posit-rule; the "better?" and "split-or-combine?" API.
-- [ ] 3.4 Marginal `worstness_mdl(c) = −ΔDL(c)` per-construct ranking; assert positive rank correlation
-  (Spearman ρ > 0) with A's `worstness_metrics(c)` on the golden set.
+- [x] 3.1 `mdl.py`: `L(G)` from the documented, versioned (`ENCODING_VERSION`) encoding scheme
+  (morpheme form length-coding `(len+1)·log2(|Σ|+1)` + affix/lexeme structural cost).
+- [x] 3.2 `L(D|G)` = unigram morph NLL + `log2|hc(w)|` disambiguation term (+ verbatim fallback for
+  unparseable words); report `L(G)`, `L(D|G)`, `DL` separately.
+- [x] 3.3 Model-selection: `better_grammar` (lower DL) + `decide_split_or_combine`; wired into the
+  scorecard via `assess_hermitcrab(with_mdl=True)`.
+- [x] 3.4 Marginal `worstness_mdl(c) = DL(G) − DL(G\{c})` ranking + `spearman`; test asserts positive
+  rank correlation with A's `worstness_metrics(c)` on the demo (`tests_smoke.py`, 12 tests).
 
 ## 4. Approach C — assessor skill
 

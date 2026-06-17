@@ -50,6 +50,20 @@ Three judgments recur everywhere and define the assistant's character:
 3. **Earn the change at the gate** ([[read-the-gate]]). No proposal is "done" because it looks right;
    it is done when the golden `word→gloss` set and integrity checks pass without regression.
 
+## The cycle is TDD (Red → Green → Refactor)
+
+Building a grammar/lexicon is test-driven development, and the skills map onto its phases:
+
+- **Red — a failing test.** Mono data that won't parse (0-parse wordforms) *and* bilingual data that
+  flags (a missing sense, a number/agreement mismatch) are the failing tests. Surfaced by
+  [[../workflows/corpus-coverage-and-frequency]] and [[../workflows/parallel-translation-qa]];
+  prioritized by [[prioritize-the-backlog]].
+- **Green — make it pass.** Propose the lexeme/sense/rule that makes the form parse / the flag clear
+  ([[propose-from-evidence]], routed by [[guess-ask-or-defer]]), accepted only at [[read-the-gate]].
+- **Refactor — improve without regressing.** Merge/refine rules ([[generalize-not-enumerate]]) and
+  pick the better grammar with [[assess-grammar]] (the MDL + worst-part tools in `research/assess/`),
+  always re-running the golden gate. *Don't refactor on red* — only refactor once the tests pass.
+
 ## Skill catalog
 
 | Skill | Judgment | Grounded in | Used by (workflows / meta-workflows) |
@@ -62,6 +76,7 @@ Three judgments recur everywhere and define the assistant's character:
 | [[guess-ask-or-defer]] | route a decision: propose now / ask a speaker / defer | accessibility goal; field elicitation practice | all workflows |
 | [[phrase-for-a-speaker]] | turn a linguistic question into one an untrained native speaker can answer | RWC elicitation; LAMP | interlinearization; sense-discovery; parallel-QA |
 | [[read-the-gate]] | interpret golden-set + integrity results; commit / revise / revert | the engine+oracle principle | all change workflows; theory-test |
+| [[assess-grammar]] | judge grammar quality — worst part / better? / split-or-combine? — and gate refactors | MDL (Goldsmith 2001); SPE; Yang 2016; Dressler 1987; tools in `research/assess/` | the **Refactor** step: steady-state; theory-test; zero-parse loop |
 
 ## File template
 
@@ -96,3 +111,4 @@ Citations → ../References.md.
 - [guess-ask-or-defer](guess-ask-or-defer.md) — confidence routing
 - [phrase-for-a-speaker](phrase-for-a-speaker.md) — accessible questions
 - [read-the-gate](read-the-gate.md) — interpret the regression gate
+- [assess-grammar](assess-grammar.md) — worst part / better? / split-or-combine? (the Refactor judgment; drives `research/assess/`)

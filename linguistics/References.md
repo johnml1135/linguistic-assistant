@@ -204,3 +204,30 @@ Inputs a cold-start analysis draws on.
 - **eBible corpus.** <https://ebible.org/> — open, verse-aligned Bible translations across 800+
   languages; the parallel-text substrate for direct parsing and [[../workflows/parallel-translation-qa]].
 - **OPUS.** <https://opus.nlpl.eu/> — open parallel corpora (incl. bible-uedin).
+
+## 11. Grammar evaluation — MDL, productivity, parser metrics
+
+The quantitative backbone of the **assess-grammar** capability (`research/assess/`,
+`openspec/changes/assess-grammar/`). "Which grammar is better?" formalized as Occam/MDL.
+
+- **Rissanen, J. (1978).** "Modeling by shortest data description." *Automatica* 14(5): 465–471. —
+  Minimum Description Length; the two-part code `L(M) + L(D|M)`.
+- **Goldsmith, J. (2001).** "Unsupervised Learning of the Morphology of a Natural Language."
+  *Computational Linguistics* 27(2): 153–198. — *Linguistica*; MDL for morphology; signatures; the
+  morpheme merge/split + rule-induction model-selection heuristics. <https://aclanthology.org/J01-2001/>
+- **Creutz, M. & Lagus, K. (2007).** "Unsupervised models for morpheme segmentation and morphology
+  learning." *ACM TSLP* 4(1). — Morfessor; MDL as MAP (`−log p(G) − log p(D|G)`).
+- **de Marcken, C. (1996).** *Unsupervised Language Acquisition.* PhD thesis, MIT. — MDL lexicon induction.
+  <https://arxiv.org/abs/cmp-lg/9611002>
+- **Yang, C. (2016).** *The Price of Linguistic Productivity.* MIT Press. — the **Tolerance Principle**:
+  a rule over `N` items with `e` exceptions is productive iff `e ≤ N / ln N`.
+- **Dressler, W. U., Mayerthaler, W., Panagl, O. & Wurzel, W. U. (1987).** *Leitmotifs in Natural
+  Morphology.* John Benjamins. — naturalness: transparency, iconicity, bi-uniqueness, productivity.
+- **Batsuren, K. et al. (2022).** "The SIGMORPHON 2022 Shared Task on Morpheme Segmentation."
+  *SIGMORPHON (NAACL).* — boundary precision/recall/F1; the over-splitting/precision hazard.
+  <https://aclanthology.org/2022.sigmorphon-1.11/>
+- **Carroll, J. & Briscoe, T. (1998).** "Parser Evaluation: a Survey and a New Proposal." *LREC.* —
+  the Average Parse Base (geometric-mean parse count), adapted to word-level analyses for the
+  spurious-ambiguity metric.
+
+(Generative-phonology evaluation metric / feature economy: Chomsky & Halle 1968, *SPE* — §3 above.)

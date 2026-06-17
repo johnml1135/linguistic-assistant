@@ -1,7 +1,10 @@
 # close-the-zero-parse-loop
 
 > The tight inner engine: take 0-parse wordforms, propose the missing morpheme/allomorph/rule,
-> generalize it, apply, re-parse, gate, commit — repeat until the 0-parse set stops shrinking.
+> generalize it, apply, re-parse, gate, commit — repeat until the 0-parse set stops shrinking. This is
+> the **Red → Green** inner loop of the grammar TDD cycle (a 0-parse is a failing test; the proposal
+> makes it pass); the **Refactor** step — picking the *better* grammar — is handed to
+> [[../skills/assess-grammar]] within [[steady-state-virtuous-cycle]].
 
 **Invokes (workflows):** [[../workflows/corpus-coverage-and-frequency]],
 [[../workflows/morphological-parser-setup]], [[../workflows/interlinearization]]  ·  **Skills:**

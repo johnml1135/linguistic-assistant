@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import Callable
 
-from . import inventory, metrics
+from . import inventory, mdl, metrics
 from .scorecard import Scorecard
 
 GlossLine = tuple[str, ...]
@@ -36,6 +36,7 @@ def assess_hermitcrab(
     grammar_id: str = "hc-grammar",
     corpus_id: str = "corpus",
     parse_fn: GlossParseFn | None = None,
+    with_mdl: bool = True,
 ) -> Scorecard:
     parse_fn = parse_fn or _default_parse_fn()
     inv = inventory.from_langmodel(model)
@@ -46,6 +47,8 @@ def assess_hermitcrab(
     m["coverage"] = metrics.coverage(parses, token_counts)
     m["spurious_ambiguity"] = metrics.spurious_ambiguity(parses)
     m["grammar_size"] = metrics.grammar_size(inv.counts, weights)
+    if with_mdl:  # Approach B: the principled Occam objective (bits)
+        m["description_length"] = mdl.description_length(model, parses, gold, token_counts)
     m["dead_constructs"] = metrics.dead_constructs(parses, inv.glosses)
     if inv.n_rule_derived is not None:
         m["generalization"] = metrics.generalization_ratio(inv.n_alternations or 0, inv.n_rule_derived)

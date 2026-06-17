@@ -27,6 +27,9 @@ OP_TYPES: dict[str, tuple[str, ...]] = {
     "morphophonology.allomorph.add": ("morpheme", "form"),
     "morphophonology.rule.add": ("name", "rule"),
     "morphophonology.natural_class.add": ("name", "members"),
+    # bilingual/* (cross-lingual sense links — alignment substrate; see research/bilingual/)
+    "bilingual.sense_link.add": ("vernacular_sense", "reference_lemma"),
+    "bilingual.sense_link.remove": ("vernacular_sense", "reference_lemma"),
 }
 
 _COMMON_OPTIONAL = ("rationale", "confidence", "impact", "provenance")
@@ -41,6 +44,8 @@ _KEY_FIELD: dict[str, str] = {
     "morphophonology.allomorph.add": "form",
     "morphophonology.rule.add": "name",
     "morphophonology.natural_class.add": "name",
+    "bilingual.sense_link.add": "reference_lemma",
+    "bilingual.sense_link.remove": "reference_lemma",
 }
 
 

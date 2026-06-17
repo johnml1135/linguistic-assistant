@@ -103,6 +103,64 @@ def test_worst_part_ranks_useless_first():
     assert ranking[0]["worstness"] > ranking[-1]["worstness"]
 
 
+def _demo_model_gold():
+    from golden.grammar import Affix, LangModel, LexEntry
+
+    model = LangModel(
+        code="t",
+        lexicon=[LexEntry("walk", "walk"), LexEntry("ghost", "unused")],
+        affixes=[Affix("ni", "1SG", "prefix")],
+    )
+    gold = {"niwalk": ("1SG", "walk")}
+    decomp = {"niwalk": [("ni", "1SG"), ("walk", "walk")]}
+
+    def fake_parse(m, words):
+        forms = {e.form for e in m.lexicon} | {a.form for a in m.affixes}
+        return {w: ([tuple(g for _, g in decomp[w])] if all(f in forms for f, _ in decomp[w]) else [])
+                for w in words}
+
+    return model, gold, fake_parse
+
+
+def test_mdl_grammar_cost_grows_with_redundancy():
+    from golden.grammar import LangModel, LexEntry
+    from assess import mdl
+
+    base = LangModel(code="t", lexicon=[LexEntry("walk", "walk")], affixes=[])
+    bigger = LangModel(code="t", lexicon=[LexEntry("walk", "walk"), LexEntry("walkk", "redundant")], affixes=[])
+    assert mdl.l_grammar(bigger)["bits"] > mdl.l_grammar(base)["bits"] > 0
+
+
+def test_mdl_better_grammar_and_split():
+    from assess import mdl
+
+    assert mdl.better_grammar({"A": 100.0, "B": 90.0})["winner"] == "B"
+    d = mdl.decide_split_or_combine(dl_combined=90.0, dl_split=100.0)
+    assert d["recommend"] == "combined"
+
+
+def test_mdl_worstness_orientation_and_agreement():
+    from assess import mdl
+    from assess.worst_part import worst_part_ranking
+
+    model, gold, fake = _demo_model_gold()
+    mrows = worst_part_ranking(model, gold, parse_fn=fake)
+    drows = mdl.worstness_mdl_ranking(model, gold, parse_fn=fake)
+
+    # 'ghost' (used by no gold word) is worst under both rankings.
+    assert mrows[0]["gloss"] == "unused"
+    assert drows[0]["gloss"] == "unused"
+    assert drows[0]["worstness_mdl"] > 0  # removing it lowers DL
+
+    # The two rankings agree in direction: positive Spearman correlation (spec consistency check).
+    key = lambda r: (r["kind"], r["form"], r["gloss"])
+    md = {key(r): r["worstness"] for r in mrows}
+    dd = {key(r): r["worstness_mdl"] for r in drows}
+    ks = sorted(md)
+    rho = mdl.spearman([md[k] for k in ks], [dd[k] for k in ks])
+    assert rho > 0, f"expected positive rank correlation, got {rho}"
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     for fn in fns:

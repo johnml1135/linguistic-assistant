@@ -1,12 +1,14 @@
 # test-a-grammar-theory
 
 > Safely test a competing analysis: branch the grammar (git is the scratch copy), apply the theory as
-> a change-set, run golden set + coverage, then keep (merge) or discard (delete branch).
+> a change-set, run golden set + coverage, then keep (merge) or discard (delete branch). This is the
+> deep **Refactor** move of the grammar TDD cycle — done on a branch when the change is risky.
 
 **Invokes (workflows):** [[../workflows/data-integrity-check]],
 [[../workflows/corpus-coverage-and-frequency]]  ·  **Skills:**
-[[../skills/generalize-not-enumerate]], [[../skills/read-the-gate]]  ·  **When to run:** when two
-analyses compete and you want a measured comparison — not during routine backlog work.
+[[../skills/generalize-not-enumerate]], [[../skills/assess-grammar]], [[../skills/read-the-gate]]  ·
+**When to run:** when two analyses compete and you want a measured comparison — not during routine
+backlog work.
 
 ## Goal & when to use it
 

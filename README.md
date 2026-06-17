@@ -87,12 +87,13 @@ is **not** used and is not planned — Hermit Crab only.
 This repo **creates change-sets (deltas) as plain text files**. It does not write to FLEx
 databases or drive the FLEx GUI. A **separate effort** ingests these change-sets into FieldWorks.
 
-Change-sets are two-tiered, because the SIL ecosystem treats these data differently:
+Change-sets are tiered, because the SIL ecosystem treats these data differently:
 
 | Tier | Covers | Notes |
 |---|---|---|
 | `lexical/*` | entries, senses, examples, parts of speech, semantic domains | Shaped to mirror **MiniLcm** (the model behind [LexBox](https://github.com/sillsdev/languageforge-lexbox) / Harmony CRDT sync), so the ingestion effort *can* lower them onto that path later. |
 | `morphophonology/*` | phonological rules, natural classes, allomorph environments, affix templates, inflection classes/features, strata | **Our own schema**, expressed against Hermit Crab grammar constructs. No structured delta format for this exists upstream — LexBox/Harmony deltas are lexicon-only. |
+| `bilingual/*` | cross-lingual **sense links** (vernacular sense ↔ reference-language lemma) | The alignment substrate for parallel-translation QA. Primary, reviewable source; an Apertium **bidix** (`.dix`) is *derived* from it (FLExTrans-compatible). **Input to QA, not MT** — no transfer rules. See `research/bilingual/`. |
 
 Every operation carries **rationale, confidence, impact, and provenance** (a link back to the corpus
 or **parallel-text** evidence that triggered it), so the whole change-set is reviewable as plain text
