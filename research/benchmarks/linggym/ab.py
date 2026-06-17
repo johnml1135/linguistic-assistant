@@ -85,7 +85,7 @@ def rotate_options(item, r):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", required=True,
-                    choices=["baseline", "logprob", "prior", "permute", "fewshot", "skill"])
+                    choices=["baseline", "logprob", "prior", "permute", "fewshot", "skill", "combo"])
     ap.add_argument("--label", required=True, help="model label for output filenames")
     ap.add_argument("--root", required=True)
     ap.add_argument("--sample", type=int, default=200)
@@ -114,7 +114,7 @@ def main() -> int:
         prior_log = {L: math.log((cnt[L] + 1) / (tot + 4)) for L in LETTERS}
 
     fewshot_prefix = ""
-    if args.arm == "fewshot":
+    if args.arm in ("fewshot", "combo"):
         exs = pool[:args.fewshot_k]
         blocks = [f"{e.prompt_full}\nCorrect Answer: {e.gold}" for e in exs]
         fewshot_prefix = "Here are solved examples:\n\n" + "\n\n".join(blocks) + "\n\nNow answer this one:\n"
@@ -142,6 +142,14 @@ def main() -> int:
                 for r in range(4):
                     p, d2o = rotate_options(it, r)
                     dl = gen_letter(p)
+                    if dl in d2o:
+                        votes[d2o[dl]] += 1
+                pred = votes.most_common(1)[0][0] if votes else None
+            elif args.arm == "combo":  # skill + fewshot + permutation vote
+                votes = Counter()
+                for r in range(4):
+                    p, d2o = rotate_options(it, r)
+                    dl = gen_letter(fewshot_prefix + p, system=SKILL)
                     if dl in d2o:
                         votes[d2o[dl]] += 1
                 pred = votes.most_common(1)[0][0] if votes else None

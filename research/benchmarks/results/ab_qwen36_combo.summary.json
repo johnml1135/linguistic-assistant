@@ -1,0 +1,10 @@
+{
+  "arm": "combo",
+  "label": "qwen36",
+  "n": 200,
+  "correct": 170,
+  "accuracy": 0.85,
+  "unparsed": 0,
+  "elapsed_s": 1192.8,
+  "sample_seed": 13
+}

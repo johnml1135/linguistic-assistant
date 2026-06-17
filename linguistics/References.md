@@ -156,3 +156,51 @@ SIL doc name.
 - **WALS — World Atlas of Language Structures.** <https://wals.info/> — typological feature values
   useful as priors when proposing analyses for an under-documented language.
 - **Ethnologue.** SIL. <https://www.ethnologue.com/> — language identification / sociolinguistic context.
+
+## 9. Pedagogy & heuristics — "how real linguists work"
+
+How field linguists are *trained*; the skills layer mimics these procedures.
+
+- **Nida, Eugene A. (1949). *Morphology: The Descriptive Analysis of Words* (2nd ed.).** Univ. of
+  Michigan Press. The canonical morpheme-discovery procedure: recurring partials → complementary
+  distribution → phonological conditioning test → allomorph vs morpheme.
+- **Pike, Kenneth L. (1947). *Phonemics: A Technique for Reducing Languages to Writing.*** Univ. of
+  Michigan Press. Field phonemic analysis; the **monolingual demonstration** method
+  (<https://www.sil.org/about/klp>). The "introspect a language fast from zero" model.
+- **Zwicky, Arnold M. (1985). "Rules of allomorphy and phonology–syntax interactions." *J. Linguistics*
+  21.** The decision: phonologically-conditioned alternation → **rule**; morphologically-conditioned →
+  **listed allomorph**; arbitrary → **suppletion**. Core to [[../primitives/allomorph]] vs
+  [[../primitives/phonological-rule]].
+- **The "capture the generalization" / evaluation-metric principle** — SPE (Chomsky & Halle 1968,
+  §2 above) and Martinet, *Économie des changements phonétiques* (1955): prefer one rule over a
+  natural class to enumerating allomorphs. The formal name for "teach it to **generalize**."
+- **Vaux, Bert & Justin Cooper (1999). *Introduction to Linguistic Field Methods.*** LINCOM. Course-
+  proven sequencing: phonetics → phonology → morphology → syntax → semantics → lexicography.
+- **Bartholomew, Doris & Louise Schoenhals (1983). *Bilingual Dictionaries for Indigenous Languages.***
+  SIL. Citation-form choice, entry structure for morphologically rich languages.
+- **Coward, David & Charles Grimes (1995/2003). *Making Dictionaries: A Guide to Lexicography and the
+  Multi-Dictionary Formatter.*** SIL. The "column-based" (one field across all entries) workflow.
+- **Kilgarriff, Adam (1997). "I don't believe in word senses." *Computers and the Humanities* 31.**
+  Senses as task-relative clusters of corpus citations — the lumping/splitting heuristic.
+- **Brewster, E. Thomas & Elizabeth S. Brewster (1976). *Language Acquisition Made Practical (LAMP).***
+  Lingua House. Self-directed monolingual language learning; the "interesting features first" instinct.
+- **SIL field-linguistics training.** <https://www.sil.org/training/linguistics> — the institutional
+  curriculum (phonology → morphology → syntax; FLEx) that defines standard practice.
+
+## 10. Bootstrap data — wordlists, corpora & typological databases
+
+Inputs a cold-start analysis draws on.
+
+- **Swadesh list (100 / 207).** Core-vocabulary list for lexicostatistics; a minimal lexicon seed.
+- **Leipzig–Jakarta list (100).** Borrowing-resistant core vocabulary.
+  <https://en.wikipedia.org/wiki/Leipzig–Jakarta_list>
+- **ASJP list (40).** Minimal wordlist for automated comparison. <https://asjp.clld.org/>
+- **SILCAWL — SIL Comparative African Word List (~1,700).** Snider & Roberts (2006), SILEWP 2006-005.
+  <https://www.sil.org/resources/publications/entry/7882> — the standard regional comparative wordlist
+  (a.k.a. CAWL); strong bootstrap seed for African languages.
+- **WALS** <https://wals.info/> · **Grambank** <https://grambank.clld.org/> · **PHOIBLE**
+  <https://phoible.org/> — typological priors: expected morphology type (WALS/Grambank) and phoneme
+  inventory norms (PHOIBLE) for "what should I look for in this family?"
+- **eBible corpus.** <https://ebible.org/> — open, verse-aligned Bible translations across 800+
+  languages; the parallel-text substrate for direct parsing and [[../workflows/parallel-translation-qa]].
+- **OPUS.** <https://opus.nlpl.eu/> — open parallel corpora (incl. bible-uedin).

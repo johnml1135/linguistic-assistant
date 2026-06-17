@@ -19,8 +19,21 @@ Collection) plus the standard linguistics literature.
 - **[workflows/](workflows/)** — one file per **linguistic workflow** this repo assists
   (interlinearization, parser setup, lexeme/sense building, RWC, spell-checking, dictionary
   publishing, parallel-translation QA, …). Each describes the human process, how the assistant
-  supports it, the primitives involved, and the oracle/metrics. See
-  [workflows/README.md](workflows/README.md).
+  supports it, the primitives involved, and the oracle/metrics. Workflows carry a **mode**
+  (investigate / change). See [workflows/README.md](workflows/README.md).
+- **[skills/](skills/)** — the **judgment layer** (the differentiator): reusable *judgment verbs* the
+  assistant applies — propose-from-evidence, **generalize-not-enumerate**, divide-senses, guess/ask/
+  defer, prioritize, read-the-gate — each grounded in how field linguists are trained. See
+  [skills/README.md](skills/README.md).
+- **[meta-workflows/](meta-workflows/)** — **playbooks** that sequence workflows (driven by skills)
+  toward a goal: the steady-state virtuous cycle, bootstrap-a-new-language, the zero-parse loop,
+  theory-testing, lexicon-building. See [meta-workflows/README.md](meta-workflows/README.md).
+
+### The four-layer model
+
+**Primitives** (data atoms) → **workflows** (tasks) → **skills** (judgment) → **meta-workflows**
+(playbooks). A meta-workflow sequences workflows; a workflow is carried out by skills; skills read and
+write primitives. The skills layer is what makes this more than a fixed parser.
 
 ## How this connects to the rest of the repo
 
