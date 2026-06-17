@@ -1,24 +1,25 @@
 {
-  "language": "ddo",
-  "source": "ddo-train-track2-uncovered",
+  "language": "usp",
+  "source": "usp-train-track2-uncovered",
   "license": "CC-BY-NC-4.0",
   "license_note": "NonCommercial: research-use gold; pipeline is the reusable asset.",
   "counts": {
-    "code": "ddo",
-    "lex_entries": 2076,
-    "affixes": 199,
-    "prefixes": 7,
-    "suffixes": 192,
-    "charset": 58,
+    "code": "usp",
+    "lex_entries": 4082,
+    "affixes": 939,
+    "prefixes": 133,
+    "suffixes": 806,
+    "charset": 57,
     "slots": {
-      "prefix1": 7,
-      "suffix1": 182,
-      "suffix2": 82,
-      "suffix3": 22,
-      "suffix4": 6
+      "prefix1": 114,
+      "prefix2": 40,
+      "prefix3": 5,
+      "suffix1": 794,
+      "suffix2": 49,
+      "suffix3": 10
     },
-    "records": 3558,
-    "distinct_wordforms": 8303
+    "records": 9774,
+    "distinct_wordforms": 6671
   },
   "grammar_model": {
     "morphotactics": "affix-template (position-class slots, one filler/slot, ordered)",
@@ -31,11 +32,11 @@
   },
   "certification": {
     "method": "hermitcrab-gloss-round-trip",
-    "n": 8303,
-    "recall": 0.9226,
-    "parsed": 0.9662,
-    "mean_ambiguity": 13.57,
-    "n_unparsed": 281
+    "n": 6671,
+    "recall": 0.7991,
+    "parsed": 0.9703,
+    "mean_ambiguity": 180.37,
+    "n_unparsed": 198
   },
-  "grammar_sha256_16": "97ead17b9d7fb470"
+  "grammar_sha256_16": "a0f89c12a52d37a5"
 }
