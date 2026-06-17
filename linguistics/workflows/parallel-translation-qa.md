@@ -3,6 +3,12 @@
 > Check a translated text against its aligned source — detect missing concepts, wrong senses, and
 > agreement mismatches by leaning on the source side's gold morphology, with no MT and no target parser.
 
+> **TDD role:** the three flags this workflow raises — *missing concept/sense*, *wrong sense*,
+> *agreement/feature mismatch* — are the **bilingual Red tests** of the grammar cycle (the monolingual
+> Red tests are 0-parse wordforms from [[corpus-coverage-and-frequency]]). A flag is a failing test;
+> the lexeme/sense the assistant proposes to clear it is the **Green** fix, accepted only at the golden
+> gate. See [[../meta-workflows/steady-state-virtuous-cycle]].
+
 **Primary tool(s):** aligned source + target in FLEx; the lexicon and Hermit Crab grammar; the
 **Apertium-alignment bridge** (bidix + HC lemma analysis) for reference-finding  ·  **Mode:** mixed  ·
 **Stage in our loop:** scan + propose + review  ·  **Parallel-aware:** yes (this is the core)

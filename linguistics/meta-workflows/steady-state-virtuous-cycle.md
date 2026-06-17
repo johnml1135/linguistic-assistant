@@ -69,6 +69,8 @@ flowchart LR
 - **Generalize-or-list** (step 4) — the analyst move; gated, never assumed.
 - **Guess / ask / defer** (step 5) — confidence routing; what lets a non-linguist contribute.
 - **Commit / revert** (step 6) — earned by the gate, not by looking right.
+- **Refactor / leave-alone** (step 8) — only once green; a merge/split is kept only if `ΔDL` drops
+  *and* the golden gate still passes ([[../skills/assess-grammar]]).
 
 ## Inputs → outputs
 

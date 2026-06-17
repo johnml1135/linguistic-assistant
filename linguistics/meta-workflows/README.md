@@ -14,6 +14,14 @@ high-frequency first — see [../References.md](../References.md) §9).
 The engine of the whole project: a parse-flag-propose-**generalize**-review-gate loop that measurably
 reduces unparsed words and fills the lexicon without regressions.
 
+> **This loop is TDD for grammar — Red → Green → Refactor.** *Red:* data that won't parse — 0-parse
+> wordforms ([[../workflows/corpus-coverage-and-frequency]]) and bilingual flags
+> ([[../workflows/parallel-translation-qa]]) — is a failing test. *Green:* propose the lexeme/sense/rule
+> that makes it pass, accepted only at the golden gate. *Refactor:* once green, merge/refine and pick
+> the *better* grammar with [[../skills/assess-grammar]] (the MDL + worst-part tools in
+> `research/assess/`) — never on red. [[close-the-zero-parse-loop]] is the Red→Green inner loop;
+> [[test-a-grammar-theory]] is the deep Refactor on a branch.
+
 ```mermaid
 flowchart LR
   scan["<b>scan</b><br/>parse corpus + checks<br/>coverage · gaps · 0-parses"] --> prio["<b>prioritize</b><br/>impact × confidence"]
@@ -53,8 +61,11 @@ strategies by what data exists. These are the field-tested on-ramps:
 
 The MCP/git pairing makes it cheap to **branch the grammar, try a theory, and measure it** — e.g.
 "reanalyze these three allomorphs as one stem + a rule." [[test-a-grammar-theory]]: branch → apply
-the change-set → run golden set + coverage → keep (merge) or discard (delete branch). Git *is* the
-scratch copy; no risk to the working grammar.
+the change-set → run golden set + coverage → keep (merge) or discard (delete branch). The *measure*
+step is [[../skills/assess-grammar]] — compare the two grammars' description length
+(`research/assess/mdl.py` `better_grammar` / `decide_split_or_combine`) on top of the golden round-trip,
+so "keep or discard" is a number, not a hunch. Git *is* the scratch copy; no risk to the working
+grammar.
 
 > **Engine constraint:** a FLEx project is configured for **Hermit Crab *or* XAmple, not both** — the
 > two parsers are incompatible in one database. We are HC-only, so theory testing means HC scratch
