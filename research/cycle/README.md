@@ -20,7 +20,12 @@ plug in later.
 cd research && PYTHONUTF8=1 python cycle/tdd.py --pair tur --seconds 540
 PYTHONUTF8=1 python cycle/tdd.py --pair hun --seconds 540
 ```
-Outputs: `cycle/out/<pair>_trend.jsonl` (per-iteration coverage/ambiguity) and `<pair>_result.json`.
+Outputs: `cycle/out/<pair>_trend.jsonl` (per-iteration coverage/ambiguity) and `<pair>_result.json`
+(final coverage, kept affixes, **`harmony_families`** + **`enumeration_debt`** — see below).
+
+Word glosses come from `golden/_sources/ebible/<pair>/glosses.tsv`. With **eflomal** alignment (vs the
+co-occurrence fallback) Turkish climbed 0.475 → **0.675** in the same 10-min budget; Hungarian held
+**0.95**. Sharper seed glosses ⇒ cleaner roots ⇒ more of the affix budget spent on real morphology.
 
 ## The three levers
 1. **Affix induction** — frequent residues after the longest known-root prefix become candidate
@@ -45,6 +50,12 @@ Outputs: `cycle/out/<pair>_trend.jsonl` (per-iteration coverage/ambiguity) and `
   `-lık/-lik/-luk/-lük`). That is exactly the `generalize-not-enumerate` cue: one phonological rule
   collapses each set — HC v1 here has no phonology, so they're listed and the generalization is the
   clear hand-off point to the LLM proposer.
+- **The enumeration debt is now measured, not just asserted.** `harmony_families()` groups kept affixes
+  by consonant skeleton (harmony vowels stripped) and `enumeration_debt` counts the redundant
+  allomorphs. At the 10-min ceiling **~half the affix budget is harmony variants** — Turkish 63/124,
+  Hungarian 60/120. High-confidence multi-consonant families (`lr=lar/ler…`, `nk=nak/nek`) are precise;
+  single-consonant ones (`n`, `t`) over-merge distinct morphemes, so it's a *candidate worklist* for the
+  generalize step to refine — not an auto-collapse. This is the concrete hand-off payload to the LLM.
 
 ## Limits / next
 - Roots seeded from surface forms (many inflected) cap coverage; root growth helps but a real run wants

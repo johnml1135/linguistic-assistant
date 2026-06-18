@@ -13,6 +13,7 @@ proven pieces. Provider-agnostic LLM harness, golden sets, and the offline align
 | `eval/` | the golden eval runner (propose → score → report) |
 | `bilingual/` | the **Apertium-alignment bridge** — deterministic lemma/bidix reference-finder + FLExTrans `.dix` interop |
 | `align/` | **statistical** word-gloss alignment (eflomal / THOT via `sil-machine`, co-occurrence fallback) |
+| `audio/` | optional **audio evidence add-on** — Turkish/Hungarian sample words, source catalogs, review-only phone evidence, pronunciation/misspelling reports |
 | `benchmarks/` | LingGym calibration + results |
 
 ## Environment (uv)
@@ -22,6 +23,7 @@ The project is managed with **[uv](https://docs.astral.sh/uv/)**; deps are pinne
 cd research
 uv sync                    # core (anthropic, httpx)
 uv sync --extra align      # + sil-machine[thot] (+ eflomal on Linux) for word alignment
+uv sync --extra audio      # + allosaurus for optional phone evidence
 uv sync --extra data-prep  # + flexlibs (Windows + a FieldWorks install only)
 ```
 
@@ -34,10 +36,16 @@ Most tools run from the `research/` dir (modules import `from harness import …
 python eval/run.py --fixture            # offline eval/proposal loop
 python bilingual/tests_smoke.py         # Apertium bridge (offline)
 python align/tests_smoke.py             # word-gloss alignment (offline, co-occurrence backend)
+python audio/tests_smoke.py             # audio add-on (offline; no Allosaurus required)
+python audio/run.py --pair-dir golden/_sources/ebible/eng-engwebp__tur-turytc --target tur --samples path/to/samples.json [--catalog path/to/catalog.json]
 ```
 
 Smoke tests across `eval/`, `bilingual/`, `align/` are dependency-free (no model, no native build, no
 network) so CI stays green while real golden data and the native toolchains land on the box.
+
+The audio add-on is deliberately **not first-class**: it never replaces the text/parallel substrate,
+it assumes no audio by default, and its Allosaurus output is review-only evidence rather than parser
+input.
 
 ## Serving local models
 `../serving/` builds & runs `ik_llama.cpp` `llama-server` behind an OpenAI-compatible endpoint that the

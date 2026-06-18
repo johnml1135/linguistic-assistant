@@ -231,3 +231,9 @@
 {"iter": 233, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.1, "action": "add:hat,ván,ök,zat", "kept": false}
 {"iter": 234, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.09, "action": "roots+25", "kept": false}
 {"iter": 235, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.05, "action": "add:mel,ál,lak,nel", "kept": false}
+{"iter": 236, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.17, "action": "add:g,tért,jék,ad", "kept": false}
+{"iter": 237, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.09, "action": "roots+25", "kept": false}
+{"iter": 238, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.1, "action": "add:ása,lal,mat,ti", "kept": false}
+{"iter": 239, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.05, "action": "add:knek,tlen,rel,it", "kept": false}
+{"iter": 240, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.09, "action": "roots+25", "kept": false}
+{"iter": 241, "window": 3, "affixes": 120, "roots": 1310, "coverage": 0.95, "ambiguity": 3.05, "action": "add:nem,sége,met,járt", "kept": false}

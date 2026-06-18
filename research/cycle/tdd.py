@@ -47,6 +47,27 @@ def load_glosses(pair: str) -> dict[str, str]:
     return out
 
 
+# Vowels that participate in Turkish/Hungarian vowel harmony (incl. long Hungarian vowels).
+_HARMONY_VOWELS = set("aeıioöuüáéíóőúű")
+
+
+def harmony_families(affix_forms: list[str]) -> dict[str, list[str]]:
+    """Group affixes by their consonant skeleton (harmony vowels stripped) to surface suspected
+    vowel-harmony allomorph sets — e.g. {lr: [lar, ler], dn: [dan, den], nn: [nın, nin, nun, nün]}.
+
+    This is the *enumerate -> generalize* hand-off worklist: each family with >1 member is one
+    morpheme the next stage should collapse into a single archiphoneme + a harmony phonological rule,
+    rather than N separate affixes. The TDD cycle stops at enumeration on purpose; this names the debt.
+    See linguistics/skills/generalize-not-enumerate.md.
+    """
+    fams: dict[str, list[str]] = {}
+    for f in affix_forms:
+        skel = "".join(c for c in f if c not in _HARMONY_VOWELS)
+        if skel:  # ignore bare-vowel affixes (no consonant anchor)
+            fams.setdefault(skel, []).append(f)
+    return {k: sorted(set(v)) for k, v in fams.items() if len(set(v)) > 1}
+
+
 def seed(pair: str, n_roots: int) -> tuple[LangModel, list[str], Counter]:
     freqs = load_freqs(pair)
     glosses = load_glosses(pair)
@@ -191,12 +212,21 @@ def run(pair: str, seconds: float, n_roots: int = 300, batch: int = 4,
         "".join(json.dumps(t, ensure_ascii=False) + "\n" for t in trend), encoding="utf-8"
     )
     kept_affixes = [a.form for a in model.affixes]
+    fams = harmony_families(kept_affixes)
     result = {"pair": pair, "iterations": it, "base_coverage": round(base_cov, 4),
               "final_coverage": round(cov, 4), "delta": round(cov - base_cov, 4),
-              "affixes_kept": kept_affixes}
+              "affixes_kept": kept_affixes,
+              # generalize-not-enumerate worklist: harmony allomorph sets to collapse next (see helper).
+              "harmony_families": fams,
+              "enumeration_debt": sum(len(v) - 1 for v in fams.values())}
     (out_dir / f"{pair}_result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[{pair}] DONE: coverage {base_cov:.3f} -> {cov:.3f} (+{cov-base_cov:.3f}); "
           f"kept suffixes: {' '.join(kept_affixes) or '(none)'}")
+    if fams:
+        top = sorted(fams.items(), key=lambda kv: -len(kv[1]))[:8]
+        print(f"[{pair}] harmony families to collapse (generalize step): "
+              + "; ".join(f"{k}={'/'.join(v)}" for k, v in top)
+              + f"  [enumeration debt: {result['enumeration_debt']} affixes]")
     return result
 
 

@@ -25,6 +25,10 @@ align = [
     "sil-machine[thot,jobs]>=1.8",
     "eflomal>=2.0; sys_platform == 'linux'",  # the native aligner ([jobs] also pulls it on Linux)
 ]
+# Optional audio evidence add-on; not part of the default loop.
+audio = [
+    "allosaurus>=1.0",
+]
 
 [build-system]
 requires = ["setuptools>=68"]
