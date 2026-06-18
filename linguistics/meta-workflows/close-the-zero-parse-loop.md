@@ -42,7 +42,9 @@ flowchart LR
    [[../primitives/phonological-rule]] ([[../skills/propose-from-evidence]], Nida discovery).
 4. **Generalize** — collapse the listed alternation into one rule over a
    [[../primitives/natural-class]] when justified ([[../skills/generalize-not-enumerate]]). This is the
-   step that makes the loop *converge* rather than grind form-by-form.
+   step that makes the loop *converge* rather than grind form-by-form. The natural class itself —
+   which symbols are one sound vs a contrast — is named text-first (audio-optional) by
+   [[../skills/triangulate-phonology]].
 5. **Apply & re-parse** — write the change into a candidate grammar via
    [[../workflows/morphological-parser-setup]]; re-run the parser (optionally check glosses through
    [[../workflows/interlinearization]]).

@@ -57,7 +57,8 @@ parse silently wrong). Generate the expected surface forms with Hermit Crab, run
 Feeds on [[propose-from-evidence]] (which surfaces the alternation) and is bounded by
 [[read-the-gate]] (which accepts/rejects the generalization). Over-generalization is the failure mode,
 so the gate is non-negotiable here. When the rule needs a class that doesn't exist yet, it proposes
-the [[../primitives/natural-class]] too.
+the [[../primitives/natural-class]] too — the same-sound-vs-contrast call that names that class is
+[[triangulate-phonology]] (text-first, audio-optional), which runs just upstream of this skill.
 
 ## Failure modes / guardrails
 

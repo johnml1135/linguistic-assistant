@@ -19,6 +19,7 @@ plug in later.
 ```bash
 cd research && PYTHONUTF8=1 python cycle/tdd.py --pair tur --seconds 540
 PYTHONUTF8=1 python cycle/tdd.py --pair hun --seconds 540
+python cycle/tests_smoke.py   # offline: phonology induction (no hc.exe / network / audio)
 ```
 Outputs: `cycle/out/<pair>_trend.jsonl` (per-iteration coverage/ambiguity) and `<pair>_result.json`
 (final coverage, kept affixes, **`harmony_families`** + **`enumeration_debt`** — see below).
@@ -63,3 +64,21 @@ co-occurrence fallback) Turkish climbed 0.475 → **0.675** in the same 10-min b
   the deterministic baseline.
 - HC is unordered here (`templated=False`) so suffixes stack freely (needed for agglutination) at the
   cost of ambiguity — the assess signal to watch.
+
+## Phonology induction (`phonology.py`)
+Phase 1 of the `phonology-induction-loop` OpenSpec change turns the measured `enumeration_debt` into the
+optimization target. `harmony_families()` surfaces vowel-harmony allomorph sets; `phonology.py` proposes
+one **archiphoneme** affix + a conditioning **natural class** per family (`lar`/`ler` → `lAr` over the
+low-vowel class; `nın`/`nin`/`nun`/`nün` → `nIn` over the high 4-way), then *generates* the surfaces and
+keeps the collapse only when it regenerates every observed allomorph (coverage holds) and the affix
+count drops (Occam). The run result now carries a `phonology` block (`enumeration_debt_before/after`,
+`collapsed`, `needs_review`). Text-only and offline — the harmony-rule expander is the oracle; optional
+audio (`research/audio/`) can later *confirm* a family's conditioning feature but is never required.
+Emitting the classes as HC `NaturalClass` XML and re-verifying through `hc.exe` is the remaining
+native-dependent step (see the change's task 1.1).
+
+The loop's audio-side tail (phone feature grounding, human-gated pronunciation promotion, and the
+generated-surface vs observed-phones second gate) lives in `research/audio/` (`features.py`,
+`promotion.py`); the phone↔grapheme vowel-feature distance metric used by the second gate is
+`audio/promotion.py:feature_mismatch_count`. The `hc.exe` generate path that produces the surface to
+compare is the remaining native wiring.

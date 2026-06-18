@@ -22,6 +22,7 @@ OP_TYPES: dict[str, tuple[str, ...]] = {
     "lexical.sense.create": ("entry", "gloss"),
     "lexical.entry.add_allomorph": ("entry", "form"),
     "lexical.entry.set_pos": ("entry", "pos"),
+    "lexical.pronunciation.create": ("entry", "form"),
     # morphophonology/* (Hermit Crab constructs)
     "morphophonology.affix.add": ("form", "gram"),
     "morphophonology.allomorph.add": ("morpheme", "form"),
@@ -40,6 +41,7 @@ _KEY_FIELD: dict[str, str] = {
     "lexical.sense.create": "gloss",
     "lexical.entry.add_allomorph": "form",
     "lexical.entry.set_pos": "entry",
+    "lexical.pronunciation.create": "entry",
     "morphophonology.affix.add": "form",
     "morphophonology.allomorph.add": "form",
     "morphophonology.rule.add": "name",

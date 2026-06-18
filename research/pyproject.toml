@@ -28,6 +28,7 @@ align = [
 # Optional audio evidence add-on; not part of the default loop.
 audio = [
     "allosaurus>=1.0",
+    "faster-whisper>=1.1",
 ]
 
 [build-system]

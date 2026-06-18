@@ -70,6 +70,7 @@ Building a grammar/lexicon is test-driven development, and the skills map onto i
 |---|---|---|---|
 | [[introspect-typology]] | predict a language's likely/interesting features before/while analyzing | Pike monolingual; WALS/Grambank/PHOIBLE; "interesting features first" | bootstrap; parser-setup |
 | [[propose-from-evidence]] | from a corpus/parallel/zero-parse datum, propose a lexeme, sense, allomorph, or rule | Nida (1949) discovery procedure | most change workflows |
+| [[triangulate-phonology]] | decide same-sound vs contrast — the phoneme inventory / natural class — from spelling distribution (no audio needed) + optional phones | Pike (1947); Nida (1949); Hockett (1955); SPE | parser-setup; bootstrap; steady-state; feeds generalize-not-enumerate |
 | **[[generalize-not-enumerate]]** *(flagship)* | collapse listed allomorphy into a rule + natural class when justified | SPE evaluation metric; Martinet (1955); Zwicky (1985) | parser-setup; interlinearization; steady-state; zero-parse loop; theory-test; bootstrap |
 | [[divide-senses]] | lump vs split — is this a new [[../primitives/sense]] or a use of an existing one? | Atkins & Rundell (2008); Kilgarriff (1997) | sense-discovery; parallel-QA; lexicon-building |
 | [[prioritize-the-backlog]] | rank issues by impact × confidence | Zipf / core-vocabulary coverage | the scan→work ordering (steady-state; build-lexicon) |
@@ -106,6 +107,7 @@ Citations → ../References.md.
 - **[generalize-not-enumerate](generalize-not-enumerate.md)** — allomorphy → rule *(exemplar; flagship)*
 - [introspect-typology](introspect-typology.md) — predict features from priors
 - [propose-from-evidence](propose-from-evidence.md) — Nida discovery → a proposal
+- [triangulate-phonology](triangulate-phonology.md) — same-sound vs contrast; phoneme inventory / natural class (audio-optional)
 - [divide-senses](divide-senses.md) — lump vs split
 - [prioritize-the-backlog](prioritize-the-backlog.md) — impact × confidence
 - [guess-ask-or-defer](guess-ask-or-defer.md) — confidence routing

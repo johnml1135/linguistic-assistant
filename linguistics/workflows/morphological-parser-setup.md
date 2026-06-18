@@ -34,6 +34,9 @@ surfaces words the parser misses.
 - **Rank** the highest-frequency unparsed wordforms and, for each, **propose** a minimal fix — a new
   [[allomorph]] + environment, a [[phonological-rule]] tweak, a missing [[affix-template-and-slot]]
   filler, or a relaxed [[ad-hoc-rule]] — with rationale, confidence, and corpus impact.
+- Decide the [[natural-class]]es a rule generalizes over with [[../skills/triangulate-phonology]]
+  (same-sound vs contrast, from orthographic distribution first and optional phone evidence second),
+  then collapse allomorphy with [[../skills/generalize-not-enumerate]].
 - Decide **guess now / ask a native speaker / defer**: phonologically ambiguous environments and
   allomorphy-vs-allophony calls are flagged for a speaker rather than guessed.
 - **Emit** `morphophonology/*` ops (rule, natural-class, environment, template edits); each is gated by

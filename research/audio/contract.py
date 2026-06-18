@@ -114,3 +114,60 @@ class TriangulationReport:
     phone_count: int = 0
     gloss: str | None = None
     note: str = ""
+
+
+@dataclass(frozen=True)
+class TimestampedWord:
+    word: str
+    start: float
+    end: float
+    probability: float = 0.0
+
+    def to_dict(self) -> dict[str, object]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
+class CandidateOccurrence:
+    id: str
+    target_key: str
+    sample_word: str
+    word: str
+    source_id: str
+    audio_path: str
+    text_anchor: str
+    start: float
+    end: float
+    score: float
+    lexical_match: str
+    score_breakdown: dict[str, float | str] = field(default_factory=dict)
+    context_before: tuple[str, ...] = ()
+    context_after: tuple[str, ...] = ()
+    provenance: dict[str, str] = field(default_factory=dict)
+    phones: tuple[str, ...] = ()
+    vowel_features: tuple[dict[str, str], ...] = ()
+    note: str = ""
+
+    def to_dict(self) -> dict[str, object]:
+        data = asdict(self)
+        data["context_before"] = list(self.context_before)
+        data["context_after"] = list(self.context_after)
+        data["phones"] = list(self.phones)
+        data["vowel_features"] = [dict(item) for item in self.vowel_features]
+        return data
+
+
+@dataclass(frozen=True)
+class PlaybackPreviewResult:
+    status: str
+    occurrence_id: str
+    preview_path: str = ""
+    source_audio_path: str = ""
+    start: float = 0.0
+    end: float = 0.0
+    padding_ms: int = 0
+    fade_ms: int = 0
+    reason: str = ""
+
+    def to_dict(self) -> dict[str, object]:
+        return asdict(self)

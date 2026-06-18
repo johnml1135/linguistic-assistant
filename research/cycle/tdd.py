@@ -21,6 +21,7 @@ from pathlib import Path
 _RESEARCH = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_RESEARCH))
 
+from cycle.phonology import HARMONY_CLASSES, collapse_families  # noqa: E402
 from golden.grammar import Affix, LangModel, LexEntry  # noqa: E402
 from golden.hc import run_parse  # noqa: E402
 
@@ -213,12 +214,29 @@ def run(pair: str, seconds: float, n_roots: int = 300, batch: int = 4,
     )
     kept_affixes = [a.form for a in model.affixes]
     fams = harmony_families(kept_affixes)
+    # Phase 1 phonology induction: collapse harmony families into archiphoneme affixes + rules,
+    # gated offline by the harmony-rule expander (every observed allomorph must regenerate).
+    collapse = collapse_families(fams, HARMONY_CLASSES.get(pair, {}))
     result = {"pair": pair, "iterations": it, "base_coverage": round(base_cov, 4),
               "final_coverage": round(cov, 4), "delta": round(cov - base_cov, 4),
               "affixes_kept": kept_affixes,
               # generalize-not-enumerate worklist: harmony allomorph sets to collapse next (see helper).
               "harmony_families": fams,
-              "enumeration_debt": sum(len(v) - 1 for v in fams.values())}
+              "enumeration_debt": sum(len(v) - 1 for v in fams.values()),
+              # phonology induction outcome (text-only, hc-gated when the scaffold gains classes):
+              "phonology": {
+                  "enumeration_debt_before": collapse.debt_before,
+                  "enumeration_debt_after": collapse.debt_after,
+                  "affixes_removed": collapse.affixes_removed,
+                  "collapsed": [
+                      {"archiphoneme": p.archiphoneme, "members": p.members,
+                       "conditioning_class": p.conditioning_symbol}
+                      for p in collapse.collapsed
+                  ],
+                  "needs_review": [
+                      {"members": p.members, "reason": p.reason} for p in collapse.retained
+                  ],
+              }}
     (out_dir / f"{pair}_result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[{pair}] DONE: coverage {base_cov:.3f} -> {cov:.3f} (+{cov-base_cov:.3f}); "
           f"kept suffixes: {' '.join(kept_affixes) or '(none)'}")
@@ -227,6 +245,10 @@ def run(pair: str, seconds: float, n_roots: int = 300, batch: int = 4,
         print(f"[{pair}] harmony families to collapse (generalize step): "
               + "; ".join(f"{k}={'/'.join(v)}" for k, v in top)
               + f"  [enumeration debt: {result['enumeration_debt']} affixes]")
+    if collapse.collapsed:
+        print(f"[{pair}] phonology: collapsed {len(collapse.collapsed)} families "
+              f"(-{collapse.affixes_removed} affixes); debt {collapse.debt_before} -> {collapse.debt_after}: "
+              + "; ".join(f"{p.archiphoneme}={'/'.join(p.members)}" for p in collapse.collapsed[:8]))
     return result
 
 
