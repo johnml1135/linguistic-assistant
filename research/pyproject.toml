@@ -2,7 +2,7 @@
 name = "linguistic-assistant-research"
 version = "0.0.1"
 description = "Provider-agnostic LLM harness and benchmarks for word-level morphology/phonology."
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.14"  # upper bound for sil-machine
 dependencies = [
     "anthropic>=0.40",
     "httpx>=0.27",
@@ -13,6 +13,14 @@ dependencies = [
 # flexlibs is Windows-only and needs a FieldWorks install — keep it out of the core loop.
 data-prep = [
     "flexlibs>=1.2",
+]
+# Statistical word-alignment (a second, probabilistic source of word glosses alongside the
+# deterministic Apertium bidix). `sil-machine[thot]` is cross-platform (THOT: IBM1/HMM/fast_align);
+# `eflomal` is Linux-only (CPU, no GPU) — on Windows use WSL or fall back to THOT. Deliberately NO
+# torch/transformers/GPU extras. See research/align/.
+align = [
+    "sil-machine[thot]>=1.8",
+    "eflomal>=2.0; sys_platform == 'linux'",
 ]
 
 [build-system]

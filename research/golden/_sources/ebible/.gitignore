@@ -1,0 +1,5 @@
+# Raw eBible verse-per-line text + the regenerable verse-aligned parallel data are NOT committed
+# (fetched via research/datasets/ebible/fetch.py; large; reproducible). The small derived gold
+# (glosses.tsv, sense_links.candidates.json, manifest.json) IS committed.
+*.txt
+**/parallel.jsonl

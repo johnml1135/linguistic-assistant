@@ -1,0 +1,12 @@
+{
+  "english_id": "eng-engwebp",
+  "target_id": "hun-hun",
+  "target_key": "hun",
+  "nt_only": true,
+  "verses_aligned": 7945,
+  "target_word_types": 20190,
+  "align_backend": "cooccur",
+  "candidate_sense_links": 1882,
+  "source": "BibleNLP/ebible (redistributable corpus, verse-aligned via vref.txt)",
+  "note": "Raw text + parallel.jsonl are git-ignored (regenerable). License: non-profit/charity use."
+}
