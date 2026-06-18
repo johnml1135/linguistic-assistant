@@ -7,7 +7,9 @@ from pathlib import Path
 
 from .config import CORPUS_URL, VREF_URL
 
-DEFAULT_SRC_DIR = Path("research/golden/_sources/ebible")
+# Anchor to the repo (research/datasets/ebible/fetch.py -> parents[2] == research/) so outputs land
+# in ONE place regardless of CWD — a relative path doubled to research/research/... when run from research/.
+DEFAULT_SRC_DIR = Path(__file__).resolve().parents[2] / "golden" / "_sources" / "ebible"
 
 
 def _download(url: str, dest: Path, *, force: bool = False) -> Path:

@@ -9,12 +9,28 @@ from __future__ import annotations
 from .contract import Alignment, ParallelRow
 
 
+def _eflomal_bin_dir() -> str | None:
+    """Directory holding the compiled `eflomal` binary the pip wheel ships in eflomal/bin/.
+
+    sil-machine's EflomalAligner shells out to `$EFLOMAL_PATH/eflomal` (default `./eflomal`), but the
+    wheel installs the binary under site-packages/eflomal/bin/ — not on PATH. Point EFLOMAL_PATH there.
+    """
+    try:
+        import os
+
+        import eflomal  # noqa: F401
+
+        bin_dir = os.path.join(os.path.dirname(eflomal.__file__), "bin")
+        return bin_dir if os.path.exists(os.path.join(bin_dir, "eflomal")) else None
+    except Exception:
+        return None
+
+
 def eflomal_available() -> bool:
     try:
-        import eflomal  # noqa: F401
         from machine.jobs.eflomal_aligner import EflomalAligner  # noqa: F401
 
-        return True
+        return _eflomal_bin_dir() is not None  # the importable module is useless without the binary
     except Exception:
         return False
 
@@ -33,7 +49,15 @@ def eflomal_align(rows: list[ParallelRow]) -> list[Alignment]:
     import tempfile
     from pathlib import Path
 
+    from machine.jobs import eflomal_aligner as _efa  # type: ignore
     from machine.jobs.eflomal_aligner import EflomalAligner  # type: ignore
+
+    # Point sil-machine at the wheel's bundled binary. It execs `$EFLOMAL_PATH/eflomal`, but reads
+    # EFLOMAL_PATH into a module constant AT IMPORT TIME — so set the env var is too late; patch the
+    # already-bound constant directly.
+    bin_dir = _eflomal_bin_dir()
+    if bin_dir:
+        _efa.EFLOMAL_PATH = Path(bin_dir, "eflomal")
 
     src_toks = [src for src, _ in rows]
     tgt_toks = [tgt for _, tgt in rows]

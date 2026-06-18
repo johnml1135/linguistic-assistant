@@ -71,6 +71,18 @@ the [[../primitives/natural-class]] too.
 - **Premature generalization** from one or two examples — require enough evidence, or
   [[guess-ask-or-defer]] to a speaker.
 
+## From practice (the TDD cycle on Turkish/Hungarian)
+
+`research/cycle/` runs a deterministic, HC-gated affix/stem inducer over eBible wordforms — a baseline
+*without* this skill. It recovers the right suffixes but **enumerates vowel-harmony allomorphs as
+separate affixes** (`-de/-da`, `-ler/-lar`, `-in/-ın`, `-lık/-lik/-luk/-lük`) and **plateaus** there
+(HC v1 has no phonology). That plateau is precisely this skill's entry point: each such *set* is one
+phonological rule over a [[../primitives/natural-class]] (backness/rounding harmony). Two transferable
+lessons: (1) a fast **coverage gate** (does the held-out form parse?) is a cheap stand-in for the full
+golden `word→gloss` round-trip during rapid iteration; (2) morphology has to grow on **both axes at
+once** — a generalization that needs a stem the lexicon lacks won't show its value until the stem
+exists ([[propose-from-evidence]] root growth), so propose the rule *and* the missing stem together.
+
 ## Training basis
 
 SPE (Chomsky & Halle 1968) and Martinet (1955) on the evaluation metric / economy; Zwicky (1985) on

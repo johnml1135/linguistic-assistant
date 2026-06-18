@@ -20,10 +20,22 @@ All produce symmetrized links → `build_gloss_table` → ranked target→source
 ## Install (uv)
 ```bash
 cd research
-uv sync --extra align         # sil-machine[thot]; eflomal added automatically on Linux
+uv sync --extra align         # sil-machine[thot,jobs] + eflomal (added automatically on Linux)
 # Windows: eflomal is skipped; THOT (cross-platform) is used. For eflomal, run under WSL.
 ```
 The dependency set is pinned in `research/uv.lock`. No torch/transformers/GPU extras.
+
+### eflomal-under-WSL gotchas (learned the hard way — see `scripts/wsl-eflomal*.{ps1,sh}`)
+- **The `[jobs]` extra is mandatory, not `[thot]` alone.** `machine.jobs.eflomal_aligner` imports
+  `clearml` (+ `dynaconf`) at load — with `[thot]` only, `eflomal` imports but the *aligner wrapper*
+  raises `ModuleNotFoundError: clearml` and the backend silently reports "unavailable".
+- **The compiled `eflomal` binary isn't on `PATH`.** sil-machine execs `$EFLOMAL_PATH/eflomal`
+  (default `./eflomal`), but the wheel ships it at `site-packages/eflomal/bin/eflomal`. `backends.py`
+  finds that dir and **patches the module-level `EFLOMAL_PATH` constant** (the env var is read at
+  import time, so setting `os.environ` after the import is too late).
+- **Launch WSL from PowerShell, not Git Bash** — Git Bash mangles `/mnt/c/...` paths, and a login
+  shell (`bash -lc`) drags in the Windows `PATH` whose `Program Files (x86)` parens break inline
+  env-assignment prefixes. Use `bash -c` + the absolute `uv` path.
 
 ## Run (offline)
 ```bash

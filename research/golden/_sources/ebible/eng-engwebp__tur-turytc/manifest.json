@@ -4,9 +4,9 @@
   "target_key": "tur",
   "nt_only": true,
   "verses_aligned": 7883,
-  "target_word_types": 19047,
-  "align_backend": "cooccur",
-  "candidate_sense_links": 1872,
+  "target_word_types": 17271,
+  "align_backend": "eflomal",
+  "candidate_sense_links": 3105,
   "source": "BibleNLP/ebible (redistributable corpus, verse-aligned via vref.txt)",
   "note": "Raw text + parallel.jsonl are git-ignored (regenerable). License: non-profit/charity use."
 }

@@ -19,8 +19,11 @@ data-prep = [
 # `eflomal` is Linux-only (CPU, no GPU) — on Windows use WSL or fall back to THOT. Deliberately NO
 # torch/transformers/GPU extras. See research/align/.
 align = [
-    "sil-machine[thot]>=1.8",
-    "eflomal>=2.0; sys_platform == 'linux'",
+    # [thot] = cross-platform aligners (fast_align/IBM1/HMM); [jobs] = the EflomalAligner wrapper +
+    # its deps (clearml/dynaconf) — machine.jobs.eflomal_aligner imports clearml, so [thot] alone
+    # leaves eflomal "unavailable" even with the eflomal package installed.
+    "sil-machine[thot,jobs]>=1.8",
+    "eflomal>=2.0; sys_platform == 'linux'",  # the native aligner ([jobs] also pulls it on Linux)
 ]
 
 [build-system]
