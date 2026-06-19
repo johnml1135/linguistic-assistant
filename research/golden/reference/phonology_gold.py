@@ -77,4 +77,36 @@ def phonology_records(pair: str) -> list[dict]:
     recs = [{"type": "segment", "grapheme": g, "features": f} for g, f in vowel_inventory(pair).items()]
     recs += NATURAL_CLASSES
     recs += RULES.get(pair, [{"type": "meta", "vowel_harmony": False}])
+    recs.append({"type": "meta", "rule_emission": "live+verified",
+                 "note": "golden/hc.py build_grammar_xml(phon_rules=…) emits loadable <PhonologicalRule>; "
+                         "alpha-variable harmony verified. Language rules above are staged — flip status "
+                         "to active in active_phon_rules() to use. Suppletion handled by allomorphy."})
     return recs
+
+
+# A verified HC PhonologicalRule (alpha-variable backness harmony) — the reusable pattern for feature
+# spreading. `golden/hc.py::build_grammar_xml(phon_rules=…)` emits it and HC loads + applies it (verified).
+# Reused for a harmony language; the spreading feature ("back"/"rnd") + nc_vow exist when phon_feats is set.
+def alpha_harmony_rule(feature: str = "back", target_nc: str = "nc_vow") -> tuple[str, str]:
+    rid = f"r_harm_{feature}"
+    xml = (f'<PhonologicalRule id="{rid}" multipleApplicationOrder="leftToRightIterative">'
+           f'<Name>{feature} harmony</Name>'
+           f'<VariableFeatures><VariableFeature id="va" name="a" phonologicalFeature="{feature}"/></VariableFeatures>'
+           f'<PhoneticInput><PhoneticSequence><SimpleContext naturalClass="{target_nc}"/></PhoneticSequence></PhoneticInput>'
+           '<PhonologicalSubrules><PhonologicalSubrule><PhoneticOutput><PhoneticSequence>'
+           f'<SimpleContext naturalClass="{target_nc}"><AlphaVariables><AlphaVariable variableFeature="va"/></AlphaVariables></SimpleContext>'
+           '</PhoneticSequence></PhoneticOutput><Environment><LeftEnvironment><PhoneticTemplate><PhoneticSequence>'
+           '<SimpleContext naturalClass="nc_vow"><AlphaVariables><AlphaVariable variableFeature="va"/></AlphaVariables></SimpleContext>'
+           '<OptionalSegmentSequence min="0" max="-1"><SimpleContext naturalClass="nc_cons"/></OptionalSegmentSequence>'
+           '</PhoneticSequence></PhoneticTemplate></LeftEnvironment></Environment></PhonologicalSubrule></PhonologicalSubrules>'
+           '</PhonologicalRule>')
+    return rid, xml
+
+
+def active_phon_rules(pair: str) -> list[tuple[str, str]]:
+    """The phonological rules to emit into this pair's HC grammar (id, xml). Currently empty for the four
+    target langs: Spanish/Indonesian alternations are captured by inflection-class splits + allomorphy
+    (recall 1.0), and meN- place-assimilation needs consonant place features (the next inventory add).
+    The emission path is wired + verified; flip a rule's `status` to `active` and build it here to use it.
+    """
+    return []

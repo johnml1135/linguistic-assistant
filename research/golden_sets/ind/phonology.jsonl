@@ -9,3 +9,4 @@
 {"type": "natural_class", "id": "high", "features": {"voc": "vow", "hi": "hi"}}
 {"type": "rule", "id": "ind_meN_assimilation", "kind": "assimilation", "status": "staged", "description": "meN-/peN- prefix nasal assimilates to the place of the following consonant and may delete a voiceless onset: meN+kasih→mengasih, meN+pukul→memukul, meN+tulis→menulis.", "mechanism": "PhonologicalRule, nasal place = following C place; voiceless-onset deletion", "witnesses": ["mengasihi", "memukul", "menulis", "menyertai"]}
 {"type": "meta", "vowel_harmony": false}
+{"type": "meta", "rule_emission": "live+verified", "note": "golden/hc.py build_grammar_xml(phon_rules=…) emits loadable <PhonologicalRule>; alpha-variable harmony verified. Language rules above are staged — flip status to active in active_phon_rules() to use. Suppletion handled by allomorphy."}

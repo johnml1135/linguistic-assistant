@@ -32,7 +32,7 @@ sys.path.insert(0, str(_THIS.parents[2]))
 
 import liblcm  # noqa: E402  (the destination dialect: convert UD/UniMorph terms → LibLCM)
 from golden.reference import goldio  # noqa: E402
-from golden.reference import morphology  # noqa: E402
+from golden.reference import inflection, morphology  # noqa: E402
 from golden.reference.build import CACHE, _get, _parse_uw_terms, fetch_kaikki  # noqa: E402
 from golden.reference.orthography import classify, is_word, writing_system  # noqa: E402
 from golden.reference.phonology_gold import phonology_records  # noqa: E402
@@ -44,6 +44,29 @@ EBIBLE = _THIS.parents[2] / "golden" / "_sources" / "ebible"
 FROZEN = _THIS.parents[2] / "golden_sets"
 PAIR_DIR = {"swh": "eng-engwebp__swh-swhulb", "ind": "eng-engwebp__ind-indags",
             "tgl": "eng-engwebp__tgl-tglulb", "spa": "eng-engwebp__spa-spaRV1909"}
+
+
+# Clitics / bound morphemes UniMorph doesn't segment — a scripture form built from one of these on a real
+# lemma is that lemma's WORDFORM, not a new lemma. Longest first so the most specific strip wins.
+CLITICS = {
+    "spa": {"suffix": ["mela", "selo", "sela", "nos", "les", "los", "las", "me", "te", "se", "le", "lo", "la", "os"],
+            "prefix": []},
+    "ind": {"suffix": ["kannya", "annya", "inya", "nya", "lah", "kah", "pun", "mu", "ku", "kan", "an", "i"],
+            "prefix": ["memper", "menge", "meng", "meny", "mem", "men", "peng", "peny", "pem", "pen",
+                       "ber", "ter", "di", "ke", "se", "pe", "me"]},
+}
+
+
+def _strip_to_lemma(word: str, lemmas: set, pair: str) -> str | None:
+    """If `word` is a clitic/affixed form of a real lemma, return that lemma (longest valid strip)."""
+    cl = CLITICS.get(pair, {})
+    for s in cl.get("suffix", []):
+        if word.endswith(s) and len(word) - len(s) >= 3 and word[: -len(s)] in lemmas:
+            return word[: -len(s)]
+    for p in cl.get("prefix", []):
+        if word.startswith(p) and len(word) - len(p) >= 3 and word[len(p):] in lemmas:
+            return word[len(p):]
+    return None
 
 
 def unimorph_pos(feats: str) -> str:
@@ -151,7 +174,8 @@ def compile_gold(pair: str) -> dict:
             # homograph = the same surface form carries >1 distinct part of speech (e.g. noun + verb)
             sense_inv[w] = {"pos": sorted(set(libpos)), "senses": sns, "homograph": len(set(libpos)) > 1}
             forms.add(w)
-            lemmas.add(w)  # a Wiktionary headword is a lemma → a candidate HC root/stem
+            if morphology.real_senses(sns):
+                lemmas.add(w)  # only a TRUE lexeme (has a real sense) is a lemma — not a form-of-only entry
         forms.update(kk.get("forms", []))
 
     # merge POS in LibLCM terms by a 3-way vote (UD, UniMorph, Wiktionary); verified = ≥2 sources agree
@@ -197,16 +221,18 @@ def compile_gold(pair: str) -> dict:
     scrip = _scripture_vocab(pair)
     suf = {af for (sd, af), c in affix.items() if sd == "suffix" and sum(c.values()) >= 3}
     pre = {af for (sd, af), c in affix.items() if sd == "prefix" and sum(c.values()) >= 3}
+    # the roots scripture needs must be REAL lemmas (a citation form a source lists), never an arbitrary
+    # affix-strip stem like "abajad" — those polluted the lexicon as senseless pseudo-lemmas.
     roots_needed: set[str] = set()
     for f in scrip:
         lm = form2lemma.get(f)
-        if lm in known:
+        if lm in lemmas:
             roots_needed.add(lm)
         for s in suf:
-            if f.endswith(s) and len(f) > len(s) + 1 and f[: -len(s)] in known:
+            if f.endswith(s) and len(f) > len(s) + 1 and f[: -len(s)] in lemmas:
                 roots_needed.add(f[: -len(s)])
         for p in pre:
-            if f.startswith(p) and len(f) > len(p) + 1 and f[len(p):] in known:
+            if f.startswith(p) and len(f) > len(p) + 1 and f[len(p):] in lemmas:
                 roots_needed.add(f[len(p):])
     # WORDS ONLY: numbers, punctuation and symbols are not lemmas. HC parses phonological segments, so
     # digits/punctuation have no representation; in LibLCM they are the writing system's job (tokenizer
@@ -214,18 +240,19 @@ def compile_gold(pair: str) -> dict:
     # lexicon entirely; classify the corpus vocabulary so we can report/handle the non-word tokens.
     ws = writing_system(pair)
     token_classes = Counter(classify(t, ws) for t in scrip)
-    attested = sorted(w for w in (scrip & known) if is_word(w))   # scripture WORDS a reference knows
-    uncovered = sorted(w for w in (scrip - known) if is_word(w))  # scripture words NO reference knows
 
     # --- separate LEXEMES from WORDFORMS ------------------------------------------------------------
-    # Each attested scripture word gets a morphological analysis: its lemma + an FsFeatStruc, from
-    # UniMorph (authoritative, already LibLCM-converted) or by parsing the Wiktionary form-of gloss.
-    # Inflected forms leave the lexicon and become a wordform→analysis gold; the lexicon keeps only
-    # lemmas with their REAL senses. (This is the LibLCM model: one LexEntry per lexeme; inflected forms
-    # are generated by the morphology, not stored.)
+    # A scripture word is COVERED if it resolves to a known lemma — directly (a reference knows it) or by
+    # analysis: UniMorph form→lemma, a Wiktionary form-of gloss, or a clitic/affix strip (mengasihinya →
+    # kasih). That is the right notion of coverage for "HC can parse it"; agglutinated forms whose root is
+    # known count as covered even though the surface isn't a dictionary headword. Each covered word becomes
+    # a wordform (lemma + FsFeatStruc); the lexicon keeps only lemmas. Uncovered = no reference + no analysis
+    # (proper-noun names, genuine gaps).
     wordforms: list[dict] = []
     lemma_set: set[str] = set(roots_needed)
-    for w in attested:
+    attested: list[str] = []
+    uncovered: list[str] = []
+    for w in sorted({x for x in scrip if is_word(x)}):
         lemma = feats = src = None
         if w in form2lemma and form2lemma[w] != w and form2lemma[w] in known and is_word(form2lemma[w]):
             lemma, feats, src = form2lemma[w], liblcm.inflection_features(form2feats.get(w, "")), "unimorph"
@@ -233,6 +260,16 @@ def compile_gold(pair: str) -> dict:
             wl, wf = morphology.analyze_wordform(sense_inv.get(w, {}).get("senses", []))
             if wl and wl != w and wl in known and is_word(wl):
                 lemma, feats, src = wl, wf, "wiktionary"
+        if not lemma:
+            # clitic/affix strip: a clitic-attached form (ajarlah=ajar+lah, díjole=dijo+le) is a WORDFORM
+            # of its root lemma, not a new lemma. Keeps inflected/clitic forms out of the lexicon.
+            root = _strip_to_lemma(w, lemmas, pair)
+            if root:
+                lemma, feats, src = root, {}, "clitic"
+        if not lemma and w not in known:
+            uncovered.append(w)            # no reference knows it and we can't analyse it → genuinely uncovered
+            continue
+        attested.append(w)
         if lemma:
             wordforms.append({"surface": w, "lemma": lemma, "pos": pos.get(lemma) or pos.get(w) or "Unknown",
                               "features": feats or {}, "source": src})
@@ -242,18 +279,37 @@ def compile_gold(pair: str) -> dict:
             lemma_set.add(w)
     lemma_set = {lm for lm in lemma_set if is_word(lm)}
 
-    # LEXEME entries (lexicon.jsonl): lemma -> POS + REAL senses only (+ homograph flag)
+    # INDUCE INFLECTION CLASSES (the generative rules) instead of enumerating surface forms. Build each
+    # lemma's paradigm from UniMorph, cluster into classes (the -ar/-er/-ir conjugations, etc.), and
+    # record per-lemma overrides for irregular cells. This is what we want generated/found — the rules.
+    paradigms: dict[str, dict[str, str]] = defaultdict(dict)
+    for form, lemma in form2lemma.items():
+        if lemma in lemma_set and is_word(form):
+            cell = inflection.canon(liblcm.inflection_features(form2feats.get(form, "")))
+            paradigms[lemma][cell] = form
+    pos_by = {lm: pos.get(lm, "Unknown") for lm in lemma_set}
+    classes, lemma_class, overrides, stems = inflection.induce(paradigms, pos_by)
+
+    # LEXEME entries (lexicon.jsonl): lemma -> POS + REAL senses + its inflection class + irregular cells
     lex_entries: list[dict] = []
     for lm in sorted(lemma_set):
         inv = sense_inv.get(lm, {})
         rs = morphology.real_senses(inv.get("senses", []))
         lex_entries.append({"word": lm, "pos": pos.get(lm) or (inv.get("pos") or ["Unknown"])[0],
                             "pos_all": inv.get("pos", []), "senses": rs,
-                            "homograph": bool(inv.get("homograph")), "in_scripture": lm in scrip})
+                            "homograph": bool(inv.get("homograph")), "in_scripture": lm in scrip,
+                            "inflection_class": lemma_class.get(lm), "stem": stems.get(lm, lm),
+                            "irregular": overrides.get(lm, [])})
+
+    # CORPUS ALIGNMENT pass: resolve the words Wiktionary can't (proper-noun names absent from every
+    # dictionary) from the parallel scripture itself — fill no-gloss lemmas, add Proper-noun entries for
+    # confidently-resolved uncovered words (babilonia→babylon). Gets sharper as more is glossed.
+    from golden.reference import align_gloss  # local import: align_gloss imports this module
+    align_stats = align_gloss.apply(pair, lex_entries, wordforms, attested, uncovered)
 
     glosses = {e["word"]: e["senses"][0] for e in lex_entries if e["senses"]}
     homograph_n = sum(1 for e in lex_entries if e["homograph"])
-    lexicon = lemma_set | {wf["surface"] for wf in wordforms}
+    lexicon = {e["word"] for e in lex_entries} | {wf["surface"] for wf in wordforms}
 
     frozen = FROZEN / pair
     frozen.mkdir(parents=True, exist_ok=True)
@@ -264,11 +320,15 @@ def compile_gold(pair: str) -> dict:
             feat = ";".join(f"{k}={v}" for k, v in wf["features"].items())
             f.write(f"{wf['surface']}\t{wf['lemma']}\t{wf['pos']}\t{feat}\t{wf['source']}\n")
 
+    regular = sum(1 for e in lex_entries if e["inflection_class"] and not e["irregular"])
+    classed = sum(1 for e in lex_entries if e["inflection_class"])
     stats = {
         "pos_words": len(pos), "pos_verified": verified, "pos_conflicts": len(conflicts),
         "lexemes": len(lex_entries), "wordforms": len(wordforms), "unimorph_pairs": morph_n,
         "affixes": len(affixes), "glosses": len(glosses), "key_terms": len(terms),
-        "homographs": homograph_n,
+        "homographs": homograph_n, "inflection_classes": len(classes),
+        "lemmas_classed": classed, "lemmas_regular": regular,
+        "aligned_glosses_filled": align_stats["glosses_filled"], "aligned_names_added": align_stats["names_added"],
         "scripture_vocab": len(scrip), "scripture_attested": len(attested),
         "scripture_coverage": round(len(attested) / len(scrip), 4) if scrip else 0.0,
         "scripture_uncovered": len(uncovered),
@@ -278,12 +338,13 @@ def compile_gold(pair: str) -> dict:
         "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
         "writing_system": {**ws, "numerals": "token type (not HC-parsed)", "punctuation": "stripped at tokenization"},
         "token_classes": dict(token_classes),
-        "files": ["lexicon.jsonl", "lexicon.lift", "wordforms.jsonl", "grammar_rules.jsonl",
-                  "phonology.jsonl", "key_terms.jsonl", "meta.json", "golden_scripture.tsv"],
+        "files": ["lexicon.jsonl", "lexicon.lift", "inflection_classes.jsonl", "wordforms.jsonl",
+                  "grammar_rules.jsonl", "phonology.jsonl", "key_terms.jsonl", "meta.json",
+                  "golden_scripture.tsv"],
         "pos_conflicts_sample": conflicts[:40], "scripture_uncovered_sample": uncovered[:40],
     }
     counts = goldio.write_gold(
-        pair, lex_entries=lex_entries, wordforms=wordforms, affixes=affixes,
+        pair, lex_entries=lex_entries, wordforms=wordforms, affixes=affixes, inflection_classes=classes,
         key_terms=terms, meta=meta, phonology=phonology_records(pair))
     return stats | {"pair": pair, "sources": sources, "files": counts}
 
@@ -300,7 +361,11 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  affixes:    {s['affixes']} affix→function entries from {s['unimorph_pairs']} UniMorph pairs")
     print(f"  lexemes:    {s['lexemes']} lemma entries ({s['glosses']} with real senses, "
           f"{s['homographs']} homographs); key terms {s['key_terms']}")
-    print(f"  wordforms:  {s['wordforms']} surface→(lemma+features) analyses (the morphology gold)")
+    print(f"  inflection: {s['inflection_classes']} classes (the generative rules); "
+          f"{s['lemmas_regular']}/{s['lemmas_classed']} classed lemmas fully regular")
+    print(f"  alignment:  {s['aligned_names_added']} proper-noun names + {s['aligned_glosses_filled']} "
+          f"glosses resolved from the parallel corpus (no Wiktionary)")
+    print(f"  wordforms:  {s['wordforms']} surface→analysis (the TEST ORACLE, derivable from the rules)")
     print(f"  scripture:  {s['scripture_attested']}/{s['scripture_vocab']} of NT vocab covered "
           f"({s['scripture_coverage']}); {s['scripture_uncovered']} uncovered")
     return 0

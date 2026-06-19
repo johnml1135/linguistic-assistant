@@ -16,6 +16,9 @@
   "glosses": 2999,
   "key_terms": 953,
   "homographs": 342,
+  "inflection_classes": 2,
+  "lemmas_classed": 52,
+  "lemmas_regular": 44,
   "scripture_vocab": 17570,
   "scripture_attested": 5054,
   "scripture_coverage": 0.2876,
@@ -43,6 +46,7 @@
  "files": [
   "lexicon.jsonl",
   "lexicon.lift",
+  "inflection_classes.jsonl",
   "wordforms.jsonl",
   "grammar_rules.jsonl",
   "phonology.jsonl",
@@ -52,43 +56,18 @@
  ],
  "pos_conflicts_sample": [
   [
-   "usitawi",
+   "wako",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "mpumbavu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wasoma",
    "Verb",
-   "Noun"
-  ],
-  [
-   "mwerevu",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "wekundu",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "wazee",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "wenyewe",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "makali",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "mzee",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "zao",
-   "Adjective",
    "Noun"
   ],
   [
@@ -97,37 +76,12 @@
    "Noun"
   ],
   [
-   "michanga",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "wao",
-   "Adjective",
-   "Pronoun"
-  ],
-  [
-   "wema",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "huenda",
-   "Verb",
-   "Adverb"
-  ],
-  [
-   "wasoma",
+   "afua",
    "Verb",
    "Noun"
   ],
   [
-   "pao",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "chungu",
+   "mvivu",
    "Adjective",
    "Noun"
   ],
@@ -137,23 +91,33 @@
    "Noun"
   ],
   [
-   "wake",
+   "michanga",
    "Adjective",
    "Noun"
   ],
   [
-   "mgonjwa",
+   "muchanga",
    "Adjective",
    "Noun"
   ],
   [
-   "wasafiri",
+   "hawa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "viumbe",
    "Verb",
    "Noun"
   ],
   [
-   "afua",
+   "usafiri",
    "Verb",
+   "Noun"
+  ],
+  [
+   "wenyewe",
+   "Adjective",
    "Noun"
   ],
   [
@@ -167,43 +131,43 @@
    "Noun"
   ],
   [
-   "muchanga",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "waheshimiwa",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "kufaa",
+   "amba",
    "Verb",
-   "Adjective"
+   "Pronoun"
   ],
   [
-   "weusi",
+   "baki",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "wema",
    "Adjective",
    "Noun"
   ],
   [
-   "weupe",
+   "pao",
    "Adjective",
    "Noun"
   ],
   [
-   "wagonjwa",
+   "wachanga",
    "Adjective",
    "Noun"
   ],
   [
-   "kwao",
+   "mchanga",
    "Adjective",
    "Noun"
   ],
   [
-   "werevu",
+   "magonjwa",
    "Adjective",
+   "Noun"
+  ],
+  [
+   "waja",
+   "Verb",
    "Noun"
   ],
   [
@@ -212,7 +176,57 @@
    "Noun"
   ],
   [
-   "hawa",
+   "mzee",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mgonjwa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "haya",
+   "Adjective",
+   "Interjection"
+  ],
+  [
+   "zao",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wepesi",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "usitawi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "wagonjwa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wavivu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wekundu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "msafiri",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "mtakatifu",
    "Adjective",
    "Noun"
   ],
@@ -222,32 +236,22 @@
    "Noun"
   ],
   [
-   "afa",
+   "wajinga",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mwerevu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wasafiri",
    "Verb",
    "Noun"
   ],
   [
-   "haya",
-   "Adjective",
-   "Interjection"
-  ],
-  [
-   "magonjwa",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "vifupi",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "wapiga",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "mchanga",
+   "weusi",
    "Adjective",
    "Noun"
   ]

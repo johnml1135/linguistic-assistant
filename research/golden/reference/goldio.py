@@ -45,11 +45,12 @@ def _read_jsonl(path: Path) -> list[dict]:
 
 
 def write_gold(pair: str, *, lex_entries: list[dict], wordforms: list[dict], affixes: list[dict],
-               key_terms: list, meta: dict, phonology: list | None = None) -> dict:
+               inflection_classes: list[dict], key_terms: list, meta: dict, phonology: list | None = None) -> dict:
     frozen = FROZEN / pair
     frozen.mkdir(parents=True, exist_ok=True)
     counts = {
         "lexicon.jsonl": _write_jsonl(frozen / "lexicon.jsonl", lex_entries),
+        "inflection_classes.jsonl": _write_jsonl(frozen / "inflection_classes.jsonl", inflection_classes),
         "wordforms.jsonl": _write_jsonl(frozen / "wordforms.jsonl", wordforms),
         "grammar_rules.jsonl": _write_jsonl(frozen / "grammar_rules.jsonl", affixes),
         "key_terms.jsonl": _write_jsonl(frozen / "key_terms.jsonl", ({"term": t} for t in key_terms)),
@@ -91,6 +92,7 @@ def load_gold(pair: str) -> dict:
     lexicon = sorted(set(lemmas) | {wf["surface"] for wf in wordforms})
     return {**meta, "pos": pos, "glosses": glosses, "lemmas": sorted(set(lemmas)), "lexicon": lexicon,
             "in_scripture": sorted(in_scripture), "senses": senses, "wordforms": wordforms,
+            "lex_entries": lex, "inflection_classes": _read_jsonl(frozen / "inflection_classes.jsonl"),
             "affixes": _read_jsonl(frozen / "grammar_rules.jsonl"),
             "key_terms": [r["term"] for r in _read_jsonl(frozen / "key_terms.jsonl")],
             "phonology": _read_jsonl(frozen / "phonology.jsonl")}

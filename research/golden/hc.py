@@ -114,6 +114,7 @@ def build_grammar_xml(
     templated: bool = True,
     phon_feats: dict[str, dict[str, str]] | None = None,
     pos_aware: bool = False,
+    phon_rules: list[tuple[str, str]] | None = None,
 ) -> str:
     """Emit the HC grammar. With ``phon_feats`` (grapheme -> {feature: symbolValue}, e.g. a Spanish
     inventory mapping vowels to voc/hi/rnd/back), each segment carries REAL phonological features
@@ -220,11 +221,19 @@ def build_grammar_xml(
                               f'<Name>{side}{o}</Name></Slot>')
         template_xml = (f'<AffixTemplates><AffixTemplate final="true" requiredPartsOfSpeech="{all_pos_attr}">'
                         f'<Name>main</Name>{slots_xml}</AffixTemplate></AffixTemplates>')
-        stratum_open = '<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="linear"><Name>main</Name>'
+        stratum_open = f'<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="linear"{{prattr}}><Name>main</Name>'
     else:
         template_xml = ""
         stratum_open = ('<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="unordered" '
-                        f'morphologicalRules="{" ".join(rule_ids)}"><Name>main</Name>')
+                        f'morphologicalRules="{" ".join(rule_ids)}"{{prattr}}><Name>main</Name>')
+
+    # phonological rules (the harder path): emitted at language level, referenced by the stratum.
+    prd = ""
+    if phon_rules:
+        prd = "<PhonologicalRuleDefinitions>" + "".join(x for _, x in phon_rules) + "</PhonologicalRuleDefinitions>"
+        stratum_open = stratum_open.replace("{prattr}", f' phonologicalRules="{" ".join(i for i, _ in phon_rules)}"')
+    else:
+        stratum_open = stratum_open.replace("{prattr}", "")
 
     return (
         '<?xml version="1.0" encoding="utf-8"?>\n'
@@ -239,6 +248,7 @@ def build_grammar_xml(
         "</SegmentDefinitions></CharacterDefinitionTable>"
         f'<NaturalClasses>{extra_nat_classes}<SegmentNaturalClass id="any"><Name>any</Name>{anyseg}'
         "</SegmentNaturalClass></NaturalClasses>"
+        f"{prd}"
         f"<Strata>{stratum_open}"
         f"<MorphologicalRuleDefinitions>{''.join(rules)}</MorphologicalRuleDefinitions>"
         f"{template_xml}"
@@ -284,6 +294,7 @@ def run_parse(
     templated: bool = True,
     phon_feats: dict[str, dict[str, str]] | None = None,
     pos_aware: bool = False,
+    phon_rules: list[tuple[str, str]] | None = None,
 ) -> dict[str, list[Analysis]]:
     """Parse ``words`` (underlying forms) with the emitted grammar; return analyses.
 
@@ -294,7 +305,8 @@ def run_parse(
     signal that motivates the affix-template/ordering enrichment.
     """
     tl = Translit(model.charset)
-    xml = build_grammar_xml(model, tl, templated=templated, phon_feats=phon_feats, pos_aware=pos_aware)
+    xml = build_grammar_xml(model, tl, templated=templated, phon_feats=phon_feats, pos_aware=pos_aware,
+                            phon_rules=phon_rules)
     uniq = list(dict.fromkeys(words))
     results: dict[str, list[Analysis]] = {w: [] for w in uniq}
     with tempfile.TemporaryDirectory() as d:

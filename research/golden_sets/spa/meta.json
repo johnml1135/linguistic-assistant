@@ -7,20 +7,25 @@
   "unfoldingword"
  ],
  "stats": {
-  "pos_words": 912889,
-  "pos_verified": 89759,
-  "pos_conflicts": 7473,
-  "lexemes": 8092,
-  "wordforms": 10140,
+  "pos_words": 1044489,
+  "pos_verified": 612122,
+  "pos_conflicts": 12143,
+  "lexemes": 5362,
+  "wordforms": 10541,
   "unimorph_pairs": 1196224,
   "affixes": 1597,
-  "glosses": 2412,
+  "glosses": 4896,
   "key_terms": 953,
-  "homographs": 811,
+  "homographs": 1464,
+  "inflection_classes": 27,
+  "lemmas_classed": 3321,
+  "lemmas_regular": 2896,
+  "aligned_glosses_filled": 47,
+  "aligned_names_added": 106,
   "scripture_vocab": 11004,
-  "scripture_attested": 10140,
-  "scripture_coverage": 0.9215,
-  "scripture_uncovered": 864
+  "scripture_attested": 10541,
+  "scripture_coverage": 0.9579,
+  "scripture_uncovered": 463
  },
  "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
  "writing_system": {
@@ -41,6 +46,7 @@
  "files": [
   "lexicon.jsonl",
   "lexicon.lift",
+  "inflection_classes.jsonl",
   "wordforms.jsonl",
   "grammar_rules.jsonl",
   "phonology.jsonl",
@@ -50,223 +56,216 @@
  ],
  "pos_conflicts_sample": [
   [
-   "mamíferos",
+   "ribagorzanos",
    "Noun",
    "Adjective"
   ],
   [
-   "belgas",
-   "Noun",
+   "benditas",
+   "Verb",
    "Adjective"
   ],
   [
-   "orense",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "activo",
+   "ceilanesa",
    "Adjective",
-   "Verb"
+   "Noun"
   ],
   [
-   "encausada",
+   "ecijana",
    "Adjective",
-   "Verb"
+   "Noun"
   ],
   [
-   "apropiados",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "incidentes",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "escandas",
+   "celes",
    "Verb",
    "Noun"
   ],
   [
-   "tópico",
+   "imperforada",
    "Noun",
    "Adjective"
   ],
   [
-   "visas",
+   "biónica",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "atormentadores",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "tolerado",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "pues",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "sacudida",
+   "Adjective",
    "Verb",
    "Noun"
   ],
   [
-   "escarcha",
+   "aludida",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "tarando",
    "Verb",
    "Noun"
   ],
   [
-   "subvenciones",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "tupí",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "reproche",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "ensalzado",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "artilleros",
+   "natas",
    "Noun",
    "Adjective"
   ],
   [
-   "minusválidos",
+   "caracoles",
    "Noun",
-   "Adjective"
+   "Interjection"
   ],
   [
-   "tenca",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "defensiva",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "estampadas",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "geoestacionario",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "obrero",
-   "Proper noun",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "circasianos",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "pequeñita",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "enganchada",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "dese",
+   "calce",
    "Verb",
    "Noun"
   ],
   [
-   "voseo",
+   "enmascaradas",
    "Verb",
-   "Noun"
+   "Adjective"
   ],
   [
-   "abates",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "secciones",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "mame",
-   "Proper noun",
-   "Verb"
-  ],
-  [
-   "primarias",
+   "fulani",
    "Noun",
    "Adjective"
   ],
   [
-   "realista",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "glabras",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "empalme",
+   "capota",
    "Verb",
    "Noun"
   ],
   [
-   "tutelar",
+   "chapucera",
    "Adjective",
-   "Verb"
+   "Noun"
   ],
   [
-   "poso",
+   "numantinas",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "huancavelicana",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "festoneada",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "improvisas",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "meneo",
    "Verb",
    "Noun"
   ],
   [
-   "tripleta",
-   "Proper noun",
+   "festoneadas",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "nona",
+   "Adjective",
    "Noun"
   ],
   [
-   "esperada",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "tomas",
+   "escandalosas",
    "Noun",
-   "Verb"
+   "Adjective"
   ],
   [
-   "pescador",
-   "Proper noun",
+   "predicadora",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "radiografías",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "deslaves",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "cumplidas",
+   "Verb",
    "Adjective"
+  ],
+  [
+   "capitaleña",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "tifoidea",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "accionaria",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "pandeada",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "tipeo",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "tundas",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "amoblado",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "desquicio",
+   "Verb",
+   "Noun"
   ]
  ],
  "scripture_uncovered_sample": [
-  "aarón",
   "abaddon",
-  "abba",
   "abdi",
   "abiathar",
   "abilinia",
   "abiud",
   "aborrecedores",
-  "aborrecibles",
-  "abreviadora",
   "abriéronse",
-  "abundantemente",
-  "abía",
   "abías",
-  "acaya",
   "aceptos",
   "achâico",
   "achâz",
@@ -275,22 +274,29 @@
   "acéldama",
   "adoróle",
   "adrumentina",
-  "agabo",
-  "agolpa",
-  "agolpaba",
-  "agolpaban",
   "agolpóse",
-  "agripa",
   "ahogóse",
-  "alentaos",
-  "alfeo",
-  "alfolí",
-  "alfolíes",
-  "amigables",
-  "aminadab",
   "amonéstoos",
   "amortecido",
   "amphípolis",
-  "amóle"
+  "amóle",
+  "amólos",
+  "antipas",
+  "antipatris",
+  "apollyon",
+  "apphia",
+  "appio",
+  "apártase",
+  "arabes",
+  "aram",
+  "archelao",
+  "arengóles",
+  "aretas",
+  "aristarchô",
+  "aristóbulo",
+  "arphaxad",
+  "arrendóla",
+  "arrojólo",
+  "artemas"
  ]
 }

@@ -10,17 +10,22 @@
   "pos_words": 58415,
   "pos_verified": 9024,
   "pos_conflicts": 2155,
-  "lexemes": 4366,
-  "wordforms": 5404,
+  "lexemes": 3591,
+  "wordforms": 6261,
   "unimorph_pairs": 27714,
   "affixes": 44,
-  "glosses": 3267,
+  "glosses": 3410,
   "key_terms": 953,
-  "homographs": 750,
+  "homographs": 715,
+  "inflection_classes": 5,
+  "lemmas_classed": 1083,
+  "lemmas_regular": 785,
+  "aligned_glosses_filled": 198,
+  "aligned_names_added": 173,
   "scripture_vocab": 6984,
-  "scripture_attested": 5404,
-  "scripture_coverage": 0.7738,
-  "scripture_uncovered": 1553
+  "scripture_attested": 6261,
+  "scripture_coverage": 0.8965,
+  "scripture_uncovered": 696
  },
  "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
  "writing_system": {
@@ -42,6 +47,7 @@
  "files": [
   "lexicon.jsonl",
   "lexicon.lift",
+  "inflection_classes.jsonl",
   "wordforms.jsonl",
   "grammar_rules.jsonl",
   "phonology.jsonl",
@@ -51,208 +57,206 @@
  ],
  "pos_conflicts_sample": [
   [
-   "asahan",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "cape",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "begitu",
-   "Adverb",
-   "Adposition"
-  ],
-  [
-   "khasi",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "paskah",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "bener",
-   "Proper noun",
+   "namun",
+   "Coordinating connective",
    "Adverb"
   ],
   [
-   "sangha",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "demikian",
-   "Pronoun",
-   "Adverb"
-  ],
-  [
-   "elite",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "kalinya",
-   "Adverb",
-   "Verb"
-  ],
-  [
-   "swasembada",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "sempat",
-   "Adverb",
-   "Verb"
-  ],
-  [
-   "nominasi",
+   "setingkat",
    "Noun",
-   "Verb"
-  ],
-  [
-   "depok",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "situ",
-   "Noun",
-   "Adverb"
-  ],
-  [
-   "duka",
-   "Noun",
-   "Verb",
    "Adjective"
   ],
   [
-   "menjaring",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "buntu",
-   "Proper noun",
+   "lambai",
    "Noun",
    "Verb"
   ],
   [
-   "sepengetahuan",
+   "loji",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "pembersih",
    "Adjective",
-   "Adverb"
-  ],
-  [
-   "usah",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "kajang",
-   "Proper noun",
    "Noun"
   ],
   [
-   "kemas",
-   "Noun",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "sma",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "penumpasan",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "mitra",
-   "Proper noun",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "lancar",
-   "Adverb",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "hina",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "kedelapan",
+   "sekehendak",
    "Adjective",
-   "Numeral"
-  ],
-  [
-   "globe",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "terjang",
-   "Noun",
    "Verb"
   ],
   [
-   "gedong",
+   "gambir",
    "Proper noun",
    "Noun"
   ],
   [
-   "sr",
-   "Proper noun",
-   "Noun"
+   "sobek",
+   "Verb",
+   "Adjective"
   ],
   [
-   "intan",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "mukim",
-   "Proper noun",
+   "pori",
    "Verb",
    "Noun"
   ],
   [
-   "ribuan",
-   "Numeral",
+   "pm",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "zalim",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "kelasi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "memalukan",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "kerani",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "persona",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "bimbing",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "tunai",
+   "Noun",
+   "Verb",
    "Adverb"
   ],
   [
-   "piawai",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "terstandar",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "kemasukan",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "dos",
+   "intaglio",
    "Proper noun",
    "Noun"
   ],
   [
-   "bridge",
+   "gw",
+   "Proper noun",
+   "Pronoun"
+  ],
+  [
+   "sekering",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "rsud",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tilik",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "petak",
+   "Proper noun",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "taksir",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "toh",
+   "Interjection",
+   "Coordinating connective"
+  ],
+  [
+   "yaitu",
+   "Adposition",
+   "Adverb"
+  ],
+  [
+   "perkasa",
+   "Proper noun",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "selamat",
+   "Adjective",
+   "Verb",
+   "Interjection"
+  ],
+  [
+   "dasa",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "mubarak",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "tape",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "kencan",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "soko",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tt",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "utamanya",
+   "Adverb",
+   "Adjective"
+  ],
+  [
+   "moderat",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "panah",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "seandainya",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "sahara",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "bio",
    "Proper noun",
    "Noun"
   ]
@@ -262,41 +266,41 @@
   "aalah",
   "abadon",
   "abaraham",
-  "abba",
-  "abia",
   "abilene",
   "abiud",
   "abyatar",
   "achaia",
-  "adakah",
-  "adili",
   "adramitium",
   "adria",
   "afia",
-  "agabus",
-  "agripa",
   "ahaz",
-  "aibku",
   "ainon",
-  "airlah",
   "ajabi",
-  "ajaranmu",
   "akaikus",
   "akana",
-  "akarlah",
-  "akaya",
   "akeldama",
   "akim",
-  "akulah",
-  "akwila",
   "alabaster",
   "aleksandar",
   "aleksandira",
   "aleksandria",
-  "alfeus",
-  "alian",
   "aling",
   "allahdan",
-  "allahku"
+  "allaku",
+  "amana",
+  "amen",
+  "amfipolis",
+  "amon",
+  "ampliatus",
+  "ampunilah",
+  "andronikus",
+  "antipatris",
+  "apeles",
+  "apius",
+  "apolion",
+  "apsintus",
+  "arfaksad",
+  "arkelaus",
+  "armageddon"
  ]
 }

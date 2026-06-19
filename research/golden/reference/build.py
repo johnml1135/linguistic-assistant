@@ -63,7 +63,7 @@ def _parse_ud(text: str) -> dict:
             "lemmas": sorted(lemmas)}
 
 
-def fetch_kaikki(pair: str, *, max_mb: int = 150) -> dict | None:
+def fetch_kaikki(pair: str, *, max_mb: int = 2000) -> dict | None:
     """Stream the kaikki Wiktionary extract for `pair` → {words:{word:{pos,gloss}}, forms:[...], truncated}.
 
     Streams line-by-line with a byte cap (the Spanish file is huge) and caches only the small extract,
@@ -77,7 +77,8 @@ def fetch_kaikki(pair: str, *, max_mb: int = 150) -> dict | None:
     out = CACHE / pair / "kaikki_extract.json"
     if out.exists() and out.stat().st_size > 0:
         cached = json.loads(out.read_text(encoding="utf-8"))
-        if cached.get("version") == 2:  # else fall through and re-extract (old single-sense format)
+        # re-fetch if old format OR previously truncated (a raised cap can now capture more)
+        if cached.get("version") == 2 and not cached.get("truncated"):
             return cached
     words: dict[str, dict] = {}
     forms: set[str] = set()

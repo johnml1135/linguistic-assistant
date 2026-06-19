@@ -149,6 +149,67 @@ def build_reference_model(pair: str, *, n_roots: int = 4000, n_affixes: int = 80
     return LangModel(code=pair, lexicon=lex, affixes=aff)
 
 
+def build_class_model(pair: str, *, restricted: bool = True) -> LangModel:
+    """A CLASS-DRIVEN grammar (generative, not memorised): roots are the induced per-lemma STEMS, affixes
+    are the inflection classes' stem-relative suffixes, and forms the class CAN'T generate (suppletive
+    stems, derivations) are added as stem allomorphs (LibLCM MoStemAllomorph). With ``restricted`` each
+    class is encoded as a part of speech (via ``pos_aware``) so an -ar suffix can't attach to an -ir stem.
+    HC then *generates* `abrió` = stem `abri` + class suffix `ó`, and only memorises the true exceptions."""
+    gold = load_gold(pair)
+    glosses = gold.get("glosses", {})
+    freqs = _scripture_freqs(pair)
+    # class -> its (kind, affix-form) set; affixes carry the class as req_pos so they only attach there
+    class_aff: dict[str, list[tuple[str, str]]] = {}
+    affixes: list[Affix] = []
+    for c in gold.get("inflection_classes", []):
+        cid = c["class_id"]
+        forms = []
+        for r in c.get("rules", []):
+            # one affix per cell (the modal stem-relative suffix). Emitting all variants explodes the
+            # affix count and HC's search (Spanish went 206→669 affixes → timeouts → recall collapse).
+            if r["kind"] == "S" and r.get("suffix"):
+                forms.append(("suffix", r["suffix"], r["features"]))
+            elif r["kind"] == "P" and r.get("add"):
+                forms.append(("prefix", r["add"], r["features"]))
+        class_aff[cid] = [(k, f) for k, f, _ in forms]
+        for k, f, feat in forms:
+            # gloss = the FULL feature cell (canon key, no spaces → one HC gloss token) so the analysis
+            # carries the inflection features, not just the lemma — lets us score feature recall.
+            affixes.append(Affix(form=f, gloss=(feat or "BASE"), kind=k, req_pos=(cid if restricted else "")))
+    for form, kind, gl in EXTRA_AFFIXES.get(pair, []):
+        affixes.append(Affix(form=form, gloss=gl, kind=kind))  # req_pos="" → attaches anywhere
+
+    from golden.reference.inflection import canon
+    wf_by_lemma: dict[str, dict[str, dict]] = {}
+    for w in gold.get("wordforms", []):
+        wf_by_lemma.setdefault(w["lemma"], {})[w["surface"]] = w.get("features") or {}
+
+    lex = []
+    for e in gold.get("lex_entries", []):
+        lm = e["word"]
+        stem = e.get("stem") or lm
+        cid = e.get("inflection_class")
+        lemma_gloss = _slug(glosses.get(lm) or lm)
+        sufs = class_aff.get(cid, [])
+        generable = {stem} | {stem + f for k, f in sufs if k == "suffix"} | {f + stem for k, f in sufs if k == "prefix"}
+        forms = wf_by_lemma.get(lm, {})
+        # the stem entry (generates the regular paradigm via class affixes); citation form is an allomorph
+        lex.append(LexEntry(form=stem, gloss=lemma_gloss, pos=(cid if (restricted and cid) else "root"),
+                            count=freqs.get(lm, 0), allomorphs=((lm,) if lm != stem and lm not in generable else ())))
+        # standalone entry glossed lemma|features (an irregularly-inflected wholeform): carries lemma AND
+        # cell, no extra affixes. Emitted for every override cell (authoritative) — even one the rules
+        # could otherwise make with the WRONG cell (e.g. está = est+á) — plus any non-generable wordform.
+        wholes: dict[str, str] = {o["surface"]: o["features"] for o in e.get("irregular", []) if o.get("surface")}
+        for surface, feats in forms.items():
+            if surface != stem and surface not in generable:
+                wholes.setdefault(surface, canon(feats))
+        for surface, cell in wholes.items():
+            if surface and surface != stem:
+                lex.append(LexEntry(form=surface, gloss=f"{lemma_gloss}|{cell}", pos="irregular",
+                                    count=freqs.get(surface, 0)))
+    return LangModel(code=pair, lexicon=lex, affixes=affixes)
+
+
 def coverage(pair: str, *, sample: int = 250, n_roots: int = 4000, n_affixes: int = 80) -> dict:
     model = build_reference_model(pair, n_roots=n_roots, n_affixes=n_affixes)
     gold = load_gold(pair)

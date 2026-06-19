@@ -16,6 +16,9 @@
   "glosses": 2542,
   "key_terms": 953,
   "homographs": 766,
+  "inflection_classes": 0,
+  "lemmas_classed": 0,
+  "lemmas_regular": 0,
   "scripture_vocab": 8844,
   "scripture_attested": 4029,
   "scripture_coverage": 0.4556,
@@ -41,6 +44,7 @@
  "files": [
   "lexicon.jsonl",
   "lexicon.lift",
+  "inflection_classes.jsonl",
   "wordforms.jsonl",
   "grammar_rules.jsonl",
   "phonology.jsonl",
@@ -50,34 +54,49 @@
  ],
  "pos_conflicts_sample": [
   [
-   "may",
-   "Verb",
-   "Particle"
-  ],
-  [
    "sarili",
    "Pronoun",
    "Adjective"
   ],
   [
-   "nila",
+   "bukas",
+   "Adverb",
+   "Adjective"
+  ],
+  [
+   "niya",
    "Pronoun",
    "Determiner"
   ],
   [
-   "tulad",
+   "kasi",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "nakaraan",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "opisyal",
    "Adjective",
    "Noun"
   ],
   [
-   "tuloy",
-   "Adverb",
+   "salamat",
+   "Noun",
+   "Interjection"
+  ],
+  [
+   "puti",
+   "Adjective",
    "Noun"
   ],
   [
-   "ang",
-   "Adposition",
-   "Particle"
+   "gusto",
+   "Verb",
+   "Noun"
   ],
   [
    "norte",
@@ -85,9 +104,74 @@
    "Noun"
   ],
   [
-   "mga",
-   "Determiner",
+   "tay",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "iyan",
+   "Pronoun",
+   "Adjective"
+  ],
+  [
+   "bango",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "akin",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "taal",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "asul",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "hilaga",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "bikol",
+   "Noun",
+   "Proper noun"
+  ],
+  [
+   "paborito",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "karaniwan",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "may",
+   "Verb",
    "Particle"
+  ],
+  [
+   "daan",
+   "Numeral",
+   "Noun"
+  ],
+  [
+   "kailangan",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "kambal",
+   "Noun",
+   "Adjective"
   ],
   [
    "bigla",
@@ -95,7 +179,42 @@
    "Adjective"
   ],
   [
-   "kilala",
+   "hindi",
+   "Particle",
+   "Adverb"
+  ],
+  [
+   "bunso",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "huwag",
+   "Auxiliary verb",
+   "Verb"
+  ],
+  [
+   "luwang",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "sandali",
+   "Adverb",
+   "Noun"
+  ],
+  [
+   "dapat",
+   "Adverb",
+   "Verb"
+  ],
+  [
+   "tuwing",
+   "Subordinating connective",
+   "Adverb"
+  ],
+  [
+   "sabi",
    "Verb",
    "Noun"
   ],
@@ -105,64 +224,14 @@
    "Noun"
   ],
   [
-   "iyan",
-   "Pronoun",
-   "Adjective"
-  ],
-  [
-   "sana",
-   "Particle",
-   "Adverb"
-  ],
-  [
-   "nito",
-   "Pronoun",
-   "Determiner"
-  ],
-  [
-   "marami",
-   "Determiner",
-   "Adjective"
-  ],
-  [
-   "inyo",
-   "Pronoun",
-   "Determiner"
-  ],
-  [
-   "hindi",
-   "Particle",
-   "Adverb"
-  ],
-  [
-   "si",
-   "Adposition",
-   "Determiner"
-  ],
-  [
-   "sandali",
-   "Adverb",
-   "Noun"
-  ],
-  [
-   "luwang",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "bang",
-   "Particle",
-   "Interjection"
-  ],
-  [
-   "wala",
+   "kilala",
    "Verb",
-   "Adjective"
+   "Noun"
   ],
   [
-   "ito",
+   "ninyo",
    "Pronoun",
-   "Adjective"
+   "Determiner"
   ],
   [
    "parang",
@@ -170,84 +239,19 @@
    "Noun"
   ],
   [
-   "tatay",
-   "Proper noun",
+   "kaya",
+   "Particle",
    "Noun"
   ],
   [
-   "kaniya",
-   "Pronoun",
-   "Determiner"
-  ],
-  [
-   "namin",
-   "Pronoun",
-   "Adjective"
-  ],
-  [
-   "bilang",
-   "Adposition",
-   "Noun"
-  ],
-  [
-   "kasi",
-   "Subordinating connective",
-   "Coordinating connective"
-  ],
-  [
-   "asul",
+   "iba",
    "Adjective",
    "Noun"
   ],
   [
-   "sabado",
-   "Proper noun",
+   "nga",
+   "Adverb",
    "Noun"
-  ],
-  [
-   "nang",
-   "Subordinating connective",
-   "Coordinating connective"
-  ],
-  [
-   "dahil",
-   "Adposition",
-   "Coordinating connective"
-  ],
-  [
-   "bango",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "tay",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "tanong",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "bikol",
-   "Noun",
-   "Proper noun"
-  ],
-  [
-   "sigaw",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "ka",
-   "Pronoun",
-   "Noun"
-  ],
-  [
-   "paborito",
-   "Noun",
-   "Adjective"
   ]
  ],
  "scripture_uncovered_sample": [

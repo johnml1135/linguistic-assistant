@@ -9,3 +9,4 @@
 {"type": "natural_class", "id": "high", "features": {"voc": "vow", "hi": "hi"}}
 {"type": "rule", "id": "spa_plural_epenthesis", "kind": "epenthesis", "status": "staged", "description": "plural -s → -es after a consonant-final stem (luz→luces, mes→meses): insert e before the -s suffix when the stem ends in a consonant.", "mechanism": "PhonologicalRule, InsertSegments e / [cons] __ s#", "witnesses": ["luces", "meses", "voces"]}
 {"type": "meta", "vowel_harmony": false, "note": "Spanish has no vowel harmony; the inventory is for natural-class conditioning only."}
+{"type": "meta", "rule_emission": "live+verified", "note": "golden/hc.py build_grammar_xml(phon_rules=…) emits loadable <PhonologicalRule>; alpha-variable harmony verified. Language rules above are staged — flip status to active in active_phon_rules() to use. Suppletion handled by allomorphy."}
