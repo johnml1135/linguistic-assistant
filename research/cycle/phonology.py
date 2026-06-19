@@ -1,15 +1,20 @@
 """Phase 1 of the phonology-induction loop: collapse vowel-harmony allomorph families.
 
-The TDD cycle (`cycle/tdd.py`) lists harmony allomorphs as separate affixes (`lar`/`ler`,
-`nın`/`nin`/`nun`/`nün`) and reports the redundancy as `enumeration_debt`. This module turns that
-debt into the optimization target: from a harmony family it proposes a single **archiphoneme** affix
-(`lAr`, `nIn`) plus the conditioning **natural class**, then *generates* the surface allomorphs from
-the rule. A family is collapsible only when the rule regenerates every observed allomorph (coverage
+The TDD cycle (`cycle/tdd.py`) lists harmony allomorphs as separate affixes (Swahili applicative
+`isha`/`esha`, stative `ika`/`eka`) and reports the redundancy as `enumeration_debt`. This module turns
+that debt into the optimization target: from a harmony family it proposes a single **archiphoneme**
+affix (`Esha`, `Eka`) plus the conditioning **natural class**, then *generates* the surface allomorphs
+from the rule. A family is collapsible only when the rule regenerates every observed allomorph (coverage
 holds) and the affix count drops (Occam) — the same engine+oracle discipline as the HC gate, run here
 with the harmony-rule expander as the offline oracle.
 
 Text-only: no audio and no `hc.exe` are required to propose or verify a collapse. The audio add-on can
 later *confirm* a family's conditioning feature, but it is never needed to run this step.
+
+Harmony classes are language-specific data; a target with no entry simply skips the collapse (the cycle
+calls `HARMONY_CLASSES.get(pair, {})`). Swahili (Bantu) is the one current target with classic vowel
+harmony — height harmony in the verb extensions; Indonesian/Tagalog/Spanish morphophonology is governed
+by other rules (e.g. Indonesian `meN-` nasal place assimilation) added later.
 """
 
 from __future__ import annotations
@@ -17,18 +22,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 # Archiphoneme natural classes per language: symbol -> the surface vowels it ranges over.
-# 'A' = low/unrounded 2-way backness alternation; 'I' = high 4-way (backness x rounding).
 HARMONY_CLASSES: dict[str, dict[str, set[str]]] = {
-    "tur": {
-        "A": set("ae"),
-        "I": set("ıiuü"),
-    },
-    "hun": {
-        # Hungarian back/front low alternation (-nak/-nek, -ban/-ben, -hoz/-hez ...).
-        "A": set("ae"),
-        # High/closed alternation (-ig stays, but -tól/-től uses the long-mid set below).
-        "I": set("ií"),
-        "O": set("óő"),
+    "swh": {
+        # Swahili verb-extension HEIGHT harmony: the extension vowel is mid (-e-) after a mid stem
+        # vowel (e, o) and high (-i-/-u-) elsewhere — applicative -i-/-e-, causative -ish-/-esh-,
+        # stative -ik-/-ek- (front pair); reversive -u-/-o- (back pair).
+        "E": set("ie"),
+        "O": set("uo"),
     },
 }
 
@@ -152,3 +152,38 @@ def collapse_families(
     }
     report.debt_after = enumeration_debt(residual)
     return report
+
+
+# ── Non-harmony morphophonology: rule candidates beyond vowel harmony ────────────────────────────
+# These detectors surface *language-specific* phonological-rule proposals from the induced affix set —
+# one morpheme + a rule, instead of several listed allomorphs. They report a proposal (archiphoneme,
+# rule type, conditioning) for review/emission; the HC emission of nasal-assimilation / epenthesis
+# rules is the follow-on to the proven alpha-variable harmony rule (hc_phonology). See
+# generalize-not-enumerate (the same collapse judgment, on consonants/epenthesis rather than vowels).
+
+# Indonesian active/derivational nasal prefixes: a base + a homorganic nasal that assimilates to the
+# following root consonant (meN-: me/men/mem/meng/meny; peN- likewise).
+_NASAL_BASES = ("me", "pe")
+_NASAL_TAILS = ("", "n", "m", "ng", "ny", "nge")
+
+
+def propose_morphophon_rules(prefixes: set[str], suffixes: set[str]) -> list[dict]:
+    """Surface non-harmony rule candidates: meN-/peN- nasal place assimilation, -s/-es epenthesis."""
+    out: list[dict] = []
+    for base in _NASAL_BASES:
+        members = sorted(f for f in prefixes if f[:len(base)] == base and f[len(base):] in _NASAL_TAILS)
+        if len(members) >= 3:  # base + ≥2 nasal variants = a meN-style paradigm
+            out.append({
+                "rule": "nasal_place_assimilation",
+                "archiphoneme": f"{base}N-",
+                "members": members,
+                "conditioning": "the prefix-final nasal N takes the place of the following root-initial consonant",
+            })
+    if {"s", "es"} <= suffixes:  # Spanish plural: -s after V, -es after C
+        out.append({
+            "rule": "epenthesis",
+            "archiphoneme": "-(e)s",
+            "members": ["s", "es"],
+            "conditioning": "epenthetic -e- inserted before -s when the stem ends in a consonant",
+        })
+    return out

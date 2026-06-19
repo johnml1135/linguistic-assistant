@@ -62,6 +62,18 @@ proposes, the golden set disposes.
 - **Provenance drift.** A proposal without its motivating data points can't be re-evaluated when the
   corpus grows; always attach provenance.
 
+## From practice (morpheme analysis → reusable scenarios)
+
+`research/cycle/llm_propose.py` operationalizes this skill on the cycle's hardest residue: *what is this
+affix?* It curates the evidence (the affix's side, slot, attaching POS, the English its morpheme aligned
+to via `morph_align.py`, and real examples) and asks a model for a structured analysis (label, category,
+gloss, confidence, rationale). Two reusable properties matter: the model is **swappable by config** (Opus
+4.8 now; Qwen 3.6 / Gemma 4 later, same prompt + schema via the `harness/` endpoints; a deterministic
+heuristic is the offline baseline), and **every call is banked as a self-contained scenario** (evidence
+→ question → answer in `out/<pair>_scenarios.jsonl`). The curation — the hard linguistic context-building
+— is model-independent, so the scenarios become a validated suite for testing small local models. The
+gate is unchanged: a proposal is only "done" at [[read-the-gate]] / [[assess-grammar]].
+
 ## Training basis
 
 Nida (1949) — recurring partials → complementary distribution → phonological-conditioning test; Payne

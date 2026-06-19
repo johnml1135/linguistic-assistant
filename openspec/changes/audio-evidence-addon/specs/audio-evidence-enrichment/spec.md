@@ -1,17 +1,18 @@
 ## ADDED Requirements
 
 ### Requirement: Audio enrichment is optional and scope-limited
-The system SHALL provide audio enrichment only as an explicit add-on over existing Turkish and
-Hungarian pair data. It MUST NOT run implicitly during the base text build, and it MUST complete with
-status output rather than fail when no local audio assets or no Allosaurus runtime are available.
+The system SHALL provide audio enrichment only as an explicit add-on over existing pair data for the
+four targets (Swahili, Indonesian, Tagalog, Spanish). It MUST NOT run implicitly during the base text
+build, and it MUST complete with status output rather than fail when no local audio assets or no
+Allosaurus runtime are available.
 
 #### Scenario: No local audio is available
-- **WHEN** an operator runs audio enrichment for `tur` or `hun` and the catalog has no local audio
-  asset for the requested unit
+- **WHEN** an operator runs audio enrichment for one of `swh`, `ind`, `tgl`, or `spa` and the catalog
+  has no local audio asset for the requested unit
 - **THEN** the workflow completes successfully and records that audio was unavailable for that unit
 
 #### Scenario: Unsupported target is requested
-- **WHEN** an operator runs audio enrichment for a target other than `tur` or `hun`
+- **WHEN** an operator runs audio enrichment for a target other than `swh`, `ind`, `tgl`, or `spa`
 - **THEN** the workflow rejects the request with a clear scope error
 
 ### Requirement: Raw phone evidence is provenance-bearing and non-authoritative

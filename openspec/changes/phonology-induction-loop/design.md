@@ -1,16 +1,16 @@
 ## Context
 
 `research/cycle/tdd.py` induces a Hermit Crab grammar from eBible wordforms under a coverage gate, and
-now reports `harmony_families` + `enumeration_debt`: at the 10-minute ceiling about half the kept
-affixes are vowel-harmony allomorphs (Turkish 63/124, Hungarian 60/120). The cycle cannot collapse them
-because the auto-generated HC scaffold has no phonology — it assigns one symbolic feature per
-orthographic character and uses a single "any" natural class, so `-lar` and `-ler` are unrelated
-strings to it, not one morpheme `-lAr` whose vowel is fixed by backness harmony.
+now reports `harmony_families` + `enumeration_debt`: a sizable fraction of the kept affixes are harmony
+allomorphs. The cycle cannot collapse them because the auto-generated HC scaffold has no phonology — it
+assigns one symbolic feature per orthographic character and uses a single "any" natural class, so (for
+Swahili height harmony) `-ish-` and `-esh-` are unrelated strings to it, not one morpheme `-Vsh-` whose
+vowel is fixed by vowel-height harmony.
 
 The `audio-evidence-addon` (already landed) yields Allosaurus phone strings as review-only evidence for
-opt-in Turkish/Hungarian sample words, but nothing consumes them: `reports.json` is a sink. Phones are
-precisely the witness that orthographic distribution lacks — they expose the phonetic feature that
-conditions a harmony alternation.
+opt-in sample words on the four targets (Swahili/Indonesian/Tagalog/Spanish), but nothing consumes them:
+`reports.json` is a sink. Phones are precisely the witness that orthographic distribution lacks — they
+expose the phonetic feature that conditions a harmony alternation.
 
 The repo's `pronunciation` primitive already fixes the doctrine: pronunciation/phones are *surface*
 data, distinct from the phonemic underlying form HC parses; useful as a consistency check and
@@ -27,7 +27,7 @@ documentation, never as parser input. This change operationalizes that doctrine 
 - Keep audio optional and non-authoritative; keep all lexicon/feature changes human-gated.
 
 **Non-Goals:**
-- Finnish support; a first-class `audio/*` schema or change-set tier.
+- A first-class `audio/*` schema or change-set tier.
 - Audio as parser input, or automatic (unreviewed) HC feature / lexicon mutation.
 - A full phoneme inventory hand-authored up front — the loop induces and verifies incrementally.
 - Replacing the text/parallel pipeline or the existing coverage gate.
@@ -117,7 +117,11 @@ working.
 ## Open Questions
 
 - Archiphoneme representation in the HC scaffold: an underspecified segment vs a feature variable on the
-  affix — which round-trips most reliably through `hc.exe`?
+  affix — which round-trips most reliably through `hc.exe`? **Answered:** an **underspecified segment**
+  (vowel left unspecified for the harmonizing feature) + HC's native **alpha-variable** rule
+  (`VariableFeature`/`AlphaVariable`) round-trips for both 2-way (`-lAr`) and 4-way (`-In`) harmony
+  — verified in `research/cycle/hc_phonology.py` + `tests_hc.py`. Consonants need a unique identity
+  feature (`cid`) so HC renders distinct morph forms.
 - How much of the phoneme inventory to fix a priori per language vs induce from alternation.
 - Whether to introduce a `morphophonology/*` change-set tier now for induced rules, or keep rules
   internal to the research scaffold until the format stabilizes (parallels the add-on's deferral).

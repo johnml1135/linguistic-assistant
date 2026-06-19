@@ -9,10 +9,10 @@ preview playback.
 
 ## Scope
 
-- Targets: **Turkish** (`tur`) and **Hungarian** (`hun`) only
+- Targets: the four pairs (**Swahili** `swh`, **Indonesian** `ind`, **Tagalog** `tgl`, **Spanish** `spa`) only
 - Purpose: enrich lexical work with opt-in sample words, pronunciation evidence, conservative
   orthography / misspelling alerts, and triangulation summaries
-- Non-goals: Finnish, automatic lexicon mutation, direct HC phoneme-feature updates, mandatory audio
+- Non-goals: automatic lexicon mutation, direct HC phoneme-feature updates, mandatory audio
   processing during the base eBible build
 
 ## Install
@@ -33,8 +33,8 @@ was unavailable.
 ```json
 {
   "samples": [
-    {"target_key": "tur", "word": "tanrı", "gloss": "god"},
-    {"target_key": "hun", "word": "isten", "note": "track this through enrichment"}
+    {"target_key": "swh", "word": "mungu", "gloss": "god"},
+    {"target_key": "ind", "word": "allah", "note": "track this through enrichment"}
   ]
 }
 ```
@@ -45,11 +45,11 @@ was unavailable.
 {
   "entries": [
     {
-      "target_key": "tur",
-      "source_id": "ytc-local",
-      "local_path": "C:/audio/tur/mat1.wav",
+      "target_key": "swh",
+      "source_id": "ulb-local",
+      "local_path": "C:/audio/swh/mat1.wav",
       "text_anchor": "MAT 1:1",
-      "word": "tanrı",
+      "word": "mungu",
       "segmentation": "chapter",
       "license_note": "operator supplied"
     }
@@ -68,23 +68,23 @@ expects local 16-bit PCM WAV assets.
 ```bash
 cd research
 python audio/run.py \
-  --pair-dir golden/_sources/ebible/eng-engwebp__tur-turytc \
-  --target tur \
+  --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb \
+  --target swh \
   --samples path/to/samples.json \
   --catalog path/to/catalog.json \
   --timestamps
 
 python -m audio.candidates locate \
-  --pair-dir golden/_sources/ebible/eng-engwebp__tur-turytc \
-  --target tur \
+  --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb \
+  --target swh \
   --samples path/to/samples.json \
   --catalog path/to/catalog.json \
-  --stem tanrı \
+  --stem mungu \
   --phone-cues
 
 python -m audio.candidates play \
-  --artifact golden/_sources/ebible/eng-engwebp__tur-turytc/audio/word_occurrences.json \
-  --occurrence tanrı:ytc-local:1:1100
+  --artifact golden/_sources/ebible/eng-engwebp__swh-swhulb/audio/word_occurrences.json \
+  --occurrence mungu:ulb-local:1:1100
 ```
 
 ## Outputs
@@ -128,6 +128,34 @@ Phases 3–4 of the `phonology-induction-loop` change — the deliberately-last,
   metric + threshold; a generated surface that diverges from observed phones beyond the threshold is a
   review-only consistency flag. Producing the generated surface needs the `hc.exe` generate path; the
   comparison and metric are pure and offline-tested.
+
+## Audio source audit (`sources.py` + `sources/`)
+
+Audio is download-gated. `audio/sources/audio_sources.json` is a committed manifest of candidate
+audio sources for the current targets; `audio/sources.py` audits it and **never downloads**. A
+source is download-eligible only when it records the *same* translation as the text
+(`matches_text_translation`), is `music_free`, has an acceptable `license`, and is `approved`. When
+nothing qualifies, the audit surfaces `audio/sources/alternatives.json` — a curated shortlist of
+other language + open text + music-free audio combinations — instead of substituting a near-match.
+
+Today all four targets have a candidate recording but none is yet `approved`: `swh-swhulb`,
+`ind-indags`, and `tgl-tglulb` rely on FCBH Non-Drama narration, and `spa-spaRV1909` on public-domain
+RV1909 narration. All four sit at status `needs_verification` (exact text match + license must be
+confirmed before download). `spa` is the safest to approve first because its text is public domain.
+
+```bash
+cd research
+python -m audio.sources            # human-readable audit (approved sources, else alternatives)
+python -m audio.sources --json     # machine-readable report
+```
+
+PowerShell helpers (Windows):
+
+```powershell
+pwsh -File scripts/audio-download.ps1            # dry run; prints plan or alternatives
+pwsh -File scripts/audio-download.ps1 -Execute   # download approved sources into research/.cache/audio/ (gitignored)
+pwsh -File scripts/audio-process.ps1             # transcode cached audio to 16 kHz mono WAV (needs ffmpeg)
+```
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ## Context
 
-The current research pipeline builds Turkish and Hungarian NT pair data from verse-aligned text and
-derives gloss and sense-link candidates from that text-first substrate. The repo's own linguistics
+The current research pipeline builds Swahili, Indonesian, Tagalog, and Spanish NT pair data from
+verse-aligned text and derives gloss and sense-link candidates from that text-first substrate. The repo's own linguistics
 docs already distinguish pronunciation/audio from the phoneme inventory Hermit Crab parses over:
 audio is useful evidence and documentation, but it is not parser input and it does not define HC
 feature bundles by itself.
@@ -10,13 +10,14 @@ That boundary matters here. Audio availability is uneven, licensing differs by s
 sources are book- or chapter-level rather than verse-level. At the same time, optional audio evidence
 can still improve lexical work by enriching pronunciations, surfacing likely misspellings, and
 triangulating text evidence against observed phone strings. The implementation therefore belongs in the
-`research/` layer as an add-on that consumes already-built Turkish/Hungarian pair data and writes
+`research/` layer as an add-on that consumes already-built pair data for the four targets and writes
 derived artifacts back alongside it.
 
 ## Goals / Non-Goals
 
 **Goals:**
-- Add an explicit, opt-in audio enrichment workflow for the existing Turkish/Hungarian research data.
+- Add an explicit, opt-in audio enrichment workflow for the existing four-target research data
+  (Swahili/Indonesian/Tagalog/Spanish).
 - Preserve conservative semantics: no assumption that local audio exists, no requirement that
   Allosaurus is installed, and no hard dependency from the text pipeline onto audio tooling.
 - Let users nominate sample words and keep those words in the built data even before any audio exists.
@@ -24,7 +25,6 @@ derived artifacts back alongside it.
   pronunciation candidates, and orthography / misspelling alerts.
 
 **Non-Goals:**
-- Finnish support.
 - A new first-class `audio/*` schema or change-set tier.
 - Direct HC phoneme or feature updates from Allosaurus output.
 - Mandatory audio processing during the normal eBible text build.

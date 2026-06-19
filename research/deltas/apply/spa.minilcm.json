@@ -1,0 +1,2259 @@
+{
+  "pair": "spa",
+  "entries": [
+    {
+      "id": "entry:spa:abraham",
+      "lexemeForm": {
+        "spa": "abraham"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "abraham"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:contra",
+      "lexemeForm": {
+        "spa": "contra"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "against"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:todos",
+      "lexemeForm": {
+        "spa": "todos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "all"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:amén",
+      "lexemeForm": {
+        "spa": "amén"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "amen"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ángel",
+      "lexemeForm": {
+        "spa": "ángel"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "angel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ángeles",
+      "lexemeForm": {
+        "spa": "ángeles"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "angels"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:respondiendo",
+      "lexemeForm": {
+        "spa": "respondiendo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "answered"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:apóstoles",
+      "lexemeForm": {
+        "spa": "apóstoles"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "apostles"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:son",
+      "lexemeForm": {
+        "spa": "son"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "are"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:iglesia",
+      "lexemeForm": {
+        "spa": "iglesia"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "assembly"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:engendró",
+      "lexemeForm": {
+        "spa": "engendró"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "became"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:comenzó",
+      "lexemeForm": {
+        "spa": "comenzó"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "began"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:principio",
+      "lexemeForm": {
+        "spa": "principio"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "beginning"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sangre",
+      "lexemeForm": {
+        "spa": "sangre"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "blood"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:barco",
+      "lexemeForm": {
+        "spa": "barco"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "boat"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cuerpo",
+      "lexemeForm": {
+        "spa": "cuerpo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "body"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pan",
+      "lexemeForm": {
+        "spa": "pan"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "bread"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:hermano",
+      "lexemeForm": {
+        "spa": "hermano"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "brother"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:hermanos",
+      "lexemeForm": {
+        "spa": "hermanos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "brothers"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:hijos",
+      "lexemeForm": {
+        "spa": "hijos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "children"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cristo",
+      "lexemeForm": {
+        "spa": "cristo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "christ"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ciudad",
+      "lexemeForm": {
+        "spa": "ciudad"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "city"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:tinieblas",
+      "lexemeForm": {
+        "spa": "tinieblas"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "darkness"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:david",
+      "lexemeForm": {
+        "spa": "david"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "david"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:día",
+      "lexemeForm": {
+        "spa": "día"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "day"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:días",
+      "lexemeForm": {
+        "spa": "días"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "days"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:muertos",
+      "lexemeForm": {
+        "spa": "muertos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "dead"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:muerte",
+      "lexemeForm": {
+        "spa": "muerte"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "death"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:demonios",
+      "lexemeForm": {
+        "spa": "demonios"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "demons"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:discípulos",
+      "lexemeForm": {
+        "spa": "discípulos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "disciples"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:comer",
+      "lexemeForm": {
+        "spa": "comer"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "eat"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ancianos",
+      "lexemeForm": {
+        "spa": "ancianos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "elders"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:eterna",
+      "lexemeForm": {
+        "spa": "eterna"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "eternal"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ojos",
+      "lexemeForm": {
+        "spa": "ojos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "eyes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fe",
+      "lexemeForm": {
+        "spa": "fe"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "faith"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fiel",
+      "lexemeForm": {
+        "spa": "fiel"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "faithful"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:padre",
+      "lexemeForm": {
+        "spa": "padre"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "father"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pies",
+      "lexemeForm": {
+        "spa": "pies"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "feet"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fuego",
+      "lexemeForm": {
+        "spa": "fuego"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "fire"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:primero",
+      "lexemeForm": {
+        "spa": "primero"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "first"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cinco",
+      "lexemeForm": {
+        "spa": "cinco"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "five"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:carne",
+      "lexemeForm": {
+        "spa": "carne"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "flesh"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cuatro",
+      "lexemeForm": {
+        "spa": "cuatro"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "four"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:desde",
+      "lexemeForm": {
+        "spa": "desde"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "from"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fruto",
+      "lexemeForm": {
+        "spa": "fruto"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "fruit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:galilea",
+      "lexemeForm": {
+        "spa": "galilea"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "galilee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:don",
+      "lexemeForm": {
+        "spa": "don"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "gift"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:gloria",
+      "lexemeForm": {
+        "spa": "gloria"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "glory"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:dios",
+      "lexemeForm": {
+        "spa": "dios"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "god"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:bien",
+      "lexemeForm": {
+        "spa": "bien"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "good"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:gracia",
+      "lexemeForm": {
+        "spa": "gracia"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "grace"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:manos",
+      "lexemeForm": {
+        "spa": "manos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "hands"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:han",
+      "lexemeForm": {
+        "spa": "han"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "have"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cabeza",
+      "lexemeForm": {
+        "spa": "cabeza"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "head"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:corazón",
+      "lexemeForm": {
+        "spa": "corazón"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "heart"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:corazones",
+      "lexemeForm": {
+        "spa": "corazones"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "hearts"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:elí",
+      "lexemeForm": {
+        "spa": "elí"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "heli"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:herodes",
+      "lexemeForm": {
+        "spa": "herodes"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "herod"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:santo",
+      "lexemeForm": {
+        "spa": "santo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "holy"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:honra",
+      "lexemeForm": {
+        "spa": "honra"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "honor"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:esperanza",
+      "lexemeForm": {
+        "spa": "esperanza"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "hope"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:casa",
+      "lexemeForm": {
+        "spa": "casa"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "house"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cómo",
+      "lexemeForm": {
+        "spa": "cómo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "how"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:marido",
+      "lexemeForm": {
+        "spa": "marido"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "husband"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:yo",
+      "lexemeForm": {
+        "spa": "yo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "i"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:si",
+      "lexemeForm": {
+        "spa": "si"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "if"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:es",
+      "lexemeForm": {
+        "spa": "es"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "is"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:israel",
+      "lexemeForm": {
+        "spa": "israel"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "israel"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:jacob",
+      "lexemeForm": {
+        "spa": "jacob"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "jacob"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:jacobo",
+      "lexemeForm": {
+        "spa": "jacobo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "james"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:jerusalem",
+      "lexemeForm": {
+        "spa": "jerusalem"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "jerusalem"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:jesús",
+      "lexemeForm": {
+        "spa": "jesús"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "jesus"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:judío",
+      "lexemeForm": {
+        "spa": "judío"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "jew"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:judíos",
+      "lexemeForm": {
+        "spa": "judíos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "jews"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:juan",
+      "lexemeForm": {
+        "spa": "juan"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "john"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:gozo",
+      "lexemeForm": {
+        "spa": "gozo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "joy"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:judea",
+      "lexemeForm": {
+        "spa": "judea"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "judea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:rey",
+      "lexemeForm": {
+        "spa": "rey"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "king"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:reino",
+      "lexemeForm": {
+        "spa": "reino"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "kingdom"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sabéis",
+      "lexemeForm": {
+        "spa": "sabéis"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "know"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ley",
+      "lexemeForm": {
+        "spa": "ley"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "law"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pon",
+      "lexemeForm": {
+        "spa": "pon"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "lay"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:vida",
+      "lexemeForm": {
+        "spa": "vida"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "life"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:luz",
+      "lexemeForm": {
+        "spa": "luz"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "light"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:señor",
+      "lexemeForm": {
+        "spa": "señor"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "lord"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:amor",
+      "lexemeForm": {
+        "spa": "amor"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "love"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:hombre",
+      "lexemeForm": {
+        "spa": "hombre"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "man"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:muchos",
+      "lexemeForm": {
+        "spa": "muchos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "many"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:maría",
+      "lexemeForm": {
+        "spa": "maría"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "mary"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:me",
+      "lexemeForm": {
+        "spa": "me"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "me"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:hombres",
+      "lexemeForm": {
+        "spa": "hombres"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "men"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:mes",
+      "lexemeForm": {
+        "spa": "mes"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "month"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:moisés",
+      "lexemeForm": {
+        "spa": "moisés"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "moses"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:madre",
+      "lexemeForm": {
+        "spa": "madre"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "mother"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:boca",
+      "lexemeForm": {
+        "spa": "boca"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "mouth"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:mi",
+      "lexemeForm": {
+        "spa": "mi"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "my"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:nombre",
+      "lexemeForm": {
+        "spa": "nombre"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "name"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:nuevo",
+      "lexemeForm": {
+        "spa": "nuevo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "new"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ahora",
+      "lexemeForm": {
+        "spa": "ahora"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "now"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:nuestro",
+      "lexemeForm": {
+        "spa": "nuestro"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "our"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:par",
+      "lexemeForm": {
+        "spa": "par"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "pair"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pablo",
+      "lexemeForm": {
+        "spa": "pablo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "paul"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:paz",
+      "lexemeForm": {
+        "spa": "paz"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "peace"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pueblo",
+      "lexemeForm": {
+        "spa": "pueblo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "people"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pedro",
+      "lexemeForm": {
+        "spa": "pedro"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "peter"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fariseo",
+      "lexemeForm": {
+        "spa": "fariseo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "pharisee"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fariseos",
+      "lexemeForm": {
+        "spa": "fariseos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "pharisees"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pilato",
+      "lexemeForm": {
+        "spa": "pilato"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "pilate"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sacerdotes",
+      "lexemeForm": {
+        "spa": "sacerdotes"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "priests"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:promesa",
+      "lexemeForm": {
+        "spa": "promesa"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "promise"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:profeta",
+      "lexemeForm": {
+        "spa": "profeta"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "prophet"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:profetas",
+      "lexemeForm": {
+        "spa": "profetas"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "prophets"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:resurrección",
+      "lexemeForm": {
+        "spa": "resurrección"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "resurrection"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:justicia",
+      "lexemeForm": {
+        "spa": "justicia"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "righteousness"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sábado",
+      "lexemeForm": {
+        "spa": "sábado"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "sabbath"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:diciendo",
+      "lexemeForm": {
+        "spa": "diciendo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "saying"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:escribas",
+      "lexemeForm": {
+        "spa": "escribas"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "scribes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:mar",
+      "lexemeForm": {
+        "spa": "mar"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "sea"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:mira",
+      "lexemeForm": {
+        "spa": "mira"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "see"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:envió",
+      "lexemeForm": {
+        "spa": "envió"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "sent"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:siete",
+      "lexemeForm": {
+        "spa": "siete"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "seven"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:simón",
+      "lexemeForm": {
+        "spa": "simón"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "simon"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pecado",
+      "lexemeForm": {
+        "spa": "pecado"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "sin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:pecados",
+      "lexemeForm": {
+        "spa": "pecados"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "sins"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:algunos",
+      "lexemeForm": {
+        "spa": "algunos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "some"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:hijo",
+      "lexemeForm": {
+        "spa": "hijo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "son"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:espíritu",
+      "lexemeForm": {
+        "spa": "espíritu"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "spirit"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sol",
+      "lexemeForm": {
+        "spa": "sol"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "sun"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sinagoga",
+      "lexemeForm": {
+        "spa": "sinagoga"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "synagogue"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:templo",
+      "lexemeForm": {
+        "spa": "templo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "temple"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:la",
+      "lexemeForm": {
+        "spa": "la"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "the"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:allí",
+      "lexemeForm": {
+        "spa": "allí"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "there"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:estas",
+      "lexemeForm": {
+        "spa": "estas"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "these"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:lo",
+      "lexemeForm": {
+        "spa": "lo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "things"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:esto",
+      "lexemeForm": {
+        "spa": "esto"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "this"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:mil",
+      "lexemeForm": {
+        "spa": "mil"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "thousand"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:tres",
+      "lexemeForm": {
+        "spa": "tres"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "three"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:trono",
+      "lexemeForm": {
+        "spa": "trono"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "throne"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sepulcro",
+      "lexemeForm": {
+        "spa": "sepulcro"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "tomb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:tribu",
+      "lexemeForm": {
+        "spa": "tribu"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "tribe"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:doce",
+      "lexemeForm": {
+        "spa": "doce"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "twelve"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:dos",
+      "lexemeForm": {
+        "spa": "dos"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "two"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:debajo",
+      "lexemeForm": {
+        "spa": "debajo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "under"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:vid",
+      "lexemeForm": {
+        "spa": "vid"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "vine"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:voz",
+      "lexemeForm": {
+        "spa": "voz"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "voice"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:fué",
+      "lexemeForm": {
+        "spa": "fué"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "was"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:agua",
+      "lexemeForm": {
+        "spa": "agua"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "water"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:cuando",
+      "lexemeForm": {
+        "spa": "cuando"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "when"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:donde",
+      "lexemeForm": {
+        "spa": "donde"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "where"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:voluntad",
+      "lexemeForm": {
+        "spa": "voluntad"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "will"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:sabiduría",
+      "lexemeForm": {
+        "spa": "sabiduría"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "wisdom"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ay",
+      "lexemeForm": {
+        "spa": "ay"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "woe"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:palabra",
+      "lexemeForm": {
+        "spa": "palabra"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "word"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:palabras",
+      "lexemeForm": {
+        "spa": "palabras"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "words"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:obras",
+      "lexemeForm": {
+        "spa": "obras"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "works"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:mundo",
+      "lexemeForm": {
+        "spa": "mundo"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "world"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:ira",
+      "lexemeForm": {
+        "spa": "ira"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "wrath"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:año",
+      "lexemeForm": {
+        "spa": "año"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "year"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:años",
+      "lexemeForm": {
+        "spa": "años"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "years"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:vosotros",
+      "lexemeForm": {
+        "spa": "vosotros"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "you"
+          }
+        }
+      ]
+    },
+    {
+      "id": "entry:spa:tu",
+      "lexemeForm": {
+        "spa": "tu"
+      },
+      "partOfSpeech": null,
+      "senses": [
+        {
+          "gloss": {
+            "en": "your"
+          }
+        }
+      ]
+    }
+  ]
+}

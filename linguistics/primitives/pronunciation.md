@@ -45,8 +45,9 @@ phonetic transcription or audio. It is documentation. That said, a phonetic `For
 pronunciation, the [[phonological-rule]]s or [[phoneme]] inventory may be wrong.
 
 In this repo's research layer, optional audio tooling may enrich pronunciation evidence for selected
-Turkish/Hungarian sample words, but it stays an add-on: audio never becomes first-class parser input,
-and phone recognition output is reviewable evidence rather than an automatic phoneme edit.
+Swahili/Indonesian/Tagalog/Spanish sample words, but it stays an add-on: audio never becomes
+first-class parser input, and phone recognition output is reviewable evidence rather than an automatic
+phoneme edit.
 
 ## In our change-sets
 

@@ -1,5 +1,5 @@
 """Offline smoke tests for word-gloss alignment. Run: `python research/align/tests_smoke.py`
-(also pytest-discoverable). No machine.py / eflomal / network needed — uses the co-occurrence backend.
+(also pytest-discoverable). No machine.py / network needed — uses the co-occurrence backend.
 """
 
 from __future__ import annotations
@@ -31,9 +31,9 @@ def test_alignment_is_deterministic():
 
 
 def test_auto_falls_back_to_cooccur_offline():
-    # No eflomal/THOT installed in CI → auto must fall back, not crash.
+    # No THOT installed in CI → auto must fall back, not crash.
     _table, used = align(FIXTURE_ROWS, backend="auto")
-    assert used in {"eflomal", "thot", "cooccur"}
+    assert used in {"hmm", "cooccur"}
 
 
 def test_gloss_ops_validate_as_bilingual_change_set():

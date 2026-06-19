@@ -15,28 +15,29 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-# Harmony-relevant vowels → distinctive features. Covers Turkish/Hungarian orthography plus the IPA
-# phones Allosaurus is likely to emit for them. Consonants are intentionally absent (no harmony role).
+# Harmony-relevant vowels → distinctive features (review-only). The current targets are Latin-script
+# five-vowel systems (Swahili / Indonesian / Tagalog) plus Spanish (accented vowels); the IPA rows
+# cover what Allosaurus is likely to emit. Swahili height harmony keys on `high`; backness/rounding
+# remain available for the other targets. Consonants are intentionally absent (no harmony role).
 _VOWEL_FEATURES: dict[str, dict[str, str]] = {
-    # orthography
+    # five-vowel orthography
     "a": {"back": "+", "round": "-", "high": "-"},
     "e": {"back": "-", "round": "-", "high": "-"},
-    "ı": {"back": "+", "round": "-", "high": "+"},
     "i": {"back": "-", "round": "-", "high": "+"},
     "o": {"back": "+", "round": "+", "high": "-"},
-    "ö": {"back": "-", "round": "+", "high": "-"},
     "u": {"back": "+", "round": "+", "high": "+"},
-    "ü": {"back": "-", "round": "+", "high": "+"},
+    # Spanish accented vowels (same features as their base vowel)
     "á": {"back": "+", "round": "-", "high": "-"},
-    "é": {"back": "-", "round": "-", "high": "+"},
+    "é": {"back": "-", "round": "-", "high": "-"},
+    "í": {"back": "-", "round": "-", "high": "+"},
     "ó": {"back": "+", "round": "+", "high": "-"},
-    "ő": {"back": "-", "round": "+", "high": "-"},
+    "ú": {"back": "+", "round": "+", "high": "+"},
     # common IPA realizations Allosaurus may output
     "ɑ": {"back": "+", "round": "-", "high": "-"},
     "ɛ": {"back": "-", "round": "-", "high": "-"},
-    "ɯ": {"back": "+", "round": "-", "high": "+"},
-    "ø": {"back": "-", "round": "+", "high": "-"},
-    "y": {"back": "-", "round": "+", "high": "+"},
+    "ɔ": {"back": "+", "round": "+", "high": "-"},
+    "ɪ": {"back": "-", "round": "-", "high": "+"},
+    "ʊ": {"back": "+", "round": "+", "high": "+"},
 }
 
 

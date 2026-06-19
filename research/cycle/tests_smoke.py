@@ -21,63 +21,58 @@ from cycle.phonology import (  # noqa: E402
 )
 
 
-def test_two_way_low_vowel_family_collapses_to_one_archiphoneme():
-    prop = propose_archiphoneme(["lar", "ler"], HARMONY_CLASSES["tur"])
+def test_front_height_family_collapses_to_one_archiphoneme():
+    # Swahili causative -ish-/-esh- (height harmony): one archiphoneme over the front {i,e} class.
+    prop = propose_archiphoneme(["isha", "esha"], HARMONY_CLASSES["swh"])
     assert prop is not None
-    assert prop.archiphoneme == "lAr"
+    assert prop.archiphoneme == "Esha"
     assert prop.collapsible is True
-    assert prop.generated == {"lar", "ler"}
+    assert prop.generated == {"isha", "esha"}
 
 
-def test_four_way_high_vowel_family_collapses():
-    prop = propose_archiphoneme(["nın", "nin", "nun", "nün"], HARMONY_CLASSES["tur"])
+def test_back_height_family_collapses():
+    # Swahili reversive -u-/-o- (back height pair).
+    prop = propose_archiphoneme(["ua", "oa"], HARMONY_CLASSES["swh"])
     assert prop is not None
-    assert prop.archiphoneme == "nIn"
+    assert prop.archiphoneme == "Oa"
     assert prop.collapsible is True
-    assert {"nın", "nin", "nun", "nün"} <= prop.generated
+    assert prop.generated == {"ua", "oa"}
 
 
 def test_expand_archiphoneme_regenerates_observed_surfaces():
-    assert expand_archiphoneme("lAr", HARMONY_CLASSES["tur"]) == {"lar", "ler"}
-    assert expand_archiphoneme("dAn", HARMONY_CLASSES["tur"]) == {"dan", "den"}
+    assert expand_archiphoneme("Esha", HARMONY_CLASSES["swh"]) == {"isha", "esha"}
+    assert expand_archiphoneme("Eka", HARMONY_CLASSES["swh"]) == {"ika", "eka"}  # stative -ik-/-ek-
 
 
 def test_cross_class_family_is_not_auto_collapsible():
-    # 'a' is a low-unrounded harmony vowel; 'ö' is not in the same class -> no clean rule.
-    prop = propose_archiphoneme(["an", "ön"], HARMONY_CLASSES["tur"])
+    # 'i' is in the front height class, 'o' in the back one -> no single clean class -> needs review.
+    prop = propose_archiphoneme(["isha", "osha"], HARMONY_CLASSES["swh"])
     assert prop is None or prop.collapsible is False
 
 
 def test_multi_position_family_is_not_auto_collapsible():
     # Two differing vowel positions -> conservative: needs review, never an auto-collapse.
-    prop = propose_archiphoneme(["lara", "lere"], HARMONY_CLASSES["tur"])
+    prop = propose_archiphoneme(["isha", "eshe"], HARMONY_CLASSES["swh"])
     assert prop is None or prop.collapsible is False
 
 
 def test_consonant_difference_is_not_a_harmony_alternation():
-    prop = propose_archiphoneme(["lar", "nar"], HARMONY_CLASSES["tur"])
+    prop = propose_archiphoneme(["ika", "ipa"], HARMONY_CLASSES["swh"])
     assert prop is None or prop.collapsible is False
-
-
-def test_hungarian_nak_nek_collapses():
-    prop = propose_archiphoneme(["nak", "nek"], HARMONY_CLASSES["hun"])
-    assert prop is not None
-    assert prop.archiphoneme == "nAk"
-    assert prop.collapsible is True
 
 
 def test_collapse_families_reduces_enumeration_debt_to_residual():
     families = {
-        "lr": ["lar", "ler"],
-        "nn": ["nın", "nin", "nun", "nün"],
-        "n": ["an", "ön"],  # over-merged junk family -> stays as debt
+        "sh": ["isha", "esha"],   # causative -> collapses
+        "k": ["ika", "eka"],      # stative  -> collapses
+        "x": ["isha", "osha"],    # over-merged junk family (cross-class) -> stays as debt
     }
-    assert enumeration_debt(families) == (2 - 1) + (4 - 1) + (2 - 1)  # = 5
-    report = collapse_families(families, HARMONY_CLASSES["tur"])
-    assert report.debt_before == 5
-    assert sorted(p.archiphoneme for p in report.collapsed) == ["lAr", "nIn"]
-    assert report.debt_after == 1  # only the junk 'n' family remains
-    assert report.affixes_removed == (2 - 1) + (4 - 1)  # 4 redundant allomorphs collapsed away
+    assert enumeration_debt(families) == (2 - 1) + (2 - 1) + (2 - 1)  # = 3
+    report = collapse_families(families, HARMONY_CLASSES["swh"])
+    assert report.debt_before == 3
+    assert sorted(p.archiphoneme for p in report.collapsed) == ["Eka", "Esha"]
+    assert report.debt_after == 1  # only the junk 'x' family remains
+    assert report.affixes_removed == (2 - 1) + (2 - 1)  # 2 redundant allomorphs collapsed away
 
 
 if __name__ == "__main__":

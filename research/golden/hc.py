@@ -63,16 +63,84 @@ def _xid(prefix: str, n: int) -> str:
     return f"{prefix}{n}"
 
 
-def build_grammar_xml(model: LangModel, tl: Translit | None = None, templated: bool = True) -> str:
+def _phon_feature_xml(
+    src_chars: list[str], phon_feats: dict[str, dict[str, str]] | None
+) -> tuple[str, dict[str, str], str]:
+    """Build (feature-system defs, per-grapheme extra FeatureValues, natural-class defs) for a real
+    phonological feature inventory. Vowels carry voc/hi/rnd/back (from ``phon_feats``); every other
+    grapheme becomes a consonant with a unique ``cid`` identity. Returns empty strings when no
+    inventory is given (the original, identity-only behaviour)."""
+    if not phon_feats:
+        return "", {}, ""
+    consonants = [c for c in src_chars if c not in phon_feats]
+    cid_syms = "".join(f'<Symbol id="c_{i}">{escape(c)}</Symbol>' for i, c in enumerate(consonants))
+    feature_defs = (
+        '<SymbolicFeature id="voc" defaultSymbol="cons"><Name>voc</Name><Symbols>'
+        '<Symbol id="vow">vowel</Symbol><Symbol id="cons">consonant</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="hi"><Name>hi</Name><Symbols>'
+        '<Symbol id="hi">high</Symbol><Symbol id="lo">low</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="rnd"><Name>rnd</Name><Symbols>'
+        '<Symbol id="rnd">round</Symbol><Symbol id="unr">unround</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="back"><Name>back</Name><Symbols>'
+        '<Symbol id="bk">back</Symbol><Symbol id="fr">front</Symbol></Symbols></SymbolicFeature>'
+        f'<SymbolicFeature id="cid"><Name>cid</Name><Symbols>{cid_syms}</Symbols></SymbolicFeature>'
+    )
+    seg_extra: dict[str, str] = {}
+    for c, feats in phon_feats.items():
+        seg_extra[c] = "".join(
+            f'<FeatureValue feature="{f}" symbolValues="{v}" />' for f, v in feats.items()
+        )
+    for i, c in enumerate(consonants):
+        seg_extra[c] = (
+            '<FeatureValue feature="voc" symbolValues="cons" />'
+            f'<FeatureValue feature="cid" symbolValues="c_{i}" />'
+        )
+    nat = (
+        '<FeatureNaturalClass id="nc_vow"><Name>vowel</Name>'
+        '<FeatureValue feature="voc" symbolValues="vow"/></FeatureNaturalClass>'
+        '<FeatureNaturalClass id="nc_cons"><Name>cons</Name>'
+        '<FeatureValue feature="voc" symbolValues="cons"/></FeatureNaturalClass>'
+        '<FeatureNaturalClass id="nc_front"><Name>front</Name>'
+        '<FeatureValue feature="voc" symbolValues="vow"/><FeatureValue feature="back" symbolValues="fr"/></FeatureNaturalClass>'
+        '<FeatureNaturalClass id="nc_high"><Name>high</Name>'
+        '<FeatureValue feature="voc" symbolValues="vow"/><FeatureValue feature="hi" symbolValues="hi"/></FeatureNaturalClass>'
+    )
+    return feature_defs, seg_extra, nat
+
+
+def build_grammar_xml(
+    model: LangModel,
+    tl: Translit | None = None,
+    templated: bool = True,
+    phon_feats: dict[str, dict[str, str]] | None = None,
+    pos_aware: bool = False,
+) -> str:
+    """Emit the HC grammar. With ``phon_feats`` (grapheme -> {feature: symbolValue}, e.g. a Spanish
+    inventory mapping vowels to voc/hi/rnd/back), each segment carries REAL phonological features
+    *in addition to* its unique ``seg`` identity, and real natural classes (vowel/cons/front/high)
+    are emitted — the feature-bearing substrate future phonological rules need. Default ``None`` keeps
+    the original behaviour byte-for-byte (one identity feature per grapheme, single ``any`` class).
+
+    With ``pos_aware``, the grammar emits the real parts of speech (``LexEntry.pos``), tags each root,
+    and gives each affix rule an MSA: it attaches to its ``req_pos`` (output = same, an inflectional
+    category-preserving rule) or, if unrestricted, to any POS (output left unchanged). Default off keeps
+    the single ``root`` POS."""
     tl = tl or Translit(model.charset)
     src_chars = sorted(set(model.charset))
+    pos_list = sorted({e.pos for e in model.lexicon if e.pos}) if pos_aware else ["root"]
+    if not pos_list:
+        pos_list = ["root"]
+    all_pos_attr = " ".join(pos_list)
 
-    # One symbolic feature value + segment per source grapheme; representation is its token.
+    # One symbolic feature value + segment per source grapheme; representation is its token. The `seg`
+    # identity feature guarantees HC never merges distinct graphemes (incl. á vs a, which share
+    # phonological features) — so it stays even when real features are layered on.
     symbols = "".join(f'<Symbol id="seg_{i}">v{i}</Symbol>' for i in range(len(src_chars)))
+    extra_feature_defs, seg_extra_fvs, extra_nat_classes = _phon_feature_xml(src_chars, phon_feats)
     segdefs = "".join(
         f'<SegmentDefinition id="cd_{i}"><Representations><Representation>{escape(tl.fwd[c])}'
         f'</Representation></Representations><FeatureValue feature="seg" '
-        f'symbolValues="seg_{i}" /></SegmentDefinition>'
+        f'symbolValues="seg_{i}" />{seg_extra_fvs.get(c, "")}</SegmentDefinition>'
         for i, c in enumerate(src_chars)
     )
     anyseg = "".join(f'<Segment segment="cd_{i}" />' for i in range(len(src_chars)))
@@ -81,9 +149,16 @@ def build_grammar_xml(model: LangModel, tl: Translit | None = None, templated: b
     entries = []
     for i, e in enumerate(model.lexicon):
         eid = _xid("e", i)
+        ep = (e.pos or "root") if pos_aware else "root"
+        # One <Allomorph> per stem shape (citation form + any irregular allomorphs) — HC's native
+        # multi-allomorph entry (MoStemAllomorph). De-duped, order preserved.
+        shapes = list(dict.fromkeys([e.form, *e.allomorphs]))
+        allos = "".join(
+            f'<Allomorph id="{eid}a{j}"><PhoneticShape>{escape(tl.enc(s))}</PhoneticShape></Allomorph>'
+            for j, s in enumerate(shapes)
+        )
         entries.append(
-            f'<LexicalEntry id="{eid}" partOfSpeech="root"><Allomorphs>'
-            f'<Allomorph id="{eid}a"><PhoneticShape>{escape(tl.enc(e.form))}</PhoneticShape></Allomorph>'
+            f'<LexicalEntry id="{eid}" partOfSpeech="{ep}"><Allomorphs>{allos}'
             f'</Allomorphs><Gloss>{escape(e.gloss)}</Gloss></LexicalEntry>'
         )
 
@@ -92,17 +167,31 @@ def build_grammar_xml(model: LangModel, tl: Translit | None = None, templated: b
     for i, a in enumerate(model.affixes):
         rid = _xid("r", i)
         rule_ids.append(rid)
-        stem = (
-            '<PhoneticSequence id="st"><OptionalSegmentSequence min="1" max="-1">'
-            '<SimpleContext naturalClass="any" /></OptionalSegmentSequence></PhoneticSequence>'
-        )
         ins = f"<InsertSegments><PhoneticShape>{escape(tl.enc(a.form))}</PhoneticShape></InsertSegments>"
-        copy = '<CopyFromInput index="st" />'
-        out = (ins + copy) if a.kind == "prefix" else (copy + ins)
+        if a.kind == "infix":
+            # infix splits the stem after its first segment: copy(seg1) + insert + copy(rest).
+            minput = (
+                '<PhoneticSequence id="st1"><SimpleContext naturalClass="any" /></PhoneticSequence>'
+                '<PhoneticSequence id="st2"><OptionalSegmentSequence min="0" max="-1">'
+                '<SimpleContext naturalClass="any" /></OptionalSegmentSequence></PhoneticSequence>'
+            )
+            out = '<CopyFromInput index="st1" />' + ins + '<CopyFromInput index="st2" />'
+        else:
+            minput = (
+                '<PhoneticSequence id="st"><OptionalSegmentSequence min="1" max="-1">'
+                '<SimpleContext naturalClass="any" /></OptionalSegmentSequence></PhoneticSequence>'
+            )
+            copy = '<CopyFromInput index="st" />'
+            out = (ins + copy) if a.kind == "prefix" else (copy + ins)
+        if pos_aware:
+            req = a.req_pos or all_pos_attr
+            pos_attr = f'requiredPartsOfSpeech="{req}"' + (f' outputPartOfSpeech="{a.req_pos}"' if a.req_pos else "")
+        else:
+            pos_attr = 'requiredPartsOfSpeech="root" outputPartOfSpeech="root"'
         rules.append(
-            f'<MorphologicalRule id="{rid}" requiredPartsOfSpeech="root" outputPartOfSpeech="root">'
+            f'<MorphologicalRule id="{rid}" {pos_attr}>'
             f"<Name>{escape(a.gloss)}</Name><MorphologicalSubrules>"
-            f'<MorphologicalSubrule id="{rid}s"><MorphologicalInput>{stem}</MorphologicalInput>'
+            f'<MorphologicalSubrule id="{rid}s"><MorphologicalInput>{minput}</MorphologicalInput>'
             f"<MorphologicalOutput>{out}</MorphologicalOutput></MorphologicalSubrule>"
             f"</MorphologicalSubrules><Gloss>{escape(a.gloss)}</Gloss></MorphologicalRule>"
         )
@@ -114,24 +203,22 @@ def build_grammar_xml(model: LangModel, tl: Translit | None = None, templated: b
     if templated and model.affixes:
         # Known slots come from affixes carrying explicit (gold) slot evidence; an affix with no
         # evidence (e.g. an agent-proposed one) is placed leniently in every known slot on its side.
-        known: dict[str, set[int]] = {"suffix": set(), "prefix": set()}
+        known: dict[str, set[int]] = {"suffix": set(), "prefix": set(), "infix": set()}
         for a in model.affixes:
             for sd, o in a.slots:
-                known[sd].add(o)
+                known.setdefault(sd, set()).add(o)
         slot_rules: dict[tuple[str, int], list[str]] = {}
         for i, a in enumerate(model.affixes):
             targets = a.slots or tuple((a.kind, o) for o in sorted(known.get(a.kind, {a.slot_ord})) or [a.slot_ord])
             for slot in (targets or (a.slot,)):
                 slot_rules.setdefault(slot, []).append(rule_ids[i])
-        suffix_ords = sorted(o for (s, o) in slot_rules if s == "suffix")
-        prefix_ords = sorted(o for (s, o) in slot_rules if s == "prefix")
         slots_xml = ""
-        for side, ords in (("suffix", suffix_ords), ("prefix", prefix_ords)):
-            for o in ords:
+        for side in ("prefix", "infix", "suffix"):  # template order: prefixes, infixes, suffixes
+            for o in sorted(o for (s, o) in slot_rules if s == side):
                 rids = " ".join(slot_rules[(side, o)])
                 slots_xml += (f'<Slot optional="true" morphologicalRules="{rids}">'
                               f'<Name>{side}{o}</Name></Slot>')
-        template_xml = ('<AffixTemplates><AffixTemplate final="true" requiredPartsOfSpeech="root">'
+        template_xml = (f'<AffixTemplates><AffixTemplate final="true" requiredPartsOfSpeech="{all_pos_attr}">'
                         f'<Name>main</Name>{slots_xml}</AffixTemplate></AffixTemplates>')
         stratum_open = '<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="linear"><Name>main</Name>'
     else:
@@ -142,12 +229,15 @@ def build_grammar_xml(model: LangModel, tl: Translit | None = None, templated: b
     return (
         '<?xml version="1.0" encoding="utf-8"?>\n'
         "<HermitCrabInput><Language><Name>" + escape(model.code) + "</Name>"
-        '<PartsOfSpeech><PartOfSpeech id="root"><Name>root</Name></PartOfSpeech></PartsOfSpeech>'
+        "<PartsOfSpeech>"
+        + "".join(f'<PartOfSpeech id="{p}"><Name>{p}</Name></PartOfSpeech>' for p in pos_list)
+        + "</PartsOfSpeech>"
         f'<PhonologicalFeatureSystem><SymbolicFeature id="seg" defaultSymbol="{default_sym}">'
-        f"<Name>seg</Name><Symbols>{symbols}</Symbols></SymbolicFeature></PhonologicalFeatureSystem>"
+        f"<Name>seg</Name><Symbols>{symbols}</Symbols></SymbolicFeature>{extra_feature_defs}"
+        "</PhonologicalFeatureSystem>"
         f'<CharacterDefinitionTable id="t1"><Name>main</Name><SegmentDefinitions>{segdefs}'
         "</SegmentDefinitions></CharacterDefinitionTable>"
-        f'<NaturalClasses><SegmentNaturalClass id="any"><Name>any</Name>{anyseg}'
+        f'<NaturalClasses>{extra_nat_classes}<SegmentNaturalClass id="any"><Name>any</Name>{anyseg}'
         "</SegmentNaturalClass></NaturalClasses>"
         f"<Strata>{stratum_open}"
         f"<MorphologicalRuleDefinitions>{''.join(rules)}</MorphologicalRuleDefinitions>"
@@ -192,6 +282,8 @@ def run_parse(
     chunk_size: int = 25,
     chunk_timeout: int = 45,
     templated: bool = True,
+    phon_feats: dict[str, dict[str, str]] | None = None,
+    pos_aware: bool = False,
 ) -> dict[str, list[Analysis]]:
     """Parse ``words`` (underlying forms) with the emitted grammar; return analyses.
 
@@ -202,7 +294,7 @@ def run_parse(
     signal that motivates the affix-template/ordering enrichment.
     """
     tl = Translit(model.charset)
-    xml = build_grammar_xml(model, tl, templated=templated)
+    xml = build_grammar_xml(model, tl, templated=templated, phon_feats=phon_feats, pos_aware=pos_aware)
     uniq = list(dict.fromkeys(words))
     results: dict[str, list[Analysis]] = {w: [] for w in uniq}
     with tempfile.TemporaryDirectory() as d:

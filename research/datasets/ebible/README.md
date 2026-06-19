@@ -5,13 +5,17 @@ Ingest a verse-aligned **English ↔ agglutinative** New-Testament pair from the
 tokenized parallel rows → word-gloss alignment → candidate `bilingual/*` sense links.
 
 ## Pairs set up now
-- **English WEB (`eng-eng_web`, public domain) ↔ Turkish (`tur-turytc`)** — agglutinative, vowel harmony.
-- **English WEB ↔ Hungarian (`hun-hun`)** — Uralic, heavy agglutination + vowel harmony.
+All paired against **English WEB (`eng-engwebp`, public domain)**:
+- **Swahili (`swh-swhulb`, Unlocked Literal Bible)** — Bantu: noun-class concord + verb-extension vowel (height) harmony.
+- **Indonesian (`ind-indags`, "Bible for All")** — Austronesian: rich affix/circumfix, meN- nasal place assimilation.
+- **Tagalog (`tgl-tglulb`, Unlocked Literal Bible)** — Austronesian: infixation + reduplication, voice/focus morphology.
+- **Spanish (`spa-spaRV1909`, Reina-Valera 1909)** — fusional; public-domain end-to-end shakedown.
 
-> **Finnish note:** Finnish is **not** in the redistributable eBible `corpus/` (the copyright holder
-> didn't permit redistribution, so BibleNLP excludes it). **Hungarian** is the closest available
-> stand-in (also Uralic/agglutinative). To add Finnish, drop a Finnish verse-per-line file under
-> `_sources/ebible/` from another source and add its id to `config.TARGETS`.
+> **Why these four:** each has an open text plus a music-free single-narrator audio recording plausibly
+> available for the *same* translation, so the sibling `research/audio/` add-on can later enrich them.
+> Swahili's height harmony (front class `{i,e}`, back class `{u,o}`) is the closest morphological analog
+> to the older vowel-harmony targets and is where the harmony-collapse machinery is aimed first. To add
+> another pair, drop a verse-per-line file under `_sources/ebible/` and add its id to `config.TARGETS`.
 
 ## Pipeline
 
@@ -21,15 +25,15 @@ fetch (vref + texts) ──▶ read (verse-align, NT-only, tokenize) ──▶ a
 ```
 
 `fetch` uses stdlib urllib (idempotent). `read` tokenizes with machine.py's `LatinWordTokenizer`
-when installed, else a Unicode regex. `align` uses eflomal/THOT when available, else the deterministic
+when installed, else a Unicode regex. `align` uses THOT HMM when available, else the deterministic
 co-occurrence fallback (`research/align/`).
 
 ## Run
 
 ```bash
 cd research
-python datasets/ebible/build.py --pair tur hun            # fetch + build both
-python datasets/ebible/build.py --pair tur --backend cooccur --no-fetch   # rebuild from cache, offline
+python datasets/ebible/build.py --pair swh ind tgl spa    # fetch + build all four
+python datasets/ebible/build.py --pair swh --backend cooccur --no-fetch   # rebuild from cache, offline
 python datasets/ebible/tests_smoke.py                     # offline, no network
 ```
 
@@ -48,6 +52,6 @@ These verse-aligned rows + candidate sense links are the **bilingual Red tests**
 (the sibling golden harness adds the HC `word→gloss` round-trip gate). See the `golden-pair-selection`
 and `apertium-alignment-bridge` memories.
 
-For Turkish and Hungarian only, the sibling `research/audio/` add-on can optionally enrich these same
+For the four targets (Swahili, Indonesian, Tagalog, Spanish), the sibling `research/audio/` add-on can optionally enrich these same
 pair outputs with analyst-chosen sample words and locally supplied audio evidence. It is conservative:
 no audio is assumed, and the text pipeline remains authoritative.

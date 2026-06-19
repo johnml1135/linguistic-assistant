@@ -3,3 +3,12 @@ __pycache__/
 .venv/
 *.egg-info/
 .pytest_cache/
+.cache/
+
+# Regenerable working data — kept OUT of git so it can never be confused with the gold.
+# (Comments must be on their own line — git has no inline comments.)
+# Raw reference downloads + compile intermediates (large, licensed, regenerable):
+golden/_sources/
+# The hill-climber's working copy (model.json, results, scenarios, refeval):
+cycle/out/
+# Tracked, NOT ignored: golden_sets/ (frozen target) and deltas/store/ (proposal ledger).

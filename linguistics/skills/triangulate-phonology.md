@@ -92,16 +92,17 @@ parse silently wrong, so the gate is non-negotiable.
 - **Premature inventory from sparse data.** A handful of forms can fake complementary distribution;
   require enough environments, or defer.
 
-## From practice (the TDD cycle on Turkish/Hungarian)
+## From practice (the TDD cycle on Swahili)
 
 `research/cycle/` recovers harmony families **from spelling alone** — `harmony_families()` groups
-affixes by consonant skeleton (`lr=lar/ler`, `nk=nak/nek`) with no audio whatsoever, and
-`enumeration_debt` shows ~half the affix budget is such variants. That is this skill working text-only:
-each multi-consonant family is a class waiting to be named. The single-consonant families (`n`, `t`)
-**over-merge** distinct morphemes — exactly the "orthography is a lossy prior" failure mode, and the
-case where audio or a speaker earns its keep. The hand-off is clean: this skill names the class, audio
-(via `research/audio/`) grounds its feature, [[generalize-not-enumerate]] writes the rule, and the
-coverage gate keeps it only if it survives.
+affixes by consonant skeleton (Swahili verb extensions: `sh=isha/esha` causative, `k=ika/eka` stative)
+with no audio whatsoever, and `enumeration_debt` counts the redundant allomorphs. That is this skill
+working text-only: each such family is a height-harmony class ({i,e}) waiting to be named. The limits
+are the "orthography is a lossy prior" failure mode: all-vowel extensions (the applicative `-i-/-e-`)
+have no consonant skeleton to anchor on, and a bare single-consonant skeleton can **over-merge**
+distinct morphemes — exactly where audio or a speaker earns its keep. The hand-off is clean: this skill
+names the class, audio (via `research/audio/`, confirming the `high` feature) grounds it,
+[[generalize-not-enumerate]] writes the rule, and the coverage gate keeps it only if it survives.
 
 ## Training basis
 

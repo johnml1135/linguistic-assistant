@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 
-SUPPORTED_TARGET_KEYS = frozenset({"tur", "hun"})
+SUPPORTED_TARGET_KEYS = frozenset({"swh", "ind", "tgl", "spa"})
 
 
 def require_supported_target(target_key: str) -> str:

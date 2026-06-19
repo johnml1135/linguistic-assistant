@@ -1,10 +1,15 @@
 ## 1. Phase 1 — HC gets phonology (text-only)
 
-- [ ] 1.1 Add vowel/consonant natural classes to the generated HC scaffold (`research/golden/hc.py` /
-  the cycle's model build), with a per-language class definition for `tur` and `hun` (front/back,
-  ±round at minimum). *(Per-language classes defined in `research/cycle/phonology.py`; emitting them as
-  HC NaturalClass XML + verifying the archiphoneme round-trips through `hc.exe` is deferred — needs the
-  native tool to verify and is the design's open question on archiphoneme representation.)*
+- [x] 1.1 Add vowel/consonant natural classes to the generated HC scaffold (`research/golden/hc.py` /
+  the cycle's model build), with a per-language class definition for the four targets (for Swahili,
+  the height-harmony front class `{i,e}` vs back class `{u,o}`). *(`research/cycle/hc_phonology.py`
+  emits a feature-bearing grammar — `voc/hi/rnd/back` + natural classes + an underspecified
+  **archiphoneme** + HC alpha-variable harmony rules. Verified round-trip through the installed `hc`
+  for both a 2-way harmony (the Swahili height-harmony shape `-Vsh-`, ish/esh) and, to exercise the
+  machinery's reach, a 4-way harmony archiphoneme: one archiphoneme morpheme parses every surface
+  allomorph — `research/cycle/tests_hc.py`, hc-gated/skipped when absent. Remaining: wiring this emitter
+  into the moving-window cycle's eBible-grapheme scaffold needs a per-language feature inventory for the
+  full charset.)*
 - [x] 1.2 Add archiphoneme + harmony-rule construction in `research/cycle/`: from a high-confidence
   `harmony_families` entry, build one archiphoneme affix plus a rule over the conditioning class.
 - [x] 1.3 Gate the collapse on the existing coverage round-trip — keep only if coverage holds AND the

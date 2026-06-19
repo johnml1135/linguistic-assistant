@@ -15,7 +15,7 @@ from .features import map_phones_to_features
 from .playback import play_candidate_occurrence, render_occurrence_preview
 from .samples import load_sample_manifest, resolve_and_persist_samples
 
-_LANGUAGE_CODES = {"tur": "tr", "hun": "hu"}
+_LANGUAGE_CODES = {"swh": "sw", "ind": "id", "tgl": "tl", "spa": "es"}
 
 
 class WordTimestampBackend(Protocol):
@@ -299,7 +299,7 @@ def main(argv: list[str] | None = None) -> int:
 
     locate = sub.add_parser("locate", help="find and persist ranked word candidates from local audio")
     locate.add_argument("--pair-dir", required=True, help="pair output directory containing parallel.jsonl")
-    locate.add_argument("--target", required=True, choices=["tur", "hun"], help="target key")
+    locate.add_argument("--target", required=True, choices=["swh", "ind", "tgl", "spa"], help="target key")
     locate.add_argument("--samples", required=True, help="path to the sample-word manifest JSON")
     locate.add_argument("--catalog", required=True, help="path to the audio catalog JSON")
     locate.add_argument("--stem", action="append", default=[], help="sample word to treat as stem-aware")

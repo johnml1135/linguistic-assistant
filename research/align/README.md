@@ -5,14 +5,13 @@ parallel corpus (English ↔ target), complementing the *deterministic* Apertium
 (`research/bilingual/`). Output = candidate `bilingual/*` sense links for a skill/human to confirm.
 
 ```
-verse-aligned rows ──▶ align (eflomal | THOT | co-occurrence) ──▶ GlossTable
+verse-aligned rows ──▶ align (THOT HMM | co-occurrence) ──▶ GlossTable
                    ──▶ gloss_table_to_sense_link_ops ──▶ candidate bilingual.sense_link.add ops
 ```
 
-## Backends (auto-selected: eflomal → THOT → co-occurrence)
-- **eflomal** (via `sil-machine`, `machine.jobs.EflomalAligner`) — best quality; **Linux-only**, CPU,
-  no GPU. On Windows use **WSL**.
-- **THOT** (`sil-machine[thot]`: fast_align / IBM1 / HMM) — cross-platform fallback.
+## Backends (auto-selected: THOT HMM → co-occurrence)
+- **THOT HMM** (`sil-machine[thot]`, `machine.translation.word_align_corpus(aligner="hmm")`) —
+  cross-platform (Windows/macOS/Linux, CPU, no GPU); the quality backend.
 - **co-occurrence (Dice)** — dependency-free, deterministic; the **offline/CI** path (used by tests).
 
 All produce symmetrized links → `build_gloss_table` → ranked target→source glosses.
@@ -20,22 +19,10 @@ All produce symmetrized links → `build_gloss_table` → ranked target→source
 ## Install (uv)
 ```bash
 cd research
-uv sync --extra align         # sil-machine[thot,jobs] + eflomal (added automatically on Linux)
-# Windows: eflomal is skipped; THOT (cross-platform) is used. For eflomal, run under WSL.
+uv sync --extra align         # sil-machine[thot] — cross-platform (Windows/macOS/Linux, CPU)
 ```
-The dependency set is pinned in `research/uv.lock`. No torch/transformers/GPU extras.
-
-### eflomal-under-WSL gotchas (learned the hard way — see `scripts/wsl-eflomal*.{ps1,sh}`)
-- **The `[jobs]` extra is mandatory, not `[thot]` alone.** `machine.jobs.eflomal_aligner` imports
-  `clearml` (+ `dynaconf`) at load — with `[thot]` only, `eflomal` imports but the *aligner wrapper*
-  raises `ModuleNotFoundError: clearml` and the backend silently reports "unavailable".
-- **The compiled `eflomal` binary isn't on `PATH`.** sil-machine execs `$EFLOMAL_PATH/eflomal`
-  (default `./eflomal`), but the wheel ships it at `site-packages/eflomal/bin/eflomal`. `backends.py`
-  finds that dir and **patches the module-level `EFLOMAL_PATH` constant** (the env var is read at
-  import time, so setting `os.environ` after the import is too late).
-- **Launch WSL from PowerShell, not Git Bash** — Git Bash mangles `/mnt/c/...` paths, and a login
-  shell (`bash -lc`) drags in the Windows `PATH` whose `Program Files (x86)` parens break inline
-  env-assignment prefixes. Use `bash -c` + the absolute `uv` path.
+The dependency set is pinned in `research/uv.lock`. No torch/transformers/GPU extras. The `.venv`
+for this repo is a **Windows** environment; run from PowerShell, not WSL.
 
 ## Run (offline)
 ```bash

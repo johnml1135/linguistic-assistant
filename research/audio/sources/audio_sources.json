@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "policy": {
+    "require_exact_text_match": true,
+    "require_music_free": true,
+    "require_acceptable_license": true,
+    "note": "A source is download-eligible only when matches_text_translation=true, music_free=true, license is set/acceptable, audio_url is set, and approved=true. Otherwise the audit reports the source as 'needs_verification' and (when nothing is approved) surfaces sources/alternatives.json. Never download a near-match. To enable a source: confirm at the listed portal that the audio records the SAME translation as the text and that its license permits use, then set matches_text_translation/license/audio_url and approved=true."
+  },
+  "sources": [
+    {
+      "target_key": "swh",
+      "target_id": "swh-swhulb",
+      "text_title": "Swahili Unlocked Literal Bible (ULB)",
+      "text_publication_url": "http://ebible.org/swhulb/",
+      "audio_provider": "Faith Comes By Hearing — Non-Drama (single narrator, music-free)",
+      "audio_url": null,
+      "matches_text_translation": false,
+      "music_free": true,
+      "license": null,
+      "approved": false,
+      "status": "needs_verification",
+      "evidence": "Text is the open Door43 ULB. FCBH publishes a music-free Non-Drama Swahili NT, but it may record a different Swahili translation than the ULB; exact-text-match and audio license must be confirmed at the FCBH portal before any download."
+    },
+    {
+      "target_key": "ind",
+      "target_id": "ind-indags",
+      "text_title": "Alkitab Gratis untuk Semua (Bible for All)",
+      "text_publication_url": "http://ebible.org/indags/",
+      "audio_provider": "Faith Comes By Hearing — Non-Drama (single narrator, music-free)",
+      "audio_url": null,
+      "matches_text_translation": false,
+      "music_free": true,
+      "license": null,
+      "approved": false,
+      "status": "needs_verification",
+      "evidence": "Open Indonesian text with broad audio coverage. The FCBH Non-Drama Indonesian NT is music-free but its translation identity vs. the AGS text and its license need confirmation before download."
+    },
+    {
+      "target_key": "tgl",
+      "target_id": "tgl-tglulb",
+      "text_title": "Tagalog Unlocked Literal Bible (ULB)",
+      "text_publication_url": "http://ebible.org/tglulb/",
+      "audio_provider": "Faith Comes By Hearing — Non-Drama (single narrator, music-free)",
+      "audio_url": null,
+      "matches_text_translation": false,
+      "music_free": true,
+      "license": null,
+      "approved": false,
+      "status": "needs_verification",
+      "evidence": "Text is the open Door43 ULB. FCBH publishes a music-free Non-Drama Tagalog NT; exact-text-match against the ULB and audio license must be confirmed before download."
+    },
+    {
+      "target_key": "spa",
+      "target_id": "spa-spaRV1909",
+      "text_title": "Santa Biblia Reina-Valera 1909",
+      "text_publication_url": "http://ebible.org/spaRV1909/",
+      "audio_provider": "Public-domain Reina-Valera 1909 narration",
+      "audio_candidates": [
+        "archive.org — search 'Reina Valera 1909 audio' (several public-domain narrations of the 1909 text)",
+        "live.bible.is / Faith Comes By Hearing — 'Spanish Reina-Valera 1909' Non-Drama (confirm redistribution license, not just streaming)"
+      ],
+      "audio_url": null,
+      "matches_text_translation": false,
+      "music_free": true,
+      "license": null,
+      "approved": false,
+      "status": "needs_verification",
+      "approval_checklist": [
+        "1. The TEXT (RV1909) is public domain — no issue committing derived gold.",
+        "2. Pick a recording from audio_candidates and confirm it narrates the RV1909 text specifically (not RVR1960 or another version) — exact-text-match.",
+        "3. Confirm the recording's license permits download + research use (PD narration is cleanest; some FCBH/bible.is audio is stream-only — do NOT use unless redistribution is allowed).",
+        "4. Then set: audio_url = the actual file/stream URL, license = the confirmed license, matches_text_translation = true, approved = true.",
+        "5. Run: pwsh -File scripts/audio-download.ps1 (dry run) then -Execute. Only download_eligible (all five gates) sources download."
+      ],
+      "evidence": "Safest target to approve first: the RV1909 text is public domain and public-domain 1909 narrations exist, so an exact-match, freely-licensed pairing is achievable. Pre-filled with candidate sources; the four human-gated fields (audio_url, license, matches_text_translation, approved) remain for the operator per approval_checklist. Until then it is correctly NOT download_eligible."
+    }
+  ]
+}

@@ -3,7 +3,7 @@ grammar builder and the virtuous-cycle harness.
 
 A :class:`MorphWord` is whatever an *ingester* produces: a surface form plus an ordered
 list of (form, gloss) morphs. The gold origin is no longer a pre-annotated IGT corpus —
-it comes from eBible parallel text + statistical word glosses (eflomal) and FieldWorks
+it comes from eBible parallel text + statistical word glosses (THOT HMM) and FieldWorks
 data (see the `golden-pair-selection` work). Any such ingester just has to emit
 ``MorphWord``s; everything downstream (``grammar.build_model``, ``hc``, ``ablate``,
 ``score``) is independent of where they came from.

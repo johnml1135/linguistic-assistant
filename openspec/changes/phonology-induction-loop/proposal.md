@@ -1,14 +1,15 @@
 ## Why
 
 The TDD grammar cycle (`research/cycle/`) now *measures* where it is stuck: `enumeration_debt` shows
-that roughly half the kept affixes are vowel-harmony allomorphs of one another (Turkish 63/124,
-Hungarian 60/120 — `lar/ler`, `nak/nek`, `tól/től`…). That plateau is a **phonology deficit**: Hermit
-Crab v1 has no phonology in the scaffold (one symbolic feature per orthographic character, an "any"
-natural class), so it can only *list* surface allomorphs, never state the rule that generates them.
+that a sizable fraction of the kept affixes are harmony allomorphs of one another (for Swahili height
+harmony, the verb-extension pairs `-ish-/-esh-`, `-ik-/-ek-`, `-i-/-e-`…). That plateau is a
+**phonology deficit**: Hermit Crab v1 has no phonology in the scaffold (one symbolic feature per
+orthographic character, an "any" natural class), so it can only *list* surface allomorphs, never state
+the rule that generates them.
 
 Separately, the `audio-evidence-addon` produces Allosaurus phone strings as review-only evidence — but
 those phones are exactly the witness distribution-from-spelling lacks: the phonetic features
-([±back], [±round]) that *condition* the harmony. The two efforts are currently disconnected.
+([±high], height class) that *condition* the harmony. The two efforts are currently disconnected.
 
 This change makes phonology a first-class, self-supporting loop: three **independent witnesses** to the
 same sound system — distribution (text-only), acoustics (optional audio), and HC generation — that
@@ -60,5 +61,5 @@ contracts.)
 - New knowledge artifact: `linguistics/skills/triangulate-phonology.md` (audio-optional sound
   deciphering), wired into the morphology/phonology workflows and meta-workflows.
 - Optional dependencies only: Allosaurus stays behind the `audio` extra; the text-only path needs none.
-- Out of scope: Finnish; a first-class `audio/*` schema; audio-driven parsing; replacing the
+- Out of scope: a first-class `audio/*` schema; audio-driven parsing; replacing the
   text/parallel pipeline; automatic (unreviewed) lexicon or feature mutation.

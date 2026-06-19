@@ -28,16 +28,21 @@ class LexEntry:
     gloss: str
     pos: str = "root"
     count: int = 0
+    # Irregular-stem allomorphy the HC way: extra stem shapes for the SAME entry (LibLCM
+    # MoStemAllomorph). HC tries each, so `decir` with allomorphs ('dic','dij') parses `diciendo`,
+    # `dijo`. Unconditioned here (HC's easy path); PhoneEnv conditioning is the later refinement.
+    allomorphs: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
 class Affix:
     form: str
     gloss: str
-    kind: str  # 'suffix' | 'prefix'
+    kind: str  # 'suffix' | 'prefix' | 'infix'
     count: int = 0
     slot_ord: int = 1  # modal position class: 1 = adjacent to the root, 2 = next out, ...
     slots: tuple[tuple[str, int], ...] = ()  # ALL attested slots (MoInflAffMsa.Slots is a sequence)
+    req_pos: str = ""  # MSA: the part of speech this affix attaches to ("" = any/unrestricted)
 
     @property
     def slot(self) -> tuple[str, int]:
@@ -60,6 +65,8 @@ class LangModel:
         chars: set[str] = set()
         for e in self.lexicon:
             chars.update(e.form)
+            for al in e.allomorphs:
+                chars.update(al)
         for a in self.affixes:
             chars.update(a.form)
         return sorted(chars)

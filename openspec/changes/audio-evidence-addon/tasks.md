@@ -7,8 +7,8 @@
 
 ## 2. Sample-word and catalog ingestion
 
-- [x] 2.1 Implement loaders and validators for Turkish/Hungarian audio catalogs and opt-in sample-word
-  manifests.
+- [x] 2.1 Implement loaders and validators for the four targets' (Swahili/Indonesian/Tagalog/Spanish)
+  audio catalogs and opt-in sample-word manifests.
 - [x] 2.2 Implement pair-output resolution that persists sample words under the existing eBible pair
   directory with matched or unresolved status.
 
@@ -23,5 +23,5 @@
 
 - [x] 4.1 Implement derived pronunciation-candidate, orthography-alert, and triangulation-report
   outputs from pair data plus optional phone evidence.
-- [x] 4.2 Document the add-on workflow in repo docs, including its Turkish/Hungarian scope, optional
-  sample-word path, and explicit non-first-class status.
+- [x] 4.2 Document the add-on workflow in repo docs, including its four-target scope
+  (Swahili/Indonesian/Tagalog/Spanish), optional sample-word path, and explicit non-first-class status.

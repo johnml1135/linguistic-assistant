@@ -7,7 +7,7 @@ occurrences inside longer chapter- or book-level local audio, ranking multiple c
 letting an analyst replay those windows without manually scrubbing through the source file.
 
 This change extends the existing add-on rather than creating a parallel subsystem. It must preserve the
-same boundaries as the current audio layer: Turkish and Hungarian only, local assets only, plain-file
+same boundaries as the current audio layer: the four targets (Swahili/Indonesian/Tagalog/Spanish) only, local assets only, plain-file
 outputs under the pair directory, and no direct database or lexicon mutation. The user also asked to
 leave permanent snippet attachment for a later phase, so v1 needs location metadata and review
 playback, not durable extracted-word assets.
@@ -29,7 +29,7 @@ playback, not durable extracted-word assets.
 **Non-Goals:**
 - Permanent snippet extraction or attaching audio directly to a downstream database.
 - Automatic download of NT audio from remote sources.
-- Expanding the audio scope beyond Turkish and Hungarian.
+- Expanding the audio scope beyond the four targets (Swahili, Indonesian, Tagalog, Spanish).
 - Treating ASR or phone evidence as parser-authoritative.
 - Solving all input formats in v1; preview playback will target local WAV assets first and degrade
   clearly when the source format cannot be previewed.

@@ -1,4 +1,4 @@
-"""Statistical word-gloss alignment — a probabilistic source of word glosses (eflomal / THOT via
+"""Statistical word-gloss alignment — a probabilistic source of word glosses (THOT HMM via
 sil-machine, with a dependency-free co-occurrence fallback). Complements the deterministic Apertium
 bidix; output feeds candidate `bilingual/*` sense links.
 """

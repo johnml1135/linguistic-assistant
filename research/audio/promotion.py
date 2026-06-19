@@ -28,7 +28,7 @@ class PronunciationConfirmation:
     entry: str
     word: str
     form: str  # the phonetic/IPA pronunciation string
-    writing_system: str  # BCP-47 tag for the form, e.g. "tur-fonipa"
+    writing_system: str  # BCP-47 tag for the form, e.g. "swh-fonipa"
     confirmed: bool
     confidence: float = 0.6
     refs: list[str] = field(default_factory=list)

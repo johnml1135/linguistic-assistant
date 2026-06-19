@@ -72,17 +72,28 @@ the [[../primitives/natural-class]] too — the same-sound-vs-contrast call that
 - **Premature generalization** from one or two examples — require enough evidence, or
   [[guess-ask-or-defer]] to a speaker.
 
-## From practice (the TDD cycle on Turkish/Hungarian)
+## From practice (the TDD cycle on Swahili)
 
 `research/cycle/` runs a deterministic, HC-gated affix/stem inducer over eBible wordforms — a baseline
-*without* this skill. It recovers the right suffixes but **enumerates vowel-harmony allomorphs as
-separate affixes** (`-de/-da`, `-ler/-lar`, `-in/-ın`, `-lık/-lik/-luk/-lük`) and **plateaus** there
-(HC v1 has no phonology). That plateau is precisely this skill's entry point: each such *set* is one
-phonological rule over a [[../primitives/natural-class]] (backness/rounding harmony). Two transferable
-lessons: (1) a fast **coverage gate** (does the held-out form parse?) is a cheap stand-in for the full
-golden `word→gloss` round-trip during rapid iteration; (2) morphology has to grow on **both axes at
-once** — a generalization that needs a stem the lexicon lacks won't show its value until the stem
-exists ([[propose-from-evidence]] root growth), so propose the rule *and* the missing stem together.
+*without* this skill. It recovers the right affixes but **enumerates vowel-harmony allomorphs as
+separate affixes** (Swahili verb-extension height harmony: causative `-ish-/-esh-`, stative
+`-ik-/-ek-`, applicative `-i-/-e-`) and **plateaus** there (HC v1 has no phonology). That plateau is
+precisely this skill's entry point: each such *set* is one phonological rule over a
+[[../primitives/natural-class]] (the front {i,e} height class). Two transferable lessons: (1) a fast
+**coverage gate** (does the held-out form parse?) is a cheap stand-in for the full golden `word→gloss`
+round-trip during rapid iteration; (2) morphology has to grow on **both axes at once** — a
+generalization that needs a stem the lexicon lacks won't show its value until the stem exists
+([[propose-from-evidence]] root growth), so propose the rule *and* the missing stem together.
+
+## Beyond vowel harmony (consonant assimilation, epenthesis)
+
+The same collapse judgment applies to *any* allomorphy, not just vowel harmony. The cycle's
+`phonology.propose_morphophon_rules` surfaces two non-harmony rule candidates from the induced affix
+set: **Indonesian `meN-` nasal place assimilation** (the prefix-final nasal takes the place of the
+following root consonant — `me/men/mem/meng` is one morpheme, not four) and **Spanish `-s/-es`
+plural epenthesis** (one `-s` morpheme + an epenthetic `-e-` after a consonant). Each is proposed as
+one archiphoneme + a rule; emitting the assimilation/epenthesis rules to HC is the follow-on to the
+proven alpha-variable harmony rule (`hc_phonology`).
 
 ## Training basis
 

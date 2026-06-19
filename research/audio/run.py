@@ -134,7 +134,7 @@ def _write_json(path: Path, payload: dict[str, object]) -> None:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair-dir", required=True, help="pair output directory containing parallel.jsonl")
-    ap.add_argument("--target", required=True, choices=["tur", "hun"], help="target key")
+    ap.add_argument("--target", required=True, choices=["swh", "ind", "tgl", "spa"], help="target key")
     ap.add_argument("--samples", required=True, help="path to the opt-in sample-word manifest JSON")
     ap.add_argument("--catalog", help="optional audio catalog JSON path")
     ap.add_argument("--timestamps", action="store_true", help="request timestamp output when recognition runs")

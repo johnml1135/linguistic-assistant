@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "note": "The four current targets (Swahili, Indonesian, Tagalog, Spanish) were themselves chosen as the open-text + music-free-audio candidates and now live in audio_sources.json, each pending final license + exact-text-match verification. This fallback shortlist is intentionally empty: if all four fail verification, widen the search to other open-text + Non-Drama-audio language pairs and add them here (same shape as before: language, language_code, why, script, text{title,ebible_id,publication_url,license,redistributable}, audio{provider,edition,portal,music_free,exact_text_match,license}).",
+  "candidates": []
+}

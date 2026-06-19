@@ -1,16 +1,17 @@
 ## ADDED Requirements
 
 ### Requirement: Operators can declare opt-in sample words
-The system SHALL accept an explicit sample-word manifest for Turkish and Hungarian that lets an
-operator nominate words to track through later enrichment. A sample entry MUST support the target key,
-the chosen word form, and MAY include optional lemma, gloss, reference, or analyst note fields.
+The system SHALL accept an explicit sample-word manifest for the four targets (Swahili, Indonesian,
+Tagalog, Spanish) that lets an operator nominate words to track through later enrichment. A sample
+entry MUST support the target key, the chosen word form, and MAY include optional lemma, gloss,
+reference, or analyst note fields.
 
 #### Scenario: Sample manifest is accepted
-- **WHEN** an operator supplies a valid sample-word manifest for `tur` or `hun`
+- **WHEN** an operator supplies a valid sample-word manifest for one of `swh`, `ind`, `tgl`, or `spa`
 - **THEN** the workflow loads the sample entries and preserves their declared metadata
 
 #### Scenario: Sample manifest contains an unsupported target
-- **WHEN** a sample-word manifest contains a target other than `tur` or `hun`
+- **WHEN** a sample-word manifest contains a target other than `swh`, `ind`, `tgl`, or `spa`
 - **THEN** the workflow reports the invalid entry and does not treat it as accepted input
 
 ### Requirement: Sample words persist with resolution status

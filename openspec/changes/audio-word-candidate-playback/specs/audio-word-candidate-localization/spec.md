@@ -7,7 +7,7 @@ workflow MUST restrict itself to supported targets and MUST complete with status
 searchable backend, no eligible local audio, or no resolved sample words are available.
 
 #### Scenario: Candidate localization runs for a resolved sample word
-- **WHEN** an operator runs candidate localization for `tur` or `hun` with a resolved sample word and
+- **WHEN** an operator runs candidate localization for one of `swh`, `ind`, `tgl`, or `spa` with a resolved sample word and
   at least one eligible local audio asset whose anchor covers that sample's reference
 - **THEN** the workflow searches that asset and persists one or more candidate occurrences for review
 

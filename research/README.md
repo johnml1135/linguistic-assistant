@@ -12,8 +12,8 @@ proven pieces. Provider-agnostic LLM harness, golden sets, and the offline align
 | `proposal/` | the shared **propose core** (`Case → ChangeSet`) + the change-set op vocabulary |
 | `eval/` | the golden eval runner (propose → score → report) |
 | `bilingual/` | the **Apertium-alignment bridge** — deterministic lemma/bidix reference-finder + FLExTrans `.dix` interop |
-| `align/` | **statistical** word-gloss alignment (eflomal / THOT via `sil-machine`, co-occurrence fallback) |
-| `audio/` | optional **audio evidence add-on** — Turkish/Hungarian sample words, source catalogs, ranked word candidates, review-only phone evidence, pronunciation/misspelling reports, and on-demand preview playback |
+| `align/` | **statistical** word-gloss alignment (THOT HMM via `sil-machine`, co-occurrence fallback) |
+| `audio/` | optional **audio evidence add-on** — Swahili/Indonesian/Tagalog/Spanish sample words, source catalogs, ranked word candidates, review-only phone evidence, pronunciation/misspelling reports, and on-demand preview playback |
 | `benchmarks/` | LingGym calibration + results |
 
 ## Environment (uv)
@@ -22,7 +22,7 @@ The project is managed with **[uv](https://docs.astral.sh/uv/)**; deps are pinne
 ```bash
 cd research
 uv sync                    # core (anthropic, httpx)
-uv sync --extra align      # + sil-machine[thot] (+ eflomal on Linux) for word alignment
+uv sync --extra align      # + sil-machine[thot] (THOT HMM) for word alignment
 uv sync --extra audio      # + allosaurus and faster-whisper for optional phone evidence and word search
 uv sync --extra data-prep  # + flexlibs (Windows + a FieldWorks install only)
 ```
@@ -37,9 +37,9 @@ python eval/run.py --fixture            # offline eval/proposal loop
 python bilingual/tests_smoke.py         # Apertium bridge (offline)
 python align/tests_smoke.py             # word-gloss alignment (offline, co-occurrence backend)
 python audio/tests_smoke.py             # audio add-on (offline; no Allosaurus required)
-python audio/run.py --pair-dir golden/_sources/ebible/eng-engwebp__tur-turytc --target tur --samples path/to/samples.json [--catalog path/to/catalog.json]
-python -m audio.candidates locate --pair-dir golden/_sources/ebible/eng-engwebp__tur-turytc --target tur --samples path/to/samples.json --catalog path/to/catalog.json [--stem tanrı] [--phone-cues]
-python -m audio.candidates play --artifact golden/_sources/ebible/eng-engwebp__tur-turytc/audio/word_occurrences.json --occurrence <occurrence-id>
+python audio/run.py --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb --target swh --samples path/to/samples.json [--catalog path/to/catalog.json]
+python -m audio.candidates locate --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb --target swh --samples path/to/samples.json --catalog path/to/catalog.json [--stem mungu] [--phone-cues]
+python -m audio.candidates play --artifact golden/_sources/ebible/eng-engwebp__swh-swhulb/audio/word_occurrences.json --occurrence <occurrence-id>
 ```
 
 Smoke tests across `eval/`, `bilingual/`, `align/` are dependency-free (no model, no native build, no
