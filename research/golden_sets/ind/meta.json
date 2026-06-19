@@ -7,16 +7,16 @@
   "unfoldingword"
  ],
  "stats": {
-  "pos_words": 6651,
+  "pos_words": 58415,
   "pos_verified": 9024,
   "pos_conflicts": 2155,
-  "lexicon_size": 6756,
+  "lexemes": 4366,
+  "wordforms": 5404,
   "unimorph_pairs": 27714,
   "affixes": 44,
-  "glosses": 4099,
+  "glosses": 3267,
   "key_terms": 953,
-  "scripture_senses": 3274,
-  "scripture_homographs": 622,
+  "homographs": 750,
   "scripture_vocab": 6984,
   "scripture_attested": 5404,
   "scripture_coverage": 0.7738,
@@ -41,213 +41,220 @@
  },
  "files": [
   "lexicon.jsonl",
+  "lexicon.lift",
+  "wordforms.jsonl",
   "grammar_rules.jsonl",
-  "senses.jsonl",
-  "key_terms.jsonl",
   "phonology.jsonl",
+  "key_terms.jsonl",
+  "meta.json",
   "golden_scripture.tsv"
  ],
  "pos_conflicts_sample": [
   [
-   "tetes",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "pj",
+   "asahan",
    "Proper noun",
    "Noun"
   ],
   [
-   "partner",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "cekcok",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "mada",
+   "cape",
    "Proper noun",
    "Adjective"
   ],
   [
-   "silahkan",
+   "begitu",
+   "Adverb",
+   "Adposition"
+  ],
+  [
+   "khasi",
    "Verb",
+   "Noun"
+  ],
+  [
+   "paskah",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "bener",
+   "Proper noun",
+   "Adverb"
+  ],
+  [
+   "sangha",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "demikian",
+   "Pronoun",
+   "Adverb"
+  ],
+  [
+   "elite",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "kalinya",
+   "Adverb",
+   "Verb"
+  ],
+  [
+   "swasembada",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "sempat",
+   "Adverb",
+   "Verb"
+  ],
+  [
+   "nominasi",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "depok",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "situ",
+   "Noun",
+   "Adverb"
+  ],
+  [
+   "duka",
+   "Noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "menjaring",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "buntu",
+   "Proper noun",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "sepengetahuan",
+   "Adjective",
+   "Adverb"
+  ],
+  [
+   "usah",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "kajang",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "kemas",
+   "Noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "sma",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "penumpasan",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "mitra",
+   "Proper noun",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "lancar",
+   "Adverb",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "hina",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "kedelapan",
+   "Adjective",
+   "Numeral"
+  ],
+  [
+   "globe",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "terjang",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "gedong",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "sr",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "intan",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "mukim",
+   "Proper noun",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "ribuan",
+   "Numeral",
+   "Adverb"
+  ],
+  [
+   "piawai",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "terstandar",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "kemasukan",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "dos",
+   "Proper noun",
    "Noun"
   ],
   [
    "bridge",
    "Proper noun",
    "Noun"
-  ],
-  [
-   "ankara",
-   "Coordinating connective",
-   "Proper noun"
-  ],
-  [
-   "katalis",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "tona",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "berkain",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "delima",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "tuli",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "urai",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "protestanisme",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "os",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "nusa",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "barikade",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "andal",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "pacaran",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "menurut",
-   "Adposition",
-   "Verb"
-  ],
-  [
-   "konstitusional",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "kers",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "picu",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "petrokimia",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "i",
-   "Proper noun",
-   "Numeral"
-  ],
-  [
-   "teriak",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "elastik",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "cemas",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "menjijikkan",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "obi",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "kanan",
-   "Noun",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "ab",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "semprot",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "menua",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "sebulan",
-   "Adjective",
-   "Adverb"
-  ],
-  [
-   "cuma-cuma",
-   "Adjective",
-   "Adverb"
-  ],
-  [
-   "gurau",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "altruisme",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "sebagai",
-   "Adposition",
-   "Coordinating connective"
   ]
  ],
  "scripture_uncovered_sample": [

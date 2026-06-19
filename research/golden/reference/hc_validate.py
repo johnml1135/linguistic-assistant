@@ -17,7 +17,6 @@ from pathlib import Path
 _THIS = Path(__file__).resolve()
 sys.path.insert(0, str(_THIS.parents[2]))
 
-from golden.grammar import LexEntry  # noqa: E402
 from golden.hc import run_parse  # noqa: E402
 
 from golden.reference.compile import PAIR_DIR  # noqa: E402
@@ -26,36 +25,42 @@ from golden.reference.hc_coverage import _scripture_freqs, _slug, build_referenc
 from golden.reference.phonology_gold import phon_feats  # noqa: E402
 
 
-def validate(pair: str, *, sample: int = 400, close: bool = False) -> dict:
-    model = build_reference_model(pair)
+def validate(pair: str, *, sample: int = 400) -> dict:
+    """Score the golden grammar against the wordform gold: does HC parse each scripture wordform, and to
+    the RIGHT lemma? Lemma-recall = an HC analysis carries a morph glossed as the wordform's lemma (the
+    model glosses each root with `_slug(lemma gloss)`, so the root-gloss identifies the lemma)."""
     gold = load_gold(pair)
-    glosses, pos = gold.get("glosses", {}), gold.get("pos", {})
-    known = set(glosses) | set(gold.get("lemmas", [])) | set(pos)
+    glosses = gold.get("glosses", {})
     freqs = _scripture_freqs(pair)
-    # golden entries = attested words the references know (not bare proper nouns), most frequent first
-    entries = sorted((w for w in gold.get("in_scripture", [])
-                      if w in known and w.isalpha() and len(w) >= 2), key=lambda w: -freqs.get(w, 0))[:sample]
+    model = build_reference_model(pair, n_roots=20000)  # all biblical lemmas as roots, so recall is fair
     pf = phon_feats(pair, model.charset)
-    parses = run_parse(model, entries, chunk_size=25, chunk_timeout=25, templated=False, phon_feats=pf)
-    hc_loads = any(parses.get(w) for w in entries)  # a failed grammar load → nothing parses at all
-    parsed = [w for w in entries if parses.get(w)]
-    residual = [w for w in entries if not parses.get(w)]
-
-    closed = None
-    if close and residual:
-        # lexicalise the residual: each is a real word with a reference gloss → add as its own root.
-        extra = [LexEntry(form=w, gloss=_slug(glosses.get(w) or "?"), pos=(pos.get(w) or "Noun")) for w in residual]
-        model.lexicon.extend(extra)
-        pf2 = phon_feats(pair, model.charset)
-        parses2 = run_parse(model, residual, chunk_size=25, chunk_timeout=25, templated=False, phon_feats=pf2)
-        still = [w for w in residual if not parses2.get(w)]
-        closed = {"lexicalised": len(extra), "still_unparsed": still[:15],
-                  "rate_after": round((len(parsed) + (len(residual) - len(still))) / len(entries), 4) if entries else 0.0}
-
-    rate = round(len(parsed) / len(entries), 4) if entries else 0.0
-    return {"pair": pair, "hc_loads": hc_loads, "phon_features": len(pf),
-            "golden_entries_tested": len(entries), "parsed": len(parsed), "compositional_rate": rate,
-            "residual": len(residual), "residual_sample": residual[:15], "closed": closed}
+    # the wordform gold whose lemma has a gloss (so the analysis is checkable), most frequent first
+    wf = [w for w in gold.get("wordforms", []) if glosses.get(w["lemma"])]
+    wf.sort(key=lambda x: -freqs.get(x["surface"], 0))
+    wf = wf[:sample]
+    surfaces = list({w["surface"] for w in wf})
+    parses = run_parse(model, surfaces, chunk_size=25, chunk_timeout=25, templated=False, phon_feats=pf)
+    hc_loads = any(parses.get(s) for s in surfaces)
+    parsed = recalled = 0
+    miss_parse: list[str] = []
+    miss_lemma: list[str] = []
+    for w in wf:
+        analyses = parses.get(w["surface"]) or []
+        if analyses:
+            parsed += 1
+        else:
+            miss_parse.append(w["surface"])
+            continue
+        expect = _slug(glosses.get(w["lemma"]))            # the lemma's root-gloss in the grammar
+        if any(expect in [g for _, g in a] for a in analyses):
+            recalled += 1
+        else:
+            miss_lemma.append(f"{w['surface']}→{w['lemma']}")
+    n = len(wf)
+    return {"pair": pair, "hc_loads": hc_loads, "phon_features": len(pf), "tested": n,
+            "parse_rate": round(parsed / n, 4) if n else 0.0,
+            "lemma_recall": round(recalled / n, 4) if n else 0.0,
+            "miss_parse": miss_parse[:12], "miss_lemma": miss_lemma[:12]}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -63,21 +68,20 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=list(PAIR_DIR))
     ap.add_argument("--sample", type=int, default=400)
-    ap.add_argument("--close", action="store_true", help="lexicalise the residual to reach 100% on the golden set")
     args = ap.parse_args(argv)
     if not hc_available():
         print("hc CLI not installed — skipping (this gate needs Hermit Crab).")
         return 0
-    r = validate(args.pair, sample=args.sample, close=args.close)
+    r = validate(args.pair, sample=args.sample)
     ok = "✓" if r["hc_loads"] else "✗ (grammar failed to load!)"
-    print(f"[{args.pair}] HC loads the golden grammar: {ok}   phonological features active: {r['phon_features']}")
-    print(f"  compositional parse of golden entries: {r['compositional_rate']} "
-          f"({r['parsed']}/{r['golden_entries_tested']}; {r['residual']} residual)")
-    if r["residual_sample"]:
-        print(f"  residual (irregular/uncovered): {', '.join(r['residual_sample'])}")
-    if r["closed"]:
-        print(f"  after lexicalising the residual: {r['closed']['rate_after']} "
-              f"(+{r['closed']['lexicalised']} roots; {len(r['closed']['still_unparsed'])} still unparsed)")
+    print(f"[{args.pair}] HC loads golden grammar: {ok}   phon features active: {r['phon_features']}   "
+          f"({r['tested']} wordforms tested)")
+    print(f"  parse rate:   {r['parse_rate']}  (HC produces some analysis)")
+    print(f"  lemma recall: {r['lemma_recall']}  (analysis carries the RIGHT lemma — the real gate)")
+    if r["miss_lemma"]:
+        print(f"  wrong/!lemma: {', '.join(r['miss_lemma'])}")
+    if r["miss_parse"]:
+        print(f"  no parse:     {', '.join(r['miss_parse'])}")
     return 0
 
 

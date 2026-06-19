@@ -6,16 +6,16 @@
   "unfoldingword"
  ],
  "stats": {
-  "pos_words": 2639,
+  "pos_words": 30870,
   "pos_verified": 259,
   "pos_conflicts": 78,
-  "lexicon_size": 4029,
+  "lexemes": 4012,
+  "wordforms": 4029,
   "unimorph_pairs": 0,
   "affixes": 0,
-  "glosses": 2576,
+  "glosses": 2542,
   "key_terms": 953,
-  "scripture_senses": 2576,
-  "scripture_homographs": 772,
+  "homographs": 766,
   "scripture_vocab": 8844,
   "scripture_attested": 4029,
   "scripture_coverage": 0.4556,
@@ -40,57 +40,39 @@
  },
  "files": [
   "lexicon.jsonl",
+  "lexicon.lift",
+  "wordforms.jsonl",
   "grammar_rules.jsonl",
-  "senses.jsonl",
-  "key_terms.jsonl",
   "phonology.jsonl",
+  "key_terms.jsonl",
+  "meta.json",
   "golden_scripture.tsv"
  ],
  "pos_conflicts_sample": [
   [
-   "nito",
-   "Pronoun",
-   "Determiner"
+   "may",
+   "Verb",
+   "Particle"
   ],
   [
-   "bilang",
-   "Adposition",
-   "Noun"
-  ],
-  [
-   "bango",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "ito",
+   "sarili",
    "Pronoun",
    "Adjective"
   ],
   [
-   "iba",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "tuwing",
-   "Subordinating connective",
-   "Adverb"
-  ],
-  [
-   "pula",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "inyo",
+   "nila",
    "Pronoun",
    "Determiner"
   ],
   [
-   "paborito",
-   "Noun",
-   "Adjective"
+   "tulad",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "tuloy",
+   "Adverb",
+   "Noun"
   ],
   [
    "ang",
@@ -98,19 +80,9 @@
    "Particle"
   ],
   [
-   "pagod",
-   "Adjective",
+   "norte",
+   "Proper noun",
    "Noun"
-  ],
-  [
-   "kailangan",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "para",
-   "Adposition",
-   "Coordinating connective"
   ],
   [
    "mga",
@@ -118,13 +90,58 @@
    "Particle"
   ],
   [
-   "ilan",
-   "Determiner",
-   "Pronoun"
+   "bigla",
+   "Adverb",
+   "Adjective"
   ],
   [
-   "puti",
+   "kilala",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "payaso",
    "Adjective",
+   "Noun"
+  ],
+  [
+   "iyan",
+   "Pronoun",
+   "Adjective"
+  ],
+  [
+   "sana",
+   "Particle",
+   "Adverb"
+  ],
+  [
+   "nito",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "marami",
+   "Determiner",
+   "Adjective"
+  ],
+  [
+   "inyo",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "hindi",
+   "Particle",
+   "Adverb"
+  ],
+  [
+   "si",
+   "Adposition",
+   "Determiner"
+  ],
+  [
+   "sandali",
+   "Adverb",
    "Noun"
   ],
   [
@@ -133,32 +150,92 @@
    "Noun"
   ],
   [
-   "dapat",
-   "Adverb",
-   "Verb"
+   "bang",
+   "Particle",
+   "Interjection"
   ],
   [
-   "sandali",
-   "Adverb",
-   "Noun"
-  ],
-  [
-   "kambal",
-   "Noun",
+   "wala",
+   "Verb",
    "Adjective"
   ],
   [
-   "sarili",
+   "ito",
    "Pronoun",
    "Adjective"
   ],
   [
-   "marami",
-   "Determiner",
+   "parang",
+   "Adverb",
+   "Noun"
+  ],
+  [
+   "tatay",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "kaniya",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "namin",
+   "Pronoun",
    "Adjective"
   ],
   [
-   "sabi",
+   "bilang",
+   "Adposition",
+   "Noun"
+  ],
+  [
+   "kasi",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "asul",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "sabado",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "nang",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "dahil",
+   "Adposition",
+   "Coordinating connective"
+  ],
+  [
+   "bango",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "tay",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tanong",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "bikol",
+   "Noun",
+   "Proper noun"
+  ],
+  [
+   "sigaw",
    "Verb",
    "Noun"
   ],
@@ -168,84 +245,9 @@
    "Noun"
   ],
   [
-   "kong",
-   "Pronoun",
-   "Proper noun"
-  ],
-  [
-   "nila",
-   "Pronoun",
-   "Determiner"
-  ],
-  [
-   "payaso",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "mismo",
-   "Determiner",
+   "paborito",
+   "Noun",
    "Adjective"
-  ],
-  [
-   "tatay",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "labas",
-   "Verb",
-   "Adverb"
-  ],
-  [
-   "bigla",
-   "Adverb",
-   "Adjective"
-  ],
-  [
-   "e",
-   "Particle",
-   "Noun"
-  ],
-  [
-   "dahil",
-   "Adposition",
-   "Coordinating connective"
-  ],
-  [
-   "may",
-   "Verb",
-   "Particle"
-  ],
-  [
-   "sabado",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "tuloy",
-   "Adverb",
-   "Noun"
-  ],
-  [
-   "kasi",
-   "Subordinating connective",
-   "Coordinating connective"
-  ],
-  [
-   "niya",
-   "Pronoun",
-   "Determiner"
-  ],
-  [
-   "parang",
-   "Adverb",
-   "Noun"
-  ],
-  [
-   "bang",
-   "Particle",
-   "Interjection"
   ]
  ],
  "scripture_uncovered_sample": [

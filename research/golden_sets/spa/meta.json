@@ -7,16 +7,16 @@
   "unfoldingword"
  ],
  "stats": {
-  "pos_words": 13881,
+  "pos_words": 912889,
   "pos_verified": 89759,
   "pos_conflicts": 7473,
-  "lexicon_size": 14185,
+  "lexemes": 8092,
+  "wordforms": 10140,
   "unimorph_pairs": 1196224,
   "affixes": 1597,
-  "glosses": 4940,
+  "glosses": 2412,
   "key_terms": 953,
-  "scripture_senses": 3325,
-  "scripture_homographs": 955,
+  "homographs": 811,
   "scripture_vocab": 11004,
   "scripture_attested": 10140,
   "scripture_coverage": 0.9215,
@@ -40,214 +40,215 @@
  },
  "files": [
   "lexicon.jsonl",
+  "lexicon.lift",
+  "wordforms.jsonl",
   "grammar_rules.jsonl",
-  "senses.jsonl",
-  "key_terms.jsonl",
   "phonology.jsonl",
+  "key_terms.jsonl",
+  "meta.json",
   "golden_scripture.tsv"
  ],
  "pos_conflicts_sample": [
   [
-   "desocupados",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "promesa",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "enfriadas",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "unido",
-   "Proper noun",
-   "Verb"
-  ],
-  [
-   "aquilatada",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "asfaltado",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "araucanas",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "subirá",
-   "Proper noun",
-   "Verb"
-  ],
-  [
-   "fundido",
-   "Noun",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "rogativas",
+   "mamíferos",
    "Noun",
    "Adjective"
   ],
   [
-   "faces",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "aqueménidas",
+   "belgas",
    "Noun",
    "Adjective"
   ],
   [
-   "submarino",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "laca",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "itálica",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "marco",
-   "Noun",
-   "Verb",
-   "Proper noun"
-  ],
-  [
-   "matriculadas",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "tintes",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "curtido",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "adhesivos",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "brotas",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "aguijoneada",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "eh",
-   "Proper noun",
-   "Interjection"
-  ],
-  [
-   "javanesa",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "devota",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "bizantinos",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "aragoneses",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "vallés",
-   "Proper noun",
-   "Verb"
-  ],
-  [
-   "minas",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "rebajas",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "regatas",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "maravillosos",
+   "orense",
    "Proper noun",
    "Adjective"
   ],
   [
-   "trizas",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "ilustrado",
+   "activo",
    "Adjective",
    "Verb"
   ],
   [
-   "finas",
+   "encausada",
    "Adjective",
    "Verb"
   ],
   [
-   "nadando",
+   "apropiados",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "incidentes",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "escandas",
    "Verb",
-   "Adjective"
-  ],
-  [
-   "palmillas",
-   "Proper noun",
    "Noun"
   ],
   [
-   "fronteras",
+   "tópico",
    "Noun",
    "Adjective"
   ],
   [
-   "ferrando",
+   "visas",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "escarcha",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "subvenciones",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "tupí",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "reproche",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "ensalzado",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "artilleros",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "minusválidos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "tenca",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "defensiva",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "estampadas",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "geoestacionario",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "obrero",
+   "Proper noun",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "circasianos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "pequeñita",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "enganchada",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "dese",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "voseo",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "abates",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "secciones",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "mame",
    "Proper noun",
    "Verb"
   ],
   [
-   "desolado",
+   "primarias",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "realista",
    "Adjective",
    "Verb"
+  ],
+  [
+   "glabras",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "empalme",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "tutelar",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "poso",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "tripleta",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "esperada",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "tomas",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "pescador",
+   "Proper noun",
+   "Adjective"
   ]
  ],
  "scripture_uncovered_sample": [
