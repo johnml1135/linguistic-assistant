@@ -1,0 +1,182 @@
+{"morph_type": "prefix", "affix": "wa", "features": "V;FIN;INDF3;PL;LGSPEC1", "inflection": {"Number": "Plural"}, "count": 250}
+{"morph_type": "prefix", "affix": "uka", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC2", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 183}
+{"morph_type": "prefix", "affix": "ya", "features": "V;FIN;INDF3;PL;LGSPEC2", "inflection": {"Number": "Plural"}, "count": 165}
+{"morph_type": "prefix", "affix": "uki", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC2", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 150}
+{"morph_type": "prefix", "affix": "m", "features": "ADJ;SG;LGSPEC5", "inflection": {"Number": "Singular"}, "count": 136}
+{"morph_type": "prefix", "affix": "uta", "features": "V;FIN;IND;FUT;2;SG", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Second", "Number": "Singular"}, "count": 129}
+{"morph_type": "prefix", "affix": "ume", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 129}
+{"morph_type": "prefix", "affix": "unge", "features": "V;FIN;IND;COND;PRES;2;SG", "inflection": {"Mood": "Indicative", "Person": "Second", "Number": "Singular"}, "count": 129}
+{"morph_type": "prefix", "affix": "uli", "features": "V;FIN;IND;PST;3;SG;LGSPEC2", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 129}
+{"morph_type": "prefix", "affix": "una", "features": "V;FIN;IND;PRES;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 129}
+{"morph_type": "prefix", "affix": "zika", "features": "V;FIN;IND;LGSPEC7;3;PL;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 124}
+{"morph_type": "prefix", "affix": "ika", "features": "V;FIN;IND;LGSPEC10;3;PL;LGSPEC2", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 122}
+{"morph_type": "prefix", "affix": "ku", "features": "V;NFIN", "inflection": {}, "count": 106}
+{"morph_type": "prefix", "affix": "ziki", "features": "V;FIN;SUBJ;COM;PST;3;PL;LGSPEC6", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 102}
+{"morph_type": "prefix", "affix": "za", "features": "V;FIN;INDF3;PL;LGSPEC6", "inflection": {"Number": "Plural"}, "count": 102}
+{"morph_type": "prefix", "affix": "zina", "features": "V;FIN;IND;PRES;3;PL;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 102}
+{"morph_type": "prefix", "affix": "hu", "features": "V;FIN;IND;HAB;SG", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 102}
+{"morph_type": "prefix", "affix": "iki", "features": "V;FIN;SUBJ;COM;PST;3;PL;LGSPEC2", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 100}
+{"morph_type": "prefix", "affix": "ina", "features": "V;FIN;IND;PRES;3;PL;LGSPEC2", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 94}
+{"morph_type": "prefix", "affix": "zita", "features": "V;FIN;IND;FUT;3;PL;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Plural"}, "count": 88}
+{"morph_type": "prefix", "affix": "inge", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 88}
+{"morph_type": "prefix", "affix": "ili", "features": "V;FIN;IND;PST;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 88}
+{"morph_type": "prefix", "affix": "zili", "features": "V;FIN;IND;PST;3;PL;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 88}
+{"morph_type": "prefix", "affix": "zime", "features": "V;FIN;IND;PST;PRF;3;PL;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 88}
+{"morph_type": "prefix", "affix": "zinge", "features": "V;FIN;IND;COND;PRES;3;PL;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 88}
+{"morph_type": "prefix", "affix": "ime", "features": "V;FIN;IND;PST;PRF;3;PL;LGSPEC2", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 88}
+{"morph_type": "prefix", "affix": "ita", "features": "V;FIN;IND;FUT;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 88}
+{"morph_type": "prefix", "affix": "mu", "features": "ADJ;PL;LGSPEC9", "inflection": {"Number": "Plural"}, "count": 66}
+{"morph_type": "prefix", "affix": "yaka", "features": "V;FIN;IND;LGSPEC10;3;PL;LGSPEC3", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 62}
+{"morph_type": "prefix", "affix": "mka", "features": "V;FIN;IND;LGSPEC10;2;PL", "inflection": {"Mood": "Indicative", "Person": "Second", "Number": "Plural"}, "count": 62}
+{"morph_type": "prefix", "affix": "vika", "features": "V;FIN;IND;LGSPEC10;3;PL;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 62}
+{"morph_type": "prefix", "affix": "waka", "features": "V;FIN;IND;LGSPEC10;3;PL;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 62}
+{"morph_type": "prefix", "affix": "mw", "features": "ADJ;PL;LGSPEC9", "inflection": {"Number": "Plural"}, "count": 62}
+{"morph_type": "prefix", "affix": "pa", "features": "ADJ;PL;LGSPEC8", "inflection": {"Number": "Plural"}, "count": 61}
+{"morph_type": "prefix", "affix": "tuka", "features": "V;FIN;IND;LGSPEC10;1;PL", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Plural"}, "count": 60}
+{"morph_type": "prefix", "affix": "kika", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 59}
+{"morph_type": "prefix", "affix": "nika", "features": "V;FIN;IND;LGSPEC10;1;SG", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Singular"}, "count": 59}
+{"morph_type": "prefix", "affix": "lika", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 58}
+{"morph_type": "prefix", "affix": "aka", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 54}
+{"morph_type": "prefix", "affix": "a", "features": "V;FIN;IND;IND;INDF3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 54}
+{"morph_type": "prefix", "affix": "wana", "features": "V;FIN;IND;PRES;3;PL;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "mna", "features": "V;FIN;IND;PRES;2;PL", "inflection": {"Mood": "Indicative", "Person": "Second", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "waki", "features": "V;FIN;SUBJ;COM;PST;3;PL;LGSPEC1", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "vina", "features": "V;FIN;IND;PRES;3;PL;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "viki", "features": "V;FIN;SUBJ;COM;PST;3;PL;LGSPEC4", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "yana", "features": "V;FIN;IND;PRES;3;PL;LGSPEC3", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "vya", "features": "V;FIN;INDF3;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "mki", "features": "V;FIN;SUBJ;COM;PST;2;PL", "inflection": {"Tense": "Past", "Person": "Second", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "mwa", "features": "V;FIN;INDF2;PL", "inflection": {"Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "yaki", "features": "V;FIN;SUBJ;COM;PST;3;PL;LGSPEC3", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 51}
+{"morph_type": "prefix", "affix": "cha", "features": "V;FIN;IND;INDF3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 50}
+{"morph_type": "prefix", "affix": "tuki", "features": "V;FIN;SUBJ;COM;PST;1;PL", "inflection": {"Tense": "Past", "Person": "First", "Number": "Plural"}, "count": 49}
+{"morph_type": "prefix", "affix": "tuna", "features": "V;FIN;IND;PRES;1;PL", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Plural"}, "count": 49}
+{"morph_type": "prefix", "affix": "twa", "features": "V;FIN;INDF1;PL", "inflection": {"Number": "Plural"}, "count": 49}
+{"morph_type": "prefix", "affix": "niki", "features": "V;FIN;SUBJ;COM;PST;1;SG", "inflection": {"Tense": "Past", "Person": "First", "Number": "Singular"}, "count": 48}
+{"morph_type": "prefix", "affix": "na", "features": "V;FIN;IND;IND;INDF1;SG", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 48}
+{"morph_type": "prefix", "affix": "kiki", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC4", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 48}
+{"morph_type": "prefix", "affix": "liki", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC3", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 47}
+{"morph_type": "prefix", "affix": "la", "features": "V;FIN;IND;INDF3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 47}
+{"morph_type": "prefix", "affix": "vi", "features": "ADJ;PL;LGSPEC3", "inflection": {"Number": "Plural"}, "count": 45}
+{"morph_type": "prefix", "affix": "vime", "features": "V;FIN;IND;PST;PRF;3;PL;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "vili", "features": "V;FIN;IND;PST;3;PL;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "wame", "features": "V;FIN;IND;PST;PRF;3;PL;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "mli", "features": "V;FIN;IND;PST;2;PL", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Second", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "wata", "features": "V;FIN;IND;FUT;3;PL;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "yali", "features": "V;FIN;IND;PST;3;PL;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "vita", "features": "V;FIN;IND;FUT;3;PL;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "mnge", "features": "V;FIN;IND;COND;PRES;2;PL", "inflection": {"Mood": "Indicative", "Person": "Second", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "yata", "features": "V;FIN;IND;FUT;3;PL;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "aki", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC1", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 44}
+{"morph_type": "prefix", "affix": "wange", "features": "V;FIN;IND;COND;PRES;3;PL;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "mta", "features": "V;FIN;IND;FUT;2;PL", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Second", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "vinge", "features": "V;FIN;IND;COND;PRES;3;PL;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "mme", "features": "V;FIN;IND;PST;PRF;2;PL", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Second", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "yange", "features": "V;FIN;IND;COND;PRES;3;PL;LGSPEC3", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "yame", "features": "V;FIN;IND;PST;PRF;3;PL;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "wali", "features": "V;FIN;IND;PST;3;PL;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 44}
+{"morph_type": "prefix", "affix": "nina", "features": "V;FIN;IND;PRES;1;SG", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Singular"}, "count": 42}
+{"morph_type": "prefix", "affix": "nime", "features": "V;FIN;IND;PST;PRF;1;SG", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "First", "Number": "Singular"}, "count": 42}
+{"morph_type": "prefix", "affix": "nili", "features": "V;FIN;IND;PST;1;SG", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "First", "Number": "Singular"}, "count": 42}
+{"morph_type": "prefix", "affix": "tuli", "features": "V;FIN;IND;PST;1;PL", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "First", "Number": "Plural"}, "count": 42}
+{"morph_type": "prefix", "affix": "tuta", "features": "V;FIN;IND;FUT;1;PL", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "First", "Number": "Plural"}, "count": 42}
+{"morph_type": "prefix", "affix": "tunge", "features": "V;FIN;IND;COND;PRES;1;PL", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Plural"}, "count": 42}
+{"morph_type": "prefix", "affix": "tume", "features": "V;FIN;IND;PST;PRF;1;PL", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "First", "Number": "Plural"}, "count": 42}
+{"morph_type": "prefix", "affix": "nita", "features": "V;FIN;IND;FUT;1;SG", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "First", "Number": "Singular"}, "count": 42}
+{"morph_type": "prefix", "affix": "ninge", "features": "V;FIN;IND;COND;PRES;1;SG", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Singular"}, "count": 42}
+{"morph_type": "prefix", "affix": "kinge", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 41}
+{"morph_type": "prefix", "affix": "kime", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 41}
+{"morph_type": "prefix", "affix": "kita", "features": "V;FIN;IND;FUT;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 41}
+{"morph_type": "prefix", "affix": "kina", "features": "V;FIN;IND;PRES;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 41}
+{"morph_type": "prefix", "affix": "kili", "features": "V;FIN;IND;PST;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 41}
+{"morph_type": "prefix", "affix": "ki", "features": "ADJ;SG;LGSPEC3", "inflection": {"Number": "Singular"}, "count": 41}
+{"morph_type": "prefix", "affix": "lita", "features": "V;FIN;IND;FUT;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 40}
+{"morph_type": "prefix", "affix": "lina", "features": "V;FIN;IND;PRES;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 40}
+{"morph_type": "prefix", "affix": "lime", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 40}
+{"morph_type": "prefix", "affix": "lili", "features": "V;FIN;IND;PST;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 40}
+{"morph_type": "prefix", "affix": "linge", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 40}
+{"morph_type": "prefix", "affix": "w", "features": "ADJ;PL;LGSPEC1", "inflection": {"Number": "Plural"}, "count": 38}
+{"morph_type": "prefix", "affix": "ame", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 37}
+{"morph_type": "prefix", "affix": "ange", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 37}
+{"morph_type": "prefix", "affix": "ata", "features": "V;FIN;IND;FUT;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 37}
+{"morph_type": "prefix", "affix": "ali", "features": "V;FIN;IND;PST;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 37}
+{"morph_type": "prefix", "affix": "ana", "features": "V;FIN;IND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 37}
+{"morph_type": "prefix", "affix": "kw", "features": "ADJ;PL;LGSPEC6", "inflection": {"Number": "Plural"}, "count": 37}
+{"morph_type": "prefix", "affix": "u", "features": "V;FIN;IND;PST;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 35}
+{"morph_type": "prefix", "affix": "ma", "features": "ADJ;PL;LGSPEC7", "inflection": {"Number": "Plural"}, "count": 34}
+{"morph_type": "prefix", "affix": "mi", "features": "ADJ;PL;LGSPEC2", "inflection": {"Number": "Plural"}, "count": 34}
+{"morph_type": "prefix", "affix": "p", "features": "ADJ;SG;LGSPEC8", "inflection": {"Number": "Singular"}, "count": 30}
+{"morph_type": "prefix", "affix": "n", "features": "ADJ;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 27}
+{"morph_type": "prefix", "affix": "i", "features": "V;FIN;IND;PST;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 24}
+{"morph_type": "prefix", "affix": "zi", "features": "V;FIN;SUBJ;PST;3;PL;LGSPEC6", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 24}
+{"morph_type": "prefix", "affix": "ny", "features": "ADJ;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 24}
+{"morph_type": "prefix", "affix": "y", "features": "ADJ;PL;LGSPEC7", "inflection": {"Number": "Plural"}, "count": 24}
+{"morph_type": "prefix", "affix": "z", "features": "ADJ;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 16}
+{"morph_type": "prefix", "affix": "utaku", "features": "V;FIN;IND;FUT;2;SG", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Second", "Number": "Singular"}, "count": 15}
+{"morph_type": "prefix", "affix": "umeku", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 15}
+{"morph_type": "prefix", "affix": "uliku", "features": "V;FIN;IND;PST;3;SG;LGSPEC2", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 15}
+{"morph_type": "prefix", "affix": "unaku", "features": "V;FIN;IND;PRES;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 15}
+{"morph_type": "prefix", "affix": "vy", "features": "ADJ;PL;LGSPEC3", "inflection": {"Number": "Plural"}, "count": 15}
+{"morph_type": "prefix", "affix": "ch", "features": "ADJ;SG;LGSPEC3", "inflection": {"Number": "Singular"}, "count": 15}
+{"morph_type": "prefix", "affix": "tu", "features": "V;FIN;SUBJ;PST;1;PL", "inflection": {"Tense": "Past", "Person": "First", "Number": "Plural"}, "count": 11}
+{"morph_type": "prefix", "affix": "li", "features": "V;FIN;IND;PST;3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 11}
+{"morph_type": "prefix", "affix": "ni", "features": "V;FIN;IND;PST;1;SG", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "First", "Number": "Singular"}, "count": 11}
+{"morph_type": "suffix", "affix": "a", "features": "V;FIN;IND;IND;INDF3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 10}
+{"morph_type": "prefix", "affix": "iliku", "features": "V;FIN;IND;PST;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 10}
+{"morph_type": "prefix", "affix": "imeku", "features": "V;FIN;IND;PST;PRF;3;PL;LGSPEC2", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Plural"}, "count": 10}
+{"morph_type": "prefix", "affix": "itaku", "features": "V;FIN;IND;FUT;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 10}
+{"morph_type": "prefix", "affix": "j", "features": "ADJ;SG;LGSPEC7", "inflection": {"Number": "Singular"}, "count": 9}
+{"morph_type": "suffix", "affix": "kaa", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 8}
+{"morph_type": "prefix", "affix": "l", "features": "ADJ;SG;LGSPEC7", "inflection": {"Number": "Singular"}, "count": 8}
+{"morph_type": "suffix", "affix": "taa", "features": "V;FIN;IND;FUT;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 7}
+{"morph_type": "suffix", "affix": "kia", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC1", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 7}
+{"morph_type": "suffix", "affix": "lia", "features": "V;FIN;IND;PST;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 7}
+{"morph_type": "suffix", "affix": "uk", "features": "ADJ;PL;LGSPEC6", "inflection": {"Number": "Plural"}, "count": 7}
+{"morph_type": "prefix", "affix": "my", "features": "ADJ;PL;LGSPEC2", "inflection": {"Number": "Plural"}, "count": 7}
+{"morph_type": "suffix", "affix": "ap", "features": "ADJ;SG;LGSPEC8", "inflection": {"Number": "Singular"}, "count": 6}
+{"morph_type": "prefix", "affix": "utakw", "features": "V;FIN;IND;FUT;2;SG", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Second", "Number": "Singular"}, "count": 6}
+{"morph_type": "prefix", "affix": "umekw", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 6}
+{"morph_type": "prefix", "affix": "ulikw", "features": "V;FIN;IND;PST;3;SG;LGSPEC2", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 6}
+{"morph_type": "prefix", "affix": "unakw", "features": "V;FIN;IND;PRES;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 6}
+{"morph_type": "suffix", "affix": "mea", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 5}
+{"morph_type": "prefix", "affix": "ameku", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 5}
+{"morph_type": "prefix", "affix": "mliku", "features": "V;FIN;IND;PST;2;PL", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Second", "Number": "Plural"}, "count": 5}
+{"morph_type": "prefix", "affix": "ataku", "features": "V;FIN;IND;FUT;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 5}
+{"morph_type": "prefix", "affix": "mtaku", "features": "V;FIN;IND;FUT;2;PL", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Second", "Number": "Plural"}, "count": 5}
+{"morph_type": "prefix", "affix": "inaku", "features": "V;FIN;IND;PRES;3;SG;LGSPEC5", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 5}
+{"morph_type": "prefix", "affix": "mmeku", "features": "V;FIN;IND;PST;PRF;2;PL", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Second", "Number": "Plural"}, "count": 5}
+{"morph_type": "prefix", "affix": "aliku", "features": "V;FIN;IND;PST;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 5}
+{"morph_type": "prefix", "affix": "anaku", "features": "V;FIN;IND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 5}
+{"morph_type": "suffix", "affix": "ku", "features": "ADJ;PL;LGSPEC6", "inflection": {"Number": "Plural"}, "count": 5}
+{"morph_type": "suffix", "affix": "z", "features": "ADJ;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 4}
+{"morph_type": "prefix", "affix": "pe", "features": "ADJ;SG;LGSPEC8", "inflection": {"Number": "Singular"}, "count": 4}
+{"morph_type": "suffix", "affix": "ik", "features": "ADJ;SG;LGSPEC3", "inflection": {"Number": "Singular"}, "count": 4}
+{"morph_type": "suffix", "affix": "pa", "features": "ADJ;SG;LGSPEC8", "inflection": {"Number": "Singular"}, "count": 4}
+{"morph_type": "suffix", "affix": "gean", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 4}
+{"morph_type": "suffix", "affix": "aan", "features": "V;FIN;IND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 4}
+{"morph_type": "suffix", "affix": "ngea", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "naa", "features": "V;FIN;IND;PRES;3;SG;LGSPEC1", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "u", "features": "ADJ;SG;LGSPEC5", "inflection": {"Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "um", "features": "ADJ;PL;LGSPEC9", "inflection": {"Number": "Plural"}, "count": 3}
+{"morph_type": "suffix", "affix": "ingek", "features": "V;FIN;IND;COND;PRES;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "imek", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "itak", "features": "V;FIN;IND;FUT;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "ikik", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC4", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "inak", "features": "V;FIN;IND;PRES;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "ikak", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "ilik", "features": "V;FIN;IND;PST;3;SG;LGSPEC4", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "al", "features": "V;FIN;IND;INDF3;SG;LGSPEC3", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "m", "features": "ADJ;PL;LGSPEC5", "inflection": {"Number": "Plural"}, "count": 3}
+{"morph_type": "suffix", "affix": "ikin", "features": "V;FIN;SUBJ;COM;PST;1;SG", "inflection": {"Tense": "Past", "Person": "First", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "an", "features": "V;FIN;IND;IND;INDF1;SG", "inflection": {"Mood": "Indicative", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "ikan", "features": "V;FIN;IND;LGSPEC10;1;SG", "inflection": {"Mood": "Indicative", "Person": "First", "Number": "Singular"}, "count": 3}
+{"morph_type": "prefix", "affix": "nd", "features": "ADJ;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 3}
+{"morph_type": "suffix", "affix": "kiu", "features": "V;FIN;SUBJ;COM;PST;3;SG;LGSPEC2", "inflection": {"Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "tau", "features": "V;FIN;IND;FUT;2;SG", "inflection": {"Mood": "Indicative", "Tense": "Future", "Person": "Second", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "eum", "features": "V;FIN;IND;PST;PRF;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "kau", "features": "V;FIN;IND;LGSPEC10;3;SG;LGSPEC2", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "ngeu", "features": "V;FIN;IND;COND;PRES;2;SG", "inflection": {"Mood": "Indicative", "Person": "Second", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "liu", "features": "V;FIN;IND;PST;3;SG;LGSPEC2", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "nau", "features": "V;FIN;IND;PRES;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "suffix", "affix": "umbe", "features": "V;FIN;IND;PST;3;SG;LGSPEC6", "inflection": {"Mood": "Indicative", "Tense": "Past", "Person": "Third", "Number": "Singular"}, "count": 3}
+{"morph_type": "prefix", "affix": "nj", "features": "ADJ;PL;LGSPEC4", "inflection": {"Number": "Plural"}, "count": 3}

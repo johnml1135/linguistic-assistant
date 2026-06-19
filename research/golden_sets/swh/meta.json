@@ -1,0 +1,295 @@
+{
+ "pair": "swh",
+ "sources": [
+  "unimorph",
+  "wiktionary",
+  "unfoldingword"
+ ],
+ "stats": {
+  "pos_words": 4906,
+  "pos_verified": 456,
+  "pos_conflicts": 64,
+  "lexicon_size": 7325,
+  "unimorph_pairs": 10092,
+  "affixes": 182,
+  "glosses": 4412,
+  "key_terms": 953,
+  "scripture_senses": 3323,
+  "scripture_homographs": 360,
+  "scripture_vocab": 17570,
+  "scripture_attested": 5054,
+  "scripture_coverage": 0.2876,
+  "scripture_uncovered": 12487
+ },
+ "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
+ "writing_system": {
+  "locale": "sw",
+  "group": [
+   ",",
+   " ",
+   " "
+  ],
+  "decimal": ".",
+  "style": "us",
+  "numerals": "token type (not HC-parsed)",
+  "punctuation": "stripped at tokenization"
+ },
+ "token_classes": {
+  "word": 17541,
+  "other": 4,
+  "punctuation": 2,
+  "number": 23
+ },
+ "files": [
+  "lexicon.jsonl",
+  "grammar_rules.jsonl",
+  "senses.jsonl",
+  "key_terms.jsonl",
+  "phonology.jsonl",
+  "golden_scripture.tsv"
+ ],
+ "pos_conflicts_sample": [
+  [
+   "wasoma",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "watakatifu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mgonjwa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wagonjwa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "makali",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mwerevu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wafua",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "vifupi",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mzee",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wavivu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wake",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mtakatifu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mheshimiwa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "chaja",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "mjinga",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wazee",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "pao",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wapiga",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "haya",
+   "Adjective",
+   "Interjection"
+  ],
+  [
+   "hizi",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "wenyewe",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "michanga",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mpumbavu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "baki",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "usitawi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "wajibu",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "badili",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "wachanga",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wasafiri",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "wao",
+   "Adjective",
+   "Pronoun"
+  ],
+  [
+   "werevu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "usafiri",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "weusi",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "tufe",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "machungu",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wema",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "wepesi",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "jibu",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "wako",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "chungu",
+   "Adjective",
+   "Noun"
+  ]
+ ],
+ "scripture_uncovered_sample": [
+  "aaibishwe",
+  "aaminiye",
+  "aamuaye",
+  "aangikwaye",
+  "aangukaye",
+  "aapaye",
+  "aba",
+  "abadoni",
+  "abatizaye",
+  "abba",
+  "abeli",
+  "abiathari",
+  "abilene",
+  "abinadabu",
+  "abiudi",
+  "abiya",
+  "abraham",
+  "abrahimu",
+  "achanganyikiwe",
+  "achovye",
+  "achukiwe",
+  "achukizaye",
+  "achukuaye",
+  "achungaye",
+  "achunguzaye",
+  "adam",
+  "adi",
+  "adramitamu",
+  "adratik",
+  "adumue",
+  "adumuye",
+  "aelewaye",
+  "aendako",
+  "aendaye",
+  "aendeleae",
+  "afahamuye",
+  "afanyacho",
+  "afanyae",
+  "afanyavyo",
+  "afanyaye"
+ ]
+}

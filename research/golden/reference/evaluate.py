@@ -19,19 +19,19 @@ _THIS = Path(__file__).resolve()
 sys.path.insert(0, str(_THIS.parents[2]))
 
 import liblcm  # noqa: E402
+from golden.reference.goldio import load_gold  # noqa: E402
 
 FROZEN = _THIS.parents[2] / "golden_sets"            # the frozen evaluation target (committed)
 OUT = _THIS.parents[2] / "cycle" / "out"             # the hill-climber's working copy (regenerable)
 
 
 def evaluate(pair: str) -> dict:
-    gold = json.loads((FROZEN / pair / "golden_set.json").read_text(encoding="utf-8"))
+    gold = load_gold(pair)
     model = json.loads((OUT / f"{pair}_model.json").read_text(encoding="utf-8"))
     roots = model["roots"]
     gold_pos: dict[str, str] = gold.get("pos", {})           # LibLCM PartOfSpeech
     gold_gloss: dict[str, str] = gold.get("glosses", {})     # bilingual (Wiktionary)
-    lex_path = FROZEN / pair / "golden_lexicon.txt"
-    lexicon = set(lex_path.read_text(encoding="utf-8").split("\n")) if lex_path.exists() else set()
+    lexicon = set(gold.get("lexicon", []))
     key = set(gold.get("key_terms", []))
     report: dict = {"pair": pair, "sources": gold.get("sources", []), "roots": len(roots)}
 

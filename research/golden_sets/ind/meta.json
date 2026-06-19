@@ -1,0 +1,295 @@
+{
+ "pair": "ind",
+ "sources": [
+  "ud",
+  "unimorph",
+  "wiktionary",
+  "unfoldingword"
+ ],
+ "stats": {
+  "pos_words": 6651,
+  "pos_verified": 9024,
+  "pos_conflicts": 2155,
+  "lexicon_size": 6756,
+  "unimorph_pairs": 27714,
+  "affixes": 44,
+  "glosses": 4099,
+  "key_terms": 953,
+  "scripture_senses": 3274,
+  "scripture_homographs": 622,
+  "scripture_vocab": 6984,
+  "scripture_attested": 5404,
+  "scripture_coverage": 0.7738,
+  "scripture_uncovered": 1553
+ },
+ "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
+ "writing_system": {
+  "locale": "id-ID",
+  "group": [
+   ".",
+   " ",
+   " "
+  ],
+  "decimal": ",",
+  "style": "european",
+  "numerals": "token type (not HC-parsed)",
+  "punctuation": "stripped at tokenization"
+ },
+ "token_classes": {
+  "word": 6957,
+  "number": 27
+ },
+ "files": [
+  "lexicon.jsonl",
+  "grammar_rules.jsonl",
+  "senses.jsonl",
+  "key_terms.jsonl",
+  "phonology.jsonl",
+  "golden_scripture.tsv"
+ ],
+ "pos_conflicts_sample": [
+  [
+   "tetes",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "pj",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "partner",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "cekcok",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "mada",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "silahkan",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "bridge",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "ankara",
+   "Coordinating connective",
+   "Proper noun"
+  ],
+  [
+   "katalis",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "tona",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "berkain",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "delima",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tuli",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "urai",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "protestanisme",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "os",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "nusa",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "barikade",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "andal",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "pacaran",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "menurut",
+   "Adposition",
+   "Verb"
+  ],
+  [
+   "konstitusional",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "kers",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "picu",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "petrokimia",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "i",
+   "Proper noun",
+   "Numeral"
+  ],
+  [
+   "teriak",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "elastik",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "cemas",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "menjijikkan",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "obi",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "kanan",
+   "Noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "ab",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "semprot",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "menua",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "sebulan",
+   "Adjective",
+   "Adverb"
+  ],
+  [
+   "cuma-cuma",
+   "Adjective",
+   "Adverb"
+  ],
+  [
+   "gurau",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "altruisme",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "sebagai",
+   "Adposition",
+   "Coordinating connective"
+  ]
+ ],
+ "scripture_uncovered_sample": [
+  "aakn",
+  "aalah",
+  "abadon",
+  "abaraham",
+  "abba",
+  "abia",
+  "abilene",
+  "abiud",
+  "abyatar",
+  "achaia",
+  "adakah",
+  "adili",
+  "adramitium",
+  "adria",
+  "afia",
+  "agabus",
+  "agripa",
+  "ahaz",
+  "aibku",
+  "ainon",
+  "airlah",
+  "ajabi",
+  "ajaranmu",
+  "akaikus",
+  "akana",
+  "akarlah",
+  "akaya",
+  "akeldama",
+  "akim",
+  "akulah",
+  "akwila",
+  "alabaster",
+  "aleksandar",
+  "aleksandira",
+  "aleksandria",
+  "alfeus",
+  "alian",
+  "aling",
+  "allahdan",
+  "allahku"
+ ]
+}

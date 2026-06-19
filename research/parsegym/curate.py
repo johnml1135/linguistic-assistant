@@ -28,6 +28,7 @@ from parsegym.questions import get as q  # noqa: E402
 from parsegym.schema import Scenario, Solution, write_jsonl  # noqa: E402
 
 from golden.reference.compile import EBIBLE, FROZEN, PAIR_DIR  # noqa: E402
+from golden.reference.goldio import load_gold  # noqa: E402
 
 GYM = _THIS.parent / "gym"
 LANG = {"spa": "Spanish", "ind": "Indonesian", "tgl": "Tagalog", "swh": "Swahili"}
@@ -43,10 +44,8 @@ STAGE_META: dict[str, tuple[str, list[str]]] = {
 
 
 def _load(pair: str):
-    gold = json.loads((FROZEN / pair / "golden_set.json").read_text(encoding="utf-8"))
-    sp = FROZEN / pair / "golden_senses.json"
-    senses = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else {}
-    return gold, senses
+    gold = load_gold(pair)
+    return gold, gold.get("senses", {})
 
 
 def _scripture_index(pair: str, *, max_ex: int = 3) -> tuple[Counter, dict]:

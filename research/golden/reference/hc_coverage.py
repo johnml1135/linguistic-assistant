@@ -6,7 +6,7 @@ scripture words glossed/POS-tagged from the gold, affixes = the gold affix→fun
 the `hc` CLI over a sample of scripture wordforms and report what fraction parse. The remaining unparsed
 forms are the morphology gap to close (more roots/affixes/rules; Apertium morphology; the LLM proposer).
 
-Reads `golden_sets/<pair>/golden_set.json` (frozen) + the pair's scripture corpus. Requires the `hc`
+Reads the frozen golden set via `goldio.load_gold` + the pair's scripture corpus. Requires the `hc`
 CLI; degrades to a clear message if absent. Run: `python golden/reference/hc_coverage.py --pair spa`.
 """
 
@@ -25,6 +25,8 @@ from golden.hc import HC_EXE, run_parse  # noqa: E402
 
 from golden.reference.build import CACHE  # noqa: E402
 from golden.reference.compile import EBIBLE, FROZEN, PAIR_DIR  # noqa: E402
+from golden.reference.goldio import load_gold  # noqa: E402
+from golden.reference.phonology_gold import phon_feats  # noqa: E402
 
 # Well-known affixes/clitics not always recovered by UniMorph segmentation — the next big miss bucket
 # for Indonesian (clitics + the meN-/ber-/di- prefix family, the latter listed by surface allomorph
@@ -97,7 +99,7 @@ def build_reference_model(pair: str, *, n_roots: int = 4000, n_affixes: int = 80
     scripture (a lemma that equals a scripture form, or is a prefix of one), ranked by how much
     scripture frequency they cover.
     """
-    gold = json.loads((FROZEN / pair / "golden_set.json").read_text(encoding="utf-8"))
+    gold = load_gold(pair)
     gpos, gloss = gold.get("pos", {}), gold.get("glosses", {})
     lemset = set(gold.get("lemmas", []))
     freqs = _scripture_freqs(pair)
@@ -149,13 +151,14 @@ def build_reference_model(pair: str, *, n_roots: int = 4000, n_affixes: int = 80
 
 def coverage(pair: str, *, sample: int = 250, n_roots: int = 4000, n_affixes: int = 80) -> dict:
     model = build_reference_model(pair, n_roots=n_roots, n_affixes=n_affixes)
-    gold = json.loads((FROZEN / pair / "golden_set.json").read_text(encoding="utf-8"))
+    gold = load_gold(pair)
     known = set(gold.get("lemmas", [])) | set(gold.get("glosses", {})) | set(gold.get("pos", {}))
     freqs = _scripture_freqs(pair)
     # test on frequent scripture forms NOT already seeded as roots (the real parse challenge)
     rootset = {e.form for e in model.lexicon}
     words = [w for w, _ in freqs.most_common() if len(w) >= 2 and w not in rootset][:sample]
-    parses = run_parse(model, words, chunk_size=25, chunk_timeout=20, templated=False)
+    pf = phon_feats(pair, model.charset)  # real phonological feature substrate (vowel/cons/front/high)
+    parses = run_parse(model, words, chunk_size=25, chunk_timeout=20, templated=False, phon_feats=pf)
     parsed = [w for w in words if parses.get(w)]
     unparsed = [w for w in words if not parses.get(w)]
     # split the residual: a word no reference knows as a common word is almost always a proper noun /

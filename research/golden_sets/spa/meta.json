@@ -1,0 +1,295 @@
+{
+ "pair": "spa",
+ "sources": [
+  "ud",
+  "unimorph",
+  "wiktionary",
+  "unfoldingword"
+ ],
+ "stats": {
+  "pos_words": 13881,
+  "pos_verified": 89759,
+  "pos_conflicts": 7473,
+  "lexicon_size": 14185,
+  "unimorph_pairs": 1196224,
+  "affixes": 1597,
+  "glosses": 4940,
+  "key_terms": 953,
+  "scripture_senses": 3325,
+  "scripture_homographs": 955,
+  "scripture_vocab": 11004,
+  "scripture_attested": 10140,
+  "scripture_coverage": 0.9215,
+  "scripture_uncovered": 864
+ },
+ "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
+ "writing_system": {
+  "locale": "es",
+  "group": [
+   ".",
+   " ",
+   " "
+  ],
+  "decimal": ",",
+  "style": "european",
+  "numerals": "token type (not HC-parsed)",
+  "punctuation": "stripped at tokenization"
+ },
+ "token_classes": {
+  "word": 11004
+ },
+ "files": [
+  "lexicon.jsonl",
+  "grammar_rules.jsonl",
+  "senses.jsonl",
+  "key_terms.jsonl",
+  "phonology.jsonl",
+  "golden_scripture.tsv"
+ ],
+ "pos_conflicts_sample": [
+  [
+   "desocupados",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "promesa",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "enfriadas",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "unido",
+   "Proper noun",
+   "Verb"
+  ],
+  [
+   "aquilatada",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "asfaltado",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "araucanas",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "subirá",
+   "Proper noun",
+   "Verb"
+  ],
+  [
+   "fundido",
+   "Noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "rogativas",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "faces",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "aqueménidas",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "submarino",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "laca",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "itálica",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "marco",
+   "Noun",
+   "Verb",
+   "Proper noun"
+  ],
+  [
+   "matriculadas",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "tintes",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "curtido",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "adhesivos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "brotas",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "aguijoneada",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "eh",
+   "Proper noun",
+   "Interjection"
+  ],
+  [
+   "javanesa",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "devota",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "bizantinos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "aragoneses",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "vallés",
+   "Proper noun",
+   "Verb"
+  ],
+  [
+   "minas",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "rebajas",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "regatas",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "maravillosos",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "trizas",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "ilustrado",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "finas",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "nadando",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "palmillas",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "fronteras",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "ferrando",
+   "Proper noun",
+   "Verb"
+  ],
+  [
+   "desolado",
+   "Adjective",
+   "Verb"
+  ]
+ ],
+ "scripture_uncovered_sample": [
+  "aarón",
+  "abaddon",
+  "abba",
+  "abdi",
+  "abiathar",
+  "abilinia",
+  "abiud",
+  "aborrecedores",
+  "aborrecibles",
+  "abreviadora",
+  "abriéronse",
+  "abundantemente",
+  "abía",
+  "abías",
+  "acaya",
+  "aceptos",
+  "achâico",
+  "achâz",
+  "achîm",
+  "acostóle",
+  "acéldama",
+  "adoróle",
+  "adrumentina",
+  "agabo",
+  "agolpa",
+  "agolpaba",
+  "agolpaban",
+  "agolpóse",
+  "agripa",
+  "ahogóse",
+  "alentaos",
+  "alfeo",
+  "alfolí",
+  "alfolíes",
+  "amigables",
+  "aminadab",
+  "amonéstoos",
+  "amortecido",
+  "amphípolis",
+  "amóle"
+ ]
+}

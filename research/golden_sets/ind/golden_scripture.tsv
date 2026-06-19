@@ -1,27 +1,4 @@
 word	pos_liblcm	n_senses	homograph	gloss	in_lexicon	in_ud
-100	Numeral	0	0		1	1
-12	Numeral	0	0		1	1
-120	Numeral	0	0		1	1
-14	Numeral	0	0		1	1
-18	Numeral	0	0		1	1
-2	Numeral	0	0		1	1
-200	Numeral	0	0		1	1
-24	Numeral	0	0		1	1
-296	Numeral	0	0		1	1
-3	Numeral	0	0		1	1
-30	Numeral	0	0		1	1
-4	Numeral	0	0		1	1
-40	Numeral	0	0		1	1
-400	Numeral	0	0		1	1
-5	Numeral	0	0		1	1
-60	Numeral	0	0		1	1
-70	Numeral	0	0		1	1
-72	Numeral	0	0		1	1
-75	Numeral	0	0		1	1
-8	Numeral	0	0		1	1
-84	Numeral	0	0		1	1
-9	Numeral	0	0		1	1
-99	Numeral	0	0		1	1
 abadi	Adjective	2	0	immortal, undying, eternal, endless, everlasting	1	1
 abaikan	Verb	2	0	to ignore	1	0
 abraham	Proper noun	2	0	Abraham	1	1
@@ -70,7 +47,7 @@ akibatnya	Subordinating connective	0	0		1	1
 akik	Noun	1	0	agate	1	1
 akses	Noun	3	0	access (a way or means of approaching or entering; an entrance; a passage)	1	1
 aku	Pronoun	3	1	first person singular pronoun: I, me, my	1	1
-akui	Verb	0	0		0	1
+akui	Verb	0	0		1	1
 akun	Noun	4	0	account,	1	1
 akurat	Adjective	1	0	accurate (exact or careful conformity to truth)	1	1
 alam	Noun	6	0	universe: the sum of everything that exists in the cosmos, including time and space itself	1	1
@@ -125,7 +102,7 @@ angkuh	Adjective	2	1	arrogant, haughty, proud	1	1
 aniaya	Verb	2	1	persecution, oppression, injustice	1	0
 anjing	Noun	3	1	dog, Canis familiaris	1	1
 antara	Adposition	8	1	the Indonesian national news agency organized as a statutory corporation	1	1
-antaranya	Adverb	0	0		0	1
+antaranya	Adverb	0	0		1	1
 antipas	Proper noun	0	0		1	1
 antusiasnya	Adjective	0	0		1	0
 anugerah	Noun	2	0	award	1	1
@@ -977,7 +954,7 @@ dicukur	Verb	1	0	passive of cukur	1	0
 dicurahkan	Verb	0	0		1	1
 didaftarkan	Verb	1	0	passive of daftarkan	1	1
 didalamnya	Verb	0	0		1	0
-didapati	Verb	0	0		0	1
+didapati	Verb	0	0		1	1
 didapatinya	Verb	0	0		1	0
 didasarkan	Verb	0	0		0	1
 didekatkan	Verb	0	0		1	0
@@ -1163,7 +1140,7 @@ dipercayakan	Verb	1	0	passive of percayakan	1	0
 dipercikkan	Verb	1	0	passive of percikkan	1	0
 diperiksa	Verb	0	0		1	1
 diperingati	Verb	0	0		0	1
-diperintahkan	Verb	0	0		0	1
+diperintahkan	Verb	0	0		1	1
 diperkenalkan	Verb	0	0		1	1
 diperlakukan	Verb	1	0	passive of perlakukan	1	1
 diperlihatkan	Verb	1	0	passive of perlihatkan	1	1
@@ -1290,7 +1267,7 @@ ditegur	Verb	0	0		1	0
 ditekan	Verb	1	0	passive of tekan	1	0
 ditemani	Verb	0	0		0	1
 ditempati	Verb	0	0		0	1
-ditempatkan	Verb	0	0		0	1
+ditempatkan	Verb	0	0		1	1
 ditemukan	Verb	1	0	passive of menemukan	1	1
 ditemukannya	Verb	0	0		1	0
 ditenangkan	Verb	0	0		1	0
@@ -1632,14 +1609,14 @@ ide	Noun	1	0	idea	1	1
 ideal	Adjective	3	1	ideal; optimal, being the best possibility	1	1
 idenya	Noun	0	0		1	0
 ijin	Noun	1	0	nonstandard form of izin	1	0
-ijinkan	Verb	0	0		0	1
+ijinkan	Verb	0	0		1	1
 ikan	Noun	1	0	fish (vertebrate animal)	1	1
 ikat	Noun	6	1	ikat (a style of weaving)	1	1
 ikatan	Noun	8	0	knot	1	1
 ikatannya	Noun	0	0		1	0
 ikatlah		0	0		1	0
 ikut	Verb	2	1	to follow	1	1
-ikuti	Verb	0	0		0	1
+ikuti	Verb	0	0		1	1
 ilahi	Proper noun	3	1	alternative letter-case form of Ilahi	1	1
 ilham	Noun	4	1	inspiration:	1	1
 ilmu	Noun	5	0	knowledge	1	1
@@ -1694,7 +1671,7 @@ izinkan	Verb	1	0	to allow	1	0
 jadi	Verb	7	1	so (in order that, for that reason)	1	1
 jadikan	Verb	0	0		1	0
 jadilah	Verb	1	0	jussive of jadi	1	0
-jadinya	Adverb	0	0		0	1
+jadinya	Adverb	0	0		1	1
 jaga	Verb	2	0	to watch over, to keep, to guard	1	0
 jago	Noun	5	1	rooster, a male domestic chicken (Gallus gallus domesticus) or other gallinaceous bird	1	0
 jahat	Adjective	3	0	bad; evil	1	1
@@ -1767,7 +1744,7 @@ jujur	Adjective	2	1	honest, truthful	1	1
 jumat	Proper noun	1	0	Friday (day of the week)	1	1
 jumlah	Noun	3	0	total	1	1
 jumlahnya	Noun	0	0		1	0
-jumpai	Verb	0	0		0	1
+jumpai	Verb	0	0		1	1
 jurang	Noun	2	0	chasm, gorge, ravine	1	1
 justru	Adverb	2	0	a conjunction used to emphasize that something is true or false. precisely, exactly	1	1
 juta	Numeral	1	0	million	1	1
@@ -2800,7 +2777,7 @@ memperlakukannya	Verb	0	0		1	0
 memperlihatkan	Verb	1	0	active of perlihatkan	1	1
 mempermalukan	Verb	0	0		1	0
 memperoleh	Verb	1	0	active of peroleh (“to obtain, to get”)	1	1
-mempersatukan	Verb	0	0		0	1
+mempersatukan	Verb	0	0		1	1
 mempersembahkan	Verb	1	0	active of persembahkan	1	1
 mempersembahkannya	Verb	0	0		1	0
 mempersiapkan	Verb	0	0		1	1
@@ -2998,7 +2975,7 @@ menemukan	Verb	5	0	to find, to locate, to detect	1	1
 menemukanmu	Verb	0	0		1	0
 menemukannya	Verb	0	0		1	0
 menenangkan	Verb	0	0		1	1
-menengadah	Verb	0	0		0	1
+menengadah	Verb	0	0		1	1
 menengahi	Verb	0	0		1	0
 menenggelamkannya	Verb	0	0		1	0
 menentang	Verb	1	0	active of tentang	1	1
@@ -4542,7 +4519,7 @@ sawah	Noun	1	0	rice field, paddy field, rice paddy	1	1
 sawi	Noun	1	0	mustard greens (Brassica juncea)	1	0
 saya	Pronoun	2	1	first person singular pronoun: I, me, my	1	1
 sayang	Noun	7	1	love (a profound and caring affection towards someone)	1	1
-sayangi	Verb	0	0		0	1
+sayangi	Verb	0	0		1	1
 sayap	Noun	3	0	wing	1	1
 sayapnya	Noun	0	0		1	0
 seandainya	Subordinating connective	2	0	if, if only, suppose (used to express a hypothetical or imagined situation)	1	1

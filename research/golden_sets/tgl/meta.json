@@ -1,0 +1,293 @@
+{
+ "pair": "tgl",
+ "sources": [
+  "ud",
+  "wiktionary",
+  "unfoldingword"
+ ],
+ "stats": {
+  "pos_words": 2639,
+  "pos_verified": 259,
+  "pos_conflicts": 78,
+  "lexicon_size": 4029,
+  "unimorph_pairs": 0,
+  "affixes": 0,
+  "glosses": 2576,
+  "key_terms": 953,
+  "scripture_senses": 2576,
+  "scripture_homographs": 772,
+  "scripture_vocab": 8844,
+  "scripture_attested": 4029,
+  "scripture_coverage": 0.4556,
+  "scripture_uncovered": 4802
+ },
+ "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
+ "writing_system": {
+  "locale": "fil-PH",
+  "group": [
+   ",",
+   " ",
+   " "
+  ],
+  "decimal": ".",
+  "style": "us",
+  "numerals": "token type (not HC-parsed)",
+  "punctuation": "stripped at tokenization"
+ },
+ "token_classes": {
+  "word": 8831,
+  "number": 13
+ },
+ "files": [
+  "lexicon.jsonl",
+  "grammar_rules.jsonl",
+  "senses.jsonl",
+  "key_terms.jsonl",
+  "phonology.jsonl",
+  "golden_scripture.tsv"
+ ],
+ "pos_conflicts_sample": [
+  [
+   "nito",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "bilang",
+   "Adposition",
+   "Noun"
+  ],
+  [
+   "bango",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "ito",
+   "Pronoun",
+   "Adjective"
+  ],
+  [
+   "iba",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "tuwing",
+   "Subordinating connective",
+   "Adverb"
+  ],
+  [
+   "pula",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "inyo",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "paborito",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "ang",
+   "Adposition",
+   "Particle"
+  ],
+  [
+   "pagod",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "kailangan",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "para",
+   "Adposition",
+   "Coordinating connective"
+  ],
+  [
+   "mga",
+   "Determiner",
+   "Particle"
+  ],
+  [
+   "ilan",
+   "Determiner",
+   "Pronoun"
+  ],
+  [
+   "puti",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "luwang",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "dapat",
+   "Adverb",
+   "Verb"
+  ],
+  [
+   "sandali",
+   "Adverb",
+   "Noun"
+  ],
+  [
+   "kambal",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "sarili",
+   "Pronoun",
+   "Adjective"
+  ],
+  [
+   "marami",
+   "Determiner",
+   "Adjective"
+  ],
+  [
+   "sabi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "ka",
+   "Pronoun",
+   "Noun"
+  ],
+  [
+   "kong",
+   "Pronoun",
+   "Proper noun"
+  ],
+  [
+   "nila",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "payaso",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "mismo",
+   "Determiner",
+   "Adjective"
+  ],
+  [
+   "tatay",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "labas",
+   "Verb",
+   "Adverb"
+  ],
+  [
+   "bigla",
+   "Adverb",
+   "Adjective"
+  ],
+  [
+   "e",
+   "Particle",
+   "Noun"
+  ],
+  [
+   "dahil",
+   "Adposition",
+   "Coordinating connective"
+  ],
+  [
+   "may",
+   "Verb",
+   "Particle"
+  ],
+  [
+   "sabado",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tuloy",
+   "Adverb",
+   "Noun"
+  ],
+  [
+   "kasi",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "niya",
+   "Pronoun",
+   "Determiner"
+  ],
+  [
+   "parang",
+   "Adverb",
+   "Noun"
+  ],
+  [
+   "bang",
+   "Particle",
+   "Interjection"
+  ]
+ ],
+ "scripture_uncovered_sample": [
+  "aabot",
+  "aaliwin",
+  "aangat",
+  "aani",
+  "aanihin",
+  "aapoy",
+  "abadon",
+  "abba",
+  "abias",
+  "abiatar",
+  "abilinia",
+  "abiud",
+  "acaico",
+  "acaya",
+  "acaz",
+  "adi",
+  "admin",
+  "adramicio",
+  "adriatico",
+  "aeropago",
+  "agabo",
+  "agarang",
+  "agate",
+  "agripa",
+  "agustus",
+  "akeldama",
+  "aking",
+  "akong",
+  "akusahan",
+  "alabastrong",
+  "alagaan",
+  "alang",
+  "alexandria",
+  "alfeo",
+  "alinmang",
+  "alipi",
+  "aliping",
+  "alituntuning",
+  "aliwin",
+  "alpeo"
+ ]
+}

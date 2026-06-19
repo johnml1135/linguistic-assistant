@@ -1,21 +1,23 @@
 """Compile pristine, cross-source-verified golden references for a language.
 
-Combines + converts the online resources into typed gold, maximizing coverage (far beyond the scripture
-vocabulary) while cross-checking against scripture:
+Combines + converts the online resources into typed gold, restricted to the BIBLICAL DOMAIN — the
+scripture vocabulary plus the lemmas/stems needed to parse those forms (we drop the rest of Wiktionary;
+it isn't needed to parse scripture, run the golden tests, or verify the TDD process):
 
   * **POS gold** — word → UPOS, merged from ALL UD treebanks + UniMorph (features converted to UPOS).
     A word whose UD and UniMorph POS **agree** is marked `verified`; disagreements are recorded.
   * **Affix → function gold** — derived by segmenting every UniMorph (lemma, form) pair (two-sided
     common-affix alignment) and aggregating each affix to its modal feature bundle (`-s` → `N;PL`, …).
-  * **Lexicon gold** — the union of all real lemmas + forms (UniMorph ∪ UD): "is this a real word?".
+  * **Lexicon gold** — biblical-domain real words: scripture words a reference knows + the roots needed
+    to parse scripture forms (e.g. `haber`, because `había` occurs even if `haber` doesn't).
   * **Key terms** — unfoldingWord/Door43 controlled English biblical vocabulary.
   * **Scripture cross-check** — every gold word is flagged for occurrence in the pair's NT corpus; the
     scripture-attested subset is written separately as the directly-usable validation gold, and we
     report how much of scripture the reference covers (and which scripture words NO reference knows).
 
-Outputs (under golden/_sources/reference/<pair>/): golden_set.json (pos/affixes/terms/stats),
-golden_lexicon.txt (full real-word list — the "more words than scripture" layer),
-golden_scripture.tsv (scripture-attested word → UPOS + source flags). Run: `python golden/reference/compile.py --pair spa`.
+Outputs reviewable JSONL under golden_sets/<pair>/ (see goldio.py): lexicon.jsonl, grammar_rules.jsonl,
+senses.jsonl, phonology.jsonl, key_terms.jsonl, meta.json, golden_scripture.tsv. Raw downloads stay
+cached under golden/_sources/reference/<pair>/. Run: `python golden/reference/compile.py --pair spa`.
 """
 
 from __future__ import annotations
@@ -29,7 +31,10 @@ _THIS = Path(__file__).resolve()
 sys.path.insert(0, str(_THIS.parents[2]))
 
 import liblcm  # noqa: E402  (the destination dialect: convert UD/UniMorph terms → LibLCM)
+from golden.reference import goldio  # noqa: E402
 from golden.reference.build import CACHE, _get, _parse_uw_terms, fetch_kaikki  # noqa: E402
+from golden.reference.orthography import classify, is_word, writing_system  # noqa: E402
+from golden.reference.phonology_gold import phonology_records  # noqa: E402
 from golden.reference.sources import UD, UNIMORPH, UNIMORPH_POS_TO_UPOS  # noqa: E402
 
 EBIBLE = _THIS.parents[2] / "golden" / "_sources" / "ebible"
@@ -89,6 +94,7 @@ def compile_gold(pair: str) -> dict:
     pos_um: dict[str, str] = {}
     lemmas: set[str] = set()
     forms: set[str] = set()
+    form2lemma: dict[str, str] = {}  # inflected form -> its lemma (to find the roots scripture needs)
     affix: dict[tuple[str, str], Counter] = defaultdict(Counter)
     sources: list[str] = []
 
@@ -117,6 +123,7 @@ def compile_gold(pair: str) -> dict:
                 if len(p) >= 3 and p[0] and p[1]:
                     lemma, form, feats = p[0].lower(), p[1].lower(), p[2]
                     lemmas.add(lemma); forms.add(form); morph_n += 1
+                    form2lemma.setdefault(form, lemma)
                     pos_um.setdefault(form, unimorph_pos(feats))
                     pos_um.setdefault(lemma, unimorph_pos(feats))
                     seg = segment(lemma, form)
@@ -179,21 +186,49 @@ def compile_gold(pair: str) -> dict:
          for (sd, af), c in affix.items() if sum(c.values()) >= 3),
         key=lambda a: -a["count"])
 
-    lexicon = lemmas | forms | set(pos)
+    # Restrict to the BIBLICAL DOMAIN: scripture words the references know, PLUS the lemmas/stems needed
+    # to parse those forms (e.g. keep `haber` because `había` is in scripture, even if `haber` itself is
+    # not a surface token). We deliberately drop the rest of Wiktionary — it isn't needed to parse
+    # scripture, run the golden tests, or verify the TDD process, and it bloats the gold.
+    known = lemmas | forms | set(pos) | set(glosses)
     scrip = _scripture_vocab(pair)
-    attested = sorted(scrip & lexicon)
-    uncovered = sorted(scrip - lexicon)
+    suf = {af for (sd, af), c in affix.items() if sd == "suffix" and sum(c.values()) >= 3}
+    pre = {af for (sd, af), c in affix.items() if sd == "prefix" and sum(c.values()) >= 3}
+    roots_needed: set[str] = set()
+    for f in scrip:
+        lm = form2lemma.get(f)
+        if lm in known:
+            roots_needed.add(lm)
+        for s in suf:
+            if f.endswith(s) and len(f) > len(s) + 1 and f[: -len(s)] in known:
+                roots_needed.add(f[: -len(s)])
+        for p in pre:
+            if f.startswith(p) and len(f) > len(p) + 1 and f[len(p):] in known:
+                roots_needed.add(f[len(p):])
+    # WORDS ONLY: numbers, punctuation and symbols are not lemmas. HC parses phonological segments, so
+    # digits/punctuation have no representation; in LibLCM they are the writing system's job (tokenizer
+    # strips punctuation; numerals are a token TYPE, not morphologically parsed). Keep them out of the
+    # lexicon entirely; classify the corpus vocabulary so we can report/handle the non-word tokens.
+    ws = writing_system(pair)
+    token_classes = Counter(classify(t, ws) for t in scrip)
+    attested = sorted(w for w in (scrip & known) if is_word(w))   # scripture WORDS a reference knows
+    lexicon = {w for w in (set(attested) | roots_needed) if is_word(w)}   # biblical-domain word lexicon
+    uncovered = sorted(w for w in (scrip - known) if is_word(w))  # scripture words NO reference knows
+    # prune the per-word gold to the biblical domain
+    pos = {w: v for w, v in pos.items() if w in lexicon}
+    glosses = {w: v for w, v in glosses.items() if w in lexicon}
+    lemmas = roots_needed | {lm for lm in lemmas if lm in lexicon}  # every needed stem counts as a root
     attested_pos = {w: pos[w] for w in attested if w in pos}
 
-    # write the curated gold to the FROZEN, committed target (raw downloads stay in `out` = _sources cache)
-    frozen = FROZEN / pair
-    frozen.mkdir(parents=True, exist_ok=True)
-    (frozen / "golden_lexicon.txt").write_text("\n".join(sorted(lexicon)), encoding="utf-8")
     # Sense inventory (multiple senses + homograph flag) for the scripture-attested words — the
     # "confident definitions on everything, knowing there are multiple senses / homophones" layer.
     senses_gold = {w: sense_inv[w] for w in attested if w in sense_inv and sense_inv[w]["senses"]}
     homograph_n = sum(1 for v in senses_gold.values() if v["homograph"])
-    (frozen / "golden_senses.json").write_text(json.dumps(senses_gold, ensure_ascii=False), encoding="utf-8")
+
+    # write the curated gold to the FROZEN, committed target as reviewable JSONL (raw downloads stay in
+    # `out` = _sources cache). The scripture-attested validation slice stays a TSV (already tabular).
+    frozen = FROZEN / pair
+    frozen.mkdir(parents=True, exist_ok=True)
     with (frozen / "golden_scripture.tsv").open("w", encoding="utf-8") as f:
         f.write("word\tpos_liblcm\tn_senses\thomograph\tgloss\tin_lexicon\tin_ud\n")
         for w in attested:
@@ -201,26 +236,32 @@ def compile_gold(pair: str) -> dict:
             f.write(f"{w}\t{pos.get(w, '')}\t{len(inv.get('senses', []))}\t{int(bool(inv.get('homograph')))}\t"
                     f"{glosses.get(w, '')}\t{int(w in forms or w in lemmas)}\t{int(w in pos_ud)}\n")
 
-    gold = {
-        "pair": pair, "sources": sources,
-        "stats": {
-            "pos_words": len(pos), "pos_verified": verified, "pos_conflicts": len(conflicts),
-            "lexicon_size": len(lexicon), "unimorph_pairs": morph_n, "affixes": len(affixes),
-            "glosses": len(glosses), "key_terms": len(terms),
-            "scripture_senses": len(senses_gold), "scripture_homographs": homograph_n,
-            "scripture_vocab": len(scrip), "scripture_attested": len(attested),
-            "scripture_coverage": round(len(attested) / len(scrip), 4) if scrip else 0.0,
-            "scripture_uncovered": len(uncovered),
-        },
-        # `pos` is the destination FieldWorks PartOfSpeech (3-way LibLCM vote); `glosses` is the
-        # bilingual target→English gloss gold (from Wiktionary) — the layer UD/UniMorph cannot provide.
-        "pos": pos, "glosses": glosses, "lemmas": sorted(lemmas),
+    stats = {
+        "pos_words": len(pos), "pos_verified": verified, "pos_conflicts": len(conflicts),
+        "lexicon_size": len(lexicon), "unimorph_pairs": morph_n, "affixes": len(affixes),
+        "glosses": len(glosses), "key_terms": len(terms),
+        "scripture_senses": len(senses_gold), "scripture_homographs": homograph_n,
+        "scripture_vocab": len(scrip), "scripture_attested": len(attested),
+        "scripture_coverage": round(len(attested) / len(scrip), 4) if scrip else 0.0,
+        "scripture_uncovered": len(uncovered),
+    }
+    meta = {
+        "pair": pair, "sources": sources, "stats": stats,
         "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
-        "affixes": affixes, "key_terms": terms,
+        # The writing system: locale + number format (group/decimal separators). Numbers and punctuation
+        # are NOT lemmas — numerals are recognised as a token type by this format; punctuation is stripped
+        # at tokenization. `token_classes` = how the scripture vocabulary classifies (lexicon keeps `word`).
+        "writing_system": {**ws, "numerals": "token type (not HC-parsed)", "punctuation": "stripped at tokenization"},
+        "token_classes": dict(token_classes),
+        "files": ["lexicon.jsonl", "grammar_rules.jsonl", "senses.jsonl", "key_terms.jsonl",
+                  "phonology.jsonl", "golden_scripture.tsv"],
         "pos_conflicts_sample": conflicts[:40], "scripture_uncovered_sample": uncovered[:40],
     }
-    (frozen / "golden_set.json").write_text(json.dumps(gold, ensure_ascii=False), encoding="utf-8")
-    return gold["stats"] | {"pair": pair, "sources": sources}
+    counts = goldio.write_gold(
+        pair, lexicon=lexicon, pos=pos, glosses=glosses, lemmas=lemmas,
+        in_scripture=scrip, affixes=affixes, senses=senses_gold, key_terms=terms, meta=meta,
+        phonology=phonology_records(pair))
+    return stats | {"pair": pair, "sources": sources, "files": counts}
 
 
 def main(argv: list[str] | None = None) -> int:

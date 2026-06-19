@@ -911,7 +911,7 @@ arremángate	Verb	0	0		1	0
 arrendó	Verb	0	0		1	0
 arrepentido	Verb	0	0		1	1
 arrepentimiento	Noun	0	0		1	1
-arrepentirá	Verb	0	0		0	1
+arrepentirá	Verb	0	0		1	1
 arriba	Adverb	8	1	above, over	1	1
 arribado	Verb	0	0		1	1
 arribamos	Verb	0	0		1	0
@@ -1601,7 +1601,7 @@ celeste	Adjective	5	1	sky blue	1	1
 celestial	Adjective	2	0	celestial, heavenly (of or relating to heaven as the place where deities (or the Christian God), spiritual beings, etc., exist)	1	1
 celestiales	Adjective	0	0		1	0
 celo	Noun	5	1	zeal	1	1
-celos	Noun	0	0		0	1
+celos	Noun	0	0		1	1
 celoso	Adjective	0	0		1	0
 celosos	Adjective	0	0		1	0
 celéis	Verb	0	0		1	0
@@ -3365,7 +3365,7 @@ déjale	Verb	0	0		1	0
 déjame	Verb	0	0		1	0
 déjanos	Verb	0	0		1	0
 démosle	Verb	0	0		1	0
-dí	Verb	0	0		0	1
+dí	Verb	0	0		1	1
 día	Noun	5	0	day (any period of 24 hours)	1	1
 días	Noun	0	0		1	1
 dónde	Adverb	0	0		1	1
@@ -3407,8 +3407,8 @@ edad	Noun	3	0	age	1	1
 edades	Noun	0	0		1	1
 edicto	Noun	0	0		1	1
 edificación	Noun	0	0		1	1
-edificada	Verb	0	0		0	1
-edificado	Verb	0	0		0	1
+edificada	Verb	0	0		1	1
+edificado	Verb	0	0		1	1
 edificadores	Noun	0	0		1	0
 edificar	Verb	0	0		1	1
 edificio	Noun	1	0	building	1	1
@@ -3489,7 +3489,7 @@ encantador	Adjective	0	0		1	1
 encarcelado	Verb	1	0	past participle of encarcelar	1	1
 encarcelados	Verb	0	0		1	1
 encarece	Verb	0	0		1	0
-encarga	Verb	0	0		0	1
+encarga	Verb	0	0		1	1
 encargaba	Verb	0	0		0	1
 encargada	Verb	0	0		1	1
 encargado	Verb	0	0		1	1
@@ -6406,7 +6406,7 @@ nave	Noun	3	0	ship, vessel (with a concave hull)	1	1
 navecilla	Noun	0	0		1	0
 navecillas	Noun	0	0		1	0
 navegación	Noun	0	0		1	1
-navegan	Verb	0	0		0	1
+navegan	Verb	0	0		1	1
 navegando	Verb	0	0		0	1
 navegar	Verb	0	0		1	1
 navegó	Verb	0	0		0	1
@@ -6505,7 +6505,7 @@ noé	Proper noun	0	0		1	1
 nube	Noun	6	0	cloud	1	1
 nubes	Noun	1	1	plural of nube	1	1
 nuera	Noun	0	0		1	1
-nuestra	Determiner	0	0		0	1
+nuestra	Determiner	0	0		1	1
 nuestras	Determiner	0	0		0	1
 nuestro	Determiner	0	0		1	1
 nuestros	Determiner	0	0		0	1
@@ -6631,7 +6631,7 @@ oiga	Verb	4	1	hey, listen, excuse me (said as a request for an individual's atte
 oigan	Verb	0	0		1	0
 oigas	Verb	0	0		1	0
 oigo	Verb	1	0	first-person singular present indicative of oír	1	1
-oir	Verb	0	0		0	1
+oir	Verb	0	0		1	1
 oiremos	Verb	0	0		1	0
 oirá	Verb	0	0		1	0
 oirán	Verb	0	0		1	0
@@ -9025,7 +9025,7 @@ son	Auxiliary verb	4	1	tone (pleasant sound)	1	1
 sonda	Noun	5	1	probe	1	1
 sonido	Noun	2	0	sound, noise	1	1
 sonidos	Noun	0	0		1	1
-sopla	Verb	0	0		0	1
+sopla	Verb	0	0		1	1
 soporta	Verb	0	0		1	1
 soportando	Verb	0	0		1	0
 soportare	Verb	0	0		1	0
@@ -9165,7 +9165,7 @@ sustentando	Verb	0	0		1	0
 sustentas	Verb	0	0		1	0
 sustento	Noun	0	0		1	1
 sutilezas	Noun	0	0		1	0
-suya	Determiner	0	0		0	1
+suya	Determiner	0	0		1	1
 suyas	Determiner	0	0		1	1
 suyo	Determiner	0	0		1	1
 suyos	Determiner	0	0		0	1
@@ -9318,7 +9318,7 @@ tenéis	Verb	0	0		1	1
 tenía	Verb	0	0		1	1
 teníais		0	0		1	0
 tenían	Verb	0	0		1	1
-tercer	Adjective	0	0		0	1
+tercer	Adjective	0	0		1	1
 tercera	Adjective	0	0		1	1
 tercero	Adjective	3	1	third	1	1
 tercia	Verb	0	0		1	0
@@ -10005,7 +10005,7 @@ viéndolo	Verb	0	0		1	0
 viéndolos	Verb	0	0		1	0
 viña	Noun	1	0	vineyard	1	1
 viñero	Noun	0	0		1	0
-vió	Verb	0	0		0	1
+vió	Verb	0	0		1	1
 vocación	Noun	0	0		1	1
 voceará		0	0		1	0
 voces	Noun	1	0	plural of voz	1	1

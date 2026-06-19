@@ -1,0 +1,44 @@
+{"morph_type": "suffix", "affix": "nya", "features": "N;SG;NEUT;DEF", "inflection": {"Number": "Singular", "Gender": "Neuter", "Definiteness": "Definite"}, "count": 5032}
+{"morph_type": "suffix", "affix": "kan", "features": "V;ACT;APPL", "inflection": {}, "count": 1272}
+{"morph_type": "suffix", "affix": "an", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 1136}
+{"morph_type": "prefix", "affix": "ber", "features": "V;ACT", "inflection": {}, "count": 1030}
+{"morph_type": "suffix", "affix": "annya", "features": "N;SG;NEUT;DEF", "inflection": {"Number": "Singular", "Gender": "Neuter", "Definiteness": "Definite"}, "count": 730}
+{"morph_type": "prefix", "affix": "di", "features": "V;PASS", "inflection": {}, "count": 568}
+{"morph_type": "prefix", "affix": "ter", "features": "V;PASS", "inflection": {}, "count": 555}
+{"morph_type": "prefix", "affix": "meng", "features": "V;ACT", "inflection": {}, "count": 365}
+{"morph_type": "prefix", "affix": "se", "features": "ADJ;SG;POS;DEF", "inflection": {"Number": "Singular", "Definiteness": "Definite"}, "count": 313}
+{"morph_type": "prefix", "affix": "men", "features": "V;ACT", "inflection": {}, "count": 297}
+{"morph_type": "prefix", "affix": "peng", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 246}
+{"morph_type": "prefix", "affix": "mem", "features": "V;ACT", "inflection": {}, "count": 203}
+{"morph_type": "prefix", "affix": "pen", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 197}
+{"morph_type": "prefix", "affix": "me", "features": "V;ACT", "inflection": {}, "count": 194}
+{"morph_type": "prefix", "affix": "pe", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 167}
+{"morph_type": "suffix", "affix": "ku", "features": "N;SG;NEUT;PSS1S", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 143}
+{"morph_type": "prefix", "affix": "meny", "features": "V;ACT", "inflection": {}, "count": 128}
+{"morph_type": "suffix", "affix": "mu", "features": "N;SG;NEUT;PSS2S", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 93}
+{"morph_type": "prefix", "affix": "peny", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 90}
+{"morph_type": "suffix", "affix": "em", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 78}
+{"morph_type": "prefix", "affix": "pem", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 74}
+{"morph_type": "suffix", "affix": "i", "features": "V;ACT;ITER", "inflection": {}, "count": 68}
+{"morph_type": "suffix", "affix": "erb", "features": "V;ACT", "inflection": {}, "count": 68}
+{"morph_type": "suffix", "affix": "wan", "features": "N;SG;MASC", "inflection": {"Number": "Singular", "Gender": "Masculine"}, "count": 51}
+{"morph_type": "suffix", "affix": "ert", "features": "V;PASS", "inflection": {}, "count": 49}
+{"morph_type": "prefix", "affix": "be", "features": "V;ACT", "inflection": {}, "count": 45}
+{"morph_type": "prefix", "affix": "diper", "features": "V;PASS", "inflection": {}, "count": 42}
+{"morph_type": "suffix", "affix": "lah", "features": "V;ACT;FOC", "inflection": {}, "count": 27}
+{"morph_type": "suffix", "affix": "inya", "features": "V;ACT;DEF", "inflection": {"Definiteness": "Definite"}, "count": 26}
+{"morph_type": "prefix", "affix": "te", "features": "V;PASS", "inflection": {}, "count": 20}
+{"morph_type": "suffix", "affix": "me", "features": "N;SG;NEUT", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 16}
+{"morph_type": "suffix", "affix": "id", "features": "V;PASS", "inflection": {}, "count": 13}
+{"morph_type": "suffix", "affix": "rbe", "features": "V;ACT", "inflection": {}, "count": 12}
+{"morph_type": "suffix", "affix": "es", "features": "ADJ;SG;POS;DEF", "inflection": {"Number": "Singular", "Definiteness": "Definite"}, "count": 9}
+{"morph_type": "suffix", "affix": "rte", "features": "V;PASS", "inflection": {}, "count": 8}
+{"morph_type": "suffix", "affix": "anku", "features": "N;SG;NEUT;1", "inflection": {"Number": "Singular", "Gender": "Neuter", "Person": "First"}, "count": 6}
+{"morph_type": "prefix", "affix": "berpe", "features": "V;ACT", "inflection": {}, "count": 6}
+{"morph_type": "suffix", "affix": "se", "features": "ADJ;SG;POS;DEF", "inflection": {"Number": "Singular", "Definiteness": "Definite"}, "count": 6}
+{"morph_type": "suffix", "affix": "pun", "features": "N;SG;NEUT;;;", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 5}
+{"morph_type": "suffix", "affix": "anmu", "features": "N;SG;NEUT;2", "inflection": {"Number": "Singular", "Gender": "Neuter", "Person": "Second"}, "count": 5}
+{"morph_type": "suffix", "affix": "wati", "features": "N;SG;FEM", "inflection": {"Number": "Singular", "Gender": "Feminine"}, "count": 4}
+{"morph_type": "prefix", "affix": "non", "features": "N;SG;NEUT;NEG", "inflection": {"Number": "Singular", "Gender": "Neuter"}, "count": 3}
+{"morph_type": "prefix", "affix": "menge", "features": "V;ACT", "inflection": {}, "count": 3}
+{"morph_type": "prefix", "affix": "dipe", "features": "V;PASS", "inflection": {}, "count": 3}

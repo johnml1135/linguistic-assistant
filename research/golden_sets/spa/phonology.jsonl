@@ -1,0 +1,11 @@
+{"type": "segment", "grapheme": "a", "features": {"voc": "vow", "hi": "lo", "rnd": "unr", "back": "bk"}}
+{"type": "segment", "grapheme": "e", "features": {"voc": "vow", "hi": "lo", "rnd": "unr", "back": "fr"}}
+{"type": "segment", "grapheme": "i", "features": {"voc": "vow", "hi": "hi", "rnd": "unr", "back": "fr"}}
+{"type": "segment", "grapheme": "o", "features": {"voc": "vow", "hi": "lo", "rnd": "rnd", "back": "bk"}}
+{"type": "segment", "grapheme": "u", "features": {"voc": "vow", "hi": "hi", "rnd": "rnd", "back": "bk"}}
+{"type": "natural_class", "id": "vowel", "features": {"voc": "vow"}}
+{"type": "natural_class", "id": "cons", "features": {"voc": "cons"}}
+{"type": "natural_class", "id": "front", "features": {"voc": "vow", "back": "fr"}}
+{"type": "natural_class", "id": "high", "features": {"voc": "vow", "hi": "hi"}}
+{"type": "rule", "id": "spa_plural_epenthesis", "kind": "epenthesis", "status": "staged", "description": "plural -s → -es after a consonant-final stem (luz→luces, mes→meses): insert e before the -s suffix when the stem ends in a consonant.", "mechanism": "PhonologicalRule, InsertSegments e / [cons] __ s#", "witnesses": ["luces", "meses", "voces"]}
+{"type": "meta", "vowel_harmony": false, "note": "Spanish has no vowel harmony; the inventory is for natural-class conditioning only."}

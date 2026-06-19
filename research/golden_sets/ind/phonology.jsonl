@@ -1,0 +1,11 @@
+{"type": "segment", "grapheme": "a", "features": {"voc": "vow"}}
+{"type": "segment", "grapheme": "e", "features": {"voc": "vow"}}
+{"type": "segment", "grapheme": "i", "features": {"voc": "vow"}}
+{"type": "segment", "grapheme": "o", "features": {"voc": "vow"}}
+{"type": "segment", "grapheme": "u", "features": {"voc": "vow"}}
+{"type": "natural_class", "id": "vowel", "features": {"voc": "vow"}}
+{"type": "natural_class", "id": "cons", "features": {"voc": "cons"}}
+{"type": "natural_class", "id": "front", "features": {"voc": "vow", "back": "fr"}}
+{"type": "natural_class", "id": "high", "features": {"voc": "vow", "hi": "hi"}}
+{"type": "rule", "id": "ind_meN_assimilation", "kind": "assimilation", "status": "staged", "description": "meN-/peN- prefix nasal assimilates to the place of the following consonant and may delete a voiceless onset: meN+kasih→mengasih, meN+pukul→memukul, meN+tulis→menulis.", "mechanism": "PhonologicalRule, nasal place = following C place; voiceless-onset deletion", "witnesses": ["mengasihi", "memukul", "menulis", "menyertai"]}
+{"type": "meta", "vowel_harmony": false}
