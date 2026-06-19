@@ -81,6 +81,22 @@ def analyze_wordform(senses: list[str]) -> tuple[str | None, dict[str, str]]:
     return lemma, best
 
 
+# "meta" senses are not translations — Wiktionary often lists them FIRST (pan→"initialism of PAN",
+# amor→"a surname"), which made them the gold's primary gloss even though the eBible alignment has the
+# real meaning (bread, love). Recognise them so they sink below real senses (and can be corrected).
+_META = re.compile(
+    r"\b(initialism|abbreviation|acronym|surname|given name|roman numeral|symbol (for|of)|"
+    r"alternative (spelling|form) of|obsolete (spelling|form)|misspelling of|the name of|a (male|female) )\b",
+    re.I)
+
+
+def is_meta_sense(gloss: str) -> bool:
+    """True if the gloss is a name/abbreviation/spelling note rather than a translatable meaning."""
+    return bool(_META.search(gloss or ""))
+
+
 def real_senses(senses: list[str]) -> list[str]:
-    """The lexical senses only (form-of descriptions dropped)."""
-    return [s for s in (senses or []) if not is_form_of(s)]
+    """Lexical senses only (form-of dropped), with translatable meanings BEFORE meta senses (names,
+    initialisms…) so the primary gloss is a real translation, not Wiktionary's incidental first sense."""
+    rs = [s for s in (senses or []) if not is_form_of(s)]
+    return sorted(rs, key=is_meta_sense)  # stable: non-meta (False) first

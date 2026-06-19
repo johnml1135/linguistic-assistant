@@ -56,205 +56,207 @@
  ],
  "pos_conflicts_sample": [
   [
-   "ribagorzanos",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "benditas",
+   "redoble",
    "Verb",
-   "Adjective"
+   "Noun"
   ],
   [
-   "ceilanesa",
+   "chute",
+   "Proper noun",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "aleteo",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "durbanesa",
    "Adjective",
    "Noun"
   ],
   [
-   "ecijana",
+   "estelianas",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "basófilos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "chihuahueños",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "retruécanos",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "inspiradora",
    "Adjective",
    "Noun"
   ],
   [
-   "celes",
-   "Verb",
-   "Noun"
+   "cueto",
+   "Noun",
+   "Proper noun"
   ],
   [
-   "imperforada",
-   "Noun",
+   "segurados",
+   "Verb",
    "Adjective"
   ],
   [
-   "biónica",
+   "regodeona",
    "Adjective",
    "Noun"
   ],
   [
-   "atormentadores",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "tolerado",
+   "descansados",
    "Verb",
    "Adjective"
   ],
   [
-   "pues",
-   "Subordinating connective",
-   "Coordinating connective"
+   "moroveña",
+   "Adjective",
+   "Noun"
   ],
   [
-   "sacudida",
+   "subtitulados",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "nimbados",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "pensilvanos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "ordeñas",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "aragueño",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "engreída",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "apañadas",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "embravecidos",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "desmesuras",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "veteranas",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "creídas",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "befa",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "marabinos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "heredadas",
    "Adjective",
    "Verb",
    "Noun"
   ],
   [
-   "aludida",
-   "Verb",
+   "asirias",
+   "Noun",
    "Adjective"
   ],
   [
-   "tarando",
+   "mitilenea",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "facultad",
+   "Proper noun",
    "Verb",
    "Noun"
   ],
   [
-   "natas",
+   "cotorra",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "concordiano",
    "Noun",
    "Adjective"
   ],
   [
-   "caracoles",
-   "Noun",
+   "cafre",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "hola",
+   "Particle",
    "Interjection"
   ],
   [
-   "calce",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "enmascaradas",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "fulani",
+   "reunionesas",
    "Noun",
    "Adjective"
   ],
   [
-   "capota",
-   "Verb",
+   "tuba",
+   "Proper noun",
    "Noun"
   ],
   [
-   "chapucera",
+   "poseedora",
    "Adjective",
    "Noun"
   ],
   [
-   "numantinas",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "huancavelicana",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "festoneada",
+   "anclada",
    "Verb",
    "Adjective"
   ],
   [
-   "improvisas",
+   "aparejado",
    "Verb",
    "Adjective"
-  ],
-  [
-   "meneo",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "festoneadas",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "nona",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "escandalosas",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "predicadora",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "radiografías",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "deslaves",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "cumplidas",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "capitaleña",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "tifoidea",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "accionaria",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "pandeada",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "tipeo",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "tundas",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "amoblado",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "desquicio",
-   "Verb",
-   "Noun"
   ]
  ],
  "scripture_uncovered_sample": [

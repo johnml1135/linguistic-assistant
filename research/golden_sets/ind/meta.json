@@ -57,136 +57,141 @@
  ],
  "pos_conflicts_sample": [
   [
-   "namun",
-   "Coordinating connective",
-   "Adverb"
-  ],
-  [
-   "setingkat",
+   "gempar",
    "Noun",
    "Adjective"
   ],
   [
-   "lambai",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "loji",
+   "maharaja",
    "Proper noun",
    "Noun"
   ],
   [
-   "pembersih",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "sekehendak",
-   "Adjective",
-   "Verb"
-  ],
-  [
-   "gambir",
+   "maimunah",
    "Proper noun",
    "Noun"
   ],
   [
-   "sobek",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "pori",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "pm",
+   "os",
    "Proper noun",
    "Noun"
   ],
   [
-   "zalim",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "kelasi",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "memalukan",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "kerani",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "persona",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "bimbing",
-   "Noun",
-   "Verb"
-  ],
-  [
-   "tunai",
-   "Noun",
-   "Verb",
-   "Adverb"
-  ],
-  [
-   "intaglio",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "gw",
-   "Proper noun",
+   "mengapa",
+   "Adverb",
    "Pronoun"
   ],
   [
-   "sekering",
+   "royal",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "muri",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "agung",
+   "Proper noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "pendiam",
    "Noun",
    "Adjective"
   ],
   [
-   "rsud",
+   "ria",
+   "Proper noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "papar",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "lot",
    "Proper noun",
    "Noun"
   ],
   [
-   "tilik",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "petak",
+   "spm",
    "Proper noun",
+   "Noun"
+  ],
+  [
+   "semangkuk",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "tes",
    "Verb",
    "Noun"
   ],
   [
-   "taksir",
+   "teduh",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "simpati",
    "Verb",
    "Noun"
   ],
   [
-   "toh",
-   "Interjection",
-   "Coordinating connective"
+   "servis",
+   "Verb",
+   "Noun"
   ],
   [
-   "yaitu",
-   "Adposition",
-   "Adverb"
+   "remis",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "pinggan",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tuah",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "ternyata",
+   "Adverb",
+   "Adjective"
+  ],
+  [
+   "palla",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "tuban",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "seru",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "bergilir",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "keris",
+   "Proper noun",
+   "Noun"
   ],
   [
    "perkasa",
@@ -195,68 +200,64 @@
    "Adjective"
   ],
   [
-   "selamat",
-   "Adjective",
-   "Verb",
-   "Interjection"
-  ],
-  [
-   "dasa",
+   "sari",
    "Proper noun",
-   "Noun"
-  ],
-  [
-   "mubarak",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "tape",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "kencan",
    "Verb",
    "Noun"
   ],
   [
-   "soko",
+   "polsek",
    "Proper noun",
    "Noun"
   ],
   [
-   "tt",
+   "bursa",
    "Proper noun",
    "Noun"
   ],
   [
-   "utamanya",
-   "Adverb",
-   "Adjective"
-  ],
-  [
-   "moderat",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "panah",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "seandainya",
+   "lantaran",
    "Subordinating connective",
-   "Coordinating connective"
-  ],
-  [
-   "sahara",
-   "Proper noun",
    "Noun"
   ],
   [
-   "bio",
+   "injeksi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "bakti",
+   "Proper noun",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "kedelapan",
+   "Adjective",
+   "Numeral"
+  ],
+  [
+   "konspirasi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "linguistik",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "bawa",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "lacur",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "qasidah",
    "Proper noun",
    "Noun"
   ]

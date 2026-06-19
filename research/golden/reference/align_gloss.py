@@ -140,12 +140,17 @@ def apply(pair: str, lex_entries: list[dict], wordforms: list[dict], attested: l
         if r["confidence"] == "low":
             continue
         best, forms = r["best"], r["forms"]
-        # 1) a KNOWN lemma that simply lacks a gloss → fill it from the corpus
+        # 1) a KNOWN lemma whose gloss is missing OR junk (a meta sense: name/initialism) → the corpus
+        #    has the real meaning, so fill/correct it (the eBible beats the gold here).
+        from golden.reference.morphology import is_meta_sense
         handled = False
         for f in forms:
             e = by_word.get(wf_lemma.get(f, f))
-            if e and not e.get("senses"):
-                e["senses"] = [best]
+            if not e:
+                continue
+            senses = e.get("senses") or []
+            if not senses or is_meta_sense(senses[0]):
+                e["senses"] = [best] + [s for s in senses if s != best]
                 e["gloss_source"] = "alignment"
                 filled += 1
                 handled = True
