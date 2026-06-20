@@ -70,8 +70,13 @@ def score(pair: str, *, backend: str = "hmm", endpoint: str | None = None,
           pos_baseline: bool = False, sample: int = 400) -> dict:
     gold = load_gold(pair)
     gpos, gglo = gold.get("pos", {}), gold.get("glosses", {})
-    # when a model assesses, target the gold lemmas (the eval set) so the sample is what we score
-    words = list(gglo)[:sample] if endpoint else None
+    # when a model assesses, target the most FREQUENT gold lemmas (the words that matter + are actually
+    # aligned), not alphabetical-first ones that never appear in the aligner table
+    words = None
+    if endpoint:
+        from golden.reference.hc_coverage import _scripture_freqs
+        freqs = _scripture_freqs(pair)
+        words = sorted(gglo, key=lambda lm: -freqs.get(lm, 0))[:sample]
     recon, used = reconstruct(pair, backend=backend, endpoint=endpoint, pos_baseline=pos_baseline,
                               words=words, sample=sample)
 
@@ -84,16 +89,35 @@ def score(pair: str, *, backend: str = "hmm", endpoint: str | None = None,
     gold_tok = {lm: set().union(*(toks(s) for s in (gsenses.get(lm, {}).get("senses") or [gglo.get(lm, "")])))
                 for lm in gglo}
 
-    # gloss accuracy: reconstructed English appears among the gold senses; also at HIGH confidence only
-    g_eval = g_ok = hi_eval = hi_ok = 0
+    # Goal-aligned scoring: a model should PROPOSE high-confidence correct glosses and DEFER (gloss=None)
+    # rather than guess wrong. So we separate correct / wrong / deferred, and report precision@high
+    # (of high-conf proposals, how many are right — want →1) and the wrong-rate (want →0).
+    import re as _re
+    g_eval = g_ok = proposed = correct = wrong = deferred = hi_prop = hi_ok = acc_prop = acc_ok = 0
     for lm in gglo:
-        if lm in recon:
-            g_eval += 1
-            hit = recon[lm]["gloss"] in gold_tok.get(lm, set()) or recon[lm]["gloss"] == lm
-            g_ok += hit
-            if recon[lm]["conf"] == "high":
-                hi_eval += 1
-                hi_ok += hit
+        if lm not in recon:
+            continue
+        g_eval += 1
+        gl = (recon[lm].get("gloss") or "").lower()
+        if not gl:
+            deferred += 1
+            continue
+        proposed += 1
+        # credit if ANY content token of the model's (possibly multi-word) gloss matches a gold sense
+        gl_toks = {t for t in _re.split(r"[^a-záéíóúñü]+", gl) if len(t) > 1}
+        hit = bool(gl_toks & gold_tok.get(lm, set())) or gl in gold_tok.get(lm, set()) or gl == lm
+        correct += hit
+        wrong += not hit
+        g_ok += hit
+        if recon[lm].get("conf") == "high":
+            hi_prop += 1
+            hi_ok += hit
+        # ACCEPTANCE GATE: auto-accept only when the model is high-conf AND agrees with the aligner
+        # (the model's gloss shares a token with the aligner's top-1) — everything else DEFERS to a user.
+        a1 = (recon[lm].get("aligner_top1") or "").lower()
+        if recon[lm].get("conf") == "high" and (a1 in gl_toks or a1 == gl):
+            acc_prop += 1
+            acc_ok += hit
     # POS accuracy: projected POS vs gold POS (on gold lemmas we glossed)
     p_eval = p_ok = 0
     for lm, p in gpos.items():
@@ -104,9 +128,17 @@ def score(pair: str, *, backend: str = "hmm", endpoint: str | None = None,
     gold_lemmas = set(gold.get("lemmas", []))
     return {
         "pair": pair, "backend": used, "reconstructed_words": len(recon),
-        "gloss": {"evaluated": g_eval, "correct": g_ok, "accuracy": round(g_ok / g_eval, 4) if g_eval else 0.0},
-        "gloss_high_conf": {"evaluated": hi_eval, "correct": hi_ok,
-                            "accuracy": round(hi_ok / hi_eval, 4) if hi_eval else 0.0},
+        "gloss": {"evaluated": g_eval, "correct": g_ok, "accuracy": round(g_ok / g_eval, 4) if g_eval else 0.0,
+                  "proposed": proposed, "wrong": wrong, "deferred": deferred,
+                  "precision": round(correct / proposed, 4) if proposed else 0.0,
+                  "wrong_rate": round(wrong / g_eval, 4) if g_eval else 0.0,
+                  "deferral_rate": round(deferred / g_eval, 4) if g_eval else 0.0},
+        "gloss_high_conf": {"evaluated": hi_prop, "correct": hi_ok,
+                            "precision": round(hi_ok / hi_prop, 4) if hi_prop else 0.0},
+        "gloss_accepted": {"accepted": acc_prop, "correct": acc_ok,
+                           "precision": round(acc_ok / acc_prop, 4) if acc_prop else 0.0,
+                           "accept_rate": round(acc_prop / g_eval, 4) if g_eval else 0.0,
+                           "deferred_to_user": g_eval - acc_prop},
         "pos": {"evaluated": p_eval, "correct": p_ok, "accuracy": round(p_ok / p_eval, 4) if p_eval else 0.0},
         "lemma_coverage": round(len(gold_lemmas & set(recon)) / len(gold_lemmas), 4) if gold_lemmas else 0.0,
         # parts that need the next scaffolds (no segmentation / audio wired into the no-dict path yet)
@@ -134,9 +166,14 @@ def main(argv: list[str] | None = None) -> int:
               pos_baseline=args.pos_baseline, sample=args.sample)
     print(f"[{args.pair}] golden set REBUILT FROM eBible ALONE (no dictionary) — vs the verified gold:")
     print(f"  aligner: {s['backend']}   reconstructed {s['reconstructed_words']} words")
-    print(f"  GLOSS accuracy: {s['gloss']['accuracy']}  ({s['gloss']['correct']}/{s['gloss']['evaluated']} gold lemmas)"
-          f"  |  high-confidence only: {s['gloss_high_conf']['accuracy']} "
-          f"({s['gloss_high_conf']['correct']}/{s['gloss_high_conf']['evaluated']})")
+    g = s["gloss"]
+    print(f"  GLOSS: accuracy {g['accuracy']} ({g['correct']}/{g['evaluated']})  |  "
+          f"precision@high {s['gloss_high_conf']['precision']} ({s['gloss_high_conf']['correct']}/{s['gloss_high_conf']['evaluated']})")
+    print(f"         proposed {g['proposed']}, WRONG {g['wrong']} (rate {g['wrong_rate']}), "
+          f"DEFERRED {g['deferred']} (rate {g['deferral_rate']})")
+    a = s["gloss_accepted"]
+    print(f"  ACCEPT GATE (model-high ∩ aligner-agree): precision {a['precision']} ({a['correct']}/{a['accepted']}) "
+          f"accept-rate {a['accept_rate']}, {a['deferred_to_user']} deferred to user  ← the deployable high-confidence tier")
     print(f"  POS   accuracy: {s['pos']['accuracy']}  ({s['pos']['correct']}/{s['pos']['evaluated']} gold lemmas)")
     print(f"  gold-lemma coverage: {s['lemma_coverage']}")
     print(f"  morphology / classes / phonology: {s['morphology'].split('—')[0].strip()} (next scaffolds)")

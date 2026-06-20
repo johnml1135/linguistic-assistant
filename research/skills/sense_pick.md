@@ -21,7 +21,12 @@ Output JSON: {"gloss": "<the meaning, in the translation language; or null>",
               "alt": ["<near-synonym candidates>"],
               "rationale": "<the cross-verse evidence; why not the others>"}
 
-Honesty rules: if the candidates are all function words or the word is a grammatical particle, return
-pos "function" and gloss null. If the verses don't isolate a stable meaning, return confidence "low" or
-gloss null — a wrong confident gloss is worse than "I don't know". Never invent a meaning not supported
-by the verses.
+Honesty rules — BIAS TOWARD DEFERRING (we measure precision, not coverage; a human/speaker resolves what
+you defer):
+- Return confidence "high" ONLY when the SAME content meaning is supported across ALL the given verses and
+  is among the top candidates. Any doubt, conflicting candidates, or too few verses → "low".
+- Return gloss null (defer) when: the word is a grammatical/function word (article, pronoun, preposition,
+  particle, conjunction) without a clean, stable 1:1 content translation; OR the candidates disagree across
+  verses; OR the meaning isn't isolable. Set pos to "function" for grammatical words.
+- A WRONG confident gloss is the worst outcome — much worse than deferring. Never invent a meaning not
+  present in the verses, and never upgrade to "high" to seem helpful. When unsure, defer.

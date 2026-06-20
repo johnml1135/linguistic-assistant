@@ -86,7 +86,10 @@ def analyze_wordform(senses: list[str]) -> tuple[str | None, dict[str, str]]:
 # real meaning (bread, love). Recognise them so they sink below real senses (and can be corrected).
 _META = re.compile(
     r"\b(initialism|abbreviation|acronym|surname|given name|roman numeral|symbol (for|of)|"
-    r"alternative (spelling|form) of|obsolete (spelling|form)|misspelling of|the name of|a (male|female) )\b",
+    r"alternative (spelling|form) of|obsolete (spelling|form)|misspelling of|the name of|a (male|female) |"
+    # grammatical descriptions Wiktionary gives instead of a translation (la→"accusative of ella",
+    # y→"the …letter of the… alphabet", su→"apocopic form of suyo") — not a usable gloss
+    r"(accusative|dative|nominative|genitive|ablative|vocative) of|apocopic form of|letter of the)\b",
     re.I)
 
 

@@ -10,22 +10,22 @@
   "pos_words": 1044489,
   "pos_verified": 612122,
   "pos_conflicts": 12143,
-  "lexemes": 5362,
-  "wordforms": 10541,
+  "lexemes": 5363,
+  "wordforms": 10543,
   "unimorph_pairs": 1196224,
   "affixes": 1597,
-  "glosses": 4896,
+  "glosses": 4897,
   "key_terms": 953,
   "homographs": 1464,
   "inflection_classes": 27,
   "lemmas_classed": 3321,
   "lemmas_regular": 2896,
   "aligned_glosses_filled": 47,
-  "aligned_names_added": 106,
+  "aligned_names_added": 107,
   "scripture_vocab": 11004,
-  "scripture_attested": 10541,
-  "scripture_coverage": 0.9579,
-  "scripture_uncovered": 463
+  "scripture_attested": 10543,
+  "scripture_coverage": 0.9581,
+  "scripture_uncovered": 461
  },
  "destination": "LibLCM / FieldWorks HC: LexEntry(+MoMorphType) · MoStemMsa/MoInflAffMsa(PartOfSpeech+FsFeatStruc) · AffixTemplate",
  "writing_system": {
@@ -56,19 +56,63 @@
  ],
  "pos_conflicts_sample": [
   [
-   "redoble",
+   "jerónima",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "arriesgados",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "supergigantes",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "perdiceros",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "chinandeganos",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "propicias",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "alicates",
    "Verb",
    "Noun"
   ],
   [
-   "chute",
-   "Proper noun",
-   "Verb",
+   "impulsada",
+   "Adjective",
+   "Verb"
+  ],
+  [
+   "naúfraga",
+   "Adjective",
    "Noun"
   ],
   [
-   "aleteo",
+   "resumidos",
    "Verb",
+   "Adjective"
+  ],
+  [
+   "vallegrandina",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "inquisidora",
+   "Adjective",
    "Noun"
   ],
   [
@@ -77,186 +121,141 @@
    "Noun"
   ],
   [
-   "estelianas",
+   "aznaristas",
    "Noun",
    "Adjective"
   ],
   [
-   "basófilos",
+   "fregonas",
    "Noun",
    "Adjective"
   ],
   [
-   "chihuahueños",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "retruécanos",
+   "embuste",
    "Verb",
    "Noun"
   ],
   [
-   "inspiradora",
+   "agrietado",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "desapasionadas",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "twittera",
    "Adjective",
    "Noun"
   ],
   [
-   "cueto",
-   "Noun",
-   "Proper noun"
-  ],
-  [
-   "segurados",
+   "perito",
    "Verb",
    "Adjective"
   ],
   [
-   "regodeona",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "descansados",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "moroveña",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "subtitulados",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "nimbados",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "pensilvanos",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "ordeñas",
+   "acomodo",
    "Verb",
    "Noun"
   ],
   [
-   "aragueño",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "engreída",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "apañadas",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "embravecidos",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "desmesuras",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "veteranas",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "creídas",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "befa",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "marabinos",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "heredadas",
+   "coja",
    "Adjective",
    "Verb",
    "Noun"
   ],
   [
-   "asirias",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "mitilenea",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "facultad",
-   "Proper noun",
+   "adobo",
    "Verb",
    "Noun"
   ],
   [
-   "cotorra",
-   "Adjective",
-   "Noun"
-  ],
-  [
-   "concordiano",
+   "necrófagas",
    "Noun",
    "Adjective"
   ],
   [
-   "cafre",
-   "Adjective",
+   "cafiche",
+   "Verb",
    "Noun"
   ],
   [
-   "hola",
-   "Particle",
-   "Interjection"
-  ],
-  [
-   "reunionesas",
+   "manufactureras",
    "Noun",
    "Adjective"
   ],
   [
-   "tuba",
+   "lucerna",
    "Proper noun",
    "Noun"
   ],
   [
-   "poseedora",
+   "acoplados",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "cambra",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "curas",
+   "Noun",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "cenados",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "incomunicada",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "humillados",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "cimera",
    "Adjective",
    "Noun"
   ],
   [
-   "anclada",
+   "baratísimo",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "ourensana",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "inserto",
    "Verb",
    "Adjective"
   ],
   [
-   "aparejado",
+   "magra",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "malditos",
    "Verb",
    "Adjective"
+  ],
+  [
+   "regañás",
+   "Verb",
+   "Noun"
   ]
  ],
  "scripture_uncovered_sample": [

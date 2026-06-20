@@ -57,209 +57,207 @@
  ],
  "pos_conflicts_sample": [
   [
-   "gempar",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "maharaja",
+   "taksonomi",
    "Proper noun",
    "Noun"
   ],
   [
-   "maimunah",
+   "kara",
    "Proper noun",
    "Noun"
   ],
   [
-   "os",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "mengapa",
-   "Adverb",
-   "Pronoun"
-  ],
-  [
-   "royal",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "muri",
+   "kilat",
    "Verb",
    "Noun"
   ],
   [
-   "agung",
-   "Proper noun",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "pendiam",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "ria",
-   "Proper noun",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "papar",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "lot",
+   "qrs",
    "Proper noun",
    "Noun"
   ],
   [
-   "spm",
+   "los",
    "Proper noun",
    "Noun"
   ],
   [
-   "semangkuk",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "tes",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "teduh",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "simpati",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "servis",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "remis",
-   "Proper noun",
-   "Adjective"
-  ],
-  [
-   "pinggan",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "tuah",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "ternyata",
-   "Adverb",
-   "Adjective"
-  ],
-  [
-   "palla",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "tuban",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "seru",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "bergilir",
-   "Verb",
-   "Adjective"
-  ],
-  [
-   "keris",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "perkasa",
-   "Proper noun",
-   "Noun",
-   "Adjective"
-  ],
-  [
-   "sari",
-   "Proper noun",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "polsek",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "bursa",
-   "Proper noun",
-   "Noun"
-  ],
-  [
-   "lantaran",
-   "Subordinating connective",
-   "Noun"
-  ],
-  [
-   "injeksi",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "bakti",
-   "Proper noun",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "kedelapan",
-   "Adjective",
-   "Numeral"
-  ],
-  [
-   "konspirasi",
-   "Verb",
-   "Noun"
-  ],
-  [
-   "linguistik",
+   "sebaya",
    "Adjective",
    "Noun"
   ],
   [
-   "bawa",
+   "giur",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "senapati",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "awatara",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "orde",
+   "Proper noun",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "kw",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "y",
+   "Proper noun",
+   "Interjection"
+  ],
+  [
+   "serbuk",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "hatta",
+   "Proper noun",
+   "Adverb"
+  ],
+  [
+   "gusti",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "garuda",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "representasi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "kayak",
+   "Verb",
+   "Adposition"
+  ],
+  [
+   "adati",
+   "Verb",
+   "Adjective"
+  ],
+  [
+   "sidi",
+   "Proper noun",
+   "Adjective"
+  ],
+  [
+   "rugi",
+   "Adjective",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "arsir",
    "Noun",
    "Verb"
   ],
   [
-   "lacur",
+   "sana",
+   "Pronoun",
    "Verb",
+   "Adverb"
+  ],
+  [
+   "mutiara",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "pascapanen",
+   "Noun",
    "Adjective"
   ],
   [
-   "qasidah",
+   "betul-betul",
+   "Adjective",
+   "Adverb"
+  ],
+  [
+   "liput",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "seandainya",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "ob",
    "Proper noun",
    "Noun"
+  ],
+  [
+   "kecurian",
+   "Noun",
+   "Verb"
+  ],
+  [
+   "karena",
+   "Subordinating connective",
+   "Coordinating connective"
+  ],
+  [
+   "ulas",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "parit",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "licik",
+   "Adjective",
+   "Noun"
+  ],
+  [
+   "gengsi",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "junior",
+   "Noun",
+   "Adjective"
+  ],
+  [
+   "wedana",
+   "Proper noun",
+   "Noun"
+  ],
+  [
+   "punuk",
+   "Verb",
+   "Noun"
+  ],
+  [
+   "tri",
+   "Proper noun",
+   "Numeral"
+  ],
+  [
+   "spiritual",
+   "Noun",
+   "Adjective"
   ]
  ],
  "scripture_uncovered_sample": [

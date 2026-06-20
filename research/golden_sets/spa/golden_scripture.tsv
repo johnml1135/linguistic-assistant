@@ -3471,7 +3471,9 @@ dáselo	dar	Verb	Person=Second;Number=Singular;Mood=Imperative	wiktionary
 dé	dar	Verb	Mood=Subjunctive;Tense=Present;Person=First;Number=Singular	unimorph
 débil	débil	Adjective		base
 décima	décimo	Adjective	Number=Singular;Gender=Feminine	wiktionary
+décimacuarta	décimacuarta	Proper noun		alignment
 décimo	décimo	Adjective		base
+décimocuarto	décimacuarta	Proper noun		alignment
 déjala	dejar	Verb	Mood=Imperative;Person=Third;Number=Singular;Case=Accusative	unimorph
 déjale	dejar	Verb	Mood=Imperative;Person=Third;Number=Singular;Case=Dative	unimorph
 déjame	dejar	Verb	Mood=Imperative;Person=First;Number=Singular;Case=Dative	unimorph

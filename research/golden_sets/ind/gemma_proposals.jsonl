@@ -1,0 +1,120 @@
+{"word": "dan", "gloss": "and", "pos": "Unknown", "conf": "high", "aligner_top1": "and", "current_gold": "and (used to connect two similar words, phrases, et cetera)", "raises_gold": false, "decision": "accept"}
+{"word": "mereka", "gloss": "they/them/their", "pos": "Unknown", "conf": "high", "aligner_top1": "they", "current_gold": "active of reka", "raises_gold": false, "decision": "accept"}
+{"word": "kalian", "gloss": "you (plural)", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "dia", "gloss": "he/she/him/her", "pos": "Unknown", "conf": "high", "aligner_top1": "he", "current_gold": "he", "raises_gold": false, "decision": "accept"}
+{"word": "tidak", "gloss": "not", "pos": "Unknown", "conf": "high", "aligner_top1": "not", "current_gold": "a negative marker used for negating the meanings of verbs, adverbs, and adjectives: not", "raises_gold": false, "decision": "accept"}
+{"word": "kepada", "gloss": "to", "pos": "Unknown", "conf": "high", "aligner_top1": "to", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "yesus", "gloss": "Jesus", "pos": "Proper noun", "conf": "high", "aligner_top1": "jesus", "current_gold": "Jesus", "raises_gold": false, "decision": "accept"}
+{"word": "allah", "gloss": "god", "pos": "Noun", "conf": "high", "aligner_top1": "god", "current_gold": "Allah", "raises_gold": false, "decision": "accept"}
+{"word": "saya", "gloss": "i", "pos": "Unknown", "conf": "high", "aligner_top1": "i", "current_gold": "response that confirms that the speaker is paying attention: yes", "raises_gold": false, "decision": "accept"}
+{"word": "ini", "gloss": "this", "pos": "Unknown", "conf": "high", "aligner_top1": "this", "current_gold": "only, just", "raises_gold": false, "decision": "accept"}
+{"word": "sudah", "gloss": "already / have / has", "pos": "Adverb", "conf": "high", "aligner_top1": "have", "current_gold": "perfective aspect, indicating that the process has been accomplished.", "raises_gold": false, "decision": "accept"}
+{"word": "aku", "gloss": "I", "pos": "Unknown", "conf": "high", "aligner_top1": "i", "current_gold": "pomegranate flower", "raises_gold": false, "decision": "accept"}
+{"word": "tetapi", "gloss": "but", "pos": "Unknown", "conf": "high", "aligner_top1": "but", "current_gold": "but (although)", "raises_gold": false, "decision": "accept"}
+{"word": "dalam", "gloss": "in", "pos": "Unknown", "conf": "high", "aligner_top1": "in", "current_gold": "deep", "raises_gold": false, "decision": "accept"}
+{"word": "kamu", "gloss": "you", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": "destroys", "raises_gold": false, "decision": "accept"}
+{"word": "ketika", "gloss": "when", "pos": "Unknown", "conf": "high", "aligner_top1": "when", "current_gold": "when", "raises_gold": false, "decision": "accept"}
+{"word": "kami", "gloss": "we/us", "pos": "Unknown", "conf": "high", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "ada", "gloss": "to exist / to be present / there is", "pos": "Verb", "conf": "high", "aligner_top1": "there", "current_gold": "to be present, to exist, be there", "raises_gold": false, "decision": "accept"}
+{"word": "seperti", "gloss": "as/like", "pos": "Unknown", "conf": "high", "aligner_top1": "as", "current_gold": "Like; as though, similar to", "raises_gold": false, "decision": "accept"}
+{"word": "bahwa", "gloss": "that", "pos": "Unknown", "conf": "high", "aligner_top1": "that", "current_gold": "that (connecting a noun clause)", "raises_gold": false, "decision": "accept"}
+{"word": "adalah", "gloss": "is/are/am", "pos": "Unknown", "conf": "high", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "apa", "gloss": "what", "pos": "Unknown", "conf": "high", "aligner_top1": "what", "current_gold": "what (interrogative)", "raises_gold": false, "decision": "accept"}
+{"word": "berkata", "gloss": "said", "pos": "Verb", "conf": "high", "aligner_top1": "said", "current_gold": "to be in a state of saying", "raises_gold": false, "decision": "accept"}
+{"word": "tuhan", "gloss": "Lord", "pos": "Noun", "conf": "high", "aligner_top1": "lord", "current_gold": "god (deity)", "raises_gold": false, "decision": "accept"}
+{"word": "menjadi", "gloss": "to be / to become", "pos": "Verb", "conf": "high", "aligner_top1": "be", "current_gold": "active of jadi (“to become”)", "raises_gold": false, "decision": "accept"}
+{"word": "semua", "gloss": "all", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": "all", "raises_gold": false, "decision": "accept"}
+{"word": "juga", "gloss": "also / too / as well", "pos": "Adverb", "conf": "high", "aligner_top1": "also", "current_gold": "also", "raises_gold": false, "decision": "accept"}
+{"word": "jika", "gloss": "if", "pos": "Unknown", "conf": "high", "aligner_top1": "if", "current_gold": "if (supposing that)", "raises_gold": false, "decision": "accept"}
+{"word": "baik", "gloss": "good", "pos": "Adjective", "conf": "high", "aligner_top1": "good", "current_gold": "good, nice, decent", "raises_gold": false, "decision": "accept"}
+{"word": "kristus", "gloss": "Christ", "pos": "Proper noun", "conf": "high", "aligner_top1": "christ", "current_gold": "the Christ", "raises_gold": false, "decision": "accept"}
+{"word": "percaya", "gloss": "faith/believe", "pos": "Unknown", "conf": "high", "aligner_top1": "faith", "current_gold": "to believe, to have trust", "raises_gold": false, "decision": "accept"}
+{"word": "oleh", "gloss": "by", "pos": "Unknown", "conf": "high", "aligner_top1": "by", "current_gold": "by", "raises_gold": false, "decision": "accept"}
+{"word": "anak", "gloss": "child/son", "pos": "Noun", "conf": "high", "aligner_top1": "son", "current_gold": "a young creature", "raises_gold": false, "decision": "accept"}
+{"word": "sebab", "gloss": "for", "pos": "Unknown", "conf": "high", "aligner_top1": "for", "current_gold": "reason", "raises_gold": false, "decision": "accept"}
+{"word": "banyak", "gloss": "many", "pos": "Adjective", "conf": "high", "aligner_top1": "many", "current_gold": "many", "raises_gold": false, "decision": "accept"}
+{"word": "melakukan", "gloss": "to do, to perform, to carry out", "pos": "Verb", "conf": "high", "aligner_top1": "do", "current_gold": "to do, to perform, to take action", "raises_gold": false, "decision": "accept"}
+{"word": "hari", "gloss": "day", "pos": "Noun", "conf": "high", "aligner_top1": "day", "current_gold": "day:", "raises_gold": false, "decision": "accept"}
+{"word": "sendiri", "gloss": "self / own", "pos": "Adjective", "conf": "high", "aligner_top1": "own", "current_gold": "oneself", "raises_gold": false, "decision": "accept"}
+{"word": "satu", "gloss": "one", "pos": "Noun", "conf": "high", "aligner_top1": "one", "current_gold": "one", "raises_gold": false, "decision": "accept"}
+{"word": "maka", "gloss": "then / so / therefore", "pos": "Unknown", "conf": "high", "aligner_top1": "then", "current_gold": "so", "raises_gold": false, "decision": "accept"}
+{"word": "harus", "gloss": "must", "pos": "Verb", "conf": "high", "aligner_top1": "must", "current_gold": "have to, must, should (indicates obligation)", "raises_gold": false, "decision": "accept"}
+{"word": "tahu", "gloss": "know", "pos": "Verb", "conf": "high", "aligner_top1": "know", "current_gold": "to know (to be justifiably certain or sure about)", "raises_gold": false, "decision": "accept"}
+{"word": "lebih", "gloss": "more", "pos": "Adverb", "conf": "high", "aligner_top1": "more", "current_gold": "more, to a greater degree or extent", "raises_gold": false, "decision": "accept"}
+{"word": "rumah", "gloss": "house", "pos": "Noun", "conf": "high", "aligner_top1": "house", "current_gold": "house (abode)", "raises_gold": false, "decision": "accept"}
+{"word": "agar", "gloss": "so that / in order that", "pos": "Unknown", "conf": "high", "aligner_top1": "that", "current_gold": "so that; in order to", "raises_gold": false, "decision": "accept"}
+{"word": "kota", "gloss": "city", "pos": "Noun", "conf": "high", "aligner_top1": "city", "current_gold": "city,", "raises_gold": false, "decision": "accept"}
+{"word": "roh", "gloss": "spirit", "pos": "Noun", "conf": "high", "aligner_top1": "spirit", "current_gold": "spirit", "raises_gold": false, "decision": "accept"}
+{"word": "bersama", "gloss": "with", "pos": "Unknown", "conf": "high", "aligner_top1": "with", "current_gold": "with, together with", "raises_gold": false, "decision": "accept"}
+{"word": "benar", "gloss": "righteousness", "pos": "Noun", "conf": "high", "aligner_top1": "righteousness", "current_gold": "very", "raises_gold": false, "decision": "accept"}
+{"word": "memiliki", "gloss": "to have", "pos": "Verb", "conf": "high", "aligner_top1": "have", "current_gold": "to possess", "raises_gold": false, "decision": "accept"}
+{"word": "sebagai", "gloss": "as", "pos": "Unknown", "conf": "high", "aligner_top1": "as", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "bagi", "gloss": "for / to / for the benefit of", "pos": "Unknown", "conf": "high", "aligner_top1": "for", "current_gold": "to share (to give part of what one has to somebody)", "raises_gold": false, "decision": "accept"}
+{"word": "bukan", "gloss": "not", "pos": "Unknown", "conf": "high", "aligner_top1": "not", "current_gold": "not", "raises_gold": false, "decision": "accept"}
+{"word": "yahudi", "gloss": "Jews", "pos": "Noun", "conf": "high", "aligner_top1": "jews", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "mati", "gloss": "dead/die", "pos": "Unknown", "conf": "high", "aligner_top1": "dead", "current_gold": "to die", "raises_gold": false, "decision": "accept"}
+{"word": "hanya", "gloss": "only", "pos": "Adverb", "conf": "high", "aligner_top1": "only", "current_gold": "only", "raises_gold": false, "decision": "accept"}
+{"word": "katakan", "gloss": "tell", "pos": "Verb", "conf": "high", "aligner_top1": "tell", "current_gold": "to say", "raises_gold": false, "decision": "accept"}
+{"word": "engkau", "gloss": "you", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "atau", "gloss": "or", "pos": "Unknown", "conf": "high", "aligner_top1": "or", "current_gold": "or", "raises_gold": false, "decision": "accept"}
+{"word": "segala", "gloss": "all / every", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": "everything", "raises_gold": false, "decision": "accept"}
+{"word": "sekarang", "gloss": "now", "pos": "Adverb", "conf": "high", "aligner_top1": "now", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "melalui", "gloss": "through", "pos": "Unknown", "conf": "high", "aligner_top1": "through", "current_gold": "through", "raises_gold": false, "decision": "accept"}
+{"word": "manusia", "gloss": "man/human/mankind", "pos": "Noun", "conf": "high", "aligner_top1": "man", "current_gold": "a human", "raises_gold": false, "decision": "accept"}
+{"word": "paulus", "gloss": "Paul", "pos": "Proper noun", "conf": "high", "aligner_top1": "paul", "current_gold": "paul", "raises_gold": false, "decision": "accept"}
+{"word": "jawab", "gloss": "answer/said", "pos": "Verb", "conf": "high", "aligner_top1": "said", "current_gold": "to answer", "raises_gold": false, "decision": "accept"}
+{"word": "berbicara", "gloss": "to speak", "pos": "Verb", "conf": "high", "aligner_top1": "speak", "current_gold": "to talk; to speak", "raises_gold": false, "decision": "accept"}
+{"word": "dunia", "gloss": "world", "pos": "Noun", "conf": "high", "aligner_top1": "world", "current_gold": "world", "raises_gold": false, "decision": "accept"}
+{"word": "tempat", "gloss": "place", "pos": "Noun", "conf": "high", "aligner_top1": "place", "current_gold": "place (location, position)", "raises_gold": false, "decision": "accept"}
+{"word": "antara", "gloss": "among", "pos": "Unknown", "conf": "high", "aligner_top1": "among", "current_gold": "the Indonesian national news agency organized as a statutory corporation", "raises_gold": false, "decision": "accept"}
+{"word": "ingin", "gloss": "want/desire", "pos": "Verb", "conf": "high", "aligner_top1": "desire", "current_gold": "to want", "raises_gold": false, "decision": "accept"}
+{"word": "lakukan", "gloss": "do", "pos": "Verb", "conf": "high", "aligner_top1": "do", "current_gold": "to do something", "raises_gold": false, "decision": "accept"}
+{"word": "siapa", "gloss": "who / whoever", "pos": "Unknown", "conf": "high", "aligner_top1": "who", "current_gold": "who, whose", "raises_gold": false, "decision": "accept"}
+{"word": "surga", "gloss": "heaven", "pos": "Noun", "conf": "high", "aligner_top1": "heaven", "current_gold": "paradise, heaven. (any religions)", "raises_gold": false, "decision": "accept"}
+{"word": "hukum", "gloss": "law", "pos": "Noun", "conf": "high", "aligner_top1": "law", "current_gold": "law:", "raises_gold": false, "decision": "accept"}
+{"word": "membuat", "gloss": "make", "pos": "Verb", "conf": "high", "aligner_top1": "make", "current_gold": "active of buat", "raises_gold": false, "decision": "accept"}
+{"word": "apakah", "gloss": "question particle (is/are/do/did/what/whether)", "pos": "Unknown", "conf": "high", "aligner_top1": "do", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "sampai", "gloss": "until", "pos": "Unknown", "conf": "high", "aligner_top1": "until", "current_gold": "bye", "raises_gold": false, "decision": "accept"}
+{"word": "cara", "gloss": "way", "pos": "Noun", "conf": "high", "aligner_top1": "way", "current_gold": "way", "raises_gold": false, "decision": "accept"}
+{"word": "memberikan", "gloss": "to give", "pos": "Verb", "conf": "high", "aligner_top1": "give", "current_gold": "active of berikan", "raises_gold": false, "decision": "accept"}
+{"word": "perempuan", "gloss": "woman", "pos": "Noun", "conf": "high", "aligner_top1": "woman", "current_gold": "female (belonging to the sex with larger, fertilizable gametes (of humans))", "raises_gold": false, "decision": "accept"}
+{"word": "besar", "gloss": "great/big/large", "pos": "Adjective", "conf": "high", "aligner_top1": "great", "current_gold": "big, large", "raises_gold": false, "decision": "accept"}
+{"word": "memberi", "gloss": "to give", "pos": "Verb", "conf": "high", "aligner_top1": "give", "current_gold": "active of beri", "raises_gold": false, "decision": "accept"}
+{"word": "yang", "gloss": "which/who/that (relative pronoun)", "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": "that", "raises_gold": false, "decision": "defer"}
+{"word": "di", "gloss": "in/at/to", "pos": "Unknown", "conf": "low", "aligner_top1": "in", "current_gold": "on", "raises_gold": false, "decision": "defer"}
+{"word": "dengan", "gloss": "with", "pos": "Unknown", "conf": "low", "aligner_top1": "with", "current_gold": "with", "raises_gold": false, "decision": "defer"}
+{"word": "itu", "gloss": "that/the", "pos": "Unknown", "conf": "low", "aligner_top1": "it", "current_gold": "that (what is being indicated)", "raises_gold": false, "decision": "defer"}
+{"word": "akan", "gloss": "will/shall", "pos": "Unknown", "conf": "low", "aligner_top1": "will", "current_gold": "used to mark future tense", "raises_gold": false, "decision": "defer"}
+{"word": "orang", "gloss": "person/people", "pos": "Noun", "conf": "high", "aligner_top1": "man", "current_gold": "a vassal; a subject", "raises_gold": false, "decision": "defer"}
+{"word": "untuk", "gloss": "to/for/in order to", "pos": "Unknown", "conf": "low", "aligner_top1": "to", "current_gold": "for", "raises_gold": false, "decision": "defer"}
+{"word": "dari", "gloss": "from / of", "pos": "Unknown", "conf": "low", "aligner_top1": "of", "current_gold": "from (a place, direction, or time period)", "raises_gold": false, "decision": "defer"}
+{"word": "kita", "gloss": "us; we", "pos": "Unknown", "conf": "medium", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ke", "gloss": "to", "pos": "Unknown", "conf": "high", "aligner_top1": "into", "current_gold": "to", "raises_gold": false, "decision": "defer"}
+{"word": "karena", "gloss": "because", "pos": "Unknown", "conf": "high", "aligner_top1": "for", "current_gold": "because", "raises_gold": false, "decision": "defer"}
+{"word": "bisa", "gloss": "can/be able to", "pos": "Verb", "conf": "high", "aligner_top1": "may", "current_gold": "venom: a poison carried by an animal, usually injected into an enemy or prey by biting or stinging", "raises_gold": false, "decision": "defer"}
+{"word": "datang", "gloss": "come", "pos": "Verb", "conf": "high", "aligner_top1": "came", "current_gold": "to come", "raises_gold": false, "decision": "defer"}
+{"word": "para", "gloss": "plural marker (indicating multiple persons/things)", "pos": "Unknown", "conf": "high", "aligner_top1": "the", "current_gold": "rubber", "raises_gold": false, "decision": "defer"}
+{"word": "seorang", "gloss": "a/an (indefinite article for persons)", "pos": "Unknown", "conf": "high", "aligner_top1": "a", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "pada", "gloss": "at|in|on", "pos": "Unknown", "conf": "low", "aligner_top1": "day", "current_gold": "at, on", "raises_gold": false, "decision": "defer"}
+{"word": "lalu", "gloss": "then", "pos": "Adverb", "conf": "high", "aligner_top1": "he", "current_gold": "past", "raises_gold": false, "decision": "defer"}
+{"word": "tentang", "gloss": "about", "pos": "Unknown", "conf": "high", "aligner_top1": "of", "current_gold": "of; about; on; regarding (with regard to; on account of; on the subject of)", "raises_gold": false, "decision": "defer"}
+{"word": "hidup", "gloss": "live", "pos": "Verb", "conf": "medium", "aligner_top1": "life", "current_gold": "to live", "raises_gold": false, "decision": "defer"}
+{"word": "melihat", "gloss": "see", "pos": "Verb", "conf": "high", "aligner_top1": "saw", "current_gold": "active of lihat", "raises_gold": false, "decision": "defer"}
+{"word": "pergi", "gloss": "go", "pos": "Verb", "conf": "high", "aligner_top1": "went", "current_gold": "to go", "raises_gold": false, "decision": "defer"}
+{"word": "jadi", "gloss": "so/therefore", "pos": "Unknown", "conf": "low", "aligner_top1": "therefore", "current_gold": "so (in order that, for that reason)", "raises_gold": false, "decision": "defer"}
+{"word": "kembali", "gloss": "return/back/again", "pos": "Adverb", "conf": "medium", "aligner_top1": "again", "current_gold": "to return (from a place to a place)", "raises_gold": false, "decision": "defer"}
+{"word": "lain", "gloss": "other/others", "pos": "Noun", "conf": "high", "aligner_top1": "another", "current_gold": "other, another, else", "raises_gold": false, "decision": "defer"}
+{"word": "sama", "gloss": "same", "pos": "Adjective", "conf": "low", "aligner_top1": "same", "current_gold": "same", "raises_gold": false, "decision": "defer"}
+{"word": "atas", "gloss": "on/above/over", "pos": "Unknown", "conf": "low", "aligner_top1": "on", "current_gold": "upstairs", "raises_gold": false, "decision": "defer"}
+{"word": "setiap", "gloss": "every", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hal", "gloss": "this thing / these things", "pos": "Noun", "conf": "medium", "aligner_top1": "this", "current_gold": "circumstance, state, condition", "raises_gold": false, "decision": "defer"}
+{"word": "sedang", "gloss": "is/are/was/were (aspectual marker for continuous action)", "pos": "Unknown", "conf": "low", "aligner_top1": "was", "current_gold": "of intermediate size, degree, amount etc; medium", "raises_gold": false, "decision": "defer"}
+{"word": "lagi", "gloss": "lagi", "pos": "Adverb", "conf": "low", "aligner_top1": "more", "current_gold": "again, anew, (bukan ... lagi) anymore; any longer", "raises_gold": false, "decision": "defer"}
+{"word": "dapat", "gloss": "obtain/get/receive", "pos": "Verb", "conf": "low", "aligner_top1": "may", "current_gold": "can", "raises_gold": false, "decision": "defer"}
+{"word": "sangat", "gloss": "very; exceedingly; greatly", "pos": "Adverb", "conf": "high", "aligner_top1": "were", "current_gold": "very", "raises_gold": false, "decision": "defer"}
+{"word": "mendengar", "gloss": "hear", "pos": "Verb", "conf": "high", "aligner_top1": "heard", "current_gold": "hearing (able to hear)", "raises_gold": false, "decision": "defer"}
+{"word": "diri", "gloss": "self / oneself", "pos": "Noun", "conf": "medium", "aligner_top1": "himself", "current_gold": "ego, self", "raises_gold": false, "decision": "defer"}
+{"word": "sehingga", "gloss": "so that / in order that", "pos": "Unknown", "conf": "low", "aligner_top1": "that", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "terjadi", "gloss": "to happen / to take place", "pos": "Verb", "conf": "high", "aligner_top1": "done", "current_gold": "to happen", "raises_gold": false, "decision": "defer"}
+{"word": "sesudah", "gloss": "after", "pos": "Unknown", "conf": "high", "aligner_top1": "when", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "jangan", "gloss": "not / do not", "pos": "Unknown", "conf": "high", "aligner_top1": "be", "current_gold": "expresses that something is forbidden or shouldn't happen: don't!", "raises_gold": false, "decision": "defer"}

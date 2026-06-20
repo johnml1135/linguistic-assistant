@@ -1,0 +1,120 @@
+{"word": "la", "gloss": "the", "pos": "Unknown", "conf": "high", "aligner_top1": "the", "current_gold": "la (sixth note of the scale)", "raises_gold": false, "decision": "accept"}
+{"word": "el", "gloss": "the", "pos": "Unknown", "conf": "high", "aligner_top1": "the", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "los", "gloss": "the", "pos": "Unknown", "conf": "high", "aligner_top1": "the", "current_gold": "accusative of ellos; them", "raises_gold": true, "decision": "accept"}
+{"word": "en", "gloss": "in", "pos": "Unknown", "conf": "high", "aligner_top1": "in", "current_gold": "in, at, on", "raises_gold": false, "decision": "accept"}
+{"word": "no", "gloss": "not", "pos": "Unknown", "conf": "high", "aligner_top1": "not", "current_gold": "not", "raises_gold": false, "decision": "accept"}
+{"word": "porque", "gloss": "for", "pos": "Unknown", "conf": "high", "aligner_top1": "for", "current_gold": "because", "raises_gold": false, "decision": "accept"}
+{"word": "es", "gloss": "is", "pos": "Unknown", "conf": "high", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "dios", "gloss": "god", "pos": "Noun", "conf": "high", "aligner_top1": "god", "current_gold": "god", "raises_gold": false, "decision": "accept"}
+{"word": "del", "gloss": "of the / from the", "pos": "Unknown", "conf": "high", "aligner_top1": "of", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "con", "gloss": "with", "pos": "Unknown", "conf": "high", "aligner_top1": "with", "current_gold": "with", "raises_gold": false, "decision": "accept"}
+{"word": "las", "gloss": "the", "pos": "Unknown", "conf": "high", "aligner_top1": "the", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "le", "gloss": "him", "pos": "Unknown", "conf": "high", "aligner_top1": "him", "current_gold": "to him, for him; dative of él", "raises_gold": true, "decision": "accept"}
+{"word": "mas", "gloss": "but", "pos": "Unknown", "conf": "high", "aligner_top1": "but", "current_gold": "but", "raises_gold": false, "decision": "accept"}
+{"word": "vosotros", "gloss": "you", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "jesús", "gloss": "Jesus", "pos": "Proper noun", "conf": "high", "aligner_top1": "jesus", "current_gold": "bless you, gesundheit (said after a sneeze)", "raises_gold": false, "decision": "accept"}
+{"word": "os", "gloss": "you (plural)", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": "you, to you, for you; dative and accusative of vosotros", "raises_gold": true, "decision": "accept"}
+{"word": "señor", "gloss": "lord", "pos": "Noun", "conf": "high", "aligner_top1": "lord", "current_gold": "mister, sir, lord (title conferred on a married or older male)", "raises_gold": false, "decision": "accept"}
+{"word": "si", "gloss": "if", "pos": "Unknown", "conf": "high", "aligner_top1": "if", "current_gold": "if, whether", "raises_gold": false, "decision": "accept"}
+{"word": "dijo", "gloss": "said", "pos": "Verb", "conf": "high", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "también", "gloss": "also", "pos": "Adverb", "conf": "high", "aligner_top1": "also", "current_gold": "also, too, as well", "raises_gold": false, "decision": "accept"}
+{"word": "sus", "gloss": "his/her/their", "pos": "Unknown", "conf": "high", "aligner_top1": "his", "current_gold": "c'mon; attaboy", "raises_gold": false, "decision": "accept"}
+{"word": "yo", "gloss": "i", "pos": "Unknown", "conf": "high", "aligner_top1": "i", "current_gold": "Freud's concept of the ego", "raises_gold": false, "decision": "accept"}
+{"word": "todos", "gloss": "all", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "entonces", "gloss": "then", "pos": "Unknown", "conf": "high", "aligner_top1": "then", "current_gold": "then, next, thereupon, at that time, at that point", "raises_gold": false, "decision": "accept"}
+{"word": "fué", "gloss": "was", "pos": "Verb", "conf": "high", "aligner_top1": "was", "current_gold": "superseded spelling of fue, deprecated in 1952 by the Royal Spanish Academy", "raises_gold": false, "decision": "accept"}
+{"word": "he", "gloss": "behold", "pos": "Unknown", "conf": "high", "aligner_top1": "behold", "current_gold": "here is", "raises_gold": false, "decision": "accept"}
+{"word": "cosas", "gloss": "things", "pos": "Noun", "conf": "high", "aligner_top1": "things", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "les", "gloss": "them", "pos": "Unknown", "conf": "high", "aligner_top1": "them", "current_gold": "dative of ellos and ellas; to them, for them", "raises_gold": true, "decision": "accept"}
+{"word": "ha", "gloss": "has", "pos": "Unknown", "conf": "high", "aligner_top1": "has", "current_gold": "initialism of ácido hialurónico", "raises_gold": true, "decision": "accept"}
+{"word": "mi", "gloss": "my", "pos": "Unknown", "conf": "high", "aligner_top1": "my", "current_gold": "mu; the Greek letter Μ, μ", "raises_gold": false, "decision": "accept"}
+{"word": "qué", "gloss": "what", "pos": "Unknown", "conf": "high", "aligner_top1": "what", "current_gold": "what; which", "raises_gold": false, "decision": "accept"}
+{"word": "ni", "gloss": "neither/nor", "pos": "Unknown", "conf": "high", "aligner_top1": "nor", "current_gold": "Used when negating two or more elements, and not, not A or B, not A nor B, neither A nor B", "raises_gold": false, "decision": "accept"}
+{"word": "pues", "gloss": "therefore", "pos": "Unknown", "conf": "high", "aligner_top1": "therefore", "current_gold": "so, then; in that case", "raises_gold": false, "decision": "accept"}
+{"word": "todo", "gloss": "all / every / everything", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": "all; every", "raises_gold": false, "decision": "accept"}
+{"word": "padre", "gloss": "father", "pos": "Noun", "conf": "high", "aligner_top1": "father", "current_gold": "father", "raises_gold": false, "decision": "accept"}
+{"word": "cristo", "gloss": "christ", "pos": "Proper noun", "conf": "high", "aligner_top1": "christ", "current_gold": "Christ", "raises_gold": false, "decision": "accept"}
+{"word": "así", "gloss": "this way / like this / so", "pos": "Adverb", "conf": "high", "aligner_top1": "so", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "hombre", "gloss": "man", "pos": "Noun", "conf": "high", "aligner_top1": "man", "current_gold": "man, (adult male human)", "raises_gold": false, "decision": "accept"}
+{"word": "diciendo", "gloss": "saying", "pos": "Verb", "conf": "high", "aligner_top1": "saying", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "hijo", "gloss": "son", "pos": "Noun", "conf": "high", "aligner_top1": "son", "current_gold": "son", "raises_gold": false, "decision": "accept"}
+{"word": "espíritu", "gloss": "spirit", "pos": "Noun", "conf": "high", "aligner_top1": "spirit", "current_gold": "spirit, soul", "raises_gold": false, "decision": "accept"}
+{"word": "está", "gloss": "is", "pos": "Verb", "conf": "high", "aligner_top1": "is", "current_gold": "wears", "raises_gold": false, "decision": "accept"}
+{"word": "tu", "gloss": "your", "pos": "Unknown", "conf": "high", "aligner_top1": "your", "current_gold": "apocopic form of tuyo, your", "raises_gold": true, "decision": "accept"}
+{"word": "te", "gloss": "you", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": "yourself", "raises_gold": false, "decision": "accept"}
+{"word": "sino", "gloss": "but / rather", "pos": "Unknown", "conf": "high", "aligner_top1": "but", "current_gold": "destiny, fate, lot", "raises_gold": false, "decision": "accept"}
+{"word": "son", "gloss": "are", "pos": "Verb", "conf": "high", "aligner_top1": "are", "current_gold": "tone (pleasant sound)", "raises_gold": false, "decision": "accept"}
+{"word": "aquí", "gloss": "behold", "pos": "Unknown", "conf": "high", "aligner_top1": "behold", "current_gold": "here", "raises_gold": false, "decision": "accept"}
+{"word": "día", "gloss": "day", "pos": "Noun", "conf": "high", "aligner_top1": "day", "current_gold": "day (any period of 24 hours)", "raises_gold": false, "decision": "accept"}
+{"word": "cuando", "gloss": "when", "pos": "Unknown", "conf": "high", "aligner_top1": "when", "current_gold": "when", "raises_gold": false, "decision": "accept"}
+{"word": "este", "gloss": "this", "pos": "Unknown", "conf": "high", "aligner_top1": "this", "current_gold": "this", "raises_gold": false, "decision": "accept"}
+{"word": "uno", "gloss": "one", "pos": "Noun", "conf": "high", "aligner_top1": "one", "current_gold": "one", "raises_gold": false, "decision": "accept"}
+{"word": "dice", "gloss": "says/said", "pos": "Verb", "conf": "high", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "todas", "gloss": "all", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "hombres", "gloss": "men", "pos": "Noun", "conf": "high", "aligner_top1": "men", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "toda", "gloss": "all/every", "pos": "Adjective", "conf": "high", "aligner_top1": "all", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "será", "gloss": "will be", "pos": "Verb", "conf": "high", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "fe", "gloss": "faith", "pos": "Noun", "conf": "high", "aligner_top1": "faith", "current_gold": "faith", "raises_gold": false, "decision": "accept"}
+{"word": "palabra", "gloss": "word", "pos": "Noun", "conf": "high", "aligner_top1": "word", "current_gold": "word", "raises_gold": false, "decision": "accept"}
+{"word": "discípulos", "gloss": "disciples", "pos": "Noun", "conf": "high", "aligner_top1": "disciples", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "ser", "gloss": "to be", "pos": "Verb", "conf": "high", "aligner_top1": "be", "current_gold": "to be (essentially or identified as)", "raises_gold": false, "decision": "accept"}
+{"word": "sea", "gloss": "be", "pos": "Verb", "conf": "high", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "hermanos", "gloss": "brothers", "pos": "Noun", "conf": "high", "aligner_top1": "brothers", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "nos", "gloss": "us", "pos": "Unknown", "conf": "high", "aligner_top1": "us", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "ley", "gloss": "law", "pos": "Noun", "conf": "high", "aligner_top1": "law", "current_gold": "law (a well-established characteristic of nature)", "raises_gold": false, "decision": "accept"}
+{"word": "estas", "gloss": "these", "pos": "Adjective", "conf": "high", "aligner_top1": "these", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "aun", "gloss": "even", "pos": "Adverb", "conf": "high", "aligner_top1": "even", "current_gold": "even (implying an extreme example in the case mentioned)", "raises_gold": false, "decision": "accept"}
+{"word": "estaba", "gloss": "was", "pos": "Verb", "conf": "high", "aligner_top1": "was", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "delante", "gloss": "before / in the presence of", "pos": "Adverb", "conf": "high", "aligner_top1": "before", "current_gold": "in front of, before (spatially)", "raises_gold": false, "decision": "accept"}
+{"word": "tú", "gloss": "you", "pos": "Unknown", "conf": "high", "aligner_top1": "you", "current_gold": "An interjection used with friends to address them, especially when the speaker is angry or nervous", "raises_gold": false, "decision": "accept"}
+{"word": "esta", "gloss": "this", "pos": "Unknown", "conf": "high", "aligner_top1": "this", "current_gold": "alternative spelling of ésta (“this one”)", "raises_gold": true, "decision": "accept"}
+{"word": "casa", "gloss": "house", "pos": "Noun", "conf": "high", "aligner_top1": "house", "current_gold": "house", "raises_gold": false, "decision": "accept"}
+{"word": "digo", "gloss": "tell", "pos": "Verb", "conf": "high", "aligner_top1": "tell", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "vino", "gloss": "came", "pos": "Verb", "conf": "high", "aligner_top1": "came", "current_gold": "wine (an alcoholic beverage made by fermenting grape juice, with an ABV ranging from 5.5–16%)", "raises_gold": false, "decision": "accept"}
+{"word": "mundo", "gloss": "world", "pos": "Noun", "conf": "high", "aligner_top1": "world", "current_gold": "world, earth (human collective existence)", "raises_gold": false, "decision": "accept"}
+{"word": "hecho", "gloss": "done/made/happened", "pos": "Verb", "conf": "high", "aligner_top1": "done", "current_gold": "done, completed", "raises_gold": false, "decision": "accept"}
+{"word": "cielo", "gloss": "heaven", "pos": "Noun", "conf": "high", "aligner_top1": "heaven", "current_gold": "sky", "raises_gold": false, "decision": "accept"}
+{"word": "jesucristo", "gloss": "Jesus Christ", "pos": "Proper noun", "conf": "high", "aligner_top1": "christ", "current_gold": "Jesus Christ", "raises_gold": false, "decision": "accept"}
+{"word": "otro", "gloss": "another", "pos": "Unknown", "conf": "high", "aligner_top1": "another", "current_gold": "other, another", "raises_gold": false, "decision": "accept"}
+{"word": "muchos", "gloss": "many", "pos": "Adjective", "conf": "high", "aligner_top1": "many", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "ahora", "gloss": "now", "pos": "Adverb", "conf": "high", "aligner_top1": "now", "current_gold": "now (at the present time)", "raises_gold": false, "decision": "accept"}
+{"word": "aquel", "gloss": "that", "pos": "Adjective", "conf": "high", "aligner_top1": "that", "current_gold": "that (over there; implying some distance)", "raises_gold": false, "decision": "accept"}
+{"word": "nuestro", "gloss": "our", "pos": "Adjective", "conf": "high", "aligner_top1": "our", "current_gold": "ours", "raises_gold": false, "decision": "accept"}
+{"word": "vida", "gloss": "life", "pos": "Noun", "conf": "high", "aligner_top1": "life", "current_gold": "life", "raises_gold": false, "decision": "accept"}
+{"word": "empero", "gloss": "but", "pos": "Unknown", "conf": "high", "aligner_top1": "but", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "nombre", "gloss": "name", "pos": "Noun", "conf": "high", "aligner_top1": "name", "current_gold": "name", "raises_gold": false, "decision": "accept"}
+{"word": "sido", "gloss": "been", "pos": "Verb", "conf": "high", "aligner_top1": "been", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "tiene", "gloss": "has", "pos": "Verb", "conf": "high", "aligner_top1": "has", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "contra", "gloss": "against", "pos": "Unknown", "conf": "high", "aligner_top1": "against", "current_gold": "against, versus", "raises_gold": false, "decision": "accept"}
+{"word": "de", "gloss": "of, from, by", "pos": "Unknown", "conf": "low", "aligner_top1": "of", "current_gold": "of; 's; used after the thing owned and before the owner", "raises_gold": false, "decision": "defer"}
+{"word": "que", "gloss": "that", "pos": "Unknown", "conf": "low", "aligner_top1": "that", "current_gold": "that", "raises_gold": false, "decision": "defer"}
+{"word": "por", "gloss": "by/through/for/via", "pos": "Unknown", "conf": "low", "aligner_top1": "for", "current_gold": "by", "raises_gold": false, "decision": "defer"}
+{"word": "se", "gloss": null, "pos": "Unknown", "conf": "high", "aligner_top1": "they", "current_gold": "A reflexive or reciprocal pronoun: oneself, himself, herself, itself, yourself; themselves; yourselves; each other; one another", "raises_gold": false, "decision": "defer"}
+{"word": "para", "gloss": "so that / in order that", "pos": "Unknown", "conf": "high", "aligner_top1": "to", "current_gold": "for, to (expressing a recipient)", "raises_gold": false, "decision": "defer"}
+{"word": "él", "gloss": "he", "pos": "Unknown", "conf": "high", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "su", "gloss": "his, her, their, its", "pos": "Unknown", "conf": "low", "aligner_top1": "his", "current_gold": "used to express an approximate number: about, approximately", "raises_gold": false, "decision": "defer"}
+{"word": "lo", "gloss": "that which / what", "pos": "Unknown", "conf": "low", "aligner_top1": "things", "current_gold": "neuter definite article used only before nominalized adjectives: the, that which is", "raises_gold": false, "decision": "defer"}
+{"word": "al", "gloss": null, "pos": "Unknown", "conf": "high", "aligner_top1": "the", "current_gold": "contraction of a + el, literally “at the, to the”", "raises_gold": false, "decision": "defer"}
+{"word": "como", "gloss": "as; when; like", "pos": "Unknown", "conf": "low", "aligner_top1": "as", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ellos", "gloss": "they/them", "pos": "Unknown", "conf": "low", "aligner_top1": "them", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "un", "gloss": "a/an", "pos": "Unknown", "conf": "low", "aligner_top1": "a", "current_gold": "an; a", "raises_gold": false, "decision": "defer"}
+{"word": "cual", "gloss": "which/who/whom", "pos": "Unknown", "conf": "low", "aligner_top1": "which", "current_gold": "like, as, in the manner of", "raises_gold": false, "decision": "defer"}
+{"word": "me", "gloss": "me", "pos": "Unknown", "conf": "low", "aligner_top1": "me", "current_gold": "reflexive of yo: myself", "raises_gold": false, "decision": "defer"}
+{"word": "una", "gloss": "a/an/one", "pos": "Unknown", "conf": "low", "aligner_top1": "a", "current_gold": "acronym of Universidad Nacional de Agricultura", "raises_gold": true, "decision": "defer"}
+{"word": "esto", "gloss": "this", "pos": "Unknown", "conf": "low", "aligner_top1": "this", "current_gold": "substitutes a noun one can't remember or can't remember the name of", "raises_gold": true, "decision": "defer"}
+{"word": "sobre", "gloss": "on/over", "pos": "Unknown", "conf": "low", "aligner_top1": "on", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "había", "gloss": "had / was", "pos": "Verb", "conf": "low", "aligner_top1": "had", "current_gold": "makes pluperfect to verbs as part of the auxiliary verb haber.", "raises_gold": false, "decision": "defer"}
+{"word": "nosotros", "gloss": "we; us", "pos": "Unknown", "conf": "low", "aligner_top1": "us", "current_gold": "ourselves", "raises_gold": false, "decision": "defer"}
+{"word": "más", "gloss": "but", "pos": "Unknown", "conf": "low", "aligner_top1": "more", "current_gold": "more; -er (used to make comparisons)", "raises_gold": false, "decision": "defer"}
+{"word": "mí", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "me", "current_gold": "me; (declined form of yo used as the object of a preposition)", "raises_gold": false, "decision": "defer"}
+{"word": "tierra", "gloss": "land", "pos": "Noun", "conf": "high", "aligner_top1": "earth", "current_gold": "Earth (planet of the Solar System in which all of humanity resides)", "raises_gold": false, "decision": "defer"}
+{"word": "era", "gloss": "threshing floor", "pos": "Noun", "conf": "low", "aligner_top1": "was", "current_gold": "era, age", "raises_gold": false, "decision": "defer"}
+{"word": "entre", "gloss": "while; in the meantime; among", "pos": "Unknown", "conf": "low", "aligner_top1": "among", "current_gold": "between", "raises_gold": false, "decision": "defer"}
+{"word": "mismo", "gloss": "same; self", "pos": "Adjective", "conf": "low", "aligner_top1": "himself", "current_gold": "same; identical; one and the same; indicates that the two compared noun clauses both represent the one thing", "raises_gold": false, "decision": "defer"}
+{"word": "antes", "gloss": "before", "pos": "Unknown", "conf": "low", "aligner_top1": "but", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hasta", "gloss": "until/to", "pos": "Unknown", "conf": "low", "aligner_top1": "until", "current_gold": "even", "raises_gold": false, "decision": "defer"}
+{"word": "sí", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "himself", "current_gold": "yes, yeah, (used to respond affirmatively to a question, used both informally and formally)", "raises_gold": false, "decision": "defer"}
+{"word": "otros", "gloss": "others/other", "pos": "Adjective", "conf": "high", "aligner_top1": "another", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "otra", "gloss": "other", "pos": "Adjective", "conf": "low", "aligner_top1": "again", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mujer", "gloss": "woman", "pos": "Noun", "conf": "low", "aligner_top1": "woman", "current_gold": "woman", "raises_gold": false, "decision": "defer"}
+{"word": "verdad", "gloss": "indeed", "pos": "Adverb", "conf": "low", "aligner_top1": "truth", "current_gold": "truth", "raises_gold": false, "decision": "defer"}
