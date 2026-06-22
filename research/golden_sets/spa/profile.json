@@ -1,0 +1,146 @@
+{
+ "pair": "spa",
+ "morph_type": "fusional",
+ "affix_processes": {
+  "prefix": {
+   "value": true,
+   "confidence": 0.9,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "affix:prefix"
+  },
+  "suffix": {
+   "value": true,
+   "confidence": 0.95,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "affix:suffix"
+  },
+  "infix": {
+   "value": false,
+   "confidence": 0.95,
+   "locked": true,
+   "provenance": "WALS",
+   "slug": "affix:infix"
+  },
+  "circumfix": {
+   "value": false,
+   "confidence": 0.7,
+   "locked": false,
+   "provenance": "linguist",
+   "slug": "affix:circumfix"
+  },
+  "reduplication": {
+   "value": false,
+   "confidence": 0.9,
+   "locked": true,
+   "provenance": "WALS",
+   "slug": "affix:reduplication"
+  },
+  "compounding": {
+   "value": true,
+   "confidence": 0.7,
+   "locked": false,
+   "provenance": "linguist",
+   "slug": "affix:compounding"
+  }
+ },
+ "phon_processes": {
+  "vowel_harmony": {
+   "value": false,
+   "confidence": 0.9,
+   "locked": true,
+   "provenance": "WALS",
+   "slug": "phon:vowel_harmony"
+  },
+  "nasal_assimilation": {
+   "value": false,
+   "confidence": 0.85,
+   "locked": false,
+   "provenance": "linguist",
+   "slug": "phon:nasal_assimilation"
+  },
+  "tone": {
+   "value": false,
+   "confidence": 0.98,
+   "locked": true,
+   "provenance": "WALS",
+   "slug": "phon:tone"
+  }
+ },
+ "feature_space": {
+  "gender": {
+   "value": true,
+   "confidence": 0.98,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "feat:gender"
+  },
+  "noun_class": {
+   "value": false,
+   "confidence": 0.95,
+   "locked": true,
+   "provenance": "WALS",
+   "slug": "feat:noun_class"
+  },
+  "case": {
+   "value": false,
+   "confidence": 0.9,
+   "locked": true,
+   "provenance": "WALS",
+   "slug": "feat:case"
+  },
+  "tense_aspect_mood": {
+   "value": true,
+   "confidence": 0.98,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "feat:tense_aspect_mood"
+  },
+  "person_number": {
+   "value": true,
+   "confidence": 0.98,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "feat:person_number"
+  },
+  "definiteness": {
+   "value": true,
+   "confidence": 0.95,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "feat:definiteness"
+  },
+  "agreement": {
+   "value": true,
+   "confidence": 0.95,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "feat:agreement"
+  },
+  "word_order": {
+   "value": "SVO",
+   "confidence": 0.8,
+   "locked": false,
+   "provenance": "WALS",
+   "slug": "feat:word_order"
+  }
+ },
+ "orthography": {
+  "script": "Latin",
+  "digraphs": [
+   "ll",
+   "ch",
+   "rr"
+  ]
+ },
+ "operational": {
+  "auto_accept_bar": 0.995,
+  "pivot": "en",
+  "resources": {
+   "unimorph": true,
+   "wiktionary": true,
+   "audio": true
+  }
+ }
+}
