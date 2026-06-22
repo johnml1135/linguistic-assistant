@@ -64,9 +64,9 @@ Each task is tagged **[AUTO]** (deterministic, no model) or **[LLM]** (needs the
 ## 7. Phase C — workflow escalation (flagged tickets) — [LLM]
 
 - [x] 7.1 [AUTO] Escalation router: trigger only on `impact: high` or dependency-cluster ≥ K.
-- [ ] 7.2 [LLM] `Workflow` fan-out: one hypothesis agent per HC mechanism (each builds + HC-tests its edit),
+- [x] 7.2 [LLM] `Workflow` fan-out: one hypothesis agent per HC mechanism (each builds + HC-tests its edit),
   then a synthesizer agent assembles one schema-valid enriched ticket (ranked options, recomputed deps/impact).
-- [ ] 7.3 [AUTO] Verify escalation is additive + HC-verified; low-impact tickets never escalate.
+- [x] 7.3 [AUTO] Verify escalation is additive + HC-verified; low-impact tickets never escalate.
 
 ## 8. Stage 1 — auto-accept tier (low-hanging fruit) — [AUTO]+[LLM]
 
@@ -92,7 +92,7 @@ Each task is tagged **[AUTO]** (deterministic, no model) or **[LLM]** (needs the
   regressions** (forms that were parsing and now fail/mis-parse), reported per hypothesis.
 - [x] 10.2 [AUTO] Acceptance gate: focus fixed AND net ≥ 0 AND no high-impact regression; deterministic
   score before any model verdict.
-- [ ] 10.3 [LLM] LLM verdict presented the HC delta + sample parses; may rank/explain among gate-passing
+- [x] 10.3 [LLM] LLM verdict presented the HC delta + sample parses; may rank/explain among gate-passing
   hypotheses but CANNOT override the regression rejection.
 - [x] 10.4 [AUTO] Wire `research/assess/` as the authoritative "which is better": compute ΔMDL
   (`mdl.py`) + scorecard deltas (`metrics.py`: coverage, spurious ambiguity, generalization,
@@ -110,7 +110,7 @@ Each task is tagged **[AUTO]** (deterministic, no model) or **[LLM]** (needs the
 - [x] 11.4 [AUTO] `score_pipeline.py`: per-stage metrics — stage-1 precision (≥99.5%), stage-2 candidate
   recall, stage-3 hypothesis recall (true fix appears?), stage-4 assessment precision + regression-catch —
   plus end-to-end auto-resolution rate; flag any regressed metric.
-- [ ] 11.5 [AUTO] Baseline run over spa/ind/tgl/swh; record the starting per-stage numbers to optimize against.
+- [x] 11.5 [AUTO] Baseline run over spa/ind/tgl/swh; record the starting per-stage numbers to optimize against.
 
 ## 12. Noisy-grammar repair + restrictiveness — [AUTO]+[LLM]
 
@@ -125,7 +125,7 @@ Each task is tagged **[AUTO]** (deterministic, no model) or **[LLM]** (needs the
 
 ## 13. Additional morphological processes — [AUTO]+[LLM]
 
-- [ ] 13.1 [AUTO] Infix discovery in the segmenter + infix hypothesis (HC already supports infix rules);
+- [x] 13.1 [AUTO] Infix discovery in the segmenter + infix hypothesis (HC already supports infix rules);
   validate on tgl -um-/-in-.
 - [x] 13.2 [AUTO] Archiphoneme-collapse hypothesis: detect an allomorph family (one function, phonologically-
   conditioned variants) → propose one underlying form + a rule, reusing `cycle/hc_phonology.py`; accept only
@@ -143,7 +143,7 @@ Each task is tagged **[AUTO]** (deterministic, no model) or **[LLM]** (needs the
   mid→affix/class, near-complete→irregular/phonology/edge).
 - [x] 14.3 [AUTO] Edge-case selector: choose the forms the live hypotheses parse DIFFERENTLY (discriminating
   minimal pairs) for the package, not arbitrary examples.
-- [ ] 14.4 [LLM] Reparse-question phrasing: "if A, this verse parses as X — correct?" in non-linguist terms.
+- [x] 14.4 [LLM] Reparse-question phrasing: "if A, this verse parses as X — correct?" in non-linguist terms.
 
 ## 15. Language profile — constrain + configure the solution space — [AUTO]+[LLM]
 
@@ -165,7 +165,7 @@ Each task is tagged **[AUTO]** (deterministic, no model) or **[LLM]** (needs the
   feature's `explanation` block (plain meaning + "how to spot it" cue + source links + license); the
   renderer shows them beside the feature/question. Sources: WALS/Grambank (CC-BY-4.0), Wikipedia
   (CC-BY-SA-4.0), SIL Glossary (in-house). Per `specs/language-profile`.
-- [ ] 15.7 [LLM] Optional: when no DB entry exists, the harness model proposes a profile feature value +
+- [x] 15.7 [LLM] Optional: when no DB entry exists, the harness model proposes a profile feature value +
   rationale from sample data; treated as `provenance: inferred`, unlocked, and probe-verified before trust.
 
 ## 16. Docs

@@ -35,7 +35,7 @@ class OpenAICompatClient:
         self,
         messages: Sequence[Message],
         *,
-        max_tokens: int = 1024,
+        max_tokens: int = 2048,
         json_schema: dict | None = None,
         temperature: float | None = None,
         **kwargs: Any,
@@ -68,14 +68,20 @@ class OpenAICompatClient:
 
         data = resp.json()
         choice = data["choices"][0]
+        msg = choice.get("message", {})
         usage = data.get("usage", {})
+        # A reasoning server (llama.cpp --reasoning on / --reasoning-format deepseek, vLLM) separates the
+        # chain-of-thought into `reasoning_content`; the final answer is in `content`. We surface the
+        # answer as `text` and keep the thoughts in `reasoning`. (NOTE: ik_llama.cpp's jinja path leaves
+        # `content` empty for Gemma-4 thinking — use a mainline llama-server build for the thinking path.)
         return CompletionResult(
-            text=choice["message"]["content"] or "",
+            text=msg.get("content") or "",
             model=data.get("model", self.model),
             input_tokens=usage.get("prompt_tokens"),
             output_tokens=usage.get("completion_tokens"),
             latency_s=latency,
             stop_reason=choice.get("finish_reason"),
+            reasoning=msg.get("reasoning_content") or None,
             raw=data,
         )
 

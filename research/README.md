@@ -10,6 +10,9 @@ proven pieces. Provider-agnostic LLM harness, golden sets, and the offline align
 | `harness/` | provider-agnostic `LLMClient` (`openai_compat` = ik_llama/local, `anthropic` = BYOK, `mock`) + endpoint registry |
 | `golden/` | own gold sets + ablation harness + HC-verified `word→gloss` round-trip (sibling-owned) |
 | `proposal/` | the shared **propose core** (`Case → ChangeSet`) + the change-set op vocabulary |
+| `deltas/` | the accumulating, confidence-routed **delta store** (the write source-of-truth; ops land here, route to accepted/review/deferred) |
+| `deferrals/` | the **resolution-ticket system** — turns a `defer` ("ask a human") into a reviewable package: typed HC-edit hypotheses, HC counterfactual parses, scripted speaker questions, ΔMDL-scored assessment, per-language profile; resolutions flow to `deltas/`. See `deferrals/README.md` |
+| `assess/` | grammar-quality metrics — **MDL** `L(G)+L(D\|G)`, scorecard (coverage, ambiguity, over-generation, Tolerance/productivity), worst-part ablation ranking ("which rule is better?") |
 | `eval/` | the golden eval runner (propose → score → report) |
 | `bilingual/` | the **Apertium-alignment bridge** — deterministic lemma/bidix reference-finder + FLExTrans `.dix` interop |
 | `align/` | **statistical** word-gloss alignment (THOT HMM via `sil-machine`, co-occurrence fallback) |
@@ -36,6 +39,8 @@ Most tools run from the `research/` dir (modules import `from harness import …
 python eval/run.py --fixture            # offline eval/proposal loop
 python bilingual/tests_smoke.py         # Apertium bridge (offline)
 python align/tests_smoke.py             # word-gloss alignment (offline, co-occurrence backend)
+python -m pytest deferrals/tests_smoke.py  # resolution tickets (offline; HC-gated tests skip without hc)
+python -m deferrals.build --pair spa       # backfill tickets from existing defer records
 python audio/tests_smoke.py             # audio add-on (offline; no Allosaurus required)
 python audio/run.py --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb --target swh --samples path/to/samples.json [--catalog path/to/catalog.json]
 python -m audio.candidates locate --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb --target swh --samples path/to/samples.json --catalog path/to/catalog.json [--stem mungu] [--phone-cues]

@@ -146,6 +146,21 @@ The local-vs-global **skill promotion** mechanism (project-specific skills adapt
 assessed for pull-back into the shared set) is **deferred** — get the base loop working on one
 language first.
 
+The *guess / ask / defer* decision is a concrete artifact, not just a prompt: a **deferral never
+guesses — it emits a resolution ticket** (`research/deferrals/`). Rules for agents:
+
+- **The deterministic spine must stay LLM-free and usable offline.** A model only adds *reach*
+  (hypotheses the fixed HC-mechanism taxonomy misses) and *readable prose* — and **every** model
+  hypothesis is HC-verified (real counterfactual re-parse) before it enters a ticket. Never let an
+  unverified model claim into a ticket as confirmed.
+- **A hypothesis IS a typed grammar edit**, ranked by the `research/assess/` metrics (ΔMDL, coverage,
+  over-generation, Tolerance) and gated by a **regression check** — a fix that breaks other parses is
+  rejected. Don't judge a hypothesis by "does the focus parse now."
+- **The per-language profile constrains the solution space.** Respect it: never propose a mechanism the
+  profile locks off (Spanish infix, Swahili gender). Profiles are falsifiable (probe → ΔMDL), seeded
+  from WALS/Grambank, and carry open-licensed non-linguist explanations.
+- **Resolutions reach the gold only through `deltas/`.** Never mutate the frozen golden set directly.
+
 ## Conventions
 
 - **Shell:** primary dev environment is Windows PowerShell 7+; a Bash tool is also available. Use

@@ -1,0 +1,37 @@
+{
+ "spa": {
+  "pair": "spa",
+  "scenarios": 2,
+  "stage2_selection_recall": 1.0,
+  "stage3_hypothesis_recall": 1.0,
+  "stage4_true_accept_rate": 1.0,
+  "stage4_decoy_reject_rate": 1.0,
+  "secs": 38.0
+ },
+ "ind": {
+  "pair": "ind",
+  "scenarios": 1,
+  "stage2_selection_recall": 1.0,
+  "stage3_hypothesis_recall": 1.0,
+  "stage4_true_accept_rate": 1.0,
+  "stage4_decoy_reject_rate": 1.0,
+  "secs": 21.4
+ },
+ "tgl": {
+  "pair": "tgl",
+  "scenarios": 1,
+  "stage2_selection_recall": 1.0,
+  "stage3_hypothesis_recall": 1.0,
+  "stage4_true_accept_rate": 1.0,
+  "stage4_decoy_reject_rate": 1.0
+ },
+ "swh": {
+  "pair": "swh",
+  "scenarios": 2,
+  "stage2_selection_recall": 1.0,
+  "stage3_hypothesis_recall": 1.0,
+  "stage4_true_accept_rate": 1.0,
+  "stage4_decoy_reject_rate": 1.0,
+  "secs": 20.4
+ }
+}

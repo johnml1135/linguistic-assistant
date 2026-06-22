@@ -62,6 +62,26 @@ p.terminate()
 
 (Or run `-WaitForReady`, which backgrounds the server, waits, prints the PID, and returns — then manage that PID yourself.)
 
+## Reasoning / "thinking" models (Gemma 4, Qwen 3.6)
+
+ik_llama.cpp's jinja path is **broken for Gemma-4 thinking**: with `-Jinja` it leaves the response
+`content` empty and dumps the whole answer into `reasoning_content` (a known Gemma-4 26b-a4b chat-template
+bug). **Use a mainline [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp) `llama-server` build
+for the thinking path** — it splits the chain-of-thought into `reasoning_content` and the final answer
+into `content` correctly.
+
+```powershell
+# thinking ON, mainline build (pass its exe via -ServerExe; -Think adds --reasoning on)
+./serving/run-ik-llama-server.ps1 -ServerExe C:\llamacpp\build\bin\Release\llama-server.exe `
+  -Model C:\path\gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf -CtxSize 8192 -Jinja -Think -WaitForReady
+# thinking OFF (either build): -NoThink  → --reasoning off
+```
+
+The harness `openai_compat` adapter surfaces the final answer as `CompletionResult.text` and the
+chain-of-thought as `CompletionResult.reasoning`; its default `max_tokens` is 2048 so reasoning + answer
+both fit (a small budget gets eaten by thinking and the answer never lands). Measured effect on the
+deferral resolve/defer eval: thinking raised Gemma's resolve-rate 0.75 → 0.92 at unchanged 1.0 precision.
+
 ## Notes
 
 - The server is the contract. To swap to mainline llama.cpp or vLLM, just start that

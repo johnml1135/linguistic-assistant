@@ -115,10 +115,24 @@ def enumerate_hypotheses(rec: dict, gold: dict, *, allowed: set[str] | None = No
 
     if "affix" in rec:                       # an affix-function deferral
         return _affix_hypotheses(rec, gold, ok, allowed_affix_kinds)
-    return _lexical_hypotheses(rec, gold, ok)
+    return _lexical_hypotheses(rec, gold, ok, allowed_affix_kinds)
 
 
-def _lexical_hypotheses(rec: dict, gold: dict, ok) -> tuple[str, str, list[Hypothesis]]:
+# common Tagalog-style infixes inserted after the stem's first consonant (HC supports infix rules)
+_INFIXES = ("um", "in")
+
+
+def _infix_split(word: str) -> tuple[str, str] | None:
+    """If `word` looks like C + <infix> + rest, return (stem=C+rest, infix). E.g. sumulat → (sulat, um)."""
+    if len(word) < 4 or word[0] in "aeiou":
+        return None
+    for inf in _INFIXES:
+        if word[1:1 + len(inf)] == inf and len(word) > len(inf) + 2:
+            return word[0] + word[1 + len(inf):], inf
+    return None
+
+
+def _lexical_hypotheses(rec: dict, gold: dict, ok, allowed_affix_kinds: set[str] | None = None) -> tuple[str, str, list[Hypothesis]]:
     word = (rec.get("word") or "").lower()
     pos = rec.get("pos") or "Noun"
     glosses = _gloss_candidates(rec)
@@ -162,6 +176,18 @@ def _lexical_hypotheses(rec: dict, gold: dict, ok) -> tuple[str, str, list[Hypot
             [{"kind": "resegment", "params": {"edits": [
                 {"kind": "add_lexentry", "params": {"form": stem, "gloss": glosses[0], "pos": pos}}]}}],
             discriminates=["segmentation", "contrast_function"])
+
+    # H: infix re-segmentation (task 13.1) — only where the profile permits infixation (e.g. Tagalog).
+    # HC supports infix rules; we propose the inner stem as a root + an infix affix rule.
+    if allowed_affix_kinds is None or "infix" in allowed_affix_kinds:
+        inf = _infix_split(word)
+        if inf:
+            stem, infx = inf
+            add("resegment", f"“{word}” = stem “{stem}” with the INFIX “-{infx}-” inserted inside it.",
+                [{"kind": "resegment", "params": {"edits": [
+                    {"kind": "add_lexentry", "params": {"form": stem, "gloss": glosses[0], "pos": pos}},
+                    {"kind": "add_affix", "params": {"form": infx, "gloss": f"INFIX:{infx}", "kind": "infix"}}]}}],
+                discriminates=["segmentation", "contrast_function"])
 
     # H: homograph split (only if the form already carries another sense)
     if homograph and len(glosses) > 0:

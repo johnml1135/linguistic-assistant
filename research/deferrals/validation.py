@@ -42,6 +42,11 @@ def ablate(pair: str, kind: str, rank: int = 0, *, base: LangModel | None = None
     if base is None or pf is None:
         base, pf = CF.load_base(pair)
     freqs = CF._freqs(pair)
+    pool = base.lexicon if kind == "lex" else base.affixes
+    if not pool:                                          # nothing of this kind to ablate (e.g. no gold affixes)
+        return {"pair": pair, "kind": kind, "ground_truth": None, "broken": [], "focus": "",
+                "n_broken": 0, "crippled": base, "pf": pf, "words": [], "impact": "low",
+                "skipped": f"no {kind} constructs in the reference model"}
     if kind == "lex":
         ranked = sorted(base.lexicon, key=lambda e: (-e.count, e.form, e.gloss))
         removed = ranked[rank % len(ranked)]

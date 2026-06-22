@@ -1,2 +1,2 @@
-[1781654952] llama_init_from_gpt_params: setting dry_penalty_last_n to ctx_size = 4096
-[1781654952] warming up the model with an empty run
+[1782144315] llama_init_from_gpt_params: setting dry_penalty_last_n to ctx_size = 8192
+[1782144315] warming up the model with an empty run

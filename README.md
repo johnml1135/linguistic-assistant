@@ -119,6 +119,32 @@ Consequently, evaluation (and LLM/skill optimization) is measured against **two 
 The deterministic gate is a hard pass/fail; the parallel-QA eval is a scored benchmark the research
 playground iterates against.
 
+### The issue backlog: resolution tickets (guess / ask / defer)
+
+The "know when to **guess, ask, or defer**" judgment is realized as a concrete artifact. When the
+pipeline cannot confidently resolve something (an unknown word, an unlabelled affix, an ambiguous
+parse), it does **not** guess — it emits a **resolution ticket**: a strict JSON + markdown package that
+makes the decision reviewable, one item at a time, like a bug tracker. Each ticket carries:
+
+- **Auto-enumerated hypotheses**, each a *typed Hermit Crab grammar edit* (add a lexeme, a stem
+  allomorph, an affix rule, split a homograph, collapse an allomorph family to one rule, …).
+- **HC-verified counterfactual parses** — *"if hypothesis A were true, this verse parses like this"* —
+  produced by cloning the grammar, applying the edit, and re-parsing the focus plus related verses. The
+  evidence is real HC output, never narrated.
+- **5–10 scripted speaker questions** a non-linguist can answer, and the **discriminating edge cases**
+  (the forms the hypotheses parse *differently*).
+- **Triage tags** (domain, impact, confidence, dependencies) and a single structured **resolution**
+  (`accept` / `accept + extra forms` / `reject with reason`) that flows back to the gold through the
+  `deltas/` ledger — never by mutating it directly.
+
+Hypotheses are ranked by the grammar-quality metrics (**ΔMDL**, coverage, over-generation, the Tolerance
+Principle), gated by a **regression check** (a fix that breaks other parses is rejected), and constrained
+by a **per-language profile** (what is *possible* in the language — no Spanish infix, no Swahili gender —
+seeded from WALS/Grambank and carrying plain-language, open-licensed explanations of each feature). The
+deterministic spine runs with **no LLM**; a model only adds reach (hypotheses the fixed taxonomy misses)
+and readable prose, and every model hypothesis is HC-verified before it enters a ticket. See
+`research/deferrals/`.
+
 ### Sync & merge model — git for the grammar, not a CRDT
 
 We evaluated modeling the Hermit Crab grammar as a CRDT (extending SIL's
@@ -258,6 +284,10 @@ FwLite/Paratext) hangs off it.
 ## References
 
 LingGym - https://github.com/changbingY/LingGym - https://arxiv.org/html/2511.00343v1
+
+WALS (World Atlas of Language Structures, CC-BY-4.0) - https://wals.info — typological feature source for the per-language profiles
+
+Grambank (CC-BY-4.0) - https://grambank.clld.org — binary morphosyntax features for the profiles
 
 FieldWorks Lite - https://github.com/sillsdev/languageforge-lexbox
 

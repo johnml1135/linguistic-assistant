@@ -21,6 +21,10 @@ class EndpointConfig:
 DEFAULT_ENDPOINTS: dict[str, EndpointConfig] = {
     # Recommended local backend. Start it with serving/run-ik-llama-server.ps1, which
     # serves a GGUF model at :8080/v1. `model` is ignored by llama-server (any string).
+    # THINKING: for a reasoning model (Gemma 4 / Qwen 3.6) run a MAINLINE llama.cpp build with
+    # `-Think` (--reasoning on). ik_llama.cpp's jinja path leaves `content` empty for Gemma-4 thinking
+    # (chain-of-thought lands only in reasoning_content); mainline splits them correctly. The adapter
+    # surfaces the answer as `text` and the chain-of-thought as `reasoning`.
     "ik_llama": EndpointConfig(
         kind="openai_compat",
         model="local",

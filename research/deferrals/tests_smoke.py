@@ -292,6 +292,25 @@ def test_assess_ticket_ranks_and_sets_metrics():
     assert all("delta_mdl" in h.metrics and "net_delta" in h.metrics for h in t.hypotheses)
 
 
+def test_infix_hypothesis_gated_by_profile():
+    from deferrals import profile as P
+    # Tagalog allows infixation: 'sumulat' → stem 'sulat' + infix -um-
+    tgl = P._seed("tgl")
+    rec = {"word": "sumulat", "gloss": "write", "aligner_top1": "write"}
+    _, _, hyps = taxonomy.enumerate_hypotheses(rec, {"lemmas": [], "senses": {}, "affixes": []},
+                                               allowed_affix_kinds=tgl.allowed_affix_kinds())
+    infix_hyps = [h for h in hyps if any(
+        e.kind == "resegment" and any(s.get("params", {}).get("kind") == "infix"
+                                      for s in e.params.get("edits", [])) for e in h.edits)]
+    assert infix_hyps, "expected an infix re-segmentation hypothesis for Tagalog"
+    # Spanish locks infixation off → no infix hypothesis even for an infix-looking word
+    spa = P._seed("spa")
+    _, _, hyps2 = taxonomy.enumerate_hypotheses(rec, {"lemmas": [], "senses": {}, "affixes": []},
+                                                allowed_affix_kinds=spa.allowed_affix_kinds())
+    assert not any(any(e.kind == "resegment" and any(s.get("params", {}).get("kind") == "infix"
+                       for s in e.params.get("edits", [])) for e in h.edits) for h in hyps2)
+
+
 def test_archiphoneme_collapse_detected_for_allomorph_family():
     # an Indonesian-style meN- family: same function, differ by a trailing segment → collapse hypothesis
     gold = {"affixes": [{"affix": "mem", "features": "AV"}, {"affix": "meng", "features": "AV"},
@@ -364,6 +383,29 @@ def test_conflict_report_runs():
     assert isinstance(rep, list)
     for r in rep:
         assert "feature" in r and "profile_says" in r and "corpus_evidence" in r
+
+
+def test_llm_helpers_graceful_without_endpoint():
+    """All Phase B/C LLM steps must degrade safely (defer / no-op) when no endpoint is reachable."""
+    from deferrals import llm
+    bad = "definitely_not_a_real_endpoint_xyz"
+    d = llm.resolve_or_defer({"form": "x", "pair": PAIR}, endpoint=bad)
+    assert d["decision"] == "defer" and d["edit"] == {}     # never guesses without a model
+    t = build.build_ticket(PAIR, LEX_REC, gold=GOLD, with_counterfactuals=False)
+    v = llm.llm_verdict(t, endpoint=bad)
+    assert v["ok"] in (True, False)                          # no crash
+    pf = llm.propose_feature(PAIR, "affix_processes", "reduplication", ["aa", "bb"], endpoint=bad)
+    assert pf["ok"] is False
+    fo = llm.fanout_investigate(t, endpoint=bad)
+    assert fo["ok"] is False and fo["added"] == 0
+
+
+def test_eval_gemma_sets_have_ground_truth():
+    from deferrals import eval_gemma as EG
+    res = EG._resolvable_set(PAIR, GOLD, 5)
+    deferr = EG._defer_set(PAIR, 4)
+    assert res and all(r["truth_gloss"] and r["form"] for r in res)
+    assert deferr and all(d["pivot_gloss"] == "?" and d["near_lemma"] is None for d in deferr)
 
 
 def test_enrich_graceful_without_endpoint():

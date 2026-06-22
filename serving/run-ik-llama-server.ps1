@@ -48,6 +48,9 @@ param(
     [string]$ServerExe,
     [switch]$Jinja,          # use the model's jinja chat template (needed by Gemma 4 / Qwen 3.6 GGUFs)
     [switch]$NoThink,        # disable reasoning/thinking (--reasoning off) — for MC tasks like LingGym
+    [switch]$Think,          # ENABLE reasoning/thinking (--reasoning on). Requires a MAINLINE llama.cpp
+                             # build (-ServerExe ...): ik_llama.cpp leaves `content` empty for Gemma-4
+                             # thinking (chain-of-thought lands only in reasoning_content). See README.
     [string]$MtpDraft = '',  # path to the MTP head GGUF -> enables Multi-Token Prediction (MAINLINE llama.cpp only)
     [int]$SpecNMax = 3,      # MTP draft tokens per step
     [switch]$WaitForReady,
@@ -77,6 +80,7 @@ $serverArgs = @(
 )
 if ($Jinja) { $serverArgs += '--jinja' }
 if ($NoThink) { $serverArgs += @('--reasoning', 'off') }
+if ($Think) { $serverArgs += @('--reasoning', 'on') }   # mainline llama.cpp only (see -Think help)
 if ($MtpDraft) { $serverArgs += @('--model-draft', "$MtpDraft", '--spec-type', 'draft-mtp', '--spec-draft-n-max', "$SpecNMax", '-ngld', '999') }
 if ($ExtraArgs) { $serverArgs += $ExtraArgs }
 
