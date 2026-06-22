@@ -1,4 +1,12 @@
-"""Morpheme-level alignment — close the parse → align → better-glosses loop.
+"""Morpheme-level alignment (GREEDY, offline) — SUPERSEDED for the verified path by
+``align/morph_align_hc.py``.
+
+  This module segments each word by a **greedy string match** against the induced model and emits a flat
+  morpheme→gloss table with no markers/provenance. The verified path is ``align/morph_align_hc.py``: it
+  segments from the **HC parse** (the exact gloss line → grammar constructs, root recovered by peeling
+  affixes), attaches per-morpheme markers + THOT probabilities, and routes accept/defer to
+  ``deltas/`` / ``deferrals/``. Keep THIS module only as the no-HC, offline/co-occurrence quick path; use
+  ``morph_align_hc.py`` for anything that should be trusted. See the OpenSpec ``morpheme-alignment`` change.
 
 The base pipeline aligns English to whole TARGET WORDS, so it glosses to the lemma and an affix never
 gets its own gloss. Once the cycle has a grammar, we can do better: segment each target word into its

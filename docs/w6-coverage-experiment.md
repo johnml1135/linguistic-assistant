@@ -1,0 +1,141 @@
+# W6 — How far can we get? TDD, Opus+internet, and "full NT coverage"
+
+_Run 2026-06-22. All numbers measured on the four eBible NTs (spa/ind/tgl/swh) with the real `hc` CLI and
+the existing cycle/reference outputs. Opus had no API key this session, so the local Gemma run stands in
+for the frontier LLM (and is the conservative lower bound — Opus would do strictly better at equal precision)._
+
+## The denominator: what "full coverage" even means
+
+| pair | verses | tokens | unique forms | hapax | top-500 types cover | top-2000 types cover |
+|---|---|---|---|---|---|---|
+| spa | 7948 | 164k | 11,004 | 47% | 0.78 | 0.90 |
+| ind | 7936 | 166k | 6,957 | 39% | 0.80 | 0.94 |
+| tgl | 7948 | 192k | 8,831 | 44% | 0.83 | 0.93 |
+| **swh** | 7948 | 141k | **17,541** | **63%** | 0.69 | 0.83 |
+
+**The decisive fact:** 40–63% of unique forms are **hapax** (appear once), and Swahili — agglutinative —
+has 17.5k unique forms because every verb spawns hundreds. So:
+
+> **Full *type* coverage is the wrong goal.** You cannot (and should not) enumerate a 17k-form tail that is
+> mostly proper nouns and once-seen inflections. The right goal is **token coverage of the running text**
+> via a **generative** grammar (roots + class affixes + rules) that *parses* the tail without listing it —
+> exactly what Hermit Crab is for. The top ~2000 types already cover 83–94% of tokens.
+
+## Q1 — How far does TDD (deterministic induction) get?
+
+The `cycle/` loop induces roots + affixes from the corpus, gated by HC coverage. Final coverage on its
+held-out frequent-form gate:
+
+| pair | roots induced | affixes induced | base → final coverage |
+|---|---|---|---|
+| spa | 938 | 88 | 0.91 → **0.975** |
+| ind | 550 | 64 | 0.0 → **0.60** |
+| swh | 475 | 96 | 0.0 → **0.60** |
+| tgl | 325 | 68 | 0.0 → **0.39** |
+
+**TDD alone:** spa near-solved; ind/swh ~60%; tgl ~39%. It plateaus, and the plateau has a clear shape:
+
+- TDD finds **frequent roots + regular affixes** fast, then stalls.
+- It **cannot assign meaning** — TDD segments `mi-kono` but doesn't know `mi-`=plural-class or `kono`=hand.
+  It recovers *form structure*, not *glosses or functions*. That is the hard ceiling.
+- It misses **irregular/suppletive stems** (spa residual: `tengo`, `vendrá`, `viniendo`), **generative
+  noun-class morphology** (swh residual: `mikono`/`miguu`/`mioyo`/`mitume` — all `mi-` class-4 plurals),
+  reduplication/infixation (tgl), and the rare tail.
+
+## Q2 — How do Opus + the internet get us further?
+
+The residual analysis (reference grammar on 400 held-out forms) shows two *different* levers are needed:
+
+| pair | parse cov | ex-names | residual is… |
+|---|---|---|---|
+| spa | 0.93 | 0.93 | irregular verb stems (`tengo`, `teniendo`, `vendrá`) — an **allomorph/LLM** gap |
+| swh | 0.65 | **0.86** | noun-class plurals (`mikono`, `miguu`) — a **generative-morphology** gap |
+| tgl | **~0.0** | ~0.0 | the reference grammar has **0 affixes, 0 inflection-classes** → can't parse *any* affixed form |
+
+And the reference-yardstick inventory (the internet-data lever) is wildly lopsided:
+
+| pair | ref lemmas | w/ glosses | **affixes** | **inflection-classes** |
+|---|---|---|---|---|
+| spa | 5431 | 4981 | **1597** | **27** |
+| ind | 3655 | 3490 | 44 | 5 |
+| swh | 6615 | 3227 | 182 | 2 |
+| tgl | 4182 | 2830 | **0** | **0** |
+
+**The internet (Wiktionary / UniMorph / UD) is the lever for the thin languages.** spa parses at 0.93
+*because* it has 1597 reference affixes + 27 classes; tgl parses at ~0 *because* it has none. The cycle
+already induced 68 tgl affixes from the corpus — so for tgl the **cycle is ahead of the yardstick**, and
+the yardstick is currently too thin to even *measure* the frontier. Closing the tgl/swh affix+class gap
+with internet morphology is what lets both the grammar parse and the yardstick grade.
+
+**Opus (frontier LLM) is the meaning/judgment lever TDD lacks.** It supplies the layer TDD can't:
+glosses, affix *functions* (`mi-` = plural class 4), sense disambiguation, and irregular-stem proposals —
+each HC-verified, each routed accept/defer so it never guesses wrong. Measured with the local Gemma
+stand-in on the resolve-or-defer decision: **gloss precision 1.0 when it resolved, defer-rate 1.0 on
+nonsense, 0 false-confident**; morpheme alignment over swh surfaced TAM prefix-complexes
+(`nime`/`nina`/`nili`). Opus would lift *recall* at the same precision. The pipeline is exactly:
+`morpheme-align (HC-verified segmentation) → THOT pivot → accept(THOT∩LLM) / defer→ticket`.
+
+**Live frontier data point** (Gemma on swh's *needy* residual — 20 words with no gold gloss):
+accepted **3/20, all correct, all raising the gold** (`kutoa`→give, `sio`→not, `peke`→alone), deferred 17
+to human review. ~15% confident-resolve at 100% precision on the hardest tail; the rest defer (never a
+wrong guess). This is the conservative floor — Opus raises the accept-rate at the same precision, and the
+17 deferrals become resolution tickets, not silent errors.
+
+## Q3 — Can we get full coverage of the NT?
+
+**By type: no — and chasing it is a mistake** (40–63% hapax, mostly names + once-seen inflections).
+**By token: yes, to ~95%+ — with the right division of labor.** The achievable decomposition of running text:
+
+```
+TDD core (frequent roots + regular affixes)          spa .97 / ind .60 / swh .60 / tgl .39
+  + internet affixes & classes (Wiktionary/UniMorph)  → lifts ind/tgl/swh toward the spa regime
+  + generative class morphology (HC rules, not lists)  → parses the agglutinative tail (swh nouns/verbs)
+  + Opus glosses/functions/irregulars (HC-verified)    → meaning + the irregular/suppletive residual
+  + NER for the proper-noun tail (≈half the hapax)      → parsed trivially as names, not morphology
+  = ~95% TOKEN coverage; the irreducible residual = OCR junk, foreign words, true hapax names
+```
+
+The honest target is **~95% token coverage with a generative grammar**, *not* 100% of 17k forms. The last
+few percent are genuinely "ask a human" (the deferral tickets) — which is the design, not a failure.
+
+## Concept-driven lexeme discovery (`deferrals/discover.py`) — built 2026-06-22
+
+The source-anchored complement to the target-word-first pipeline: start from a reference concept the
+source expresses but the lexicon doesn't realize, then THOT + a **maximum-shared-span** core extractor +
+HC best-guess parse → a mini report (the report *is* a deferral ticket). It fits as a **Stage-2 discovery
+strategy** beside `select.py`.
+
+Live on swh (the wins are the noun-class families collapsed to a root by the shared span):
+
+| concept | candidates | shared core | best-guess parse |
+|---|---|---|---|
+| **jews** | wayahudi ×182 · myahudi ×21 · kiyahudi ×17 | **`yahudi`** | _no parse — unknown lexeme_ ← textbook find |
+| brothers | ndugu ×315 · nduguye | `ndugu` | relative |
+| disciples | wanafunzi ×253 · mwanafunzi ×34 | `wan…` | ? |
+| behold | tazama ×140 · tazameni | `anga` | to_look |
+| days | siku ×441 | — | day |
+
+It strips the `wa-/m-/ki-` class prefixes to find the shared root (`yahudi`), exactly the `kono=hand`
+mechanism. Known limitation: pure substring-frequency sometimes grabs a prefix fragment (`wan` for
+disciples) and function words leak in (these/even/nor) — the **enhancement is to peel KNOWN affixes first
+(reuse `morph_align_hc`'s construct-peeling) and require a content-ish shared core**, then share spans on
+the residual roots.
+
+## Tasks to close the gap (feeds repo-assessment W3/W6)
+
+- [x] **Concept-driven lexeme finder** (`deferrals/discover.py`) — built + tested; reports → tickets.
+- [ ] **Enhance discover**: peel known affixes (via the gold/`morph_align_hc` construct index) before the
+      shared-span step, and content-filter candidates, so the core is the true root (not a prefix fragment).
+
+- [ ] **Internet affixes/classes for tgl + swh** — the reference compiler must pull a real affix +
+      inflection-class inventory (tgl has 0 today). Highest-leverage single fix; unblocks both parsing and
+      the yardstick. (W3: raise tgl/swh reference coverage.)
+- [ ] **Generative noun-class morphology for swh** — emit the `m-/wa-/ki-/vi-/mi-/ma-` class prefixes as
+      HC affixes + concord so `mikono`/`miguu` parse by rule, not by enumeration.
+- [ ] **Run the residual through Opus** (when a key is available) — propose/enrich + morpheme-align on the
+      real-morphology-gap residual; compare accept-rate vs Gemma at equal precision. Quantifies the frontier lift.
+- [ ] **Add a NER pass** so the proper-noun tail is labeled (not counted as a morphology gap); report
+      coverage with names separated, as `hc_coverage` already does for spa/swh.
+- [ ] **Report coverage by TOKEN, not just type**, everywhere — it's the meaningful number and avoids the
+      hapax trap.
+- [ ] **Re-run the cycle on tgl** to parity with spa/ind (tgl has the least cycle investment) and re-measure.

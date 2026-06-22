@@ -2,7 +2,7 @@
 
 This is the BYOK/frontier path *and* the data-generation / LLM-as-judge engine. For
 large offline generation jobs, prefer the Batch API (50% discount) with prompt caching
-of the shared grammar/typology context — see ``data_gen/README.md``; this client covers
+of the shared grammar/typology context — see ``docs/plans/data-gen-plan.md``; this client covers
 the synchronous single-request path used for smoke tests and interactive checks.
 """
 

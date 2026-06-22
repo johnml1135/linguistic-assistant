@@ -3,6 +3,13 @@
 Per-language gold for the four targets from **independent, authoritative** sources, plus an evaluator
 that scores the induced grammar/lexicon against them — the answer to *"do the techniques actually work?"*
 
+> **Principle (the gold is a yardstick, not a grammar-builder).** The reference gold is ONLY an
+> internet-backed, Opus-assisted, cross-verified **standard for improving and assessing the parts of the
+> TDD loop**. It measures the induced grammar (`cycle/` + `align/`); it MUST NOT drift into *inducing* the
+> grammar itself. The cycle is never scored against its own output — always against this independent
+> standard. Thin coverage (tgl/swh) is a *yardstick-coverage gap to close with more internet sources +
+> Opus cross-verification*, not a reason to abandon the standard or let the cycle grade itself.
+
 | Source | Validates | what it gives |
 |---|---|---|
 | **UniMorph** (lemma/form/features) | morphology, lexicon, affixes | the affix→function gold + paradigms |

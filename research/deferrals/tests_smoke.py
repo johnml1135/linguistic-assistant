@@ -408,6 +408,50 @@ def test_eval_gemma_sets_have_ground_truth():
     assert deferr and all(d["pivot_gloss"] == "?" and d["near_lemma"] is None for d in deferr)
 
 
+def test_webui_seed_render_and_resolve(tmp_path):
+    """The throwaway review UI is a pure consumer of deferrals/ — seed, render, resolve, all offline."""
+    from deferrals import webui
+    st = S.TicketStore(PAIR, path=tmp_path / "tickets.jsonl", delta_dir=tmp_path / "deltas")
+    assert webui.seed_demo(st) >= 1 and st.tickets
+    q = webui.queue_html(st)
+    assert "Issue queue" in q and st.tickets[0].id in q
+    tid = st.tickets[0].id
+    h = webui.ticket_html(st, tid)
+    assert "Resolution ticket" in h and "Resolve" in h          # open ticket shows the resolve form
+    st.resolve(tid, Resolution(action="reject_with_reason", reason="demo", by="t"))
+    assert "wont_fix" in webui.ticket_html(st, tid)             # resolved ticket: status shown, no form
+
+
+def test_webui_md_to_html_minimal():
+    from deferrals import webui
+    out = webui._md_to_html("# Title\n## Section\n- item\nplain")
+    assert "<h1>Title</h1>" in out and "<h2>Section</h2>" in out and "<li>item</li>" in out
+
+
+def test_discover_shared_core_maximum_span():
+    from deferrals import discover
+    assert discover._shared_core(["mkono", "mikono", "mkononi"]) == ("kono", 3)
+    assert discover._shared_core(["abc"]) == ("", 0)          # single word → no shared span
+    core, cov = discover._shared_core(["amare", "amaras", "amado"])
+    assert core.startswith("ama") and cov == 3
+
+
+def test_discover_candidates_and_defer_record():
+    from deferrals import discover
+    from collections import Counter
+    by_src = {"hand": ["mkono", "mkononi"], "hands": ["mikono"]}
+    freqs = Counter({"mkono": 110, "mikono": 30, "mkononi": 12})
+    cands = discover.candidates_for("hand", by_src, freqs)
+    forms = [w for w, _ in cands]
+    assert "mkono" in forms and "mikono" in forms and forms[0] == "mkono"   # freq-ranked
+    rep = {"concept": "hand", "candidates": [{"form": "mkono", "count": 110, "parse": []}],
+           "shared_core": "kono", "best_form": "mkono", "proposed_lexeme": "kono", "examples": []}
+    rec = discover.to_defer_record(rep)
+    assert rec["word"] == "kono" and rec["aligner_top1"] == "hand" and rec["decision"] == "defer"
+    # the record is exactly what build_ticket consumes
+    build.build_ticket(PAIR, rec, gold=GOLD, with_counterfactuals=False).validate()
+
+
 def test_enrich_graceful_without_endpoint():
     """Phase B must degrade to a no-op (never crash, never drop deterministic hypotheses) with no endpoint."""
     from deferrals import enrich

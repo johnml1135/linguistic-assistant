@@ -135,6 +135,23 @@ Hermit Crab applies *ordered* rewrite rules, so a mis-ordered-but-plausible rule
   "It loaded fine" is **not** evidence of a correct grammar — HC will load a broken one without
   erroring.
 
+## The reference gold is a yardstick, not a grammar-builder
+
+There are two distinct "gold" notions; do not conflate them.
+
+- **`golden_sets/` (frozen) + `golden/{grammar,hc}`** — the monolingual `word → gloss` regression gate
+  (the deterministic safeguard above).
+- **`golden/reference/`** — an **internet-backed, Opus-assisted, cross-verified standard whose ONLY job is
+  to improve and assess the parts of the TDD loop** (`cycle/` + `align/`). It is a *yardstick*.
+
+Rules for agents:
+
+- **The reference gold MUST NOT induce the grammar.** Induction lives in `cycle/` (+ `align/`); reference
+  only *measures* it. Do not add grammar-building logic to `golden/reference/`.
+- **The cycle is never scored against its own output** — always against the independent reference standard.
+- **Thin reference coverage (tgl/swh) is a yardstick gap**, closed by adding internet sources + Opus
+  cross-verification — not by lowering the bar or letting the cycle self-grade.
+
 ## The skills layer is the point
 
 The reason this beats a plain rule engine is AI judgment, packaged as **skills**: proposing rules
