@@ -29,6 +29,30 @@ for this repo is a **Windows** environment; run from PowerShell, not WSL.
 python research/align/tests_smoke.py   # uses the co-occurrence backend
 ```
 
+## Morpheme-level alignment over HC-parsed words (`morph_align_hc.py`)
+
+Word alignment glosses a whole target word; but a source word often maps to a *morpheme inside* it
+(`ni-na-ku-penda` = I-PRES-you-love). `morph_align_hc.py` aligns THOT over the **HC-parsed** word: it uses
+the Hermit Crab analysis as the *verified* segmentation, then THOT attaches each morpheme's pivot source
+token + probability, and emits a full **marker** per morpheme (form, boundary type, slot, HC gloss, source
+token(s), grammatical features for affixes, confidence, agrees-with-HC).
+
+- HC's echoed morph *forms* are corrupted, but its **gloss line is exact** — so segmentation is recovered
+  by mapping each gloss back to its grammar construct (`gloss_index`), and the root surface form by
+  **peeling** the known affix forms off the word. Words HC can't parse are kept whole + flagged `unparsed`.
+- **THOT is required, no silent fallback** (`backend="hmm"`, fallback disabled); `cooccur` is for tests.
+- Routing: two concurring signals (THOT high-prob ∩ HC gloss) → **accept** (raise the gold affix gloss /
+  root sense via a `deltas/` op); everything else **defers** — `to_deferral_records` turns the high-value
+  tail into `deferrals/` tickets. Function morphemes are noisy, so it defers aggressively (precision over
+  recall — never a silent wrong marker).
+- Supersedes `cycle/morph_align.py`'s **greedy** segmentation with HC-verified segmentation + markers.
+
+```bash
+uv run --extra align python -m align.morph_align_hc --pair swh --backend hmm --sample 400 [--apply]
+```
+Measured (swh, 400 verses): ~9k morpheme markers, ~31% accepted (THOT∩HC), TAM prefix-complexes
+(nime/nina/nili) surfaced. Spec: the OpenSpec `morpheme-alignment` change.
+
 ## How it fits
 - It's the **statistical** half of word-gloss discovery; the Apertium bidix is the **symbolic** half.
   Both emit candidate `bilingual/*` sense links (validated by `research/proposal/change_set.py`).
