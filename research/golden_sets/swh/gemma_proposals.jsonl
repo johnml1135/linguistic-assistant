@@ -1,0 +1,400 @@
+{"word": "kuonesha", "gloss": "show", "pos": "Verb", "conf": "high", "aligner_top1": "show", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "akachukua", "gloss": "took", "pos": "Verb", "conf": "high", "aligner_top1": "took", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "dameski", "gloss": "Damascus", "pos": "Proper noun", "conf": "high", "aligner_top1": "damascus", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "alimfufua", "gloss": "raised", "pos": "Verb", "conf": "high", "aligner_top1": "raised", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "andrea", "gloss": "Andrew", "pos": "Proper noun", "conf": "high", "aligner_top1": "andrew", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "martha", "gloss": "Martha", "pos": "Proper noun", "conf": "high", "aligner_top1": "martha", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "babeli", "gloss": "babylon", "pos": "Proper noun", "conf": "high", "aligner_top1": "babylon", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "kutupwa", "gloss": "cast", "pos": "Verb", "conf": "high", "aligner_top1": "cast", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "zebedayo", "gloss": "zebedee", "pos": "Proper noun", "conf": "high", "aligner_top1": "zebedee", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "ameketi", "gloss": "sitting", "pos": "Verb", "conf": "high", "aligner_top1": "sitting", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "alimwona", "gloss": "saw", "pos": "Verb", "conf": "high", "aligner_top1": "saw", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "tiro", "gloss": "tyre", "pos": "Proper noun", "conf": "high", "aligner_top1": "tyre", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "sidoni", "gloss": "Sidon", "pos": "Proper noun", "conf": "high", "aligner_top1": "sidon", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "njoni", "gloss": "come", "pos": "Verb", "conf": "high", "aligner_top1": "come", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "yerusalem", "gloss": "jerusalem", "pos": "Proper noun", "conf": "high", "aligner_top1": "jerusalem", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "bethania", "gloss": "bethany", "pos": "Proper noun", "conf": "high", "aligner_top1": "bethany", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "baraba", "gloss": "Barabbas", "pos": "Proper noun", "conf": "high", "aligner_top1": "barabbas", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "stefano", "gloss": "stephen", "pos": "Proper noun", "conf": "high", "aligner_top1": "stephen", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "apolo", "gloss": "Apollos", "pos": "Proper noun", "conf": "high", "aligner_top1": "apollos", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "agripa", "gloss": "Agrippa", "pos": "Proper noun", "conf": "high", "aligner_top1": "agrippa", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "akitembea", "gloss": "walking", "pos": "Verb", "conf": "high", "aligner_top1": "walking", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "fundisho", "gloss": "teaching", "pos": "Noun", "conf": "high", "aligner_top1": "teaching", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "lawi", "gloss": "Levi", "pos": "Proper noun", "conf": "high", "aligner_top1": "levi", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "akaamuru", "gloss": "commanded", "pos": "Verb", "conf": "high", "aligner_top1": "commanded", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "anania", "gloss": "Ananias", "pos": "Proper noun", "conf": "high", "aligner_top1": "ananias", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "kornelio", "gloss": "cornelius", "pos": "Proper noun", "conf": "high", "aligner_top1": "cornelius", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "majaribu", "gloss": "temptation", "pos": "Noun", "conf": "high", "aligner_top1": "temptation", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "iskariote", "gloss": "Iscariot", "pos": "Proper noun", "conf": "high", "aligner_top1": "iscariot", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "alianguka", "gloss": "fell", "pos": "Verb", "conf": "high", "aligner_top1": "fell", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "magdalena", "gloss": "Magdalene", "pos": "Proper noun", "conf": "high", "aligner_top1": "magdalene", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "samaria", "gloss": "samaria", "pos": "Proper noun", "conf": "high", "aligner_top1": "samaria", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "utauwa", "gloss": "godliness", "pos": "Noun", "conf": "high", "aligner_top1": "godliness", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "melkizedeki", "gloss": "Melchizedek", "pos": "Proper noun", "conf": "high", "aligner_top1": "melchizedek", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "walifika", "gloss": "came", "pos": "Verb", "conf": "high", "aligner_top1": "came", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "alimjibu", "gloss": "answered", "pos": "Verb", "conf": "high", "aligner_top1": "answered", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "kapernaumu", "gloss": "Capernaum", "pos": "Proper noun", "conf": "high", "aligner_top1": "capernaum", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "sodoma", "gloss": "Sodom", "pos": "Proper noun", "conf": "high", "aligner_top1": "sodom", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "zilianguka", "gloss": "fell", "pos": "Verb", "conf": "high", "aligner_top1": "fell", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "kayafa", "gloss": "Caiaphas", "pos": "Proper noun", "conf": "high", "aligner_top1": "caiaphas", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "akaomba", "gloss": "prayed", "pos": "Verb", "conf": "high", "aligner_top1": "prayed", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "gadhabu", "gloss": "wrath", "pos": "Noun", "conf": "high", "aligner_top1": "wrath", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "tunaamini", "gloss": "believe", "pos": "Verb", "conf": "high", "aligner_top1": "believe", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "kunena", "gloss": "speak", "pos": "Verb", "conf": "high", "aligner_top1": "speak", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "akaya", "gloss": "Achaia", "pos": "Proper noun", "conf": "high", "aligner_top1": "achaia", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "feliki", "gloss": "Felix", "pos": "Proper noun", "conf": "high", "aligner_top1": "felix", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "msalimie", "gloss": "greet", "pos": "Verb", "conf": "high", "aligner_top1": "greet", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "aliishi", "gloss": "lived", "pos": "Verb", "conf": "high", "aligner_top1": "lived", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "akihubiri", "gloss": "preaching", "pos": "Verb", "conf": "high", "aligner_top1": "preaching", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "yorodani", "gloss": "Jordan", "pos": "Proper noun", "conf": "high", "aligner_top1": "jordan", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "mkamilifu", "gloss": "perfect", "pos": "Adjective", "conf": "high", "aligner_top1": "perfect", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "bubu", "gloss": "mute", "pos": "Adjective", "conf": "high", "aligner_top1": "mute", "current_gold": null, "raises_gold": true, "decision": "accept"}
+{"word": "kusema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kati", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "among", "current_gold": "alternative form of katikati", "raises_gold": true, "decision": "defer"}
+{"word": "alipokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "he", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walio", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "are", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliyekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kulikuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "there", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuwaambia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "them", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutoa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "give", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "sio", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "not", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alifanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "might", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "peke", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "alone", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "iliyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nilikuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutokana", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "according", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kukaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sat", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nasema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nina", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kupata", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "find", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ilitokea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "while", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wasio", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "ignorant", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hawezi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "he", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waweze", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "yaliyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "that", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hana", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "has", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuelekea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "into", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wapate", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nawaambieni", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kilicho", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "asiye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aitwaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "named", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ilivyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakiwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuweka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "laid", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "utakuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "will", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tulikuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuondoka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "departed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "zingine", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "some", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waamini", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "saints", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliondoka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "went", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuume", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "right", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alivyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walioko", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "are", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wamesimama", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "stood", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "muweze", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuendelea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "on", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kusanyiko", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "multitude", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kijana", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "young", "current_gold": "a unisex given name", "raises_gold": true, "decision": "defer"}
+{"word": "najua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nimekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "apate", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "he", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "niweze", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ikawa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "when", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ulio", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nataka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "unataka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hawakuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kurudi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "returned", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "anaishi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "lives", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nilipokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mpate", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "unyenyekevu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "humility", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walipofika", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "when", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mnapaswa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "lililo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "dishonest", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuzaliwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "born", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kupita", "gloss": "pass", "pos": "Verb", "conf": "high", "aligner_top1": "camel", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumuua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumkamata", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wanapaswa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "yasiyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "wrong", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "msiwe", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "anajua", "gloss": "know", "pos": "Verb", "conf": "high", "aligner_top1": "knows", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wanaweza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alivyokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "was", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "has", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "vema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "well", "current_gold": "alternative form of vyema", "raises_gold": true, "decision": "defer"}
+{"word": "nyikani", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "wilderness", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ikatokea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "a", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hakuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "them", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nipate", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mnataka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "do", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mme", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "husband", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akakaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sat", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mjue", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "know", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amefanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "done", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "masikini", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "poor", "current_gold": "alternative form of maskini", "raises_gold": true, "decision": "defer"}
+{"word": "anasema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "says", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alijua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "knew", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tulipokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mioyoni", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "in", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "anapaswa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "should", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alimtuma", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sent", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atafanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "do", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waaminio", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "those", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mweze", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nikasikia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "heard", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliyezaliwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "born", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kilichokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "was", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "anafanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "does", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atendaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ilipofika", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "came", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akasimama", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "stood", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walisimama", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "stood", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "msiogope", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuanza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "began", "current_gold": "alternative form of kwanza", "raises_gold": true, "decision": "defer"}
+{"word": "aliwajibu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "answered", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akamwuliza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "asked", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "yupi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "which", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amefungwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "bound", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumpa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "give", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuzungumza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "tell", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "marko", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "mark", "current_gold": "a male given name, equivalent to English Mark", "raises_gold": true, "decision": "defer"}
+{"word": "yu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nilivyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ninayo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akaniambia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "usiogope", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "afraid", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amekwisha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "has", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "watoza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "tax", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kujisifu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "boast", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumpenda", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "love", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "jemedari", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "commanding", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amekaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sitting", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atapokea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "will", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuwaleta", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "bring", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliwapa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "gave", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ilipokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "was", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kufufuka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "raised", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atakapokuja", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "comes", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alikaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "stayed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walikusanyika", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "gathered", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waliokuja", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "came", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tuko", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "are", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "miguuni", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "feet", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hatuna", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "have", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ninajua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutiwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "encouragement", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "asiwepo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "no", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "asiwe", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "not", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "uweza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "mighty", "current_gold": "alternative form of uwezo", "raises_gold": true, "decision": "defer"}
+{"word": "akawauliza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "them", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waliendelea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akamchukua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "took", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alitaka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "desiring", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "umekaribia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "anaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "has", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hamuwezi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walishangazwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "were", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walipomwona", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "saw", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walishangaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "amazed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tunapaswa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "imekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "this", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hawakuweza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hakuweza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "he", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tunaweza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumwuliza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "ask", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waliogopa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "afraid", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walirudi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "returned", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nikiwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "am", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "utakaso", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sanctification", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nitakuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aaminiye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "believes", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mnaweza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nimekwisha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "uweze", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuokolewa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mmekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "are", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ninasema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "vijana", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "men", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tulio", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "twajua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "know", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tunafanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "as", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kilikuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "was", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumpeleka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walimfuata", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "followed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mmesikia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nyayo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "feet", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wanao", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hawawezi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nakuambia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alichukua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "took", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alipoingia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "entered", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutubu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "repent", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "arusi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "bridegroom", "current_gold": "alternative form of harusi", "raises_gold": true, "decision": "defer"}
+{"word": "kumwua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "kill", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakamuuliza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amebarikiwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "blessed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akatoka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "went", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akaanguka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "fell", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wasije", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "iliyokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "which", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "yupo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "is", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "sikilizeni", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "listen", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wamekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "have", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mtakuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kufunga", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "fasted", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "msije", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nafanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuwaua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "kill", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akafanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "he", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuolewa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "marry", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuitwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "be", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akifanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "doing", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "salamu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "greetings", "current_gold": "alternative form of salaam", "raises_gold": true, "decision": "defer"}
+{"word": "kumwita", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "called", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumpiga", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "zilikuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "were", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walisikia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "heard", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walijawa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "filled", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "rohoni", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "spiritual", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutembea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "walk", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "haumo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "quenched", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alivyosema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "spoke", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "asiyeamini", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "unbelieving", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliendelea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "continued", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alikua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "was", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mmekwisha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mwanae", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "his", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kitani", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "linen", "current_gold": "alternative form of katani", "raises_gold": true, "decision": "defer"}
+{"word": "alipokwisha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "had", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kefa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "cephas", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "itokayo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "from", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nawasihi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alimchukua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "took", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waliondoka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "went", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kubatizwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "baptized", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akishuka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "descending", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kinywani", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "mouth", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wamataifa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "gentiles", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakamfuata", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "followed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ninawaambia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "tell", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atawapa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "give", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakasemezana", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ataishi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "live", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuponya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "heal", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliwatuma", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sent", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waangalifu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "beware", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakawa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "became", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hutoka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "from", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutosha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "satisfy", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kujenga", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "build", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "amefufuka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "risen", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akawapa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "gave", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hula", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "eats", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakamwuliza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "asked", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atafufuka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "rise", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walipokuja", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "when", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alipokea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "received", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakamchukua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "took", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alimpa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "gave", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walikula", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "ate", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mashitaka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "accusation", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alipomwona", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "saw", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutetemeka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "trembling", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "zisizo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "fables", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wazinzi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "adulterers", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wanaoishi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "dwell", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tumekuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "anxiously", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hufanya", "gloss": "do", "pos": "Verb", "conf": "high", "aligner_top1": "does", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alipokuja", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "came", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ameweka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "put", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuwaona", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "see", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nilisikia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "heard", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "unajua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuwatia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "edification", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutahiriwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "circumcision", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kujivuna", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "boast", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ninaomba", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "may", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alimtokea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "appeared", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliamka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "arose", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alichokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "by", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "were", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuwekwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "at", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kandokando", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "by", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kujikwaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "stumbling", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akaamka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "got", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliyepooza", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "paralytic", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliitwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "called", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumfuata", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "followed", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kufahamu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "assarion", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hukaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "remains", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "asikie", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "let", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wanasema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "say", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hutoa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "brings", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walimwambia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliposema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atoaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "prophesies", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliwaamuru", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "them", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "mnasema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "say", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hamwezi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuasi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "disobedience", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "haina", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "but", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuokoa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "save", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tukisema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hatujui", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "know", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alipanda", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "went", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wakampiga", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuacha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "left", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "zakaria", "gloss": "Zachariah", "pos": "Proper noun", "conf": "high", "aligner_top1": "zacharias", "current_gold": "a male given name from Hebrew, equivalent to English Zachariah or Zechariah", "raises_gold": true, "decision": "defer"}
+{"word": "asije", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "careful", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliyepokea", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "talents", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walifanya", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "did", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kuiweka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "it", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akalia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "cried", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kukua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "grow", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "zilizo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "a", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hamna", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "have", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alilia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "out", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutafuta", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "came", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutawala", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "almighty", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "shukurani", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "thanks", "current_gold": "alternative form of shukrani", "raises_gold": true, "decision": "defer"}
+{"word": "kutumia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "allegory", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumwona", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "see", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kutupa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "into", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "natamani", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "i", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kufanywa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "by", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wasioamini", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "unbelieving", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kimwili", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "fleshly", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "iyo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "even", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "anakaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "remains", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tukafika", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "we", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tunaishi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "live", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "maalumu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "purpose", "current_gold": "alternative form of maalum", "raises_gold": true, "decision": "defer"}
+{"word": "anenaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "speaks", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ashindaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "overcomes", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumchukua", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "take", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akawatuma", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "sent", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alipo", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "when", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "ataitwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "called", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "hauwezi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "produce", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumweka", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "him", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "walioishi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "haiwezi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "can", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wamekwisha", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "they", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "atampa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "give", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "wamevaa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "in", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "asikiaye", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "hears", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kusaga", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "teeth", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "alitoa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "who", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nifuate", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "follow", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "aliyasema", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "said", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "kumsifu", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "glorify", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akiwaambia", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "them", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "tunaomba", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "pray", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "akawaamuru", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "commanded", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "adam", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "man", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "waliokufa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "dead", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "nyinyi", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "you", "current_gold": null, "raises_gold": true, "decision": "defer"}
+{"word": "yaliyokuwa", "gloss": null, "pos": "Unknown", "conf": "low", "aligner_top1": "were", "current_gold": null, "raises_gold": true, "decision": "defer"}

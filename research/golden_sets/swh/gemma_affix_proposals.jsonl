@@ -1,0 +1,16 @@
+{"affix": "-miwa", "kind": "suffix", "n_stems": 14, "function": null, "feature": {}, "conf": "low", "examples": ["huku→walihukumiwa", "huku→amehukumiwa", "huku→watahukumiwa"]}
+{"affix": "-mie", "kind": "suffix", "n_stems": 14, "function": null, "feature": {}, "conf": "low", "examples": ["huru→umhurumie", "huru→nihurumie", "anga→asiangamie"]}
+{"affix": "-ye", "kind": "suffix", "n_stems": 169, "function": null, "feature": {}, "conf": "low", "examples": ["dumu→adumuye", "amini→aniaminiye", "hukumu→ahukumuye"]}
+{"affix": "-mia", "kind": "suffix", "n_stems": 37, "function": null, "feature": {}, "conf": "low", "examples": ["anga→wanaoangamia", "anga→mtaangamia", "anga→wameangamia"]}
+{"affix": "-ze", "kind": "suffix", "n_stems": 32, "function": null, "feature": {}, "conf": "low", "examples": ["anga→iangaze", "uongo→atuongoze", "waongo→iwaongoze"]}
+{"affix": "-she", "kind": "suffix", "n_stems": 18, "function": null, "feature": {}, "conf": "low", "examples": ["pumzi→ajipumzishe", "kamili→awakamilishe", "jicho→usijichoshe"]}
+{"affix": "aliye-", "kind": "prefix", "n_stems": 161, "function": null, "feature": {}, "conf": "low", "examples": ["amin→aliyeaminiwa", "kama→aliyekamatwa", "viti→aliyevitiisha"]}
+{"affix": "-iwa", "kind": "suffix", "n_stems": 112, "function": null, "feature": {}, "conf": "low", "examples": ["amin→aliyeaminiwa", "amin→nimeaminiwa", "amin→wakuaminiwa"]}
+{"affix": "-na", "kind": "suffix", "n_stems": 194, "function": null, "feature": {}, "conf": "low", "examples": ["mimi→aliyamimina", "mimi→alipomimina", "mimi→kuimimina"]}
+{"affix": "-ani", "kind": "suffix", "n_stems": 104, "function": null, "feature": {}, "conf": "low", "examples": ["wala→msiwalaani", "wala→twawalaani", "bali→hakubaliani"]}
+{"affix": "-mo", "kind": "suffix", "n_stems": 37, "function": null, "feature": {}, "conf": "low", "examples": ["kuwe→ilikuwemo", "kuwe→mlikuwemo"]}
+{"affix": "-zi", "kind": "suffix", "n_stems": 47, "function": null, "feature": {}, "conf": "low", "examples": ["pote→hampotezi", "anga→kiangazi", "ziwa→waziwazi"]}
+{"affix": "ata-", "kind": "prefix", "n_stems": 242, "function": null, "feature": {}, "conf": "low", "examples": ["huku→atahukumiwa", "lile→atalileaje", "liko→atalikodisha"]}
+{"affix": "aji-", "kind": "prefix", "n_stems": 13, "function": null, "feature": {}, "conf": "low", "examples": ["pumzi→ajipumzishe", "angali→ajiangaliaye"]}
+{"affix": "mu-", "kind": "prefix", "n_stems": 68, "function": null, "feature": {}, "conf": "low", "examples": ["amin→muaminipo", "wafu→muwafuate"]}
+{"affix": "msi-", "kind": "prefix", "n_stems": 82, "function": null, "feature": {}, "conf": "low", "examples": ["wala→msiwalaani", "wafu→msiwafuate"]}
