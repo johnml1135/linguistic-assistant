@@ -124,6 +124,12 @@ the residual roots.
 ## Tasks to close the gap (feeds repo-assessment W3/W6)
 
 - [x] **Concept-driven lexeme finder** (`deferrals/discover.py`) — built + tested; reports → tickets.
+- [x] **Wired into the core workflow** via `deferrals/backlog.py` — `discover` is now a registered
+      backlog source (alongside model `propose` records), not an orphan CLI:
+      `corpus → align → {propose, discover} → backlog → review UI`.
+- [x] **Endpoint hygiene** — `ik_llama` is NOT thinking-capable for Gemma 4; the canonical local endpoint
+      is now `local` (a mainline llama.cpp build, `-Think`), and all thinking scripts default to it.
+      `ik_llama` is relabeled as the non-thinking quant-sweep backend only.
 - [ ] **Enhance discover**: peel known affixes (via the gold/`morph_align_hc` construct index) before the
       shared-span step, and content-filter candidates, so the core is the true root (not a prefix fragment).
 

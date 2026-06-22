@@ -1977,7 +1977,7 @@
 {"word": "kataeni", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "kataeni", "irregular": []}
 {"word": "kataliwa", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Passive form of -kataa: to get refused, to get denied, to get rejected"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "kataliwa", "irregular": []}
 {"word": "kataza", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Causative form of -kataa: to forbid"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "kataza", "irregular": []}
-{"word": "kati", "pos": "Noun", "pos_all": ["Adposition", "Adverb", "Noun"], "senses": ["alternative form of katikati"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "kati", "irregular": []}
+{"word": "kati", "pos": "Noun", "pos_all": ["Adposition", "Adverb", "Noun"], "senses": ["among", "alternative form of katikati"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "kati", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "katika", "pos": "Adposition", "pos_all": ["Adposition", "Verb"], "senses": ["in", "on; upon", "out of", "off", "among", "in the middle of (doing an action)", "Stative form of -kata: to be cut", "to dance"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "katika", "irregular": []}
 {"word": "katikati", "pos": "Noun", "pos_all": ["Adposition", "Adverb", "Noun"], "senses": ["the middle", "in the middle", "among; between"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "katikati", "irregular": []}
 {"word": "katili", "pos": "Adjective", "pos_all": ["Adjective"], "senses": ["cruel, brutal"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "katili", "irregular": []}
@@ -2819,7 +2819,7 @@
 {"word": "kuvunjwa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuvunjwa", "irregular": []}
 {"word": "kuvutwa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuvutwa", "irregular": []}
 {"word": "kuwa", "pos": "Verb", "pos_all": ["Coordinating connective", "Verb"], "senses": ["that (used to connect a noun clause)"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "kuwa", "irregular": []}
-{"word": "kuwaambia", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuwaambia", "irregular": []}
+{"word": "kuwaambia", "pos": "Verb", "pos_all": ["Verb"], "senses": ["to tell them"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuwaambia", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "kuwafundisha", "pos": "Verb", "pos_all": [], "senses": ["teach"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuwafundisha", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "kuwahi", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuwahi", "irregular": []}
 {"word": "kuwajibika", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuwajibika", "irregular": []}
@@ -4428,7 +4428,7 @@
 {"word": "payuka", "pos": "Verb", "pos_all": ["Verb"], "senses": ["to talk nonsense, blab, prattle"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "payuka", "irregular": []}
 {"word": "paza", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Causative form of -paa: to raise (one's voice)"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "paza", "irregular": []}
 {"word": "pazia", "pos": "Noun", "pos_all": ["Noun", "Verb"], "senses": ["curtain (piece of cloth covering a window)", "veil", "Causative form of -paza"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "pazia", "irregular": []}
-{"word": "peke", "pos": "Adposition", "pos_all": ["Adposition"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "peke", "irregular": []}
+{"word": "peke", "pos": "Adposition", "pos_all": ["Adposition"], "senses": ["alone"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "peke", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "pekee", "pos": "Adjective", "pos_all": ["Adjective"], "senses": ["alone (by oneself)"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "pekee", "irregular": []}
 {"word": "pele", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "pele", "irregular": []}
 {"word": "peleka", "pos": "Verb", "pos_all": ["Verb"], "senses": ["to send, convey"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "peleka", "irregular": []}

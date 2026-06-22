@@ -11,7 +11,9 @@ gate so it never proposes wrong things:
 Two concurring signals (a generative model + a statistical aligner) make the ACCEPT tier safe without a
 dictionary; disagreement is exactly the signal to ask a human. Writes `gemma_proposals.jsonl` per pair.
 
-Run: `uv run python golden/reference/propose.py --pair spa --endpoint ik_llama --sample 120`
+Run: `uv run python golden/reference/propose.py --pair spa --endpoint local --sample 120`
+(`local` = a MAINLINE llama.cpp build for thinking models — NOT ik_llama.cpp, which can't emit Gemma-4
+thinking; or `--endpoint opus` for the frontier checker when ANTHROPIC_API_KEY is set.)
 """
 
 from __future__ import annotations
@@ -235,7 +237,7 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=list(PAIR_DIR))
-    ap.add_argument("--endpoint", default="ik_llama")
+    ap.add_argument("--endpoint", default="local")
     ap.add_argument("--mode", choices=["lexical", "morph"], default="lexical")
     ap.add_argument("--apply", action="store_true", help="fold accepted glosses into the gold (make golden better)")
     ap.add_argument("--target", choices=["frequent", "needy"], default="frequent",

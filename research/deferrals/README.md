@@ -44,6 +44,12 @@ hypothesis is HC-verified before it enters a ticket. Phase A alone yields a comp
 - `select.py` — Stage 2 selection (impact × resolvability, forms→lexeme clustering, worst-part suspects).
 - `auto_accept.py` — Stage 1 tier (two-signal concurrence, per-language bar, `ai-auto`).
 - `pipeline.py` — `score_pipeline` (per-stage metrics vs the ablation set) + `recycle` (cyclical re-eval).
+- `discover.py` — **concept-driven lexeme discovery** (Stage-2, source-anchored): "we have no word for
+  HAND; here are the candidates." THOT + maximum-shared-span (strips class prefixes: `wayahudi/myahudi →
+  yahudi`) + HC best-guess parse → a mini report that *is* a deferral ticket.
+- `backlog.py` — **the core-workflow entry**: unifies every defer source (model `propose` records +
+  `discover` + optionally morph-align) into the prioritized `tickets.jsonl` the review UI works through.
+  `uv run --extra align python -m deferrals.backlog --pair swh`.
 - `enrich.py` — Phase B LLM enrichment (additive, HC-gated, graceful without an endpoint).
 - `profile.py` + `feature_explanations.py` — the per-language profile (constrain + configure) with
   pre-written, open-licensed, non-linguist feature explanations.

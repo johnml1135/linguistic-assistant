@@ -34,7 +34,7 @@ def _parse_model_json(text: str) -> dict:
         return {}
 
 
-def enrich(ticket: DeferralTicket, *, endpoint: str = "ik_llama", base=None, pf=None) -> dict:
+def enrich(ticket: DeferralTicket, *, endpoint: str = "local", base=None, pf=None) -> dict:
     """Add HC-verified out-of-taxonomy hypotheses + prose to `ticket`. Returns a summary; mutates ticket."""
     try:
         from harness import build_client

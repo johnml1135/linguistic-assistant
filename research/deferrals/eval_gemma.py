@@ -60,7 +60,7 @@ def _defer_set(pair: str, n: int) -> list[dict]:
              "context": ""} for w in _ISOLATES[:n]]
 
 
-def run_eval(pair: str, *, endpoint: str = "ik_llama", n_resolvable: int = 12, n_defer: int = 8,
+def run_eval(pair: str, *, endpoint: str = "local", n_resolvable: int = 12, n_defer: int = 8,
              samples: int = 3) -> dict:
     """Grade Gemma's resolve/defer decisions; return metrics + a few subjective prose samples."""
     gold = load_gold(pair)
@@ -111,7 +111,7 @@ def run_eval(pair: str, *, endpoint: str = "ik_llama", n_resolvable: int = 12, n
     return metrics
 
 
-def sample_prose(pair: str, *, endpoint: str = "ik_llama") -> dict:
+def sample_prose(pair: str, *, endpoint: str = "local") -> dict:
     """The subjective, ungradable outputs — a sample enriched ticket's prose + a rephrased question."""
     from . import build, enrich
     from .llm import phrase_question
@@ -132,7 +132,7 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", default="spa")
-    ap.add_argument("--endpoint", default="ik_llama")
+    ap.add_argument("--endpoint", default="local")
     ap.add_argument("--n-resolvable", type=int, default=12)
     ap.add_argument("--n-defer", type=int, default=8)
     ap.add_argument("--prose", action="store_true", help="also print subjective prose samples")

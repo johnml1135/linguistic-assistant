@@ -36,7 +36,7 @@ def _ask_json(client, system: str, user: str) -> dict:
 
 
 # --------------------------------------------------------------------------- resolve-or-defer (gradable)
-def resolve_or_defer(rec: dict, *, endpoint: str = "ik_llama", profile_summary: str = "") -> dict:
+def resolve_or_defer(rec: dict, *, endpoint: str = "local", profile_summary: str = "") -> dict:
     """Ask the model to propose a typed edit OR defer for one deferred form. Returns the parsed decision
     ({decision, edit, confidence, rationale}); on any failure returns a safe defer."""
     try:
@@ -60,7 +60,7 @@ def resolve_or_defer(rec: dict, *, endpoint: str = "ik_llama", profile_summary: 
 
 
 # --------------------------------------------------------------------------------- verdict (task 10.3)
-def llm_verdict(ticket, *, endpoint: str = "ik_llama") -> dict:
+def llm_verdict(ticket, *, endpoint: str = "local") -> dict:
     """Ask the model to rank/explain the hypotheses that PASSED the deterministic regression gate. It may
     re-order and explain, but it CANNOT accept a hypothesis the gate rejected (we filter to gate-passers
     before asking, and ignore any id outside that set)."""
@@ -87,7 +87,7 @@ def llm_verdict(ticket, *, endpoint: str = "ik_llama") -> dict:
 
 
 # ------------------------------------------------------------------------- question phrasing (task 14.4)
-def phrase_question(ticket, option_id: str, *, endpoint: str = "ik_llama") -> str | None:
+def phrase_question(ticket, option_id: str, *, endpoint: str = "local") -> str | None:
     """Rephrase one presentation option as a question a non-linguist speaker can answer. Returns the new
     text (and stores it on the option) or None if unavailable."""
     opt = next((o for o in ticket.presentation_options if o.id == option_id), None)
@@ -108,7 +108,7 @@ def phrase_question(ticket, option_id: str, *, endpoint: str = "ik_llama") -> st
 
 # ----------------------------------------------------------------------- feature proposer (task 15.7)
 def propose_feature(pair: str, section: str, name: str, sample_words: list[str], *,
-                    endpoint: str = "ik_llama") -> dict:
+                    endpoint: str = "local") -> dict:
     """When a profile feature has no DB value, ask the model to guess it from sample data. The result is
     `provenance: inferred`, unlocked, low-trust — it must be probe-verified (profile.probe_feature)."""
     try:
@@ -127,7 +127,7 @@ def propose_feature(pair: str, section: str, name: str, sample_words: list[str],
 
 
 # --------------------------------------------------------------------- Phase C fan-out (task 7.2/7.3)
-def fanout_investigate(ticket, *, endpoint: str = "ik_llama", base=None, pf=None) -> dict:
+def fanout_investigate(ticket, *, endpoint: str = "local", base=None, pf=None) -> dict:
     """One model call per HC mechanism (each proposes a typed edit for the focus), HC-verify each, then a
     synthesis pick. Additive + HC-gated: only verified edits become hypotheses (task 7.2/7.3)."""
     from .counterfactual import attach_counterfactuals, load_base

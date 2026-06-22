@@ -428,6 +428,23 @@ def test_webui_md_to_html_minimal():
     assert "<h1>Title</h1>" in out and "<h2>Section</h2>" in out and "<li>item</li>" in out
 
 
+def test_backlog_dedup_and_build(tmp_path):
+    from deferrals import backlog as B
+    recs = [{"word": "amare", "source": "a"}, {"word": "amare", "source": "b"},
+            {"affix": "ndo", "source": "c"}, {"word": "casa", "source": "d"}]
+    deduped = B._dedup(recs)
+    assert len(deduped) == 3 and [r.get("word") or r.get("affix") for r in deduped] == ["amare", "ndo", "casa"]
+    # build a backlog from injected records only (no propose/discover) — offline
+    st = S.TicketStore(PAIR, path=tmp_path / "tickets.jsonl")
+    import deferrals.backlog as BB
+    # monkeypatch the store target by building directly
+    recs2 = [{"word": "amare", "gloss": "love", "aligner_top1": "love", "conf": "low",
+              "decision": "defer", "source": "concept-discovery"}]
+    tickets = build.build_all(PAIR, recs2, with_counterfactuals=False)
+    st.upsert(tickets); st.save()
+    assert st.tickets and st.tickets[0].tags["source"] == "concept-discovery"
+
+
 def test_discover_shared_core_maximum_span():
     from deferrals import discover
     assert discover._shared_core(["mkono", "mikono", "mkononi"]) == ("kono", 3)
