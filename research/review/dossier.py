@@ -197,6 +197,8 @@ def realign_distributions(ctx: dict, env_spec: dict, *, align_fn=None) -> dict:
 
     tok_in, tok_out = f"{morpheme}␁in", f"{morpheme}␁out"
     n_in = n_out = 0
+    hosts_in: dict = {}
+    hosts_out: dict = {}
     morph_rows, by_ref = [], {}
     for ref, _widx, morphs in streams:
         by_ref.setdefault(ref, []).append(morphs)
@@ -206,16 +208,29 @@ def realign_distributions(ctx: dict, env_spec: dict, *, align_fn=None) -> dict:
             for mi, m in enumerate(morphs):
                 f = m.get("form", "")
                 if f == morpheme:
-                    inside = fn(occ_of(m.get("_word", ""), mi, len(morphs)))
+                    w = m.get("_word", "")
+                    inside = fn(occ_of(w, mi, len(morphs)))
                     f = tok_in if inside else tok_out
                     if inside:
-                        n_in += 1
+                        n_in += 1; hosts_in[w] = hosts_in.get(w, 0) + 1
                     else:
-                        n_out += 1
+                        n_out += 1; hosts_out[w] = hosts_out.get(w, 0) + 1
                 forms.append(f)
         morph_rows.append((src, forms))
     table2 = align_fn(morph_rows)
     n = n_in + n_out or 1
+
+    def _conc(hosts: dict, count: int) -> tuple[int, float]:
+        # (distinct host words, share of the single most-frequent host) — a real sense split keeps BOTH
+        # buckets lexically diverse; a bucket that is one stem (kuwa) is host-translation variance, an
+        # artifact, NOT a homograph split.
+        return (len(hosts), round(max(hosts.values()) / count, 3)) if hosts else (0, 0.0)
+
+    nh_in, share_in = _conc(hosts_in, n_in or 1)
+    nh_out, share_out = _conc(hosts_out, n_out or 1)
     return {"label": label, "spec": env_spec, "n_in": n_in, "n_out": n_out,
             "coverage": round(n_in / n, 3), "dist_in": _dist_of(table2, tok_in),
-            "dist_out": _dist_of(table2, tok_out)}
+            "dist_out": _dist_of(table2, tok_out),
+            "n_hosts_in": nh_in, "n_hosts_out": nh_out,
+            "top_host_share_in": share_in, "top_host_share_out": share_out,
+            "top_hosts_in": sorted(hosts_in.items(), key=lambda x: -x[1])[:4]}

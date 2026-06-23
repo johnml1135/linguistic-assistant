@@ -42,20 +42,41 @@ def test_ig_dist_empty_is_zero():
     assert J.information_gain_dist({}, {}, 0, 0) == 0.0
 
 
-# ── judge: decision (accept tightest near-best; defer on low gain) ──────────────────────────────────────
-def test_decide_prefers_tightest_among_near_best():
+# ── judge: artifact guard + decision ────────────────────────────────────────────────────────────────────
+def _diverse(label, ig, cov, **kw):
+    return {"label": label, "info_gain": ig, "coverage": cov, "spec": {"l": label},
+            "n_in": 100, "n_out": 100, "n_hosts_in": 40, "n_hosts_out": 40,
+            "top_host_share_in": 0.1, "top_host_share_out": 0.1, **kw}
+
+
+def test_is_artifact_flags_single_stem_bucket():
+    # carved-out (smaller) in-bucket dominated by one host word → artifact (kuwa pattern)
+    r = _diverse("before w", 0.73, 0.21, n_in=90, n_out=339, n_hosts_in=2, top_host_share_in=0.85)
+    assert J.is_artifact(r) is True
+
+
+def test_is_artifact_passes_diverse_split():
+    assert J.is_artifact(_diverse("word-initial", 0.95, 0.64)) is False
+
+
+def test_decide_picks_highest_ig_genuine_not_artifact():
     results = [
-        {"label": "broad", "info_gain": 0.80, "coverage": 0.60, "spec": {"k": "broad"}},
-        {"label": "tight", "info_gain": 0.78, "coverage": 0.15, "spec": {"k": "tight"}},  # within tie, tighter
+        _diverse("before w", 0.73, 0.21, n_in=90, n_out=339, n_hosts_in=2, top_host_share_in=0.85),  # artifact
+        _diverse("word-initial", 0.63, 0.64),                                                          # genuine
     ]
-    out = J.decide_dist(results, min_gain=0.15, tie=0.05)
+    out = J.decide_dist(results, min_gain=0.15)
     assert out["decision"] == "accept"
-    assert out["best"] == "tight"            # most constrained wins the tie
+    assert out["best"] == "word-initial"     # genuine split wins, not the higher-IG artifact
+    assert out["n_artifacts"] == 1 and out["n_genuine"] == 1
+
+
+def test_decide_defers_when_only_artifacts():
+    results = [_diverse("before w", 0.73, 0.21, n_in=90, n_out=339, n_hosts_in=1, top_host_share_in=0.95)]
+    assert J.decide_dist(results, min_gain=0.15)["decision"] == "defer"
 
 
 def test_decide_defers_when_below_min_gain():
-    results = [{"label": "x", "info_gain": 0.04, "coverage": 0.5, "spec": {}}]
-    assert J.decide_dist(results, min_gain=0.15)["decision"] == "defer"
+    assert J.decide_dist([_diverse("x", 0.04, 0.5)], min_gain=0.15)["decision"] == "defer"
 
 
 # ── dossier: environment compilation ────────────────────────────────────────────────────────────────────

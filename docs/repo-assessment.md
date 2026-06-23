@@ -47,6 +47,23 @@ Implications:
 
 ## Workstream 2 — consolidation (stop the rot)
 
+- [x] **Allomorph detector built** (`review/{allomorph,wordvec}.py`, 2026-06-23): generic detector for
+      morphemes that mean the same but live in different environments (the dual of the constraint loop) —
+      C phon-neighbor → A same-meaning + complementary-distribution → B conditioning, emitting
+      `allomorph-collapse` change-sets for `promote.py`. Two key findings: (1) read **raw word-edges**, not
+      the segmented stream (which fuses `mw/kw` to zero count); (2) meaning = **gold features** for
+      grammatical morphemes (`mu≡mw`; rejects `hu/mu`), **word vectors** only for content (vectors rate all
+      grammatical morphemes similar). Live (swh): finds the glide FAMILY `mu/mw`+`vi/vy`+`mi/my`. 13 tests.
+- [x] **Constraint-induction loop built** (`review/{dossier,judge,constraints}.py` + `skills/generate_constraint.md`,
+      2026-06-23): turns a homographic morpheme into environment-conditioned senses. THOT = dumb counter
+      (co-occurrence), LLM = environment generator (`generate_constraint`), judge = **re-parse + distribution
+      information-gain** (`I(source;bucket)` from a real split-token re-align) + most-constrained tie-break.
+      14 offline tests incl. a plumbing test proving IG goes positive on a real split (so a "defer" is
+      honest, not a silent bug). Live: swh `wa` ACCEPTS (IG 0.95 — word-initial=associative "of",
+      non-initial=person marker "they/you"); `ku` splits (initial="to" infinitive, medial=object marker).
+      **Scope: homograph judge only** — allomorphy (one English correspondence) scores ≈0 here and stays on
+      the MDL/round-trip gate.
+
 - [~] **Collapse the phonology modules into one pipeline — DESIGNED** (`docs/phonology-architecture.md`,
       2026-06-23): one morphophonology pipeline (substrate→detect→infer-UR→ordered-rule→verify→promote) with
       two evidence streams (text now, audio deferred), grounded in SPE/HC theory. Merge map + tasks in the

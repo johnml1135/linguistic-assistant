@@ -100,9 +100,11 @@ def run(pair: str, morpheme: str, kind: str = "prefix", *, use_llm: bool = False
         "info_gain": verdict["best_gain"], "coverage": verdict["best_coverage"],
         "best_sense_in": (best["dist_in"] if best else {}),
         "best_sense_out": (best["dist_out"] if best else {}),
-        "winning_spec": verdict.get("best_spec"),
+        "winning_spec": verdict.get("best_spec"), "n_genuine": verdict["n_genuine"],
+        "n_artifacts": verdict["n_artifacts"],
         "all_environments": [{"label": r["label"], "info_gain": r["info_gain"], "coverage": r["coverage"],
-                              "n_in": r["n_in"], "n_out": r["n_out"],
+                              "n_in": r["n_in"], "n_out": r["n_out"], "artifact": J.is_artifact(r),
+                              "n_hosts_in": r.get("n_hosts_in"), "top_host_share_in": r.get("top_host_share_in"),
                               "top_in": sorted(r["dist_in"].items(), key=lambda x: -x[1])[:4],
                               "top_out": sorted(r["dist_out"].items(), key=lambda x: -x[1])[:4]}
                              for r in sorted(results, key=lambda r: -r["info_gain"])],
@@ -130,10 +132,13 @@ def main(argv: list[str] | None = None) -> int:
     print(f"\n{rec['pair']} '{rec['morpheme']}' ({rec['kind']})  n_occ={rec['n_occ']}")
     print(f"conflated: {rec['conflated_distribution']}")
     print(f"DECISION: {rec['decision'].upper()}  best={rec['best_environment']!r}  "
-          f"IG={rec['info_gain']}  coverage={rec['coverage']}  -> {rec['route']}\n")
+          f"IG={rec['info_gain']}  coverage={rec['coverage']}  -> {rec['route']}")
+    print(f"  ({rec['n_genuine']} genuine split(s), {rec['n_artifacts']} host-translation artifact(s) discarded)\n")
     print("environments (realigned, by info-gain):")
     for e in rec["all_environments"]:
-        print(f"  IG={e['info_gain']:+.3f} cov={e['coverage']:.2f} ({e['n_in']}/{e['n_in']+e['n_out']})  {e['label']}")
+        tag = "  [ARTIFACT: one host stem]" if e["artifact"] else ""
+        print(f"  IG={e['info_gain']:+.3f} cov={e['coverage']:.2f} ({e['n_in']}/{e['n_in']+e['n_out']}) "
+              f"hosts_in={e['n_hosts_in']} top_host={e['top_host_share_in']}  {e['label']}{tag}")
         print(f"       in : {e['top_in']}")
         print(f"       out: {e['top_out']}")
     return 0
