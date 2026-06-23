@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing import Iterable
 
-from harness.base import LLMClient
+from propose.harness.base import LLMClient
 
-from proposal.contract import ChangeSet, Instance, Scorer, ValidationFailure
-from proposal.propose import ProposeConfig, propose
+from propose.contract import ChangeSet, Instance, Scorer, ValidationFailure
+from propose.propose import ProposeConfig, propose
 
 
 def run_instances(

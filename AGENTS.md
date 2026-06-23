@@ -46,6 +46,36 @@ Three axes, don't conflate: **data/two-plane** (above), **maturity/three-stage**
 **runtime/offline-online** (below). Full design:
 `docs/superpowers/specs/2026-06-16-runtime-and-staging-architecture-design.md`.
 
+## Module layout & dependency contract (`research/`)
+
+The Stage-1 playground is grouped by **role**, with a strict **one-way import flow**. Keep it acyclic —
+a lower layer must never import a higher one.
+
+```
+corpus/   eBible ingestion (leaf; imports nothing from siblings)
+engine/   the Hermit Crab oracle: grammar.py, hc.py, ablate.py (leaf utility — everyone may import it)
+assess/   grammar-quality metrics: MDL, scorecard, worst-part (leaf utility)
+gold/     the reference YARDSTICK + frozen golden_sets + goldio (imports engine/corpus/assess only)
+align/    word + morpheme alignment (imports engine/gold/corpus)
+induce/   the TDD cycle + phonology induction (imports engine/gold/corpus/align/assess)
+propose/  the change-set contract + propose core + harness LLM client (imports engine/gold)
+review/   deferrals/ + deltas/ — human-in-loop write path (imports engine/gold/align/assess/propose)
+addons/   audio/ + bilingual/ — optional, fenced (nothing core imports addons)
+eval/     benchmarks + parsegym + the eval runner (consumer — nothing core imports eval)
+```
+
+Flow: **`corpus → {induce, align} → propose → review`**, all measured against **`gold`** (the yardstick),
+with `engine` + `assess` as shared leaves. Rules for agents:
+
+- **`gold/` is the yardstick and MUST NOT import `induce`/`align`/`review`/`propose`** — it is measured by
+  them, it does not depend on them (the gold-principle below, enforced as an import rule).
+- **`engine/`, `corpus/`, `assess/` are leaves** — they import stdlib + (engine for the others), never the
+  higher layers. If you need a higher layer from a leaf, the design is wrong.
+- **Nothing imports `addons/` or `eval/`** — they are top-of-stack consumers.
+- Prefer **relative imports within a package**, absolute (`from gold.goldio import …`) across packages.
+- The data dirs are `research/golden_sets/` (frozen gold, tracked) and `research/_sources/` (raw downloads,
+  gitignored); `review/deltas/store/` is the tracked proposal ledger.
+
 ## Maturity stages — this repo holds stages 1 and 2
 
 1. **`research/` — Python playground.** Idea iteration (prompts/skills, RAG, evaluation). Promotes

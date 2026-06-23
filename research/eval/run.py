@@ -25,13 +25,13 @@ sys.path.insert(0, str(_RESEARCH_DIR))
 from eval.report import write_results  # noqa: E402
 from eval.runner import run_instances  # noqa: E402
 from eval.stub_scorer import StubScorer  # noqa: E402
-from proposal.propose import ProposeConfig  # noqa: E402
+from propose.propose import ProposeConfig  # noqa: E402
 
 
 def _load_golden_scorer():
     """Adapt to the sibling agent's concrete scorer when present; else fall back to the stub."""
     try:  # name TBD — reconcile in tasks 5.2 / 6.4
-        from golden.scorer import build_scorer  # type: ignore
+        from engine.scorer import build_scorer  # type: ignore
 
         return build_scorer()
     except Exception:
@@ -60,8 +60,8 @@ def main() -> int:
         backend_kind = "mock"
         name = args.name or "eval_fixture"
     else:
-        from harness.config import DEFAULT_ENDPOINTS
-        from harness.registry import build_client
+        from propose.harness.config import DEFAULT_ENDPOINTS
+        from propose.harness.registry import build_client
 
         from eval.instances import load_golden_instances
 

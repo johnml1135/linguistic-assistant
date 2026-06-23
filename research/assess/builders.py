@@ -17,7 +17,7 @@ GlossParseFn = Callable[[object, list[str]], dict[str, list[GlossLine]]]
 
 def _default_parse_fn() -> GlossParseFn:
     """Wrap golden `hc.run_parse` (which returns [(form, gloss)] analyses) into gloss-line parses."""
-    from golden.hc import gloss_seq, run_parse
+    from engine.hc import gloss_seq, run_parse
 
     def parse(model, words):
         raw = run_parse(model, words)

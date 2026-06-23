@@ -14,7 +14,7 @@ if str(_RESEARCH) not in sys.path:
 
 from align import morph_align_hc as M  # noqa: E402
 from align.contract import CandidateGloss, GlossTable  # noqa: E402
-from golden.grammar import Affix, LangModel, LexEntry  # noqa: E402
+from engine.grammar import Affix, LangModel, LexEntry  # noqa: E402
 
 # a tiny Swahili-style grammar: ni-na-ku-penda = I-PRES-you-love
 MODEL = LangModel(code="swh", lexicon=[LexEntry(form="penda", gloss="love", pos="Verb", count=9)],
@@ -102,14 +102,14 @@ def test_to_deferral_records_bridge():
     assert any(r.get("affix") == "ku" for r in recs)            # affix → affix_function deferral
     assert all("unparsed" not in str(r) for r in recs)          # unparsed markers are not ticketed
     # the records are exactly the shape deferrals.build consumes
-    from deferrals.build import build_ticket
+    from review.deferrals.build import build_ticket
     t = build_ticket("spa", next(r for r in recs if r.get("word")), with_counterfactuals=False)
     t.validate()
 
 
-@pytest.mark.skipif(not (_RESEARCH / "golden").exists(), reason="golden data absent")
+@pytest.mark.skipif(not (_RESEARCH / "gold").exists(), reason="gold data absent")
 def test_run_cooccur_offline_if_hc_available():
-    from golden.reference.hc_coverage import hc_available
+    from gold.hc_coverage import hc_available
     if not hc_available():
         pytest.skip("hc CLI not installed")
     s = M.run("spa", backend="cooccur", sample=40)        # cooccur backend: no THOT needed

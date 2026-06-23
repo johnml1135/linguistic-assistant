@@ -12,8 +12,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from align.aligner import align  # noqa: E402
 from align.fixtures import FIXTURE_ROWS  # noqa: E402
 from align.to_bilingual import gloss_table_to_sense_link_ops  # noqa: E402
-from proposal.change_set import validate_change_set  # noqa: E402
-from proposal.contract import ChangeSet  # noqa: E402
+from propose.change_set import validate_change_set  # noqa: E402
+from propose.contract import ChangeSet  # noqa: E402
 
 
 def test_cooccur_recovers_glosses():

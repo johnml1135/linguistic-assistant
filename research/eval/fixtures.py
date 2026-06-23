@@ -10,9 +10,9 @@ import json
 from dataclasses import dataclass
 from typing import Any, Sequence
 
-from harness.base import CompletionResult, Message
+from propose.harness.base import CompletionResult, Message
 
-from proposal.contract import Case, IGTRecord
+from propose.contract import Case, IGTRecord
 
 # An incomplete LIFT lexicon: only the verb root "amba" is known.
 _FIXTURE_LIFT = """\

@@ -12,10 +12,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from eval.fixtures import MockProposer, fixture_instances  # noqa: E402
 from eval.runner import run_instances  # noqa: E402
 from eval.stub_scorer import StubScorer  # noqa: E402
-from proposal.change_set import validate_change_set  # noqa: E402
-from proposal.context import assemble_context  # noqa: E402
-from proposal.contract import ChangeSet, ValidationFailure  # noqa: E402
-from proposal.propose import ProposeConfig, propose  # noqa: E402
+from propose.change_set import validate_change_set  # noqa: E402
+from propose.context import assemble_context  # noqa: E402
+from propose.contract import ChangeSet, ValidationFailure  # noqa: E402
+from propose.propose import ProposeConfig, propose  # noqa: E402
 
 
 def test_invalid_output_rejected():

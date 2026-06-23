@@ -2540,6 +2540,7 @@
 {"word": "nagnanais", "pos": "Verb", "pos_all": ["Verb"], "senses": ["progressive aspect of magnais"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagnanais", "irregular": []}
 {"word": "nagnanakaw", "pos": "Verb", "pos_all": ["Verb"], "senses": ["progressive aspect of magnakaw"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagnanakaw", "irregular": []}
 {"word": "nagngalit", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagngalit", "irregular": []}
+{"word": "nagngangalang", "pos": "Verb", "pos_all": [], "senses": ["named"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagngangalang", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "nagngangalit", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagngangalit", "irregular": []}
 {"word": "nagningning", "pos": "Verb", "pos_all": ["Verb"], "senses": ["complete aspect of magningning"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagningning", "irregular": []}
 {"word": "nagniningas", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "nagniningas", "irregular": []}

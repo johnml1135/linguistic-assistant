@@ -20,7 +20,7 @@ import sys
 # Allow running as `python scripts/smoke_test.py` from the research/ dir.
 sys.path.insert(0, ".")
 
-from harness import Message, build_client  # noqa: E402
+from propose.harness import Message, build_client  # noqa: E402
 
 
 def main() -> int:

@@ -7,7 +7,7 @@ checks op-signature overlap against a fixture answer key, for pipeline testing.
 
 from __future__ import annotations
 
-from proposal.contract import ChangeSet, Instance, ScoreResult
+from propose.contract import ChangeSet, Instance, ScoreResult
 
 
 class StubScorer:

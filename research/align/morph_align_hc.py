@@ -25,7 +25,7 @@ if str(_RESEARCH) not in sys.path:
     sys.path.insert(0, str(_RESEARCH))
 
 from align import align  # noqa: E402
-from golden.grammar import LangModel  # noqa: E402
+from engine.grammar import LangModel  # noqa: E402
 
 ACCEPT_PROB = 0.5          # min alignment probability to consider accepting a marker
 
@@ -147,7 +147,7 @@ def assemble_markers(streams: list[tuple[str, int, list[dict]]], table, affix_fe
 
 # --------------------------------------------------------------------------- the run (HC + THOT)
 def _pair_dir(pair: str):
-    from golden.reference.compile import EBIBLE, PAIR_DIR
+    from gold.compile import EBIBLE, PAIR_DIR
     return EBIBLE / PAIR_DIR[pair]
 
 
@@ -167,8 +167,8 @@ def _verses(pair: str, sample: int) -> list[tuple[str, list[str], list[str]]]:
 def build_streams(pair: str, model: LangModel, verses, *, chunk_timeout: int = 20):
     """Parse all target words once with HC, then map each word's analysis to morphemes (with back-links).
     Returns (streams, morph_rows) where morph_rows are `(src, [morpheme-form tokens])` for the aligner."""
-    from golden.hc import gloss_seq, run_parse
-    from golden.reference.phonology_gold import phon_feats
+    from engine.hc import gloss_seq, run_parse
+    from gold.phonology_gold import phon_feats
     index = gloss_index(model)
     all_words = sorted({w for _, _, tgt in verses for w in tgt})
     pf = phon_feats(pair, model.charset)
@@ -189,8 +189,8 @@ def build_streams(pair: str, model: LangModel, verses, *, chunk_timeout: int = 2
 
 def run(pair: str, *, backend: str = "hmm", sample: int = 0, apply: bool = False) -> dict:
     """Full pipeline: HC parse → morpheme stream → THOT align → markers → route. Writes JSONL + summary."""
-    from golden.reference.goldio import FROZEN, load_gold
-    from golden.reference.hc_coverage import build_reference_model
+    from gold.goldio import FROZEN, load_gold
+    from gold.hc_coverage import build_reference_model
     gold = load_gold(pair)
     affix_feats = {a["affix"]: (a.get("features") or {}) for a in gold.get("affixes", [])
                    if isinstance(a.get("features"), dict)}
@@ -235,7 +235,7 @@ def to_deferral_records(deferred: list[MorphMarker], *, top: int = 50) -> list[d
 
 def _apply(pair: str, accepted: list[MorphMarker]) -> dict:
     """Emit confidence-routed deltas for accepted markers (affix gloss / root sense)."""
-    from deltas.store import DeltaStore
+    from review.deltas.store import DeltaStore
     store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
     ops = []
     prov = {"source": "morph-align-hc", "pair": pair}

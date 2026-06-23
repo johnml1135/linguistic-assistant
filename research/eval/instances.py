@@ -14,7 +14,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-from proposal.contract import Case, IGTRecord
+from propose.contract import Case, IGTRecord
 
 
 @dataclass

@@ -26,7 +26,7 @@ from assess.worst_part import worst_part_ranking  # noqa: E402
 
 def _demo() -> int:
     """A tiny concatenative LangModel + a fake parser, so the whole path runs with no hc/network."""
-    from golden.grammar import Affix, LangModel, LexEntry
+    from engine.grammar import Affix, LangModel, LexEntry
 
     model = LangModel(
         code="demo",
@@ -80,7 +80,7 @@ def main() -> int:
     if not args.lang:
         ap.error("--lang is required for the hermitcrab source")
     try:
-        from golden.build import load_assessment_inputs  # type: ignore
+        from engine.build import load_assessment_inputs  # type: ignore
     except Exception:
         print("[assess] golden build loader not available here. Use --source demo for an offline run, "
               "or wire load_assessment_inputs(lang) -> (LangModel, corpus_words, gold) to the golden build.")

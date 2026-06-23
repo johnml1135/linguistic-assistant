@@ -110,23 +110,22 @@ a bug-tracker queue a linguist works one-by-one. Run:
 - [ ] _Gap-closing tasks moved to `docs/w6-coverage-experiment.md`_ (internet affixes for tgl/swh,
       generative swh noun-class morphology, Opus run, NER pass, token-coverage reporting, tgl cycle parity).
 
-## Workstream 7 — target layout & dependency contract (future, after 1–3)
+## Workstream 7 — target layout & dependency contract — ✅ DONE 2026-06-22
 
-Group modules by **role**, with a one-way dependency flow
-(`corpus → {induce, align} → propose → review → gold`; `engine` + `assess` are leaf utilities):
+- [x] **Physical role-based regroup executed** (on branch `refactor/role-based-layout`): `datasets→corpus`,
+      `golden/{grammar,hc,ablate}→engine`, `golden/reference→gold`, `golden/_sources→_sources`,
+      `cycle→induce`, `proposal→propose`, `harness→propose/harness`, `deferrals+deltas→review/`,
+      `audio+bilingual→addons/`, `benchmarks+parsegym→eval/`. Imports + path constants + `parents[N]` depths
+      rewritten (71 files); `.gitignore`/`pyproject` updated. **100 offline tests pass (= baseline).**
+- [x] **Dependency contract written into `AGENTS.md`** — the one-way flow + leaf/consumer rules, incl.
+      "`gold/` must not import induce/align/review/propose" (the yardstick rule as an import rule).
+- [ ] _Remaining (W2, reframed by the regroup):_ the 4 phonology modules now split by role —
+      `induce/{phonology,hc_phonology}.py` (building) vs `gold/{phonology_gold,phonology_induce}.py`
+      (yardstick). Consolidate *within* each role (not across the induce/gold boundary) — the role split
+      clarified the target. Also: dedup segmentation, audit `eval/parsegym` (only `questions.py` is used).
 
-```
-corpus/   ← datasets/ebible          engine/  ← golden/{grammar,hc,ablate}
-gold/     ← golden/reference + golden_sets + goldio   (the yardstick + frozen gold)
-induce/   ← cycle/ + ONE phonology    align/   ← align/
-propose/  ← proposal/ + harness       review/  ← deferrals/ + deltas/
-assess/   ← assess/                   eval/    ← eval/ + benchmarks/ + parsegym(questions)
-addons/   ← audio/ + bilingual/       (optional, clearly fenced)
-```
-
-- [ ] Write the dependency contract (what may import what) into `AGENTS.md` **before** moving files, so the
-      tangle stops growing even if the physical move waits.
-- [ ] Physically regroup only once the contract is settled and Workstreams 1–3 are done (avoid churn).
+The achieved layout (one-way flow `corpus → {induce, align} → propose → review`, measured against `gold`;
+`engine` + `assess` are leaf utilities; `addons`/`eval` are top consumers). Full contract in `AGENTS.md`.
 
 ---
 

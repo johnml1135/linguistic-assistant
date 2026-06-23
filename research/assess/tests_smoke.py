@@ -82,7 +82,7 @@ def test_scorecard_deterministic():
 
 
 def test_worst_part_ranks_useless_first():
-    from golden.grammar import Affix, LangModel, LexEntry
+    from engine.grammar import Affix, LangModel, LexEntry
 
     model = LangModel(
         code="t",
@@ -104,7 +104,7 @@ def test_worst_part_ranks_useless_first():
 
 
 def _demo_model_gold():
-    from golden.grammar import Affix, LangModel, LexEntry
+    from engine.grammar import Affix, LangModel, LexEntry
 
     model = LangModel(
         code="t",
@@ -123,7 +123,7 @@ def _demo_model_gold():
 
 
 def test_mdl_grammar_cost_grows_with_redundancy():
-    from golden.grammar import LangModel, LexEntry
+    from engine.grammar import LangModel, LexEntry
     from assess import mdl
 
     base = LangModel(code="t", lexicon=[LexEntry("walk", "walk")], affixes=[])

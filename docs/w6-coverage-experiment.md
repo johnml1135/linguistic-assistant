@@ -121,7 +121,63 @@ disciples) and function words leak in (these/even/nor) — the **enhancement is 
 (reuse `morph_align_hc`'s construct-peeling) and require a content-ish shared core**, then share spans on
 the residual roots.
 
+## Building the gold with Opus checking (run 2026-06-22)
+
+`propose --apply --target needy` (THOT ∩ model concurrence gate; `--endpoint local`/Gemma stand-in here,
+`opus`-ready) raises high-confidence glosses into `golden_sets/`, every change provenance-tagged
+(`gloss_source: gemma+aligner`) and reversible. **Opus (Claude 4.8) personally verified every raise:**
+
+| pair | accepted/25 | applied | Opus verdict | examples |
+|---|---|---|---|---|
+| swh | 3 (12%) | 3 (1 junk-fix, 2 fills) | **3/3 correct** | kuwaambia→to tell them · peke→alone · kati→among (fixed junk) |
+| tgl | 1 (4%) | 1 new entry | **1/1 correct** | nagngangalang→named |
+
+**Finding (the W6 thesis, confirmed in action):** the gold-raise is **high precision** (4/4 correct) but its
+**accept *volume* tracks reference-affix coverage** — swh (182 affixes) accepts 12%, tgl (**0 affixes**)
+only 4%. Without the affix/class inventory the model can't confidently decompose affixed forms, so it
+(correctly) defers the rest. The 22–24 deferred per batch become resolution tickets. **So the path to
+higher gold-raise volume on tgl/swh runs *through* the internet-affix fix** — it's the prerequisite, not a
+parallel task.
+
+## Master-switch detection from the corpus (`deferrals/profile_detect.py`) — built 2026-06-22
+
+Instead of *only* pulling the ~12 typological "master switches" from the internet, we **detect them from
+the text** (reusing the cycle affixes, `phonology_induce`, corpus stats, orthography, and the cached
+morpheme alignment), present each as an evidence-backed claim, and **cross-check against the WALS/Grambank
+seed** — agreement boosts confidence, conflict goes to the human. The internet becomes a second opinion.
+
+Live (detected ✓ = agrees with internet seed):
+
+| switch | swh | tgl | spa |
+|---|---|---|---|
+| synthesis | agglutinative ✓ | aggl. ✓ | fusional ✓ |
+| affix polarity | prefixing ✓ | prefixing ✓ | suffixing |
+| reduplication | yes ✓ | **yes ✓** (lalaki, tatawagin) | yes ⚠ (false +) |
+| **infixation** | yes ⚠ (false +) | **yes ✓ `-in-`×154 (tinatawag)** | yes ⚠ (false +) |
+| vowel harmony | yes ✓ | no ✓ | no ✓ |
+| nasal assimilation | no ⚠ | yes ✓ | yes ⚠ (seed may be wrong) |
+| agreement (head-marking) | **yes** (87 verb-prefixes → I/you/we: nili/nime/nina) | _needs align_ | no ✓ |
+| TAM locus | verb-prefix | _needs align_ | unclear |
+| articles | yes | _needs align_ | yes |
+
+**Headline:** tgl **infixation** is recovered from the text (`-in-` ×154) and agrees with WALS — the master
+switch that unlocks tgl morphology, detected, not fetched. The ⚠ conflicts are the review queue working:
+swh "infix"(`lakini`) and spa "redup/infix" are **false positives** the internet check catches; spa
+"nasal assimilation" may be a case where the *detector* is right and the seed too conservative.
+
+**This reorders the workflow into a Phase 0:** confirm ~12 evidence-backed switches FIRST (cheap, ~12
+human yes/no), and they constrain induction + the gold-raise (profile already gates the hypothesis space).
+Known limitation: the infix/reduplication detectors over-fire on coincidental substrings — tighten with a
+minimal-pair + Tolerance-Principle **productivity** gate (a real affix recurs across many distinct stems).
+
 ## Tasks to close the gap (feeds repo-assessment W3/W6)
+
+- [x] **Master-switch detector** (`deferrals/profile_detect.py`) — ~10 switches detected from corpus +
+      cross-checked against the WALS/Grambank seed; conflicts surfaced. Built + tested.
+- [ ] **Tighten infix/redup detectors** with a productivity (Tolerance) gate to kill coincidental-substring
+      false positives (swh `lakini`, spa `dejando`).
+- [ ] **Wire detected switches → `profile.py`** (provenance="detected", confidence) so they constrain the
+      taxonomy/induction; present each conflict as a "switch-confirmation" deferral ticket (Phase 0).
 
 - [x] **Concept-driven lexeme finder** (`deferrals/discover.py`) — built + tested; reports → tickets.
 - [x] **Wired into the core workflow** via `deferrals/backlog.py` — `discover` is now a registered

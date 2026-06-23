@@ -19,7 +19,7 @@ GlossParseFn = Callable[[object, list[str]], dict[str, list[GlossLine]]]
 
 
 def _default_parse_fn() -> GlossParseFn:
-    from golden.hc import gloss_seq, run_parse
+    from engine.hc import gloss_seq, run_parse
 
     def parse(model, words):
         raw = run_parse(model, words)
@@ -30,7 +30,7 @@ def _default_parse_fn() -> GlossParseFn:
 
 def _remove(model, kind: str, form: str, gloss: str):
     """Return a copy of the LangModel with one construct removed (mirrors golden.ablate)."""
-    from golden.grammar import LangModel
+    from engine.grammar import LangModel
 
     lex = [e for e in model.lexicon if not (kind == "lex" and e.form == form and e.gloss == gloss)]
     aff = [a for a in model.affixes if not (kind == "affix" and a.form == form and a.gloss == gloss)]
