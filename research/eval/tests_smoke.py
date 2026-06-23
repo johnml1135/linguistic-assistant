@@ -58,3 +58,26 @@ if __name__ == "__main__":
         fn()
         print(f"ok  {fn.__name__}")
     print(f"\n{len(fns)} tests passed")
+
+
+def test_progress_report_renders():
+    """The one-page progress report renders all dimensions from in-memory rows (offline)."""
+    import sys, pathlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+    from eval.progress import render
+    from review.deferrals.profile_detect import Switch
+    row = {"pair": "swh",
+           "inv": {"verses": 7948, "tokens": 141406, "unique": 17541, "hapax_pct": 63},
+           "complete": {"lexicography": {"lemmas": 6615, "gloss_pct": 49},
+                        "morphology": {"affixes_gold": 182, "inflection_classes": 2, "wordforms": 5054},
+                        "phonology": {"rules_total": 1}},
+           "cov": {"tested": 250, "parsed": 171, "coverage": 0.68, "coverage_ex_names": 0.85,
+                   "real_gap": 30, "likely_names": 49},
+           "switches": {"synthesis": Switch("synthesis", "agglutinative", 0.78, "M/W 3.0",
+                                            internet="agglutinative", agrees=True),
+                        "articles": Switch("articles", "both", 0.4, "m- 528x", internet="none", agrees=False)}}
+    md = render([row], date="t")
+    assert "# Linguistic Assistant — progress report" in md
+    assert "## The 12 master switches" in md and "agglutinative ✓" in md and "both ⚠" in md
+    assert "words parsed well vs the number needing parsing" in md and "68%" in md
+    assert "agree with reference" in md

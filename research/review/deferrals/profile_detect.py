@@ -327,7 +327,7 @@ def detect(pair: str) -> list[Switch]:
     switches += detect_alignment_switches(pair)
     seed = _internet_seed(pair)
     for s in switches:
-        if s.name in seed and seed[s.name] is not None:
+        if s.name in seed and seed[s.name] is not None and s.value not in (None, "unknown"):
             s.internet = seed[s.name]
             s.agrees = _compatible(s.value, s.internet)
             # the internet seed is reliable typology — agreement boosts confidence; a CONFLICT means the
