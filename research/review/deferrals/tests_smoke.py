@@ -580,3 +580,34 @@ def test_counterfactual_flip_and_gold_untouched():
     assert len(base.lexicon) == n_lex_before, "gold model was mutated!"
     cf = hyp.counterfactuals[0]
     assert cf.focus_parsed_if and not cf.focus_parsed_now
+
+
+def test_promote_classify_buildable_gate():
+    """Rule promotion: a non-buildable candidate (no HC emitter) must DEFER (never fake-active); a
+    buildable, sharp, supported one promotes; weak ones reject."""
+    from review.promote import RuleCandidate, classify
+    # harmony is buildable (emitter exists); assimilation is not (yet)
+    harm_hi = classify(RuleCandidate(id="h", pair="swh", kind="harmony", description="d",
+                                     members=["-li", "-le"], score=0.82, buildable=True))
+    assert harm_hi.classification == "promote"
+    harm_lo = classify(RuleCandidate(id="h2", pair="swh", kind="harmony", description="d",
+                                     members=["-li", "-le"], score=0.6, buildable=True))
+    assert harm_lo.classification == "defer"
+    nasal = classify(RuleCandidate(id="n", pair="ind", kind="assimilation", description="d",
+                                   members=["mem-", "men-"], score=0.95, buildable=False))
+    assert nasal.classification == "defer" and "emitter" in nasal.reason   # high score but no emitter → defer
+    weak = classify(RuleCandidate(id="w", pair="x", kind="harmony", description="d",
+                                  score=0.2, buildable=True))
+    assert weak.classification == "reject"
+
+
+def test_active_phon_rules_applies_promoted_harmony(tmp_path, monkeypatch):
+    """The active→APPLIED wiring: a harmony rule with status 'active' is emitted as loadable HC XML."""
+    import json
+    from gold import goldio, phonology_gold as PG
+    d = tmp_path / "swh"; d.mkdir()
+    (d / "phonology_induced.jsonl").write_text(
+        json.dumps({"type": "rule", "id": "swh_h", "kind": "harmony", "status": "active"}) + "\n", encoding="utf-8")
+    monkeypatch.setattr(goldio, "FROZEN", tmp_path)   # active_phon_rules imports FROZEN from gold.goldio
+    rules = PG.active_phon_rules("swh")
+    assert len(rules) == 1 and "PhonologicalRule" in rules[0][1]   # emitted as XML the grammar applies

@@ -129,6 +129,7 @@
 {"word": "aisha", "pos": "Proper noun", "pos_all": ["Proper noun"], "senses": ["a female given name from Arabic"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "aisha", "irregular": []}
 {"word": "aishi", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "aishi", "irregular": []}
 {"word": "aishie", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "aishie", "irregular": []}
+{"word": "aitwaye", "pos": "Verb", "pos_all": [], "senses": ["named"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "aitwaye", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "aitwe", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "aitwe", "irregular": []}
 {"word": "aja", "pos": "Verb", "pos_all": [], "senses": [], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "aja", "irregular": []}
 {"word": "ajabu", "pos": "Noun", "pos_all": ["Adjective", "Noun", "Verb"], "senses": ["wonder, amazement", "something which is wondrous or amazing", "wonderful", "to be amazed or surprised"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "ajabu", "irregular": []}
@@ -404,7 +405,7 @@
 {"word": "anahuzunika", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anahuzunika", "irregular": []}
 {"word": "anaingia", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anaingia", "irregular": []}
 {"word": "anainuka", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "anainuka", "irregular": []}
-{"word": "anaishi", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anaishi", "irregular": []}
+{"word": "anaishi", "pos": "Unknown", "pos_all": [], "senses": ["lives"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anaishi", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "anaitwa", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anaitwa", "irregular": []}
 {"word": "anajali", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anajali", "irregular": []}
 {"word": "anajaribu", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "anajaribu", "irregular": []}
@@ -2053,7 +2054,7 @@
 {"word": "kiheshimiwa", "pos": "Adjective", "pos_all": [], "senses": [], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "kiheshimiwa", "irregular": []}
 {"word": "kiini", "pos": "Noun", "pos_all": ["Noun"], "senses": ["the nucleus, the core", "a fetus (unborn child)", "yolk (egg)", "kernel (fruit), stone (fruit)", "germ"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kiini", "irregular": []}
 {"word": "kiitalia", "pos": "Noun", "pos_all": ["Noun"], "senses": ["Italian (language)"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kiitalia", "irregular": []}
-{"word": "kijana", "pos": "Proper noun", "pos_all": ["Noun", "Proper noun"], "senses": ["a unisex given name"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "kijana", "irregular": []}
+{"word": "kijana", "pos": "Proper noun", "pos_all": ["Noun", "Proper noun"], "senses": ["young man", "a unisex given name"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "kijana", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "kijani", "pos": "Adjective", "pos_all": ["Adjective", "Noun"], "senses": ["green", "leaf"], "homograph": true, "in_scripture": true, "inflection_class": null, "stem": "kijani", "irregular": []}
 {"word": "kijeshi", "pos": "Adjective", "pos_all": ["Adjective"], "senses": ["military"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kijeshi", "irregular": []}
 {"word": "kijibu", "pos": "Verb", "pos_all": [], "senses": [], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "kijibu", "irregular": []}
@@ -2629,6 +2630,7 @@
 {"word": "kusanyeni", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kusanyeni", "irregular": []}
 {"word": "kusanyika", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Stative form of -kusanya"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "kusanyika", "irregular": []}
 {"word": "kusanyikeni", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kusanyikeni", "irregular": []}
+{"word": "kusanyiko", "pos": "Noun", "pos_all": [], "senses": ["multitude"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kusanyiko", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "kusanywa", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Passive form of -kusanya"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kusanywa", "irregular": []}
 {"word": "kusema", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kusema", "irregular": []}
 {"word": "kusemezana", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kusemezana", "irregular": []}
@@ -2744,7 +2746,7 @@
 {"word": "kutimizwa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutimizwa", "irregular": []}
 {"word": "kutisha", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutisha", "irregular": []}
 {"word": "kutiwa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutiwa", "irregular": []}
-{"word": "kutoa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutoa", "irregular": []}
+{"word": "kutoa", "pos": "Verb", "pos_all": ["Verb"], "senses": ["give"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutoa", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "kutoamini", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutoamini", "irregular": []}
 {"word": "kutoandaa", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutoandaa", "irregular": []}
 {"word": "kutofautisha", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kutofautisha", "irregular": []}
@@ -2794,7 +2796,7 @@
 {"word": "kuukuu", "pos": "Adjective", "pos_all": ["Adjective"], "senses": ["old", "worn out"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuukuu", "irregular": []}
 {"word": "kuuliza", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuuliza", "irregular": []}
 {"word": "kuumbwa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuumbwa", "irregular": []}
-{"word": "kuume", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuume", "irregular": []}
+{"word": "kuume", "pos": "Unknown", "pos_all": [], "senses": ["right"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuume", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "kuumwa", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuumwa", "irregular": []}
 {"word": "kuungana", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuungana", "irregular": []}
 {"word": "kuunganisha", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "kuunganisha", "irregular": []}
@@ -4801,7 +4803,7 @@
 {"word": "sindika", "pos": "Verb", "pos_all": ["Verb"], "senses": ["to extract", "to shut (door or window)"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "sindika", "irregular": []}
 {"word": "singa", "pos": "Noun", "pos_all": ["Noun"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "singa", "irregular": []}
 {"word": "sinia", "pos": "Noun", "pos_all": ["Noun"], "senses": ["platter, tray (a usually round metal tray for carrying food)"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "sinia", "irregular": []}
-{"word": "sio", "pos": "Verb", "pos_all": ["Verb"], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "sio", "irregular": []}
+{"word": "sio", "pos": "Verb", "pos_all": ["Verb"], "senses": ["not"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "sio", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "siombi", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "siombi", "irregular": []}
 {"word": "sioni", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "sioni", "irregular": []}
 {"word": "sipaswi", "pos": "Unknown", "pos_all": [], "senses": [], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "sipaswi", "irregular": []}
@@ -5557,6 +5559,7 @@
 {"word": "ungua", "pos": "Verb", "pos_all": ["Verb"], "senses": ["to burn, to be on fire"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "ungua", "irregular": []}
 {"word": "unguza", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Causative form of -ungua: to burn, char, scorch"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "unguza", "irregular": []}
 {"word": "ungwa", "pos": "Verb", "pos_all": ["Verb"], "senses": ["Passive form of -unga"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "ungwa", "irregular": []}
+{"word": "unyenyekevu", "pos": "Noun", "pos_all": [], "senses": ["humility"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "unyenyekevu", "irregular": [], "gloss_source": "gemma+aligner"}
 {"word": "unyoya", "pos": "Noun", "pos_all": ["Noun"], "senses": ["feather", "fur (hairy coat of a mammal, especially when fine, soft and thick)", "hair (of an animal)"], "homograph": false, "in_scripture": false, "inflection_class": null, "stem": "unyoya", "irregular": []}
 {"word": "unywele", "pos": "Noun", "pos_all": ["Noun"], "senses": ["a piece of hair (a pigmented filament of keratin which grows from a follicle on the human head)"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "unywele", "irregular": []}
 {"word": "uoga", "pos": "Noun", "pos_all": ["Noun"], "senses": ["alternative form of woga (“fear”)"], "homograph": false, "in_scripture": true, "inflection_class": null, "stem": "uoga", "irregular": []}

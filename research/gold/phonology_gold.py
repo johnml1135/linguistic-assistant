@@ -104,9 +104,30 @@ def alpha_harmony_rule(feature: str = "back", target_nc: str = "nc_vow") -> tupl
 
 
 def active_phon_rules(pair: str) -> list[tuple[str, str]]:
-    """The phonological rules to emit into this pair's HC grammar (id, xml). Currently empty for the four
-    target langs: Spanish/Indonesian alternations are captured by inflection-class splits + allomorphy
-    (recall 1.0), and meN- place-assimilation needs consonant place features (the next inventory add).
-    The emission path is wired + verified; flip a rule's `status` to `active` and build it here to use it.
+    """The phonological rules to emit into this pair's HC grammar (id, xml) — read the gold's
+    `phonology_induced.jsonl` and build the HC `<PhonologicalRule>` for every rule whose `status` is
+    `active` (this is what makes rule PROMOTION operational: `review.promote` flips the status, and the
+    gold parse then APPLIES the rule). Only kinds with an emitter are built; others are skipped (honest):
+      harmony       → alpha-variable vowel-height rule (`alpha_harmony_rule`)
+      assimilation  → needs consonant PLACE features (the next inventory add) — not yet emittable.
     """
-    return []
+    import json
+    from gold.goldio import FROZEN
+    p = FROZEN / pair / "phonology_induced.jsonl"
+    if not p.exists():
+        return []
+    out: list[tuple[str, str]] = []
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        r = json.loads(line)
+        if r.get("status") != "active":
+            continue
+        if r.get("kind") == "harmony":
+            out.append(alpha_harmony_rule(feature="hi", target_nc="nc_vow"))   # vowel-height harmony
+        # assimilation: skipped until the consonant-place-feature emitter exists
+    return out
+
+
+# kinds for which we can currently emit a loadable+applied HC PhonologicalRule (the promotion-buildable set)
+EMITTABLE_KINDS = {"harmony"}

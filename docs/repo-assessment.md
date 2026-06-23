@@ -47,9 +47,11 @@ Implications:
 
 ## Workstream 2 — consolidation (stop the rot)
 
-- [ ] **Collapse the four phonology modules into one.** Today: `cycle/phonology.py`, `cycle/hc_phonology.py`,
-      `golden/reference/phonology_gold.py`, `golden/reference/phonology_induce.py`. Target: one induction +
-      emission module (the HC archiphoneme/harmony path) with the reference side consuming it as a check.
+- [~] **Collapse the phonology modules into one pipeline — DESIGNED** (`docs/phonology-architecture.md`,
+      2026-06-23): one morphophonology pipeline (substrate→detect→infer-UR→ordered-rule→verify→promote) with
+      two evidence streams (text now, audio deferred), grounded in SPE/HC theory. Merge map + tasks in the
+      doc; implementation pending. Biggest gap it surfaces: **rules need ordering + strata** (HC is SPE
+      ordered-rule phonology; ours are a flat set).
 - [ ] **Audit `parsegym/`.** Only `questions.py` is reused (by `deferrals/`). Decide the fate of
       `curate.py` / `assess.py` / `gym/` now that `deferrals/validation.py` generates ablation scenarios —
       keep `questions.py`, retire or fold the rest.
