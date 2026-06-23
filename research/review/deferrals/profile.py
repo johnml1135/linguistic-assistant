@@ -54,6 +54,7 @@ class LanguageProfile:
     feature_space: dict = field(default_factory=dict)      # dim  -> Feature(bool/value)
     orthography: dict = field(default_factory=dict)
     operational: dict = field(default_factory=dict)        # auto_accept_bar, pivot, resources, …
+    switches: dict = field(default_factory=dict)           # the 12 master switches: id -> recorded decision
 
     # ---- the two jobs --------------------------------------------------------------------------
     def allows_affix_kind(self, kind: str) -> bool:
@@ -210,6 +211,56 @@ def save(profile: LanguageProfile) -> Path:
 def seed_all() -> dict:
     """Write the seed profiles for the four languages; returns the paths."""
     return {pair: str(save(_seed(pair))) for pair in ("spa", "ind", "tgl", "swh")}
+
+
+# --------------------------------------------------------------------------- record the master switches
+def _present_from(switch_id: str, value) -> bool:
+    """Project a switch's contour value onto a boolean process/feature presence."""
+    if switch_id in ("infixation", "case", "vowel_harmony", "nasal_assimilation"):
+        return value == "present"
+    if switch_id == "tone":
+        return value not in ("absent", None, False)
+    if switch_id in ("reduplication", "agreement_head_marking", "articles"):
+        return value not in ("absent", "none", None, False)
+    return bool(value)
+
+
+def write_switches(profile: "LanguageProfile", detected: list, confirmations: dict | None = None) -> "LanguageProfile":
+    """Record the detected (and human-confirmed) master switches into the profile: the audit record in
+    `profile.switches`, AND a projection onto the gating features (`morph_type`, `affix_processes`,
+    `phon_processes`, `feature_space`) so the decision BINDS later analysis via `allowed_affix_kinds` etc.
+    A human-confirmed switch is `locked` (hard prune); a detector-only one is a soft prior.
+
+    `detected` is a list of `profile_detect.Switch`; `confirmations` maps switch-id → the human's chosen
+    contour value (its presence makes the switch `locked`, provenance `linguist`)."""
+    from .switches import BY_ID
+    confirmations = confirmations or {}
+    for s in detected:
+        confirmed = s.name in confirmations
+        value = confirmations.get(s.name, s.value)
+        conf = 1.0 if confirmed else float(s.confidence)
+        prov = "linguist" if confirmed else "detected"
+        profile.switches[s.name] = {"value": value, "confidence": conf, "provenance": prov,
+                                    "evidence": s.evidence, "locked": confirmed,
+                                    "internet": s.internet, "agrees": s.agrees}
+        sd = BY_ID.get(s.name)
+        if sd is None or value in (None, "unknown"):
+            continue
+        sec, name = sd.profile_target
+        if sec == "morph_type":
+            profile.morph_type = value
+        elif sec == "_meta":
+            profile.operational.setdefault("switches_meta", {})[name] = value
+        else:
+            feat = Feature(value=_present_from(s.name, value), confidence=conf, locked=confirmed,
+                           provenance=prov, slug=sd.explanation_slug)
+            getattr(profile, sec)[name] = feat
+            if s.name == "gender_or_noun_class":   # one switch, two features (gender ≠ noun-class)
+                profile.feature_space["gender"] = Feature(value=(value == "gender"), confidence=conf,
+                                                          locked=confirmed, provenance=prov, slug="feat:gender")
+                profile.feature_space["noun_class"] = Feature(value=(value == "noun-class"), confidence=conf,
+                                                             locked=confirmed, provenance=prov, slug="feat:noun_class")
+    return profile
 
 
 def conflict_report(pair: str) -> list[dict]:

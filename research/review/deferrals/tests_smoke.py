@@ -434,18 +434,76 @@ def test_profile_detect_switches_from_inputs():
     # affix polarity from an induced inventory
     affixes = [{"kind": "prefix", "count": 5}] * 6 + [{"kind": "suffix", "count": 5}] * 2
     assert PD.detect_affix_polarity(affixes).value == "prefixing"
-    # reduplication from doubled word types (detector needs ≥5 doubled types to fire)
-    f = Counter({"bukubuku": 3, "lalaki": 4, "gabigabi": 5, "araw-araw": 2, "dahandahan": 4,
-                 "tuwituwi": 3, "house": 9, "word": 8, "name": 7})
+    # reduplication: ≥8 doublings whose DE-DOUBLED base is attested (the productivity gate)
+    redup = ["buku", "gabi", "tuwi", "kando", "mbali", "haba", "dahan", "wira", "lala"]
+    f = Counter({b: 5 for b in redup})
+    f.update({b + b: 3 for b in redup})          # bukubuku ⇐ buku, etc.
+    f.update({"house": 9, "beber": 6})           # beber: 'be'-repeat but 'ber' base NOT attested → rejected
     assert PD.detect_reduplication(f).value is True
-    # infixation: tatawag attested + tinatawag (insert -in- at pos 1) → present signal
-    f2 = Counter({w: 6 for w in ["tatawag", "tinatawag", "sulat", "sumulat", "bili", "bumili",
-                                 "kain", "kumain", "lakad", "lumakad", "tawag", "tumawag"]})
+    # infixation: ≥8 distinct stems hosting -um-, dominating the noise floor (productivity + dominance)
+    stems = ["sulat", "bili", "kain", "lakad", "tawag", "basa", "kuha", "sabi", "bigay", "tahi"]
+    f2 = Counter({s: 6 for s in stems})
+    f2.update({s[0] + "um" + s[1:]: 6 for s in stems})   # s‹um›ulat etc.
     sw = PD.detect_infixation(f2)
-    assert sw.value is True
+    assert sw.value is True and "um" in sw.evidence
     # cross-check compatibility
     assert PD._compatible("agglutinative", "agglutinative") and PD._compatible(True, True)
     assert not PD._compatible(True, False)
+
+
+def test_switch_catalog_complete():
+    from review.deferrals import switches as SW
+    assert len(SW.CATALOG) == 12
+    ids = {s.id for s in SW.CATALOG}
+    assert ids == {"synthesis", "affix_polarity", "infixation", "reduplication", "vowel_harmony",
+                   "nasal_assimilation", "tone", "gender_or_noun_class", "case", "tam_locus",
+                   "agreement_head_marking", "articles"}
+    for s in SW.CATALOG:
+        assert s.presentation and s.contours and s.evidence and s.constraint and s.profile_target
+    # every switch is grounded in linguistic theory (basis + citation)
+    assert set(SW.THEORY) >= ids
+    for sid in ids:
+        assert len(SW.theory(sid)) > 40 and "(" in SW.theory(sid)   # has a cited basis
+
+
+def test_present_switch_claim():
+    from review.deferrals import switches as SW
+    from review.deferrals.profile_detect import Switch
+    det = Switch("infixation", "present", 0.4, "top insert -ak- 43 stems", internet=False, agrees=False)
+    claim = SW.present_switch(det)
+    assert claim["question"].startswith("Does your language") and "present" in claim["options"]
+    assert claim["best_guess"] == "present" and claim["conflict"] is True and claim["reference_says"] is False
+
+
+def test_write_switches_binds_to_constraints():
+    """The load-bearing requirement: a recorded switch projects onto the profile and constrains the
+    hypothesis space."""
+    from review.deferrals import profile as P, taxonomy
+    from review.deferrals.profile_detect import Switch
+    prof = P._seed("tgl")
+    detected = [
+        Switch("infixation", "absent", 0.4, ""),                 # confirmed absent → must hard-prune infix
+        Switch("gender_or_noun_class", "noun-class", 0.9, ""),   # confirmed → noun_class on, gender off
+    ]
+    P.write_switches(prof, detected, confirmations={"infixation": "absent", "gender_or_noun_class": "noun-class"})
+    # recorded in config with provenance/locked
+    assert prof.switches["infixation"]["provenance"] == "linguist" and prof.switches["infixation"]["locked"]
+    # projected onto gating features
+    assert prof.allows_affix_kind("infix") is False          # locked-absent → hard prune
+    assert prof.feature_present("noun_class") and not prof.feature_present("gender")
+    # and it reaches the taxonomy: an infix affix deferral yields NO hypothesis for tgl now
+    rec = {"affix": "um", "kind": "infix", "function": "actor focus"}
+    _, _, hyps = taxonomy.enumerate_hypotheses(rec, GOLD, allowed_affix_kinds=prof.allowed_affix_kinds())
+    assert hyps == []                                        # the recorded switch constrained the search
+
+
+def test_profile_switches_roundtrip():
+    from review.deferrals import profile as P
+    from review.deferrals.profile_detect import Switch
+    prof = P._seed("swh")
+    P.write_switches(prof, [Switch("reduplication", "full", 0.99, "")], confirmations={"reduplication": "full"})
+    back = P.LanguageProfile.from_dict(prof.to_dict())
+    assert back.switches["reduplication"]["value"] == "full" and back.switches["reduplication"]["locked"]
 
 
 def test_backlog_dedup_and_build(tmp_path):

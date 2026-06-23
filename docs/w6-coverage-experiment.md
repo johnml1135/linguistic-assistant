@@ -170,6 +170,38 @@ human yes/no), and they constrain induction + the gold-raise (profile already ga
 Known limitation: the infix/reduplication detectors over-fire on coincidental substrings — tighten with a
 minimal-pair + Tolerance-Principle **productivity** gate (a real affix recurs across many distinct stems).
 
+## The 12 master switches — reviewed, refined, theory-grounded (2026-06-22)
+
+All 12 typological switches detected from the corpus (`review/deferrals/profile_detect.py`), each grounded
+in a cited theory (`switches.py::THEORY`), cross-checked against the WALS/Grambank seed, and recorded into
+the profile where they **constrain** later analysis (`profile.write_switches`). Review vs known typology
+(✓ = high-confidence & agrees; ⚠ = down-weighted to 0.4 + flagged for the human):
+
+| switch | grounding | spa | ind | tgl | swh |
+|---|---|---|---|---|---|
+| synthesis | Greenberg M/W index | fusional ✓ | aggl ✓ | ⚠(M/W 2.16 borderline) | aggl ✓ |
+| affix_polarity | Greenberg U27 / WALS 26A | suffixing ✓ | both | prefixing ✓ | prefixing ✓ |
+| infixation | Yu 2007 + Yang productivity | ⚠ | present | **present ✓** (-in-×154) | ⚠ |
+| reduplication | Inkelas&Zoll; base must be attested | ⚠ | ✓ | ✓ | ✓ |
+| vowel_harmony | autosegmental (Clements) | absent ✓ | absent ✓ | absent ✓ | present ✓ |
+| nasal_assimilation | archiphoneme/place assim. | ⚠ | present ✓ | present | ⚠ |
+| tone | WALS 13A | absent ✓ | ✓ | ✓ | ✓ |
+| gender_or_noun_class | Corbett 1991 | **gender ✓** | ⚠ | ⚠ | **noun-class ✓** |
+| case | Blake 2001 | absent ✓ | ✓ | ✓ | ✓ |
+| tam_locus | Bybee 1985 | verb-suffix | _(needs align)_ | _(needs align)_ | verb-prefix ✓ |
+| agreement_head_marking | Nichols 1986 | ⚠(pro-drop) | _(needs align)_ | _(needs align)_ | **subject ✓** |
+| articles | WALS 37A / Lyons | both ✓ | _(needs align)_ | _(needs align)_ | ⚠(m- class≠article) |
+
+**Refinements made:** synthesis → Greenberg M/W (dropped the unreliable agglutination-strip); gender vs
+noun-class → Corbett -o/-a vs *recurring* class-prefix systems (fixed spa→gender, kept swh→noun-class);
+infix/reduplication → productivity gates (distinct stems + dominance; de-doubled base must be attested);
+agreement/tam → both verb edges (Nichols); articles → a *dominant* morpheme (diffuse ⇒ none). **The key
+honesty mechanism:** a detector guess that conflicts with reliable typology is down-weighted to 0.4 and
+flagged — so every *high-confidence* claim agrees with known typology, and the residual hard cases
+(tgl fusional/agglutinative; ind/tgl Philippine-type "noun-class"; swh phantom articles) surface to the
+human rather than asserting. The genuinely-hard distinctions (agglutinative↔fusional, Philippine concord)
+are not perfectly auto-classifiable from raw text — by design they defer.
+
 ## Tasks to close the gap (feeds repo-assessment W3/W6)
 
 - [x] **Master-switch detector** (`deferrals/profile_detect.py`) — ~10 switches detected from corpus +
