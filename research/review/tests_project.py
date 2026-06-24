@@ -59,6 +59,25 @@ def test_classify_by_subject_marking_splits_m_ambiguity(monkeypatch):
     assert cl["mwana"]["class"] == "1" and cl["mkono"]["class"] == "3" and cl["watu"]["class"] == "2"
 
 
+def test_word_order_computes_svo(monkeypatch):
+    toks = [(0, "man", "NOUN", "nsubj", 1, {}), (1, "sees", "VERB", "root", 1, {}),
+            (2, "house", "NOUN", "obj", 1, {})]
+    monkeypatch.setattr(PJ, "get_parser", lambda pivot="en", backend="auto": (lambda s: toks))
+    monkeypatch.setattr(PJ, "_word_alignment", lambda pair, sample: (
+        [("R", ["man", "sees", "house"], ["mtu", "ona", "nyumba"])],
+        _Table({"mtu": "man", "ona": "sees", "nyumba": "house"})))
+    assert PJ.word_order("swh")["dominant"] == "SVO"      # mtu(0) ona(1) nyumba(2) → S V O
+
+
+def test_label_tam_derives_tense_from_pivot(monkeypatch):
+    toks = [(0, "walked", "VERB", "root", 0, {"Tense": "Past"})]
+    monkeypatch.setattr(PJ, "get_parser", lambda pivot="en", backend="auto": (lambda s: toks))
+    monkeypatch.setattr(PJ, "_word_alignment", lambda pair, sample: (
+        [("R", ["walked"], ["alitembea"])] * 8, _Table({"alitembea": "walked"})))
+    # alitembea → SM 'a', rest 'litembea', TAM slot 'li' ← derived as Past from the English Tense feature
+    assert PJ.label_tam("swh", min_count=1)["derived_tam_labels"].get("li", {}).get("tense") == "Past"
+
+
 def test_induce_tam_finds_known_swahili_markers():
     r = PJ.induce_tam("swh")
     hits = {f["marker"] for f in r["known_hits"]}

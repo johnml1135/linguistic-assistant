@@ -41,7 +41,7 @@ def _spacy_parser(pivot: str):
 
     def fn(sentence: str):
         doc = nlp(sentence)
-        return [(t.i, t.text.lower(), t.pos_, t.dep_, t.head.i) for t in doc]
+        return [(t.i, t.text.lower(), t.pos_, t.dep_, t.head.i, t.morph.to_dict()) for t in doc]
     return fn
 
 
@@ -184,7 +184,9 @@ def _udpipe_parser(pivot: str):
             if line and not line.startswith("#") and "\t" in line:
                 c = line.split("\t")
                 if c[0].isdigit():
-                    toks.append((int(c[0]) - 1, c[1].lower(), c[3], c[7], int(c[6]) - 1 if c[6].isdigit() else int(c[0]) - 1))
+                    feats = dict(kv.split("=", 1) for kv in c[5].split("|") if "=" in kv) if c[5] != "_" else {}
+                    toks.append((int(c[0]) - 1, c[1].lower(), c[3], c[7],
+                                 int(c[6]) - 1 if c[6].isdigit() else int(c[0]) - 1, feats))
         return toks
     return fn
 
@@ -227,7 +229,8 @@ def _udpipe_rest_parser(pivot: str):
                 c = line.split("\t")
                 if c[0].isdigit():
                     h = int(c[6]) - 1 if c[6].isdigit() else int(c[0]) - 1
-                    toks.append((int(c[0]) - 1, c[1].lower(), c[3], c[7], h))
+                    feats = dict(kv.split("=", 1) for kv in c[5].split("|") if "=" in kv) if c[5] != "_" else {}
+                    toks.append((int(c[0]) - 1, c[1].lower(), c[3], c[7], h, feats))
         return toks
     return fn
 
@@ -264,13 +267,16 @@ def _word_alignment(pair: str, sample: int):
 
 
 def project_verse(pivot_tokens: list, src: list, tgt: list, table) -> list[dict]:
-    """For each vernacular word, inherit the dep-role + head of its best-aligned pivot token (restricted to
-    tokens present in this verse). Returns [{vern, role, head_vern}]."""
-    dep = {}; head_word = {}
-    for i, txt, pos, d, h in pivot_tokens:
+    """For each vernacular word, inherit the dep-role, POS, morphological FEATS, and head of its
+    best-aligned pivot token (restricted to tokens present in this verse). Returns
+    [{vern, idx, role, pos, feats, head_vern}]. Tokens are (i, text, pos, dep, head, feats)."""
+    dep = {}; pos_of = {}; feats_of = {}; head_word = {}
+    for tok in pivot_tokens:
+        i, txt, pos, d, h = tok[0], tok[1], tok[2], tok[3], tok[4]
+        feats = tok[5] if len(tok) > 5 else {}
         if pos == "PROPN":               # names (the Matthew-1 genealogy tail) aren't structure — skip
             continue
-        dep.setdefault(txt, d)
+        dep.setdefault(txt, d); pos_of.setdefault(txt, pos); feats_of.setdefault(txt, feats)
         head_word.setdefault(txt, pivot_tokens[h][1] if 0 <= h < len(pivot_tokens) else txt)
     v2e = {vw: (table.best(vw).source_word if table.best(vw) else None) for vw in set(tgt)}
     e2v: dict = {}
@@ -278,11 +284,97 @@ def project_verse(pivot_tokens: list, src: list, tgt: list, table) -> list[dict]
         if ew:
             e2v.setdefault(ew, vw)
     out = []
-    for vw in tgt:
+    for idx, vw in enumerate(tgt):
         ew = v2e.get(vw)
         if ew and ew in dep:
-            out.append({"vern": vw, "role": dep[ew], "head_vern": e2v.get(head_word.get(ew))})
+            out.append({"vern": vw, "idx": idx, "role": dep[ew], "pos": pos_of.get(ew, ""),
+                        "feats": feats_of.get(ew, {}), "head_vern": e2v.get(head_word.get(ew))})
     return out
+
+
+# ── THING 1: derive TAM labels from the English Tense feature (retire the hardcoded TAM_KNOWN glosses) ───
+def label_tam(pair: str, pivot: str = "en", sample: int = 0, min_count: int = 8) -> dict:
+    """Project the English verb's Tense onto the vernacular verb, and tally (vernacular TAM marker → tense).
+    Derives na→present, li→past, ta→future FROM DATA — no language-specific gloss table."""
+    parser = get_parser(pivot)
+    if parser is None:
+        return {"error": "no pivot parser", "pivot": pivot}
+    verses, table = _word_alignment(pair, sample)
+    by_marker: dict[str, Counter] = {}
+    for _ref, src, tgt in verses:
+        if not src or not tgt:
+            continue
+        for p in project_verse(parser(" ".join(src)), src, tgt, table):
+            tense = p["feats"].get("Tense")
+            if p["pos"] == "VERB" and tense:
+                v = p["vern"]; sm = subject_marker(v)
+                if sm == "?" or len(v) <= len(sm) + 2:
+                    continue
+                by_marker.setdefault(v[len(sm):][:2], Counter())[tense] += 1   # 2-char TAM slot, derived
+    labels = {}
+    for tam, c in by_marker.items():
+        if sum(c.values()) >= min_count:
+            t, n = c.most_common(1)[0]
+            labels[tam] = {"tense": t, "n": n, "confidence": round(n / sum(c.values()), 3)}
+    return {"pair": pair, "derived_tam_labels": labels}
+
+
+# ── THING 2: find the vernacular NEGATION marker by projecting English negation ─────────────────────────
+NEG_WORDS = {"not", "n't", "no", "never", "cannot", "nor", "neither", "without"}
+
+
+def induce_negation(pair: str, pivot: str = "en", sample: int = 0, min_neg: int = 10) -> dict:
+    """A verse is negated if the English clause carries negation (dep=neg / Polarity=Neg / a neg word).
+    Compare vernacular verb-initial morphemes in negated vs affirmative verses → the negation marker."""
+    parser = get_parser(pivot)
+    if parser is None:
+        return {"error": "no pivot parser", "pivot": pivot}
+    from gold.goldio import load_gold
+    verbs = {w for w, p in load_gold(pair).get("pos", {}).items() if str(p).lower() == "verb"}
+    verses, _table = _word_alignment(pair, sample)
+    neg, aff = Counter(), Counter()
+    for _ref, src, tgt in verses:
+        if not tgt:
+            continue
+        toks = parser(" ".join(src)) if src else []
+        is_neg = any(t[1] in NEG_WORDS or t[3] == "neg" or (len(t) > 5 and t[5].get("Polarity") == "Neg")
+                     for t in toks)
+        bucket = neg if is_neg else aff
+        for w in tgt:
+            if w in verbs and len(w) > 3:
+                bucket[w[:2]] += 1
+    out = []
+    for pre, n in neg.most_common(25):
+        a = aff.get(pre, 0)
+        ratio = n / (a + 1)
+        if n >= min_neg and ratio >= 2.0:                # over-represented in negated clauses
+            out.append({"marker": pre, "in_neg": n, "in_aff": a, "ratio": round(ratio, 1)})
+    return {"pair": pair, "negation_markers": out}
+
+
+# ── THING 3: word order (S/V/O) from the projected roles ────────────────────────────────────────────────
+def word_order(pair: str, pivot: str = "en", sample: int = 0) -> dict:
+    """Constituent order from projected subject/verb/object positions → SVO/SOV/VSO… (a typological switch
+    we already have the data for)."""
+    parser = get_parser(pivot)
+    if parser is None:
+        return {"error": "no pivot parser", "pivot": pivot}
+    verses, table = _word_alignment(pair, sample)
+    full, sv = Counter(), Counter()
+    for _ref, src, tgt in verses:
+        if not src or not tgt:
+            continue
+        proj = project_verse(parser(" ".join(src)), src, tgt, table)
+        s = next((p for p in proj if p["role"] in ("nsubj", "nsubjpass")), None)
+        o = next((p for p in proj if p["role"] in ("obj", "dobj")), None)
+        v = next((p for p in proj if p["role"] == "root" and p["pos"] == "VERB"), None)
+        if s and v and o and len({s["idx"], v["idx"], o["idx"]}) == 3:
+            order = sorted([("S", s["idx"]), ("V", v["idx"]), ("O", o["idx"])], key=lambda x: x[1])
+            full["".join(x[0] for x in order)] += 1
+        if s and v:
+            sv["SV" if s["idx"] < v["idx"] else "VS"] += 1
+    return {"pair": pair, "svo_orders": full.most_common(6), "subject_verb": sv.most_common(),
+            "dominant": (full.most_common(1)[0][0] if full else None)}
 
 
 def main(argv: list[str] | None = None) -> int:
