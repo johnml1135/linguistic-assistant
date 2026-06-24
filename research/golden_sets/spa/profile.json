@@ -142,5 +142,87 @@
    "wiktionary": true,
    "audio": true
   }
+ },
+ "switches": {},
+ "class_schema": {
+  "strategy": "gender-by-article",
+  "status": "declared",
+  "version": 2,
+  "classes": [
+   {
+    "id": "m",
+    "name": "masculine",
+    "semantics": "grammatical gender",
+    "concord": {
+     "def_art_sg": "el",
+     "def_art_pl": "los",
+     "indef_art_sg": "un",
+     "adjective_suffix": "o"
+    },
+    "criteria": {
+     "signal": "definite/indefinite article agreement"
+    },
+    "evidence": {
+     "n_nouns": 555,
+     "examples": [
+      "señor",
+      "hombres",
+      "espíritu",
+      "hijo",
+      "hombre",
+      "día",
+      "cielos",
+      "mundo"
+     ]
+    },
+    "provenance": "propose.gender-by-article",
+    "confidence": 0.9
+   },
+   {
+    "id": "f",
+    "name": "feminine",
+    "semantics": "grammatical gender",
+    "concord": {
+     "def_art_sg": "la",
+     "def_art_pl": "las",
+     "indef_art_sg": "una",
+     "adjective_suffix": "a"
+    },
+    "criteria": {
+     "signal": "definite/indefinite article agreement"
+    },
+    "evidence": {
+     "n_nouns": 600,
+     "examples": [
+      "tierra",
+      "ley",
+      "palabra",
+      "verdad",
+      "mujer",
+      "ciudad",
+      "mar",
+      "carne"
+     ]
+    },
+    "provenance": "propose.gender-by-article",
+    "confidence": 0.9
+   }
+  ],
+  "alternatives": [
+   {
+    "option": "gender only (2 classes)",
+    "note": "number handled as a separate cross-cutting feature (recommended)"
+   },
+   {
+    "option": "gender × number (4 classes)",
+    "note": "if singular/plural concord differs enough to be its own break"
+   }
+  ],
+  "provenance": {
+   "source": "review.classes.propose",
+   "controllers": 1155
+  },
+  "pair": "spa",
+  "declared_by": "ai-accepted"
  }
 }

@@ -21,6 +21,12 @@ These are settled — encode them, don't relitigate.
 3. **The frontier is tgl/swh morphology**, recovered via **morpheme-alignment + Gemma + deferral tickets** —
    the stack just built. spa/ind are proven; further spa polish is not the research edge. This is *why* C#
    is deferred and *what the system is being built to do*.
+4. **The human owns the foundational cuts; the machine suggests + populates + flags.** The process is three
+   committed phases — **switches → classes → exceptions** (`docs/workflow.md`). Noun/verb classes are a
+   **human-declared schema** (the compile root: HC features, concord, rule scope all generate from it); the
+   machine never auto-commits class boundaries. Rules are **ordered blocks** (default + exception classes +
+   individuals) induced by recursive Tolerance; agreement is conditioning with a cross-word controller.
+   Design in `docs/phonology-architecture.md` §8.
 
 ### The gold principle (sharpened)
 
@@ -47,6 +53,23 @@ Implications:
 
 ## Workstream 2 — consolidation (stop the rot)
 
+- [x] **Frontier finder built** (`review/frontier.py` + `docs/chunk-types.md`, 2026-06-24): the system
+      AUTO-FINDS a language's next chunk of work from the data — a typed catalog of ~12 chunk types
+      (orthography·switches·POS·affixes·morphotactics·classes·agreement·allomorphy·morphophonology·
+      non-concatenative·exceptions·homographs), each with an unexplained-mass probe + readiness gate;
+      ranks the ready chunks and names the next with evidence + action. Live (no hand-tuning): swh→agreement
+      (computed the same thing I'd hand-picked from the 688), ind→affixes, tgl→POS, spa→classes. NEXT chunk
+      is always the top TRUE coverage gap; count-based proxies (allomorphy) are flagged + excluded from the
+      recommendation. 5 tests; 211 green. **This is the product** — working on unknown languages, per
+      decision #4 / `docs/workflow.md`.
+- [x] **Class-system lifecycle built** (`review/classes.py` + `class_schema` on `LanguageProfile`, 2026-06-24):
+      suggest → declare → utilize, with the confidence tier (`route`: foundational class-system never
+      auto-commits; leaf assignments auto-push when verified-confident, stamped + reversible). The declared
+      schema is the **compile root** in the profile. Spanish live: suggest 2 genders (m 1141/f 929 + concord)
+      → declare v1 → utilize 2070 nouns, 55 textbook exceptions (*día*, *mano*, *alma*=el-agua, *profeta*).
+      Strategy-dispatched (Bantu noun-class co-cluster slots behind the same interface). 9 tests; 205 green.
+      Implements `docs/workflow.md` §2 + the auto-push tier. Caveat: members ≈ "word after article" (some
+      non-noun noise, e.g. *alimenta*) — same-morpheme/POS filter is the follow-on.
 - [x] **Glide-collapse emitter + HC round-trip gate built** (`engine/hc_collapse.py`, 2026-06-24): turns a
       glide candidate into a real HC rule (`[+high,+syl]→[−syl]/__V`; one rule covers u→w & i→y) and
       VALIDATES it by round-trip, verified vs hc.exe. The gate (a) samples the rule's OWN counterexamples

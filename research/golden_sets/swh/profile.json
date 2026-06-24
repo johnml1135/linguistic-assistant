@@ -143,5 +143,333 @@
    "wiktionary": true,
    "audio": true
   }
+ },
+ "switches": {},
+ "class_schema": {
+  "strategy": "bantu-prefix",
+  "status": "declared",
+  "version": 1,
+  "classes": [
+   {
+    "id": "1/3",
+    "name": "m-/mw- (cl1 persons · cl3 things, sg)",
+    "semantics": "noun class",
+    "prefixes": [
+     "mw",
+     "m"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 355,
+     "examples": [
+      "mba",
+      "mbao",
+      "mbatizaji",
+      "mbawa",
+      "mbegu",
+      "mbia",
+      "mbingu",
+      "mbinguni"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "2",
+    "name": "wa- (cl2 persons, pl)",
+    "semantics": "noun class",
+    "prefixes": [
+     "wa"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 154,
+     "examples": [
+      "waadilifu",
+      "waalimu",
+      "waaminifu",
+      "waamuzi",
+      "waandishi",
+      "waarabu",
+      "waashi",
+      "waasi"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "4",
+    "name": "mi- (cl4 things, pl)",
+    "semantics": "noun class",
+    "prefixes": [
+     "mi"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 74,
+     "examples": [
+      "miaka",
+      "miale",
+      "miamba",
+      "miandamo",
+      "michango",
+      "miche",
+      "michezo",
+      "midomo"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "5",
+    "name": "ji-/Ø (cl5)",
+    "semantics": "noun class",
+    "prefixes": [
+     "ji"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 13,
+     "examples": [
+      "jicho",
+      "jiji",
+      "jijini",
+      "jimbo",
+      "jina",
+      "jini",
+      "jino",
+      "jinsi"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "6",
+    "name": "ma- (cl6, pl)",
+    "semantics": "noun class",
+    "prefixes": [
+     "ma"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 231,
+     "examples": [
+      "maadili",
+      "maadui",
+      "maafisa",
+      "maagano",
+      "maagizo",
+      "maajabu",
+      "maakida",
+      "maamuzi"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "7",
+    "name": "ki-/ch- (cl7, sg)",
+    "semantics": "noun class",
+    "prefixes": [
+     "ki",
+     "ch"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 147,
+     "examples": [
+      "chaa",
+      "chachu",
+      "chaguo",
+      "chaguzi",
+      "chaka",
+      "chakula",
+      "chango",
+      "chanzo"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "8",
+    "name": "vi-/vy- (cl8, pl)",
+    "semantics": "noun class",
+    "prefixes": [
+     "vi",
+     "vy"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 63,
+     "examples": [
+      "viapo",
+      "viatu",
+      "vibaba",
+      "vibanda",
+      "vibao",
+      "viboko",
+      "vichapo",
+      "vichochoro"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "9/10",
+    "name": "n- (cl9/10 animals)",
+    "semantics": "noun class",
+    "prefixes": [
+     "n"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 81,
+     "examples": [
+      "nabii",
+      "nadhiri",
+      "nafaka",
+      "nafasi",
+      "nafsi",
+      "nafuu",
+      "nahodha",
+      "nakala"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "11/14",
+    "name": "u- (cl11/14 abstracts)",
+    "semantics": "noun class",
+    "prefixes": [
+     "u"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 248,
+     "examples": [
+      "uadilifu",
+      "uadui",
+      "uaminifu",
+      "uamuzi",
+      "uandishi",
+      "uangalifu",
+      "uangalizi",
+      "uasherati"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "15",
+    "name": "ku- (cl15 infinitives)",
+    "semantics": "noun class",
+    "prefixes": [
+     "ku"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 26,
+     "examples": [
+      "kufuru",
+      "kuhani",
+      "kuheshimu",
+      "kujadili",
+      "kujadiliana",
+      "kuki",
+      "kuku",
+      "kuli"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   },
+   {
+    "id": "16-18",
+    "name": "pa-/ku-/mu- (locatives)",
+    "semantics": "noun class",
+    "prefixes": [
+     "pa"
+    ],
+    "concord": {},
+    "criteria": {
+     "signal": "noun class prefix"
+    },
+    "evidence": {
+     "n_nouns": 15,
+     "examples": [
+      "pacha",
+      "paja",
+      "paji",
+      "paka",
+      "pambano",
+      "pambo",
+      "pande",
+      "panga"
+     ]
+    },
+    "provenance": "propose.bantu-prefix",
+    "confidence": 0.7
+   }
+  ],
+  "alternatives": [
+   {
+    "option": "split cl1 (persons) vs cl3 (things) — both m-/mw-",
+    "note": "needs agreement: they take different verb concord (a- vs u-). The key subjective cut."
+   },
+   {
+    "option": "merge or split 9/10 (n-)",
+    "note": "sg/pl often syncretic; decide if they're one class or two."
+   },
+   {
+    "option": "treat locatives 16/17/18 as classes or as a separate system",
+    "note": "your call."
+   }
+  ],
+  "provenance": {
+   "source": "review.classes.propose",
+   "concord": "deferred — needs agreement detection"
+  },
+  "pair": "swh",
+  "declared_by": "ai-accepted"
  }
 }

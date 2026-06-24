@@ -55,6 +55,7 @@ class LanguageProfile:
     orthography: dict = field(default_factory=dict)
     operational: dict = field(default_factory=dict)        # auto_accept_bar, pivot, resources, …
     switches: dict = field(default_factory=dict)           # the 12 master switches: id -> recorded decision
+    class_schema: dict = field(default_factory=dict)       # the DECLARED noun/verb class system (compile root)
 
     # ---- the two jobs --------------------------------------------------------------------------
     def allows_affix_kind(self, kind: str) -> bool:

@@ -4,6 +4,10 @@ Three+ phonology tools grew separately and overlap. This proposes merging them i
 morphophonology pipeline with two evidence streams** (text-only now; audio deferred), grounded in the
 linguistic theory and in how Hermit Crab actually works.
 
+> The human-facing process this serves — the phases a linguist works through (switches → classes →
+> exceptions) and who decides what — is in **`docs/workflow.md`**. The pipeline below is what runs *inside*
+> the exceptions/rules phase, **under the declared class schema** (see §8).
+
 ## 1. What we have (the fragments)
 
 | role | module(s) today | does |
@@ -139,5 +143,43 @@ addons/audio/                      (phone-evidence producer; data artifact → s
 - [ ] One phonology smoke suite spanning substrate → detect → UR → rule → verify → promote (text-only),
       with the audio path gated.
 
+## 8. The rule is a layered block, under a declared class schema
+
+The single-rule model is too flat. Three generalizations (designed 2026-06-24, the spine of `docs/workflow.md`):
+
+**(a) A rule is an ORDERED BLOCK, not one rule.** default → exception class(es) → individual exceptions,
+ordered most-specific-first (Pāṇini / the Elsewhere Condition; executed as HC's ordered rules — the very
+ordering gap in §4.1). Induce it by **recursive Tolerance**: a rule that fails the e ≤ N/ln N bar is not
+rejected — its exceptions are re-run through the same detector to carve the largest regular sub-pattern, and
+so on, until only individuals remain (Yang's nesting). Validate the *whole ordered block* in one HC
+round-trip (specific rules ordered before general). This replaces the flat "recall == 1.0" gate that the
+glide-collapse work (`engine/hc_collapse.py`) currently uses.
+
+**(b) The conditioning environment is a PLUGGABLE dimension.** What selects a form may be the adjacent
+segment (phonology — `mu→mw`), the morphotactic slot, or **the class of an agreeing word** (agreement —
+the concord prefix tracks the head noun's class; `ukulu/ikulu/cikulu`, `el/la`). All are detected the same
+way (mutual information between form and conditioner); agreement is just conditioning whose source is a
+*cross-word controller* (Corbett's controller/target/domain/feature/value). So an "agreement paradigm" is a
+rule block whose conditioner is a class label, and `el agua` is `el/la` + a phonological exception class +
+lexical exceptions — the same block engine.
+
+**(c) Everything compiles from a DECLARED class schema (the top layer).** Noun/verb classes are foundational
+and partly subjective (breaks, numbers, names), so the **human declares them** (machine suggests an inventory
++ concord table + the alternative cuts, with evidence; it never auto-commits). The committed schema lives in
+the language profile and is the **compile root**: HC class features, the concord cells, and the *scope of
+every rule block* are generated from it. Downstream **fits-and-flags** — it assigns words to the declared
+classes and raises misfits as exceptions or amendment proposals; it does not re-cluster. See `docs/workflow.md`
+§2–3.
+
+Consolidation tasks for this layer:
+- [ ] **Declared class schema in the profile** (the compile root) + a suggest→define→utilize lifecycle:
+      co-cluster controllers by agreement footprint → present with alternative cuts → human commits → compile.
+- [ ] **Cross-word conditioner**: extend the conditioning dimension (today: adjacent segment, slot) with the
+      agreement controller's class; build controller↔target pairing off the alignment + a shallow NP window.
+- [ ] **Layered rule blocks**: the recursive-Tolerance carve + the ordered HC round-trip over the block,
+      replacing the flat single-rule gate; scope every block to the committed class labels.
+- [ ] **Clean residue before carving**: filter members through the same-morpheme/gold-feature signal so
+      exception classes are real (retires the contamination caveat on the glide-collapse verdict).
+
 ## References
-[Chomsky & Halle 1968 SPE] · [HC parser (SIL)](https://downloads.languagetechnology.org/fieldworks/Documentation/en/User_Interface/Menus/Parser/Parsing_words_(HermitCrab).htm) · [Parsing with linearly-ordered phonological rules](https://arxiv.org/pdf/cmp-lg/9411015) · [Morphophonology](https://en.wikipedia.org/wiki/Morphophonology) · [Phonemic analysis](https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/chapter/4-5-phonemic-analysis/) · [Allosaurus multilingual allophone system (Li et al. 2020)](https://arxiv.org/pdf/2002.11800)
+[Chomsky & Halle 1968 SPE] · [HC parser (SIL)](https://downloads.languagetechnology.org/fieldworks/Documentation/en/User_Interface/Menus/Parser/Parsing_words_(HermitCrab).htm) · [Parsing with linearly-ordered phonological rules](https://arxiv.org/pdf/cmp-lg/9411015) · [Morphophonology](https://en.wikipedia.org/wiki/Morphophonology) · [Phonemic analysis](https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/chapter/4-5-phonemic-analysis/) · [Allosaurus multilingual allophone system (Li et al. 2020)](https://arxiv.org/pdf/2002.11800) · Kiparsky, *Elsewhere in phonology* (the Pāṇinian/specific-before-general ordering) · Yang 2016, *The Price of Linguistic Productivity* (Tolerance Principle, recursively applied) · Corbett 1991/2006, *Gender* / *Agreement* (controller·target·domain·feature·value; agreement classes) · Evans & Gazdar 1996, *DATR* (default-inheritance morphology: defaults + exceptions + exceptions-to-exceptions)
