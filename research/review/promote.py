@@ -65,7 +65,50 @@ def raise_candidates(pair: str) -> list[RuleCandidate]:
         support = sum(sum(d.values()) for d in ev.values() if isinstance(d, dict))
         out.append(RuleCandidate(id=r["id"], pair=pair, kind="harmony",
                                  description=r["description"], members=members, support=support, rule=r))
+    # Finder A′ — allomorph collapse (same meaning, different environment) from the raw-edge detector.
+    # Glide-shaped pairs (mu/mw, vi/vy) get kind `glide-collapse` (buildable); others stay non-buildable.
+    try:
+        from review.allomorph import detect as _detect_allo
+        allo = _detect_allo(pair, source="raw", use_vectors=False)
+    except Exception:
+        allo = {"candidates": []}
+    for c in allo.get("candidates", []):
+        shape = _glide_shape(c)
+        support = sum(c.get("evidence", {}).get("support", {}).values())
+        out.append(RuleCandidate(id=c["id"], pair=pair,
+                                 kind="glide-collapse" if shape else "allomorph-collapse",
+                                 description=c["rule"], members=c["members"], support=support, rule=c))
     return out
+
+
+def _glide_shape(cand: dict) -> dict | None:
+    """If a collapse candidate is a high-vowel→glide pair (mu/mw, vi/vy, mi/my), return its underlying
+    form, the alternating vowel, and the glide form. Else None (non-glide → no emitter)."""
+    from engine.hc_collapse import GLIDE_OF
+    if not cand.get("alternating", {}).get("vocalic"):
+        return None
+    members = cand.get("members", [])
+    for ur in members:
+        if ur and ur[-1] in GLIDE_OF:
+            glide_form = ur[:-1] + GLIDE_OF[ur[-1]]
+            if glide_form in members and glide_form != ur:
+                return {"ur": ur, "vowel": ur[-1], "glide": GLIDE_OF[ur[-1]], "glide_form": glide_form}
+    return None
+
+
+def _verify_collapse(cand: RuleCandidate) -> dict:
+    """Run the HC round-trip for a glide collapse against its OWN counterexamples: pull ALL distinct
+    member words from the corpus (so the rare `ur`+vowel forms that falsify the rule — *muumini* — are
+    included, unlike a top-k-by-frequency sample) and round-trip them."""
+    from engine.hc_collapse import glide_collapse_round_trips
+    from review.allomorph import member_words
+    shape = _glide_shape(cand.rule)
+    if not shape:
+        return {"ran": False, "ok": False, "recall_env": 0.0, "n_env": 0, "n_exceptions": 0,
+                "reason": "non-glide collapse — no emitter"}
+    ur_words = member_words(cand.pair, shape["ur"])              # ur+cons AND ur+vowel (counterexamples)
+    glide_words = member_words(cand.pair, shape["glide_form"])   # the glide-form words
+    return glide_collapse_round_trips(shape["ur"], shape["vowel"], shape["glide"], ur_words, glide_words)
 
 
 # --------------------------------------------------------------------------- verify (gate C signal)
@@ -74,12 +117,14 @@ def verify(cand: RuleCandidate) -> RuleCandidate:
     (The detector already required complementary distribution; here we quantify recall/over-gen + support.)
     A full HC round-trip — build the rule via `gold.phonology_gold`, re-parse, check the family round-trips
     with no regression — is the deeper gate; the evidence sharpness is the v1 proxy."""
+    from gold.phonology_gold import EMITTABLE_KINDS
     ev = cand.rule.get("evidence", {})
     cand.recall = 1.0 if cand.members else 0.0                 # the rule derives exactly the listed members
     if cand.kind == "assimilation":
         confirmed = cand.rule.get("variants_confirmed", 0)
         sharp = confirmed / max(len(cand.members), 1)          # fraction of variants matching predicted place
         cand.over_gen = round(1 - sharp, 2)
+        cand.buildable = cand.kind in EMITTABLE_KINDS
     elif cand.kind == "harmony":
         # separation margin: how cleanly each suffix's stems fall on its side of the height split
         margins = []
@@ -90,12 +135,26 @@ def verify(cand: RuleCandidate) -> RuleCandidate:
                 margins.append(max(hl, mid) / tot)
         sharp = sum(margins) / len(margins) if margins else 0.0
         cand.over_gen = round(1 - sharp, 2)
-    else:
-        sharp = 0.5
+        cand.buildable = cand.kind in EMITTABLE_KINDS
+    elif cand.kind == "glide-collapse":
+        # the REAL gate: re-parse the members (incl. the rule's own counterexamples) through HC, then judge
+        # by the Tolerance Principle — a productive rule may carry a bounded exception set (e ≤ N/ln N).
+        from assess.metrics import tolerance_productive
+        rt = _verify_collapse(cand)
+        n_env, exc = rt.get("n_env", 0), rt.get("n_exceptions", 0)
+        tol = tolerance_productive(n_env, exc) if n_env >= 2 else {"productive": False, "reason": "too few in-env items"}
+        cand.rule["round_trip"] = rt
+        cand.rule["tolerance"] = tol
+        cand.recall = rt.get("recall_env", 0.0)                 # recall in the rule's actual environment
+        cand.over_gen = round(exc / n_env, 2) if n_env else 1.0  # over-application rate (real exceptions)
+        cand.buildable = bool(rt.get("ran")) and bool(tol.get("productive"))   # buildable = productive rule
+        sharp = cand.recall
+    else:                                                       # non-glide allomorph-collapse: no emitter yet
+        sharp = 0.4
+        cand.over_gen = 0.5
+        cand.buildable = False
     supp = min(1.0, math.log10(max(cand.support, 1) + 1) / 2)  # log-scaled corpus support, capped
     cand.score = round(0.6 * sharp + 0.4 * supp, 3)
-    from gold.phonology_gold import EMITTABLE_KINDS
-    cand.buildable = cand.kind in EMITTABLE_KINDS               # can the gold parse actually APPLY it?
     return cand
 
 
@@ -141,6 +200,26 @@ def _promote_in_gold(pair: str, promoted_ids: set[str]) -> int:
     return n
 
 
+def _persist_collapse_rules(pair: str, collapse: list[RuleCandidate]) -> None:
+    """Upsert promoted glide-collapse rules into phonology_induced.jsonl so `active_phon_rules` emits them
+    (the corpus detectors write nasal/harmony there; collapse comes from the allomorph detector)."""
+    if not collapse:
+        return
+    p = FROZEN / pair / "phonology_induced.jsonl"
+    rows = [json.loads(l) for l in p.read_text(encoding="utf-8").splitlines() if l.strip()] if p.exists() else []
+    by_id = {r.get("id"): r for r in rows}
+    for c in collapse:
+        rec = by_id.get(c.id, {})
+        rec.update({"id": c.id, "type": "rule", "kind": c.kind, "status": "active",
+                    "members": c.members, "description": c.description,
+                    "rule": c.rule.get("rule") if isinstance(c.rule, dict) else c.description})
+        by_id[c.id] = rec
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open("w", encoding="utf-8") as f:
+        for r in by_id.values():
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
 def run(pair: str, *, apply: bool = False) -> dict:
     cands = [classify(verify(c)) for c in raise_candidates(pair)]
     promoted = [c for c in cands if c.classification == "promote"]
@@ -148,6 +227,7 @@ def run(pair: str, *, apply: bool = False) -> dict:
     rejected = [c for c in cands if c.classification == "reject"]
     applied = ops = tickets = 0
     if apply:
+        _persist_collapse_rules(pair, [c for c in promoted if c.kind == "glide-collapse"])
         applied = _promote_in_gold(pair, {c.id for c in promoted})
         ops = len([_delta_op(c) for c in promoted])            # change-set ops (ingested by review.deltas)
         tickets = _ticket_deferrals(pair, deferred)

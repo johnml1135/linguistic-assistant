@@ -125,9 +125,14 @@ def active_phon_rules(pair: str) -> list[tuple[str, str]]:
             continue
         if r.get("kind") == "harmony":
             out.append(alpha_harmony_rule(feature="hi", target_nc="nc_vow"))   # vowel-height harmony
+        # glide-collapse: VERIFIED by the focused HC round-trip (engine.hc_collapse), but applying it in
+        #   THIS live grammar needs a syllabicity feature + glide segments in build_grammar_xml — that
+        #   feature-system extension is the remaining apply step; until then the rule is validated, not
+        #   live-emitted (honest: skipping rather than emitting a rule the main grammar can't load).
         # assimilation: skipped until the consonant-place-feature emitter exists
     return out
 
 
-# kinds for which we can currently emit a loadable+applied HC PhonologicalRule (the promotion-buildable set)
-EMITTABLE_KINDS = {"harmony"}
+# kinds for which we can currently emit a loadable+applied HC PhonologicalRule (the promotion-buildable set).
+# glide-collapse → engine.hc_collapse.glide_rule_xml (verified HC round-trip); harmony → alpha_harmony_rule.
+EMITTABLE_KINDS = {"harmony", "glide-collapse"}

@@ -240,6 +240,19 @@ def survey_raw(pair: str, *, sample: int = 0, min_count: int = 8) -> dict:
 
 
 # ── detect: C → A → B → candidate change-sets ───────────────────────────────────────────────────────────
+def member_words(pair: str, prefix: str, *, sample: int = 0, cap: int = 400) -> list[str]:
+    """All DISTINCT raw words beginning with `prefix` — used to verify a collapse rule against its own
+    counterexamples (the rare `mu`+vowel forms that falsify u→w live in the tail, so distinct-word
+    collection includes them where a top-k-by-frequency sample would not)."""
+    from align.morph_align_hc import _verses
+    seen: dict = {}
+    for _ref, _src, tgt in _verses(pair, sample):
+        for w in tgt:
+            if w.startswith(prefix) and len(w) > len(prefix):
+                seen[w] = seen.get(w, 0) + 1
+    return [w for w, _ in sorted(seen.items(), key=lambda x: -x[1])][:cap]
+
+
 def detect(pair: str, *, source: str = "raw", sample: int = 0, min_count: int = 8, use_vectors: bool = True,
            meaning_at: float = MEANING_AT, complementary_at: float = COMPLEMENTARY_AT) -> dict:
     from gold.phonology_gold import vowel_inventory
@@ -280,6 +293,8 @@ def detect(pair: str, *, source: str = "raw", sample: int = 0, min_count: int = 
                 "english": {a: sorted(pa["english"].items(), key=lambda x: -x[1])[:4],
                             b: sorted(pb["english"].items(), key=lambda x: -x[1])[:4]},
                 "env_profiles": {a: {dim: pa[dim]}, b: {dim: pb[dim]}},
+                "examples": {a: [w for w, _ in sorted(pa.get("hosts", {}).items(), key=lambda x: -x[1])[:8]],
+                             b: [w for w, _ in sorted(pb.get("hosts", {}).items(), key=lambda x: -x[1])[:8]]},
             },
             "recommended": "raise-to-promote",      # → promote.verify (MDL + HC round-trip) is the gate
         })

@@ -47,6 +47,18 @@ Implications:
 
 ## Workstream 2 — consolidation (stop the rot)
 
+- [x] **Glide-collapse emitter + HC round-trip gate built** (`engine/hc_collapse.py`, 2026-06-24): turns a
+      glide candidate into a real HC rule (`[+high,+syl]→[−syl]/__V`; one rule covers u→w & i→y) and
+      VALIDATES it by round-trip, verified vs hc.exe. The gate (a) samples the rule's OWN counterexamples
+      (`allomorph.member_words` — all distinct words, not top-k) and (b) judges in-environment items by the
+      **Tolerance Principle** (`assess.metrics.tolerance_productive`). The gate is conservative and won't
+      rubber-stamp: on swh all four glide families fail the Tolerance bar → DEFER. **Caveat (don't overclaim
+      "unproductive"):** `member_words` has no morpheme filter, so the exception count is an UPPER BOUND
+      contaminated by non-class-1 `mu*`/`mi*` forms (*muone*=verb+object-mu) — a tolerance *failure* is thus
+      inconclusive (a *pass* would be sound). vi/vy + mi/my failures are genuine class members (robust
+      defers); mu/mw is contaminated. 15 new tests; 196 total green. Follow-ons: filter members through the
+      same-morpheme/gold-feature signal before counting; environment refinement / promote-with-exceptions
+      (MDL); a syllabicity feature in `engine/hc.build_grammar_xml` for live application.
 - [x] **Allomorph detector built** (`review/{allomorph,wordvec}.py`, 2026-06-23): generic detector for
       morphemes that mean the same but live in different environments (the dual of the constraint loop) —
       C phon-neighbor → A same-meaning + complementary-distribution → B conditioning, emitting
