@@ -21,9 +21,15 @@ ready chunks* as the next thing for the human (Opus, for the golden sets) to wor
    still unconfirmed (each gates a whole branch). *Detector:* `review/deferrals/profile_detect.py` (built).
 
 ### Tier 1 — Lexicon & categories
+3a. **Proper nouns / names (the NER tail)** — the genealogies and place names (Matthew 1 is wall-to-wall
+   names) are a *separate* tail, not language structure. *Signal:* a name gazetteer / NER (capitalization is
+   gone — both corpus sides are lowercased). *Depends:* segmentation. *Impact:* % tokens that are names.
+   *Detector:* NER/gazetteer (pending). *Note:* it is **shown but never the structural recommendation**;
+   accounting for it stops names inflating the "unknown word" gap.
 3. **Word classes (POS)** — noun / verb / adjective / … the basic categories.
-   *Signal:* distributional clustering + bilingual alignment. *Depends:* segmentation. *Impact:* % word
-   types with no category. *Detector:* gold reference (partial).
+   *Signal:* distributional clustering + bilingual alignment; the structural gap is **recurring** unknowns
+   (hapax unknowns ≈ the name/rare tail). *Depends:* segmentation. *Impact:* % tokens that are recurring
+   unknown words. *Detector:* gold reference (partial).
 4. **Additive morphology (affix inventory)** — the productive concatenative prefixes/suffixes + their
    function. *Signal:* recurring word-edge substrings over shared stems; alignment for the function.
    *Depends:* segmentation, switches (affix polarity). *Impact:* % word *types* not segmentable by known
@@ -64,6 +70,16 @@ ready chunks* as the next thing for the human (Opus, for the golden sets) to wor
 12. **Homographs / syncretism** — one form, several functions. *Signal:* high-entropy alignment that
     sharpens when conditioned on an environment. *Depends:* affix inventory / POS. *Impact:* ambiguous
     high-frequency forms. *Detector:* `review/constraints.py` (built).
+
+## Probe status (2026-06-24, after the 5-cycle build-out)
+
+**All 13 chunk types now have real probes (none pending):** orthography (digraph candidates) · switches ·
+proper-nouns (NER tail, shown-not-recommended) · word-classes (recurring-OOV, name-aware) · additive-affixes
+(known affix→known stem, incl. circumfix) · morphotactics (multi-affix peel depth) · classes (with the
+agreement feedback) · agreement (associative concord + zero-prefix cracking) · allomorphy (proxy) ·
+morphophonology (vocalic-alternation debt, proxy) · non-concatenative (reduplication) · exceptions
+(irreducible residue) · homographs. Proxies (allomorphy, morphophonology, orthography, proper-nouns) are
+shown but never drive the recommendation.
 
 ## How the finder uses this
 

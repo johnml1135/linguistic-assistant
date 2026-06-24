@@ -51,6 +51,15 @@ def test_proxy_never_drives_the_recommendation(monkeypatch):
     assert f["ranked"][0]["id"] == "allomorphy"           # proxy still visible in the ranked list
 
 
+def test_peel_strips_multi_affix_to_known_stem():
+    lex = {"penda", "soma"}
+    pre = ["ni", "na", "ku", "a"]
+    depth, stem, known = F._peel("nakupenda", pre, [], lex)   # na·ku·penda → penda
+    assert known and stem == "penda" and depth == 2
+    d2, s2, k2 = F._peel("xyz", pre, [], lex)
+    assert not k2                                              # no known stem reachable
+
+
 def test_frontier_handles_all_not_ready(monkeypatch):
     monkeypatch.setattr(F, "_build_ctx", lambda pair, sample=0: {"pair": pair})
     monkeypatch.setattr(F, "PROBES", {"agreement": lambda ctx: {"unexplained": 0.9, "ready": False,

@@ -210,6 +210,22 @@ def declared_schema(pair: str) -> dict | None:
     return s if s and s.get("status") == "declared" else None
 
 
+def persisted_noun_classes(pair: str) -> dict:
+    """The combined noun→class assignment written by `write_noun_classes` (prefix + agreement + projection),
+    if present — so the frontier/lifecycle uses the golden-set byproduct without re-running projection."""
+    import json
+    from gold.goldio import FROZEN
+    p = FROZEN / pair / "noun_classes.jsonl"
+    if not p.exists():
+        return {}
+    out = {}
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            d = json.loads(line)
+            out[d["noun"]] = d
+    return out
+
+
 # ── UTILIZE (fit-and-flag against the declared schema) ──────────────────────────────────────────────────
 def assign_from_votes(votes: dict[str, Counter], schema: dict) -> dict:
     """Pure: assign each noun to a declared class by its dominant article, with a verified confidence
@@ -260,9 +276,11 @@ def assign(pair: str, *, sample: int = 0) -> dict:
         gaps = sorted([n for n, c in raw.items() if nouns and n not in nouns and c.total() >= 3 and len(n) > 3],
                       key=lambda n: -raw[n].total())[:30]                     # article-takers absent from gold
         routed = Counter(route("class_assignment", a["confidence"], bar=bar)["lane"] for a in assigned.values())
+        from review.exceptions import carve              # layer the exceptions: rule → classes → individuals
+        layered = carve([e["noun"] for e in exceptions])
         return {"pair": pair, "schema_version": schema.get("version"), "strategy": "gender-by-article",
                 "n_assigned": len(assigned), "auto_pushed": routed["auto"], "to_review": routed["review"],
-                "exceptions": exceptions, "n_exceptions": len(exceptions),
+                "exceptions": exceptions, "n_exceptions": len(exceptions), "exception_layers": layered,
                 "by_class": dict(Counter(a["class"] for a in assigned.values())),
                 "coverage_gap_candidates": gaps, "n_coverage_gaps": len(gaps)}
     if schema.get("strategy") == "bantu-prefix":
@@ -279,6 +297,56 @@ def assign(pair: str, *, sample: int = 0) -> dict:
                 "note": "concord (adjective/verb agreement per class) not yet populated — needs the agreement phase",
                 "exceptions": [], "n_exceptions": 0}
     return {"error": f"no utilize path for strategy {schema.get('strategy')!r}", "pair": pair}
+
+
+def combined_classification(pair: str, *, with_projection: bool = True, sample: int = 0) -> dict:
+    """The authoritative per-noun class assignment, merging all signals by reliability:
+       subject-marking (projection — splits m- into cl1/cl3) > associative concord > unambiguous prefix.
+    Returns {noun: {class, source, confidence}}. The golden-set byproduct (persist with `write_noun_classes`)."""
+    from gold.goldio import load_gold
+    nouns = {w for w, p in load_gold(pair).get("pos", {}).items() if str(p).lower() == "noun"}
+    UNAMBIG = {"wa": "2", "mi": "4", "ji": "5", "ki": "7", "ch": "7", "vi": "8", "vy": "8", "ma": "6"}
+
+    def npfx(n: str) -> str:
+        for p in _BANTU_PREFIXES:
+            if n.startswith(p) and len(n) > len(p) + 1:
+                return p
+        return "Ø"
+
+    out: dict[str, dict] = {}
+    for n in nouns:                                  # weakest signal first; stronger ones overwrite
+        p = npfx(n)
+        if p in UNAMBIG:
+            out[n] = {"class": UNAMBIG[p], "source": "prefix", "confidence": 0.7}
+    try:                                             # associative concord (zero-prefix → cl9/10, cl5…)
+        from review.agreement import associative_votes, classify_zero_prefix
+        _by, zero = associative_votes(pair, sample=sample)
+        for n, d in classify_zero_prefix(zero).items():
+            if n in nouns:
+                out[n] = {"class": d["class"], "source": "associative", "confidence": d["confidence"]}
+    except Exception:
+        pass
+    if with_projection:                              # subject marking (splits m- cl1/cl3) — strongest
+        try:
+            from review.project import classify_by_subject_marking
+            for n, d in classify_by_subject_marking(pair, sample=sample).items():
+                if n in nouns:
+                    out[n] = {"class": d["class"], "source": "subject-marking", "confidence": d["confidence"]}
+        except Exception:
+            pass
+    return out
+
+
+def write_noun_classes(pair: str, assignments: dict) -> str:
+    """Persist the combined noun→class assignment to the gold (the byproduct)."""
+    import json
+    from gold.goldio import FROZEN
+    p = FROZEN / pair / "noun_classes.jsonl"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open("w", encoding="utf-8") as f:
+        for noun, d in sorted(assignments.items()):
+            f.write(json.dumps({"noun": noun, **d}, ensure_ascii=False) + "\n")
+    return str(p)
 
 
 def _auto_bar(pair: str) -> float:

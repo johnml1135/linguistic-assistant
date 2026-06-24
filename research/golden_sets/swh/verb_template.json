@@ -1,0 +1,14 @@
+{
+ "template": "SM-TAM-(OM)-stem",
+ "slot2_TAM": [
+  "li",
+  "na",
+  "ka",
+  "ta",
+  "ki",
+  "me"
+ ],
+ "slot3_OM": [
+  "m"
+ ]
+}
