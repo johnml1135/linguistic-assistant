@@ -60,13 +60,19 @@ def test_assign_from_votes_respects_declared_ids():
 
 
 def test_build_bantu_classes():
-    clusters = {"m": ["mtu", "mti"], "wa": ["watu", "watoto"], "ki": ["kitu", "kiti"], "vi": ["vitu", "viti"]}
-    s = C.build_bantu_classes(clusters)
+    # DERIVED emergent groups (no hardcoded inventory) — the machine discovers structure, human names it
+    groups = [
+        {"group": "group-A", "prefixes": ["m", "wa"], "n_shared_stems": 40, "examples": ["tu", "toto", "ke"]},
+        {"group": "group-B", "prefixes": ["ki", "vi"], "n_shared_stems": 25, "examples": ["tu", "ti", "kapu"]},
+    ]
+    s = C.build_bantu_classes(groups, "swh")
     ids = {c["id"] for c in s["classes"]}
-    assert "2" in ids and "7" in ids and "8" in ids       # wa-, ki-, vi- classes present
-    cl13 = next(c for c in s["classes"] if c["id"] == "1/3")
-    assert "mtu" in cl13["evidence"]["examples"] and cl13["concord"] == {}   # concord deferred
-    assert any("persons) vs cl3" in alt["option"] for alt in s["alternatives"])  # the subjective split surfaced
+    assert "group-A" in ids and "group-B" in ids          # emergent (arbitrary) ids, not canonical numbers
+    a = next(c for c in s["classes"] if c["id"] == "group-A")
+    assert a["meinhof_hint"] and "1/3" in a["meinhof_hint"]   # canonical number offered as a hint only
+    assert a["concord"] == {}                                  # concord deferred
+    assert s["provenance"]["inventory"].startswith("DERIVED")  # suggestion is data-derived, not asserted
+    assert any("canonical Meinhof" in alt["option"] for alt in s["alternatives"])  # human names them at declare
 
 
 def test_flag_exceptions_catches_el_agua():

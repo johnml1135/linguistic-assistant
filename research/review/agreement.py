@@ -14,11 +14,12 @@ from __future__ import annotations
 
 from collections import Counter
 
-from review.classes import _BANTU_PREFIXES, declared_schema   # the same prefix set the class lifecycle uses
+from review import langknow                     # per-language reference knowledge (loaded from data, not hardcoded)
+from review.classes import declared_schema
 
 
-def _prefix(word: str) -> str:
-    for p in _BANTU_PREFIXES:
+def _prefix(word: str, lang: str) -> str:
+    for p in langknow.class_prefix_set(lang):   # noun-class prefix inventory for THIS language (data-loaded)
         if word.startswith(p) and len(word) > len(p) + 1:
             return p
     return "Ø"
@@ -36,7 +37,7 @@ def concord_votes(pair: str, *, sample: int = 0) -> dict[str, Counter]:
         t = [w for w in tgt if w.isalpha()]
         for i in range(len(t) - 1):
             if t[i] in nouns and t[i + 1] in adjs:
-                votes.setdefault(_prefix(t[i]), Counter())[_prefix(t[i + 1])] += 1
+                votes.setdefault(_prefix(t[i], pair), Counter())[_prefix(t[i + 1], pair)] += 1
     return votes
 
 
@@ -61,24 +62,20 @@ def build_concord(votes: dict[str, Counter], schema: dict, *, min_support: int =
     return filled
 
 
-# The Bantu associative ("X wa Y" = "X of Y") agrees with X's class and is far more cleanly class-marked
-# than bare adjectives. Markers that map UNAMBIGUOUSLY to a class let us classify zero-prefix nouns by the
-# agreement they trigger (Corbett) — wa/kwa are shared across classes, so excluded from classification.
-ASSOC_MARKERS = {"wa", "ya", "la", "cha", "vya", "za", "kwa", "pa"}
-ASSOC_TO_CLASS = {"ya": "9/10", "za": "9/10", "la": "5", "cha": "7", "vya": "8"}
-# possessives (jina la-ke, watu wa-ke) carry the SAME class concord prefix → another cracking signal
-POSS_STEMS = ("angu", "ako", "ake", "etu", "enu", "ao")
-CONCORD_PREFIXES = {"wa", "ya", "cha", "za", "la", "vya"}
-
-
-def _concord_marker(word: str) -> str | None:
-    """The class-concord marker carried by an associative or possessive word ('wake'→'wa', 'lake'→'la')."""
-    if word in ASSOC_MARKERS:
+# The Bantu associative ("X wa Y" = "X of Y") agrees with X's class and is far more cleanly class-marked than
+# bare adjectives. The marker inventories below are LOADED per language from golden_sets/_reference/<lang>.json
+# (review.langknow), NOT hardcoded here. Markers that map UNAMBIGUOUSLY to a class let us classify zero-prefix
+# nouns by the agreement they trigger (Corbett) — wa/kwa are shared across classes, so excluded.
+def _concord_marker(word: str, lang: str) -> str | None:
+    """The class-concord marker carried by an associative or possessive word ('wake'→'wa', 'lake'→'la').
+    Marker/possessive/concord inventories are per-language reference data, loaded by review.langknow."""
+    if word in langknow.associative_markers(lang):
         return word
-    for st in POSS_STEMS:
+    concord = langknow.concord_prefixes(lang)
+    for st in langknow.possessive_stems(lang):
         if word.endswith(st):
             pre = word[:-len(st)]
-            if pre in CONCORD_PREFIXES:
+            if pre in concord:
                 return pre
     return None
 
@@ -95,23 +92,25 @@ def associative_votes(pair: str, *, sample: int = 0):
         t = [w for w in tgt if w.isalpha()]
         for i in range(len(t) - 1):
             if t[i] in nouns:
-                marker = _concord_marker(t[i + 1])         # associative OR possessive concord
+                marker = _concord_marker(t[i + 1], pair)   # associative OR possessive concord
                 if marker:
-                    p = _prefix(t[i])
+                    p = _prefix(t[i], pair)
                     by_pfx.setdefault(p, Counter())[marker] += 1
                     if p == "Ø":
                         zero.setdefault(t[i], Counter())[marker] += 1
     return by_pfx, zero
 
 
-def classify_zero_prefix(zero: dict[str, Counter], *, min_count: int = 2) -> dict:
-    """Assign each zero-prefix noun to a class via its dominant unambiguous associative marker."""
+def classify_zero_prefix(zero: dict[str, Counter], lang: str, *, min_count: int = 2) -> dict:
+    """Assign each zero-prefix noun to a class via its dominant unambiguous associative marker (the
+    associative→class map is per-language reference data, loaded by review.langknow)."""
+    assoc_to_class = langknow.associative_to_class(lang)
     out = {}
     for noun, c in zero.items():
         if c.total() < min_count:
             continue
         marker, n = c.most_common(1)[0]
-        cid = ASSOC_TO_CLASS.get(marker)
+        cid = assoc_to_class.get(marker)
         if cid:
             out[noun] = {"class": cid, "via": marker, "support": n, "confidence": round(n / c.total(), 3)}
     return out
@@ -143,7 +142,7 @@ def induce(pair: str, *, sample: int = 0) -> dict:
     adj = build_concord(concord_votes(pair, sample=sample), schema)
     by_pfx, zero = associative_votes(pair, sample=sample)
     assoc = build_associative_concord(by_pfx, schema)
-    cracked = classify_zero_prefix(zero)
+    cracked = classify_zero_prefix(zero, pair)
     cells = set(adj) | set(assoc)                       # classes with at least one concord cell induced
     n_classes = len(schema.get("classes", [])) or 1
     # residue: zero-prefix nouns seen but NOT agreement-confirmed default to cl9/10 (Bantu's default/residue

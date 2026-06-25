@@ -1,0 +1,6 @@
+{
+  "_doc": "Reference linguistic knowledge for Spanish (spa) — grammatical gender via articles. HUMAN/REFERENCE-PROVIDED (a grammar sketch), loaded by review.langknow, NOT hardcoded in the algorithm. Declarable/overridable like the gold sets.",
+  "class_strategy": "gender-by-article",
+  "masculine_articles": ["el", "los", "un", "unos"],
+  "feminine_articles": ["la", "las", "una", "unas"]
+}

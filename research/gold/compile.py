@@ -42,8 +42,13 @@ EBIBLE = _THIS.parents[1] / "_sources" / "ebible"
 # FROZEN, committed evaluation target — deliberately OUTSIDE _sources (raw cache) and cycle/out (the
 # hill-climber's working copy), so reproducing the gold can never overwrite the gold.
 FROZEN = _THIS.parents[1] / "golden_sets"
-PAIR_DIR = {"swh": "eng-engwebp__swh-swhulb", "ind": "eng-engwebp__ind-indags",
-            "tgl": "eng-engwebp__tgl-tglulb", "spa": "eng-engwebp__spa-spaRV1909"}
+# derived from the corpus config (single source of truth — no duplicated language map)
+try:
+    from corpus.ebible.config import ENGLISH_ID, TARGETS
+    PAIR_DIR = {k: f"{ENGLISH_ID}__{v}" for k, v in TARGETS.items()}
+except Exception:                                    # fallback to the original four
+    PAIR_DIR = {"swh": "eng-engwebp__swh-swhulb", "ind": "eng-engwebp__ind-indags",
+                "tgl": "eng-engwebp__tgl-tglulb", "spa": "eng-engwebp__spa-spaRV1909"}
 
 
 # Clitics / bound morphemes UniMorph doesn't segment — a scripture form built from one of these on a real

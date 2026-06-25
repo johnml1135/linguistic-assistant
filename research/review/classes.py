@@ -26,8 +26,8 @@ _RESEARCH = Path(__file__).resolve().parents[1]
 if str(_RESEARCH) not in sys.path:
     sys.path.insert(0, str(_RESEARCH))
 
-MASC_ARTICLES = {"el", "los", "un", "unos"}
-FEM_ARTICLES = {"la", "las", "una", "unas"}
+from review import langknow   # noqa: E402  per-language reference knowledge (loaded from data, not hardcoded)
+
 FOUNDATIONAL_KINDS = {"class_system", "class_boundary", "class_rename"}   # never auto-commit
 
 
@@ -87,14 +87,16 @@ def build_gender_classes(votes: dict[str, Counter]) -> dict:
 def _article_noun_votes(pair: str, *, sample: int = 0) -> dict[str, Counter]:
     """Corpus scan (slow): article→following-noun gender votes — the article agrees with the noun's gender."""
     from align.morph_align_hc import _verses
+    masc = langknow.masculine_articles(pair)        # gender-marking articles: per-language reference data
+    fem = langknow.feminine_articles(pair)
     votes: dict[str, Counter] = {}
     for _ref, _src, tgt in _verses(pair, sample):
         toks = [w for w in tgt if w.isalpha()]
         for i, w in enumerate(toks[:-1]):
-            g = "M" if w in MASC_ARTICLES else "F" if w in FEM_ARTICLES else None
+            g = "M" if w in masc else "F" if w in fem else None
             if g:
                 nxt = toks[i + 1]
-                if nxt not in MASC_ARTICLES and nxt not in FEM_ARTICLES and len(nxt) > 2:
+                if nxt not in masc and nxt not in fem and len(nxt) > 2:
                     votes.setdefault(nxt, Counter())[g] += 1
     return votes
 
@@ -120,56 +122,57 @@ def _strategy(pair: str) -> str | None:
     return None                             # ind/tgl: no gender/noun-class system
 
 
-# Standard Bantu (Meinhof) class prefixes → a SUGGESTED numbering/name. m/mw is shared by classes 1 & 3 —
-# the genuinely subjective split (persons vs things), surfaced as an alternative for the human to ratify.
-BANTU_CLASSES = [
-    ("1/3", "m-/mw- (cl1 persons · cl3 things, sg)", ["mw", "m"]),
-    ("2", "wa- (cl2 persons, pl)", ["wa"]),
-    ("4", "mi- (cl4 things, pl)", ["mi"]),
-    ("5", "ji-/Ø (cl5)", ["ji"]),
-    ("6", "ma- (cl6, pl)", ["ma"]),
-    ("7", "ki-/ch- (cl7, sg)", ["ki", "ch"]),
-    ("8", "vi-/vy- (cl8, pl)", ["vi", "vy"]),
-    ("9/10", "n- (cl9/10 animals)", ["n"]),
-    ("11/14", "u- (cl11/14 abstracts)", ["u"]),
-    ("15", "ku- (cl15 infinitives)", ["ku"]),
-    ("16-18", "pa-/ku-/mu- (locatives)", ["pa"]),
-]
-_BANTU_PREFIXES = sorted({p for _, _, ps in BANTU_CLASSES for p in ps}, key=len, reverse=True)
-
-
+# The Meinhof canonical numbering + the noun-class prefix inventory are per-language REFERENCE DATA loaded
+# from golden_sets/_reference/<lang>.json (review.langknow) — human/reference-provided knowledge, NOT
+# hardcoded here and NOT machine-asserted analysis. The machine SUGGESTS class structure by DERIVING it
+# (review.recover.emergent_class_groups — pure number-pairing) and the human ratifies the canonical numbers
+# at DECLARE. The loaded reference is used only to (a) annotate the derived suggestion (meinhof_hint),
+# (b) drive the utilize/assign string-match accelerator, (c) serve as the recovery reference
+# (review.recover.recovery_report cross-checks it: SM 8/9, ASSOC 5/5, prefix inventory 13/14).
 def _bantu_prefix_clusters(pair: str) -> dict[str, list]:
-    """Cluster the gold's nouns by their longest-matching Bantu class prefix."""
+    """Cluster the gold's nouns by their longest-matching noun-class prefix (inventory from langknow)."""
     nouns = _noun_pos(pair)
     clusters: dict[str, list] = {}
     for n in nouns:
-        for p in _BANTU_PREFIXES:
+        for p in langknow.class_prefix_set(pair):
             if n.startswith(p) and len(n) > len(p) + 1:
                 clusters.setdefault(p, []).append(n)
                 break
     return clusters
 
 
-def build_bantu_classes(clusters: dict[str, list]) -> dict:
-    """Pure: turn noun-prefix clusters into a proposed Bantu class inventory + the subjective cuts. Concord
-    (how each class marks adjectives/verbs) is left empty — it needs agreement detection (the next phase)."""
+def _meinhof_hint(prefixes: list[str], lang: str) -> str | None:
+    """Annotate a DERIVED group with the reference glossary's canonical number, if its prefixes match — a
+    hint for the reviewer, never an assertion. The glossary is per-language data (langknow); the human
+    confirms/overrides at declare."""
+    for cid, name, ref_pre in langknow.meinhof_inventory(lang):
+        if any(p in ref_pre for p in prefixes):
+            return f"{cid} ({name})"
+    return None
+
+
+def build_bantu_classes(groups: list[dict], lang: str) -> dict:
+    """Pure: turn DERIVED emergent class-pairings (review.recover.emergent_class_groups — pure number-pairing,
+    no hardcoded inventory) into a proposed class system. Each proposed class is a data-discovered sg/pl
+    pairing with arbitrary id group-A/B/…; the canonical Meinhof number is offered only as a `meinhof_hint`
+    for the human to ratify at declare. Concord (per-class agreement) is left for the agreement phase."""
     classes = []
-    for cid, name, prefixes in BANTU_CLASSES:
-        members = [n for p in prefixes for n in clusters.get(p, [])]
-        if not members:
-            continue
-        classes.append({"id": cid, "name": name, "semantics": "noun class", "prefixes": prefixes,
-                        "concord": {}, "criteria": {"signal": "noun class prefix"},
-                        "evidence": {"n_nouns": len(members), "examples": sorted(members)[:8]},
-                        "provenance": "propose.bantu-prefix", "confidence": 0.7})
+    for g in groups:
+        classes.append({"id": g["group"], "name": "·".join(g["prefixes"]) + "- (derived sg/pl pairing)",
+                        "semantics": "noun class", "prefixes": g["prefixes"],
+                        "meinhof_hint": _meinhof_hint(g["prefixes"], lang),
+                        "concord": {}, "criteria": {"signal": "number-pairing (sg/pl shared stems)"},
+                        "evidence": {"n_shared_stems": g["n_shared_stems"], "examples": g["examples"]},
+                        "provenance": "propose.bantu-prefix (derived)", "confidence": 0.6})
     return {
         "strategy": "bantu-prefix", "status": "proposed", "version": 0, "classes": classes,
         "alternatives": [
-            {"option": "split cl1 (persons) vs cl3 (things) — both m-/mw-", "note": "needs agreement: they take different verb concord (a- vs u-). The key subjective cut."},
-            {"option": "merge or split 9/10 (n-)", "note": "sg/pl often syncretic; decide if they're one class or two."},
-            {"option": "treat locatives 16/17/18 as classes or as a separate system", "note": "your call."},
+            {"option": "assign canonical Meinhof numbers (see meinhof_hint per group)", "note": "the human names the derived groups at declare; the machine only discovered the structure."},
+            {"option": "split a sg/pl group whose members take different verb concord", "note": "e.g. m-/mw- → cl1 persons (a-) vs cl3 things (u-) — needs agreement."},
+            {"option": "merge syncretic groups (e.g. n- cl9/10)", "note": "decide if a shared-shape pair is one class or two."},
         ],
-        "provenance": {"source": "review.classes.propose", "concord": "deferred — needs agreement detection"},
+        "provenance": {"source": "review.classes.propose", "inventory": "DERIVED (recover.emergent_class_groups)",
+                       "concord": "deferred — needs agreement detection"},
     }
 
 
@@ -181,7 +184,8 @@ def propose(pair: str, *, sample: int = 0) -> dict:
         votes = {n: c for n, c in _article_noun_votes(pair, sample=sample).items() if not nouns or n in nouns}
         schema = build_gender_classes(votes)
     elif strat == "bantu-prefix":
-        schema = build_bantu_classes(_bantu_prefix_clusters(pair))
+        from review.recover import emergent_class_groups
+        schema = build_bantu_classes(emergent_class_groups(pair), pair)
     else:
         schema = {"strategy": None, "status": "none", "version": 0, "classes": [],
                   "reason": "profile declares no gender/noun-class system — none expected for this language"}
@@ -290,7 +294,8 @@ def assign(pair: str, *, sample: int = 0) -> dict:
         for p, members in clusters.items():
             if p in pref_to_class:
                 by_class[pref_to_class[p]] += len(members)
-        unassigned = [n for n in nouns if not any(n.startswith(p) and len(n) > len(p) + 1 for p in _BANTU_PREFIXES)]
+        prefixes = langknow.class_prefix_set(pair)
+        unassigned = [n for n in nouns if not any(n.startswith(p) and len(n) > len(p) + 1 for p in prefixes)]
         return {"pair": pair, "schema_version": schema.get("version"), "strategy": "bantu-prefix",
                 "n_assigned": sum(by_class.values()), "by_class": dict(by_class),
                 "n_unassigned_nouns": len(unassigned), "unassigned_examples": sorted(unassigned)[:20],
@@ -305,10 +310,15 @@ def combined_classification(pair: str, *, with_projection: bool = True, sample: 
     Returns {noun: {class, source, confidence}}. The golden-set byproduct (persist with `write_noun_classes`)."""
     from gold.goldio import load_gold
     nouns = {w for w, p in load_gold(pair).get("pos", {}).items() if str(p).lower() == "noun"}
-    UNAMBIG = {"wa": "2", "mi": "4", "ji": "5", "ki": "7", "ch": "7", "vi": "8", "vy": "8", "ma": "6"}
+    # prefix→class (unambiguous prefixes) + the prefix inventory are per-language reference data (langknow).
+    # This is the string-match accelerator; the concord signals below (associative, subject-marking) overwrite
+    # it. The inanimate-class prefix→class map is the part the corpus cannot derive — review.recover documents
+    # that measured ceiling, which is why it lives in the reference data.
+    unambig = langknow.noun_class_prefixes(pair)
+    prefixes = langknow.class_prefix_set(pair)
 
     def npfx(n: str) -> str:
-        for p in _BANTU_PREFIXES:
+        for p in prefixes:
             if n.startswith(p) and len(n) > len(p) + 1:
                 return p
         return "Ø"
@@ -316,12 +326,12 @@ def combined_classification(pair: str, *, with_projection: bool = True, sample: 
     out: dict[str, dict] = {}
     for n in nouns:                                  # weakest signal first; stronger ones overwrite
         p = npfx(n)
-        if p in UNAMBIG:
-            out[n] = {"class": UNAMBIG[p], "source": "prefix", "confidence": 0.7}
+        if p in unambig:
+            out[n] = {"class": unambig[p], "source": "prefix", "confidence": 0.7}
     try:                                             # associative concord (zero-prefix → cl9/10, cl5…)
         from review.agreement import associative_votes, classify_zero_prefix
         _by, zero = associative_votes(pair, sample=sample)
-        for n, d in classify_zero_prefix(zero).items():
+        for n, d in classify_zero_prefix(zero, pair).items():
             if n in nouns:
                 out[n] = {"class": d["class"], "source": "associative", "confidence": d["confidence"]}
     except Exception:
@@ -378,8 +388,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"\nPROPOSED class system for {a.pair} (strategy: {s['strategy']}) — NOT yet committed:")
         for c in s["classes"]:
             mark = f"concord={c['concord']}" if c.get("concord") else f"prefixes={c.get('prefixes')}"
-            print(f"  [{c['id']}] {c['name']}: {c['evidence']['n_nouns']} nouns, {mark}")
-            print(f"       e.g. {c['evidence']['examples']}")
+            ev = c["evidence"]
+            qty = f"{ev['n_nouns']} nouns" if "n_nouns" in ev else f"{ev.get('n_shared_stems', 0)} shared stems"
+            hint = f" → meinhof {c['meinhof_hint']}" if c.get("meinhof_hint") else ""
+            print(f"  [{c['id']}] {c['name']}: {qty}, {mark}{hint}")
+            print(f"       e.g. {ev['examples']}")
         print("  alternatives (your call):")
         for alt in s["alternatives"]:
             print(f"    - {alt['option']}: {alt['note']}")

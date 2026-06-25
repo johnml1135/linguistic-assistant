@@ -1,0 +1,11 @@
+{
+  "_doc": "Reference data for the English pivot (en). function_words = the closed-class English tokens that are NOT content lexemes; used by the THOT<->HC co-training loop to gate root proposals (a vernacular word aligning to a CONTENT word is a candidate lexeme; aligning to a function word is grammatical and not a root). Pivot-side resource (a property of English, the gateway language), loaded by review.langknow — not baked into the algorithm.",
+  "function_words": ["and", "of", "is", "the", "a", "an", "for", "to", "may", "in", "on", "with", "was",
+                     "were", "be", "by", "that", "his", "her", "their", "who", "if", "not", "this",
+                     "these", "those", "them", "you", "he", "she", "it", "they", "we", "i", "as", "from",
+                     "but", "or", "so", "than", "all", "no", "out", "up", "had", "has", "have", "will",
+                     "shall", "are", "am", "been", "every", "into", "when", "then", "there", "here", "what",
+                     "which", "would", "could", "do", "did", "done", "at", "my", "your", "our", "him", "me",
+                     "us", "its", "whom", "whose", "because", "while", "before", "after", "about", "over",
+                     "under", "again", "more", "most", "some", "any", "such", "own", "same", "too", "very"]
+}

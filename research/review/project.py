@@ -24,6 +24,8 @@ _RESEARCH = Path(__file__).resolve().parents[1]
 if str(_RESEARCH) not in sys.path:
     sys.path.insert(0, str(_RESEARCH))
 
+from review import langknow   # noqa: E402  per-language reference knowledge (loaded from data, not hardcoded)
+
 # pivot → spaCy small model (no torch). UDPipe covers the rest of the top-20 (model files, not pip).
 SPACY_MODELS = {"en": "en_core_web_sm", "es": "es_core_news_sm", "fr": "fr_core_news_sm",
                 "pt": "pt_core_news_sm", "ru": "ru_core_news_sm", "zh": "zh_core_web_sm",
@@ -292,6 +294,39 @@ def project_verse(pivot_tokens: list, src: list, tgt: list, table) -> list[dict]
     return out
 
 
+def derive_pos(pair: str, pivot: str = "en", sample: int = 0, min_count: int = 2) -> dict:
+    """Derive a vernacular word's POS from the majority English POS it aligns to (projection) — so a brand-new
+    language needs NO hand-built gold POS. Returns {vern_word: POS}. The 'derive, don't hardcode' enabler."""
+    parser = get_parser(pivot)
+    if parser is None:
+        return {}
+    verses, table = _word_alignment(pair, sample)
+    votes: dict[str, Counter] = {}
+    for _ref, src, tgt in verses:
+        if not src or not tgt:
+            continue
+        for p in project_verse(parser(" ".join(src)), src, tgt, table):
+            if p["pos"]:
+                votes.setdefault(p["vern"], Counter())[p["pos"]] += 1
+    return {w: c.most_common(1)[0][0] for w, c in votes.items() if c.total() >= min_count}
+
+
+def write_pos(pair: str, pos: dict) -> str:
+    import json
+    from gold.goldio import FROZEN
+    p = FROZEN / pair / "derived_pos.json"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(pos, ensure_ascii=False), encoding="utf-8")
+    return str(p)
+
+
+def load_pos(pair: str) -> dict:
+    import json
+    from gold.goldio import FROZEN
+    p = FROZEN / pair / "derived_pos.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
 # ── THING 1: derive TAM labels from the English Tense feature (retire the hardcoded TAM_KNOWN glosses) ───
 def label_tam(pair: str, pivot: str = "en", sample: int = 0, min_count: int = 8) -> dict:
     """Project the English verb's Tense onto the vernacular verb, and tally (vernacular TAM marker → tense).
@@ -307,7 +342,7 @@ def label_tam(pair: str, pivot: str = "en", sample: int = 0, min_count: int = 8)
         for p in project_verse(parser(" ".join(src)), src, tgt, table):
             tense = p["feats"].get("Tense")
             if p["pos"] == "VERB" and tense:
-                v = p["vern"]; sm = subject_marker(v)
+                v = p["vern"]; sm = subject_marker(v, pair)
                 if sm == "?" or len(v) <= len(sm) + 2:
                     continue
                 by_marker.setdefault(v[len(sm):][:2], Counter())[tense] += 1   # 2-char TAM slot, derived
@@ -415,12 +450,9 @@ if __name__ == "__main__":
 # ── using projected subjects to discover the marking (the user's question) ──────────────────────────────
 # Swahili verb = SM-TAM-(OM)-stem; the SUBJECT MARKER is the first prefix and agrees with the subject's
 # noun class. Projecting the subject lets us read the SM off the verb and split prefix-ambiguous nouns.
-_SM = sorted(["a", "wa", "u", "i", "li", "ya", "ki", "vi", "zi", "ku", "tu", "ni", "m", "ha", "ki"],
-             key=len, reverse=True)
-
-
-def subject_marker(verb: str) -> str:
-    for s in _SM:
+# The subject-marker inventory is per-language reference data (review.langknow), not hardcoded here.
+def subject_marker(verb: str, lang: str) -> str:
+    for s in langknow.subject_markers(lang):
         if verb.startswith(s) and len(verb) > len(s) + 1:
             return s
     return "?"
@@ -443,60 +475,55 @@ def subject_verb_pairs(pair: str, pivot: str = "en", sample: int = 0):
     return pairs
 
 
-# verb subject-marker → noun class (Bantu head-marking). a-/u-/i- are shared by several classes → lower
-# confidence; wa/ki/vi/li/zi/ya are clean. The m-noun cl1-vs-cl3 split rides on a- vs u-.
-SM_TO_CLASS = {"a": "1", "wa": "2", "u": "3", "i": "4", "li": "5", "ya": "6", "ki": "7", "vi": "8", "zi": "10"}
-
-
+# verb subject-marker → noun class (Bantu head-marking). The map is per-language reference data
+# (review.langknow), not hardcoded; review.recover.derive_sm_to_class cross-checks it from the corpus (8/9).
 def classify_by_subject_marking(pair: str, pivot: str = "en", sample: int = 0, min_count: int = 2) -> dict:
     """Per-NOUN class from the subject marker its verbs carry (projected subjects) — cracks prefix-ambiguous
     nouns (m- → cl1 via `a-` vs cl3 via `u-`) that adjacency/associative could not split."""
     pairs = subject_verb_pairs(pair, pivot, sample)
     if pairs is None:
         return {}
+    sm_to_class = langknow.subject_marker_to_class(pair)
     by_noun: dict[str, Counter] = {}
     for noun, verb in pairs:
-        by_noun.setdefault(noun, Counter())[subject_marker(verb)] += 1
+        by_noun.setdefault(noun, Counter())[subject_marker(verb, pair)] += 1
     out = {}
     for noun, c in by_noun.items():
-        clean = Counter({k: v for k, v in c.items() if k in SM_TO_CLASS})
+        clean = Counter({k: v for k, v in c.items() if k in sm_to_class})
         if sum(clean.values()) >= min_count:
             sm, n = clean.most_common(1)[0]
-            out[noun] = {"class": SM_TO_CLASS[sm], "via_sm": sm, "n": n,
+            out[noun] = {"class": sm_to_class[sm], "via_sm": sm, "n": n,
                          "confidence": round(n / sum(clean.values()), 3)}
     return out
 
 
-# Swahili verb template = SM - TAM - (OM) - stem. With the SM known (from subject marking), the next
-# morpheme is the tense/aspect marker. Known TAM set (for labelling); detection is by frequency.
-TAM_KNOWN = {"na": "present", "li": "past", "ta": "future", "me": "perfect", "ki": "situative/-ing",
-             "hu": "habitual", "ka": "consecutive", "nge": "conditional", "ja": "not-yet", "si": "negative"}
-
-
+# Swahili verb template = SM - TAM - (OM) - stem. With the SM known (from subject marking), the next morpheme
+# is the tense/aspect marker. The TAM gloss set is per-language reference data (review.langknow); detection
+# is by frequency. (review.project.label_tam derives the tense labels independently from the English pivot.)
 def induce_tam(pair: str, min_count: int = 20) -> dict:
     """Detect the verb's TAM slot: strip the subject marker off each gold verb, tally the next morpheme.
     The recurring second-position morphemes are the tense/aspect markers (na/li/ta/me…)."""
     from collections import Counter
     from gold.goldio import load_gold
+    tam_known = langknow.tam_markers(pair)
     verbs = [w for w, p in load_gold(pair).get("pos", {}).items() if str(p).lower() == "verb"]
     tam: Counter = Counter()
     for v in verbs:
-        sm = subject_marker(v)
+        sm = subject_marker(v, pair)
         if sm == "?" or len(v) <= len(sm) + 2:
             continue
         rest = v[len(sm):]
-        m = next((t for t in sorted(TAM_KNOWN, key=len, reverse=True) if rest.startswith(t)), rest[:2])
+        m = next((t for t in sorted(tam_known, key=len, reverse=True) if rest.startswith(t)), rest[:2])
         tam[m] += 1
-    found = [{"marker": m, "n": n, "gloss": TAM_KNOWN.get(m, "?")}
+    found = [{"marker": m, "n": n, "gloss": tam_known.get(m, "?")}
              for m, n in tam.most_common() if n >= min_count]
     return {"pair": pair, "tam_markers": found,
-            "known_hits": [f for f in found if f["marker"] in TAM_KNOWN]}
+            "known_hits": [f for f in found if f["marker"] in tam_known]}
 
 
 # object markers (slot 3, between TAM and stem) — overlap the SM/noun-class forms; agree with the OBJECT's
-# class. Detection is rough (OM is optional + medial), so this surfaces the inventory, not per-verb truth.
-OM_SET = sorted(["ni", "ku", "tu", "wa", "m", "mw", "li", "ya", "ki", "vi", "zi", "i", "u", "wn", "ji", "pa"],
-                key=len, reverse=True)
+# class. Per-language reference data (review.langknow). Detection is rough (OM is optional + medial), so this
+# surfaces the inventory, not per-verb truth.
 
 
 def induce_om(pair: str, min_count: int = 15) -> dict:
@@ -504,18 +531,20 @@ def induce_om(pair: str, min_count: int = 15) -> dict:
     Surfaces the OM inventory — completes the SM-TAM-OM-stem verb template."""
     from collections import Counter
     from gold.goldio import load_gold
+    tam_known = langknow.tam_markers(pair)
+    om_set = langknow.object_markers(pair)
     verbs = [w for w, p in load_gold(pair).get("pos", {}).items() if str(p).lower() == "verb"]
     om: Counter = Counter()
     for v in verbs:
-        sm = subject_marker(v)
+        sm = subject_marker(v, pair)
         if sm == "?":
             continue
         rest = v[len(sm):]
-        tam = next((t for t in sorted(TAM_KNOWN, key=len, reverse=True) if rest.startswith(t)), None)
+        tam = next((t for t in sorted(tam_known, key=len, reverse=True) if rest.startswith(t)), None)
         if not tam:
             continue
         after = rest[len(tam):]
-        cand = next((o for o in OM_SET if after.startswith(o) and len(after) > len(o) + 2), None)
+        cand = next((o for o in om_set if after.startswith(o) and len(after) > len(o) + 2), None)
         if cand:
             om[cand] += 1
     found = [{"marker": m, "n": n} for m, n in om.most_common() if n >= min_count]
@@ -546,7 +575,8 @@ def verb_template(pair: str, pivot: str = "en") -> dict:
     sm = induce_subject_marking(pair, pivot)
     return {"pair": pair, "template": "SM-TAM-(OM)-stem",
             "slot1_SM": sm.get("sm_by_noun_prefix", {}),
-            "slot2_TAM": [f["marker"] for f in induce_tam(pair).get("tam_markers", []) if f["marker"] in TAM_KNOWN],
+            "slot2_TAM": [f["marker"] for f in induce_tam(pair).get("tam_markers", [])
+                          if f["marker"] in langknow.tam_markers(pair)],
             "slot3_OM": [f["marker"] for f in induce_om(pair).get("om_markers", [])]}
 
 
@@ -556,17 +586,17 @@ def induce_subject_marking(pair: str, pivot: str = "en", sample: int = 0, min_su
     pairs = subject_verb_pairs(pair, pivot, sample)
     if pairs is None:
         return {"error": f"no '{pivot}' pivot parser available (install a spaCy/UDPipe model)", "pivot": pivot}
-    from review.classes import _BANTU_PREFIXES
+    prefixes = langknow.class_prefix_set(pair)
 
     def npfx(n: str) -> str:
-        for p in _BANTU_PREFIXES:
+        for p in prefixes:
             if n.startswith(p) and len(n) > len(p) + 1:
                 return p
         return "Ø"
 
     by_prefix: dict[str, Counter] = {}
     for noun, verb in pairs:
-        by_prefix.setdefault(npfx(noun), Counter())[subject_marker(verb)] += 1
+        by_prefix.setdefault(npfx(noun), Counter())[subject_marker(verb, pair)] += 1
     sm_by_prefix = {}
     for pfx, c in by_prefix.items():
         clean = Counter({k: v for k, v in c.items() if k != "?"})

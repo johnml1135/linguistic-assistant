@@ -16,19 +16,10 @@ _WORD_RE = re.compile(r"\w+", re.UNICODE)
 _SKIP = {"", "<range>"}
 
 
-def _tokenizer():
-    try:
-        from machine.tokenization import LatinWordTokenizer  # type: ignore
-
-        tok = LatinWordTokenizer()
-        return lambda s: [t for t in tok.tokenize(s) if _WORD_RE.fullmatch(t)]
-    except Exception:
-        return lambda s: _WORD_RE.findall(s)
-
-
 def tokenize(text: str, *, lower: bool = True) -> list[str]:
-    toks = _tokenizer()(text.lower() if lower else text)
-    return toks
+    r"""Script-AGNOSTIC word tokenizer: Unicode ``\w+`` handles Latin, Arabic, Devanagari, Cyrillic, etc.
+    uniformly (eBible is space-separated). No Latin-only assumption — required for non-Latin targets."""
+    return _WORD_RE.findall(text.lower() if lower else text)
 
 
 @dataclass

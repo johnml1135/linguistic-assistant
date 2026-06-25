@@ -1,0 +1,27 @@
+{
+  "_doc": "Reference linguistic knowledge for Swahili (swh) — Bantu noun-class morphology. This is HUMAN/REFERENCE-PROVIDED knowledge (a grammar sketch), NOT hardcoded into the algorithm. The engine LOADS it via review.langknow; it is declarable and overridable like the gold sets. Where derivable from the corpus it is cross-checked by review.recover (SM 8/9, ASSOC 5/5, prefix inventory 13/14); the inanimate-class prefix->class map is the part the corpus concord cannot recover (review.recover.derive_noun_class_map ceiling), so it lives here as reference data.",
+  "class_strategy": "bantu-prefix",
+  "meinhof_inventory": [
+    ["1/3", "m-/mw- (cl1 persons · cl3 things, sg)", ["mw", "m"]],
+    ["2", "wa- (cl2 persons, pl)", ["wa"]],
+    ["4", "mi- (cl4 things, pl)", ["mi"]],
+    ["5", "ji-/Ø (cl5)", ["ji"]],
+    ["6", "ma- (cl6, pl)", ["ma"]],
+    ["7", "ki-/ch- (cl7, sg)", ["ki", "ch"]],
+    ["8", "vi-/vy- (cl8, pl)", ["vi", "vy"]],
+    ["9/10", "n- (cl9/10 animals)", ["n"]],
+    ["11/14", "u- (cl11/14 abstracts)", ["u"]],
+    ["15", "ku- (cl15 infinitives)", ["ku"]],
+    ["16-18", "pa-/ku-/mu- (locatives)", ["pa"]]
+  ],
+  "noun_class_prefixes": {"wa": "2", "mi": "4", "ji": "5", "ki": "7", "ch": "7", "vi": "8", "vy": "8", "ma": "6"},
+  "subject_markers": ["a", "wa", "u", "i", "li", "ya", "ki", "vi", "zi", "ku", "tu", "ni", "m", "ha"],
+  "subject_marker_to_class": {"a": "1", "wa": "2", "u": "3", "i": "4", "li": "5", "ya": "6", "ki": "7", "vi": "8", "zi": "10"},
+  "tam_markers": {"na": "present", "li": "past", "ta": "future", "me": "perfect", "ki": "situative/-ing",
+                  "hu": "habitual", "ka": "consecutive", "nge": "conditional", "ja": "not-yet", "si": "negative"},
+  "object_markers": ["ni", "ku", "tu", "wa", "m", "mw", "li", "ya", "ki", "vi", "zi", "i", "u", "wn", "ji", "pa"],
+  "associative_markers": ["wa", "ya", "la", "cha", "vya", "za", "kwa", "pa"],
+  "associative_to_class": {"ya": "9/10", "za": "9/10", "la": "5", "cha": "7", "vya": "8"},
+  "possessive_stems": ["angu", "ako", "ake", "etu", "enu", "ao"],
+  "concord_prefixes": ["wa", "ya", "cha", "za", "la", "vya"]
+}

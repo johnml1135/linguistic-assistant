@@ -28,6 +28,11 @@ TARGETS: dict[str, str] = {
     "ind": "ind-indags",     # Indonesian (Bible for All) — Austronesian: affix/circumfix, meN- nasal assim.
     "tgl": "tgl-tglulb",     # Tagalog (ULB) — Austronesian: infixation + reduplication, voice morphology
     "spa": "spa-spaRV1909",  # Spanish (Reina-Valera 1909) — fusional; public-domain end-to-end shakedown
+    # text-only diversity set (no audio needed) — span morphological types the first four don't:
+    "tur": "tur-turytc",     # Turkish — Turkic: agglutinative, VOWEL HARMONY, rich CASE, SOV
+    "rus": "rus-russyn",     # Russian — Slavic: fusional, 6 CASES, free word order, Cyrillic (arb source was NT-sparse)
+    "hin": "hin-hin2017",    # Hindi — Indo-Aryan: SOV, postpositions, gender + case + aspect
+    "vie": "vie-vie1934",    # Vietnamese — Austroasiatic: ISOLATING (≈no morphology), tones (the other extreme)
 }
 
 # 27 New Testament books (USFM/vref 3-letter codes).

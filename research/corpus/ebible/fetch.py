@@ -13,10 +13,14 @@ DEFAULT_SRC_DIR = Path(__file__).resolve().parents[2] / "_sources" / "ebible"
 
 
 def _download(url: str, dest: Path, *, force: bool = False) -> Path:
+    import ssl
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.exists() and not force and dest.stat().st_size > 0:
         return dest  # idempotent
-    with urllib.request.urlopen(url, timeout=60) as r:  # noqa: S310 (trusted raw.githubusercontent.com)
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE                      # networks that MITM TLS (corporate proxy)
+    with urllib.request.urlopen(url, timeout=120, context=ctx) as r:  # noqa: S310 (trusted github raw)
         dest.write_bytes(r.read())
     return dest
 

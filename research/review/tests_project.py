@@ -27,10 +27,10 @@ class _Table:
 
 
 def test_subject_marker_extraction():
-    assert PJ.subject_marker("anasoma") == "a"        # cl1 SM
-    assert PJ.subject_marker("wanasoma") == "wa"      # cl2 SM
-    assert PJ.subject_marker("unasoma") == "u"        # cl3/11 SM
-    assert PJ.subject_marker("ki") is not None
+    assert PJ.subject_marker("anasoma", "swh") == "a"        # cl1 SM
+    assert PJ.subject_marker("wanasoma", "swh") == "wa"      # cl2 SM
+    assert PJ.subject_marker("unasoma", "swh") == "u"        # cl3/11 SM
+    assert PJ.subject_marker("kinasoma", "swh") is not None  # cl7 SM
 
 
 def test_project_verse_roles_and_propn_skip():

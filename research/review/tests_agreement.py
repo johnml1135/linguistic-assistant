@@ -14,8 +14,8 @@ from review import agreement as AG   # noqa: E402
 
 
 def test_prefix_longest_match():
-    assert AG._prefix("watu") == "wa" and AG._prefix("kitu") == "ki" and AG._prefix("vyombo") == "vy"
-    assert AG._prefix("ndege") == "n" and AG._prefix(" a") == "Ø"
+    assert AG._prefix("watu", "swh") == "wa" and AG._prefix("kitu", "swh") == "ki" and AG._prefix("vyombo", "swh") == "vy"
+    assert AG._prefix("ndege", "swh") == "n" and AG._prefix(" a", "swh") == "Ø"
 
 
 def test_build_concord_fills_clear_alliterative_cells():
@@ -36,7 +36,7 @@ def test_build_concord_skips_weak_or_all_O():
 def test_classify_zero_prefix_by_associative():
     # zero-prefix nouns classified by the associative they trigger (Corbett): ya→9/10, la→5
     zero = {"siku": Counter({"ya": 40}), "jina": Counter({"la": 12}), "x": Counter({"wa": 9})}
-    out = AG.classify_zero_prefix(zero)
+    out = AG.classify_zero_prefix(zero, "swh")
     assert out["siku"]["class"] == "9/10" and out["jina"]["class"] == "5"
     assert "x" not in out                              # 'wa' is ambiguous across classes → not classified
 

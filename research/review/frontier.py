@@ -52,6 +52,9 @@ def _build_ctx(pair: str, sample: int = 0) -> dict:
                 types[w] += 1
     gold = load_gold(pair)
     pos = gold.get("pos", {})
+    if not pos:                                        # new language with no hand-built gold → derived POS
+        from review.project import load_pos
+        pos = load_pos(pair)
     gold_affixes = [a for a in gold.get("affixes", [])]
     # induce affixes from the corpus so morphology is visible even when the gold affix list is thin (tgl);
     # effective affixes = gold ∪ induced, and a "known stem" = gold lexicon ∪ recurring corpus words.
@@ -412,7 +415,11 @@ def main(argv: list[str] | None = None) -> int:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
-    pairs = ["spa", "ind", "tgl", "swh"] if a.all else [a.pair]
+    if a.all:
+        from gold.compile import PAIR_DIR
+        pairs = sorted(PAIR_DIR)                       # all registered languages
+    else:
+        pairs = [a.pair]
     for pair in pairs:
         f = frontier(pair, sample=a.sample)
         nxt = f["next"]
