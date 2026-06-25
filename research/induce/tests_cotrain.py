@@ -40,7 +40,8 @@ def test_propose_roots_gates_content_vs_function(monkeypatch):
     out = CT.propose_roots(["mkate", "wa", "x", "y", "enzi", "known"], table,
                            gate=0.5, known_forms={"known"})
     assert set(out) == {"mkate", "enzi"}
-    assert out["mkate"] == ("bread", 0.8) and out["enzi"][0] == "throne"
+    assert out["mkate"][0] == "bread" and out["mkate"][1] == 0.8 and out["enzi"][0] == "throne"
+    assert out["mkate"][2] == ("mkate",)        # source words tracked (for round-trip)
 
 
 def test_propose_roots_strips_affixes_to_generalise(monkeypatch):
@@ -90,6 +91,45 @@ def test_cotrain_adds_roots_and_is_coverage_guarded(monkeypatch):
     assert r["roots_added"] == 2
     # last recorded cycle must be a kept (coverage-improving) one or the fixpoint break
     assert all(row["kept"] for row in r["history"])             # guard never kept a non-improving cycle
+
+
+def test_roundtrip_drops_roots_that_dont_reparse(monkeypatch):
+    """(switch a) A proposed root is kept only if it lets HC re-parse a source word; one that doesn't is
+    dropped even though THOT proposed it."""
+    base = _model()
+    proposals = {
+        "good": ("dog", 0.9, ("goodword",)),    # source 'goodword' WILL parse once 'good' is a root
+        "bad": ("cat", 0.9, ("badword",)),      # source 'badword' will NOT parse -> dropped
+    }
+
+    def fake_run_parse(model, words, **kw):
+        forms = {e.form for e in model.lexicon}
+        return {w: ([("x",)] if (w == "goodword" and "good" in forms) else []) for w in words}
+
+    monkeypatch.setattr("engine.hc.run_parse", fake_run_parse)
+    kept = CT._roundtrip_keep(base, proposals, pf={})
+    assert set(kept) == {"good"}                 # 'bad' dropped: no source word re-parsed
+
+
+def test_reuse_table_aligns_once(monkeypatch):
+    """(switch c) reuse_table computes the THOT table a single time and reuses it across cycles."""
+    WORDS = ["root1", "mkate", "enzi"]
+    calls = {"n": 0}
+    monkeypatch.setattr(CT.langknow, "function_words", lambda lang: set())
+
+    def fake_align(pair, model, sample):
+        calls["n"] += 1
+        return _Table({"mkate": _Best("bread", 0.9), "enzi": _Best("throne", 0.9)})
+
+    monkeypatch.setattr(CT, "_align_table", fake_align)
+    monkeypatch.setattr("induce.tdd.load_freqs", lambda pair: __import__("collections").Counter(
+        {"root1": 5, "mkate": 4, "enzi": 3}))
+    monkeypatch.setattr("gold.phonology_gold.phon_feats", lambda pair, charset: {})
+    monkeypatch.setattr("engine.hc.run_parse",
+                        lambda model, words, **kw: {w: ([("x",)] if w in {e.form for e in model.lexicon} else [])
+                                                    for w in words})
+    CT.cotrain("xx", cycles=3, words=WORDS, start=_model(), reuse_table=True, verbose=False)
+    assert calls["n"] == 1                        # aligned once, reused thereafter
 
 
 def test_cotrain_stops_when_no_proposals(monkeypatch):

@@ -24,22 +24,33 @@ _OUT = Path(__file__).resolve().parent / "out"
 
 
 def accumulate(pair: str, *, rounds: int = 12, seconds: float = 120.0, dry_after: int = 2,
-               amb_cap: float = 5.0) -> dict:
+               amb_cap: float = 5.0, cotrain: bool = False, cotrain_cycles: int = 2) -> dict:
+    """Frequency-based induction round-loop. With `cotrain=True` (switch b), after each round's induction a
+    THOT<->HC co-training pass proposes glossed roots for the words HC still can't parse and saves the
+    enriched model back, so the NEXT round's frequency induction resumes from the augmented grammar (the two
+    inducers interleave)."""
     history: list[dict] = []
     dry = 0
     for i in range(1, rounds + 1):
         resume = i > 1 or (_OUT / f"{pair}_model.json").exists()
         print(f"\n===== {pair} round {i}/{rounds} (resume={resume}) =====")
         res = run(pair, seconds, amb_cap=amb_cap, resume=resume)
+        ct_added = 0
+        if cotrain:
+            from induce.cotrain import cotrain as cotrain_loop, save_model
+            cr = cotrain_loop(pair, cycles=cotrain_cycles, amb_cap=max(amb_cap, 8.0), verbose=False)
+            if not cr.get("error"):
+                ct_added = cr["roots_added"]
+                save_model(pair, cr["model"])          # next round resumes from the augmented grammar
         store = build_store(pair, round_no=i)
         new = store["new_signatures"]
         dry = dry + 1 if new == 0 else 0
         row = {"round": i, "coverage": res["final_coverage"], "roots": res["lexicon"]["roots"],
-               "affixes": len(res["affixes_kept"]), "new_deltas": new,
+               "affixes": len(res["affixes_kept"]), "new_deltas": new, "cotrain_added": ct_added,
                "store_total": store["summary"]["total"], "route": store["route"]}
         history.append(row)
         print(f"[{pair}] round {i}: cov={row['coverage']} roots={row['roots']} affixes={row['affixes']} "
-              f"new_deltas={new} store={row['store_total']} route={store['route']}")
+              f"new_deltas={new} cotrain_added={ct_added} store={row['store_total']} route={store['route']}")
         if dry >= dry_after:
             print(f"[{pair}] converged: {dry} consecutive rounds with no new deltas.")
             break
@@ -55,9 +66,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--seconds", type=float, default=120.0)
     ap.add_argument("--dry-after", type=int, default=2, help="stop after this many no-new-delta rounds")
     ap.add_argument("--amb-cap", type=float, default=5.0)
+    ap.add_argument("--cotrain", action="store_true", help="(b) interleave a THOT<->HC co-training pass each round")
     args = ap.parse_args(argv)
     s = accumulate(args.pair, rounds=args.rounds, seconds=args.seconds,
-                   dry_after=args.dry_after, amb_cap=args.amb_cap)
+                   dry_after=args.dry_after, amb_cap=args.amb_cap, cotrain=args.cotrain)
     print(f"\n[{args.pair}] accumulate done: {s['rounds_run']} rounds, store now {s['final_store_total']} deltas")
     return 0
 

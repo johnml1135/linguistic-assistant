@@ -53,18 +53,18 @@ def _residue(word: str, prefixes: list[str], suffixes: list[str]) -> str:
 
 def propose_roots(unparsed: list[str], table, *, pivot: str = "en", gate: float = GATE,
                   known_forms: set[str] | None = None, prefixes: list[str] | None = None,
-                  suffixes: list[str] | None = None) -> dict[str, tuple[str, float]]:
+                  suffixes: list[str] | None = None) -> dict[str, tuple[str, float, tuple]]:
     """THOT proposals for the unparsed words: keep those aligned to a CONTENT pivot word above `gate`.
     A content-word alignment signals a missing LEXEME (root); a function-word alignment is grammatical
     (an affix's job, not a root) and is left for the morphotactics path. When affix inventories are given,
     the proposed root FORM is the affix-stripped residue (generalises across inflected forms); otherwise the
-    whole word. Returns {root_form -> (gloss, prob)} (deduped, max prob). Pure given the table."""
+    whole word. Returns {root_form -> (gloss, prob, source_words)} (deduped, max prob). Pure given table."""
     function = langknow.function_words(pivot)
     known = known_forms or set()
     strip = bool(prefixes or suffixes)
     pre = sorted(prefixes or [], key=len, reverse=True)
     suf = sorted(suffixes or [], key=len, reverse=True)
-    out: dict[str, tuple[str, float]] = {}
+    acc: dict[str, tuple[str, float, set]] = {}
     for w in unparsed:
         b = table.best(w)
         if not (b and b.prob >= gate and b.source_word not in function and len(b.source_word) >= MIN_SRC_LEN):
@@ -72,10 +72,14 @@ def propose_roots(unparsed: list[str], table, *, pivot: str = "en", gate: float 
         form = _residue(w, pre, suf) if strip else w
         if len(form) < 2 or form in known:
             continue
-        cur = out.get(form)
-        if cur is None or b.prob > cur[1]:
-            out[form] = (b.source_word, round(b.prob, 3))
-    return out
+        cur = acc.get(form)
+        if cur is None:
+            acc[form] = (b.source_word, round(b.prob, 3), {w})
+        else:
+            g, p, srcs = cur
+            srcs.add(w)
+            acc[form] = (b.source_word if b.prob > p else g, max(round(b.prob, 3), p), srcs)
+    return {f: (g, p, tuple(sorted(s))) for f, (g, p, s) in acc.items()}
 
 
 def _coverage(model, words, pf):
@@ -93,14 +97,32 @@ def _align_table(pair: str, model, sample: int):
     return table
 
 
+def _roundtrip_keep(base: LangModel, proposals: dict, pf) -> dict:
+    """(switch a) Keep only roots that actually let HC parse a source word they came from — a round-trip
+    correctness gate that drops residues whose segmentation HC can't realise. Batch: add all, parse the
+    union of source words, credit a root if >=1 of its source words now parses."""
+    from engine.hc import run_parse
+    trial = _clone(base)
+    for f, (g, _p, _s) in proposals.items():
+        trial.lexicon.append(LexEntry(form=f, gloss=g, pos="root", count=0))
+    sources = sorted({w for _f, (_g, _p, srcs) in proposals.items() for w in srcs})
+    res = run_parse(trial, sources, chunk_size=25, chunk_timeout=20, phon_feats=pf)
+    parsed = {w for w in sources if res.get(w)}
+    return {f: v for f, v in proposals.items() if any(w in parsed for w in v[2])}
+
+
 def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE,
             words: list[str] | None = None, start: LangModel | None = None, pivot: str = "en",
-            strip_affixes: bool = True, amb_cap: float = 8.0, verbose: bool = True) -> dict:
-    """Run the co-training loop. Returns {history, model, added}. Guarded: a cycle's roots are kept only if
-    coverage RISES and mean parse ambiguity stays <= `amb_cap` (residue roots generalise but raise
-    ambiguity — the cap bounds over-generation, mirroring the tdd loop). Stops at the fixpoint (no confident
-    proposals, no coverage gain, or ambiguity over cap). `strip_affixes` (default) proposes the affix-
-    stripped ROOT so it generalises across inflected forms (~7x the held-out gain of whole-word on swh)."""
+            strip_affixes: bool = True, amb_cap: float = 8.0,
+            verify_roundtrip: bool = False, reuse_table: bool = False, verbose: bool = True) -> dict:
+    """Run the co-training loop. Returns {history, model, added, secs}. Guarded: a cycle's roots are kept
+    only if coverage RISES and mean parse ambiguity stays <= `amb_cap`. Stops at the fixpoint.
+    Switches (for ablation):
+      strip_affixes   (default on)  propose the affix-stripped ROOT (generalises across inflected forms).
+      verify_roundtrip(a, off)      keep a root only if it lets HC re-parse a source word (correctness gate).
+      reuse_table     (c, off)      align THOT ONCE and reuse the table every cycle (warm/cheap) instead of
+                                    re-aligning on each cycle's new segmentation (the full mutual loop)."""
+    import time
     from induce.tdd import _load_prior_model, load_freqs
     from engine.hc import run_parse
     from gold.phonology_gold import phon_feats
@@ -114,40 +136,48 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
         words = ranked[:1000]
 
     history, total_added = [], []
+    t0 = time.monotonic()
     cov0, amb0 = _coverage(model, words, pf)
+    table = None
     if verbose:
-        print(f"[cotrain {pair}] start: coverage={cov0:.4f} amb={amb0:.2f} "
-              f"roots={len(model.lexicon)} affixes={len(model.affixes)}", flush=True)
+        print(f"[cotrain {pair}] start: coverage={cov0:.4f} amb={amb0:.2f} roots={len(model.lexicon)} "
+              f"affixes={len(model.affixes)} [strip={strip_affixes} roundtrip={verify_roundtrip} "
+              f"reuse_table={reuse_table}]", flush=True)
 
     for k in range(1, cycles + 1):
         # HC: find the gap on the current model
         res = run_parse(model, words, chunk_size=25, chunk_timeout=20, phon_feats=pf)
         unparsed = [w for w in words if not res.get(w)]
-        # THOT over the current HC segmentation
-        table = _align_table(pair, model, sample)
+        # THOT over the current HC segmentation — (c) reuse the first table if reuse_table, else re-align
+        if table is None or not reuse_table:
+            table = _align_table(pair, model, sample)
         known = {e.form for e in model.lexicon}
         pre = [a.form for a in model.affixes if a.kind == "prefix"] if strip_affixes else None
         suf = [a.form for a in model.affixes if a.kind == "suffix"] if strip_affixes else None
         proposals = propose_roots(unparsed, table, pivot=pivot, gate=gate, known_forms=known,
                                   prefixes=pre, suffixes=suf)
+        n_proposed = len(proposals)
+        if verify_roundtrip and proposals:                    # (a) correctness gate
+            proposals = _roundtrip_keep(model, proposals, pf)
         if not proposals:
             if verbose:
                 print(f"[cotrain {pair}] cycle {k}: no confident proposals — fixpoint.", flush=True)
             break
-        # apply, then coverage-guard
-        trial = model.copy() if hasattr(model, "copy") else _clone(model)
-        for w, (g, _p) in proposals.items():
-            trial.lexicon.append(LexEntry(form=w, gloss=g, pos="root", count=0))
+        # apply, then coverage+ambiguity guard
+        trial = _clone(model)
+        for f, (g, _p, _s) in proposals.items():
+            trial.lexicon.append(LexEntry(form=f, gloss=g, pos="root", count=0))
         cov1, amb1 = _coverage(trial, words, pf)
         rose = cov1 > cov0 + 1e-9
         within_amb = amb1 <= amb_cap
         kept = rose and within_amb
-        row = {"cycle": k, "unparsed": len(unparsed), "proposals": len(proposals),
+        row = {"cycle": k, "unparsed": len(unparsed), "proposed": n_proposed, "proposals": len(proposals),
                "cov_before": round(cov0, 4), "cov_after": round(cov1, 4),
                "delta": round(cov1 - cov0, 4), "amb": round(amb1, 2), "kept": kept}
         history.append(row)
         if verbose:
-            print(f"[cotrain {pair}] cycle {k}: unparsed={len(unparsed)} proposals={len(proposals)} "
+            rt = f" roundtrip_kept={len(proposals)}/{n_proposed}" if verify_roundtrip else ""
+            print(f"[cotrain {pair}] cycle {k}: unparsed={len(unparsed)} proposals={len(proposals)}{rt} "
                   f"cov {cov0:.4f}->{cov1:.4f} (d{cov1-cov0:+.4f}) amb={amb1:.2f} kept={kept}", flush=True)
         if not kept:
             why = "no coverage gain" if not rose else f"ambiguity {amb1:.2f} > cap {amb_cap}"
@@ -155,15 +185,30 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
                 print(f"[cotrain {pair}] cycle {k}: {why} — stop (guard).", flush=True)
             break
         model, cov0 = trial, cov1
-        total_added.extend({"form": w, "gloss": g, "prob": p} for w, (g, p) in proposals.items())
+        total_added.extend({"form": f, "gloss": g, "prob": p} for f, (g, p, _s) in proposals.items())
 
-    return {"pair": pair, "cycles_run": len(history), "history": history,
-            "final_coverage": cov0, "roots_added": len(total_added), "added": total_added, "model": model}
+    return {"pair": pair, "cycles_run": len(history), "history": history, "final_coverage": cov0,
+            "roots_added": len(total_added), "added": total_added, "model": model,
+            "secs": round(time.monotonic() - t0, 1)}
 
 
 def _clone(model: LangModel) -> LangModel:
     import copy
     return copy.deepcopy(model)
+
+
+def save_model(pair: str, model: LangModel) -> str:
+    """Persist the enriched model back to out/<pair>_model.json in the tdd format, so the next accumulate
+    round resumes from the cotrain-augmented grammar (the integration seam for switch b)."""
+    import json
+    out = Path(__file__).resolve().parent / "out" / f"{pair}_model.json"
+    out.write_text(json.dumps({
+        "pair": pair,
+        "roots": [{"form": e.form, "gloss": e.gloss, "pos": e.pos, "count": e.count} for e in model.lexicon],
+        "affixes": [{"form": a.form, "gloss": a.gloss, "kind": a.kind, "slot_ord": a.slot_ord,
+                     "req_pos": a.req_pos, "count": a.count} for a in model.affixes],
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    return str(out)
 
 
 def emit_deltas(pair: str, added: list[dict]) -> int:
@@ -190,14 +235,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--gate", type=float, default=GATE)
     ap.add_argument("--no-strip", action="store_true", help="propose whole unparsed words as roots (no affix strip)")
     ap.add_argument("--amb-cap", type=float, default=8.0, help="stop if mean parse ambiguity exceeds this")
+    ap.add_argument("--roundtrip", action="store_true", help="(a) keep a root only if HC re-parses a source word")
+    ap.add_argument("--reuse-table", action="store_true", help="(c) align THOT once and reuse (warm) vs re-align each cycle")
     ap.add_argument("--emit", action="store_true", help="route induced roots into the delta store")
     a = ap.parse_args(argv)
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
-    r = cotrain(a.pair, cycles=a.cycles, sample=a.sample, gate=a.gate,
-                strip_affixes=not a.no_strip, amb_cap=a.amb_cap)
+    r = cotrain(a.pair, cycles=a.cycles, sample=a.sample, gate=a.gate, strip_affixes=not a.no_strip,
+                amb_cap=a.amb_cap, verify_roundtrip=a.roundtrip, reuse_table=a.reuse_table)
     if r.get("error"):
         print(r["error"]); return 1
     print(f"\n[cotrain {a.pair}] done: {r['cycles_run']} cycles, +{r['roots_added']} roots, "
