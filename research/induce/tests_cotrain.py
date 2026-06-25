@@ -43,6 +43,25 @@ def test_propose_roots_gates_content_vs_function(monkeypatch):
     assert out["mkate"] == ("bread", 0.8) and out["enzi"][0] == "throne"
 
 
+def test_propose_roots_strips_affixes_to_generalise(monkeypatch):
+    monkeypatch.setattr(CT.langknow, "function_words", lambda lang: set())
+    # two inflected forms of the same root 'penda' (love): wa-penda, a-penda-na
+    table = _Table({"wapenda": _Best("love", 0.9), "apendana": _Best("love", 0.8)})
+    out = CT.propose_roots(["wapenda", "apendana"], table, gate=0.5,
+                           prefixes=["wa", "a"], suffixes=["na"])
+    # both inflected forms strip to the shared root 'penda' -> ONE generalising root, not two whole words
+    assert "penda" in out
+    assert "wapenda" not in out and "apendana" not in out
+    assert out["penda"][0] == "love"
+
+
+def test_residue_peels_one_prefix_and_one_suffix():
+    assert CT._residue("wapendana", ["wa", "a"], ["na"]) == "pendan" or \
+           CT._residue("wapendana", ["wa"], ["na"]) == "penda"     # wa- + -na peeled
+    assert CT._residue("mtu", ["m"], []) == "tu"                   # one prefix
+    assert CT._residue("xy", ["x"], []) == "xy"                    # too short to strip (residue<2)
+
+
 def _model():
     return LangModel(code="xx", lexicon=[LexEntry(form="root1", gloss="r", pos="root", count=1)], affixes=[])
 

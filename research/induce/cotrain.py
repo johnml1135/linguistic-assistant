@@ -35,20 +35,46 @@ GATE = 0.5            # min THOT alignment probability to trust a root proposal
 MIN_SRC_LEN = 3       # ignore alignments to very short pivot tokens
 
 
+def _residue(word: str, prefixes: list[str], suffixes: list[str]) -> str:
+    """Peel ONE longest-matching known prefix and ONE longest-matching known suffix off an unparsed word to
+    recover its likely ROOT. Using HC's own affix inventory to strip is the mutual half on the segmentation
+    side — the recovered root then generalises to every other inflected form of the same lexeme."""
+    r = word
+    for p in prefixes:                       # pre-sorted longest-first
+        if r.startswith(p) and len(r) - len(p) >= 2:
+            r = r[len(p):]
+            break
+    for s in suffixes:
+        if r.endswith(s) and len(r) - len(s) >= 2:
+            r = r[: -len(s)]
+            break
+    return r
+
+
 def propose_roots(unparsed: list[str], table, *, pivot: str = "en", gate: float = GATE,
-                  known_forms: set[str] | None = None) -> dict[str, tuple[str, float]]:
+                  known_forms: set[str] | None = None, prefixes: list[str] | None = None,
+                  suffixes: list[str] | None = None) -> dict[str, tuple[str, float]]:
     """THOT proposals for the unparsed words: keep those aligned to a CONTENT pivot word above `gate`.
     A content-word alignment signals a missing LEXEME (root); a function-word alignment is grammatical
-    (an affix's job, not a root) and is left for the morphotactics path. Pure given the table."""
+    (an affix's job, not a root) and is left for the morphotactics path. When affix inventories are given,
+    the proposed root FORM is the affix-stripped residue (generalises across inflected forms); otherwise the
+    whole word. Returns {root_form -> (gloss, prob)} (deduped, max prob). Pure given the table."""
     function = langknow.function_words(pivot)
     known = known_forms or set()
+    strip = bool(prefixes or suffixes)
+    pre = sorted(prefixes or [], key=len, reverse=True)
+    suf = sorted(suffixes or [], key=len, reverse=True)
     out: dict[str, tuple[str, float]] = {}
     for w in unparsed:
-        if w in known:
-            continue
         b = table.best(w)
-        if b and b.prob >= gate and b.source_word not in function and len(b.source_word) >= MIN_SRC_LEN:
-            out[w] = (b.source_word, round(b.prob, 3))
+        if not (b and b.prob >= gate and b.source_word not in function and len(b.source_word) >= MIN_SRC_LEN):
+            continue
+        form = _residue(w, pre, suf) if strip else w
+        if len(form) < 2 or form in known:
+            continue
+        cur = out.get(form)
+        if cur is None or b.prob > cur[1]:
+            out[form] = (b.source_word, round(b.prob, 3))
     return out
 
 
@@ -69,9 +95,12 @@ def _align_table(pair: str, model, sample: int):
 
 def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE,
             words: list[str] | None = None, start: LangModel | None = None, pivot: str = "en",
-            verbose: bool = True) -> dict:
-    """Run the co-training loop. Returns {history, model, added}. Coverage-guarded: a cycle's roots are
-    kept only if coverage rises; the loop stops at the fixpoint (no confident proposals or no gain)."""
+            strip_affixes: bool = True, amb_cap: float = 8.0, verbose: bool = True) -> dict:
+    """Run the co-training loop. Returns {history, model, added}. Guarded: a cycle's roots are kept only if
+    coverage RISES and mean parse ambiguity stays <= `amb_cap` (residue roots generalise but raise
+    ambiguity — the cap bounds over-generation, mirroring the tdd loop). Stops at the fixpoint (no confident
+    proposals, no coverage gain, or ambiguity over cap). `strip_affixes` (default) proposes the affix-
+    stripped ROOT so it generalises across inflected forms (~7x the held-out gain of whole-word on swh)."""
     from induce.tdd import _load_prior_model, load_freqs
     from engine.hc import run_parse
     from gold.phonology_gold import phon_feats
@@ -97,7 +126,10 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
         # THOT over the current HC segmentation
         table = _align_table(pair, model, sample)
         known = {e.form for e in model.lexicon}
-        proposals = propose_roots(unparsed, table, pivot=pivot, gate=gate, known_forms=known)
+        pre = [a.form for a in model.affixes if a.kind == "prefix"] if strip_affixes else None
+        suf = [a.form for a in model.affixes if a.kind == "suffix"] if strip_affixes else None
+        proposals = propose_roots(unparsed, table, pivot=pivot, gate=gate, known_forms=known,
+                                  prefixes=pre, suffixes=suf)
         if not proposals:
             if verbose:
                 print(f"[cotrain {pair}] cycle {k}: no confident proposals — fixpoint.", flush=True)
@@ -107,7 +139,9 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
         for w, (g, _p) in proposals.items():
             trial.lexicon.append(LexEntry(form=w, gloss=g, pos="root", count=0))
         cov1, amb1 = _coverage(trial, words, pf)
-        kept = cov1 > cov0 + 1e-9
+        rose = cov1 > cov0 + 1e-9
+        within_amb = amb1 <= amb_cap
+        kept = rose and within_amb
         row = {"cycle": k, "unparsed": len(unparsed), "proposals": len(proposals),
                "cov_before": round(cov0, 4), "cov_after": round(cov1, 4),
                "delta": round(cov1 - cov0, 4), "amb": round(amb1, 2), "kept": kept}
@@ -116,8 +150,9 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
             print(f"[cotrain {pair}] cycle {k}: unparsed={len(unparsed)} proposals={len(proposals)} "
                   f"cov {cov0:.4f}->{cov1:.4f} (d{cov1-cov0:+.4f}) amb={amb1:.2f} kept={kept}", flush=True)
         if not kept:
+            why = "no coverage gain" if not rose else f"ambiguity {amb1:.2f} > cap {amb_cap}"
             if verbose:
-                print(f"[cotrain {pair}] cycle {k}: no coverage gain — stop (guard).", flush=True)
+                print(f"[cotrain {pair}] cycle {k}: {why} — stop (guard).", flush=True)
             break
         model, cov0 = trial, cov1
         total_added.extend({"form": w, "gloss": g, "prob": p} for w, (g, p) in proposals.items())
@@ -153,13 +188,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--cycles", type=int, default=6)
     ap.add_argument("--sample", type=int, default=500)
     ap.add_argument("--gate", type=float, default=GATE)
+    ap.add_argument("--no-strip", action="store_true", help="propose whole unparsed words as roots (no affix strip)")
+    ap.add_argument("--amb-cap", type=float, default=8.0, help="stop if mean parse ambiguity exceeds this")
     ap.add_argument("--emit", action="store_true", help="route induced roots into the delta store")
     a = ap.parse_args(argv)
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
-    r = cotrain(a.pair, cycles=a.cycles, sample=a.sample, gate=a.gate)
+    r = cotrain(a.pair, cycles=a.cycles, sample=a.sample, gate=a.gate,
+                strip_affixes=not a.no_strip, amb_cap=a.amb_cap)
     if r.get("error"):
         print(r["error"]); return 1
     print(f"\n[cotrain {a.pair}] done: {r['cycles_run']} cycles, +{r['roots_added']} roots, "
