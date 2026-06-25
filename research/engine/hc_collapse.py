@@ -37,9 +37,11 @@ def hc_available() -> bool:
 
 
 # --------------------------------------------------------------------------- the emitter (one rule, whole family)
-def glide_rule_xml(rid: str = "r_glide") -> tuple[str, str]:
+def glide_rule_xml(rid: str = "r_glide", right_env_class: str = "nc_syl") -> tuple[str, str]:
     """The reusable HC rule: a high syllabic vowel desyllabifies (becomes its glide) before a vowel.
-    `[+high,+syl] → [−syl] / __ [+syl]`. Covers u→w and i→y with one rule."""
+    `[+high,+syl] → [−syl] / __ [+syl]`. Covers u→w and i→y with one rule. `right_env_class` is the
+    natural class of the triggering following vowel — pass a restricted class (e.g. all vowels except the
+    homorganic `u`) to emit a CONDITIONED rule that doesn't fire before the blocking vowel."""
     xml = (
         f'<PhonologicalRule id="{rid}" multipleApplicationOrder="leftToRightIterative">'
         '<Name>glide formation</Name>'
@@ -47,7 +49,7 @@ def glide_rule_xml(rid: str = "r_glide") -> tuple[str, str]:
         '</PhoneticInput><PhonologicalSubrules><PhonologicalSubrule>'
         '<PhoneticOutput><PhoneticSequence><SimpleContext naturalClass="nc_glide_out"/></PhoneticSequence>'
         '</PhoneticOutput><Environment><RightEnvironment><PhoneticTemplate><PhoneticSequence>'
-        '<SimpleContext naturalClass="nc_syl"/>'
+        f'<SimpleContext naturalClass="{right_env_class}"/>'
         '</PhoneticSequence></PhoneticTemplate></RightEnvironment></Environment>'
         '</PhonologicalSubrule></PhonologicalSubrules></PhonologicalRule>'
     )
@@ -89,15 +91,23 @@ def _segment_defs(chars: set[str]) -> tuple[str, str]:
 
 
 def build_collapse_grammar(ur: str, stems: list[tuple[str, str]], *, ur_gloss: str = "UR",
-                           kind: str = "prefix") -> str:
+                           kind: str = "prefix", block_vowels: frozenset = frozenset()) -> str:
     """A focused grammar: the single underlying affix `ur` + the glide rule + the given stems. Parsing a
-    surface member with it = un-applying the rule back to ur+stem (the round-trip)."""
+    surface member with it = un-applying the rule back to ur+stem (the round-trip). `block_vowels` emits a
+    CONDITIONED rule whose right environment is every vowel EXCEPT those listed (the homorganic blocker) —
+    so e.g. `mu+umini` does not glide and round-trips as `mu`, instead of being a false exception."""
     chars = set(ur) | {ch for form, _ in stems for ch in form}
     chars |= {GLIDE_OF[c] for c in list(chars) if c in GLIDE_OF}   # the glide segment (w←u, y←i) only
     segdefs, cid_syms = _segment_defs(chars)                       # surfaces in members, not in the stems
     all_segs = sorted({f"s_{c}" for c in chars})
     any_segs = "".join(f'<Segment segment="{s}"/>' for s in all_segs)
-    _rid, rule = glide_rule_xml()
+    trigger_nc, right_env_class = "", "nc_syl"
+    if block_vowels:                                               # conditioned rule: trigger = vowels − blockers
+        trig = sorted(v for v in chars if v in VOWELS and v not in block_vowels)
+        trig_segs = "".join(f'<Segment segment="s_{v}"/>' for v in trig)
+        trigger_nc = f'<SegmentNaturalClass id="nc_trigger"><Name>trigger</Name>{trig_segs}</SegmentNaturalClass>'
+        right_env_class = "nc_trigger"
+    _rid, rule = glide_rule_xml(right_env_class=right_env_class)
     affix_out = (f'<InsertSegments><PhoneticShape>{escape(ur)}</PhoneticShape></InsertSegments><CopyFromInput index="st"/>'
                  if kind == "prefix" else
                  f'<CopyFromInput index="st"/><InsertSegments><PhoneticShape>{escape(ur)}</PhoneticShape></InsertSegments>')
@@ -138,7 +148,8 @@ def build_collapse_grammar(ur: str, stems: list[tuple[str, str]], *, ur_gloss: s
         '<FeatureNaturalClass id="nc_high_syl"><Name>high syllabic</Name><FeatureValue feature="voc" symbolValues="vow"/>'
         '<FeatureValue feature="hi" symbolValues="hi"/><FeatureValue feature="syl" symbolValues="plus"/></FeatureNaturalClass>'
         '<FeatureNaturalClass id="nc_glide_out"><Name>nonsyllabic</Name><FeatureValue feature="syl" symbolValues="minus"/></FeatureNaturalClass>'
-        f'<SegmentNaturalClass id="any"><Name>any</Name>{any_segs}</SegmentNaturalClass></NaturalClasses>'
+        f'<SegmentNaturalClass id="any"><Name>any</Name>{any_segs}</SegmentNaturalClass>'
+        f'{trigger_nc}</NaturalClasses>'
         f'<PhonologicalRuleDefinitions>{rule}</PhonologicalRuleDefinitions><Strata>'
         '<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="unordered" '
         'phonologicalRules="r_glide" morphologicalRules="mr_ur"><Name>main</Name>'
@@ -178,24 +189,28 @@ def _run_parse_xml(xml: str, words: list[str], *, timeout: int = 60) -> dict[str
 
 
 def glide_collapse_round_trips(ur: str, vowel: str, glide: str, vowel_env_words: list[str],
-                               glide_env_words: list[str], *, timeout: int = 60) -> dict:
+                               glide_env_words: list[str], *, timeout: int = 60,
+                               block_vowels: frozenset = frozenset()) -> dict:
     """Validate the collapse against its OWN counterexamples. Build the single-UR + glide-rule grammar and
     re-parse the members, separating **in-environment** items (prefix before a vowel — where `vowel→glide`
     MUST apply: every glide-form word + every `ur`+vowel word) from out-of-environment ones. The Tolerance
     Principle is judged on the in-environment set (`n_env`, `n_exceptions` = `ur`+vowel forms that don't
     glide, e.g. *muumini*). `ur` is the vowel form; the glide form is `ur[:-1]+glide`.
-    Returns {ran, ok, recall_env, n_env, n_exceptions, n_members, n_failures, failures, ...}."""
+    `block_vowels` emits a CONDITIONED rule (no gliding before those vowels) AND removes `ur`+blocker words
+    from the in-environment set — so a homorganic blocker (mu+u → muumini) is treated as outside the rule's
+    domain, not a false exception. Returns {ran, ok, recall_env, n_env, n_exceptions, n_members, ...}."""
     if not ur.endswith(vowel):
         return {"ran": False, "ok": False, "reason": f"ur {ur!r} does not end in {vowel!r}",
                 "recall_env": 0.0, "n_env": 0, "n_exceptions": 0, "n_members": 0, "failures": []}
     glide_prefix = ur[:-1] + glide
     vowels = set(VOWELS)
     stems: dict[str, str] = {}
-    classified: list[tuple[str, bool]] = []                # (word, in_environment = prefix before a vowel)
+    classified: list[tuple[str, bool]] = []                # (word, in_environment = prefix before a trigger vowel)
     for w in dict.fromkeys(vowel_env_words):
         if w.startswith(ur) and len(w) > len(ur):
             stem = w[len(ur):]; stems.setdefault(stem, f"ST{len(stems)}")
-            classified.append((w, stem[0] in vowels))      # ur+vowel = in-env (rule should apply)
+            in_env = stem[0] in vowels and stem[0] not in block_vowels   # ur+trigger-vowel = in-env
+            classified.append((w, in_env))
     for w in dict.fromkeys(glide_env_words):
         if w.startswith(glide_prefix) and len(w) > len(glide_prefix):
             stems.setdefault(w[len(glide_prefix):], f"ST{len(stems)}")
@@ -207,7 +222,7 @@ def glide_collapse_round_trips(ur: str, vowel: str, glide: str, vowel_env_words:
     if not hc_available():
         return {"ran": False, "ok": False, "reason": "hc.exe not available", "recall_env": 0.0,
                 "n_env": 0, "n_exceptions": 0, "n_members": len(members), "failures": []}
-    xml = build_collapse_grammar(ur, [(f, g) for f, g in stems.items()])
+    xml = build_collapse_grammar(ur, [(f, g) for f, g in stems.items()], block_vowels=block_vowels)
     parsed = _run_parse_xml(xml, members, timeout=timeout)
 
     def passes(w: str) -> bool:
@@ -220,5 +235,6 @@ def glide_collapse_round_trips(ur: str, vowel: str, glide: str, vowel_env_words:
     return {"ran": True, "ok": not exceptions, "n_env": n_env, "n_exceptions": len(exceptions),
             "recall_env": round((n_env - len(exceptions)) / n_env, 3) if n_env else 0.0,
             "n_members": len(members), "n_failures": len(all_fail), "failures": exceptions[:10],
-            "ur": ur, "glide_form": glide_prefix, "rule": f"{vowel}->{glide} / __V",
+            "ur": ur, "glide_form": glide_prefix,
+            "rule": f"{vowel}->{glide} / __V" + (f"[-{''.join(sorted(block_vowels))}]" if block_vowels else ""),
             "stems_collapsed": len(stems)}

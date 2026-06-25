@@ -108,6 +108,60 @@ def _phon_feature_xml(
     return feature_defs, seg_extra, nat
 
 
+def _glide_substrate(src_chars: list[str], block_vowels: frozenset = frozenset()):
+    """Feature substrate that lets the GLIDE RULE live in the main grammar. The rule desyllabifies a high
+    vowel before a vowel (u→w, i→y), which requires the high vowel and its glide to be identified by
+    PHONOLOGICAL features (hi/rnd/back/syl) — NOT by the per-grapheme `seg` identity (under `seg`, u→[-syl]
+    can't become w because they have distinct seg ids). So vowels/glides drop `seg` and carry phon features;
+    consonants keep `seg` + voc=cons. Returns (feature_defs, segfv_by_char, cons_voc_by_char, nat_classes)
+    or None if the inventory lacks vowels or glides. Only valid when no other phon_feats inventory is set."""
+    from engine.hc_collapse import GLIDE_OF, VOWELS
+    src_of = {g: v for v, g in GLIDE_OF.items()}
+    vowels = [c for c in src_chars if c in VOWELS]
+    glides = [c for c in src_chars if c in src_of and src_of[c] in VOWELS]
+    if not vowels or not glides:
+        return None
+    feature_defs = (
+        '<SymbolicFeature id="voc" defaultSymbol="cons"><Name>voc</Name><Symbols>'
+        '<Symbol id="vow">vowel</Symbol><Symbol id="cons">consonant</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="hi"><Name>hi</Name><Symbols><Symbol id="hi">high</Symbol>'
+        '<Symbol id="lo">low</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="rnd"><Name>rnd</Name><Symbols><Symbol id="rnd">round</Symbol>'
+        '<Symbol id="unr">unround</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="back"><Name>back</Name><Symbols><Symbol id="bk">back</Symbol>'
+        '<Symbol id="fr">front</Symbol></Symbols></SymbolicFeature>'
+        '<SymbolicFeature id="syl" defaultSymbol="plus"><Name>syl</Name><Symbols>'
+        '<Symbol id="plus">syllabic</Symbol><Symbol id="minus">nonsyllabic</Symbol></Symbols></SymbolicFeature>'
+    )
+
+    def vfv(c, syl):
+        hi, rnd, bk = VOWELS[c]
+        return (f'<FeatureValue feature="voc" symbolValues="vow" /><FeatureValue feature="hi" symbolValues="{hi}" />'
+                f'<FeatureValue feature="rnd" symbolValues="{rnd}" /><FeatureValue feature="back" symbolValues="{bk}" />'
+                f'<FeatureValue feature="syl" symbolValues="{syl}" />')
+
+    segfv = {v: vfv(v, "plus") for v in vowels}
+    segfv.update({g: vfv(src_of[g], "minus") for g in glides})
+    cons_voc = {c: '<FeatureValue feature="voc" symbolValues="cons" />'
+                for c in src_chars if c not in vowels and c not in glides}
+    nat = (
+        '<FeatureNaturalClass id="nc_syl"><Name>syllabic</Name><FeatureValue feature="voc" symbolValues="vow"/>'
+        '<FeatureValue feature="syl" symbolValues="plus"/></FeatureNaturalClass>'
+        '<FeatureNaturalClass id="nc_high_syl"><Name>high syllabic</Name><FeatureValue feature="voc" symbolValues="vow"/>'
+        '<FeatureValue feature="hi" symbolValues="hi"/><FeatureValue feature="syl" symbolValues="plus"/></FeatureNaturalClass>'
+        '<FeatureNaturalClass id="nc_glide_out"><Name>nonsyllabic</Name>'
+        '<FeatureValue feature="syl" symbolValues="minus"/></FeatureNaturalClass>'
+    )
+    trigger_idx = ""           # CONDITIONED rule: right env = vowels minus the blocker(s) (e.g. not before u)
+    if block_vowels:
+        trig = [c for c in vowels if c not in block_vowels]
+        cd = {c: i for i, c in enumerate(src_chars)}
+        trig_segs = "".join(f'<Segment segment="cd_{cd[v]}" />' for v in trig if v in cd)
+        nat += f'<SegmentNaturalClass id="nc_trigger"><Name>trigger</Name>{trig_segs}</SegmentNaturalClass>'
+        trigger_idx = "nc_trigger"
+    return feature_defs, segfv, cons_voc, nat, trigger_idx
+
+
 def build_grammar_xml(
     model: LangModel,
     tl: Translit | None = None,
@@ -115,6 +169,8 @@ def build_grammar_xml(
     phon_feats: dict[str, dict[str, str]] | None = None,
     pos_aware: bool = False,
     phon_rules: list[tuple[str, str]] | None = None,
+    glide_rule: bool = False,
+    glide_block_vowels: frozenset = frozenset(),
 ) -> str:
     """Emit the HC grammar. With ``phon_feats`` (grapheme -> {feature: symbolValue}, e.g. a Spanish
     inventory mapping vowels to voc/hi/rnd/back), each segment carries REAL phonological features
@@ -138,10 +194,27 @@ def build_grammar_xml(
     # phonological features) — so it stays even when real features are layered on.
     symbols = "".join(f'<Symbol id="seg_{i}">v{i}</Symbol>' for i in range(len(src_chars)))
     extra_feature_defs, seg_extra_fvs, extra_nat_classes = _phon_feature_xml(src_chars, phon_feats)
+
+    # GLIDE RULE substrate (live morphophonology): vowels/glides identified by phon features (drop `seg` so
+    # u→w can fire); consonants keep `seg`. Only when no other inventory is set (avoids double feature defs).
+    glide_sub = _glide_substrate(src_chars, glide_block_vowels) if (glide_rule and not phon_feats) else None
+    g_segfv, g_consvoc = ({}, {})
+    if glide_sub:
+        g_featdefs, g_segfv, g_consvoc, g_nat, g_trigger = glide_sub
+        from engine.hc_collapse import glide_rule_xml
+        extra_feature_defs += g_featdefs
+        extra_nat_classes += g_nat
+        phon_rules = list(phon_rules or []) + [glide_rule_xml(right_env_class=g_trigger or "nc_syl")]
+
+    def _seg_fv(i: int, c: str) -> str:
+        if c in g_segfv:                              # vowel/glide → phon features, no seg identity
+            return g_segfv[c]
+        return (f'<FeatureValue feature="seg" symbolValues="seg_{i}" />'
+                + g_consvoc.get(c, "") + seg_extra_fvs.get(c, ""))
+
     segdefs = "".join(
         f'<SegmentDefinition id="cd_{i}"><Representations><Representation>{escape(tl.fwd[c])}'
-        f'</Representation></Representations><FeatureValue feature="seg" '
-        f'symbolValues="seg_{i}" />{seg_extra_fvs.get(c, "")}</SegmentDefinition>'
+        f'</Representation></Representations>{_seg_fv(i, c)}</SegmentDefinition>'
         for i, c in enumerate(src_chars)
     )
     anyseg = "".join(f'<Segment segment="cd_{i}" />' for i in range(len(src_chars)))
@@ -295,6 +368,8 @@ def run_parse(
     phon_feats: dict[str, dict[str, str]] | None = None,
     pos_aware: bool = False,
     phon_rules: list[tuple[str, str]] | None = None,
+    glide_rule: bool = False,
+    glide_block_vowels: frozenset = frozenset(),
 ) -> dict[str, list[Analysis]]:
     """Parse ``words`` (underlying forms) with the emitted grammar; return analyses.
 
@@ -306,7 +381,7 @@ def run_parse(
     """
     tl = Translit(model.charset)
     xml = build_grammar_xml(model, tl, templated=templated, phon_feats=phon_feats, pos_aware=pos_aware,
-                            phon_rules=phon_rules)
+                            phon_rules=phon_rules, glide_rule=glide_rule, glide_block_vowels=glide_block_vowels)
     uniq = list(dict.fromkeys(words))
     results: dict[str, list[Analysis]] = {w: [] for w in uniq}
     with tempfile.TemporaryDirectory() as d:
