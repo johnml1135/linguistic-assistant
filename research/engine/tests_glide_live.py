@@ -51,6 +51,31 @@ def test_live_glide_parses_glide_form_via_ur():
     assert "vi-" in glosses                               # vyombo analysed as vi- + stem (rule un-applied)
 
 
+def test_conditioned_affix_xml_emits_one_rule_two_subrules():
+    cond = [{"gloss": "cl8", "kind": "prefix",
+             "allomorphs": [{"shape": "vy", "first": "vow"}, {"shape": "vi", "first": None}]}]
+    m = LangModel(code="swh", lexicon=[LexEntry(form="ombo", gloss="R", pos="root")], affixes=[])  # no normal affixes
+    xml = HC.build_grammar_xml(m, conditioned_affixes=cond, templated=False)
+    assert xml.count("<MorphologicalRule ") == 1 and xml.count("<MorphologicalSubrule ") == 2  # 1 rule, 2 subrules
+    assert 'id="nc_vow"' in xml and '<SymbolicFeature id="voc"' in xml   # voc substrate for the condition
+
+
+def test_conditioned_affix_collapses_vi_vy_via_one_affix():
+    """The morpheme-scoped collapse: vitu->cl8+tu (vi elsewhere) and vyombo->cl8+ombo (vy before a vowel),
+    via ONE affix, no global rule. (Was blocked by a charset bug that emitted an empty InsertSegments.)"""
+    from engine.hc_collapse import hc_available
+    if not hc_available():
+        return
+    roots = ["tu", "ombo", "ema", "mvi", "yake"]            # charset carries v, i, y
+    m = LangModel(code="swh", lexicon=[LexEntry(form=r, gloss="R_" + r, pos="root") for r in roots], affixes=[])
+    cond = [{"gloss": "cl8", "kind": "prefix",
+             "allomorphs": [{"shape": "vy", "first": "vow"}, {"shape": "vi", "first": None}]}]
+    res = HC.run_parse(m, ["vitu", "vyombo"], templated=False, conditioned_affixes=cond, chunk_timeout=30)
+    assert res.get("vitu") and res.get("vyombo")
+    assert "cl8" in {g for a in res["vitu"] for _, g in a}
+    assert "cl8" in {g for a in res["vyombo"] for _, g in a}   # same affix derives both allomorphs
+
+
 if __name__ == "__main__":
     import traceback
     fns = [(k, v) for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]

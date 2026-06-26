@@ -171,6 +171,7 @@ def build_grammar_xml(
     phon_rules: list[tuple[str, str]] | None = None,
     glide_rule: bool = False,
     glide_block_vowels: frozenset = frozenset(),
+    conditioned_affixes: list[dict] | None = None,
 ) -> str:
     """Emit the HC grammar. With ``phon_feats`` (grapheme -> {feature: symbolValue}, e.g. a Spanish
     inventory mapping vowels to voc/hi/rnd/back), each segment carries REAL phonological features
@@ -182,8 +183,11 @@ def build_grammar_xml(
     and gives each affix rule an MSA: it attaches to its ``req_pos`` (output = same, an inflectional
     category-preserving rule) or, if unrestricted, to any POS (output left unchanged). Default off keeps
     the single ``root`` POS."""
-    tl = tl or Translit(model.charset)
-    src_chars = sorted(set(model.charset))
+    # include any chars used only by conditioned-affix shapes, so Translit never silently drops them (a
+    # dropped char yields an empty InsertSegments, which crashes hc.exe — see the HC NRE bug report).
+    _extra_chars = {ch for ca in (conditioned_affixes or []) for al in ca.get("allomorphs", []) for ch in al.get("shape", "")}
+    tl = tl or Translit(sorted(set(model.charset) | _extra_chars))
+    src_chars = sorted(set(model.charset) | _extra_chars)
     pos_list = sorted({e.pos for e in model.lexicon if e.pos}) if pos_aware else ["root"]
     if not pos_list:
         pos_list = ["root"]
@@ -206,11 +210,25 @@ def build_grammar_xml(
         extra_nat_classes += g_nat
         phon_rules = list(phon_rules or []) + [glide_rule_xml(right_env_class=g_trigger or "nc_syl")]
 
+    # CONDITIONED-ALLOMORPH substrate (morpheme-scoped collapse): a light voc=vow/cons feature so an affix's
+    # subrule can select its allomorph by the stem's first-segment class (vy- before a vowel, vi- elsewhere)
+    # — no global rule, so other classes (mi-) are untouched. Only when no other inventory owns voc.
+    voc_fv: dict = {}
+    if conditioned_affixes and not glide_sub and not phon_feats:
+        _VOW = set("aeiou")
+        voc_fv = {c: ('<FeatureValue feature="voc" symbolValues="vow" />' if c in _VOW
+                      else '<FeatureValue feature="voc" symbolValues="cons" />') for c in src_chars}
+        extra_feature_defs += ('<SymbolicFeature id="voc" defaultSymbol="cons"><Name>voc</Name><Symbols>'
+                               '<Symbol id="vow">vowel</Symbol><Symbol id="cons">consonant</Symbol>'
+                               '</Symbols></SymbolicFeature>')
+        extra_nat_classes += ('<FeatureNaturalClass id="nc_vow"><Name>vow</Name>'
+                              '<FeatureValue feature="voc" symbolValues="vow"/></FeatureNaturalClass>')
+
     def _seg_fv(i: int, c: str) -> str:
         if c in g_segfv:                              # vowel/glide → phon features, no seg identity
             return g_segfv[c]
         return (f'<FeatureValue feature="seg" symbolValues="seg_{i}" />'
-                + g_consvoc.get(c, "") + seg_extra_fvs.get(c, ""))
+                + g_consvoc.get(c, "") + voc_fv.get(c, "") + seg_extra_fvs.get(c, ""))
 
     segdefs = "".join(
         f'<SegmentDefinition id="cd_{i}"><Representations><Representation>{escape(tl.fwd[c])}'
@@ -270,6 +288,46 @@ def build_grammar_xml(
             f"</MorphologicalSubrules><Gloss>{escape(a.gloss)}</Gloss></MorphologicalRule>"
         )
 
+    # CONDITIONED-allomorph affixes: ONE rule, several env-conditioned subrules (vy- before a vowel-initial
+    # stem, vi- elsewhere) — the morpheme-scoped collapse that replaces a pair of enumerated affixes without
+    # a global rule. Each allomorph = {"shape", "first": "vow"|None (elsewhere)}.
+    # STATUS (2026-06-25): WORKS — vitu->cl8+tu (vi elsewhere) and vyombo->cl8+ombo (vy before a vowel) parse
+    # via ONE cl8 affix, no global rule (so mi- is untouched). The earlier crash was OURS: affix-shape chars
+    # (v,i,y) missing from the charset made Translit emit an empty InsertSegments, which crashes hc.exe (see
+    # the HC NRE bug report). Fixed above by adding shape chars to the charset.
+    cd_of = {c: i for i, c in enumerate(src_chars)}
+    cond_rule_ids = []
+    for k, ca in enumerate(conditioned_affixes or []):
+        crid = _xid("cr", k)
+        cond_rule_ids.append(crid)
+        kind = ca.get("kind", "prefix")
+        subs = ""
+        for j, allo in enumerate(ca.get("allomorphs", [])):
+            shp = f'<InsertSegments><PhoneticShape>{escape(tl.enc(allo["shape"]))}</PhoneticShape></InsertSegments>'
+            first = allo.get("first")
+            if isinstance(first, (list, tuple, set, frozenset)):   # marked before a SPECIFIC vowel set
+                segs = "".join(f'<Segment segment="cd_{cd_of[v]}" />' for v in sorted(first) if v in cd_of)
+                tnc = f"nc_trig_{crid}_{j}"
+                extra_nat_classes += f'<SegmentNaturalClass id="{tnc}"><Name>{tnc}</Name>{segs}</SegmentNaturalClass>'
+                minp = (f'<SimpleContext naturalClass="{tnc}" /><OptionalSegmentSequence min="0" max="-1">'
+                        '<SimpleContext naturalClass="any" /></OptionalSegmentSequence>')
+            elif first == "vow":                                  # marked before any vowel (needs voc substrate)
+                minp = ('<SimpleContext naturalClass="nc_vow" /><OptionalSegmentSequence min="0" max="-1">'
+                        '<SimpleContext naturalClass="any" /></OptionalSegmentSequence>')
+            else:                                                 # elsewhere (default)
+                minp = ('<OptionalSegmentSequence min="1" max="-1"><SimpleContext naturalClass="any" />'
+                        '</OptionalSegmentSequence>')
+            cp = '<CopyFromInput index="st" />'
+            oput = (shp + cp) if kind != "suffix" else (cp + shp)
+            subs += (f'<MorphologicalSubrule id="{crid}s{j}"><MorphologicalInput>'
+                     f'<PhoneticSequence id="st">{minp}</PhoneticSequence></MorphologicalInput>'
+                     f'<MorphologicalOutput>{oput}</MorphologicalOutput></MorphologicalSubrule>')
+        g = escape(ca.get("gloss", "AFX"))
+        rules.append(f'<MorphologicalRule id="{crid}" requiredPartsOfSpeech="root" outputPartOfSpeech="root">'
+                     f'<Name>{g}</Name><MorphologicalSubrules>{subs}</MorphologicalSubrules>'
+                     f'<Gloss>{g}</Gloss></MorphologicalRule>')
+        rule_ids.append(crid)
+
     # Best-practice morphotactics: group affix rules into ordered position-class slots
     # (an HC AffixTemplate), one filler per slot, slots in inner->outer order — instead of the
     # flat, unordered, arbitrarily-stacking rule list of v1. This is the affix-template/slot model
@@ -292,6 +350,9 @@ def build_grammar_xml(
                 rids = " ".join(slot_rules[(side, o)])
                 slots_xml += (f'<Slot optional="true" morphologicalRules="{rids}">'
                               f'<Name>{side}{o}</Name></Slot>')
+        if cond_rule_ids:                                # conditioned affixes get an outermost prefix slot
+            slots_xml = (f'<Slot optional="true" morphologicalRules="{" ".join(cond_rule_ids)}">'
+                         f'<Name>conditioned</Name></Slot>') + slots_xml
         template_xml = (f'<AffixTemplates><AffixTemplate final="true" requiredPartsOfSpeech="{all_pos_attr}">'
                         f'<Name>main</Name>{slots_xml}</AffixTemplate></AffixTemplates>')
         stratum_open = f'<Stratum characterDefinitionTable="t1" morphologicalRuleOrder="linear"{{prattr}}><Name>main</Name>'
@@ -370,6 +431,7 @@ def run_parse(
     phon_rules: list[tuple[str, str]] | None = None,
     glide_rule: bool = False,
     glide_block_vowels: frozenset = frozenset(),
+    conditioned_affixes: list[dict] | None = None,
 ) -> dict[str, list[Analysis]]:
     """Parse ``words`` (underlying forms) with the emitted grammar; return analyses.
 
@@ -381,7 +443,8 @@ def run_parse(
     """
     tl = Translit(model.charset)
     xml = build_grammar_xml(model, tl, templated=templated, phon_feats=phon_feats, pos_aware=pos_aware,
-                            phon_rules=phon_rules, glide_rule=glide_rule, glide_block_vowels=glide_block_vowels)
+                            phon_rules=phon_rules, glide_rule=glide_rule, glide_block_vowels=glide_block_vowels,
+                            conditioned_affixes=conditioned_affixes)
     uniq = list(dict.fromkeys(words))
     results: dict[str, list[Analysis]] = {w: [] for w in uniq}
     with tempfile.TemporaryDirectory() as d:

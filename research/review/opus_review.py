@@ -118,6 +118,38 @@ def _member_affixes(c):
     return pre, suf
 
 
+def _glide_hypotheses(pair: str, c, max_h: int = 5) -> list:
+    """Generate competing MORPHEME-SCOPED conditioning hypotheses for a glide collapse, to be ranked into
+    A (best guess) / B / C. Each hypothesis = one conditioned affix where the marked allomorph (e.g. vy-)
+    fires before a candidate TRIGGER vowel set and the default (vi-) elsewhere. The candidate trigger sets
+    are nested by how strongly each following vowel favours the glide form in the data (vy/(vy+vi) share) —
+    so the hypotheses span 'glide only before the most glide-favouring vowel' … 'glide before any vowel'."""
+    from review.reviewer_query import Option
+    from review.promote import _glide_shape
+    shape = _glide_shape(c.rule)
+    if not shape:
+        return []
+    ur, gf = shape["ur"], shape["glide_form"]
+    ret = {v: n for v, n in _following_segment_profile(pair, ur).items() if v in _VOWELS}
+    gl = {v: n for v, n in _following_segment_profile(pair, gf).items() if v in _VOWELS}
+    vdata = [v for v in _VOWELS if (ret.get(v, 0) + gl.get(v, 0)) > 0]
+    share = {v: gl.get(v, 0) / (ret.get(v, 0) + gl.get(v, 0)) for v in vdata}
+    order = sorted(vdata, key=lambda v: -share[v])        # vowels most favouring the glide first
+    opts, seen = [], set()
+    for k in range(1, len(order) + 1):
+        trig = tuple(sorted(order[:k]))
+        if trig in seen:
+            continue
+        seen.add(trig)
+        cond = ({"gloss": f"{ur}/{gf}", "kind": "prefix",
+                 "allomorphs": [{"shape": gf, "first": list(trig)}, {"shape": ur, "first": None}]},)
+        opts.append(Option(f"{gf}- before {{{','.join(trig)}}} · {ur}- elsewhere",
+                           prune_prefixes=frozenset({ur, gf}), conditioned_affixes=cond))
+        if len(opts) >= max_h:
+            break
+    return opts
+
+
 def _whatif_options(pair: str, c) -> list:
     """Grammar-edit options to simulate FROM a candidate. Glide-collapse gets a real live simulation (prune
     the glide-form prefix; the conditioned rule, and prune-only for contrast); other kinds get a prune-only
@@ -125,14 +157,9 @@ def _whatif_options(pair: str, c) -> list:
     from review.reviewer_query import Option
     from review.promote import _glide_shape
     if c.kind == "glide-collapse":
-        shape = _glide_shape(c.rule)
-        if shape:
-            gf, blk = shape["glide_form"], frozenset(_glide_blockers(pair, shape["ur"], shape["glide_form"]))
-            return [
-                Option(f"collapse: prune {gf}- + rule block[{''.join(sorted(blk))}]",
-                       prune_prefixes=frozenset({gf}), glide_rule=True, glide_block_vowels=blk),
-                Option(f"prune {gf}- only (no rule)", prune_prefixes=frozenset({gf})),
-            ]
+        hyps = _glide_hypotheses(pair, c)
+        if hyps:
+            return hyps
     pre, suf = _member_affixes(c)
     return [Option(f"prune {sorted(pre | suf)} (no live rule — shows what it must recover)",
                    prune_prefixes=frozenset(pre), prune_suffixes=frozenset(suf))]
@@ -158,8 +185,9 @@ def _what_if(pair: str, c) -> dict:
     tw = _targeted_words(pair, c)
     if not opts or len(tw) < 5:
         return {}
-    ctx = context(pair, test_words=tw)
-    return {"test_scope": f"{len(tw)} words bearing {sorted(set().union(*_member_affixes(c)))}",
+    # untemplated so every option (incl. baseline) is on equal footing AND conditioned affixes parse right
+    ctx = context(pair, test_words=tw, templated=False)
+    return {"test_scope": f"{len(tw)} words bearing {sorted(set().union(*_member_affixes(c)))} (untemplated)",
             "options_simulated": [o.name for o in opts], **summarize(pair, opts, ctx)}
 
 
@@ -238,13 +266,21 @@ def present(pair: str, *, enrich: bool = False, whatif: bool = False) -> list[di
             b = wi["baseline"]
             print(f"  WHAT-IF  scope: {wi.get('test_scope')}")
             print(f"  WHAT-IF  before: coverage={b['coverage']} amb={b['amb']} parsed={b['n_parsed']}")
-            for o in wi["options"]:
-                print(f"  WHAT-IF  after [{o['name']}]: coverage={o['coverage']} (d{o['delta']:+.4f}) "
-                      f"gained={o['n_gained']} lost={o['n_lost']}  lost_eg={o['lost_examples'][:5]}")
-            if wi.get("fit_neither"):
-                print(f"  WHAT-IF  fit-neither (broken by every option): {wi['fit_neither']['n']} "
-                      f"{wi['fit_neither']['examples']}")
+            shown = wi["options"][:3]                      # A, B, (sometimes) C — the top ranked guesses
+            for o in shown:
+                tag = chr(64 + o["rank"]) if o["rank"] <= 26 else str(o["rank"])
+                print(f"  WHAT-IF  {tag} ({_ordinal(o['rank'])} guess) [{o['name']}]: coverage={o['coverage']} "
+                      f"(d{o['delta']:+.4f}) gained={o['n_gained']} lost={o['n_lost']}  lost_eg={o['lost_examples'][:5]}")
+            if len(wi["options"]) > len(shown):
+                print(f"  WHAT-IF  (+{len(wi['options']) - len(shown)} lower-ranked hypotheses in JSON)")
+            fn = wi.get("fit_neither")
+            if fn:
+                print(f"  WHAT-IF  fits NONE of the top {fn.get('over_top_k')}: {fn['n']} {fn['examples']}")
     return views
+
+
+def _ordinal(k: int) -> str:
+    return {1: "best", 2: "2nd", 3: "3rd"}.get(k, f"{k}th")
 
 
 def apply_decisions(pair: str, decisions: dict) -> dict:

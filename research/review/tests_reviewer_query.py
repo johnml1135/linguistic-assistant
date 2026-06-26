@@ -21,7 +21,7 @@ def test_compare_options_gained_lost_and_fit_neither(monkeypatch):
         "A": {"vitu", "vyombo", "kitu"},                  # lost mioyo, miaka
         "B": {"vitu", "vyombo", "kitu", "miaka"},         # lost only mioyo
     }
-    monkeypatch.setattr(RQ, "_parsed", lambda pair, opt, words, pf: (parsed[opt.name], 1.5))
+    monkeypatch.setattr(RQ, "_parsed", lambda pair, opt, words, pf, templated=True: (parsed[opt.name], 1.5))
     monkeypatch.setattr("induce.tdd._load_prior_model", lambda pair: type("M", (), {"charset": "abc"})())
     monkeypatch.setattr("induce.tdd.load_freqs",
                         lambda pair: __import__("collections").Counter({w: 1 for w in TEST}))

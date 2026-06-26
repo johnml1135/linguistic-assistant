@@ -76,6 +76,7 @@ class Option:
     prune_suffixes: frozenset = field(default_factory=frozenset)
     glide_rule: bool = False
     glide_block_vowels: frozenset = field(default_factory=frozenset)
+    conditioned_affixes: tuple = ()        # morpheme-scoped allomorphy (one affix, env-conditioned shapes)
 
 
 def _model_with(pair, opt: Option):
@@ -88,46 +89,58 @@ def _model_with(pair, opt: Option):
     return m
 
 
-def _parsed(pair, opt: Option, words, pf):
+def _parsed(pair, opt: Option, words, pf, *, templated: bool = True):
     from engine.hc import run_parse
+    cond = list(opt.conditioned_affixes) or None
     res = run_parse(_model_with(pair, opt), words, chunk_size=25, chunk_timeout=30,
-                    phon_feats=pf, glide_rule=opt.glide_rule, glide_block_vowels=opt.glide_block_vowels)
+                    phon_feats=None if cond else pf,      # conditioned-affix grammar owns voc; don't double-define
+                    glide_rule=opt.glide_rule, glide_block_vowels=opt.glide_block_vowels,
+                    conditioned_affixes=cond, templated=templated)
     parsed = {w for w in words if res.get(w)}
     amb = sum(len(res[w]) for w in parsed) / len(parsed) if parsed else 0.0
     return parsed, round(amb, 2)
 
 
-def context(pair: str, *, sample: int = 500, test_words=None):
+def context(pair: str, *, sample: int = 500, test_words=None, templated: bool = True):
     """Shared what-if context computed ONCE (model phon-feats, test words, baseline parsed set) so many
-    candidates can be evaluated without re-parsing the baseline each time."""
+    candidates can be evaluated without re-parsing the baseline each time. `templated` is recorded so EVERY
+    option (incl. the baseline) is compared on the same grammar footing — important when an option uses a
+    conditioned affix, which only parses correctly in the untemplated stratum."""
     from induce.tdd import _load_prior_model, load_freqs
     from gold.phonology_gold import phon_feats
     model = _load_prior_model(pair)
     pf = phon_feats(pair, model.charset)
     if test_words is None:
         test_words = [w for w, _ in load_freqs(pair).most_common() if len(w) >= 2][:sample]
-    base_parsed, base_amb = _parsed(pair, Option("baseline"), test_words, pf)
-    return {"pf": pf, "test_words": test_words, "base_parsed": base_parsed, "base_amb": base_amb}
+    base_parsed, base_amb = _parsed(pair, Option("baseline"), test_words, pf, templated=templated)
+    return {"pf": pf, "test_words": test_words, "base_parsed": base_parsed, "base_amb": base_amb,
+            "templated": templated}
 
 
-def summarize(pair: str, options: list[Option], ctx: dict) -> dict:
-    """Before / after-each-option / fit-neither over a precomputed `context`. Pure set logic on parsed sets."""
+def summarize(pair: str, options: list[Option], ctx: dict, *, top_k: int = 3) -> dict:
+    """Evaluate every option, RANK by coverage (best guess first → A, B, C, …), and report fit-neither: the
+    scope words parsed by NONE of the top-`top_k` hypotheses (the residue the best guesses all miss). Pure
+    set logic over parsed sets, on the precomputed `context`."""
     tw, pf, base_parsed = ctx["test_words"], ctx["pf"], ctx["base_parsed"]
+    templated = ctx.get("templated", True)
     n = len(tw) or 1
+    evals = []
+    for opt in options:
+        ps, amb = _parsed(pair, opt, tw, pf, templated=templated)
+        evals.append((opt, ps, amb))
+    evals.sort(key=lambda e: -len(e[1]))                  # best coverage first
     out = {"n_test": len(tw), "baseline": {"coverage": round(len(base_parsed) / n, 4),
                                            "amb": ctx["base_amb"], "n_parsed": len(base_parsed)}, "options": []}
-    opt_parsed = []
-    for opt in options:
-        ps, amb = _parsed(pair, opt, tw, pf)
-        opt_parsed.append(ps)
+    for rank, (opt, ps, amb) in enumerate(evals, 1):
         out["options"].append({
-            "name": opt.name, "coverage": round(len(ps) / n, 4),
+            "rank": rank, "name": opt.name, "coverage": round(len(ps) / n, 4),
             "delta": round((len(ps) - len(base_parsed)) / n, 4), "amb": amb,
             "n_gained": len(ps - base_parsed), "n_lost": len(base_parsed - ps),
             "gained_examples": sorted(ps - base_parsed)[:8], "lost_examples": sorted(base_parsed - ps)[:8]})
-    if opt_parsed:
-        broken_by_all = base_parsed.intersection(*[base_parsed - ps for ps in opt_parsed])
-        out["fit_neither"] = {"n": len(broken_by_all), "examples": sorted(broken_by_all)[:12]}
+    top = [ps for _, ps, _ in evals[:top_k]]
+    if top:
+        none = [w for w in tw if all(w not in ps for ps in top)]
+        out["fit_neither"] = {"n": len(none), "examples": sorted(none)[:12], "over_top_k": min(top_k, len(evals))}
     return out
 
 
@@ -169,15 +182,15 @@ def print_compare(r: dict) -> None:
     b = r["baseline"]
     print(f"\n=== {r['pair']}: what-if over {r['n_test']} words ===")
     print(f"  BEFORE (baseline)      coverage={b['coverage']:.4f}  amb={b['amb']}  parsed={b['n_parsed']}")
-    for o in r["options"]:
-        print(f"  AFTER [{o['name']:24}] coverage={o['coverage']:.4f} (d{o['delta']:+.4f}) amb={o['amb']} "
+    for o in r["options"]:                                 # ranked best-first
+        tag = {1: "A/best", 2: "B/2nd", 3: "C/3rd"}.get(o.get("rank"), str(o.get("rank", "?")))
+        print(f"  [{tag:7}] {o['name']:34} coverage={o['coverage']:.4f} (d{o['delta']:+.4f}) amb={o['amb']} "
               f"gained={o['n_gained']} lost={o['n_lost']}")
-        if o["gained_examples"]:
-            print(f"        + gained: {o['gained_examples']}")
         if o["lost_examples"]:
-            print(f"        - lost  : {o['lost_examples']}")
+            print(f"            - lost: {o['lost_examples']}")
     if r.get("fit_neither"):
-        print(f"  FIT NEITHER (broken by every option): {r['fit_neither']['n']} — {r['fit_neither']['examples']}")
+        fn = r["fit_neither"]
+        print(f"  FITS NONE of the top {fn.get('over_top_k')}: {fn['n']} — {fn['examples']}")
 
 
 def main(argv: list[str] | None = None) -> int:
