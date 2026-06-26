@@ -222,25 +222,62 @@ synthesis. The packet assembler is audited to contain only THOT/HC/explorer-deri
 
 ## 6. Results so far (honest)
 
-The machinery is built and exercised end-to-end on the **swh noun-class** anchor; the per-language
-profiles + progressive gating are live for all 8. What the numbers do and don't mean:
+Three goldens across two anchors; live Gemma runs; the tur case detector built. Measured scores
+(completeness × faithfulness = overall):
 
-| run | overall | completeness | faithfulness | what it shows |
-|-----|--------:|-------------:|-------------:|---------------|
-| heuristic generator | 1.00 | 1.00 | 1.00 | **plumbing smoke test, NOT a measurement.** The deterministic generator was hand-fit to this one golden (saw the 3 missing cells, added the paths that recover them). Proves the pipeline runs; says nothing about accuracy. |
-| mock-as-generator (JSON, untuned) | **0.50** | 1.00 | 0.50 | **the honest number.** A generator decoupled from the golden recovers 4/8 cells from the evidence-only packet — partial, no hallucination. This is "how close an untuned generator gets." |
+| anchor | generator | overall | completeness | faithfulness | reads as |
+|--------|-----------|--------:|-------------:|-------------:|----------|
+| swh noun-class | heuristic | 1.00 | 1.00 | 1.00 | plumbing smoke test (heuristic hand-fit to this golden) — not a measurement |
+| swh noun-class | **live Gemma (local)** | **0.63–0.75** | 1.00 | 0.63–0.75 | honest: untuned model recovers 5–6/8 cells from the packet; run-to-run variance |
+| swh concord | heuristic | 0.90 | 0.90 | 1.00 | not hand-fit; concord evidence is strong |
+| **tur case** | heuristic | **0.50** | **0.50 (3/6)** | 1.00 | **detector is the bottleneck** — recovers nom/dat/loc, misses acc/abl/gen |
+| tur case | live Gemma (local) | 0.63 | 0.63 (≈4/6) | 1.00 | generator faithfully reports every packet cell; the gap is upstream |
 
-- **completeness 1.0 on swh is expected** (it's the one success case — the detector genuinely surfaces all
-  8 classes' evidence), but with n=1 golden authored after seeing the packet it is not yet independently
-  verified; widening to ≥3 goldens per anchor is required before trusting it.
-- **Live Gemma/opus has not produced a scored report yet.** The endpoint is reachable, but the existing
-  `propose/harness/anthropic_client.py` passes an `output_config` kwarg the installed SDK rejects — a
-  pre-existing harness/SDK mismatch. The full LLM path is validated with a messy-JSON mock; a live run is
-  a follow-up (fix the vendor client's structured-output call).
+What this establishes:
+- **The metric works and is separable.** tur case completeness 0.5 with faithfulness 1.0 says plainly:
+  fix the DETECTOR, not the prompt. swh faithfulness 0.63–0.75 with completeness 1.0 says the opposite for
+  swh — the evidence is all there, the generator is what to improve.
+- **The Anthropic client is fixed** (structured output via forced tool use; SDK 0.71 has no
+  `output_config`). A live `opus` run additionally needs `ANTHROPIC_API_KEY` (unset here); the `local`
+  llama.cpp endpoint works once server-side thinking is disabled (`enable_thinking:false`) so the model
+  emits the structured answer instead of thinking to the token cap.
+- **The tur case detector is real and wired** (`case_detect.py`): role-covarying noun-suffix families
+  (the suffixal mirror of Bantu concord) flip the `case` switch to *present* (conf 0.85, agreeing with
+  WALS) and **unlock `tur.case`** in the progressive graph. It honestly recovers ~half the 6-case system;
+  the English pivot lumps dative/locative/ablative as "oblique", so the oblique cases under-separate —
+  the next detector improvement (better suffix segmentation + finer oblique roles) is what the metric now
+  measures.
 
-**Bottom line:** the architecture + metric + progressive layering are in place and tested (12 tests). The
-real "how close to golden" story needs (a) a live weaker-than-golden generator and (b) ≥3 goldens per
-anchor; the swh 1.0 is plumbing, the untuned 0.5 is the first honest data point.
+### Case detector — 8-language spot-check (honest)
+Wiring the real `detect_case` globally, the data-only verdict vs WALS:
+
+| | swh | ind | tgl | spa | vie | tur | hin | rus |
+|--|--|--|--|--|--|--|--|--|
+| detector | absent | absent | absent | absent | **present** | present | **absent** | present |
+| WALS | absent | absent | absent | absent | absent | present | present | present |
+
+**6/8 correct.** The two misses are upstream, not the detector's logic:
+- **vie false-positive**: the morphology inducer *over-segments isolating Vietnamese* (finds 63 "affixes"),
+  which also fools the synthesis detector (it reports "fusional", so the isolating-guard can't fire). The
+  WALS cross-check flags it as a low-confidence conflict. Root fix = stop over-segmenting isolating langs.
+- **hin miss**: Hindi case is **postpositional/analytic** (separate words ne/ko/se), not noun suffixes, so
+  a *suffixal* case detector correctly finds none. Hindi needs an analytic/adposition detector instead.
+
+The detector is data-driven and correct wherever its inputs are sound; guards are principled (suffixing +
+not-isolating + ≥2 high-purity role-covarying families, no role-diversity requirement because the English
+pivot lumps the oblique cases).
+
+### Metric integrity
+`evidence_completeness` is now pure **cell coverage** (golden cells whose markers appear in the packet) —
+the earlier version blended in two field-name-dependent aux booleans, which docked concord to 0.9 for
+plumbing. Conditioning/residue presence is still reported in `breakdown` (builder-agnostic) but not folded
+into the score, so the number moves only on real detector coverage. (Re-scored: swh concord = 1.0, tur
+case = 0.5 unchanged — the tur gap is genuine 3/6, not plumbing.)
+
+Still open (honest): n=1 golden per (lang,paradigm) still overfits — widen to ≥3 EACH; swh noun-class
+completeness 1.0 was authored after seeing the packet, so it is a ceiling, not an independent check; LLM
+scores are run-variable (sample ≥3 and average); fix vie over-segmentation + add an analytic-case detector
+for hin. Full suite green: **205 passed** (review/ induce/ align/), 15 of them paradigm tests.
 
 ## Sources (confirmed 2026-06)
 - Turkish case + vowel harmony: [Turkish grammar (Wikipedia)](https://en.wikipedia.org/wiki/Turkish_grammar), [easyturkishgrammar](https://www.easyturkishgrammar.com/post/turkish-case-suffixes)

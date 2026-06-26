@@ -126,6 +126,40 @@ def test_emit_preserves_runtime_state():
     assert PF.get_paradigm("swh", "swh.noun-class")["status"] == "locked"
 
 
+def test_agreement_packet_clean():
+    pkt = PK.assemble("swh", "agreement")
+    assert PK.audit(pkt) == []
+    assert pkt["cells"] and pkt["thot"]["n_clean"] >= 2
+    golden = ParadigmReport.load(golden_path("swh", "agreement"))
+    s = SC.score(RP.generate(pkt, endpoint="heuristic"), golden, pkt)
+    assert s["evidence_completeness"] >= 0.8          # concord evidence is strong for swh
+
+
+def test_case_detector_shape_and_verdict():
+    """The new suffixal case detector: returns role-covarying suffix families and a 'present' verdict for
+    tur (small sample for speed)."""
+    from review.paradigm.case_detect import case_hypotheses, detect_case_real
+    h = case_hypotheses("tur", sample=120, min_stems=3)
+    assert "rows" in h and h["rows"]
+    r = h["rows"][0]
+    assert {"markers", "dominant_role", "candidates", "n_stems"} <= set(r)
+    value, conf, ev, _ = detect_case_real("tur", sample=120)
+    assert value in ("present", "absent") and isinstance(conf, float)
+
+
+def test_case_packet_partial_completeness_is_diagnostic():
+    """tur/case: the detector recovers only SOME of the 6 golden cases from data (completeness < 1.0),
+    while the generator faithfully reports what's in the packet — the separable metric pointing at the
+    DETECTOR as the bottleneck. Guards that the gap stays visible (regression = it silently goes to 1.0)."""
+    pkt = PK.assemble("tur", "case")
+    assert PK.audit(pkt) == []
+    golden = ParadigmReport.load(golden_path("tur", "case"))
+    s = SC.score(RP.generate(pkt, endpoint="heuristic"), golden, pkt)
+    assert s["evidence_completeness"] < 1.0           # detector under-recovers (the real gap)
+    assert s["evidence_completeness"] >= 0.3          # but recovers a meaningful chunk (nom/dat/loc)
+    assert s["faithfulness"] >= 0.8                   # generator is not the bottleneck here
+
+
 def test_swh_slice_regression():
     """The swh success case: packet has all evidence (completeness 1.0) and the improved generator
     reproduces it faithfully. Guards against a regression in either the packet or the generator."""

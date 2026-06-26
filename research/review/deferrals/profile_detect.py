@@ -218,11 +218,17 @@ def detect_gender_noun_class(freqs: Counter, affixes: list[dict]) -> Switch:
                   "no productive -o/-a gender alternation and no recurring class-prefix system")
 
 
-def detect_case(freqs: Counter) -> Switch:
-    """Case is hard to confirm from text without role annotation; we report the conservative default
-    (absent) with low confidence — the internet cross-check / human is the real arbiter here."""
-    return Switch("case", "absent", 0.45,
-                  "no role-correlated noun inflection detectable from text alone (low confidence)")
+def detect_case(pair: str, freqs: Counter) -> Switch:
+    """Case = role-correlated noun inflection. We now recover it from data: the suffixal mirror of the
+    Bantu concord explorer (role-covarying noun-suffix families). Best-effort — falls back to the
+    conservative 'absent' if the role projection / parser can't run. See review/paradigm/case_detect.py."""
+    try:
+        from review.paradigm.case_detect import detect_case_real
+        value, conf, evidence, _hyps = detect_case_real(pair)
+        return Switch("case", value, conf, evidence)
+    except Exception as e:
+        return Switch("case", "absent", 0.4,
+                      f"role-covariation case detector unavailable ({type(e).__name__}); defaulting absent")
 
 
 def detect_tone(pair: str) -> Switch:
@@ -322,7 +328,7 @@ def detect(pair: str) -> list[Switch]:
     affixes = _cycle_affixes(pair)
     switches = [detect_synthesis(freqs, affixes), detect_affix_polarity(affixes),
                 detect_reduplication(freqs), detect_infixation(freqs), detect_tone(pair),
-                detect_gender_noun_class(freqs, affixes), detect_case(freqs)]
+                detect_gender_noun_class(freqs, affixes), detect_case(pair, freqs)]
     switches += detect_phonology(pair)
     switches += detect_alignment_switches(pair)
     seed = _internet_seed(pair)

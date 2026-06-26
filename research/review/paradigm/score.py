@@ -67,15 +67,18 @@ def score(generated: ParadigmReport, golden: ParadigmReport, packet: dict) -> di
     gold_cells = golden.cells
     gen_cells = generated.cells
 
-    # ---- evidence_completeness: golden facts present in the packet --------------------------------
+    # ---- evidence_completeness: golden CELLS whose markers are present in the packet -------------------
+    # Headline on cell coverage only — the robust signal. Conditioning/residue presence is reported in the
+    # breakdown (builder-agnostic, informational) but NOT folded in, so the score can't move on packet
+    # field-name plumbing — only on whether the detector actually surfaced the golden's cells.
     cells_present = [c for c in gold_cells if _cell_in_markers(c, pm)]
     cell_completeness = len(cells_present) / len(gold_cells) if gold_cells else 1.0
-    cond_present = bool(packet.get("residue") or packet.get("agreement") or packet.get("conditioning_evidence")) \
-        if golden.conditioning not in (None, "none") else True
-    residue_present = bool(packet.get("hypotheses", {}).get("fit_none") or packet.get("residue") or packet.get("fit_none")) \
-        if golden.fit_none.get("n", 0) else True
-    aux = (int(bool(cond_present)) + int(bool(residue_present))) / 2
-    evidence_completeness = round(0.8 * cell_completeness + 0.2 * aux, 3)
+    evidence_completeness = round(cell_completeness, 3)
+    _COND = ("conditioning", "conditioning_evidence", "agreement", "residue", "case")
+    conditioning_in_packet = any(packet.get(k) for k in _COND)
+    residue_in_packet = bool(packet.get("residue") or packet.get("fit_none")
+                             or packet.get("hypotheses", {}).get("fit_none")
+                             or any(packet.get(k, {}).get("fit_none") for k in ("case",) if isinstance(packet.get(k), dict)))
 
     # ---- faithfulness: of packet-available golden cells, did the generator report them? -----------
     def gen_match(cell) -> bool:
@@ -106,5 +109,7 @@ def score(generated: ParadigmReport, golden: ParadigmReport, packet: dict) -> di
             "cell_completeness": round(cell_completeness, 3),
             "cell_faithfulness": round(cell_faithfulness, 3),
             "hallucination_rate": round(hallucination_rate, 3),
+            "conditioning_in_packet": conditioning_in_packet,
+            "residue_in_packet": residue_in_packet,
         },
     }

@@ -1,0 +1,25 @@
+{
+  "language": "swh",
+  "paradigm_type": "agreement",
+  "detected": true,
+  "confidence": 0.9,
+  "cells": [
+    {"label": "cl1/2 concord", "markers": ["m", "wa"], "function": "human class governs associative wa / subject a-,wa-", "support": 0, "examples": ["mtu wa", "watu wa"]},
+    {"label": "cl3/4 concord", "markers": ["m", "mi", "ya"], "function": "m-/mi- class governs wa/ya", "support": 0, "examples": ["mti wa", "miti ya"]},
+    {"label": "cl5/6 concord", "markers": ["ji", "ma", "la", "ya"], "function": "ji-/ma- class governs la/ya", "support": 0, "examples": ["jiwe la", "mawe ya"]},
+    {"label": "cl7/8 concord", "markers": ["ki", "vi", "cha", "vya"], "function": "ki-/vi- class governs cha/vya", "support": 0, "examples": ["kitu cha", "vitu vya"]},
+    {"label": "cl9/10 concord", "markers": ["n", "ya", "za"], "function": "n- class governs ya/za", "support": 0, "examples": ["nyumba ya"]},
+    {"label": "cl11/14 concord", "markers": ["u", "wa"], "function": "u- class governs wa", "support": 0, "examples": ["uhuru wa"]}
+  ],
+  "conditioning": "noun-class (the controller's class selects the concord marker)",
+  "fit_none": {
+    "n": 1,
+    "examples": ["nouns whose assigned class is uncertain take a non-dominant marker"],
+    "note": "a minority of tokens take a non-dominant concord marker — concord exceptions or mis-assigned nouns"
+  },
+  "evidence_citations": [
+    {"claim": "each class governs a dominant concord marker", "source": "thot", "stat": "associative votes: u->wa .85, m->wa .81, ki->cha .83, vi->vya .86, ji->la .80"},
+    {"claim": "13/14 classes have a clean dominant marker", "source": "explorer", "stat": "13 of 14 voting classes have a >=0.5-share dominant associative marker"}
+  ],
+  "prose": "swh shows productive NOUN-CLASS CONCORD: every class governs a dominant associative agreement marker on its modifiers (cl7 ki->cha .83, cl8 vi->vya .86, cl5 ji->la .80, cl1/2 m->wa .81, cl11/14 u->wa .85). 13 of 14 classes have a clean dominant marker; a minority of non-dominant votes are concord exceptions or mis-assigned nouns. This concord is the agreement-layer confirmation of the noun-class inventory. Recommendation: PROMOTE the class->concord mapping."
+}

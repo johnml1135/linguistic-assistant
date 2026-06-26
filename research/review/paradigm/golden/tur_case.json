@@ -1,0 +1,32 @@
+{
+  "language": "tur",
+  "paradigm_type": "case",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "nominative", "markers": ["Ø"], "function": "subject; zero-marked", "support": 0,
+     "examples": ["ev", "adam", "kitap"]},
+    {"label": "accusative", "markers": ["ı", "i", "u", "ü", "yı", "yi", "yu", "yü"],
+     "function": "definite direct object", "support": 0, "examples": ["evi", "adamı", "kitabı"]},
+    {"label": "dative", "markers": ["a", "e", "ya", "ye"],
+     "function": "to/for; direction, indirect object", "support": 0, "examples": ["eve", "adama"]},
+    {"label": "locative", "markers": ["da", "de", "ta", "te"],
+     "function": "at/in/on; static location", "support": 0, "examples": ["evde", "adamda"]},
+    {"label": "ablative", "markers": ["dan", "den", "tan", "ten"],
+     "function": "from; source, movement away", "support": 0, "examples": ["evden", "adamdan"]},
+    {"label": "genitive", "markers": ["ın", "in", "un", "ün", "nın", "nin", "nun", "nün"],
+     "function": "possessor", "support": 0, "examples": ["evin", "adamın"]}
+  ],
+  "conditioning": "vowel-harmony (front/back + rounding) on every suffix; consonant assimilation (d~t after voiceless; buffer y/n after vowels)",
+  "fit_none": {
+    "n": 2,
+    "examples": ["plural -lAr", "possessive -Im/-In/-(s)I"],
+    "note": "plural and possessive suffixes co-occur on the same nouns but are NOT case — the expected confound the detector must separate from the 6 cases"
+  },
+  "evidence_citations": [
+    {"claim": "noun suffixes co-vary with grammatical role", "source": "thot", "stat": "projected dep-role covariation: distinct suffix families concentrate on nsubj/obj/obl"},
+    {"claim": "suffixes recur across many stems", "source": "hc", "stat": "case suffix families recur across >=4 distinct stems each"},
+    {"claim": "allomorphy is vowel-harmonic", "source": "explorer", "stat": "each case has front/back (+rounding) allomorphs grouped by consonant skeleton"}
+  ],
+  "prose": "tur has a six-term suffixal CASE system (detected, high confidence), realised by word-final suffixes that co-vary with grammatical role and harmonise with the stem vowel. Nominative is zero-marked (subjects). Accusative -(y)I marks definite objects; dative -(y)A direction/recipient; locative -DA static location; ablative -DAn source; genitive -(n)In possessor. Every suffix has front/back (+rounding) allomorphs (vowel harmony) and d~t consonant alternation. Plural -lAr and possessive suffixes stack on the same nouns but are NOT case and must be separated out. Recommendation: PROMOTE the case inventory; the oblique cases (dat/loc/abl) are the hardest to separate from a parallel-text pivot that lumps them as 'oblique', so expect the data-driven detector to under-separate them."
+}

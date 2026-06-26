@@ -13,6 +13,7 @@ Both emit the same ``ParadigmReport`` schema so the scorer compares apples to ap
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -29,9 +30,20 @@ SYSTEM_PROMPT = (
     "if so lay out its cells, what conditions any allomorphy, and what does NOT fit.\n\n"
     "HARD RULE: reason ONLY from the packet. Do NOT use anything you happen to know about this specific "
     "language — no recalled case inventories, no remembered class semantics. If the packet does not "
-    "support a cell, you may not assert it. Cite the packet stat behind every claim. Write the `prose` "
-    "field as a tight report a senior reviewer (Opus) will adjudicate: lead with the call (detected or "
-    "not + confidence), then the cells with their evidence, then the residue and what you're unsure of."
+    "support a cell, you may not assert it. Cite the packet stat behind every claim.\n\n"
+    "A cell (class/case/voice) can be evidenced THREE ways — use ALL of them, not just the first:\n"
+    "  (1) a prefix/suffix GROUP in `hypotheses` (the orthographic grouping);\n"
+    "  (2) a dominant CONCORD/agreement vote in `agreement.rows` — a marker with high `share` defines a "
+    "real class even if it has no prefix group;\n"
+    "  (3) a recurring affix in `residue.patterns` with high `n_real` — a pattern the grouping missed "
+    "(e.g. a locative suffix).\n"
+    "Enumerate cells from all three streams before concluding; reporting only the prefix groups silently "
+    "drops concord-only and residue classes.\n"
+    "Each cell's `markers` MUST be the actual SURFACE forms from the packet (prefixes, suffixes, concord "
+    "markers), e.g. [\"ki\",\"vi\",\"cha\"] — never a bare class number or an English description.\n\n"
+    "Write the `prose` field as a tight report a senior reviewer (Opus) will adjudicate: lead with the "
+    "call (detected or not + confidence), then the cells with their evidence, then the residue and what "
+    "you're unsure of."
 )
 
 
@@ -50,13 +62,21 @@ def heuristic_report(packet: dict) -> ParadigmReport:
     ptype = packet["paradigm_type"]
     if ptype == "noun-class":
         return _heuristic_noun_class(packet)
-    # generic fallback: report the top hypotheses as cells with no synthesis
-    hyps = packet.get("hypotheses", {}).get("hypotheses", [])
-    cells = [Cell(label=h.get("label", "?"), markers=h.get("prefixes", []),
-                  function="", support=h.get("n_explained", 0), examples=h.get("examples", []))
-             for h in hyps[:8]]
-    return ParadigmReport(language=lang, paradigm_type=ptype, detected=bool(cells),
-                          confidence=0.4, cells=cells,
+    # generic fallback: prefer the packet's explicit `cells` (case/agreement), else the hypotheses groups
+    cells = []
+    if packet.get("cells"):
+        for c in packet["cells"]:
+            ms = c.get("markers", [])
+            cells.append(Cell(label="/".join(str(x) for x in ms[:3]) or "?", markers=ms,
+                              function=c.get("function") or c.get("role", ""),
+                              support=c.get("n_stems", 0)))
+    else:
+        for h in packet.get("hypotheses", {}).get("hypotheses", [])[:8]:
+            cells.append(Cell(label=h.get("label", "?"), markers=h.get("prefixes", []),
+                              function="", support=h.get("n_explained", 0), examples=h.get("examples", [])))
+    return ParadigmReport(language=lang, paradigm_type=ptype, detected=packet.get("detected", bool(cells)),
+                          confidence=float(packet.get("confidence", 0.4)), cells=cells,
+                          conditioning=packet.get("conditioning"),
                           fit_none=packet.get("hypotheses", {}).get("fit_none", {"n": 0, "examples": []}),
                           prose=f"Heuristic: {len(cells)} candidate cells for {ptype} in {lang}.")
 
@@ -127,16 +147,47 @@ def _heuristic_noun_class(packet: dict) -> ParadigmReport:
 
 
 # --------------------------------------------------------------------------- LLM backend (Gemma/opus/…)
-def llm_report(packet: dict, endpoint: str | None = None, client=None) -> ParadigmReport:
-    """Run the LLM path: prompt -> client.complete(json_schema) -> json.loads -> tolerant from_dict.
-    Pass an explicit `client` to inject a mock; otherwise `endpoint` is resolved via propose.harness."""
+def _extract_json(*texts: str) -> dict:
+    """Pull the JSON object out of model output. Reasoning models often leave `content` empty and the
+    answer in the reasoning trail, or wrap it in ``` fences — so try each text, parsing the outermost
+    balanced {...} block."""
+    for t in texts:
+        if not t:
+            continue
+        try:
+            return json.loads(t)
+        except Exception:
+            pass
+        m = re.search(r"\{.*\}", t, re.DOTALL)
+        if m:
+            for end in range(len(m.group(0)), m.start(), -1):  # shrink to the last valid close brace
+                try:
+                    return json.loads(m.group(0)[:end - m.start()])
+                except Exception:
+                    continue
+    raise ValueError("no JSON object found in model output")
+
+
+def llm_report(packet: dict, endpoint: str | None = None, client=None, max_tokens: int = 8000) -> ParadigmReport:
+    """Run the LLM path: prompt -> client.complete(json_schema) -> robust JSON extract -> tolerant
+    from_dict. Pass an explicit `client` to inject a mock; otherwise `endpoint` resolves via propose.harness.
+    max_tokens is generous because reasoning models spend most of their budget thinking before the answer."""
     from propose.harness.base import Message
     if client is None:
         from propose.harness.registry import build_client
         client = build_client(endpoint)
     messages = [Message(role="system", content=SYSTEM_PROMPT), Message(role="user", content=_user_prompt(packet))]
-    res = client.complete(messages, max_tokens=2048, json_schema=REPORT_JSON_SCHEMA)
-    data = json.loads(res.text)
+    extra = {}
+    # Local reasoning servers (llama.cpp) keep thinking open and never emit final `content` for this task;
+    # disable server-side thinking so they return the structured answer. Only valid for openai-compat.
+    try:
+        from propose.harness.openai_compat import OpenAICompatClient
+        if isinstance(client, OpenAICompatClient):
+            extra["chat_template_kwargs"] = {"enable_thinking": False}
+    except Exception:
+        pass
+    res = client.complete(messages, max_tokens=max_tokens, json_schema=REPORT_JSON_SCHEMA, **extra)
+    data = _extract_json(res.text, getattr(res, "reasoning", "") or "")
     data.setdefault("language", packet["language"])
     data.setdefault("paradigm_type", packet["paradigm_type"])
     return ParadigmReport.from_dict(data)

@@ -34,7 +34,30 @@
       "golden": "golden/tur_case.json",
       "expected_cells": 6,
       "summary": "6 cases: nom-Ø, acc -(y)I, dat -(y)A, loc -DA, abl -DAn, gen -(n)In",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 0.5,
+        "evidence_completeness": 0.5,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 6,
+          "cells_present_in_packet": 3,
+          "cells_reported_by_generator": 3,
+          "missing_from_packet": [
+            "accusative",
+            "ablative",
+            "genitive"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.5,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "tur.possessive",

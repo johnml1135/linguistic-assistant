@@ -52,17 +52,16 @@ class AnthropicClient:
         }
         if system:
             params["system"] = system
-        if self.thinking:
-            # Adaptive thinking is the only supported mode on Opus 4.8.
-            params["thinking"] = {"type": "adaptive"}
 
-        output_config: dict[str, Any] = {}
-        if self.effort:
-            output_config["effort"] = self.effort
+        # Structured output: SDK 0.71 has no native json_schema/output_config. Use FORCED TOOL USE — a
+        # single tool whose input_schema is the requested schema, with tool_choice pinned to it. Forced
+        # tool_choice is incompatible with extended thinking, so thinking is disabled for schema calls.
         if json_schema is not None:
-            output_config["format"] = {"type": "json_schema", "schema": json_schema}
-        if output_config:
-            params["output_config"] = output_config
+            params["tools"] = [{"name": "emit", "description": "Return the structured result.",
+                                "input_schema": json_schema}]
+            params["tool_choice"] = {"type": "tool", "name": "emit"}
+        elif self.thinking:
+            params["thinking"] = {"type": "adaptive"}  # adaptive is the supported mode on Opus 4.8
 
         params.update(kwargs)
 
@@ -70,7 +69,13 @@ class AnthropicClient:
         resp = self._client.messages.create(**params)
         latency = time.perf_counter() - t0
 
-        text = "".join(b.text for b in resp.content if b.type == "text")
+        if json_schema is not None:
+            tool_inputs = [b.input for b in resp.content if getattr(b, "type", "") == "tool_use"]
+            import json as _json
+            text = _json.dumps(tool_inputs[0], ensure_ascii=False) if tool_inputs else \
+                "".join(getattr(b, "text", "") for b in resp.content if getattr(b, "type", "") == "text")
+        else:
+            text = "".join(b.text for b in resp.content if b.type == "text")
         return CompletionResult(
             text=text,
             model=resp.model,
