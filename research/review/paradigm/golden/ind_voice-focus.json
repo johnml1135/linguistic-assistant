@@ -1,0 +1,25 @@
+{
+  "language": "ind",
+  "paradigm_type": "voice-focus",
+  "detected": true,
+  "confidence": 0.9,
+  "cells": [
+    {"label": "active", "markers": ["me", "mem", "men", "meng", "meny", "menge"],
+     "function": "active voice — meN- prefix (place-assimilating); the agent is subject",
+     "support": 0, "examples": ["membaca", "menulis", "mengambil"]},
+    {"label": "passive", "markers": ["di"],
+     "function": "passive voice — di- prefix; the patient is subject",
+     "support": 0, "examples": ["dibaca", "ditulis", "diambil"]}
+  ],
+  "conditioning": "meN- assimilates to the stem's initial consonant place (mem-/men-/meng-/meny-); di- is invariant",
+  "fit_none": {
+    "n": 1,
+    "examples": ["active meN- is unmarked in the English pivot (it carries no English feature)"],
+    "note": "the passive di- is recoverable because English passive marks Voice=Pass; the active meN- has no English-feature correlate, so a pivot-based detector recovers only the passive — the expected gap"
+  },
+  "evidence_citations": [
+    {"claim": "an affix marks the passive", "source": "thot", "stat": "di- predicts Voice=Pass above chance (lift ~10)"},
+    {"claim": "voice, not case", "source": "explorer", "stat": "case absent → voice-focus is the Austronesian alternative"}
+  ],
+  "prose": "ind has a VOICE system: active meN- (place-assimilating: mem-/men-/meng-/meny-) vs passive di-. The passive di- is recovered from data (it predicts the English Voice=Pass feature, lift ~10). The active meN- is unmarked in English and so is not recoverable from the pivot — it is the inferred default alternant, not an evidenced cell. Recommendation: PROMOTE passive di-; flag active meN- as inferred (needs a vernacular-internal alternation signal, not the English pivot)."
+}

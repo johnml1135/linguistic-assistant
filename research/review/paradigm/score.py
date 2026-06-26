@@ -62,6 +62,29 @@ def _cell_in_markers(cell, universe: set[str]) -> bool:
     return bool(_markers(cell) & universe)
 
 
+def _role_ok(packet_role: str, gold_roles: set[str]) -> bool:
+    """Role compatibility, tolerant of UD subtypes (obl ~ obl:loc, nmod ~ nmod:poss, obj ~ dobj)."""
+    pr = str(packet_role).lower()
+    pr_base = pr.split(":")[0]
+    return any(pr == gr or pr_base == gr or pr.startswith(gr + ":") or gr.startswith(pr_base + ":")
+               or (gr == "obj" and pr_base == "dobj") for gr in gold_roles)
+
+
+def _cell_present(gcell, packet: dict, pm: set[str]) -> bool:
+    """Is the golden cell's evidence in the packet? Role-aware when the golden cell declares `match_roles`
+    AND the packet carries role-bearing families (case): require an overlapping marker on a family whose
+    role matches. Otherwise marker-only (noun-class/agreement)."""
+    gm = _markers(gcell)
+    gold_roles = {str(r).lower() for r in getattr(gcell, "match_roles", []) or []}
+    role_cells = [c for c in packet.get("cells", []) if isinstance(c, dict) and c.get("role")]
+    if gold_roles and role_cells:
+        for c in role_cells:
+            if (gm & {_norm(m) for m in c.get("markers", [])}) and _role_ok(c.get("role", ""), gold_roles):
+                return True
+        return False
+    return bool(gm & pm)
+
+
 def score(generated: ParadigmReport, golden: ParadigmReport, packet: dict) -> dict:
     pm = packet_markers(packet)
     gold_cells = golden.cells
@@ -71,7 +94,7 @@ def score(generated: ParadigmReport, golden: ParadigmReport, packet: dict) -> di
     # Headline on cell coverage only — the robust signal. Conditioning/residue presence is reported in the
     # breakdown (builder-agnostic, informational) but NOT folded in, so the score can't move on packet
     # field-name plumbing — only on whether the detector actually surfaced the golden's cells.
-    cells_present = [c for c in gold_cells if _cell_in_markers(c, pm)]
+    cells_present = [c for c in gold_cells if _cell_present(c, packet, pm)]
     cell_completeness = len(cells_present) / len(gold_cells) if gold_cells else 1.0
     evidence_completeness = round(cell_completeness, 3)
     _COND = ("conditioning", "conditioning_evidence", "agreement", "residue", "case")

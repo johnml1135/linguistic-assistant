@@ -32,7 +32,30 @@
       "priority": 1,
       "gate": "switch:affix_polarity ~ prefix and switch:case == absent",
       "summary": "active meN-, passive di-",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 0.5,
+        "evidence_completeness": 0.5,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 2,
+          "cells_present_in_packet": 1,
+          "cells_reported_by_generator": 1,
+          "missing_from_packet": [
+            "active"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.5,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "ind.reduplication",

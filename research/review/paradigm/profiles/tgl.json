@@ -31,7 +31,7 @@
       "priority": 1,
       "gate": "switch:infixation == true and switch:case == absent",
       "summary": "actor -um-/mag-, patient -in, locative -an, instrument/benefactive i-",
-      "status": "locked"
+      "status": "absent"
     },
     {
       "id": "tgl.np-markers",

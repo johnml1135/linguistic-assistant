@@ -29,6 +29,15 @@ from propose.contract import ChangeSet  # noqa: E402
 ACCEPT_AT = 0.85
 REVIEW_AT = 0.5
 
+# THE canonical delta-store directory — one source of truth. (Historically some callers hardcoded the
+# repo-root `deltas/store/`, which diverged from where build_store writes and left readers on a stale
+# stub; everyone now resolves the path through store_path().)
+STORE_DIR = Path(__file__).resolve().parent / "store"
+
+
+def store_path(pair: str) -> Path:
+    return STORE_DIR / f"{pair}.deltas.jsonl"
+
 
 @dataclass
 class RouteResult:

@@ -235,8 +235,8 @@ def to_deferral_records(deferred: list[MorphMarker], *, top: int = 50) -> list[d
 
 def _apply(pair: str, accepted: list[MorphMarker]) -> dict:
     """Emit confidence-routed deltas for accepted markers (affix gloss / root sense)."""
-    from review.deltas.store import DeltaStore
-    store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
+    from review.deltas.store import DeltaStore, store_path
+    store = DeltaStore.load(store_path(pair))
     ops = []
     prov = {"source": "morph-align-hc", "pair": pair}
     for m in accepted:

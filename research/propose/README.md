@@ -1,4 +1,4 @@
-# proposal/
+# propose/ (formerly `proposal/`; `harness/` now lives at `propose/harness/`)
 
 The **shared propose core**: `Case → ChangeSet`. The exact same code evaluates a model on golden
 (answer-keyed) cases and proposes edits on real (unknown-answer) FLEx projects — golden cases are just

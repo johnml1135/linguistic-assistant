@@ -1,0 +1,24 @@
+{
+  "language": "tur",
+  "paradigm_type": "possessive",
+  "detected": true,
+  "confidence": 0.9,
+  "cells": [
+    {"label": "plural", "markers": ["lar", "ler"], "function": "Number=Plur — plural suffix -lAr (harmonic)",
+     "support": 0, "examples": ["evler", "adamlar"]},
+    {"label": "possessive", "markers": ["im", "in", "i", "si", "sı", "m", "n", "miz", "niz"],
+     "function": "possessive agreement -Im/-In/-(s)I (1sg/2sg/3sg…)", "support": 0,
+     "examples": ["evim", "evin", "evi"]}
+  ],
+  "conditioning": "all suffixes vowel-harmonise; possessive stacks after the plural and before case (ev-ler-im-de)",
+  "fit_none": {
+    "n": 1,
+    "examples": ["possessor agreement is unmarked in the English pivot"],
+    "note": "the plural -lAr projects cleanly (English Plural feature); possessor agreement (-Im/-In/-(s)I) has no English correlate, so a pivot-based detector recovers the plural but not the possessive — the expected gap (same shape as voice: only the English-markable half)"
+  },
+  "evidence_citations": [
+    {"claim": "a suffix marks plural", "source": "thot", "stat": "-lAr (lar/ler) predicts Number=Plur (lift ~4.4)"},
+    {"claim": "suffixing language", "source": "explorer", "stat": "affix_polarity ~ suffix"}
+  ],
+  "prose": "tur has suffixal NUMBER (plural -lAr, harmonic) and POSSESSIVE agreement (-Im/-In/-(s)I). The plural is recovered from data (predicts the English Plural feature); the possessive is unmarked in English and so is not recoverable from the pivot — the same only-the-markable-half pattern seen in voice. Recommendation: PROMOTE plural -lAr; flag possessive agreement as needing a vernacular-internal signal."
+}

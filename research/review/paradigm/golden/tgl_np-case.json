@@ -1,0 +1,28 @@
+{
+  "language": "tgl",
+  "paradigm_type": "np-case",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "trigger (ang)", "markers": ["ang", "si"], "match_roles": ["nsubj"],
+     "function": "the trigger / nominative NP-marker (ang common, si personal)", "support": 0,
+     "examples": ["ang bahay", "si Juan"]},
+    {"label": "genitive (ng)", "markers": ["ng", "ni"], "match_roles": ["nmod"],
+     "function": "genitive / non-trigger actor / possessor (ng common, ni personal)", "support": 0,
+     "examples": ["ng bahay", "ni Juan"]},
+    {"label": "oblique (sa)", "markers": ["sa"], "match_roles": ["obl"],
+     "function": "oblique / dative / locative", "support": 0, "examples": ["sa bahay"]}
+  ],
+  "conditioning": "analytic: the marker is a separate particle before the noun; common vs personal forms (ang/si, ng/ni)",
+  "fit_none": {
+    "n": 1,
+    "examples": ["the marker also signals personal vs common (si/ni) — a second dimension"],
+    "note": "the trigger system means the ang-marked argument's THETA-role is set by the verb's voice, so ang covaries with several dep-roles (nsubj dominant) — expected spread"
+  },
+  "evidence_citations": [
+    {"claim": "a particle marks the subject/trigger", "source": "thot", "stat": "ang → nsubj (preceding-particle role covariation)"},
+    {"claim": "distinct particles mark genitive and oblique", "source": "thot", "stat": "ng → nmod, sa → obl"},
+    {"claim": "analytic, not suffixal or gender", "source": "explorer", "stat": "no suffixal case; markers concentrate on CORE roles (nsubj), unlike incidental adpositions"}
+  ],
+  "prose": "tgl marks case ANALYTICALLY with NP-particles: ang (trigger/nominative), ng (genitive / non-trigger actor), sa (oblique/dative/locative), each with a personal variant (si/ni). The signature recovered from data is that these preceding particles co-vary with the noun's projected role — crucially ang marks a CORE argument (subject), which distinguishes a real case system from the incidental genitive/oblique adpositions most languages have. Recommendation: PROMOTE ang/ng/sa as the NP-case system; flag the personal/common (si/ni) sub-distinction for review."
+}

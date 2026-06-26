@@ -319,10 +319,10 @@ def apply_decisions(pair: str, decisions: dict) -> dict:
 
 
 def _emit_delta_ops(pair: str, promoted: list) -> int:
-    from review.deltas.store import DeltaStore
+    from review.deltas.store import DeltaStore, store_path
     if not promoted:
         return 0
-    store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
+    store = DeltaStore.load(store_path(pair))
     ops = []
     for c in promoted:
         op = _delta_op(c)

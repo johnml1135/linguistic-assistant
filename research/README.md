@@ -1,63 +1,150 @@
 # research/
 
-**Stage 1 — the Python research playground** (see the repo root README's maturity stages). Where ideas
-are iterated and proven against the golden set before the C# validation program (`src/`) inherits the
-proven pieces. Provider-agnostic LLM harness, golden sets, and the offline alignment/QA tooling.
+**Stage 1 — the Python research playground** (see the repo-root README's maturity stages). Ideas are
+proven here against the golden sets before the C# validation program (`src/`) inherits the proven pieces.
+Offline-first: provider-agnostic LLM harness, no torch/GPU, THOT for alignment, HermitCrab for parsing.
 
-## Packages
+---
+
+## The system in one picture
+
+The job is to take an unknown language's parallel text and **produce grammatical analyses a human can
+trust** — with the easy parts auto-approved and the hard parts written up as good reports for review.
+
+```
+                         ┌─────────────── TWO GOLDEN SETS (validate from opposite ends) ──────────────┐
+   parallel corpus       │  golden RULES  golden_sets/<lang>/   ── validates ──►  LEAF output         │
+        │                │  golden REPORTS review/paradigm/golden/ ── validates ──►  TRUNK output      │
+        ▼                └────────────────────────────────────────────────────────────────────────────┘
+  HC parse + THOT align
+        │
+        ├──► LEAF  (the easy, high-volume work — "auto-approve")
+        │      induce → cotrain → emit confidence-routed deltas
+        │      review/deltas/  ·  ≥0.85 accept (auto) / 0.5–0.85 review / <0.5 defer
+        │      validated by the golden RULES (did we reproduce the true lexicon/morphology?)
+        │
+        └──► TRUNK  (the hard, structural work — "prepare a great report, ask a human")
+               explore A/B/C+fit  →  packet (THOT+HC+explorer)  →  Gemma report  →  Opus review
+               review/paradigm/  ·  progressive layers: switches → inventory → agreement → exceptions
+               validated by the golden REPORTS (did Gemma synthesize a good, faithful report?)
+```
+
+- **Golden RULES** (`golden_sets/<lang>/`) are the *backdrop truth* — the real lexicon + inflection
+  classes + a wordform oracle the leaf must reproduce. Frozen, committed, read-only by convention.
+- **Golden REPORTS** (`review/paradigm/golden/`) are the *optimization target* — the best paradigm
+  report we can write by hand (the ceiling). The trunk's report is scored against it.
+- They meet — full end-to-end cross-check — **only on swh today** (the one language with both rich rules
+  *and* report goldens). See `docs/remaining-work.md`.
+
+---
+
+## Where we are (honest, 2026-06)
+
+8 languages: swh, ind, tgl, spa (original) + tur, vie, hin, rus (added for typological diversity).
+
+**Leaf** — wired for all 8; the delta store is populated (16,194 ops total). But auto-approve is currently
+low: **~5% accepted, ~72% review, ~24% deferred** — most ops are mid-confidence, so the leaf isn't yet
+carrying the easy bulk on its own.
+
+**Trunk** — the report pipeline spans **7 detector families** across the 8 languages, honestly measured.
+Scored anchors (10 across 6 languages, spanning easy→hard morphology):
+| family | anchor | completeness | faithfulness | reads as |
+|--------|--------|------------:|------------:|----------|
+| Bantu noun-class | swh | 1.0 | live Gemma 0.63–0.75 | evidence all present; improve generator |
+| Bantu concord | swh | 1.0 | 1.0 | strong |
+| gender-number | spa | 1.0 | 1.0 | gender via determiner agreement (-o→el,-a→la)+number -s; 8/8 vs WALS |
+| TAM | swh | 1.0 | 1.0 | tense prefixes na/li/ta/me/ka via projected Tense |
+| analytic np-case | tgl | 1.0 | 1.0 | ang→nsubj, ng→nmod, sa→obl; core-arg test rejects spa/swh look-alikes |
+| voice-focus | ind | 0.5 | 1.0 | passive di- recovered; active meN- unmarked in English (honest half) |
+| possessive/number | tur | 0.5 | 1.0 | plural -lAr recovered; possessor agreement unmarked in English |
+| suffixal case (agglut.) | tur | 0.33 | 1.0 | nom/dat/loc; English pivot lumps the obliques |
+| suffixal case (fusional) | rus | 0.33 | 1.0 | nom+instr; fusional endings need a declension-table detector |
+| number (fusional) | rus | 0.5 | 1.0 | plural -ов/-ев recovered; case×number fusion blurs the rest |
+
+Each new detector follows one recipe: a covariation signal (suffix/ending/affix vs projected role or
+feature, or an adjacent agreement marker) + a **layer-0 switch gate** that kills cross-paradigm
+false-positives (gender vs case-marker vs voice). All cached for reproducibility.
+
+The metric is **separable on purpose**: `completeness` measures the detector/packet, `faithfulness`
+measures Gemma — every gain attributes to a specific fix. Two recent engine hardenings:
+- **Role-aware completeness** — a golden case-cell is credited only when a packet family has the marker
+  *and* a matching projected role, so coincidental marker overlap no longer over-credits (fusional rus
+  fell from a fake 0.5 to an honest 0.33).
+- **Reproducible detector** — the case detector's vote tallies are disk-cached per (lang, sample), so the
+  metric is stable across runs (THOT alignment is otherwise stochastic) and fast (no re-train).
+
+The Turkish case detector (the suffixal mirror of the Bantu concord explorer) flips the `case` switch and
+unlocks `tur.case` in the progressive graph; 8-lang case spot-check vs WALS = 6/8 (vie/hin misses are
+documented upstream issues).
+
+**System snapshot** — `python -m review.paradigm.sweep` walks every language's *unlocked* paradigms
+(progressive cascade: learning a layer unlocks the next in the same pass), scores against any golden, and
+records onto the profiles: 29 paradigms — **10 scored** (mean 0.65), 11 locked (waiting on a prerequisite),
+2 no-builder (detector not written yet), 6 generated (runs but no golden yet). This is the data the
+review UI will read.
+
+See `learning_paradigms_plan.md` for the trunk design + the per-language paradigm backlog, and
+`docs/remaining-work.md` for the roadmap, cleanup list, and the (coming) Streamlit review UI.
+
+---
+
+## Packages (current layout)
 | Package | What it is |
 |---|---|
-| `harness/` | provider-agnostic `LLMClient` (`openai_compat` = ik_llama/local, `anthropic` = BYOK, `mock`) + endpoint registry |
-| `golden/` | own gold sets + ablation harness + HC-verified `word→gloss` round-trip (sibling-owned) |
-| `proposal/` | the shared **propose core** (`Case → ChangeSet`) + the change-set op vocabulary |
-| `deltas/` | the accumulating, confidence-routed **delta store** (the write source-of-truth; ops land here, route to accepted/review/deferred) |
-| `deferrals/` | the **resolution-ticket system** — turns a `defer` ("ask a human") into a reviewable package: typed HC-edit hypotheses, HC counterfactual parses, scripted speaker questions, ΔMDL-scored assessment, per-language profile; resolutions flow to `deltas/`. See `deferrals/README.md` |
-| `assess/` | grammar-quality metrics — **MDL** `L(G)+L(D\|G)`, scorecard (coverage, ambiguity, over-generation, Tolerance/productivity), worst-part ablation ranking ("which rule is better?") |
-| `eval/` | the golden eval runner (propose → score → report) |
-| `bilingual/` | the **Apertium-alignment bridge** — deterministic lemma/bidix reference-finder + FLExTrans `.dix` interop |
-| `align/` | **statistical** word-gloss alignment (THOT HMM via `sil-machine`, co-occurrence fallback) |
-| `audio/` | optional **audio evidence add-on** — Swahili/Indonesian/Tagalog/Spanish sample words, source catalogs, ranked word candidates, review-only phone evidence, pronunciation/misspelling reports, and on-demand preview playback |
-| `benchmarks/` | LingGym calibration + results |
+| `corpus/` | the parallel-text substrate (eBible ingest) |
+| `engine/` | the HermitCrab grammar engine + `hc` CLI driver (`engine/hc.py`) |
+| `gold/` | golden-set compiler/loader + HC-validated word→gloss round-trip + reference compile |
+| `golden_sets/` | **golden RULES** — the frozen per-language lexicon/morphology oracle (see its README) |
+| `induce/` | the TDD induction cycle + THOT↔HC co-training (`tdd.py`, `cotrain.py`, `accumulate.py`) |
+| `align/` | statistical word/morpheme alignment (THOT HMM via `sil-machine`, co-occurrence fallback) |
+| `propose/` | the propose core (`Case → ChangeSet`) + `harness/` (provider-agnostic `LLMClient` + registry) |
+| `review/` | **the review layer** — see below |
+| `review/deltas/` | **LEAF** — the confidence-routed delta store (the write source-of-truth; see its README) |
+| `review/deferrals/` | resolution-ticket system + the typological switch detectors (`profile_detect.py`) |
+| `review/paradigm/` | **TRUNK** — packet → Gemma report → score-vs-golden → per-language profiles |
+| `assess/` | grammar-quality metrics (MDL, scorecard, ablation ranking) |
+| `eval/` | golden eval runner + benchmarks (LingGym calibration) |
+| `addons/` | optional `audio/` evidence + `bilingual/` Apertium bridge (not first-class) |
+| `deferrals/`, `deltas/` (root) | git-tracked DATA (tickets; a legacy delta path) — see remaining-work note |
+
+---
 
 ## Environment (uv)
-The project is managed with **[uv](https://docs.astral.sh/uv/)**; deps are pinned in `uv.lock`.
+Managed with **[uv](https://docs.astral.sh/uv/)**; deps pinned in `uv.lock`. `requires-python` is
+`>=3.10,<3.14` (upper bound from `sil-machine`). No torch/transformers/GPU.
 
 ```bash
 cd research
 uv sync                    # core (anthropic, httpx)
-uv sync --extra align      # + sil-machine[thot] (THOT HMM) for word alignment
-uv sync --extra audio      # + allosaurus and faster-whisper for optional phone evidence and word search
-uv sync --extra data-prep  # + flexlibs (Windows + a FieldWorks install only)
+uv sync --extra align      # + sil-machine[thot] (THOT HMM) for alignment
+uv sync --extra audio      # + allosaurus / faster-whisper (optional phone evidence)
+uv sync --extra data-prep  # + flexlibs (Windows + FieldWorks only)
 ```
-
-`requires-python` is `>=3.10,<3.14` (upper bound from `sil-machine`). No torch/transformers/GPU extras.
 
 ## Running things
-Most tools run from the `research/` dir (modules import `from harness import …`, etc.):
-
+Run from `research/`. Highlights:
 ```bash
-python eval/run.py --fixture            # offline eval/proposal loop
-python bilingual/tests_smoke.py         # Apertium bridge (offline)
-python align/tests_smoke.py             # word-gloss alignment (offline, co-occurrence backend)
-python -m pytest deferrals/tests_smoke.py  # resolution tickets (offline; HC-gated tests skip without hc)
-python -m deferrals.build --pair spa       # backfill tickets from existing defer records
-python audio/tests_smoke.py             # audio add-on (offline; no Allosaurus required)
-python audio/run.py --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb --target swh --samples path/to/samples.json [--catalog path/to/catalog.json]
-python -m audio.candidates locate --pair-dir golden/_sources/ebible/eng-engwebp__swh-swhulb --target swh --samples path/to/samples.json --catalog path/to/catalog.json [--stem mungu] [--phone-cues]
-python -m audio.candidates play --artifact golden/_sources/ebible/eng-engwebp__swh-swhulb/audio/word_occurrences.json --occurrence <occurrence-id>
+# TRUNK — one paradigm report, scored against its golden, recorded onto the profile
+python -m review.paradigm.run --pair swh --paradigm noun-class --endpoint heuristic   # offline
+python -m review.paradigm.run --pair tur --paradigm case --endpoint local             # live Gemma (localhost:8080)
+python -m review.paradigm.profiles --lang swh                                          # progressive state + next-unlocked
+
+# LEAF — accumulate the cycle and route deltas by confidence
+python -m induce.accumulate --pair spa --rounds 3 --seconds 60
+python -m review.deltas.build_store --pair spa --round 1
+
+# golden RULES validation
+python gold/reference/hc_validate.py --pair spa --grammar class
 ```
 
-Smoke tests across `eval/`, `bilingual/`, `align/` are dependency-free (no model, no native build, no
-network) so CI stays green while real golden data and the native toolchains land on the box.
-
-The audio add-on is deliberately **not first-class**: it never replaces the text/parallel substrate,
-it assumes no audio by default, and its Allosaurus output is review-only evidence rather than parser
-input.
-
-The candidate-localization workflow stores offsets and review metadata in `word_occurrences.json`. In
-v1 it renders temporary previews from stored locations for playback; permanent snippet export or
-database attachment remains a later phase.
+## Tests
+Tests are named `tests_*.py`; `pyproject.toml` configures pytest to collect them, so plain `pytest` works:
+```bash
+pytest review/ induce/ align/        # 205 pass (incl. 15 paradigm-pipeline tests)
+pytest review/paradigm/              # the trunk pipeline
+```
 
 ## Serving local models
-`../serving/` builds & runs `ik_llama.cpp` `llama-server` behind an OpenAI-compatible endpoint that the
-`harness` drives. See `serving/README.md`.
+`../serving/` runs a `llama-server` behind an OpenAI-compatible endpoint the harness drives (`local`
+endpoint = `localhost:8080`). For the report path, the harness disables server-side thinking so the model
+emits the structured answer. `opus` needs `ANTHROPIC_API_KEY`. See `serving/README.md`.

@@ -33,7 +33,33 @@
       "golden": "golden/rus_case.json",
       "expected_cells": 6,
       "summary": "6 cases: nom, gen, dat, acc, instr, prep",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 0.333,
+        "evidence_completeness": 0.333,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 6,
+          "cells_present_in_packet": 2,
+          "cells_reported_by_generator": 2,
+          "missing_from_packet": [
+            "genitive",
+            "accusative",
+            "instrumental",
+            "prepositional"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.333,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "rus.gender",
@@ -42,7 +68,7 @@
       "priority": 2,
       "gate": "switch:gender_or_noun_class == gender or switch:gender_or_noun_class == noun-class",
       "summary": "gender (m/f/n) and number (sg/pl); animacy (acc=gen for animate masc)",
-      "status": "locked"
+      "status": "absent"
     },
     {
       "id": "rus.declension",
@@ -69,7 +95,7 @@
       "priority": 5,
       "gate": "switch:affix_polarity ~ suffix",
       "summary": "verb aspect (perfective/imperfective)",
-      "status": "locked"
+      "status": "absent"
     }
   ]
 }

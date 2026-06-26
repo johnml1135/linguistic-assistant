@@ -1,0 +1,29 @@
+{
+  "language": "spa",
+  "paradigm_type": "gender-number",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "masculine", "markers": ["o", "os", "el", "del", "al", "los", "un"],
+     "function": "masculine gender — noun in -o; agrees with determiner el/los/un (and contractions del/al)",
+     "support": 0, "examples": ["el libro", "los hijos", "un día"]},
+    {"label": "feminine", "markers": ["a", "as", "la", "las", "una"],
+     "function": "feminine gender — noun in -a; agrees with determiner la/las/una",
+     "support": 0, "examples": ["la casa", "las cosas", "una vez"]},
+    {"label": "plural", "markers": ["s"],
+     "function": "number=plural — suffix -s (covaries with the English-pivot Plural feature)",
+     "support": 0, "examples": ["libros", "casas", "hijos"]}
+  ],
+  "conditioning": "gender (a fixed lexical property of the noun, exposed by the agreeing determiner) crossed with number (-s); adjectives + articles agree in both",
+  "fit_none": {
+    "n": 2,
+    "examples": ["-e and consonant-final nouns (gender not predictable from the ending)", "gender×number combined cells (masc.pl -os / fem.pl -as)"],
+    "note": "the detector recovers the two GENDERS (via determiner agreement) and NUMBER (via -s) as separate axes; it does not split the 4 combined gender×number cells, and -e/consonant nouns carry no ending cue — the expected residue"
+  },
+  "evidence_citations": [
+    {"claim": "two noun-ending classes take distinct determiners", "source": "thot", "stat": "-o→el, -a→la (preceding-word agreement over THOT alignment)"},
+    {"claim": "-s marks plural", "source": "thot", "stat": "-s co-varies with the projected Number=Plur feature (~0.71)"},
+    {"claim": "gender is a real agreement system, not phrase case-marking", "source": "explorer", "stat": "the gender_or_noun_class switch reads 'gender' (distinct determiners el≠la), unlike tgl's invariant ang"}
+  ],
+  "prose": "spa has GENDER (two classes) + NUMBER. Gender surfaces as agreement: nouns ending -o take the determiner el (and del/al/los), nouns ending -a take la — distinct determiners on distinct endings is the gender-agreement signature (and distinguishes it from a phrase case-marker like Tagalog's invariant ang). Number is the suffix -s, recovered from its covariation with the English Plural feature. The detector recovers the two genders and the number marker as separate axes; it does not separate the four combined gender×number cells, and -e/consonant-final nouns give no ending cue (the residue). Recommendation: PROMOTE gender (2-class agreement) and number (-s); flag the gender×number cross-product + unpredictable-ending nouns for review."
+}

@@ -36,24 +36,27 @@
       "summary": "6 cases: nom-Ø, acc -(y)I, dat -(y)A, loc -DA, abl -DAn, gen -(n)In",
       "status": "learned",
       "metric": {
-        "overall": 0.5,
-        "evidence_completeness": 0.5,
+        "overall": 0.333,
+        "evidence_completeness": 0.333,
         "faithfulness": 1.0,
         "breakdown": {
           "golden_cells": 6,
-          "cells_present_in_packet": 3,
-          "cells_reported_by_generator": 3,
+          "cells_present_in_packet": 2,
+          "cells_reported_by_generator": 2,
           "missing_from_packet": [
             "accusative",
+            "dative",
             "ablative",
             "genitive"
           ],
           "in_packet_but_not_reported": [],
           "hallucinated_cells": [],
           "detected_match": true,
-          "cell_completeness": 0.5,
+          "cell_completeness": 0.333,
           "cell_faithfulness": 1.0,
-          "hallucination_rate": 0.0
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
         },
         "as_of": "run",
         "endpoint": "heuristic"
@@ -66,7 +69,30 @@
       "priority": 2,
       "gate": "switch:affix_polarity ~ suffix",
       "summary": "possessive suffixes -Im/-In/-(s)I/...; plural -lAr",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 0.5,
+        "evidence_completeness": 0.5,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 2,
+          "cells_present_in_packet": 1,
+          "cells_reported_by_generator": 1,
+          "missing_from_packet": [
+            "possessive"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.5,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "tur.harmony-allomorphy",
@@ -84,7 +110,7 @@
       "priority": 4,
       "gate": "switch:affix_polarity ~ suffix",
       "summary": "verb TAM + person agreement; evidentiality -mIş",
-      "status": "locked"
+      "status": "absent"
     }
   ]
 }

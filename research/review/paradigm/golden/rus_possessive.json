@@ -1,0 +1,24 @@
+{
+  "language": "rus",
+  "paradigm_type": "possessive",
+  "detected": true,
+  "confidence": 0.9,
+  "cells": [
+    {"label": "plural", "markers": ["ы", "и", "ов", "ев", "ам", "ами", "ах", "в"],
+     "function": "Number=Plur — plural endings (fused with case across the declension)", "support": 0,
+     "examples": ["дома", "столы", "домов"]},
+    {"label": "singular", "markers": ["Ø", "а", "о"],
+     "function": "Number=Sing — citation/zero or thematic vowel", "support": 0, "examples": ["дом", "стол"]}
+  ],
+  "conditioning": "FUSIONAL: number is bundled with case + gender + declension class; one ending = number×case×gender, so no clean number-only suffix",
+  "fit_none": {
+    "n": 1,
+    "examples": ["singular is largely unmarked (zero) / the same ending serves several number×case cells"],
+    "note": "the plural endings (-ы/-и/-ов) project the English Plural feature and are recovered; singular is mostly zero-marked and the case×number fusion blurs the rest — the expected gap (same fusional difficulty as rus case)"
+  },
+  "evidence_citations": [
+    {"claim": "endings mark plural", "source": "thot", "stat": "-ов/-ев/-в predict Number=Plur (held-out feature prediction)"},
+    {"claim": "number is fused, not a clean suffix", "source": "explorer", "stat": "the same ending realises different number×case cells across declensions"}
+  ],
+  "prose": "rus marks NUMBER, but fusionally: plural endings (-ы/-и/-ов/-ами…) bundle number with case, gender, and declension class. The plural is recovered from data (it predicts the English Plural feature); the singular is largely zero-marked and the case×number fusion blurs a clean number-only signal. Recommendation: PROMOTE the plural endings as Number=Plur; note that a full number paradigm requires the declension-table view (same fusional gap as rus case)."
+}

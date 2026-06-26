@@ -16,13 +16,11 @@ _RESEARCH = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(_RESEARCH))
 
 from review.deltas.emit import PAIR_DIR, emit_ops  # noqa: E402
-from review.deltas.store import ACCEPT_AT, REVIEW_AT, DeltaStore  # noqa: E402
-
-STORE_DIR = Path(__file__).resolve().parent / "store"
+from review.deltas.store import ACCEPT_AT, REVIEW_AT, DeltaStore, store_path  # noqa: E402
 
 
 def build(pair: str, *, round_no: int = 1, accept_at: float = ACCEPT_AT, review_at: float = REVIEW_AT) -> dict:
-    store = DeltaStore.load(STORE_DIR / f"{pair}.deltas.jsonl")
+    store = DeltaStore.load(store_path(pair))
     ops = emit_ops(pair, round_no=round_no)
     new = store.add(ops)
     route = store.route(accept_at, review_at)

@@ -1,4 +1,4 @@
-# cycle/ — TDD for grammar
+# induce/ — TDD for grammar (formerly `cycle/`; paths below may still say `cycle/`)
 
 A coverage-gated loop that builds a Hermit Crab grammar from the eBible-derived wordforms, the way the
 `steady-state-virtuous-cycle` describes: **Red → Green → Refactor**, with the `hc` CLI as the gate.

@@ -1,0 +1,31 @@
+{
+  "language": "rus",
+  "paradigm_type": "case",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "nominative", "markers": ["Ø", "а", "я", "о", "е", "ы", "и"], "match_roles": ["nsubj"],
+     "function": "subject; citation form", "support": 0, "examples": ["дом", "вода", "окно"]},
+    {"label": "genitive", "markers": ["а", "я", "ы", "и", "ов", "ев", "ей"], "match_roles": ["nmod"],
+     "function": "possession, absence, partitive; after many prepositions", "support": 0, "examples": ["дома", "воды", "домов"]},
+    {"label": "dative", "markers": ["у", "ю", "е", "и", "ам", "ям"], "match_roles": ["obl", "iobj"],
+     "function": "indirect object, recipient", "support": 0, "examples": ["дому", "воде", "домам"]},
+    {"label": "accusative", "markers": ["у", "ю", "о", "е", "Ø", "а", "я"], "match_roles": ["obj"],
+     "function": "direct object (= nom inanimate / = gen animate)", "support": 0, "examples": ["воду", "дом"]},
+    {"label": "instrumental", "markers": ["ом", "ем", "ой", "ей", "ью", "ами", "ями", "ми"], "match_roles": ["obl"],
+     "function": "instrument, means, agent of passive", "support": 0, "examples": ["домом", "водой", "домами"]},
+    {"label": "prepositional", "markers": ["е", "и", "ах", "ях", "у"], "match_roles": ["obl"],
+     "function": "location/topic; only after prepositions (в, на, о)", "support": 0, "examples": ["доме", "воде", "домах"]}
+  ],
+  "conditioning": "FUSIONAL: a single ending fuses case × number × gender × declension class (3 main declensions); no clean one-suffix-per-case segmentation — the hard contrast with agglutinative Turkish",
+  "fit_none": {
+    "n": 3,
+    "examples": ["verb endings -ть/-л/-ся", "adjective agreement endings", "animacy syncretism (acc=gen / acc=nom)"],
+    "note": "because case fuses with gender/number/declension, the same surface ending realises different cases across classes (-а = gen.sg masc OR nom.sg fem), and the segmenter readily confuses noun endings with verb/adjective morphology — the expected residue for a fusional language"
+  },
+  "evidence_citations": [
+    {"claim": "noun endings co-vary with role", "source": "thot", "stat": "projected dep-role covariation over THOT alignment (nominative Ø→nsubj clean; obliques noisier)"},
+    {"claim": "case is fusional, not agglutinative", "source": "explorer", "stat": "endings recur but a single ending maps to multiple case×gender×number cells — low role purity"}
+  ],
+  "prose": "rus has a six-term CASE system (nom/gen/dat/acc/instr/prep), but unlike Turkish it is FUSIONAL: one ending simultaneously encodes case, number, gender, and declension class, so there is no clean one-suffix-per-case signature to recover. Expect the data-driven detector to find the zero-marked nominative reliably and only fragments of the obliques (e.g. instrumental -ми/-ами), and to confuse noun endings with verb (-ть/-л/-ся) and adjective morphology. Recommendation: a fusional language needs a paradigm-cell (declension-table) approach, not the suffix-family detector that works for agglutinative case."
+}

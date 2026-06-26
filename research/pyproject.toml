@@ -32,3 +32,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["propose*", "engine*", "gold*", "align*", "assess*", "review*", "induce*", "corpus*", "eval*", "addons*"]
+
+[tool.pytest.ini_options]
+# This repo names tests `tests_*.py` (not the pytest default `test_*.py`), so collection needs this or
+# `pytest` silently finds nothing. With it set, plain `pytest review/ induce/ align/` just works.
+python_files = ["tests_*.py", "test_*.py"]
+python_functions = ["test_*"]

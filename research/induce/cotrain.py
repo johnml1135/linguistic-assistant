@@ -213,9 +213,8 @@ def save_model(pair: str, model: LangModel) -> str:
 
 def emit_deltas(pair: str, added: list[dict]) -> int:
     """Route the THOT-glossed induced roots into the confidence store (low/med by alignment prob)."""
-    from review.deltas.store import DeltaStore
-    path = _RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl"
-    store = DeltaStore.load(path)
+    from review.deltas.store import DeltaStore, store_path
+    store = DeltaStore.load(store_path(pair))
     ops = [{"op": "lexical.entry.create", "entry": f"entry:{pair}:{a['form']}",
             "lexeme": a["form"], "gloss": a["gloss"], "confidence": float(a["prob"]),
             "provenance": {"source": "cotrain-thot-hc", "prob": a["prob"]}}

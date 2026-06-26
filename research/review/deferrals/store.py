@@ -16,13 +16,12 @@ _RESEARCH = Path(__file__).resolve().parents[2]
 if str(_RESEARCH) not in sys.path:
     sys.path.insert(0, str(_RESEARCH))
 
-from review.deltas.store import DeltaStore  # noqa: E402
+from review.deltas.store import STORE_DIR as DELTA_STORE, DeltaStore  # noqa: E402
 from propose.change_set import op_signature  # noqa: E402
 
 from .schema import DeferralTicket, Hypothesis, Resolution, read_jsonl, write_jsonl  # noqa: E402
 
 DEFERRALS = _RESEARCH / "deferrals"
-DELTA_STORE = _RESEARCH / "deltas" / "store"
 
 _PRIORITY_RANK = {"high": 0, "medium": 1, "low": 2}
 

@@ -286,10 +286,10 @@ def _add_affix_to_model(pair: str, form: str, side: str, gloss: str) -> bool:
 
 def _emit_pattern_delta(pair: str, pattern: str, side: str, label: str, nouns: list[str]) -> int:
     try:
-        from review.deltas.store import DeltaStore
+        from review.deltas.store import DeltaStore, store_path
     except Exception:
         return 0
-    store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
+    store = DeltaStore.load(store_path(pair))
     op = {"op": "class.assign.by_pattern", "entry": f"class:{pair}:{label}",
           "pattern": f"{side}:{pattern}", "members": sorted(nouns)[:50], "n_members": len(nouns),
           "confidence": 0.7, "provenance": {"source": "reviewer-explore", "pair": pair}}
@@ -329,10 +329,10 @@ def apply_switch(pair: str, switch: str, value, *, lock: bool = True, emit_delta
 
 def _emit_switch_delta(pair: str, switch: str, value) -> int:
     try:
-        from review.deltas.store import DeltaStore
+        from review.deltas.store import DeltaStore, store_path
     except Exception:
         return 0
-    store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
+    store = DeltaStore.load(store_path(pair))
     op = {"op": "switch.set", "entry": f"switch:{pair}:{switch}", "switch": switch, "value": value,
           "confidence": 1.0, "provenance": {"source": "reviewer-explore", "pair": pair}}
     n = store.add([op])
@@ -397,10 +397,10 @@ def _set_schema_concord(pair: str, class_id: str, marker: str) -> bool:
 
 def _emit_concord_delta(pair: str, noun_prefix: str, class_id: str, marker: str) -> int:
     try:
-        from review.deltas.store import DeltaStore
+        from review.deltas.store import DeltaStore, store_path
     except Exception:
         return 0
-    store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
+    store = DeltaStore.load(store_path(pair))
     op = {"op": "concord.set", "entry": f"concord:{pair}:{class_id}",
           "class": class_id, "noun_prefix": noun_prefix, "associative": marker, "confidence": 0.7,
           "provenance": {"source": "reviewer-explore", "pair": pair}}

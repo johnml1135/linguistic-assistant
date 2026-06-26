@@ -21,6 +21,7 @@ reviewer. This under-separation is exactly the gap the report-vs-golden metric i
 
 from __future__ import annotations
 
+import json
 import sys
 from collections import Counter, defaultdict
 from functools import lru_cache
@@ -49,12 +50,29 @@ def _harmony_families(forms: list[str]) -> dict[str, list[str]]:
     return out
 
 
-def case_votes(pair: str, *, sample: int = 300):
-    """Scan a sample of verses → (suffix→Counter(role)), (suffix→set(stem)), bare-subject count, model."""
-    from induce.morph_align import load_model, segment_word
-    from review.project import _word_alignment, project_verse, get_parser
+CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 
+
+def _votes_cache_path(pair: str, sample: int) -> Path:
+    return CACHE_DIR / f"case_votes_{pair}_{sample}.json"
+
+
+def case_votes(pair: str, *, sample: int = 300, refresh: bool = False):
+    """Scan a sample of verses → (suffix→Counter(role)), (suffix→set(stem)), bare-subject count, model.
+
+    Cached to disk per (pair, sample): THOT alignment is stochastic across processes and slow to re-train,
+    so the first scan is frozen and reused — making the detector REPRODUCIBLE (a stable metric) and fast.
+    Pass refresh=True to recompute. The model is always loaded live (cheap)."""
+    from induce.morph_align import load_model, segment_word
     m = load_model(pair)
+    cpath = _votes_cache_path(pair, sample)
+    if cpath.exists() and not refresh:
+        d = json.loads(cpath.read_text(encoding="utf-8"))
+        suf_role = {k: Counter(v) for k, v in d["suf_role"].items()}
+        suf_stems = {k: set(v) for k, v in d["suf_stems"].items()}
+        return suf_role, suf_stems, d["nsubj_bare"], set(d["bare_stems"]), m
+
+    from review.project import _word_alignment, project_verse, get_parser
     roots = sorted({e.form for e in m.lexicon}, key=len, reverse=True)
     suff = sorted({a.form for a in m.affixes if a.kind == "suffix"}, key=len, reverse=True)
     verses, table = _word_alignment(pair, sample=sample)
@@ -79,6 +97,12 @@ def case_votes(pair: str, *, sample: int = 300):
             elif role == "nsubj":
                 nsubj_bare += 1
                 bare_stems.add(p["vern"])
+    CACHE_DIR.mkdir(exist_ok=True)
+    cpath.write_text(json.dumps({
+        "suf_role": {k: dict(v) for k, v in suf_role.items()},
+        "suf_stems": {k: sorted(v) for k, v in suf_stems.items()},
+        "nsubj_bare": nsubj_bare, "bare_stems": sorted(bare_stems),
+    }, ensure_ascii=False), encoding="utf-8")
     return suf_role, suf_stems, nsubj_bare, bare_stems, m
 
 

@@ -31,7 +31,28 @@
       "priority": 1,
       "gate": "switch:gender_or_noun_class == gender",
       "summary": "gender (m/f, -o/-a) and number (-s)",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 3,
+          "cells_present_in_packet": 3,
+          "cells_reported_by_generator": 3,
+          "missing_from_packet": [],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 1.0,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "spa.agreement",
@@ -40,7 +61,7 @@
       "priority": 2,
       "gate": "paradigm:spa.gender-number in {learned,confirmed}",
       "summary": "gender+number agreement across article-noun-adjective",
-      "status": "locked"
+      "status": "absent"
     },
     {
       "id": "spa.verb-conj",
@@ -49,7 +70,7 @@
       "priority": 3,
       "gate": "switch:synthesis == fusional and switch:affix_polarity ~ suffix",
       "summary": "3 conjugation classes (-ar/-er/-ir) x person/number x TAM",
-      "status": "locked"
+      "status": "absent"
     },
     {
       "id": "spa.clitics",

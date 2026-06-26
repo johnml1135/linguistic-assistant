@@ -1,0 +1,24 @@
+{
+  "language": "swh",
+  "paradigm_type": "tam",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "present", "markers": ["na"], "function": "present tense (a-na-soma 'he reads')", "support": 0, "examples": ["anasoma"]},
+    {"label": "past", "markers": ["li"], "function": "past tense (a-li-soma 'he read')", "support": 0, "examples": ["alisoma"]},
+    {"label": "future", "markers": ["ta"], "function": "future tense (a-ta-soma 'he will read')", "support": 0, "examples": ["atasoma"]},
+    {"label": "perfect", "markers": ["me"], "function": "perfect aspect (a-me-soma 'he has read')", "support": 0, "examples": ["amesoma"]},
+    {"label": "consecutive", "markers": ["ka"], "function": "consecutive/narrative (a-ka-soma 'and he read')", "support": 0, "examples": ["akasoma"]}
+  ],
+  "conditioning": "TAM prefix sits in the verb's slot after the subject marker (SM-TAM-root); na-/me- have habitual/stative alternants (hu-, -a)",
+  "fit_none": {
+    "n": 1,
+    "examples": ["future ta- is sparse in the corpus", "habitual hu-"],
+    "note": "the English pivot conflates perfect/past, so me- (perfect) projects to Past; future ta- is under-attested — the expected residue"
+  },
+  "evidence_citations": [
+    {"claim": "verb prefixes carry tense", "source": "thot", "stat": "label_tam derives na→Pres, li→Past, me→Past, ka→Past at confidence 1.0"},
+    {"claim": "TAM is a verb-prefix slot", "source": "explorer", "stat": "tam_locus switch = verb-prefix"}
+  ],
+  "prose": "swh marks tense/aspect with a verb PREFIX in the slot after the subject marker: na- present, li- past, ta- future, me- perfect, ka- consecutive. The detector recovers na-/li-/me-/ka- from data (projected English Tense, confidence 1.0); future ta- is sparse in this corpus and the English pivot conflates perfect with past (me- → Past). Recommendation: PROMOTE na/li/me/ka; flag ta- (future) as data-sparse and me- as perfect-not-past (a known pivot conflation)."
+}

@@ -1,4 +1,4 @@
-# golden/reference/ — external reference golden sets
+# gold/ — golden-set compiler + reference sets (formerly `golden/`; paths below may still say `golden/`)
 
 Per-language gold for the four targets from **independent, authoritative** sources, plus an evaluator
 that scores the induced grammar/lexicon against them — the answer to *"do the techniques actually work?"*

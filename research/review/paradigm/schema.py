@@ -22,7 +22,7 @@ def _mk(klass, c):
     return klass(**{k: v for k, v in c.items() if k in known})
 
 PARADIGM_TYPES = (
-    "noun-class", "case", "voice-focus", "gender-number", "isolating", "tam",
+    "noun-class", "case", "np-case", "voice-focus", "gender-number", "isolating", "tam",
     "agreement", "reduplication", "possessive", "classifier",
 )
 
@@ -35,6 +35,11 @@ class Cell:
     function: str = ""              # grammatical function (e.g. "human sg/pl", "direct object")
     support: int = 0                # corpus occurrences backing it
     examples: list[str] = field(default_factory=list)
+    # Optional (golden-side): the projected dep-role(s) this cell's marker should co-vary with — e.g.
+    # accusative→["obj"], locative→["obl"]. When set, role-aware scoring credits the cell only if a packet
+    # family has BOTH an overlapping marker AND a matching role (kills coincidental vowel-overlap in
+    # fusional langs). Empty → marker-only matching (noun-class/agreement, where roles don't apply).
+    match_roles: list[str] = field(default_factory=list)
 
 
 @dataclass

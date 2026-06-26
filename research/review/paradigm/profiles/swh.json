@@ -33,7 +33,28 @@
       "golden": "golden/swh_noun-class.json",
       "expected_cells": 8,
       "summary": "~15-18 sg/pl class pairs (m-/wa-, ki-/vi-, ji-/ma-, u-, ku-, locative -ni)",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 8,
+          "cells_present_in_packet": 8,
+          "cells_reported_by_generator": 8,
+          "missing_from_packet": [],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 1.0,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "swh.concord",
@@ -42,7 +63,28 @@
       "priority": 2,
       "gate": "paradigm:swh.noun-class in {learned,confirmed}",
       "summary": "subject/object/adjectival/associative concord agreeing with the noun's class",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 6,
+          "cells_present_in_packet": 6,
+          "cells_reported_by_generator": 6,
+          "missing_from_packet": [],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 1.0,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": false
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "swh.verb-tam",
@@ -51,7 +93,28 @@
       "priority": 3,
       "gate": "switch:tam_locus ~ verb",
       "summary": "verb TAM prefixes na-/li-/ta-/me-/hu-",
-      "status": "locked"
+      "status": "learned",
+      "metric": {
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 5,
+          "cells_present_in_packet": 5,
+          "cells_reported_by_generator": 5,
+          "missing_from_packet": [],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 1.0,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic"
+      }
     },
     {
       "id": "swh.class-allomorphy",
