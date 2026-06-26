@@ -1,0 +1,65 @@
+{
+  "language": "hin",
+  "name": "Hindi",
+  "family": "Indo-European (Indo-Aryan)",
+  "macro_profile": "fusional/agglutinative; suffixing+postpositional; gender + case + split ergativity",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Hindustani_declension",
+    "https://grokipedia.com/page/Hindustani_grammar"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "hin.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "hin.gender",
+      "paradigm_type": "gender-number",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:gender_or_noun_class == gender",
+      "summary": "gender (m/f) and number (sg/pl)",
+      "status": "locked"
+    },
+    {
+      "id": "hin.case",
+      "paradigm_type": "case",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "switch:affix_polarity ~ suffix and switch:case != absent",
+      "summary": "direct/oblique/vocative + postpositional case (ne, ko, se, mein, par, ke)",
+      "status": "locked"
+    },
+    {
+      "id": "hin.ergative-split",
+      "paradigm_type": "case",
+      "layer": "exceptions",
+      "priority": 3,
+      "gate": "paradigm:hin.case in {learned,confirmed}",
+      "summary": "split ergativity: ne on the perfective transitive subject; verb agrees with object",
+      "status": "locked"
+    },
+    {
+      "id": "hin.agreement",
+      "paradigm_type": "agreement",
+      "layer": "agreement",
+      "priority": 4,
+      "gate": "paradigm:hin.gender in {learned,confirmed}",
+      "summary": "verb/adjective agreement in gender+number",
+      "status": "locked"
+    }
+  ]
+}

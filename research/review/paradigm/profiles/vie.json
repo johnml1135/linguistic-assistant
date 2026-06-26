@@ -1,0 +1,46 @@
+{
+  "language": "vie",
+  "name": "Vietnamese",
+  "family": "Austroasiatic (Vietic)",
+  "macro_profile": "isolating; tonal; classifiers; NO inflectional morphology",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Vietnamese_language"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "vie.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "vie.isolating-confirm",
+      "paradigm_type": "isolating",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:synthesis == isolating",
+      "summary": "CONFIRM no case/gender/number/tense morphology — the right answer is 'absent'",
+      "status": "locked"
+    },
+    {
+      "id": "vie.classifiers",
+      "paradigm_type": "classifier",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "switch:synthesis == isolating",
+      "summary": "classifier system (cái, con, ...) before counted/specified nouns",
+      "status": "locked"
+    }
+  ]
+}

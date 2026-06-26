@@ -1,0 +1,75 @@
+{
+  "language": "rus",
+  "name": "Russian",
+  "family": "Indo-European (Slavic)",
+  "macro_profile": "fusional; suffixing; case x gender x declension class; verb aspect; no articles",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Russian_declension"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "rus.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "rus.case",
+      "paradigm_type": "case",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:affix_polarity ~ suffix and switch:case != absent",
+      "golden": "golden/rus_case.json",
+      "expected_cells": 6,
+      "summary": "6 cases: nom, gen, dat, acc, instr, prep",
+      "status": "locked"
+    },
+    {
+      "id": "rus.gender",
+      "paradigm_type": "gender-number",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "switch:gender_or_noun_class == gender or switch:gender_or_noun_class == noun-class",
+      "summary": "gender (m/f/n) and number (sg/pl); animacy (acc=gen for animate masc)",
+      "status": "locked"
+    },
+    {
+      "id": "rus.declension",
+      "paradigm_type": "case",
+      "layer": "exceptions",
+      "priority": 3,
+      "gate": "paradigm:rus.case in {learned,confirmed} and paradigm:rus.gender in {learned,confirmed}",
+      "summary": "declension classes (gender-linked); case x gender fusion",
+      "status": "locked"
+    },
+    {
+      "id": "rus.adj-agreement",
+      "paradigm_type": "agreement",
+      "layer": "agreement",
+      "priority": 4,
+      "gate": "paradigm:rus.case in {learned,confirmed} and paradigm:rus.gender in {learned,confirmed}",
+      "summary": "adjective agreement in gender+number+case",
+      "status": "locked"
+    },
+    {
+      "id": "rus.aspect",
+      "paradigm_type": "tam",
+      "layer": "inventory",
+      "priority": 5,
+      "gate": "switch:affix_polarity ~ suffix",
+      "summary": "verb aspect (perfective/imperfective)",
+      "status": "locked"
+    }
+  ]
+}

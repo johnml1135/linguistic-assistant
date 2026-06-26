@@ -24,10 +24,14 @@ import liblcm  # noqa: E402
 
 EBIBLE = _RESEARCH / "_sources" / "ebible"
 OUT = _RESEARCH / "induce" / "out"
-PAIR_DIR = {
-    "swh": "eng-engwebp__swh-swhulb", "ind": "eng-engwebp__ind-indags",
-    "tgl": "eng-engwebp__tgl-tglulb", "spa": "eng-engwebp__spa-spaRV1909",
-}
+try:                                               # single source of truth — all 8 langs (derive, don't hardcode)
+    from gold.compile import PAIR_DIR as _PAIR_DIR
+    PAIR_DIR = dict(_PAIR_DIR)
+except Exception:
+    PAIR_DIR = {
+        "swh": "eng-engwebp__swh-swhulb", "ind": "eng-engwebp__ind-indags",
+        "tgl": "eng-engwebp__tgl-tglulb", "spa": "eng-engwebp__spa-spaRV1909",
+    }
 _MORPH_KIND = {"prefix": "prefix", "suffix": "suffix", "infix": "infix"}
 
 

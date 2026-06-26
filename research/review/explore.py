@@ -181,6 +181,40 @@ def _stem_of(noun: str, pattern: str, side: str) -> str:
     return noun[:-len(pattern)] if side == "suffix" else noun[len(pattern):]
 
 
+def affix_function_gate(pair: str, candidate_nouns: list, *, sample: int = 400, pivot: str = "en"):
+    """Parser-based gate: keep only candidate nouns whose PROJECTED English POS is nominal. A coincidental
+    ending like `amini` is gold-tagged a noun but ALIGNS to an English verb ('believe') — its projected POS
+    conflicts, so it's dropped where stem-recurrence (ami marginally attested) let it through. Returns
+    (kept, skipped, posinfo) or None if no pivot parser is available (caller falls back to the stem gate)."""
+    try:
+        from review.project import get_parser, _word_alignment, project_verse
+    except Exception:
+        return None
+    parser = get_parser(pivot)
+    if parser is None:
+        return None
+    cand = set(candidate_nouns)
+    verses, table = _word_alignment(pair, sample)
+    votes: dict[str, Counter] = {}
+    for _ref, src, tgt in verses:
+        if not src or not tgt:
+            continue
+        for p in project_verse(parser(" ".join(src)), src, tgt, table):
+            if p["vern"] in cand and p.get("pos"):
+                votes.setdefault(p["vern"], Counter())[p["pos"]] += 1
+    kept, skipped, info = [], [], {}
+    for n in candidate_nouns:
+        c = votes.get(n)
+        top = c.most_common(1)[0][0] if c else ""
+        info[n] = top
+        # keep if no projection evidence (can't disconfirm) or the projected POS is nominal
+        if (not c) or top in ("NOUN", "PROPN"):
+            kept.append(n)
+        else:
+            skipped.append(n)
+    return kept, skipped, info
+
+
 def apply_residue_pattern(pair: str, pattern: str, *, side: str = "suffix", label: str | None = None,
                           min_residue: int = 2, gate: str = "stem", min_stem_freq: int = 3,
                           emit_delta: bool = True) -> dict:
@@ -203,11 +237,21 @@ def apply_residue_pattern(pair: str, pattern: str, *, side: str = "suffix", labe
 
     residue_before = [n for n in nouns if _residue_class(cls.get(n, {}))]
     candidates = [n for n in residue_before if bears(n)]
-    if gate == "stem":
+    gate_used = gate
+    if gate in ("stem", "both"):
         assigned = [n for n in candidates if _stem_recurs(_stem_of(n, pattern, side), freqs, nouns,
                                                           min_freq=min_stem_freq)]
     else:
-        assigned = candidates
+        assigned = list(candidates)
+    if gate in ("function", "both"):                   # parser gate: drop nouns that align to a non-noun
+        fg = affix_function_gate(pair, assigned if gate == "both" else candidates)
+        if fg is not None:
+            assigned = fg[0]
+        else:
+            gate_used = "stem (function gate unavailable: no pivot parser)"
+            if gate == "function":                     # asked for function-only but no parser → fall back to stem
+                assigned = [n for n in candidates if _stem_recurs(_stem_of(n, pattern, side), freqs, nouns,
+                                                                  min_freq=min_stem_freq)]
     skipped = [n for n in candidates if n not in set(assigned)]   # over-applications the gate caught
     for n in assigned:
         cls[n] = {"class": label, "source": "reviewer-explore", "confidence": 0.7, "via": f"{side}:{pattern}"}
@@ -215,7 +259,7 @@ def apply_residue_pattern(pair: str, pattern: str, *, side: str = "suffix", labe
     affix_added = _add_affix_to_model(pair, pattern, side, label)
     n_delta = _emit_pattern_delta(pair, pattern, side, label, assigned) if emit_delta else 0
     residue_after = [n for n in nouns if _residue_class(cls.get(n, {}))]
-    return {"pair": pair, "pattern": pattern, "side": side, "label": label, "decision": "accept", "gate": gate,
+    return {"pair": pair, "pattern": pattern, "side": side, "label": label, "decision": "accept", "gate": gate_used,
             "n_candidates": len(candidates), "n_assigned": len(assigned), "examples": sorted(assigned)[:10],
             "n_skipped_by_gate": len(skipped), "skipped_examples": sorted(skipped)[:10],
             "residue_before": len(residue_before), "residue_after": len(residue_after),
@@ -259,6 +303,41 @@ def switch_entries(pair: str) -> dict:
     entries' view for the typological frame)."""
     r = switch_hypotheses(pair)
     return r
+
+
+def apply_switch(pair: str, switch: str, value, *, lock: bool = True, emit_delta: bool = True) -> dict:
+    """CLOSE THE LOOP for switches: the reviewer ACCEPTS a typological switch value → write it into the
+    language profile (profile.switches[switch] + projected onto feature_space/affix/phon processes via
+    write_switches), locked, provenance reviewer-accepted; and emit a delta. The one higher-level question
+    that could present A/B/C but not yet apply — now it can."""
+    profile_written = False
+    try:
+        from review.deferrals.profile import load, save, write_switches
+        from review.deferrals.profile_detect import Switch
+        prof = load(pair)
+        sw = Switch(name=switch, value=value, confidence=1.0, evidence="reviewer-accepted")
+        # confirmations maps switch-id → the CHOSEN value (its presence also locks it); not a bool flag
+        prof = write_switches(prof, [sw], confirmations={switch: value} if lock else None)
+        save(prof)
+        profile_written = True
+    except Exception as e:
+        profile_written = f"error: {e}"
+    n_delta = _emit_switch_delta(pair, switch, value) if emit_delta else 0
+    return {"pair": pair, "switch": switch, "value": value, "locked": lock,
+            "profile_written": profile_written, "deltas": n_delta}
+
+
+def _emit_switch_delta(pair: str, switch: str, value) -> int:
+    try:
+        from review.deltas.store import DeltaStore
+    except Exception:
+        return 0
+    store = DeltaStore.load(_RESEARCH / "deltas" / "store" / f"{pair}.deltas.jsonl")
+    op = {"op": "switch.set", "entry": f"switch:{pair}:{switch}", "switch": switch, "value": value,
+          "confidence": 1.0, "provenance": {"source": "reviewer-explore", "pair": pair}}
+    n = store.add([op])
+    store.save()
+    return n
 
 
 # ── AGREEMENT / CONCORD: per-class A/B/C concord markers + the instances that don't fit ──────────────────
@@ -343,7 +422,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--apply-concord", default="", help="ACCEPT a concord: 'PREFIX:MARKER' (e.g. ki:cha)")
     ap.add_argument("--apply-residue", default="", help="ACCEPT a residue pattern (substring) → assign + add affix")
     ap.add_argument("--side", default="suffix", choices=["suffix", "prefix"], help="which edge the pattern is on")
+    ap.add_argument("--gate", default="stem", choices=["stem", "function", "both", "none"],
+                    help="morpheme gate for --apply-residue: stem-recurrence | parser POS | both | none")
     ap.add_argument("--label", default="", help="class label for the accepted pattern (e.g. LOC)")
+    ap.add_argument("--apply-switch", default="", help="ACCEPT a switch value: 'name=value' (writes the profile)")
     ap.add_argument("--limit", type=int, default=80)
     a = ap.parse_args(argv)
     try:
@@ -402,8 +484,13 @@ def main(argv: list[str] | None = None) -> int:
         r = apply_concord(a.pair, pfx, mk)
         print(f"\n{a.pair}: ACCEPTED concord — cl{r['class']} ({pfx}-) governs '{mk}' "
               f"(schema_updated={r['schema_updated']}, deltas={r['deltas']})")
+    if a.apply_switch and "=" in a.apply_switch:
+        name, val = a.apply_switch.split("=", 1)
+        r = apply_switch(a.pair, name, val)
+        print(f"\n{a.pair}: ACCEPTED switch {name} = {val} "
+              f"(locked={r['locked']}, profile_written={r['profile_written']}, deltas={r['deltas']})")
     if a.apply_residue:
-        r = apply_residue_pattern(a.pair, a.apply_residue, side=a.side, label=a.label or None)
+        r = apply_residue_pattern(a.pair, a.apply_residue, side=a.side, label=a.label or None, gate=a.gate)
         print(f"\n{a.pair}: ACCEPTED {a.side} pattern '{a.apply_residue}' as class '{r['label']}' (gate={r['gate']})")
         print(f"  {r['n_candidates']} bear it → {r['n_assigned']} assigned (stem attested)  e.g. {r['examples']}")
         print(f"  SKIPPED by gate (coincidental ending, no stem): {r['n_skipped_by_gate']} {r['skipped_examples']}")

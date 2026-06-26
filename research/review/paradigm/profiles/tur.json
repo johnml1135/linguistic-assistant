@@ -1,0 +1,67 @@
+{
+  "language": "tur",
+  "name": "Turkish",
+  "family": "Turkic (Oghuz)",
+  "macro_profile": "agglutinative; suffixing; case under vowel harmony; no gender",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Turkish_grammar",
+    "https://www.easyturkishgrammar.com/post/turkish-case-suffixes"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "tur.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "tur.case",
+      "paradigm_type": "case",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:affix_polarity ~ suffix and switch:case != absent",
+      "golden": "golden/tur_case.json",
+      "expected_cells": 6,
+      "summary": "6 cases: nom-Ø, acc -(y)I, dat -(y)A, loc -DA, abl -DAn, gen -(n)In",
+      "status": "locked"
+    },
+    {
+      "id": "tur.possessive",
+      "paradigm_type": "possessive",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "switch:affix_polarity ~ suffix",
+      "summary": "possessive suffixes -Im/-In/-(s)I/...; plural -lAr",
+      "status": "locked"
+    },
+    {
+      "id": "tur.harmony-allomorphy",
+      "paradigm_type": "case",
+      "layer": "exceptions",
+      "priority": 3,
+      "gate": "paradigm:tur.case in {learned,confirmed} and switch:vowel_harmony == true",
+      "summary": "every suffix's vowel harmonises (front/back + rounding) with the stem",
+      "status": "locked"
+    },
+    {
+      "id": "tur.verb-tam",
+      "paradigm_type": "tam",
+      "layer": "inventory",
+      "priority": 4,
+      "gate": "switch:affix_polarity ~ suffix",
+      "summary": "verb TAM + person agreement; evidentiality -mIş",
+      "status": "locked"
+    }
+  ]
+}

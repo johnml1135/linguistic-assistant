@@ -102,6 +102,41 @@ def test_apply_concord_emits_decision(monkeypatch):
     assert r["class"] == "7" and r["marker"] == "cha" and r["schema_updated"] and r["deltas"] == 1
 
 
+def test_affix_function_gate_drops_verb_aligned(monkeypatch):
+    """The parser gate keeps nouns projecting NOUN and drops one that projects VERB (amini→believe), even
+    when stem-recurrence would have let it through."""
+    class _Tok:
+        pass
+    # mock the projection: nyumbani→NOUN, duniani→NOUN, amini→VERB
+    proj = {"nyumbani": "NOUN", "duniani": "NOUN", "amini": "VERB"}
+    monkeypatch.setattr("review.project.get_parser", lambda pivot="en": (lambda s: []))
+    monkeypatch.setattr("review.project._word_alignment", lambda pair, sample: ([("r", ["x"], ["y"])], None))
+
+    def fake_project_verse(toks, src, tgt, table):
+        return [{"vern": w, "pos": proj.get(w, "")} for w in proj]
+    monkeypatch.setattr("review.project.project_verse", fake_project_verse)
+    kept, skipped, info = EX.affix_function_gate("swh", ["nyumbani", "duniani", "amini"])
+    assert set(kept) == {"nyumbani", "duniani"} and skipped == ["amini"]
+
+
+def test_apply_switch_writes_profile(monkeypatch):
+    captured = {}
+    monkeypatch.setattr("review.deferrals.profile.load", lambda pair: object())
+    monkeypatch.setattr("review.deferrals.profile.save", lambda prof: "path")
+
+    def fake_write(prof, detected, confirmations=None):
+        captured["name"] = detected[0].name
+        captured["value"] = detected[0].value
+        captured["locked"] = confirmations
+        return prof
+    monkeypatch.setattr("review.deferrals.profile.write_switches", fake_write)
+    monkeypatch.setattr(EX, "_emit_switch_delta", lambda pair, sw, v: 1)
+    r = EX.apply_switch("swh", "articles", "none")
+    assert r["profile_written"] is True and r["deltas"] == 1
+    # confirmations carries the chosen VALUE (which also locks it), not a bool flag
+    assert captured["name"] == "articles" and captured["value"] == "none" and captured["locked"] == {"articles": "none"}
+
+
 if __name__ == "__main__":
     import traceback
 

@@ -1,0 +1,76 @@
+{
+  "language": "swh",
+  "paradigm_type": "noun-class",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {
+      "label": "cl1/2 (m-/wa-)",
+      "markers": ["m", "wa", "a"],
+      "function": "human/animate, singular/plural; subject concord a-/wa-, associative wa",
+      "support": 814,
+      "examples": ["mtu", "watu", "mtoto", "watoto"]
+    },
+    {
+      "label": "cl3/4 (m-/mi-)",
+      "markers": ["m", "mi", "u", "ya"],
+      "function": "plants, body parts, inanimates; sg/pl; concord u-/i-, associative wa/ya",
+      "support": 256,
+      "examples": ["mti", "miti", "mkono", "mikono"]
+    },
+    {
+      "label": "cl5/6 (ji-/ma-)",
+      "markers": ["ji", "ma", "la", "ya"],
+      "function": "augmentatives, paired things, mass; sg/pl; concord li-/ya-, associative la/ya",
+      "support": 479,
+      "examples": ["jicho", "macho", "jiwe", "mawe"]
+    },
+    {
+      "label": "cl7/8 (ki-/vi-)",
+      "markers": ["ki", "vi", "cha", "vya"],
+      "function": "things, diminutives, manner; sg/pl; concord ki-/vi-, associative cha/vya",
+      "support": 176,
+      "examples": ["kitu", "vitu", "kitabu", "vitabu"]
+    },
+    {
+      "label": "cl9/10 (n-)",
+      "markers": ["n", "ya", "za", "zi"],
+      "function": "animals, loanwords; sg=pl (often zero-marked); concord i-/zi-, associative ya/za",
+      "support": 200,
+      "examples": ["ndizi", "nyumba", "njia"]
+    },
+    {
+      "label": "cl11/14 (u-)",
+      "markers": ["u", "wa"],
+      "function": "abstract nouns, mass nouns; associative wa",
+      "support": 402,
+      "examples": ["uhuru", "upendo", "wakati"]
+    },
+    {
+      "label": "cl15 (ku-) verbal noun",
+      "markers": ["ku", "kwa"],
+      "function": "infinitives / verbal nouns; associative kwa",
+      "support": 80,
+      "examples": ["kusoma", "kula", "kufa"]
+    },
+    {
+      "label": "cl16/17/18 locative (pa-/ku-/mu-, suffix -ni)",
+      "markers": ["ni", "pa", "ku", "mu"],
+      "function": "locatives (definite/general/interior); locative suffix -ni; concord pa/kwa/mwa",
+      "support": 100,
+      "examples": ["nyumbani", "mahali", "mjini"]
+    }
+  ],
+  "conditioning": "phonology (prefix allomorphy by glide formation before a vowel: m~mw cl1/3, ki~ch cl7, vi~vy cl8, mi~my cl4)",
+  "fit_none": {
+    "n": 60,
+    "examples": ["proper names", "zero-prefix cl9/10 loanwords"],
+    "note": "cl9/10 nouns are largely zero-marked (no overt class prefix) and loanwords resist transparent prefixing — the expected residue, not a failure of the analysis"
+  },
+  "evidence_citations": [
+    {"claim": "8+ prefixal class groups exist", "source": "hc", "stat": "888/2095 nouns classified into 8 emergent sg/pl groups"},
+    {"claim": "classes govern concord agreement", "source": "thot", "stat": "13/14 classes have a dominant associative concord marker (ki->cha .83, vi->vya .86, ji->la .80, m->wa .81)"},
+    {"claim": "a locative class exists beyond the core classes", "source": "explorer", "stat": "residue probe: -ni recurs on 100 nouns, 51 leave an attested stem"}
+  ],
+  "prose": "swh has a productive prefixal NOUN-CLASS system (detected, high confidence). Eight singular/plural class pairings are recovered, classifying ~42% of nouns; the rest are dominated by zero-marked cl9/10 nouns and loanwords (the expected residue). The decisive evidence is CONCORD: 13 of 14 classes trigger a dominant associative agreement marker on their modifiers (cl7 ki->cha .83, cl8 vi->vya .86, cl5 ji->la .80, cl1/2 m->wa .81), which is what distinguishes a real agreement-class system from mere orthographic prefix clustering. Prefix allomorphy is morphophonological (glide formation before vowels: m~mw, ki~ch, vi~vy). A locative class (suffix -ni, 100 nouns) surfaces in the residue probe and should be added as cl16/17/18. Recommendation to reviewer: PROMOTE the class+concord system; treat the zero-marked cl9/10 residue as data-sparse rather than contradictory."
+}

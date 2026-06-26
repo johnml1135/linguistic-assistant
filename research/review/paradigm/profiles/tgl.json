@@ -1,0 +1,55 @@
+{
+  "language": "tgl",
+  "name": "Tagalog",
+  "family": "Austronesian (Philippine)",
+  "macro_profile": "symmetrical voice/focus + NP case-markers; infix+redup aspect; no gender",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Tagalog_grammar"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "tgl.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "tgl.voice-focus",
+      "paradigm_type": "voice-focus",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:infixation == true and switch:case == absent",
+      "summary": "actor -um-/mag-, patient -in, locative -an, instrument/benefactive i-",
+      "status": "locked"
+    },
+    {
+      "id": "tgl.np-markers",
+      "paradigm_type": "case",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "paradigm:tgl.voice-focus in {learned,confirmed}",
+      "summary": "NP case-markers ang (trigger), ng (genitive), sa (oblique/dative)",
+      "status": "locked"
+    },
+    {
+      "id": "tgl.aspect",
+      "paradigm_type": "tam",
+      "layer": "exceptions",
+      "priority": 3,
+      "gate": "paradigm:tgl.voice-focus in {learned,confirmed}",
+      "summary": "aspect via reduplication + infix (-um-/-in-)",
+      "status": "locked"
+    }
+  ]
+}

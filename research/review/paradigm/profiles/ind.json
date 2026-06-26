@@ -1,0 +1,56 @@
+{
+  "language": "ind",
+  "name": "Indonesian",
+  "family": "Austronesian (Malayo-Polynesian)",
+  "macro_profile": "agglutinative; affix voice + derivation; no case, no gender, no agreement",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Indonesian_language",
+    "https://en.wiktionary.org/wiki/Appendix:Indonesian_affixes"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "ind.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "ind.voice",
+      "paradigm_type": "voice-focus",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:affix_polarity ~ prefix and switch:case == absent",
+      "summary": "active meN-, passive di-",
+      "status": "locked"
+    },
+    {
+      "id": "ind.reduplication",
+      "paradigm_type": "reduplication",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "switch:reduplication == true",
+      "summary": "reduplication for plurality (buku-buku)",
+      "status": "locked"
+    },
+    {
+      "id": "ind.derivation",
+      "paradigm_type": "voice-focus",
+      "layer": "exceptions",
+      "priority": 3,
+      "gate": "paradigm:ind.voice in {learned,confirmed}",
+      "summary": "ke-...-an, pe(r)-...-an circumfixes; peN- agentive; -kan/-i applicative/causative",
+      "status": "locked"
+    }
+  ]
+}

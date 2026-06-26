@@ -31,12 +31,16 @@ from engine.grammar import Affix, LangModel, LexEntry  # noqa: E402
 from engine.hc import run_parse  # noqa: E402
 
 EBIBLE = _RESEARCH / "_sources" / "ebible"
-PAIR_DIR = {
-    "swh": "eng-engwebp__swh-swhulb",
-    "ind": "eng-engwebp__ind-indags",
-    "tgl": "eng-engwebp__tgl-tglulb",
-    "spa": "eng-engwebp__spa-spaRV1909",
-}
+try:                                               # single source of truth — all 8 langs (derive, don't hardcode)
+    from gold.compile import PAIR_DIR as _PAIR_DIR
+    PAIR_DIR = dict(_PAIR_DIR)
+except Exception:                                  # fallback to the original 4 if the config can't load
+    PAIR_DIR = {
+        "swh": "eng-engwebp__swh-swhulb",
+        "ind": "eng-engwebp__ind-indags",
+        "tgl": "eng-engwebp__tgl-tglulb",
+        "spa": "eng-engwebp__spa-spaRV1909",
+    }
 
 
 def load_freqs(pair: str) -> Counter:

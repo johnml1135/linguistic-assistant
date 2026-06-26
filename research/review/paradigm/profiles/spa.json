@@ -1,0 +1,64 @@
+{
+  "language": "spa",
+  "name": "Spanish",
+  "family": "Indo-European (Romance)",
+  "macro_profile": "fusional; suffixing; gender/number agreement; rich verb conjugation; no nominal case",
+  "sources": [
+    "https://www.donquijote.org/blog/spanish-adjectives-gender-and-number-agreement/"
+  ],
+  "confirmed": "2026-06",
+  "layers": [
+    "switches",
+    "inventory",
+    "agreement",
+    "exceptions"
+  ],
+  "schema_version": 1,
+  "paradigms": [
+    {
+      "id": "spa.switches",
+      "paradigm_type": "switches",
+      "layer": "switches",
+      "priority": 0,
+      "gate": "",
+      "summary": "typological switch profile (synthesis, affix polarity, harmony, gender-or-noun-class, case presence, voice) — gates everything below",
+      "status": "candidate"
+    },
+    {
+      "id": "spa.gender-number",
+      "paradigm_type": "gender-number",
+      "layer": "inventory",
+      "priority": 1,
+      "gate": "switch:gender_or_noun_class == gender",
+      "summary": "gender (m/f, -o/-a) and number (-s)",
+      "status": "locked"
+    },
+    {
+      "id": "spa.agreement",
+      "paradigm_type": "agreement",
+      "layer": "agreement",
+      "priority": 2,
+      "gate": "paradigm:spa.gender-number in {learned,confirmed}",
+      "summary": "gender+number agreement across article-noun-adjective",
+      "status": "locked"
+    },
+    {
+      "id": "spa.verb-conj",
+      "paradigm_type": "tam",
+      "layer": "inventory",
+      "priority": 3,
+      "gate": "switch:synthesis == fusional and switch:affix_polarity ~ suffix",
+      "summary": "3 conjugation classes (-ar/-er/-ir) x person/number x TAM",
+      "status": "locked"
+    },
+    {
+      "id": "spa.clitics",
+      "paradigm_type": "agreement",
+      "layer": "exceptions",
+      "priority": 4,
+      "gate": "paradigm:spa.verb-conj in {learned,confirmed}",
+      "summary": "clitic object pronouns (me/te/lo/la/se)",
+      "status": "locked"
+    }
+  ]
+}
