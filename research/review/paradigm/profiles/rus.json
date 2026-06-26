@@ -33,7 +33,7 @@
       "golden": "golden/rus_case.json",
       "expected_cells": 6,
       "summary": "6 cases: nom, gen, dat, acc, instr, prep",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
         "overall": 0.333,
         "evidence_completeness": 0.333,
@@ -58,7 +58,13 @@
           "residue_in_packet": true
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 3,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {
@@ -95,7 +101,76 @@
       "priority": 5,
       "gate": "switch:affix_polarity ~ suffix",
       "summary": "verb aspect (perfective/imperfective)",
-      "status": "absent"
+      "status": "confirmed",
+      "metric": {
+        "overall": 0.5,
+        "evidence_completeness": 0.5,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 4,
+          "cells_present_in_packet": 2,
+          "cells_reported_by_generator": 2,
+          "missing_from_packet": [
+            "non-past",
+            "imperative"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.5,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 15,
+          "defer": 0,
+          "reject": 0
+        }
+      }
+    },
+    {
+      "id": "rus.number",
+      "paradigm_type": "possessive",
+      "layer": "inventory",
+      "priority": 6,
+      "gate": "switch:affix_polarity ~ suffix",
+      "golden": "golden/rus_possessive.json",
+      "summary": "number (plural -ы/-и/-ов, fused with case in the declension)",
+      "status": "confirmed",
+      "metric": {
+        "overall": 0.5,
+        "evidence_completeness": 0.5,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 2,
+          "cells_present_in_packet": 1,
+          "cells_reported_by_generator": 1,
+          "missing_from_packet": [
+            "singular"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.5,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 6,
+          "defer": 0,
+          "reject": 0
+        }
+      }
     }
   ]
 }

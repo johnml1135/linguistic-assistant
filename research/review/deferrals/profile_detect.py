@@ -71,6 +71,21 @@ def detect_synthesis(freqs: Counter, affixes: list[dict]) -> Switch:
     separate at boundaries) separates *agglutinative* (clean) from *fusional* (fused). We estimate M/W by
     greedily stripping the induced affixes off frequent words, and agglutination by the fraction that strip
     cleanly to an ATTESTED stem (fusion obscures the stem; agglutination leaves it whole)."""
+    # Isolating short-circuit: if words are overwhelmingly monosyllabic, the language is isolating —
+    # robust to the inducer's spurious affixes (which otherwise inflate M/W and mislabel vie as fusional).
+    try:
+        from review.paradigm.isolating_detect import _syllables
+        _top = [w for w, _ in freqs.most_common(400) if len(w) > 1 and w.isalpha()]
+        _syl = [s for s in (_syllables(w) for w in _top) if s > 0]
+        if len(_syl) >= 50:
+            _mean = sum(_syl) / len(_syl)
+            _mono = sum(1 for s in _syl if s == 1) / len(_syl)
+            if _mean < 1.4 and _mono > 0.7:
+                return Switch("synthesis", "isolating", 0.85,
+                              f"words overwhelmingly monosyllabic (mean {_mean:.2f} syll, {_mono:.0%} "
+                              f"monosyllabic) → isolating (robust to over-segmentation)")
+    except Exception:
+        pass
     pre = sorted({a["form"] for a in affixes if a.get("kind") == "prefix" and a.get("form")}, key=len, reverse=True)
     suf = sorted({a["form"] for a in affixes if a.get("kind") == "suffix" and a.get("form")}, key=len, reverse=True)
     attested = {w for w, c in freqs.items() if c >= 2 and len(w) >= 2}

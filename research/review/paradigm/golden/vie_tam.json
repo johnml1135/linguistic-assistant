@@ -1,0 +1,17 @@
+{
+  "language": "vie",
+  "paradigm_type": "tam",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "past-perfect", "markers": ["đã"], "function": "past / perfective — preverbal particle đã", "support": 0, "examples": ["đã ăn"]},
+    {"label": "future", "markers": ["sẽ"], "function": "future — preverbal particle sẽ", "support": 0, "examples": ["sẽ ăn"]},
+    {"label": "progressive", "markers": ["đang"], "function": "progressive — preverbal particle đang", "support": 0, "examples": ["đang ăn"]}
+  ],
+  "conditioning": "ANALYTIC (isolating): tense/aspect is a free PREVERBAL PARTICLE, not an affix; particles are optional and stack",
+  "fit_none": {"n": 0, "examples": [], "note": "vie has no inflectional tense; these three free particles ARE the tense/aspect system"},
+  "evidence_citations": [
+    {"claim": "tense is marked by free preverbal particles", "source": "thot", "stat": "sẽ→will 0.79, đã→have, đang→was (particle alignment)"}
+  ],
+  "prose": "vie (isolating) marks tense/aspect with FREE PREVERBAL PARTICLES, not affixes: đã (past/perfective), sẽ (future), đang (progressive). Recovered from each particle's alignment to an English tense word (sẽ→will, đã→have, đang→was). This is the analytic mirror of suffixal TAM. Recommendation: PROMOTE đã/sẽ/đang as the analytic tense system."
+}

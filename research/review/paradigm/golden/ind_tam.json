@@ -1,0 +1,17 @@
+{
+  "language": "ind",
+  "paradigm_type": "tam",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "perfective", "markers": ["sudah", "telah"], "function": "perfective / already — particle sudah/telah", "support": 0, "examples": ["sudah makan"]},
+    {"label": "future", "markers": ["akan"], "function": "future — particle akan", "support": 0, "examples": ["akan makan"]},
+    {"label": "progressive", "markers": ["sedang"], "function": "progressive — particle sedang", "support": 0, "examples": ["sedang makan"]}
+  ],
+  "conditioning": "ANALYTIC: tense/aspect is a free particle before the verb; Indonesian has no inflectional tense",
+  "fit_none": {"n": 0, "examples": [], "note": "Indonesian has NO verb tense morphology; these free aspect particles are the system (the meN-/di- prefixes are VOICE, not tense)"},
+  "evidence_citations": [
+    {"claim": "aspect is marked by free particles", "source": "thot", "stat": "akan→will 0.71, sudah/telah→have, sedang→was"}
+  ],
+  "prose": "ind (analytic) marks tense/aspect with FREE PARTICLES, not affixes: sudah/telah (perfective/'already'), akan (future), sedang (progressive). Recovered from each particle's English alignment (akan→will, sudah→have, sedang→was). Note: the meN-/di- prefixes are VOICE, not tense — Indonesian has no inflectional tense. Recommendation: PROMOTE the analytic aspect particles."
+}

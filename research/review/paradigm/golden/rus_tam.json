@@ -1,0 +1,27 @@
+{
+  "language": "rus",
+  "paradigm_type": "tam",
+  "detected": true,
+  "confidence": 0.9,
+  "cells": [
+    {"label": "past", "markers": ["л", "ла", "ло", "ли"],
+     "function": "past tense -л (agrees in gender/number, not person)", "support": 0,
+     "examples": ["читал", "читала", "читали"]},
+    {"label": "infinitive", "markers": ["ть", "ти", "чь"], "function": "infinitive -ть",
+     "support": 0, "examples": ["читать", "идти"]},
+    {"label": "non-past", "markers": ["ет", "ёт", "ут", "ют", "ит", "ат", "ешь", "ем"],
+     "function": "present/future (non-past) personal endings", "support": 0, "examples": ["читает", "идёт"]},
+    {"label": "imperative", "markers": ["й", "йте", "и", "ите"], "function": "imperative",
+     "support": 0, "examples": ["читай", "иди"]}
+  ],
+  "conditioning": "FUSIONAL + aspectual: tense interacts with verbal aspect (perfective/imperfective, often prefix-marked); the past agrees in gender/number, the non-past in person/number",
+  "fit_none": {
+    "n": 1,
+    "examples": ["perfective/imperfective aspect (largely prefix-marked: по-/при-)", "non-past personal endings"],
+    "note": "the pivot recovers the past -л and the infinitive -ть cleanly; the non-past personal endings and the aspectual system (fused/prefixal) are the expected gap"
+  },
+  "evidence_citations": [
+    {"claim": "a suffix marks past tense", "source": "thot", "stat": "-л → Tense=Past, -ли → past plural (held-out prediction)"}
+  ],
+  "prose": "rus marks tense with the past suffix -л (agreeing in gender/number: читал/читала/читали) and the infinitive -ть, atop a FUSIONAL aspectual system (perfective/imperfective, often prefix-marked по-/при-). The pivot recovers the past -л and the infinitive; the non-past personal endings and the aspect system are the expected gap. Recommendation: PROMOTE past -л + infinitive -ть; the aspect/non-past needs the declension-table + aspect-pair view."
+}

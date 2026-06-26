@@ -1,0 +1,30 @@
+{
+  "language": "spa",
+  "paradigm_type": "tam",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "present", "markers": ["o", "as", "a", "amos", "an", "go", "is", "e", "en"],
+     "function": "present tense", "support": 0, "examples": ["hablo", "come", "vive"]},
+    {"label": "preterite", "markers": ["ó", "é", "aron", "ió", "ieron", "ron", "aste", "imos"],
+     "function": "preterite (perfective past)", "support": 0, "examples": ["habló", "comió", "vivieron"]},
+    {"label": "imperfect", "markers": ["aba", "abas", "ía", "ían", "aban"],
+     "function": "imperfect (past)", "support": 0, "examples": ["hablaba", "comía"]},
+    {"label": "future", "markers": ["rá", "ré", "rás", "rán", "remos"],
+     "function": "future tense", "support": 0, "examples": ["hablará", "comeré"]},
+    {"label": "gerund", "markers": ["ndo", "ando", "iendo"], "function": "gerund (VerbForm=Ger)",
+     "support": 0, "examples": ["hablando", "comiendo"]},
+    {"label": "participle", "markers": ["do", "dos", "da", "das"], "function": "past participle",
+     "support": 0, "examples": ["hablado", "comido"]}
+  ],
+  "conditioning": "fusional: a single ending fuses tense/aspect/mood with person/number across the three conjugation classes (-ar/-er/-ir)",
+  "fit_none": {
+    "n": 1,
+    "examples": ["subjunctive/conditional moods; person/number is fused into the same endings"],
+    "note": "the pivot recovers the major tense/aspect/form distinctions; the full person×number×mood cross-product is fused and not separated"
+  },
+  "evidence_citations": [
+    {"claim": "verb endings carry tense/aspect/form", "source": "thot", "stat": "-ndo→Ger (lift 27), -ó→Past, -rá→future, -do→Part, present -o/-a (held-out feature prediction)"}
+  ],
+  "prose": "spa marks tense/aspect/mood with FUSIONAL verb endings across three conjugation classes: present (-o/-a/-amos), preterite (-ó/-aron), imperfect (-aba/-ía), future (-rá/-ré), gerund (-ndo), past participle (-do). Recovered from the projected English Tense/VerbForm features. The full person×number×mood cross-product is fused into single endings and not fully separated. Recommendation: PROMOTE the tense/aspect/form cells; flag the fused person/number for a paradigm-table pass."
+}

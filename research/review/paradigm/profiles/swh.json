@@ -33,7 +33,7 @@
       "golden": "golden/swh_noun-class.json",
       "expected_cells": 8,
       "summary": "~15-18 sg/pl class pairs (m-/wa-, ki-/vi-, ji-/ma-, u-, ku-, locative -ni)",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
         "overall": 1.0,
         "evidence_completeness": 1.0,
@@ -53,7 +53,13 @@
           "residue_in_packet": true
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 15,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {
@@ -63,7 +69,7 @@
       "priority": 2,
       "gate": "paradigm:swh.noun-class in {learned,confirmed}",
       "summary": "subject/object/adjectival/associative concord agreeing with the noun's class",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
         "overall": 1.0,
         "evidence_completeness": 1.0,
@@ -83,7 +89,13 @@
           "residue_in_packet": false
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 14,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {
@@ -93,7 +105,7 @@
       "priority": 3,
       "gate": "switch:tam_locus ~ verb",
       "summary": "verb TAM prefixes na-/li-/ta-/me-/hu-",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
         "overall": 1.0,
         "evidence_completeness": 1.0,
@@ -113,7 +125,13 @@
           "residue_in_packet": true
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 10,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {

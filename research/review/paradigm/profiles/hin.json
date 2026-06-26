@@ -40,8 +40,47 @@
       "layer": "inventory",
       "priority": 2,
       "gate": "switch:affix_polarity ~ suffix and switch:case != absent",
-      "summary": "direct/oblique/vocative + postpositional case (ne, ko, se, mein, par, ke)",
+      "summary": "direct/oblique/vocative suffixal case (if any)",
       "status": "locked"
+    },
+    {
+      "id": "hin.np-case",
+      "paradigm_type": "np-case",
+      "layer": "inventory",
+      "priority": 2,
+      "gate": "switch:case == absent",
+      "golden": "golden/hin_np-case.json",
+      "summary": "ANALYTIC postpositional case: ne (ergative), ko (acc/dat), se (instr), mein (loc), ka/ke/ki (gen)",
+      "status": "confirmed",
+      "metric": {
+        "overall": 0.833,
+        "evidence_completeness": 0.833,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 6,
+          "cells_present_in_packet": 5,
+          "cells_reported_by_generator": 5,
+          "missing_from_packet": [
+            "ergative"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.833,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 5,
+          "defer": 0,
+          "reject": 0
+        }
+      }
     },
     {
       "id": "hin.ergative-split",

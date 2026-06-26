@@ -74,11 +74,13 @@ inverse gap is the highest-leverage trunk work (§3).
    - DONE: **voice-focus** (ind di-, 0.5), **analytic np-case** (tgl ang/ng/sa, 1.0), **TAM** (swh
      na/li/ta/me/ka, 1.0), **possessive/number** (tur -lAr 0.5, rus -ов 0.5). **7 detector families**,
      10 scored anchors across 6 langs (mean 0.65), 211 tests pass.
-   - Remaining detector gaps: **hin postpositional case** (Devanagari ने/को/से fragment; auto-side picks
-     preceding demonstratives — needs Devanagari-aware tokenization + force following-side); **vie
-     isolating-confirm** (the inducer over-segments isolating vie, confounding both synthesis and the
-     isolating check — needs the induction fix first); **rus fusional** case+number (declension-table
-     detector + suffix→cell-mapping scorer to get past 0.33/0.5).
+   - DONE (round 2): **isolating detector** (vie 1.0; also fixed the synthesis switch via syllables/word —
+     robust to over-segmentation), **report-review step** (promote/defer/reject firewall → profile
+     'confirmed'), **active voice via internal complementary distribution** (ind 0.5→1.0), **live Gemma
+     faithfulness** (0.63–1.0, mean ~0.93 — real, not heuristic). Sweep **11 scored, mean 0.77**.
+   - Remaining detector gaps: **hin postpositional case** — blocked by Devanagari tokenization (ने/को→न/क
+     fragments); needs a Devanagari-aware tokenizer (upstream), not a detector change. **rus fusional**
+     case+number stuck at 0.33/0.5 — needs a declension-table detector + suffix→cell-mapping scorer.
 3. **Scorer: marker-overlap over-credits fusional morphology** — PARTLY DONE. Completeness is now
    **role-aware** (`Cell.match_roles` + `score._cell_present`): a golden case-cell counts only if a packet
    family has the marker AND a matching projected role. This dropped fusional rus from a fake 0.5 to an

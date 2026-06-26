@@ -167,6 +167,10 @@ def build_voice_packet(pair: str) -> dict:
     voice_aff = h.get("voice_affixes", [])
     cells = [{"markers": c["markers"], "voice": c["voice"], "function": f"Voice={c['voice']}",
               "lift": c.get("lift"), "heldout": c.get("heldout")} for c in voice_aff]
+    # the active alternant, recovered from internal complementary distribution (shares roots with passive)
+    for a in h.get("active_alternants", []):
+        cells.append({"markers": a["markers"], "voice": "Act", "function": "Voice=Act (alternant of passive)",
+                      "overlap": a.get("overlap"), "n_shared": a.get("n_shared")})
     return {
         "language": pair,
         "paradigm_type": "voice-focus",
@@ -187,26 +191,36 @@ def build_voice_packet(pair: str) -> dict:
 
 
 def build_np_case_packet(pair: str) -> dict:
-    """Full picture for ANALYTIC case (tgl ang/ng/sa, hin postpositions): adjacent particles whose presence
-    co-varies with the noun's role. Role-bearing cells → role-aware scoring applies."""
+    """Full picture for ANALYTIC case. Two recovery paths: (1) role-covariation — adjacent particles whose
+    presence co-varies with the noun's role (tgl ang→nsubj/ng→nmod/sa→obl); (2) postposition-alignment —
+    for SOV+postpositional langs (hin) where roles don't project, each postposition aligns 1:1 to an
+    English adposition (की→of=genitive). Try (1); fall back to (2)."""
     from review.paradigm.markers_detect import detect_np_case
     detected, conf, evidence, h = detect_np_case(pair, sample=300)
     rows = h.get("rows", [])
     cells = [{"markers": r["markers"], "role": r["dominant_role"], "share": r["share"], "n": r["n"]}
              for r in rows]
+    if not detected:
+        from review.paradigm.postp_detect import detect_postp_case
+        d2, c2, e2, h2 = detect_postp_case(pair)
+        if d2:
+            detected, conf, evidence, h = d2, c2, e2, h2
+            rows = h2.get("rows", [])
+            cells = [{"markers": r["markers"], "function": r["function"], "en": r.get("en")} for r in rows]
     return {
         "language": pair,
         "paradigm_type": "np-case",
         "question": "Is case marked analytically — an adjacent particle co-varying with the noun's role?",
         "detected": detected,
         "confidence": conf,
-        "hypotheses": {"hypotheses": [{"label": f"{r['marker']}→{r['dominant_role']}", "prefixes": r["markers"],
-                                       "n_explained": r["n"], "examples": []} for r in rows],
+        "hypotheses": {"hypotheses": [{"label": "/".join(c["markers"]) + "→" + str(c.get("role") or c.get("function", "")),
+                                       "prefixes": c["markers"], "n_explained": c.get("n", 0), "examples": []}
+                                      for c in cells],
                        "fit_none": {"n": 0, "examples": []}},
         "np_case": h,
         "cells": cells,
         "hc": {"n_markers": h.get("n_markers", 0), "side": h.get("side")},
-        "thot": {"signal": "adjacent-particle role covariation over THOT alignment", "evidence": evidence},
+        "thot": {"signal": "adjacent-particle role covariation / postposition→adposition alignment", "evidence": evidence},
         "conditioning": "analytic (separate-word marking)",
         "examples": cells[:6],
         "provenance": PROVENANCE,
@@ -264,6 +278,29 @@ def build_possessive_packet(pair: str) -> dict:
     }
 
 
+def build_isolating_packet(pair: str) -> dict:
+    """Full picture for the ISOLATING question (vie): is the language morphologically isolating (no
+    inflection to analyse)? Signal = syllables per word (robust to the inducer's spurious affixes)."""
+    from review.paradigm.isolating_detect import detect_isolating
+    iso, conf, evidence, st = detect_isolating(pair, sample=400)
+    cells = [{"markers": ["isolating", "monosyllabic"], "function": "no inflectional morphology"}] if iso else []
+    return {
+        "language": pair,
+        "paradigm_type": "isolating",
+        "question": "Is this language isolating — no inflectional morphology to analyse?",
+        "detected": iso,
+        "confidence": conf,
+        "hypotheses": {"hypotheses": [], "fit_none": {"n": 0, "examples": []}},
+        "isolating": st,
+        "cells": cells,
+        "hc": {"mean_syllables": st.get("mean_syllables"), "frac_monosyllabic": st.get("frac_monosyllabic")},
+        "thot": {"signal": "syllables-per-word (script-robust morphology proxy)", "evidence": evidence},
+        "conditioning": "none",
+        "examples": cells,
+        "provenance": PROVENANCE,
+    }
+
+
 _BUILDERS = {
     "noun-class": build_noun_class_packet,
     "case": build_case_packet,
@@ -273,6 +310,7 @@ _BUILDERS = {
     "voice-focus": build_voice_packet,
     "tam": build_tam_packet,
     "possessive": build_possessive_packet,
+    "isolating": build_isolating_packet,
 }
 
 

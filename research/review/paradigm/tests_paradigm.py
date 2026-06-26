@@ -193,6 +193,40 @@ def test_gender_number_detector_and_switch_gate():
     assert s["evidence_completeness"] >= 0.6                        # gender + number well recovered
 
 
+def test_isolating_detector_and_synthesis_fix():
+    """vie is isolating (monosyllabic); the synthesis switch now reads 'isolating' (was wrongly 'fusional'
+    from over-segmentation), and tur stays synthetic."""
+    from review.paradigm.isolating_detect import is_isolating
+    from review.deferrals.profile_detect import detect_synthesis, _freqs, _cycle_affixes
+    assert is_isolating("vie") is True
+    assert is_isolating("tur") is False
+    assert detect_synthesis(_freqs("vie"), _cycle_affixes("vie")).value == "isolating"
+    assert detect_synthesis(_freqs("tur"), _cycle_affixes("tur")).value != "isolating"
+    pkt = PK.assemble("vie", "isolating")
+    s = SC.score(RP.generate(pkt, endpoint="heuristic"), ParadigmReport.load(golden_path("vie", "isolating")), pkt)
+    assert s["evidence_completeness"] == 1.0 and RP.generate(pkt, endpoint="heuristic").detected is True
+
+
+def test_active_voice_internal_recovery():
+    """The active voice (unmarked in English) is recovered from vernacular-internal complementary
+    distribution — the prefix sharing roots with the passive — lifting ind voice past the passive-only 0.5."""
+    from review.paradigm.voice_detect import voice_hypotheses
+    assert voice_hypotheses("ind", sample=150)["active_alternants"]
+    pkt = PK.assemble("ind", "voice-focus")
+    s = SC.score(RP.generate(pkt, endpoint="heuristic"), ParadigmReport.load(golden_path("ind", "voice-focus")), pkt)
+    assert s["evidence_completeness"] >= 0.9
+
+
+def test_report_review_promotes_and_rejects():
+    """The report-review (firewall) step promotes packet-backed cells and rejects hallucinated ones."""
+    from review.paradigm import report_review as RR
+    pkt = PK.assemble("swh", "noun-class")
+    rep = ParadigmReport(language="swh", paradigm_type="noun-class", detected=True,
+                         cells=[Cell(label="real", markers=["ki", "vi"]), Cell(label="fake", markers=["zzzq"])])
+    d = {v["cell"]: v["decision"] for v in RR.review_report(rep, pkt)["verdicts"]}
+    assert d["real"] == "promote" and d["fake"] == "reject"
+
+
 def test_voice_detector_ind():
     """Voice family: ind passive di- recovers (active meN- is unmarked in English → ~0.5)."""
     from review.paradigm.voice_detect import detect_voice
@@ -200,6 +234,29 @@ def test_voice_detector_ind():
     pkt = PK.assemble("ind", "voice-focus")
     s = SC.score(RP.generate(pkt, endpoint="heuristic"), ParadigmReport.load(golden_path("ind", "voice-focus")), pkt)
     assert s["evidence_completeness"] >= 0.4 and s["breakdown"]["hallucination_rate"] == 0.0
+
+
+def test_tam_suffixal_and_analytic():
+    """TAM now spans three realisations: prefix (swh, existing), SUFFIXAL (spa -ndo/-ó, rus -л, tur -dI),
+    and ANALYTIC particles (vie đã/sẽ/đang, ind sudah/akan/sedang)."""
+    from review.paradigm.tam_detect import detect_tam
+    for lang in ("spa", "rus", "tur", "vie", "ind"):
+        assert detect_tam(lang, sample=150)[0] is True
+    for lang, floor in (("spa", 0.6), ("vie", 0.6), ("ind", 0.6)):
+        pkt = PK.assemble(lang, "tam")
+        s = SC.score(RP.generate(pkt, endpoint="heuristic"), ParadigmReport.load(golden_path(lang, "tam")), pkt)
+        assert s["evidence_completeness"] >= floor
+
+
+def test_postposition_case_hin():
+    """hin postpositional case via the postposition→adposition alignment path (role projection fails for
+    SOV+postpositional). Depends on the Devanagari tokenizer fix (else the postpositions are shattered)."""
+    from review.paradigm.postp_detect import detect_postp_case
+    d, _, _, h = detect_postp_case("hin")
+    assert d and h["n_cases"] >= 4
+    pkt = PK.assemble("hin", "np-case")
+    s = SC.score(RP.generate(pkt, endpoint="heuristic"), ParadigmReport.load(golden_path("hin", "np-case")), pkt)
+    assert s["evidence_completeness"] >= 0.6
 
 
 def test_npcase_detector_tgl_not_spa():

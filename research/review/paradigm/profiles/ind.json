@@ -32,29 +32,33 @@
       "priority": 1,
       "gate": "switch:affix_polarity ~ prefix and switch:case == absent",
       "summary": "active meN-, passive di-",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
-        "overall": 0.5,
-        "evidence_completeness": 0.5,
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
         "faithfulness": 1.0,
         "breakdown": {
           "golden_cells": 2,
-          "cells_present_in_packet": 1,
-          "cells_reported_by_generator": 1,
-          "missing_from_packet": [
-            "active"
-          ],
+          "cells_present_in_packet": 2,
+          "cells_reported_by_generator": 2,
+          "missing_from_packet": [],
           "in_packet_but_not_reported": [],
           "hallucinated_cells": [],
           "detected_match": true,
-          "cell_completeness": 0.5,
+          "cell_completeness": 1.0,
           "cell_faithfulness": 1.0,
           "hallucination_rate": 0.0,
           "conditioning_in_packet": true,
           "residue_in_packet": true
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 6,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {
@@ -70,10 +74,47 @@
       "id": "ind.derivation",
       "paradigm_type": "voice-focus",
       "layer": "exceptions",
-      "priority": 3,
+      "priority": 4,
       "gate": "paradigm:ind.voice in {learned,confirmed}",
       "summary": "ke-...-an, pe(r)-...-an circumfixes; peN- agentive; -kan/-i applicative/causative",
       "status": "locked"
+    },
+    {
+      "id": "ind.tam",
+      "paradigm_type": "tam",
+      "layer": "inventory",
+      "priority": 3,
+      "gate": "",
+      "golden": "golden/ind_tam.json",
+      "summary": "ANALYTIC tense/aspect: free particles sudah/telah (perfective), akan (future), sedang (progressive)",
+      "status": "confirmed",
+      "metric": {
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 3,
+          "cells_present_in_packet": 3,
+          "cells_reported_by_generator": 3,
+          "missing_from_packet": [],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 1.0,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 8,
+          "defer": 0,
+          "reject": 0
+        }
+      }
     }
   ]
 }

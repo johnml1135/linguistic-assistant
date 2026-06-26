@@ -74,9 +74,12 @@ SEED: dict[str, dict] = {
             {"id": "ind.reduplication", "paradigm_type": "reduplication", "layer": "inventory",
              "priority": 2, "gate": "switch:reduplication == true",
              "summary": "reduplication for plurality (buku-buku)"},
-            {"id": "ind.derivation", "paradigm_type": "voice-focus", "layer": "exceptions", "priority": 3,
+            {"id": "ind.derivation", "paradigm_type": "voice-focus", "layer": "exceptions", "priority": 4,
              "gate": "paradigm:ind.voice in {learned,confirmed}",
              "summary": "ke-...-an, pe(r)-...-an circumfixes; peN- agentive; -kan/-i applicative/causative"},
+            {"id": "ind.tam", "paradigm_type": "tam", "layer": "inventory", "priority": 3,
+             "gate": "", "golden": "golden/ind_tam.json",
+             "summary": "ANALYTIC tense/aspect: free particles sudah/telah (perfective), akan (future), sedang (progressive)"},
         ],
     },
     "tgl": {
@@ -146,6 +149,9 @@ SEED: dict[str, dict] = {
             {"id": "vie.classifiers", "paradigm_type": "classifier", "layer": "inventory", "priority": 2,
              "gate": "switch:synthesis == isolating",
              "summary": "classifier system (cái, con, ...) before counted/specified nouns"},
+            {"id": "vie.tam", "paradigm_type": "tam", "layer": "inventory", "priority": 3,
+             "gate": "", "golden": "golden/vie_tam.json",
+             "summary": "ANALYTIC tense: free particles đã (past), sẽ (future), đang (progressive)"},
         ],
     },
     "hin": {

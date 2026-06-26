@@ -1,0 +1,28 @@
+{
+  "language": "tur",
+  "paradigm_type": "tam",
+  "detected": true,
+  "confidence": 0.9,
+  "cells": [
+    {"label": "past", "markers": ["dı", "di", "du", "dü", "tı", "ti", "tu"],
+     "function": "definite past -DI", "support": 0, "examples": ["geldi", "gördü"]},
+    {"label": "aorist-present", "markers": ["ır", "ir", "ur", "ür", "ar", "er", "r"],
+     "function": "aorist / habitual present -Ir", "support": 0, "examples": ["gelir", "yapar"]},
+    {"label": "progressive", "markers": ["ıyor", "iyor", "uyor", "üyor"],
+     "function": "present progressive -Iyor", "support": 0, "examples": ["geliyor"]},
+    {"label": "future", "markers": ["acak", "ecek"], "function": "future -AcAk", "support": 0,
+     "examples": ["gelecek"]},
+    {"label": "infinitive", "markers": ["mak", "mek", "ye", "ya"], "function": "infinitive -mAk",
+     "support": 0, "examples": ["gelmek"]}
+  ],
+  "conditioning": "agglutinative + vowel-harmonic; TAM suffix precedes the person ending (gel-di-m)",
+  "fit_none": {
+    "n": 2,
+    "examples": ["evidential -mIş", "the person endings stacked after TAM"],
+    "note": "the pivot recovers the definite past -DI and the infinitive cleanly; the aorist/progressive/future and evidential are sparsely attested or have no clean English correlate — the expected gap"
+  },
+  "evidence_citations": [
+    {"claim": "a suffix marks past tense", "source": "thot", "stat": "-dı → Tense=Past / VerbForm=Fin (held-out prediction)"}
+  ],
+  "prose": "tur marks TAM with agglutinative, vowel-harmonic verb suffixes: definite past -DI, aorist/present -Ir, progressive -Iyor, future -AcAk, infinitive -mAk (+ evidential -mIş). The pivot recovers the past -DI and the infinitive; the aorist/progressive/future are sparser or lack a clean English correlate. Recommendation: PROMOTE past -DI + infinitive; flag the rest for more data / internal evidence."
+}

@@ -1,0 +1,22 @@
+{
+  "language": "vie",
+  "paradigm_type": "isolating",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "isolating", "markers": ["isolating", "monosyllabic"],
+     "function": "no inflectional morphology — words are monosyllabic; grammar is by word order + particles",
+     "support": 0, "examples": ["tôi", "ăn", "cơm"]}
+  ],
+  "conditioning": "none — no affixation; grammatical relations carried by word order, classifiers, and free particles",
+  "fit_none": {
+    "n": 0,
+    "examples": [],
+    "note": "the CORRECT answer for vie is the absence of inflectional paradigms; inventing case/gender/voice here would be the failure mode"
+  },
+  "evidence_citations": [
+    {"claim": "words are monosyllabic", "source": "hc", "stat": "~1.03 syllables/word, ~97% monosyllabic over the frequent vocabulary"},
+    {"claim": "no productive inflection", "source": "explorer", "stat": "the monosyllabic signal holds despite the inducer's (spurious) affixes — no real affixation"}
+  ],
+  "prose": "vie is morphologically ISOLATING: words are overwhelmingly monosyllabic (~1.03 syllables/word, 97% monosyllabic) and carry no inflectional affixation. Grammar is expressed by word order, classifiers, and free grammatical particles, not by case/gender/tense morphology. The correct finding is the ABSENCE of inflectional paradigms — the system should report that, not invent one. (The syllable signal is robust to the inducer's spurious over-segmentation, which had wrongly made vie look fusional.) Recommendation: CONFIRM isolating; do not open case/gender/voice paradigms for vie."
+}

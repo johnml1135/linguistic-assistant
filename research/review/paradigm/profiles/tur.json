@@ -34,7 +34,7 @@
       "golden": "golden/tur_case.json",
       "expected_cells": 6,
       "summary": "6 cases: nom-Ø, acc -(y)I, dat -(y)A, loc -DA, abl -DAn, gen -(n)In",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
         "overall": 0.333,
         "evidence_completeness": 0.333,
@@ -59,7 +59,13 @@
           "residue_in_packet": true
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 3,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {
@@ -69,7 +75,7 @@
       "priority": 2,
       "gate": "switch:affix_polarity ~ suffix",
       "summary": "possessive suffixes -Im/-In/-(s)I/...; plural -lAr",
-      "status": "learned",
+      "status": "confirmed",
       "metric": {
         "overall": 0.5,
         "evidence_completeness": 0.5,
@@ -91,7 +97,13 @@
           "residue_in_packet": true
         },
         "as_of": "run",
-        "endpoint": "heuristic"
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 4,
+          "defer": 0,
+          "reject": 0
+        }
       }
     },
     {
@@ -110,7 +122,38 @@
       "priority": 4,
       "gate": "switch:affix_polarity ~ suffix",
       "summary": "verb TAM + person agreement; evidentiality -mIş",
-      "status": "absent"
+      "status": "confirmed",
+      "metric": {
+        "overall": 0.4,
+        "evidence_completeness": 0.4,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 5,
+          "cells_present_in_packet": 2,
+          "cells_reported_by_generator": 2,
+          "missing_from_packet": [
+            "aorist-present",
+            "progressive",
+            "future"
+          ],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 0.4,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 10,
+          "defer": 0,
+          "reject": 0
+        }
+      }
     }
   ]
 }

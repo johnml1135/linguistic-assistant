@@ -1,0 +1,31 @@
+{
+  "language": "hin",
+  "paradigm_type": "np-case",
+  "detected": true,
+  "confidence": 0.95,
+  "cells": [
+    {"label": "ergative", "markers": ["ने"], "function": "ergative — subject of a perfective transitive verb",
+     "support": 0, "examples": ["राजा ने"]},
+    {"label": "accusative-dative", "markers": ["को"], "function": "specific/animate object; recipient (to)",
+     "support": 0, "examples": ["राजा को"]},
+    {"label": "instrumental-ablative", "markers": ["से"], "function": "instrument, source, 'from/with'",
+     "support": 0, "examples": ["हाथ से"]},
+    {"label": "genitive", "markers": ["का", "के", "की"], "function": "possessor ('of'); agrees in gender/number",
+     "support": 0, "examples": ["राजा का", "राजा की"]},
+    {"label": "locative", "markers": ["में", "पर"], "function": "location: 'in' (में) / 'on/at' (पर)",
+     "support": 0, "examples": ["घर में", "मेज़ पर"]},
+    {"label": "benefactive", "markers": ["लिये", "लिए"], "function": "'for' (के लिये)", "support": 0,
+     "examples": ["राजा के लिये"]}
+  ],
+  "conditioning": "ANALYTIC: case is marked by a free POSTPOSITION after the (oblique-form) noun; का/के/की genitive agrees with the possessed noun's gender/number",
+  "fit_none": {
+    "n": 1,
+    "examples": ["ergative ने"],
+    "note": "ने (ergative) has no English-adposition equivalent, so the alignment-based detector cannot label it; the others (को/से/का/में/लिये) align 1:1 to of/to/in/from/for — the expected gap"
+  },
+  "evidence_citations": [
+    {"claim": "case is marked by closed-class postpositions", "source": "thot", "stat": "की→of 0.90, को→to 0.95, में→in 0.72, से→from 0.66 (postposition's own alignment)"},
+    {"claim": "analytic, not suffixal", "source": "explorer", "stat": "no suffixal case; the markers are separate high-frequency words following the noun"}
+  ],
+  "prose": "hin marks case ANALYTICALLY with free POSTPOSITIONS after the (oblique) noun: ergative ने, accusative/dative को, instrumental/ablative से, genitive का/के/की (agreeing in gender/number), locative में/पर, benefactive के लिये. Because Hindi is SOV+postpositional and English is SVO+prepositional, role projection fails — but each postposition aligns 1:1 to an English adposition (की→of, को→to, में→in, से→from), so the case inventory is recovered from the postpositions' own alignment. Only ergative ने (no English equivalent) is missed. NOTE: this analysis depends on the Devanagari tokenizer fix (combining vowel-signs were previously stripped, shattering every word). Recommendation: PROMOTE को/से/का/में/लिये; flag ने (ergative) as needing a vernacular-internal signal."
+}

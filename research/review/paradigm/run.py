@@ -39,12 +39,25 @@ def run(pair: str, paradigm: str, endpoint: str | None = None, show_packet: bool
     else:
         out["score"] = None
         out["note"] = f"no golden at {gp}"
+    # report-review step (Opus-as-Reviewer firewall): per-cell promote/defer/reject from packet evidence
+    from review.paradigm.report_review import review_report
+    out["review"] = review_report(rep, pkt, endpoint=(None if endpoint in (None, "heuristic") else endpoint))
     # record the result onto the live, queryable per-language profile (report metric -> profile state)
     if record:
         para = PF.find_by_type(pair, paradigm)
         if para:
-            status = "absent" if not rep.detected else ("learned" if out["score"] else "candidate")
-            metric = dict(out["score"], as_of="run", endpoint=out["endpoint"]) if out["score"] else None
+            rv = out["review"]
+            # a paradigm the reviewer PROMOTES is 'confirmed'; otherwise learned/candidate/absent
+            if not rep.detected:
+                status = "absent"
+            elif rv.get("recommendation") == "promote" and out["score"]:
+                status = "confirmed"
+            else:
+                status = "learned" if out["score"] else "candidate"
+            metric = dict(out["score"], as_of="run", endpoint=out["endpoint"],
+                          review=rv.get("recommendation"),
+                          verdicts={"promote": rv.get("n_promote"), "defer": rv.get("n_defer"),
+                                    "reject": rv.get("n_reject")}) if out["score"] else None
             PF.record_result(pair, para["id"], status=status, metric=metric)
             out["profile_id"] = para["id"]
     if show_packet:

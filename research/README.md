@@ -53,17 +53,23 @@ Scored anchors (10 across 6 languages, spanning easy→hard morphology):
 | Bantu noun-class | swh | 1.0 | live Gemma 0.63–0.75 | evidence all present; improve generator |
 | Bantu concord | swh | 1.0 | 1.0 | strong |
 | gender-number | spa | 1.0 | 1.0 | gender via determiner agreement (-o→el,-a→la)+number -s; 8/8 vs WALS |
-| TAM | swh | 1.0 | 1.0 | tense prefixes na/li/ta/me/ka via projected Tense |
+| TAM (3 realisations) | swh/spa/rus/tur/vie/ind | 0.4–1.0 | 1.0 | prefix (swh na/li/ta), suffix (spa -ndo/-ó, rus -л, tur -dI), analytic particles (vie đã/sẽ/đang, ind sudah/akan/sedang) |
 | analytic np-case | tgl | 1.0 | 1.0 | ang→nsubj, ng→nmod, sa→obl; core-arg test rejects spa/swh look-alikes |
-| voice-focus | ind | 0.5 | 1.0 | passive di- recovered; active meN- unmarked in English (honest half) |
+| analytic np-case | hin | 0.83 | 1.0 | postpositions को/से/का/में/लिये via their English-adposition alignment (ने ergative missed) |
+| voice-focus | ind | 1.0 | 1.0 | passive di- (pivot) + active meN- recovered from **internal complementary distribution** |
+| isolating | vie | 1.0 | 1.0 | "correctly find nothing" — monosyllabic ⇒ no inflection (also fixes the synthesis switch) |
 | possessive/number | tur | 0.5 | 1.0 | plural -lAr recovered; possessor agreement unmarked in English |
 | suffixal case (agglut.) | tur | 0.33 | 1.0 | nom/dat/loc; English pivot lumps the obliques |
 | suffixal case (fusional) | rus | 0.33 | 1.0 | nom+instr; fusional endings need a declension-table detector |
 | number (fusional) | rus | 0.5 | 1.0 | plural -ов/-ев recovered; case×number fusion blurs the rest |
 
-Each new detector follows one recipe: a covariation signal (suffix/ending/affix vs projected role or
-feature, or an adjacent agreement marker) + a **layer-0 switch gate** that kills cross-paradigm
-false-positives (gender vs case-marker vs voice). All cached for reproducibility.
+Each detector follows one recipe: a covariation signal (suffix/ending/affix vs projected role or feature,
+an adjacent agreement marker, **or vernacular-internal complementary distribution** for what the English
+pivot can't see) + a **layer-0 switch gate** that kills cross-paradigm false-positives. All cached for
+reproducibility. **Live Gemma** (not heuristic) faithfulness across the clean anchors is 0.63–1.0
+(mean ~0.93). A **report-review step** (`report_review.py`, firewall) then issues per-cell
+promote/defer/reject — the trunk's decision stage — and a promoted paradigm is recorded `confirmed` on
+its profile.
 
 The metric is **separable on purpose**: `completeness` measures the detector/packet, `faithfulness`
 measures Gemma — every gain attributes to a specific fix. Two recent engine hardenings:
@@ -79,9 +85,13 @@ documented upstream issues).
 
 **System snapshot** — `python -m review.paradigm.sweep` walks every language's *unlocked* paradigms
 (progressive cascade: learning a layer unlocks the next in the same pass), scores against any golden, and
-records onto the profiles: 29 paradigms — **10 scored** (mean 0.65), 11 locked (waiting on a prerequisite),
-2 no-builder (detector not written yet), 6 generated (runs but no golden yet). This is the data the
-review UI will read.
+records onto the profiles: 33 paradigms — **19 scored** (mean 0.77) across **all 8 languages**, 7 locked,
+3 no-builder, 4 generated (runs but no golden yet). This is the data the review UI will read.
+
+> **Tokenizer note (2026-06):** the eBible tokenizer used `\w+`, which drops Unicode Mark characters
+> (Devanagari matras) — so every Hindi word was shattered into consonant fragments and the whole hin
+> pipeline ran on garbage. Fixed (`corpus/ebible/read.py`: mark-inclusive regex + NFC). Re-ingest with
+> `python -m corpus.ebible.build --pair hin --no-fetch`. Only hin was affected (others are precomposed).
 
 See `learning_paradigms_plan.md` for the trunk design + the per-language paradigm backlog, and
 `docs/remaining-work.md` for the roadmap, cleanup list, and the (coming) Streamlit review UI.

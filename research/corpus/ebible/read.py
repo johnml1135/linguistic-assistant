@@ -7,18 +7,27 @@ machine.py's LatinWordTokenizer when installed, else a Unicode-aware regex fallb
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
 from .config import NT_BOOKS
 
-_WORD_RE = re.compile(r"\w+", re.UNICODE)
+# Python's `\w` does NOT match Unicode MARK characters (categories Mn/Mc/Me) — Devanagari vowel signs
+# (matras), the virama, Arabic harakat, combining diacritics. With a bare `\w+`, को (क+ो) tokenises to
+# "क" and किताब shatters into ['क','त','ब'] — vowels dropped, words split. So we add the Mark categories
+# as word-CONTINUATION characters. (BMP scan ≈ once at import; covers Devanagari/Arabic/Cyrillic/Thai/
+# Hebrew/Latin-diacritic; supplementary-plane marks are negligible for these corpora.)
+_MARKS = "".join(chr(c) for c in range(0x10000) if unicodedata.category(chr(c))[0] == "M")
+_WORD_RE = re.compile(rf"\w[\w{re.escape(_MARKS)}]*", re.UNICODE)
 _SKIP = {"", "<range>"}
 
 
 def tokenize(text: str, *, lower: bool = True) -> list[str]:
-    r"""Script-AGNOSTIC word tokenizer: Unicode ``\w+`` handles Latin, Arabic, Devanagari, Cyrillic, etc.
-    uniformly (eBible is space-separated). No Latin-only assumption — required for non-Latin targets."""
+    r"""Script-AGNOSTIC word tokenizer. A token is a word char (`\w`) followed by any word chars OR
+    Unicode combining MARKS — so Devanagari/Arabic/etc. keep their vowel signs instead of being shattered.
+    Text is NFC-normalised first (composes decomposed Latin/Vietnamese). eBible is space-separated."""
+    text = unicodedata.normalize("NFC", text)
     return _WORD_RE.findall(text.lower() if lower else text)
 
 

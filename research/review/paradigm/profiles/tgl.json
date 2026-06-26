@@ -35,12 +35,40 @@
     },
     {
       "id": "tgl.np-markers",
-      "paradigm_type": "case",
+      "paradigm_type": "np-case",
       "layer": "inventory",
       "priority": 2,
-      "gate": "paradigm:tgl.voice-focus in {learned,confirmed}",
+      "gate": "switch:case == absent",
+      "golden": "golden/tgl_np-case.json",
       "summary": "NP case-markers ang (trigger), ng (genitive), sa (oblique/dative)",
-      "status": "locked"
+      "status": "confirmed",
+      "metric": {
+        "overall": 1.0,
+        "evidence_completeness": 1.0,
+        "faithfulness": 1.0,
+        "breakdown": {
+          "golden_cells": 3,
+          "cells_present_in_packet": 3,
+          "cells_reported_by_generator": 3,
+          "missing_from_packet": [],
+          "in_packet_but_not_reported": [],
+          "hallucinated_cells": [],
+          "detected_match": true,
+          "cell_completeness": 1.0,
+          "cell_faithfulness": 1.0,
+          "hallucination_rate": 0.0,
+          "conditioning_in_packet": true,
+          "residue_in_packet": true
+        },
+        "as_of": "run",
+        "endpoint": "heuristic",
+        "review": "promote",
+        "verdicts": {
+          "promote": 6,
+          "defer": 0,
+          "reject": 0
+        }
+      }
     },
     {
       "id": "tgl.aspect",
