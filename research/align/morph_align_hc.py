@@ -33,14 +33,23 @@ ACCEPT_PROB = 0.5          # min alignment probability to consider accepting a m
 # --------------------------------------------------------------------------- segmentation from HC
 def gloss_index(model: LangModel) -> dict[str, tuple[str, str, int]]:
     """`gloss -> (form, type, slot)` over the grammar constructs. On a duplicate gloss, prefer a root,
-    then the higher-count construct (so the gloss line maps back to the most likely construct)."""
+    then the higher-count construct (so the gloss line maps back to the most likely construct).
+
+    `"?"` is the model's own placeholder for "no real gloss yet" — hundreds of unrelated roots can
+    share it, so indexing it would map every one of them to a single arbitrary construct. Skipping it
+    here means a gloss line containing "?" correctly falls through to `morphemes_of`'s `unmapped`
+    path instead of getting peeled with a random unrelated root's surface form."""
     idx: dict[str, tuple[str, str, int, int]] = {}   # gloss -> (form, type, slot, rank)
     for e in model.lexicon:
+        if e.gloss == "?":
+            continue
         rank = 1_000_000 + e.count                   # roots win ties
         cur = idx.get(e.gloss)
         if cur is None or rank > cur[3]:
             idx[e.gloss] = (e.form, "root", 0, rank)
     for a in model.affixes:
+        if a.gloss == "?":
+            continue
         cur = idx.get(a.gloss)
         rank = a.count
         if cur is None or (cur[1] != "root" and rank > cur[3]):
@@ -109,6 +118,18 @@ class MorphMarker:
         return asdict(self)
 
 
+# Wiktionary-derived compound glosses describe the construction before the meaning, e.g.
+# "Applicative_form_of_-amba:_to_tell" or "contraction_of_mke_+_wako:_your_wife" — these scaffold
+# words are grammatical jargon, never the actual translation, and would produce spurious "agreement"
+# if a source word ever happened to equal one of them (e.g. the generic word "class" is a literal
+# token of "[[Appendix:Swahili_noun_classes#Ji-ma_class|ji_class_").
+_GLOSS_SCAFFOLD = {
+    "to", "of", "or", "a", "an", "the", "form", "passive", "active", "locative", "class",
+    "applicative", "causative", "stative", "contraction", "reciprocal", "augmentative",
+    "alternative", "noun", "verb", "adjective",
+}
+
+
 def _agrees(marker_type: str, hc_gloss: str, source_word: str) -> bool:
     """Does the pivot source corroborate the HC gloss? Root: token overlaps the gloss. Affix: a coarse
     overlap of the source word with the stored function label (function morphemes are the hard case —
@@ -117,7 +138,12 @@ def _agrees(marker_type: str, hc_gloss: str, source_word: str) -> bool:
         return False
     g = (hc_gloss or "").lower()
     s = source_word.lower()
-    gt = {t for t in g.replace("|", " ").replace(";", " ").replace("=", " ").split() if t}
+    if g.startswith("[["):
+        return False  # a Wiktionary appendix/citation reference, not a translatable gloss
+    if ":" in g:
+        g = g.rsplit(":", 1)[-1]  # "applicative_form_of_-amba:_to_tell" -> keep the meaning after ":"
+    gt = {t for t in g.replace("|", " ").replace(";", " ").replace("=", " ").replace("_", " ").split()
+          if t and t not in _GLOSS_SCAFFOLD}
     # the substring fallback is only meaningful for tokens long enough that overlap isn't coincidental
     # (a 1-2 letter source word like "a"/"in" trivially substring-matches inside grammar tags like
     # "ADJ"/"IND", which is a spurious collision, not real agreement).
@@ -136,8 +162,10 @@ def assemble_markers(streams: list[tuple[str, int, list[dict]]], table, affix_fe
             src = [(best.source_word, round(best.prob, 4))] if best else []
             prob = best.prob if best else 0.0
             agrees = _agrees(m["type"], m["gloss"], best.source_word if best else "")
+            # ambiguous (no gold-matching analysis; HC's own parse choice is arbitrary) must defer too —
+            # THOT agreeing with an unresolved, possibly-wrong segmentation isn't real corroboration.
             decision = "accept" if (prob >= accept_prob and agrees and not m.get("unparsed")
-                                    and not m.get("unmapped")) else "defer"
+                                    and not m.get("unmapped") and not m.get("ambiguous")) else "defer"
             out.append(MorphMarker(
                 verse=verse, word=m.get("_word", ""), word_idx=widx, morph_idx=mi,
                 form=m["form"], gloss=m["gloss"], type=m["type"], slot=m.get("slot", 0),
