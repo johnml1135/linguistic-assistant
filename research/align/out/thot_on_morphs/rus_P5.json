@@ -1,0 +1,223 @@
+{
+  "pair": "rus",
+  "paradigm": "P5",
+  "secs": 104.2,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 112,
+      "proposed": 25,
+      "cov_before": 0.8433,
+      "cov_after": 0.8833,
+      "delta": 0.04,
+      "amb": 2.23,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 86,
+      "proposed": 5,
+      "cov_before": 0.8833,
+      "cov_after": 0.8917,
+      "delta": 0.0083,
+      "amb": 2.23,
+      "kept": true
+    }
+  ],
+  "roots_added": 30,
+  "added": [
+    {
+      "form": "люд",
+      "gloss": "men",
+      "prob": 0.667
+    },
+    {
+      "form": "котора",
+      "gloss": "today",
+      "prob": 1.0
+    },
+    {
+      "form": "ле",
+      "gloss": "old",
+      "prob": 0.5
+    },
+    {
+      "form": "дв",
+      "gloss": "two",
+      "prob": 1.0
+    },
+    {
+      "form": "пит",
+      "gloss": "drink",
+      "prob": 0.667
+    },
+    {
+      "form": "аков",
+      "gloss": "jacob",
+      "prob": 0.667
+    },
+    {
+      "form": "ве",
+      "gloss": "light",
+      "prob": 1.0
+    },
+    {
+      "form": "приходи",
+      "gloss": "came",
+      "prob": 0.5
+    },
+    {
+      "form": "дву",
+      "gloss": "two",
+      "prob": 1.0
+    },
+    {
+      "form": "се",
+      "gloss": "behold",
+      "prob": 1.0
+    },
+    {
+      "form": "камен",
+      "gloss": "foot",
+      "prob": 0.5
+    },
+    {
+      "form": "пок",
+      "gloss": "until",
+      "prob": 0.5
+    },
+    {
+      "form": "плод",
+      "gloss": "cut",
+      "prob": 0.667
+    },
+    {
+      "form": "огон",
+      "gloss": "fire",
+      "prob": 1.0
+    },
+    {
+      "form": "чил",
+      "gloss": "taught",
+      "prob": 1.0
+    },
+    {
+      "form": "зят",
+      "gloss": "take",
+      "prob": 1.0
+    },
+    {
+      "form": "глаз",
+      "gloss": "eye",
+      "prob": 1.0
+    },
+    {
+      "form": "стан",
+      "gloss": "arise",
+      "prob": 0.667
+    },
+    {
+      "form": "елики",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "жит",
+      "gloss": "bread",
+      "prob": 0.5
+    },
+    {
+      "form": "дас",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "значи",
+      "gloss": "being",
+      "prob": 0.5
+    },
+    {
+      "form": "глас",
+      "gloss": "voice",
+      "prob": 0.6
+    },
+    {
+      "form": "дар",
+      "gloss": "gift",
+      "prob": 0.5
+    },
+    {
+      "form": "призвав",
+      "gloss": "called",
+      "prob": 0.5
+    },
+    {
+      "form": "вята",
+      "gloss": "holy",
+      "prob": 0.5
+    },
+    {
+      "form": "тобо",
+      "gloss": "sues",
+      "prob": 1.0
+    },
+    {
+      "form": "зял",
+      "gloss": "took",
+      "prob": 1.0
+    },
+    {
+      "form": "хотел",
+      "gloss": "away",
+      "prob": 0.5
+    },
+    {
+      "form": "каж",
+      "gloss": "tell",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.84,
+    "ambiguity": 1.93,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.3,
+      "gold_parsed": 0.9,
+      "missed": [
+        "братьев",
+        "славу",
+        "земли",
+        "веры",
+        "учитель",
+        "видя",
+        "двенадцать",
+        "другие",
+        "господу",
+        "небо",
+        "благодати",
+        "лучше",
+        "смерть",
+        "голос",
+        "свидетельство",
+        "имея",
+        "знаем",
+        "множество",
+        "пусть",
+        "лет",
+        "дети",
+        "иакова",
+        "времени",
+        "пророков",
+        "тела",
+        "хорошо",
+        "ноги",
+        "славы"
+      ]
+    },
+    "roots": 530,
+    "affixes": 52
+  }
+}

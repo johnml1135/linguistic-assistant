@@ -1,0 +1,87 @@
+{
+  "pair": "hin",
+  "paradigm": "P1",
+  "secs": 39.1,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 136,
+      "proposed": 1,
+      "cov_before": 0.7733,
+      "cov_after": 0.775,
+      "delta": 0.0017,
+      "amb": 1.6,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 135,
+      "proposed": 0,
+      "kept": false,
+      "reason": "no confident proposals"
+    }
+  ],
+  "roots_added": 1,
+  "added": [
+    {
+      "form": "मर",
+      "gloss": "sought",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.4933,
+    "ambiguity": 1.41,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.5,
+      "missed": [
+        "स्वामी",
+        "पूरा",
+        "जगह",
+        "बीच",
+        "रखता",
+        "अच्छा",
+        "धार्मिकता",
+        "उपदेश",
+        "21",
+        "आशा",
+        "फल",
+        "खड़े",
+        "शान्ति",
+        "रहता",
+        "रखा",
+        "मार्ग",
+        "18",
+        "आकाश",
+        "बिना",
+        "तैयार",
+        "चेले",
+        "धर्मी",
+        "प्रधान",
+        "रोटी",
+        "सत्य",
+        "चले",
+        "जाना",
+        "15",
+        "विरोध",
+        "क्षमा",
+        "रहते",
+        "अन्यजातियों",
+        "शमौन",
+        "लिए",
+        "नाश",
+        "तीन",
+        "मर",
+        "आग",
+        "खड़ा",
+        "22"
+      ]
+    },
+    "roots": 551,
+    "affixes": 36
+  }
+}

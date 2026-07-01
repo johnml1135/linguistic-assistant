@@ -1,0 +1,224 @@
+{
+  "pair": "tur",
+  "paradigm": "P4",
+  "secs": 131.2,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 237,
+      "proposed": 56,
+      "cov_before": 0.6367,
+      "cov_after": 0.7533,
+      "delta": 0.1167,
+      "amb": 1.86,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 172,
+      "proposed": 9,
+      "cov_before": 0.7533,
+      "cov_after": 0.77,
+      "delta": 0.0167,
+      "amb": 1.84,
+      "kept": true
+    }
+  ],
+  "roots_added": 65,
+  "added": [
+    {
+      "form": "çocuk",
+      "gloss": "child",
+      "prob": 0.5
+    },
+    {
+      "form": "ye",
+      "gloss": "earth",
+      "prob": 1.0
+    },
+    {
+      "form": "açıkç",
+      "gloss": "sees",
+      "prob": 1.0
+    },
+    {
+      "form": "buyru",
+      "gloss": "concerning",
+      "prob": 0.5
+    },
+    {
+      "form": "efret",
+      "gloss": "hate",
+      "prob": 1.0
+    },
+    {
+      "form": "merhamet",
+      "gloss": "merciful",
+      "prob": 1.0
+    },
+    {
+      "form": "yahud",
+      "gloss": "judah",
+      "prob": 1.0
+    },
+    {
+      "form": "ral",
+      "gloss": "king",
+      "prob": 0.6
+    },
+    {
+      "form": "hoşnut",
+      "gloss": "heavens",
+      "prob": 0.5
+    },
+    {
+      "form": "çocu",
+      "gloss": "ren",
+      "prob": 1.0
+    },
+    {
+      "form": "yeryüzü",
+      "gloss": "earth",
+      "prob": 0.667
+    },
+    {
+      "form": "babasıyd",
+      "gloss": "became",
+      "prob": 0.619
+    },
+    {
+      "form": "rke",
+      "gloss": "according",
+      "prob": 1.0
+    },
+    {
+      "form": "bırakıp",
+      "gloss": "left",
+      "prob": 0.5
+    },
+    {
+      "form": "yapt",
+      "gloss": "commanded",
+      "prob": 1.0
+    },
+    {
+      "form": "layı",
+      "gloss": "worthy",
+      "prob": 0.667
+    },
+    {
+      "form": "öldü",
+      "gloss": "dead",
+      "prob": 1.0
+    },
+    {
+      "form": "olma",
+      "gloss": "come",
+      "prob": 1.0
+    },
+    {
+      "form": "yüce",
+      "gloss": "glory",
+      "prob": 1.0
+    },
+    {
+      "form": "ses",
+      "gloss": "voice",
+      "prob": 1.0
+    },
+    {
+      "form": "ent",
+      "gloss": "city",
+      "prob": 1.0
+    },
+    {
+      "form": "gel",
+      "gloss": "offer",
+      "prob": 1.0
+    },
+    {
+      "form": "yapa",
+      "gloss": "wise",
+      "prob": 1.0
+    },
+    {
+      "form": "henüz",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "al",
+      "gloss": "arise",
+      "prob": 1.0
+    },
+    {
+      "form": "zin",
+      "gloss": "adultery",
+      "prob": 0.75
+    },
+    {
+      "form": "bugü",
+      "gloss": "today",
+      "prob": 0.667
+    },
+    {
+      "form": "yakov",
+      "gloss": "jacob",
+      "prob": 0.6
+    },
+    {
+      "form": "adın",
+      "gloss": "name",
+      "prob": 0.667
+    },
+    {
+      "form": "tmiş",
+      "gloss": "already",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": 53,
+  "score": {
+    "coverage": 0.5733,
+    "ambiguity": 1.41,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.275,
+      "gold_parsed": 0.675,
+      "missed": [
+        "çocukları",
+        "yer",
+        "peygamberlik",
+        "yazılmış",
+        "vay",
+        "doğruluk",
+        "açıkça",
+        "buyruk",
+        "merhamet",
+        "buyurdu",
+        "izin",
+        "kız",
+        "yahuda",
+        "hoşnut",
+        "yiyecek",
+        "yazıcılar",
+        "ürün",
+        "yüz",
+        "yiyip",
+        "ateş",
+        "moşe",
+        "denilen",
+        "erkek",
+        "geldiğini",
+        "yol",
+        "inkâr",
+        "verildi",
+        "aralarında",
+        "yemek"
+      ]
+    },
+    "roots": 365,
+    "affixes": 52
+  }
+}

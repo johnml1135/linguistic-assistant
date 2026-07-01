@@ -87,14 +87,19 @@ def _coverage(model, words, pf):
     return coverage(model, words, phon_feats=pf)
 
 
-def _align_table(pair: str, model, sample: int):
-    """THOT over the CURRENT HC segmentation — the mutual half: HC's parse decides the alignment units."""
-    from align.morph_align_hc import build_streams, _verses
-    from align import align
-    verses = _verses(pair, sample)
-    _streams, morph_rows = build_streams(pair, model, verses)
-    table, _used = align(morph_rows, backend="eflomal", allow_cooccur_fallback=False)
-    return table
+def _align_table(pair: str, model, sample: int, *, align_mode: str = "identity"):
+    """THOT over the CURRENT HC segmentation — the mutual half: HC's parse decides the alignment units.
+
+    `align_mode` selects how the alignment table is built before THOT counts evidence
+    (`align/table_modes.py`; `identity` | `guided` | `factored`) — see `align/thot-on-morphs-report.md`
+    for the 8-pair study that picked `factored` as `cotrain()`'s new default (best-or-tied coverage in
+    most pairs, at `identity`'s ambiguity/cost, no new tokenizer). This function's OWN default stays
+    `identity` (its pre-study behavior, for callers that don't pass `align_mode` explicitly); `cotrain()`
+    below is what actually defaults to `factored`. `guided` is the other top contender kept as an option.
+    Naive unsupervised English segmentation (BPE) regressed sharply in that study and is deliberately not
+    offered as a mode here."""
+    from align.table_modes import align_table
+    return align_table(pair, model, sample, align_mode=align_mode)
 
 
 def _roundtrip_keep(base: LangModel, proposals: dict, pf) -> dict:
@@ -113,12 +118,15 @@ def _roundtrip_keep(base: LangModel, proposals: dict, pf) -> dict:
 
 def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE,
             words: list[str] | None = None, start: LangModel | None = None, pivot: str = "en",
-            strip_affixes: bool = True, amb_cap: float = 8.0,
+            strip_affixes: bool = True, amb_cap: float = 8.0, align_mode: str = "factored",
             verify_roundtrip: bool = False, reuse_table: bool = False, verbose: bool = True) -> dict:
     """Run the co-training loop. Returns {history, model, added, secs}. Guarded: a cycle's roots are kept
     only if coverage RISES and mean parse ambiguity stays <= `amb_cap`. Stops at the fixpoint.
     Switches (for ablation):
       strip_affixes   (default on)  propose the affix-stripped ROOT (generalises across inflected forms).
+      align_mode  ("factored", default) how the THOT table is built each cycle — `factored` | `guided` |
+                                    `identity` (`align/table_modes.py`); see `_align_table`'s docstring and
+                                    `align/thot-on-morphs-report.md` for the study that picked this default.
       verify_roundtrip(a, off)      keep a root only if it lets HC re-parse a source word (correctness gate).
       reuse_table     (c, off)      align THOT ONCE and reuse the table every cycle (warm/cheap) instead of
                                     re-aligning on each cycle's new segmentation (the full mutual loop)."""
@@ -141,8 +149,8 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
     table = None
     if verbose:
         print(f"[cotrain {pair}] start: coverage={cov0:.4f} amb={amb0:.2f} roots={len(model.lexicon)} "
-              f"affixes={len(model.affixes)} [strip={strip_affixes} roundtrip={verify_roundtrip} "
-              f"reuse_table={reuse_table}]", flush=True)
+              f"affixes={len(model.affixes)} [strip={strip_affixes} align_mode={align_mode} "
+              f"roundtrip={verify_roundtrip} reuse_table={reuse_table}]", flush=True)
 
     for k in range(1, cycles + 1):
         # HC: find the gap on the current model
@@ -150,7 +158,7 @@ def cotrain(pair: str, *, cycles: int = 6, sample: int = 500, gate: float = GATE
         unparsed = [w for w in words if not res.get(w)]
         # THOT over the current HC segmentation — (c) reuse the first table if reuse_table, else re-align
         if table is None or not reuse_table:
-            table = _align_table(pair, model, sample)
+            table = _align_table(pair, model, sample, align_mode=align_mode)
         known = {e.form for e in model.lexicon}
         pre = [a.form for a in model.affixes if a.kind == "prefix"] if strip_affixes else None
         suf = [a.form for a in model.affixes if a.kind == "suffix"] if strip_affixes else None
@@ -234,6 +242,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--gate", type=float, default=GATE)
     ap.add_argument("--no-strip", action="store_true", help="propose whole unparsed words as roots (no affix strip)")
     ap.add_argument("--amb-cap", type=float, default=8.0, help="stop if mean parse ambiguity exceeds this")
+    ap.add_argument("--align-mode", default="factored", choices=["factored", "guided", "identity"],
+                    help="how the THOT table is built (align/table_modes.py); default 'factored' per "
+                         "align/thot-on-morphs-report.md's 8-pair study; 'guided'/'identity' are the "
+                         "other two top-performing paradigms, kept as options")
     ap.add_argument("--roundtrip", action="store_true", help="(a) keep a root only if HC re-parses a source word")
     ap.add_argument("--reuse-table", action="store_true", help="(c) align THOT once and reuse (warm) vs re-align each cycle")
     ap.add_argument("--emit", action="store_true", help="route induced roots into the delta store")
@@ -243,7 +255,8 @@ def main(argv: list[str] | None = None) -> int:
     except Exception:
         pass
     r = cotrain(a.pair, cycles=a.cycles, sample=a.sample, gate=a.gate, strip_affixes=not a.no_strip,
-                amb_cap=a.amb_cap, verify_roundtrip=a.roundtrip, reuse_table=a.reuse_table)
+                amb_cap=a.amb_cap, align_mode=a.align_mode, verify_roundtrip=a.roundtrip,
+                reuse_table=a.reuse_table)
     if r.get("error"):
         print(r["error"]); return 1
     print(f"\n[cotrain {a.pair}] done: {r['cycles_run']} cycles, +{r['roots_added']} roots, "

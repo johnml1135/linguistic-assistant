@@ -1,0 +1,165 @@
+{
+  "pair": "hin",
+  "paradigm": "P0",
+  "secs": 68.2,
+  "tdd_result": {
+    "pair": "hin",
+    "iterations": 39,
+    "base_coverage": 0.0,
+    "final_coverage": 0.5333,
+    "delta": 0.5333,
+    "final_ambiguity": 1.33,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.5333,
+          "ambiguity": 1.39
+        },
+        "templated": {
+          "coverage": 0.5333,
+          "ambiguity": 1.33
+        },
+        "templated+pos": {
+          "coverage": 0.4833,
+          "ambiguity": 1.24
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 6,
+        "prefix2": 1,
+        "suffix1": 29,
+        "suffix2": 21,
+        "suffix3": 1
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 336,
+        "verb": 81,
+        "pron": 66,
+        "prep": 24,
+        "det": 15,
+        "conj": 11,
+        "adj": 10,
+        "num": 4,
+        "adv": 3
+      },
+      "affixes_with_msa": 26,
+      "affixes_total": 36
+    },
+    "lexicon": {
+      "roots": 550,
+      "glossed": 379,
+      "glossed_frac": 0.6891,
+      "affix_glosses_inferred": 11
+    },
+    "affixes_kept": [
+      "ों",
+      "कि",
+      "े",
+      "ने",
+      "ें",
+      "्हें",
+      "गा",
+      "ा",
+      "कर",
+      "ते",
+      "ता",
+      "ं",
+      "स्था",
+      "से",
+      "ह",
+      "ी",
+      "गे",
+      "ँ",
+      "उन",
+      "ो",
+      "ओं",
+      "्ग",
+      "लीस",
+      "ई",
+      "क",
+      "ह",
+      "या",
+      "में",
+      "कार",
+      "सं",
+      "प्र",
+      "ाई",
+      "िए",
+      "व",
+      "ीं",
+      "वि"
+    ],
+    "harmony_families": {},
+    "enumeration_debt": 0,
+    "phonology": {
+      "enumeration_debt_before": 0,
+      "enumeration_debt_after": 0,
+      "affixes_removed": 0,
+      "collapsed": [],
+      "needs_review": [],
+      "rules_proposed": []
+    }
+  },
+  "score": {
+    "coverage": 0.4867,
+    "ambiguity": 1.41,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.475,
+      "missed": [
+        "स्वामी",
+        "पूरा",
+        "जगह",
+        "बीच",
+        "रखता",
+        "अच्छा",
+        "धार्मिकता",
+        "उपदेश",
+        "21",
+        "आशा",
+        "फल",
+        "खड़े",
+        "शान्ति",
+        "रहता",
+        "रखा",
+        "मार्ग",
+        "18",
+        "आकाश",
+        "बिना",
+        "तैयार",
+        "चेले",
+        "धर्मी",
+        "प्रधान",
+        "रोटी",
+        "सत्य",
+        "चले",
+        "जाना",
+        "15",
+        "विरोध",
+        "क्षमा",
+        "रहते",
+        "अन्यजातियों",
+        "शमौन",
+        "लिए",
+        "नाश",
+        "तीन",
+        "मर",
+        "आग",
+        "खड़ा",
+        "22"
+      ]
+    },
+    "roots": 550,
+    "affixes": 36
+  }
+}

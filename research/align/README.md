@@ -58,6 +58,22 @@ See `align/eflomal_vs_hmm.md` for the accept-rate comparison against the retired
 the OpenSpec `morpheme-alignment` change (predates the eflomal switch; describes the original
 HMM-backed design).
 
+## THOT-on-morphs: `align_mode` (`table_modes.py`)
+
+Both `morph_align_hc.run` and `induce.cotrain.cotrain` build their THOT alignment table via
+`align/table_modes.py`, selectable with `--align-mode` / `align_mode=`:
+- **`factored` (default)** — target affixes with a learned POS/MSA restriction are canonicalized to their
+  grammatical class before alignment (Koehn & Hoang 2007); best-or-tied coverage in most of the 8 pairs
+  studied, at `identity`'s ambiguity/cost, no new tokenizer.
+- **`guided`** — English is split only where the target side gives repeated cross-lingual evidence a word
+  is doing two jobs (a simplified Fraser 2009); near-parity with `identity`.
+- **`identity`** — the pre-study default, target HC-morphemes vs whole English words, no transform.
+
+See `align/thot-on-morphs.md` (the investigation plan) and `align/thot-on-morphs-report.md` (the 8-pair
+result set that picked `factored`) for the full study. Naive unsupervised English segmentation (BPE) and a
+guided+BPE hybrid were also tested and regressed coverage sharply at this corpus scale — deliberately not
+offered as `align_mode` choices; see the report before reconsidering them.
+
 ## How it fits
 - It's the **statistical** half of word-gloss discovery; the Apertium bidix is the **symbolic** half.
   Both emit candidate `bilingual/*` sense links (validated by `research/proposal/change_set.py`).

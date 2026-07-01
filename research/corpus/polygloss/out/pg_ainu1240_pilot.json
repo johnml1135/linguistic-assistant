@@ -1,0 +1,190 @@
+{
+  "glottocode": "ainu1240",
+  "pair_key": "pg_ainu1240",
+  "manifest": {
+    "glottocode": "ainu1240",
+    "language": "Hokkaido Ainu",
+    "pair_key": "pg_ainu1240",
+    "rows_train_total": 6726,
+    "rows_train_english_meta": 6699,
+    "rows_train_segmented": 6698,
+    "gold_rows": 300,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 2993,
+    "gold_counts": {
+      "wordforms": 310,
+      "lexicon": 135
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.7167,
+    "delta": 0.7167,
+    "final_ambiguity": 2.81,
+    "lexicon": {
+      "roots": 450,
+      "glossed": 334,
+      "glossed_frac": 0.7422,
+      "affix_glosses_inferred": 0
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.7333,
+          "ambiguity": 4.97
+        },
+        "templated": {
+          "coverage": 0.7167,
+          "ambiguity": 2.81
+        },
+        "templated+pos": {
+          "coverage": 0.5417,
+          "ambiguity": 1.89
+        }
+      },
+      "slots": {
+        "infix1": 2,
+        "prefix1": 44,
+        "prefix2": 34,
+        "prefix3": 27,
+        "prefix4": 18,
+        "suffix1": 46,
+        "suffix2": 29,
+        "suffix3": 13,
+        "suffix4": 1
+      }
+    },
+    "harmony_families": {
+      "n": [
+        "an",
+        "en",
+        "in",
+        "n",
+        "ne",
+        "no",
+        "nu",
+        "on",
+        "un"
+      ],
+      "s": [
+        "as",
+        "eas",
+        "is",
+        "s",
+        "se",
+        "si"
+      ],
+      "k": [
+        "k",
+        "ka",
+        "ke",
+        "ki",
+        "ko",
+        "oka"
+      ],
+      "p": [
+        "ap",
+        "p",
+        "pa",
+        "pe",
+        "po",
+        "up"
+      ],
+      "h": [
+        "h",
+        "ha",
+        "he",
+        "hi",
+        "ho",
+        "hu",
+        "uhu"
+      ],
+      "y": [
+        "ay",
+        "uy",
+        "y",
+        "yu"
+      ],
+      "r": [
+        "ara",
+        "eori",
+        "ra",
+        "re",
+        "ri",
+        "ru"
+      ],
+      "c": [
+        "aca",
+        "c",
+        "ci",
+        "ic"
+      ],
+      "sr": [
+        "sir",
+        "sore"
+      ],
+      "kr": [
+        "kar",
+        "kor"
+      ],
+      "m": [
+        "m",
+        "mo"
+      ],
+      "t": [
+        "ot",
+        "ta",
+        "to"
+      ],
+      "wn": [
+        "iwne",
+        "wen"
+      ]
+    },
+    "enumeration_debt": 46
+  },
+  "gold_benchmark": {
+    "tested": 310,
+    "parse_rate": 0.8323,
+    "lemma_recall": 0.1613,
+    "feature_recall": 0.1452,
+    "miss_parse": [
+      "akire.\"",
+      "aeyayramekotep",
+      "an.\"",
+      ",",
+      "“akor",
+      "wen.\"",
+      "e",
+      ",",
+      "aeyayramekotep",
+      "ae",
+      "ki.\"",
+      "tane(?)"
+    ],
+    "miss_lemma": [
+      "ani->ani",
+      "sukean->suke",
+      "pe->pe",
+      "ka->ka",
+      "isam->isam",
+      "kus->kus",
+      "imaype->ma",
+      "akor->kor",
+      "son->son",
+      "nep->nep"
+    ],
+    "miss_feat": [
+      "haweoka=['POSS', 'exist.PL']",
+      "ehawean=['2SG.S', 'POSS', 'exist.SG']",
+      "soyne=['COP']",
+      "ehawean=['2SG.S', 'POSS', 'exist.SG']",
+      "iki=['APASS']"
+    ]
+  },
+  "secs": 171.7
+}

@@ -1,0 +1,228 @@
+{
+  "pair": "vie",
+  "paradigm": "P6",
+  "secs": 61.3,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 152,
+      "proposed": 57,
+      "cov_before": 0.7467,
+      "cov_after": 0.8517,
+      "delta": 0.105,
+      "amb": 1.45,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 89,
+      "proposed": 7,
+      "cov_before": 0.8517,
+      "cov_after": 0.8633,
+      "delta": 0.0117,
+      "amb": 1.45,
+      "kept": true
+    }
+  ],
+  "roots_added": 64,
+  "added": [
+    {
+      "form": "ma",
+      "gloss": "devil",
+      "prob": 0.75
+    },
+    {
+      "form": "úi",
+      "gloss": "mountain",
+      "prob": 0.5
+    },
+    {
+      "form": "giả",
+      "gloss": "hypocrites",
+      "prob": 0.6
+    },
+    {
+      "form": "hử",
+      "gloss": "test",
+      "prob": 1.0
+    },
+    {
+      "form": "hớ",
+      "gloss": "remember",
+      "prob": 1.0
+    },
+    {
+      "form": "vẹ",
+      "gloss": "perfect",
+      "prob": 1.0
+    },
+    {
+      "form": "rõ",
+      "gloss": "clearly",
+      "prob": 1.0
+    },
+    {
+      "form": "oi",
+      "gloss": "beware",
+      "prob": 1.0
+    },
+    {
+      "form": "ăm",
+      "gloss": "diligently",
+      "prob": 1.0
+    },
+    {
+      "form": "êm",
+      "gloss": "days",
+      "prob": 0.5
+    },
+    {
+      "form": "ri",
+      "gloss": "room",
+      "prob": 1.0
+    },
+    {
+      "form": "uyề",
+      "gloss": "boat",
+      "prob": 1.0
+    },
+    {
+      "form": "ít",
+      "gloss": "find",
+      "prob": 0.5
+    },
+    {
+      "form": "vẫ",
+      "gloss": "gentiles",
+      "prob": 1.0
+    },
+    {
+      "form": "vố",
+      "gloss": "being",
+      "prob": 0.5
+    },
+    {
+      "form": "hí",
+      "gloss": "deeds",
+      "prob": 1.0
+    },
+    {
+      "form": "lo",
+      "gloss": "anxious",
+      "prob": 0.714
+    },
+    {
+      "form": "giậ",
+      "gloss": "angry",
+      "prob": 0.667
+    },
+    {
+      "form": "ghét",
+      "gloss": "hate",
+      "prob": 1.0
+    },
+    {
+      "form": "âu",
+      "gloss": "nor",
+      "prob": 0.5
+    },
+    {
+      "form": "buồ",
+      "gloss": "sad",
+      "prob": 1.0
+    },
+    {
+      "form": "on",
+      "gloss": "things",
+      "prob": 0.5
+    },
+    {
+      "form": "bày",
+      "gloss": "opening",
+      "prob": 0.5
+    },
+    {
+      "form": "hờ",
+      "gloss": "arise",
+      "prob": 0.5
+    },
+    {
+      "form": "vắ",
+      "gloss": "wilderness",
+      "prob": 0.75
+    },
+    {
+      "form": "quă",
+      "gloss": "throw",
+      "prob": 0.5
+    },
+    {
+      "form": "iề",
+      "gloss": "get",
+      "prob": 1.0
+    },
+    {
+      "form": "ẫn",
+      "gloss": "leads",
+      "prob": 1.0
+    },
+    {
+      "form": "hu",
+      "gloss": "around",
+      "prob": 1.0
+    },
+    {
+      "form": "hố",
+      "gloss": "hindered",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.5667,
+    "ambiguity": 1.31,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.175,
+      "gold_parsed": 0.55,
+      "missed": [
+        "tâm",
+        "tà",
+        "giả",
+        "cai",
+        "tạ",
+        "dâng",
+        "tình",
+        "thay",
+        "dựng",
+        "hằng",
+        "chào",
+        "đẹp",
+        "rõ",
+        "coi",
+        "đổ",
+        "lão",
+        "thăm",
+        "đêm",
+        "nguyền",
+        "trách",
+        "giá",
+        "phụ",
+        "mạnh",
+        "sách",
+        "ít",
+        "vẫn",
+        "lãnh",
+        "nạn",
+        "khóc",
+        "khổ",
+        "giàu",
+        "dõi",
+        "thường"
+      ]
+    },
+    "roots": 509,
+    "affixes": 35
+  }
+}

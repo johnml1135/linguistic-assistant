@@ -1,0 +1,230 @@
+{
+  "pair": "tur",
+  "paradigm": "P3",
+  "secs": 124.8,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 237,
+      "proposed": 26,
+      "cov_before": 0.6367,
+      "cov_after": 0.6917,
+      "delta": 0.055,
+      "amb": 1.87,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 206,
+      "proposed": 4,
+      "cov_before": 0.6917,
+      "cov_after": 0.7,
+      "delta": 0.0083,
+      "amb": 1.86,
+      "kept": true
+    }
+  ],
+  "roots_added": 30,
+  "added": [
+    {
+      "form": "ye",
+      "gloss": "ear",
+      "prob": 0.5
+    },
+    {
+      "form": "açıkç",
+      "gloss": "reward",
+      "prob": 1.0
+    },
+    {
+      "form": "hoşnut",
+      "gloss": "said",
+      "prob": 1.0
+    },
+    {
+      "form": "yiyece",
+      "gloss": "heav",
+      "prob": 1.0
+    },
+    {
+      "form": "yiyip",
+      "gloss": "con",
+      "prob": 1.0
+    },
+    {
+      "form": "önü",
+      "gloss": "ear",
+      "prob": 1.0
+    },
+    {
+      "form": "yol",
+      "gloss": "lea",
+      "prob": 0.5
+    },
+    {
+      "form": "olma",
+      "gloss": "come",
+      "prob": 1.0
+    },
+    {
+      "form": "hirodes",
+      "gloss": "herod",
+      "prob": 1.0
+    },
+    {
+      "form": "yapa",
+      "gloss": "therefore",
+      "prob": 1.0
+    },
+    {
+      "form": "henüz",
+      "gloss": "came",
+      "prob": 0.5
+    },
+    {
+      "form": "al",
+      "gloss": "young",
+      "prob": 1.0
+    },
+    {
+      "form": "bugü",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "ardeş",
+      "gloss": "bro",
+      "prob": 0.571
+    },
+    {
+      "form": "altın",
+      "gloss": "ght",
+      "prob": 1.0
+    },
+    {
+      "form": "taş",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "gelsi",
+      "gloss": "lled",
+      "prob": 0.5
+    },
+    {
+      "form": "ered",
+      "gloss": "where",
+      "prob": 1.0
+    },
+    {
+      "form": "diğe",
+      "gloss": "saw",
+      "prob": 0.5
+    },
+    {
+      "form": "otura",
+      "gloss": "ght",
+      "prob": 1.0
+    },
+    {
+      "form": "miras",
+      "gloss": "ear",
+      "prob": 0.5
+    },
+    {
+      "form": "getirdi",
+      "gloss": "hea",
+      "prob": 0.5
+    },
+    {
+      "form": "gökt",
+      "gloss": "heaven",
+      "prob": 1.0
+    },
+    {
+      "form": "çocu",
+      "gloss": "child",
+      "prob": 0.5
+    },
+    {
+      "form": "gö",
+      "gloss": "heaven",
+      "prob": 0.667
+    },
+    {
+      "form": "aldıla",
+      "gloss": "reward",
+      "prob": 0.5
+    },
+    {
+      "form": "buyru",
+      "gloss": "con",
+      "prob": 1.0
+    },
+    {
+      "form": "yüce",
+      "gloss": "lor",
+      "prob": 0.5
+    },
+    {
+      "form": "oğul",
+      "gloss": "son",
+      "prob": 0.667
+    },
+    {
+      "form": "çıka",
+      "gloss": "wor",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.4133,
+    "ambiguity": 1.45,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.125,
+      "gold_parsed": 0.45,
+      "missed": [
+        "çocukları",
+        "yer",
+        "peygamberlik",
+        "yazılmış",
+        "vay",
+        "sesle",
+        "doğruluk",
+        "açıkça",
+        "buyruk",
+        "nefret",
+        "merhamet",
+        "buyurdu",
+        "izin",
+        "kız",
+        "yahuda",
+        "kral",
+        "hoşnut",
+        "dolu",
+        "yiyecek",
+        "yazıcılar",
+        "ürün",
+        "yüz",
+        "yiyip",
+        "ateş",
+        "moşe",
+        "babasıydı",
+        "denilen",
+        "erkek",
+        "geldiğini",
+        "yol",
+        "inkâr",
+        "verildi",
+        "aralarında",
+        "bırakıp",
+        "yemek"
+      ]
+    },
+    "roots": 330,
+    "affixes": 52
+  }
+}

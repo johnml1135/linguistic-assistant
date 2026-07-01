@@ -1,0 +1,224 @@
+{
+  "pair": "tgl",
+  "paradigm": "P6",
+  "secs": 95.7,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 238,
+      "proposed": 79,
+      "cov_before": 0.6483,
+      "cov_after": 0.8067,
+      "delta": 0.1583,
+      "amb": 4.96,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 148,
+      "proposed": 5,
+      "cov_before": 0.8067,
+      "cov_after": 0.82,
+      "delta": 0.0133,
+      "amb": 4.99,
+      "kept": true
+    }
+  ],
+  "roots_added": 84,
+  "added": [
+    {
+      "form": "david",
+      "gloss": "david",
+      "prob": 1.0
+    },
+    {
+      "form": "alile",
+      "gloss": "galilee",
+      "prob": 0.875
+    },
+    {
+      "form": "liwana",
+      "gloss": "light",
+      "prob": 0.8
+    },
+    {
+      "form": "inagpal",
+      "gloss": "blessed",
+      "prob": 1.0
+    },
+    {
+      "form": "eskrib",
+      "gloss": "scribes",
+      "prob": 1.0
+    },
+    {
+      "form": "umalik",
+      "gloss": "return",
+      "prob": 1.0
+    },
+    {
+      "form": "tron",
+      "gloss": "throne",
+      "prob": 1.0
+    },
+    {
+      "form": "mangh",
+      "gloss": "things",
+      "prob": 1.0
+    },
+    {
+      "form": "ri",
+      "gloss": "mary",
+      "prob": 0.571
+    },
+    {
+      "form": "tinano",
+      "gloss": "asked",
+      "prob": 1.0
+    },
+    {
+      "form": "damit",
+      "gloss": "clothing",
+      "prob": 0.667
+    },
+    {
+      "form": "iniw",
+      "gloss": "left",
+      "prob": 1.0
+    },
+    {
+      "form": "rarapat",
+      "gloss": "fitting",
+      "prob": 1.0
+    },
+    {
+      "form": "ibigay",
+      "gloss": "given",
+      "prob": 1.0
+    },
+    {
+      "form": "kini",
+      "gloss": "heard",
+      "prob": 1.0
+    },
+    {
+      "form": "dakila",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "ust",
+      "gloss": "men",
+      "prob": 1.0
+    },
+    {
+      "form": "umusunod",
+      "gloss": "does",
+      "prob": 1.0
+    },
+    {
+      "form": "undok",
+      "gloss": "onto",
+      "prob": 1.0
+    },
+    {
+      "form": "kikit",
+      "gloss": "see",
+      "prob": 1.0
+    },
+    {
+      "form": "sd",
+      "gloss": "behold",
+      "prob": 1.0
+    },
+    {
+      "form": "herodes",
+      "gloss": "herod",
+      "prob": 0.8
+    },
+    {
+      "form": "natili",
+      "gloss": "stay",
+      "prob": 1.0
+    },
+    {
+      "form": "ngyari",
+      "gloss": "let",
+      "prob": 1.0
+    },
+    {
+      "form": "inun",
+      "gloss": "father",
+      "prob": 1.0
+    },
+    {
+      "form": "ilanm",
+      "gloss": "means",
+      "prob": 0.5
+    },
+    {
+      "form": "tindi",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "jude",
+      "gloss": "judea",
+      "prob": 1.0
+    },
+    {
+      "form": "tup",
+      "gloss": "clothing",
+      "prob": 1.0
+    },
+    {
+      "form": "igay",
+      "gloss": "give",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.7,
+    "ambiguity": 6.26,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.275,
+      "gold_parsed": 0.75,
+      "missed": [
+        "krus",
+        "nagsalita",
+        "kasulatan",
+        "pilato",
+        "bumalik",
+        "bagong",
+        "taon",
+        "nakatatanda",
+        "kilala",
+        "pagkain",
+        "dahilan",
+        "binigyan",
+        "guro",
+        "pamamahinga",
+        "bato",
+        "sakit",
+        "kumain",
+        "alipin",
+        "kagalakan",
+        "pinuno",
+        "lubos",
+        "pupunta",
+        "karunungan",
+        "patungkol",
+        "bangka",
+        "nararapat",
+        "ibibigay",
+        "kabilang",
+        "una"
+      ]
+    },
+    "roots": 409,
+    "affixes": 36
+  }
+}

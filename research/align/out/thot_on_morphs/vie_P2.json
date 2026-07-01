@@ -1,0 +1,185 @@
+{
+  "pair": "vie",
+  "paradigm": "P2",
+  "secs": 71.8,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 152,
+      "proposed": 12,
+      "cov_before": 0.7467,
+      "cov_after": 0.7683,
+      "delta": 0.0217,
+      "amb": 1.37,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 139,
+      "proposed": 8,
+      "cov_before": 0.7683,
+      "cov_after": 0.7833,
+      "delta": 0.015,
+      "amb": 1.37,
+      "kept": true
+    }
+  ],
+  "roots_added": 20,
+  "added": [
+    {
+      "form": "luậ",
+      "gloss": "whoever",
+      "prob": 1.0
+    },
+    {
+      "form": "ma",
+      "gloss": "evil",
+      "prob": 0.8
+    },
+    {
+      "form": "vẹ",
+      "gloss": "per",
+      "prob": 0.5
+    },
+    {
+      "form": "rõ",
+      "gloss": "tell",
+      "prob": 0.5
+    },
+    {
+      "form": "ăm",
+      "gloss": "ear",
+      "prob": 1.0
+    },
+    {
+      "form": "on",
+      "gloss": "ent",
+      "prob": 0.5
+    },
+    {
+      "form": "án",
+      "gloss": "judg",
+      "prob": 0.6
+    },
+    {
+      "form": "hỏ",
+      "gloss": "lea",
+      "prob": 0.5
+    },
+    {
+      "form": "gi",
+      "gloss": "gen",
+      "prob": 0.5
+    },
+    {
+      "form": "quá",
+      "gloss": "ing",
+      "prob": 0.5
+    },
+    {
+      "form": "ắc",
+      "gloss": "sed",
+      "prob": 1.0
+    },
+    {
+      "form": "ghiệ",
+      "gloss": "lled",
+      "prob": 0.8
+    },
+    {
+      "form": "vắ",
+      "gloss": "ness",
+      "prob": 0.75
+    },
+    {
+      "form": "ghĩ",
+      "gloss": "behold",
+      "prob": 0.5
+    },
+    {
+      "form": "gá",
+      "gloss": "behold",
+      "prob": 1.0
+    },
+    {
+      "form": "hiệ",
+      "gloss": "secre",
+      "prob": 0.5
+    },
+    {
+      "form": "bớ",
+      "gloss": "sec",
+      "prob": 0.5
+    },
+    {
+      "form": "rừ",
+      "gloss": "wor",
+      "prob": 1.0
+    },
+    {
+      "form": "hột",
+      "gloss": "row",
+      "prob": 0.5
+    },
+    {
+      "form": "vò",
+      "gloss": "ing",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.28,
+    "ambiguity": 1.31,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.3,
+      "missed": [
+        "tâm",
+        "luận",
+        "ma",
+        "núi",
+        "tà",
+        "giả",
+        "cai",
+        "tạ",
+        "dâng",
+        "tình",
+        "thay",
+        "dựng",
+        "hằng",
+        "chào",
+        "đẹp",
+        "thử",
+        "nhớ",
+        "vẹn",
+        "rõ",
+        "coi",
+        "đổ",
+        "lão",
+        "thăm",
+        "đêm",
+        "nguyền",
+        "trách",
+        "giá",
+        "phụ",
+        "thuyền",
+        "mạnh",
+        "sách",
+        "ít",
+        "vẫn",
+        "lãnh",
+        "nạn",
+        "khóc",
+        "khổ",
+        "giàu",
+        "dõi",
+        "thường"
+      ]
+    },
+    "roots": 465,
+    "affixes": 35
+  }
+}

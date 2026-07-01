@@ -1,0 +1,229 @@
+{
+  "pair": "ind",
+  "paradigm": "P5",
+  "secs": 101.8,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 194,
+      "proposed": 45,
+      "cov_before": 0.7083,
+      "cov_after": 0.7933,
+      "delta": 0.085,
+      "amb": 3.94,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 143,
+      "proposed": 2,
+      "cov_before": 0.7933,
+      "cov_after": 0.7967,
+      "delta": 0.0033,
+      "amb": 3.94,
+      "kept": true
+    }
+  ],
+  "roots_added": 47,
+  "added": [
+    {
+      "form": "daud",
+      "gloss": "david",
+      "prob": 1.0
+    },
+    {
+      "form": "oho",
+      "gloss": "tree",
+      "prob": 0.5
+    },
+    {
+      "form": "inu",
+      "gloss": "drink",
+      "prob": 0.5
+    },
+    {
+      "form": "angsa",
+      "gloss": "exile",
+      "prob": 1.0
+    },
+    {
+      "form": "ri",
+      "gloss": "let",
+      "prob": 0.5
+    },
+    {
+      "form": "suka",
+      "gloss": "love",
+      "prob": 1.0
+    },
+    {
+      "form": "lau",
+      "gloss": "sea",
+      "prob": 1.0
+    },
+    {
+      "form": "cual",
+      "gloss": "except",
+      "prob": 1.0
+    },
+    {
+      "form": "ghakim",
+      "gloss": "judge",
+      "prob": 1.0
+    },
+    {
+      "form": "iblis",
+      "gloss": "devil",
+      "prob": 0.5
+    },
+    {
+      "form": "lay",
+      "gloss": "serve",
+      "prob": 1.0
+    },
+    {
+      "form": "anda",
+      "gloss": "pen",
+      "prob": 0.5
+    },
+    {
+      "form": "sias",
+      "gloss": "christ",
+      "prob": 1.0
+    },
+    {
+      "form": "an",
+      "gloss": "jews",
+      "prob": 1.0
+    },
+    {
+      "form": "turun",
+      "gloss": "son",
+      "prob": 0.75
+    },
+    {
+      "form": "yusuf",
+      "gloss": "joseph",
+      "prob": 0.583
+    },
+    {
+      "form": "kapal",
+      "gloss": "boat",
+      "prob": 1.0
+    },
+    {
+      "form": "langi",
+      "gloss": "behold",
+      "prob": 0.5
+    },
+    {
+      "form": "getahu",
+      "gloss": "poor",
+      "prob": 1.0
+    },
+    {
+      "form": "ghasil",
+      "gloss": "tree",
+      "prob": 0.6
+    },
+    {
+      "form": "laya",
+      "gloss": "worthy",
+      "prob": 1.0
+    },
+    {
+      "form": "yudea",
+      "gloss": "judea",
+      "prob": 0.857
+    },
+    {
+      "form": "ula",
+      "gloss": "father",
+      "prob": 0.5
+    },
+    {
+      "form": "hasil",
+      "gloss": "fruits",
+      "prob": 1.0
+    },
+    {
+      "form": "sebu",
+      "gloss": "called",
+      "prob": 0.6
+    },
+    {
+      "form": "iski",
+      "gloss": "deeds",
+      "prob": 1.0
+    },
+    {
+      "form": "olo",
+      "gloss": "remove",
+      "prob": 1.0
+    },
+    {
+      "form": "anggap",
+      "gloss": "called",
+      "prob": 0.5
+    },
+    {
+      "form": "gusir",
+      "gloss": "demons",
+      "prob": 1.0
+    },
+    {
+      "form": "arah",
+      "gloss": "came",
+      "prob": 0.5
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.6533,
+    "ambiguity": 4.14,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.15,
+      "gold_parsed": 0.775,
+      "missed": [
+        "daerah",
+        "bertemu",
+        "tuan",
+        "penting",
+        "perintah",
+        "menyelamatkan",
+        "mencoba",
+        "maupun",
+        "berteriak",
+        "menyembah",
+        "mengerti",
+        "bernama",
+        "perkataan",
+        "surat",
+        "berkumpul",
+        "apapun",
+        "tahun",
+        "domba",
+        "masa",
+        "biasa",
+        "anggota",
+        "pintu",
+        "menderita",
+        "betapa",
+        "kemampuan",
+        "herodes",
+        "moyang",
+        "berjalan",
+        "menyadari",
+        "sebenarnya",
+        "mengutus",
+        "meskipun",
+        "bahasa",
+        "memang"
+      ]
+    },
+    "roots": 572,
+    "affixes": 60
+  }
+}

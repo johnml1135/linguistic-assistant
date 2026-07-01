@@ -1,0 +1,393 @@
+{
+  "pair": "swh",
+  "paradigm": "P0",
+  "secs": 72.3,
+  "tdd_result": {
+    "pair": "swh",
+    "iterations": 36,
+    "base_coverage": 0.0,
+    "final_coverage": 0.55,
+    "delta": 0.55,
+    "final_ambiguity": 2.67,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.55,
+          "ambiguity": 3.89
+        },
+        "templated": {
+          "coverage": 0.55,
+          "ambiguity": 2.67
+        },
+        "templated+pos": {
+          "coverage": 0.4167,
+          "ambiguity": 1.92
+        }
+      },
+      "slots": {
+        "infix1": 2,
+        "prefix1": 36,
+        "prefix2": 32,
+        "prefix3": 32,
+        "prefix4": 29,
+        "suffix1": 30,
+        "suffix2": 27,
+        "suffix3": 20,
+        "suffix4": 10
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 295,
+        "pron": 57,
+        "prep": 34,
+        "det": 25,
+        "verb": 24,
+        "conj": 15,
+        "adj": 12,
+        "num": 6,
+        "adv": 5,
+        "ptcl": 2
+      },
+      "affixes_with_msa": 53,
+      "affixes_total": 72
+    },
+    "lexicon": {
+      "roots": 475,
+      "glossed": 333,
+      "glossed_frac": 0.7011,
+      "affix_glosses_inferred": 2
+    },
+    "affixes_kept": [
+      "ka",
+      "m",
+      "k",
+      "mba",
+      "ma",
+      "b",
+      "wa",
+      "bu",
+      "w",
+      "pa",
+      "ni",
+      "aj",
+      "ha",
+      "h",
+      "u",
+      "mw",
+      "we",
+      "ne",
+      "o",
+      "kuwa",
+      "nza",
+      "a",
+      "s",
+      "yoh",
+      "na",
+      "inj",
+      "n",
+      "ki",
+      "z",
+      "p",
+      "l",
+      "ke",
+      "ume",
+      "kuli",
+      "ma",
+      "bo",
+      "to",
+      "ye",
+      "mtu",
+      "limu",
+      "wake",
+      "mu",
+      "yo",
+      "weza",
+      "ti",
+      "ata",
+      "uli",
+      "ar",
+      "wata",
+      "nzo",
+      "ko",
+      "ny",
+      "kwa",
+      "me",
+      "mch",
+      "th",
+      "kw",
+      "li",
+      "a",
+      "e",
+      "u",
+      "ch",
+      "i",
+      "j",
+      "t",
+      "vyo",
+      "ne",
+      "g",
+      "uz",
+      "um",
+      "po",
+      "ku"
+    ],
+    "harmony_families": {
+      "k": [
+        "k",
+        "ka",
+        "ke",
+        "ki",
+        "ko",
+        "ku"
+      ],
+      "m": [
+        "m",
+        "ma",
+        "me",
+        "mu",
+        "um",
+        "ume"
+      ],
+      "b": [
+        "b",
+        "bo",
+        "bu"
+      ],
+      "w": [
+        "w",
+        "wa",
+        "we"
+      ],
+      "p": [
+        "p",
+        "pa",
+        "po"
+      ],
+      "n": [
+        "n",
+        "na",
+        "ne",
+        "ni"
+      ],
+      "j": [
+        "aj",
+        "j"
+      ],
+      "h": [
+        "h",
+        "ha"
+      ],
+      "kw": [
+        "kuwa",
+        "kw",
+        "kwa"
+      ],
+      "nz": [
+        "nza",
+        "nzo"
+      ],
+      "z": [
+        "uz",
+        "z"
+      ],
+      "l": [
+        "l",
+        "li",
+        "uli"
+      ],
+      "t": [
+        "ata",
+        "t",
+        "ti",
+        "to"
+      ],
+      "y": [
+        "ye",
+        "yo"
+      ]
+    },
+    "enumeration_debt": 31,
+    "phonology": {
+      "enumeration_debt_before": 31,
+      "enumeration_debt_after": 31,
+      "affixes_removed": 0,
+      "collapsed": [],
+      "needs_review": [
+        {
+          "members": [
+            "k",
+            "ka",
+            "ke",
+            "ki",
+            "ko",
+            "ku"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "m",
+            "ma",
+            "me",
+            "mu",
+            "um",
+            "ume"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "b",
+            "bo",
+            "bu"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "w",
+            "wa",
+            "we"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "p",
+            "pa",
+            "po"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "n",
+            "na",
+            "ne",
+            "ni"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "aj",
+            "j"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "h",
+            "ha"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "kuwa",
+            "kw",
+            "kwa"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "nza",
+            "nzo"
+          ],
+          "reason": "differing position is not a harmony vowel"
+        },
+        {
+          "members": [
+            "uz",
+            "z"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "l",
+            "li",
+            "uli"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ata",
+            "t",
+            "ti",
+            "to"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ye",
+            "yo"
+          ],
+          "reason": "vowels span no single harmony class"
+        }
+      ],
+      "rules_proposed": []
+    }
+  },
+  "score": {
+    "coverage": 0.5067,
+    "ambiguity": 3.78,
+    "enumeration_debt": 31,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.05,
+      "gold_parsed": 0.65,
+      "missed": [
+        "nawaambia",
+        "enzi",
+        "mwenu",
+        "daudi",
+        "nuru",
+        "pilato",
+        "miaka",
+        "mkate",
+        "mengi",
+        "sabato",
+        "uongo",
+        "duniani",
+        "mtumwa",
+        "kuja",
+        "alikuja",
+        "matunda",
+        "hai",
+        "ambapo",
+        "mwalimu",
+        "wanadamu",
+        "ushuhuda",
+        "njema",
+        "hakika",
+        "kinyume",
+        "kutoa",
+        "simoni",
+        "mbili",
+        "kuingia",
+        "akaenda",
+        "pili",
+        "wanawake",
+        "ahadi",
+        "yuda",
+        "kichwa",
+        "abrahamu",
+        "mariamu",
+        "waandishi",
+        "kula"
+      ]
+    },
+    "roots": 475,
+    "affixes": 72
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "pair": "rus",
+  "paradigm": "P3",
+  "secs": 102.9,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 112,
+      "proposed": 13,
+      "cov_before": 0.8433,
+      "cov_after": 0.865,
+      "delta": 0.0217,
+      "amb": 2.25,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 98,
+      "proposed": 2,
+      "cov_before": 0.865,
+      "cov_after": 0.8683,
+      "delta": 0.0033,
+      "amb": 2.24,
+      "kept": true
+    }
+  ],
+  "roots_added": 15,
+  "added": [
+    {
+      "form": "люд",
+      "gloss": "men",
+      "prob": 1.0
+    },
+    {
+      "form": "ве",
+      "gloss": "ght",
+      "prob": 0.5
+    },
+    {
+      "form": "приходи",
+      "gloss": "came",
+      "prob": 0.5
+    },
+    {
+      "form": "зял",
+      "gloss": "child",
+      "prob": 1.0
+    },
+    {
+      "form": "се",
+      "gloss": "behold",
+      "prob": 1.0
+    },
+    {
+      "form": "хотел",
+      "gloss": "away",
+      "prob": 0.5
+    },
+    {
+      "form": "глаз",
+      "gloss": "eye",
+      "prob": 0.75
+    },
+    {
+      "form": "явил",
+      "gloss": "red",
+      "prob": 1.0
+    },
+    {
+      "form": "елики",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "дас",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "значи",
+      "gloss": "ted",
+      "prob": 1.0
+    },
+    {
+      "form": "призвав",
+      "gloss": "called",
+      "prob": 0.5
+    },
+    {
+      "form": "плод",
+      "gloss": "fru",
+      "prob": 0.5
+    },
+    {
+      "form": "дву",
+      "gloss": "bro",
+      "prob": 0.5
+    },
+    {
+      "form": "чил",
+      "gloss": "ght",
+      "prob": 0.5
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.7867,
+    "ambiguity": 1.93,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.2,
+      "gold_parsed": 0.775,
+      "missed": [
+        "братьев",
+        "славу",
+        "земли",
+        "веры",
+        "учитель",
+        "видя",
+        "двенадцать",
+        "другие",
+        "господу",
+        "небо",
+        "благодати",
+        "лучше",
+        "смерть",
+        "голос",
+        "свидетельство",
+        "имея",
+        "знаем",
+        "множество",
+        "пусть",
+        "святаго",
+        "лет",
+        "два",
+        "пить",
+        "дети",
+        "иакова",
+        "времени",
+        "пророков",
+        "свет",
+        "тела",
+        "хорошо",
+        "ноги",
+        "славы"
+      ]
+    },
+    "roots": 515,
+    "affixes": 52
+  }
+}

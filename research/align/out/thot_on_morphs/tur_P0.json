@@ -1,0 +1,288 @@
+{
+  "pair": "tur",
+  "paradigm": "P0",
+  "secs": 71.6,
+  "tdd_result": {
+    "pair": "tur",
+    "iterations": 32,
+    "base_coverage": 0.0,
+    "final_coverage": 0.2833,
+    "delta": 0.2833,
+    "final_ambiguity": 1.53,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.2833,
+          "ambiguity": 1.59
+        },
+        "templated": {
+          "coverage": 0.2833,
+          "ambiguity": 1.53
+        },
+        "templated+pos": {
+          "coverage": 0.275,
+          "ambiguity": 1.55
+        }
+      },
+      "slots": {
+        "prefix1": 4,
+        "prefix2": 4,
+        "prefix3": 1,
+        "suffix1": 48,
+        "suffix2": 39,
+        "suffix3": 34,
+        "suffix4": 25
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 113,
+        "pron": 53,
+        "verb": 46,
+        "prep": 27,
+        "det": 19,
+        "conj": 14,
+        "adj": 13,
+        "num": 10,
+        "adv": 4,
+        "ptcl": 1
+      },
+      "affixes_with_msa": 12,
+      "affixes_total": 52
+    },
+    "lexicon": {
+      "roots": 300,
+      "glossed": 300,
+      "glossed_frac": 1.0,
+      "affix_glosses_inferred": 4
+    },
+    "affixes_kept": [
+      "i",
+      "n",
+      "e",
+      "ler",
+      "a",
+      "m",
+      "ı",
+      "le",
+      "den",
+      "ş",
+      "ne",
+      "ni",
+      "ları",
+      "dan",
+      "miz",
+      "si",
+      "sa",
+      "ğu",
+      "n",
+      "ce",
+      "ğini",
+      "kes",
+      "im",
+      "rek",
+      "lik",
+      "nin",
+      "ği",
+      "ye",
+      "ca",
+      "nın",
+      "sı",
+      "sunu",
+      "tan",
+      "r",
+      "suz",
+      "k",
+      "nde",
+      "dır",
+      "kâr",
+      "ydi",
+      "ya",
+      "nü",
+      "k",
+      "lük",
+      "niz",
+      "zer",
+      "luk",
+      "u",
+      "sun",
+      "mız",
+      "di",
+      "e"
+    ],
+    "harmony_families": {
+      "n": [
+        "n",
+        "ne",
+        "ni"
+      ],
+      "m": [
+        "im",
+        "m"
+      ],
+      "dn": [
+        "dan",
+        "den"
+      ],
+      "s": [
+        "sa",
+        "si"
+      ],
+      "ğ": [
+        "ği",
+        "ğu"
+      ],
+      "c": [
+        "ca",
+        "ce"
+      ],
+      "lk": [
+        "lik",
+        "luk"
+      ],
+      "y": [
+        "ya",
+        "ye"
+      ],
+      "sn": [
+        "sun",
+        "sunu"
+      ]
+    },
+    "enumeration_debt": 10,
+    "phonology": {
+      "enumeration_debt_before": 10,
+      "enumeration_debt_after": 5,
+      "affixes_removed": 5,
+      "collapsed": [
+        {
+          "archiphoneme": "dAn",
+          "members": [
+            "dan",
+            "den"
+          ],
+          "conditioning_class": "A"
+        },
+        {
+          "archiphoneme": "ğI",
+          "members": [
+            "ği",
+            "ğu"
+          ],
+          "conditioning_class": "I"
+        },
+        {
+          "archiphoneme": "cA",
+          "members": [
+            "ca",
+            "ce"
+          ],
+          "conditioning_class": "A"
+        },
+        {
+          "archiphoneme": "lIk",
+          "members": [
+            "lik",
+            "luk"
+          ],
+          "conditioning_class": "I"
+        },
+        {
+          "archiphoneme": "yA",
+          "members": [
+            "ya",
+            "ye"
+          ],
+          "conditioning_class": "A"
+        }
+      ],
+      "needs_review": [
+        {
+          "members": [
+            "n",
+            "ne",
+            "ni"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "im",
+            "m"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "sa",
+            "si"
+          ],
+          "reason": "vowels span no single harmony class"
+        },
+        {
+          "members": [
+            "sun",
+            "sunu"
+          ],
+          "reason": "members differ in length"
+        }
+      ],
+      "rules_proposed": []
+    }
+  },
+  "score": {
+    "coverage": 0.2667,
+    "ambiguity": 1.62,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.1,
+      "gold_parsed": 0.2,
+      "missed": [
+        "çocukları",
+        "yer",
+        "peygamberlik",
+        "yazılmış",
+        "vay",
+        "sesle",
+        "doğruluk",
+        "açıkça",
+        "buyruk",
+        "nefret",
+        "merhamet",
+        "buyurdu",
+        "izin",
+        "kız",
+        "yahuda",
+        "kral",
+        "hoşnut",
+        "dolu",
+        "yiyecek",
+        "yazıcılar",
+        "ürün",
+        "yüz",
+        "çocuk",
+        "yiyip",
+        "ateş",
+        "moşe",
+        "babasıydı",
+        "denilen",
+        "erkek",
+        "geldiğini",
+        "yol",
+        "inkâr",
+        "verildi",
+        "aralarında",
+        "bırakıp",
+        "yemek"
+      ]
+    },
+    "roots": 300,
+    "affixes": 52
+  }
+}

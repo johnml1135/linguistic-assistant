@@ -1,0 +1,119 @@
+{
+  "glottocode": "nngg1234",
+  "pair_key": "pg_nngg1234",
+  "manifest": {
+    "glottocode": "nngg1234",
+    "language": "N‖ng",
+    "pair_key": "pg_nngg1234",
+    "rows_train_total": 2218,
+    "rows_train_english_meta": 2124,
+    "rows_train_segmented": 2121,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 740,
+    "gold_counts": {
+      "wordforms": 842,
+      "lexicon": 239
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.8649,
+    "delta": 0.8649,
+    "final_ambiguity": 2.16,
+    "lexicon": {
+      "roots": 397,
+      "glossed": 257,
+      "glossed_frac": 0.6474,
+      "affix_glosses_inferred": 1
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.8649,
+          "ambiguity": 3.0
+        },
+        "templated": {
+          "coverage": 0.8649,
+          "ambiguity": 2.16
+        },
+        "templated+pos": {
+          "coverage": 0.7838,
+          "ambiguity": 1.86
+        }
+      },
+      "slots": {
+        "prefix1": 22,
+        "prefix2": 6,
+        "prefix3": 1,
+        "prefix4": 1,
+        "suffix1": 10,
+        "suffix2": 2
+      }
+    },
+    "harmony_families": {
+      "k": [
+        "k",
+        "ka",
+        "ke",
+        "ki"
+      ],
+      "ǂ": [
+        "ǂ",
+        "ǂee"
+      ]
+    },
+    "enumeration_debt": 4
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.585,
+    "lemma_recall": 0.29,
+    "feature_recall": 0.2525,
+    "miss_parse": [
+      "<<fm>koffie>",
+      "kxʼuu",
+      "bau",
+      "ǁʼuin",
+      "ǀʼhunna",
+      "ǀqxʼae",
+      "ǃoon",
+      "ǀkxʼoan",
+      "nǁ",
+      "ǁʼorake",
+      "kanǃuin",
+      "khuuǁʼng"
+    ],
+    "miss_lemma": [
+      "dyaqnn->dyaqnn",
+      "ng->ng",
+      "na->na",
+      "ǀqoeke->ǀqoe",
+      "ǁaun->ǁaun",
+      "saa->saa",
+      "ǁhoe->ǁhoe",
+      "ǂhaun->ǂhaun",
+      "hoo->hoo",
+      "dyaqann->dyaqann"
+    ],
+    "miss_feat": [
+      "ǁxaea=['?']",
+      "kanǂoqno=['INAL']",
+      "hngke=['3PL']",
+      "koke=['PL']",
+      "ǂaoa=['?']",
+      "kanǂoqno=['INAL']",
+      "kanǂoqno=['INAL']",
+      "ǁxaea=['?']",
+      "ǀaia=['IMP.SG']",
+      "ǁxaea=['?']",
+      "kanǂoqno=['INAL']",
+      "kanǂoqno=['INAL']"
+    ]
+  },
+  "secs": 166.1
+}

@@ -1,0 +1,230 @@
+{
+  "pair": "tur",
+  "paradigm": "P2",
+  "secs": 126.1,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 237,
+      "proposed": 25,
+      "cov_before": 0.6367,
+      "cov_after": 0.6917,
+      "delta": 0.055,
+      "amb": 1.89,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 209,
+      "proposed": 7,
+      "cov_before": 0.6917,
+      "cov_after": 0.705,
+      "delta": 0.0133,
+      "amb": 1.88,
+      "kept": true
+    }
+  ],
+  "roots_added": 32,
+  "added": [
+    {
+      "form": "çocuk",
+      "gloss": "chi",
+      "prob": 1.0
+    },
+    {
+      "form": "ye",
+      "gloss": "ear",
+      "prob": 0.5
+    },
+    {
+      "form": "buyru",
+      "gloss": "con",
+      "prob": 1.0
+    },
+    {
+      "form": "ral",
+      "gloss": "king",
+      "prob": 0.8
+    },
+    {
+      "form": "hoşnut",
+      "gloss": "heav",
+      "prob": 1.0
+    },
+    {
+      "form": "çocu",
+      "gloss": "chi",
+      "prob": 1.0
+    },
+    {
+      "form": "yeryüzü",
+      "gloss": "ear",
+      "prob": 0.667
+    },
+    {
+      "form": "rke",
+      "gloss": "lea",
+      "prob": 1.0
+    },
+    {
+      "form": "layı",
+      "gloss": "wor",
+      "prob": 0.667
+    },
+    {
+      "form": "olma",
+      "gloss": "come",
+      "prob": 1.0
+    },
+    {
+      "form": "hirodes",
+      "gloss": "herod",
+      "prob": 0.714
+    },
+    {
+      "form": "gel",
+      "gloss": "led",
+      "prob": 1.0
+    },
+    {
+      "form": "yapa",
+      "gloss": "one",
+      "prob": 0.5
+    },
+    {
+      "form": "henüz",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "bugü",
+      "gloss": "give",
+      "prob": 0.5
+    },
+    {
+      "form": "ardeş",
+      "gloss": "bro",
+      "prob": 0.571
+    },
+    {
+      "form": "hükü",
+      "gloss": "father",
+      "prob": 0.5
+    },
+    {
+      "form": "diğe",
+      "gloss": "saw",
+      "prob": 1.0
+    },
+    {
+      "form": "çağırd",
+      "gloss": "called",
+      "prob": 1.0
+    },
+    {
+      "form": "altı",
+      "gloss": "red",
+      "prob": 1.0
+    },
+    {
+      "form": "miras",
+      "gloss": "ear",
+      "prob": 1.0
+    },
+    {
+      "form": "getirdi",
+      "gloss": "led",
+      "prob": 1.0
+    },
+    {
+      "form": "gökt",
+      "gloss": "rea",
+      "prob": 0.5
+    },
+    {
+      "form": "gö",
+      "gloss": "heaven",
+      "prob": 1.0
+    },
+    {
+      "form": "aldıla",
+      "gloss": "reward",
+      "prob": 0.5
+    },
+    {
+      "form": "önü",
+      "gloss": "ear",
+      "prob": 1.0
+    },
+    {
+      "form": "yapt",
+      "gloss": "lord",
+      "prob": 1.0
+    },
+    {
+      "form": "yüce",
+      "gloss": "lor",
+      "prob": 1.0
+    },
+    {
+      "form": "ara",
+      "gloss": "ther",
+      "prob": 0.667
+    },
+    {
+      "form": "oğul",
+      "gloss": "son",
+      "prob": 0.667
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.42,
+    "ambiguity": 1.54,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.125,
+      "gold_parsed": 0.4,
+      "missed": [
+        "çocukları",
+        "yer",
+        "peygamberlik",
+        "yazılmış",
+        "vay",
+        "sesle",
+        "doğruluk",
+        "açıkça",
+        "buyruk",
+        "nefret",
+        "merhamet",
+        "buyurdu",
+        "izin",
+        "kız",
+        "yahuda",
+        "hoşnut",
+        "dolu",
+        "yiyecek",
+        "yazıcılar",
+        "ürün",
+        "yüz",
+        "çocuk",
+        "yiyip",
+        "ateş",
+        "moşe",
+        "babasıydı",
+        "denilen",
+        "erkek",
+        "geldiğini",
+        "yol",
+        "inkâr",
+        "verildi",
+        "aralarında",
+        "bırakıp",
+        "yemek"
+      ]
+    },
+    "roots": 332,
+    "affixes": 52
+  }
+}

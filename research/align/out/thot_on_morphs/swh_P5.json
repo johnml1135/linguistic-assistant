@@ -1,0 +1,227 @@
+{
+  "pair": "swh",
+  "paradigm": "P5",
+  "secs": 111.6,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 183,
+      "proposed": 40,
+      "cov_before": 0.7483,
+      "cov_after": 0.84,
+      "delta": 0.0917,
+      "amb": 3.32,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 137,
+      "proposed": 4,
+      "cov_before": 0.84,
+      "cov_after": 0.85,
+      "delta": 0.01,
+      "amb": 3.31,
+      "kept": true
+    }
+  ],
+  "roots_added": 44,
+  "added": [
+    {
+      "form": "enzi",
+      "gloss": "throne",
+      "prob": 1.0
+    },
+    {
+      "form": "daudi",
+      "gloss": "david",
+      "prob": 1.0
+    },
+    {
+      "form": "kat",
+      "gloss": "bread",
+      "prob": 1.0
+    },
+    {
+      "form": "ong",
+      "gloss": "false",
+      "prob": 0.667
+    },
+    {
+      "form": "imo",
+      "gloss": "simon",
+      "prob": 1.0
+    },
+    {
+      "form": "yud",
+      "gloss": "judah",
+      "prob": 0.571
+    },
+    {
+      "form": "ria",
+      "gloss": "mary",
+      "prob": 1.0
+    },
+    {
+      "form": "srae",
+      "gloss": "israel",
+      "prob": 1.0
+    },
+    {
+      "form": "liend",
+      "gloss": "came",
+      "prob": 0.667
+    },
+    {
+      "form": "ek",
+      "gloss": "alone",
+      "prob": 0.5
+    },
+    {
+      "form": "ak",
+      "gloss": "bro",
+      "prob": 0.5
+    },
+    {
+      "form": "fa",
+      "gloss": "dead",
+      "prob": 0.5
+    },
+    {
+      "form": "afi",
+      "gloss": "heart",
+      "prob": 1.0
+    },
+    {
+      "form": "pi",
+      "gloss": "born",
+      "prob": 0.5
+    },
+    {
+      "form": "heta",
+      "gloss": "satan",
+      "prob": 1.0
+    },
+    {
+      "form": "so",
+      "gloss": "face",
+      "prob": 1.0
+    },
+    {
+      "form": "ishi",
+      "gloss": "lived",
+      "prob": 0.667
+    },
+    {
+      "form": "dhaha",
+      "gloss": "gift",
+      "prob": 1.0
+    },
+    {
+      "form": "hai",
+      "gloss": "moment",
+      "prob": 0.5
+    },
+    {
+      "form": "kaj",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "iz",
+      "gloss": "glory",
+      "prob": 0.5
+    },
+    {
+      "form": "ada",
+      "gloss": "gift",
+      "prob": 0.75
+    },
+    {
+      "form": "iri",
+      "gloss": "secret",
+      "prob": 0.667
+    },
+    {
+      "form": "eo",
+      "gloss": "daily",
+      "prob": 0.5
+    },
+    {
+      "form": "vipand",
+      "gloss": "pieces",
+      "prob": 0.5
+    },
+    {
+      "form": "yusuf",
+      "gloss": "joseph",
+      "prob": 0.778
+    },
+    {
+      "form": "ja",
+      "gloss": "hunger",
+      "prob": 0.5
+    },
+    {
+      "form": "ti",
+      "gloss": "tree",
+      "prob": 0.667
+    },
+    {
+      "form": "lang",
+      "gloss": "room",
+      "prob": 1.0
+    },
+    {
+      "form": "ich",
+      "gloss": "eye",
+      "prob": 0.833
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.7333,
+    "ambiguity": 3.55,
+    "enumeration_debt": 31,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.2,
+      "gold_parsed": 0.875,
+      "missed": [
+        "nawaambia",
+        "mwenu",
+        "nuru",
+        "pilato",
+        "miaka",
+        "mengi",
+        "sabato",
+        "duniani",
+        "mtumwa",
+        "kuja",
+        "alikuja",
+        "matunda",
+        "hai",
+        "ambapo",
+        "mwalimu",
+        "wanadamu",
+        "ushuhuda",
+        "njema",
+        "hakika",
+        "kinyume",
+        "kutoa",
+        "mbili",
+        "kuingia",
+        "akaenda",
+        "pili",
+        "wanawake",
+        "ahadi",
+        "yuda",
+        "kichwa",
+        "abrahamu",
+        "waandishi",
+        "kula"
+      ]
+    },
+    "roots": 519,
+    "affixes": 72
+  }
+}

@@ -189,19 +189,40 @@ a linguist's read on what "typological gap" actually means, not a script.
    - `research/pyproject.toml` — added a `polygloss = ["datasets>=2.19"]` optional-dependency group
      (`uv sync --extra polygloss`), matching the `align`/`audio`/`data-prep` extras pattern; kept out
      of core deps since it's not needed until real HF fetches happen.
-2. **PENDING (needs a human to accept the HF dataset's access gate)** — `huggingface-cli login`,
-   accept the corpus's access agreement at its HF page, then run `fetch_language()` for real and pick
-   the actual pilot language list per §5's criteria.
-3. **PENDING** — per picked language: `convert.to_morphwords()`/`to_parallel_row()` →
-   `align.aligner.align()` → the §4.3 path adapter into `induce.tdd.run()` (scaled-down
-   hyperparameters) → an HC grammar; hold out a slice of that language's rows, run
-   `corpus/polygloss/score.py::score_pair()` against them.
-4. **PENDING** — for languages that score reasonably (no fixed threshold yet — this is exploratory;
-   record honestly, including "insufficient data" results, the way `learning_paradigms_plan.md`
-   records tur-case's 0.5 as a genuine finding, not a failure to hide), promote the result to a real
-   `golden_sets/pg_<glottocode>/` directory via `to_gold.write_pilot_gold()`.
-5. **PENDING** — feature-bundle canonicalization (§4.2) for any language that makes it to step 4,
-   once we've seen what its actual grammatical-tag vocabulary looks like.
+2. **DONE (2026-07-01)** — HF access was already available (a cached token on this machine had
+   already accepted the corpus's gate); `huggingface-cli login` was not needed. Loaded the full
+   corpus (train=340,251 / test=6,867 / dev=6,148 rows, 2,077 glottocodes) and computed per-language
+   English-metalanguage counts to apply §5's selection criteria. Only 9 glottocodes have the corpus's
+   own `test`/`dev` splits (its SIGMORPHON-2023 held-out set); of those, Gitksan (89 rows, below the
+   volume floor) and Uspanteko (0 English-metalanguage rows — Spanish-metalanguage corpus) were
+   excluded, leaving 7 contamination-free candidates. Picked 18 languages total (7 test-split + 11
+   train-holdout) for real typological gap-filling against the current 8 (Bantu/Austronesian/Romance/
+   Turkic/Slavic/Indo-Aryan/isolating): Algonquian (Arapaho), Nakh-Daghestanian ergative (Tsez,
+   Lezgian, +isolate ergative Basque), Niger-Congo Kwa (Nyangbo), isolate polysynthetic (Ainu),
+   non-Swahili Bantu (Ruuli), Oceanic (Vera'a, Natügu), Iroquoian (Cayuga), Gyalrongic (Japhug),
+   Cushitic (Beja), Turkic-Siberian (Dolgan), Samoyedic (Kamas, Selkup), Tuu/Khoisan click (N‖ng),
+   Trans-New Guinea (Mauwake), Papuan isolate (Kalamang). See `run_batch.py::LANGUAGES`.
+3. **DONE (2026-07-01)** — built the §4.3(a) impersonate-a-pair adapter (`build.py`: fetch → filter
+   English metalanguage → `align.aligner.align()` gold-blind → write `_sources/ebible/pg_<glottocode>/`
+   + register in `induce.tdd.PAIR_DIR`) and the pilot driver (`pilot.py::run_pilot`, auto-scaling
+   `n_roots`/`test_size` with vocabulary size — a flat root count isn't comparable across an 800-word
+   and a 36k-row corpus) and batch runner (`run_batch.py`, one failure can't abort the batch, writes
+   `out/PILOT_REPORT.md`). Ran all 18 languages (150s induction budget each, ~185s wall-clock
+   including fetch/align/score) — **18/18 succeeded, 0 failed**. See `corpus/polygloss/out/
+   PILOT_REPORT.md` for the full table; internal HC coverage ranged 0.44-0.93, gold `lemma_recall`
+   0.00-0.29. One genuine finding: Nyangbo's THOT alignment produced a real English gloss for almost
+   no induced root (`glossed_frac=0.002` vs. 0.55-0.92 for every other language) at this corpus size/
+   budget, so its near-zero lemma/feature recall reflects alignment starvation, not a segmentation
+   failure — recorded honestly in the report rather than hidden or averaged away.
+4. **DECIDED AGAINST automatic promotion** — `build_pilot` originally wrote `golden_sets/pg_<
+   glottocode>/` as a side effect of every scoring run; corrected so scoring reads gold in-memory
+   (`build_pilot` returns `gold_wordforms`/`gold_lexicon` directly) and `golden_sets/` is untouched by
+   a benchmark run. `build.py::promote_golden_set()` exists for a deliberate, later call once a human
+   reviews a language's score and decides it earns a frozen golden set — no language has been promoted
+   yet (this pilot's scores, mostly optimistic train-split upper bounds or gloss-starved, don't clear
+   a bar strong enough to justify it without closer review).
+5. **STILL PENDING** — feature-bundle canonicalization (§4.2) for any language that eventually gets
+   promoted (step 4), once we've seen what its actual grammatical-tag vocabulary looks like.
 
 ---
 

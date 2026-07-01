@@ -1,0 +1,149 @@
+{
+  "glottocode": "kama1378",
+  "pair_key": "pg_kama1378",
+  "manifest": {
+    "glottocode": "kama1378",
+    "language": "Kamas",
+    "pair_key": "pg_kama1378",
+    "rows_train_total": 9402,
+    "rows_train_english_meta": 9266,
+    "rows_train_segmented": 9266,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 5547,
+    "gold_counts": {
+      "wordforms": 891,
+      "lexicon": 258
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.8167,
+    "delta": 0.8167,
+    "final_ambiguity": 2.11,
+    "lexicon": {
+      "roots": 600,
+      "glossed": 389,
+      "glossed_frac": 0.6483,
+      "affix_glosses_inferred": 6
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.8167,
+          "ambiguity": 2.46
+        },
+        "templated": {
+          "coverage": 0.8167,
+          "ambiguity": 2.11
+        },
+        "templated+pos": {
+          "coverage": 0.775,
+          "ambiguity": 1.97
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 18,
+        "prefix2": 5,
+        "prefix3": 1,
+        "suffix1": 40,
+        "suffix2": 27,
+        "suffix3": 18,
+        "suffix4": 12
+      }
+    },
+    "harmony_families": {
+      "ʔ": [
+        "aʔi",
+        "ʔ",
+        "ʔi"
+      ],
+      "k": [
+        "ak",
+        "k",
+        "ka",
+        "ku"
+      ],
+      "n": [
+        "an",
+        "n"
+      ],
+      "m": [
+        "am",
+        "em",
+        "m",
+        "om"
+      ],
+      "z": [
+        "iz",
+        "ze",
+        "zi"
+      ],
+      "ml": [
+        "mal",
+        "mol"
+      ],
+      "l": [
+        "el",
+        "l"
+      ],
+      "d": [
+        "d",
+        "di"
+      ]
+    },
+    "enumeration_debt": 14
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.66,
+    "lemma_recall": 0.2275,
+    "feature_recall": 0.1075,
+    "miss_parse": [
+      "ĭmbinʼibudʼ",
+      "amitun",
+      "našto",
+      "multʼanə",
+      "kutʼümnie",
+      "kĭškit",
+      "saʔməluʔpam",
+      "bʼeʔ",
+      "dʼăbaktərləbaʔ",
+      "keʔbdezʼiʔ",
+      "šamnak",
+      "bʼeʔ"
+    ],
+    "miss_lemma": [
+      "izittə->i",
+      "uja->uja",
+      "ige->i",
+      "ipek->ipek",
+      "nagur->nagur",
+      "amoraʔ->amor",
+      "keʔbde->keʔbde",
+      "iʔgö->iʔgö",
+      "gibər->gibər",
+      "tănan->tănan"
+    ],
+    "miss_feat": [
+      "maʔnəl=['2SG', 'LAT']",
+      "măndərzittə=['FRQ', 'INF.LAT']",
+      "udam=['NOM/GEN/ACC.1SG']",
+      "amzittə=['INF.LAT']",
+      "kallam=['1SG', 'FUT']",
+      "kanzittə=['INF.LAT']",
+      "tüžöjəm=['ACC', 'EP']",
+      "amnaʔ=['IMP.2SG']",
+      "udam=['NOM/GEN/ACC.1SG']",
+      "ulum=['NOM/GEN/ACC.1SG']",
+      "amaʔ=['EP', 'IMP.2SG']",
+      "kanaʔ=['CNG', 'EP']"
+    ]
+  },
+  "secs": 188.0
+}

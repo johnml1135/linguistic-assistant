@@ -38,7 +38,10 @@ _COMMON_OPTIONAL = ("rationale", "confidence", "impact", "provenance")
 # the field whose value is the op's "key" (for canonical signatures / scoring)
 _KEY_FIELD: dict[str, str] = {
     "lexical.entry.create": "lexeme_form",
-    "lexical.sense.create": "gloss",
+    # keyed by the entry, not the gloss — two different entries commonly share an English gloss
+    # (e.g. "baba"/"babu" both gloss roughly to "father"), and keying by gloss made DeltaStore.add()
+    # collide them into one delta record, silently dropping the second entry's proposal.
+    "lexical.sense.create": "entry",
     "lexical.entry.add_allomorph": "form",
     "lexical.entry.set_pos": "entry",
     "lexical.pronunciation.create": "entry",

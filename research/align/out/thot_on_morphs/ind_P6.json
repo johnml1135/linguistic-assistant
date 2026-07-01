@@ -1,0 +1,228 @@
+{
+  "pair": "ind",
+  "paradigm": "P6",
+  "secs": 100.0,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 194,
+      "proposed": 62,
+      "cov_before": 0.7083,
+      "cov_after": 0.8167,
+      "delta": 0.1083,
+      "amb": 3.96,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 126,
+      "proposed": 5,
+      "cov_before": 0.8167,
+      "cov_after": 0.825,
+      "delta": 0.0083,
+      "amb": 3.94,
+      "kept": true
+    }
+  ],
+  "roots_added": 67,
+  "added": [
+    {
+      "form": "daud",
+      "gloss": "david",
+      "prob": 1.0
+    },
+    {
+      "form": "dep",
+      "gloss": "public",
+      "prob": 0.5
+    },
+    {
+      "form": "herodes",
+      "gloss": "herod",
+      "prob": 0.9
+    },
+    {
+      "form": "oho",
+      "gloss": "tree",
+      "prob": 0.667
+    },
+    {
+      "form": "inu",
+      "gloss": "drink",
+      "prob": 1.0
+    },
+    {
+      "form": "yadar",
+      "gloss": "saw",
+      "prob": 1.0
+    },
+    {
+      "form": "angsa",
+      "gloss": "exile",
+      "prob": 1.0
+    },
+    {
+      "form": "ast",
+      "gloss": "either",
+      "prob": 1.0
+    },
+    {
+      "form": "ri",
+      "gloss": "let",
+      "prob": 0.5
+    },
+    {
+      "form": "yembuh",
+      "gloss": "healed",
+      "prob": 0.5
+    },
+    {
+      "form": "suka",
+      "gloss": "love",
+      "prob": 1.0
+    },
+    {
+      "form": "lau",
+      "gloss": "sea",
+      "prob": 1.0
+    },
+    {
+      "form": "cual",
+      "gloss": "except",
+      "prob": 1.0
+    },
+    {
+      "form": "ghakim",
+      "gloss": "judge",
+      "prob": 1.0
+    },
+    {
+      "form": "iblis",
+      "gloss": "devil",
+      "prob": 0.571
+    },
+    {
+      "form": "erlu",
+      "gloss": "baptized",
+      "prob": 1.0
+    },
+    {
+      "form": "lay",
+      "gloss": "serve",
+      "prob": 1.0
+    },
+    {
+      "form": "ayah",
+      "gloss": "father",
+      "prob": 0.5
+    },
+    {
+      "form": "anda",
+      "gloss": "tiny",
+      "prob": 1.0
+    },
+    {
+      "form": "sias",
+      "gloss": "christ",
+      "prob": 1.0
+    },
+    {
+      "form": "an",
+      "gloss": "jews",
+      "prob": 1.0
+    },
+    {
+      "form": "turun",
+      "gloss": "son",
+      "prob": 0.75
+    },
+    {
+      "form": "yusuf",
+      "gloss": "joseph",
+      "prob": 0.538
+    },
+    {
+      "form": "kapal",
+      "gloss": "boat",
+      "prob": 1.0
+    },
+    {
+      "form": "langi",
+      "gloss": "behold",
+      "prob": 0.667
+    },
+    {
+      "form": "emp",
+      "gloss": "forty",
+      "prob": 1.0
+    },
+    {
+      "form": "asi",
+      "gloss": "gentiles",
+      "prob": 1.0
+    },
+    {
+      "form": "getahu",
+      "gloss": "poor",
+      "prob": 1.0
+    },
+    {
+      "form": "muj",
+      "gloss": "glorify",
+      "prob": 0.5
+    },
+    {
+      "form": "ghasil",
+      "gloss": "fruit",
+      "prob": 0.75
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.72,
+    "ambiguity": 4.28,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.175,
+      "gold_parsed": 0.825,
+      "missed": [
+        "daerah",
+        "bertemu",
+        "tuan",
+        "penting",
+        "perintah",
+        "menyelamatkan",
+        "mencoba",
+        "maupun",
+        "berteriak",
+        "menyembah",
+        "mengerti",
+        "bernama",
+        "perkataan",
+        "surat",
+        "berkumpul",
+        "apapun",
+        "tahun",
+        "domba",
+        "masa",
+        "biasa",
+        "anggota",
+        "pintu",
+        "menderita",
+        "betapa",
+        "kemampuan",
+        "moyang",
+        "berjalan",
+        "menyadari",
+        "sebenarnya",
+        "mengutus",
+        "meskipun",
+        "bahasa",
+        "memang"
+      ]
+    },
+    "roots": 592,
+    "affixes": 60
+  }
+}

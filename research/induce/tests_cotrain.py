@@ -71,7 +71,7 @@ def test_cotrain_adds_roots_and_is_coverage_guarded(monkeypatch):
     # words: two unparsed content words that THOT can gloss; coverage rises as roots are added then plateaus
     WORDS = ["root1", "mkate", "enzi"]
     monkeypatch.setattr(CT.langknow, "function_words", lambda lang: set())
-    monkeypatch.setattr(CT, "_align_table", lambda pair, model, sample: _Table(
+    monkeypatch.setattr(CT, "_align_table", lambda pair, model, sample, **kw: _Table(
         {"mkate": _Best("bread", 0.9), "enzi": _Best("throne", 0.9)}))
     monkeypatch.setattr("induce.tdd.load_freqs", lambda pair: __import__("collections").Counter(
         {"root1": 5, "mkate": 4, "enzi": 3}))
@@ -117,7 +117,7 @@ def test_reuse_table_aligns_once(monkeypatch):
     calls = {"n": 0}
     monkeypatch.setattr(CT.langknow, "function_words", lambda lang: set())
 
-    def fake_align(pair, model, sample):
+    def fake_align(pair, model, sample, **kw):
         calls["n"] += 1
         return _Table({"mkate": _Best("bread", 0.9), "enzi": _Best("throne", 0.9)})
 
@@ -135,7 +135,7 @@ def test_reuse_table_aligns_once(monkeypatch):
 def test_cotrain_stops_when_no_proposals(monkeypatch):
     WORDS = ["root1", "junk"]
     monkeypatch.setattr(CT.langknow, "function_words", lambda lang: set())
-    monkeypatch.setattr(CT, "_align_table", lambda pair, model, sample: _Table({}))  # THOT offers nothing
+    monkeypatch.setattr(CT, "_align_table", lambda pair, model, sample, **kw: _Table({}))  # THOT offers nothing
     monkeypatch.setattr("induce.tdd.load_freqs", lambda pair: __import__("collections").Counter(
         {"root1": 5, "junk": 1}))
     monkeypatch.setattr("gold.phonology_gold.phon_feats", lambda pair, charset: {})

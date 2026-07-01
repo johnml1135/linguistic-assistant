@@ -19,6 +19,7 @@ from corpus.polygloss.convert import (  # noqa: E402
 )
 from corpus.polygloss.schema import PolyglossRow  # noqa: E402
 from corpus.polygloss.score import score_parses  # noqa: E402
+from corpus.polygloss.run_batch import write_report  # noqa: E402
 from corpus.polygloss.to_gold import rows_to_wordforms_and_lexicon  # noqa: E402
 
 # A real PolyGloss-shaped row (Vera'a; the exact example surfaced by the paper's research).
@@ -122,6 +123,34 @@ def test_score_parses_separates_parse_lemma_and_feature_recall():
     assert result["feature_recall"] == round(1 / 3, 4)  # only wōlē0n satisfied lemma+features
     assert "unseen" in result["miss_parse"]
     assert any("'ēqēk" in m for m in result["miss_lemma"])
+
+
+def test_write_report_handles_ok_and_error_rows(tmp_path=None):
+    """Regression test: `write_report` once assumed a top-level `r["language"]` key that only exists
+    on error rows a batch run constructs itself — successful rows nest it under `r["manifest"]
+    ["language"]` (`run_pilot`'s return shape). This bug only surfaced after an hour-long batch run
+    because `write_report` was never exercised before that. Covers both row shapes with fake data."""
+    import tempfile
+    from pathlib import Path
+
+    ok_row = {
+        "glottocode": "xx1234", "language": "Xtestlang", "typology_note": "fixture",
+        "status": "ok", "secs": 1.0,
+        "manifest": {"language": "Xtestlang", "gold_source_split": "test", "rows_train_english_meta": 42},
+        "induction": {"base_coverage": 0.0, "final_coverage": 0.5,
+                      "lexicon": {"glossed_frac": 0.8}, "enumeration_debt": 2},
+        "gold_benchmark": {"parse_rate": 0.5, "lemma_recall": 0.3, "feature_recall": 0.2},
+    }
+    error_row = {
+        "glottocode": "yy9999", "language": "Yfaillang", "typology_note": "fixture",
+        "status": "error", "error": "RuntimeError: boom", "secs": 0.5,
+    }
+    out_dir = Path(tmp_path) if tmp_path else Path(tempfile.mkdtemp())
+    path = out_dir / "PILOT_REPORT.md"
+    write_report([ok_row, error_row], path)
+    text = path.read_text(encoding="utf-8")
+    assert "Xtestlang" in text and "1 succeeded, 1 failed" in text
+    assert "ERROR: RuntimeError: boom" in text
 
 
 if __name__ == "__main__":

@@ -1,0 +1,104 @@
+{
+  "glottocode": "nyan1302",
+  "pair_key": "pg_nyan1302",
+  "manifest": {
+    "glottocode": "nyan1302",
+    "language": "Nyangbo",
+    "pair_key": "pg_nyan1302",
+    "rows_train_total": 1221,
+    "rows_train_english_meta": 1221,
+    "rows_train_segmented": 1221,
+    "gold_rows": 248,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 4,
+    "gold_counts": {
+      "wordforms": 835,
+      "lexicon": 263
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.7,
+    "delta": 0.7,
+    "final_ambiguity": 2.14,
+    "lexicon": {
+      "roots": 435,
+      "glossed": 1,
+      "glossed_frac": 0.0023,
+      "affix_glosses_inferred": 0
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.7,
+          "ambiguity": 2.36
+        },
+        "templated": {
+          "coverage": 0.7,
+          "ambiguity": 2.14
+        },
+        "templated+pos": {
+          "coverage": 0.7,
+          "ambiguity": 2.14
+        }
+      },
+      "slots": {
+        "prefix1": 17,
+        "prefix2": 11,
+        "prefix3": 2,
+        "suffix1": 7,
+        "suffix2": 2
+      }
+    },
+    "harmony_families": {
+      "b": [
+        "ab",
+        "b",
+        "be"
+      ],
+      "k": [
+        "ek",
+        "k"
+      ]
+    },
+    "enumeration_debt": 3
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.595,
+    "lemma_recall": 0.0,
+    "feature_recall": 0.0,
+    "miss_parse": [
+      "amaneɛ́",
+      "bɔbatsyu",
+      "badakpɛ́",
+      "eletéɛ́",
+      "bɔpá",
+      "bawɔ̃sɔ̃",
+      "ónú",
+      "ohe",
+      "óvũnɔ",
+      "bunyí",
+      "kɔ",
+      "butsiɖi"
+    ],
+    "miss_lemma": [
+      "kɛlɛ->kɛlɛ",
+      "ɔbhɛtɛ->bhɛtɛ",
+      "kliso->kliso",
+      "ɔbhɛtɛ->bhɛtɛ",
+      "bɔlɛ->bɔ",
+      "soɔ->so",
+      "mɛ->mɛ",
+      "mɛ->mɛ",
+      "kishi->shi",
+      "akɔlɔ->kɔlɔ"
+    ],
+    "miss_feat": []
+  },
+  "secs": 154.4
+}

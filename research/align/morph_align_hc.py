@@ -24,7 +24,6 @@ _RESEARCH = Path(__file__).resolve().parents[1]
 if str(_RESEARCH) not in sys.path:
     sys.path.insert(0, str(_RESEARCH))
 
-from align import align  # noqa: E402
 from engine.grammar import LangModel  # noqa: E402
 
 ACCEPT_PROB = 0.5          # min alignment probability to consider accepting a marker
@@ -218,10 +217,19 @@ def build_streams(pair: str, model: LangModel, verses, *, chunk_timeout: int = 2
     return streams, morph_rows
 
 
-def run(pair: str, *, backend: str = "eflomal", sample: int = 0, apply: bool = False) -> dict:
-    """Full pipeline: HC parse → morpheme stream → THOT align → markers → route. Writes JSONL + summary."""
+def run(pair: str, *, backend: str = "eflomal", sample: int = 0, apply: bool = False,
+        align_mode: str = "factored") -> dict:
+    """Full pipeline: HC parse → morpheme stream → THOT align → markers → route. Writes JSONL + summary.
+
+    `align_mode` selects how the alignment table is built (`align/table_modes.py`; `factored` | `guided`
+    | `identity`) — see `align/thot-on-morphs-report.md` for the 8-pair study that picked `factored` as
+    the default. This applies the same mechanism `induce.cotrain.cotrain` uses, to this pipeline's
+    per-morpheme marker/gloss assembly instead of root discovery — the study measured the effect on root
+    discovery specifically, not this marker pipeline, so treat `factored`'s benefit here as a reasonable
+    extension of a validated mechanism, not itself independently measured."""
     from gold.goldio import FROZEN, load_gold
     from gold.hc_coverage import build_reference_model
+    from align.table_modes import build_table
     gold = load_gold(pair)
     affix_feats = {a["affix"]: (a.get("features") or {}) for a in gold.get("affixes", [])
                    if isinstance(a.get("features"), dict)}
@@ -229,7 +237,8 @@ def run(pair: str, *, backend: str = "eflomal", sample: int = 0, apply: bool = F
     model = build_reference_model(pair)
     verses = _verses(pair, sample)
     streams, morph_rows = build_streams(pair, model, verses)
-    table, used = align(morph_rows, backend=backend, allow_cooccur_fallback=False)
+    table = build_table(align_mode, morph_rows, model, backend=backend)
+    used = backend
     markers = assemble_markers(streams, table, affix_feats, pos_of)
 
     accepted = [m for m in markers if m.decision == "accept"]
@@ -294,8 +303,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--backend", default="eflomal", help="eflomal (THOT, required) | cooccur (offline tests only)")
     ap.add_argument("--sample", type=int, default=0, help="cap verses (0 = all)")
     ap.add_argument("--apply", action="store_true", help="emit deltas for accepted markers")
+    ap.add_argument("--align-mode", default="factored", choices=["factored", "guided", "identity"],
+                    help="how the THOT table is built (align/table_modes.py); default 'factored' per "
+                         "align/thot-on-morphs-report.md; 'guided'/'identity' kept as options")
     args = ap.parse_args(argv)
-    s = run(args.pair, backend=args.backend, sample=args.sample, apply=args.apply)
+    s = run(args.pair, backend=args.backend, sample=args.sample, apply=args.apply, align_mode=args.align_mode)
     print(f"[{args.pair}] morpheme alignment ({s['backend']}): {s['markers']} markers over {s['verses']} verses")
     print(f"  ACCEPT (THOT ∩ HC): {s['accepted']}   DEFER: {s['deferred']}   "
           f"affixes glossed: {s['affixes_glossed']}")

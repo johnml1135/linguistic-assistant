@@ -1,0 +1,125 @@
+{
+  "glottocode": "selk1253",
+  "pair_key": "pg_selk1253",
+  "manifest": {
+    "glottocode": "selk1253",
+    "language": "Selkup",
+    "pair_key": "pg_selk1253",
+    "rows_train_total": 2596,
+    "rows_train_english_meta": 2555,
+    "rows_train_segmented": 2554,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 6326,
+    "gold_counts": {
+      "wordforms": 1366,
+      "lexicon": 624
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.85,
+    "delta": 0.85,
+    "final_ambiguity": 1.92,
+    "lexicon": {
+      "roots": 575,
+      "glossed": 399,
+      "glossed_frac": 0.6939,
+      "affix_glosses_inferred": 3
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.85,
+          "ambiguity": 2.3
+        },
+        "templated": {
+          "coverage": 0.85,
+          "ambiguity": 1.92
+        },
+        "templated+pos": {
+          "coverage": 0.8,
+          "ambiguity": 1.7
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 10,
+        "prefix2": 6,
+        "suffix1": 40,
+        "suffix2": 30,
+        "suffix3": 25,
+        "suffix4": 20
+      }
+    },
+    "harmony_families": {
+      "m": [
+        "m",
+        "om"
+      ],
+      "n": [
+        "en",
+        "n",
+        "na",
+        "on"
+      ],
+      "t": [
+        "at",
+        "it",
+        "t",
+        "ta"
+      ],
+      "j": [
+        "j",
+        "ja"
+      ],
+      "q": [
+        "q",
+        "qu"
+      ]
+    },
+    "enumeration_debt": 9
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.47,
+    "lemma_recall": 0.1275,
+    "feature_recall": 0.12,
+    "miss_parse": [
+      "čʼiqəlʼkijoıːmpɔːtɨn",
+      "tɔːqɨltɨmpɨkkijoıːmpɔːtɨn",
+      "točʼčʼot",
+      "kur",
+      "šittälʼa",
+      "surɨčʼčʼɨj",
+      "muktut",
+      "amirla",
+      "taq",
+      "čʼontɨka",
+      "čʼaǯat",
+      "tuːntɨla"
+    ],
+    "miss_lemma": [
+      "tɨm->tɨm",
+      "qalaıːmpatɨ->qala",
+      "ɔːtaiːmtɨ->ɔːta",
+      "sompɨla->sompɨla",
+      "man->man",
+      "ira->ira",
+      "pakta->pakta",
+      "tap->tap",
+      "no->no",
+      "toːna->toːna"
+    ],
+    "miss_feat": [
+      "kət=['LOC.ADV']",
+      "kət=['LOC.ADV']",
+      "iman=['GEN']"
+    ]
+  },
+  "secs": 192.0
+}

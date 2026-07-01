@@ -1,0 +1,164 @@
+{
+  "glottocode": "dido1241",
+  "pair_key": "pg_dido1241",
+  "manifest": {
+    "glottocode": "dido1241",
+    "language": "Tsez",
+    "pair_key": "pg_dido1241",
+    "rows_train_total": 3626,
+    "rows_train_english_meta": 3625,
+    "rows_train_segmented": 3623,
+    "gold_rows": 300,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 7725,
+    "gold_counts": {
+      "wordforms": 2916,
+      "lexicon": 681
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.725,
+    "delta": 0.725,
+    "final_ambiguity": 2.75,
+    "lexicon": {
+      "roots": 695,
+      "glossed": 520,
+      "glossed_frac": 0.7482,
+      "affix_glosses_inferred": 8
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.725,
+          "ambiguity": 3.92
+        },
+        "templated": {
+          "coverage": 0.725,
+          "ambiguity": 2.75
+        },
+        "templated+pos": {
+          "coverage": 0.6333,
+          "ambiguity": 2.3
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 29,
+        "prefix2": 24,
+        "prefix3": 18,
+        "prefix4": 13,
+        "suffix1": 45,
+        "suffix2": 36,
+        "suffix3": 35,
+        "suffix4": 21
+      }
+    },
+    "harmony_families": {
+      "n": [
+        "an",
+        "anu",
+        "n",
+        "ni",
+        "no",
+        "on"
+      ],
+      "b": [
+        "abi",
+        "b",
+        "bo"
+      ],
+      "r": [
+        "er",
+        "or",
+        "r",
+        "ru"
+      ],
+      "s": [
+        "es",
+        "osi",
+        "s",
+        "si"
+      ],
+      "y": [
+        "ay",
+        "y",
+        "yo"
+      ],
+      "q": [
+        "eq",
+        "oq",
+        "q"
+      ],
+      "z": [
+        "ez",
+        "z"
+      ],
+      "ł": [
+        "ał",
+        "ł",
+        "łi"
+      ],
+      "k": [
+        "k",
+        "uk"
+      ],
+      "ž": [
+        "ž",
+        "ži"
+      ]
+    },
+    "enumeration_debt": 22
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.6,
+    "lemma_recall": 0.255,
+    "feature_recall": 0.145,
+    "miss_parse": [
+      "riłs",
+      "ik’ia",
+      "c’oxč’ua",
+      "gedbi",
+      "t’umibi",
+      "ezu~oƛ’ˤux",
+      "k’ačaɣˤa",
+      "amru",
+      "biqiya",
+      "žek’ubi",
+      "boboru",
+      "ʕoƛnon"
+    ],
+    "miss_lemma": [
+      "diz->di",
+      "di->di",
+      "zown->zow",
+      "ričiƛƛin->iči",
+      "yičin->iči",
+      "žawab->žawab",
+      "ɣudi->ɣudi",
+      "sida->sida",
+      "roɣn->oɣ",
+      "zownƛax->zow"
+    ],
+    "miss_feat": [
+      "tełxor=['AD.LAT']",
+      "tełn=['TOP']",
+      "šebiƛin=['QUOT']",
+      "bełiquz=['GEN2']",
+      "bełiqus=['GEN1']",
+      "maħorn=['TOP']",
+      "idur=['LAT']",
+      "miq=['POSS.ESS']",
+      "esirn=['PFV.CVB']",
+      "bełiqana=['ERG']",
+      "miq=['POSS.ESS']",
+      "mis=['GEN1']"
+    ]
+  },
+  "secs": 174.7
+}

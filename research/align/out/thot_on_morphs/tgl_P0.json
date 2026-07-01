@@ -1,0 +1,245 @@
+{
+  "pair": "tgl",
+  "paradigm": "P0",
+  "secs": 69.2,
+  "tdd_result": {
+    "pair": "tgl",
+    "iterations": 34,
+    "base_coverage": 0.0,
+    "final_coverage": 0.3583,
+    "delta": 0.3583,
+    "final_ambiguity": 2.19,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.3667,
+          "ambiguity": 4.95
+        },
+        "templated": {
+          "coverage": 0.3583,
+          "ambiguity": 2.19
+        },
+        "templated+pos": {
+          "coverage": 0.25,
+          "ambiguity": 1.43
+        }
+      },
+      "slots": {
+        "infix1": 3,
+        "prefix1": 21,
+        "prefix2": 15,
+        "prefix3": 14,
+        "prefix4": 14,
+        "suffix1": 12,
+        "suffix2": 10,
+        "suffix3": 7,
+        "suffix4": 4
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 164,
+        "pron": 49,
+        "verb": 41,
+        "prep": 21,
+        "det": 16,
+        "conj": 14,
+        "adj": 9,
+        "num": 6,
+        "adv": 4,
+        "ptcl": 1
+      },
+      "affixes_with_msa": 17,
+      "affixes_total": 36
+    },
+    "lexicon": {
+      "roots": 325,
+      "glossed": 306,
+      "glossed_frac": 0.9415,
+      "affix_glosses_inferred": 3
+    },
+    "affixes_kept": [
+      "ng",
+      "n",
+      "ka",
+      "g",
+      "bi",
+      "o",
+      "is",
+      "u",
+      "a",
+      "an",
+      "kas",
+      "sabi",
+      "n",
+      "s",
+      "al",
+      "um",
+      "p",
+      "b",
+      "ma",
+      "hab",
+      "na",
+      "roon",
+      "sinu",
+      "hel",
+      "alan",
+      "in",
+      "in",
+      "sa",
+      "g",
+      "a",
+      "nag",
+      "ib",
+      "gina",
+      "guma",
+      "ak",
+      "mag"
+    ],
+    "harmony_families": {
+      "ng": [
+        "nag",
+        "ng"
+      ],
+      "n": [
+        "an",
+        "in",
+        "n",
+        "na"
+      ],
+      "k": [
+        "ak",
+        "ka"
+      ],
+      "b": [
+        "b",
+        "bi",
+        "ib"
+      ],
+      "s": [
+        "is",
+        "s",
+        "sa"
+      ],
+      "m": [
+        "ma",
+        "um"
+      ]
+    },
+    "enumeration_debt": 10,
+    "phonology": {
+      "enumeration_debt_before": 10,
+      "enumeration_debt_after": 10,
+      "affixes_removed": 0,
+      "collapsed": [],
+      "needs_review": [
+        {
+          "members": [
+            "nag",
+            "ng"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "an",
+            "in",
+            "n",
+            "na"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ak",
+            "ka"
+          ],
+          "reason": "not a single-position alternation"
+        },
+        {
+          "members": [
+            "b",
+            "bi",
+            "ib"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "is",
+            "s",
+            "sa"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ma",
+            "um"
+          ],
+          "reason": "not a single-position alternation"
+        }
+      ],
+      "rules_proposed": []
+    }
+  },
+  "score": {
+    "coverage": 0.3467,
+    "ambiguity": 8.71,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.325,
+      "missed": [
+        "krus",
+        "david",
+        "galilea",
+        "liwanag",
+        "nagsalita",
+        "pinagpala",
+        "kasulatan",
+        "pilato",
+        "eskriba",
+        "bumalik",
+        "bagong",
+        "taon",
+        "nakatatanda",
+        "kilala",
+        "pagkain",
+        "dahilan",
+        "trono",
+        "binigyan",
+        "guro",
+        "pamamahinga",
+        "nakikita",
+        "bato",
+        "maria",
+        "tinanong",
+        "sakit",
+        "kumain",
+        "alipin",
+        "kagalakan",
+        "pinuno",
+        "lubos",
+        "pupunta",
+        "karunungan",
+        "patungkol",
+        "damit",
+        "iniwan",
+        "bangka",
+        "nararapat",
+        "ibibigay",
+        "kabilang",
+        "una"
+      ]
+    },
+    "roots": 325,
+    "affixes": 36
+  }
+}

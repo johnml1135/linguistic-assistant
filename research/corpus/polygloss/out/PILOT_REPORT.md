@@ -1,0 +1,36 @@
+# PolyGloss pilot report
+
+Blind-benchmark pilot: HC induction (`induce/tdd.py`) run over PolyGloss-sourced parallel text, gold-blind (see `build.py`), scored against the corpus's own hand-annotated segmentation/glosses (see `score.py`). Per Polygloss_integration.md — curated pilot, exploratory, no fixed pass threshold; results recorded honestly including weak ones.
+
+| Language | Glottocode | Typology | Gold split | Train rows | Internal coverage | Roots glossed | Gold parse_rate | Gold lemma_recall | Gold feature_recall | Harmony debt | Secs |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Arapaho | arap1274 | Algonquian, polysynthetic — test split | test (contamination-free) | 36771 | 0.000→0.583 | 0.919 | 0.557 | 0.263 | 0.242 | 29 | 218.4 |
+| Vera'a | vera1241 | Oceanic (Vanuatu) — train holdout | train (upper bound) | 1931 | 0.000→0.827 | 0.707 | 0.820 | 0.195 | 0.150 | 8 | 165.9 |
+| Tsez | dido1241 | Nakh-Daghestanian, ergative — test split | test (contamination-free) | 3625 | 0.000→0.725 | 0.748 | 0.690 | 0.273 | 0.150 | 22 | 184.7 |
+| Lezgian | lezg1247 | Nakh-Daghestanian, ergative — test split | test (contamination-free) | 646 | 0.000→0.443 | 1.000 | 0.492 | 0.133 | 0.075 | 0 | 172.7 |
+| Nyangbo | nyan1302 | Niger-Congo (Kwa) — test split | test (contamination-free) | 1221 | 0.000→0.700 | 0.002 | 0.762 | 0.000 | 0.000 | 3 | 158.2 |
+| Hokkaido Ainu | ainu1240 | isolate, polysynthetic — test split | test (contamination-free) | 6699 | 0.000→0.717 | 0.742 | 0.903 | 0.171 | 0.152 | 46 | 176.8 |
+| Ruuli | ruul1235 | Bantu, non-Swahili subgroup — test split | test (contamination-free) | 2098 | 0.000→0.925 | 0.558 | 0.655 | 0.077 | 0.068 | 32 | 188.4 |
+| Natügu | natu1246 | Oceanic (Reef-Santa Cruz) — test split | test (contamination-free) | 786 | 0.000→0.467 | 0.697 | 0.530 | 0.190 | 0.152 | 12 | 179.2 |
+| Cayuga | cayu1261 | Iroquoian, polysynthetic — train holdout | train (upper bound) | 3045 | 0.000→0.175 | 0.957 | 0.135 | 0.026 | 0.007 | 12 | 165.6 |
+| Japhug | japh1234 | Sino-Tibetan (Gyalrongic), polysynthetic agreement — train holdout | train (upper bound) | 3534 | 0.000→0.642 | 0.646 | 0.573 | 0.177 | 0.120 | 3 | 201.7 |
+| Beja | beja1238 | Cushitic (Afro-Asiatic) — train holdout | train (upper bound) | 5663 | 0.000→0.542 | 0.880 | 0.458 | 0.158 | 0.077 | 18 | 208.5 |
+| Dolgan | dolg1241 | Turkic (Siberia), agglutinative — train holdout | train (upper bound) | 10144 | 0.000→0.883 | 0.686 | 0.623 | 0.128 | 0.050 | 28 | 204.9 |
+| Kamas | kama1378 | Uralic (Samoyedic) — train holdout | train (upper bound) | 9266 | 0.000→0.817 | 0.648 | 0.660 | 0.228 | 0.107 | 14 | 196.3 |
+| Selkup | selk1253 | Uralic (Samoyedic) — train holdout | train (upper bound) | 2555 | 0.000→0.850 | 0.694 | 0.477 | 0.130 | 0.120 | 9 | 202.4 |
+| N‖ng | nngg1234 | Tuu/Khoisan, click language — train holdout | train (upper bound) | 2124 | 0.000→0.865 | 0.647 | 0.590 | 0.290 | 0.253 | 4 | 170.6 |
+| Mauwake | mauw1238 | Trans-New Guinea — train holdout | train (upper bound) | 2133 | 0.000→0.906 | 0.565 | 0.715 | 0.234 | 0.190 | 22 | 191.3 |
+| Kalamang | kara1499 | Papuan isolate — train holdout | train (upper bound) | 1873 | 0.000→0.585 | 0.765 | 0.657 | 0.255 | 0.150 | 17 | 204.8 |
+| Basque | basq1248 | isolate, ergative — train holdout | train (upper bound) | 631 | 0.000→0.786 | 0.611 | 0.805 | 0.177 | 0.085 | 12 | 173.8 |
+
+**18 succeeded, 0 failed** out of 18 languages attempted.
+
+Notes:
+- `test`-split rows come from PolyGloss's own held-out split for that language — never seen by the aligner or the induction loop, so those scores are contamination-free.
+- `train`-split holdout rows ARE part of the same corpus the aligner/induction ran over (only their raw tokens, never their segmentation/gloss labels) — `parse_rate` there is an optimistic upper bound since a frequent gold surface can become a root by coincidence of frequency; `lemma_recall`/`feature_recall` are not inflated this way (root glosses come from THOT alignment, not from the gold).
+- Scores reflect a fixed, deliberately short per-language time/root budget (auto-scaled by vocabulary size, see `pilot.py::_scale`) — a pilot floor, not each language's ceiling.
+- `lemma_recall`/`feature_recall` are a JOINT test of segmentation AND THOT-gloss-match: a root only counts as recalled if its THOT-aligned English gloss exactly matches the hand gloss (after slugging). Low scores (0.0-0.3 across most languages here) mostly reflect THOT alignment noise on a short, thin parallel corpus, not pure segmentation failure — `Roots glossed` (the fraction of induced roots that got ANY non-'?' THOT gloss) is a useful cross-check: a language with low `Roots glossed` will have a near-zero recall almost by construction, independent of how good its morphology induction is.
+- Gold surfaces are matched against HC's parses via `to_gold._parse_surface` (tokenizer-normalized: lowercased, non-word characters stripped, same as training tokens) rather than the raw segmentation-tier surface — without this, case alone made some gold words unparsable for reasons unrelated to morphology. This recovered most of the gap on most languages (e.g. Arapaho's apostrophe-final words) but not all of it everywhere — see below.
+- **Cayuga (cayu1261) tokenizer fix applied**: `tokenize()` now accepts an `extra_word_chars` switch (see `corpus/ebible/read.py`), and `corpus/polygloss/orthography.py` maps `cayu1261 -> ":"` (its vowel-length mark). Before the fix: internal coverage 0.858 vs. gold parse_rate 0.086 — a 0.77 gap, because training tokens and gold surfaces disagreed on where words ended. After: internal coverage 0.175 vs. gold parse_rate 0.135 — both numbers dropped, but the GAP closed to 0.04. That is the correct outcome, not a regression: the old 0.858 was measuring induction over artificially fragmented pseudo-words (each real Cayuga word cut into 2+ meaningless pieces), which is an easier — but wrong — task. With real, whole polysynthetic word forms, this pilot's fixed budget genuinely isn't enough to reach good coverage; that's now an honest signal about corpus size/budget vs. Cayuga's difficulty, not an artifact of broken tokenization.
+- **Alignment near-failure, not a segmentation finding**: Nyangbo (nyan1302, glossed_frac=0.002) — THOT produced a real English gloss for almost no induced root (see `Roots glossed` above), so `lemma_recall`/`feature_recall` for these languages are not a meaningful morphology signal at this corpus size/budget.
+- **Coverage-vs-parse_rate gap with a DIFFERENT cause than tokenization** (checked: most of that language's `miss_parse` surfaces are NOT tokenizer-split — ruled out as the explanation): Selkup (selk1253, internal coverage=0.850 vs. gold parse_rate=0.477, 0% of misses tokenizer-split). Most likely plain root-coverage sparsity: this pilot's auto-scaled root budget (`pilot.py::_scale`) covers only the most frequent word types, so held-out gold words that happen to be rare in the training corpus may simply never have become roots or affixed forms, independent of any tokenizer issue.

@@ -34,7 +34,9 @@ def score_parses(
 ) -> dict:
     """`wordforms`: `{surface, lemma, features, ...}` records from `to_gold.rows_to_wordforms_and_lexicon`.
     `lemma_gloss`: lemma id -> its stem's gloss (the lexicon entry's `senses[0]`).
-    `parses`: surface -> HC's analyses for it (empty/absent = unparsed).
+    `parses`: parse_surface -> HC's analyses for it (empty/absent = unparsed). Keyed by
+    `parse_surface` (tokenizer-normalized), not `surface` (original orthography) — see
+    `to_gold._parse_surface`; falls back to `surface` for records that predate that field.
     """
     n = len(wordforms)
     parsed = recalled = feat_ok = 0
@@ -42,7 +44,7 @@ def score_parses(
     miss_lemma: list[str] = []
     miss_feat: list[str] = []
     for w in wordforms:
-        analyses = parses.get(w["surface"]) or []
+        analyses = parses.get(w.get("parse_surface", w["surface"])) or []
         if not analyses:
             miss_parse.append(w["surface"])
             continue
@@ -83,13 +85,18 @@ def score_parses(
 def score_pair(model, wordforms: list[dict], lexicon: list[dict], *, sample: int = 400) -> dict:
     """Build the HC parse of `wordforms`' surfaces against `model` (an `engine.grammar.LangModel`,
     e.g. from `induce/tdd.py`'s output) and score. Requires the `hc` CLI — see `gold/hc_coverage.py
-    ::hc_available()`. `wordforms`/`lexicon` come from `to_gold.rows_to_wordforms_and_lexicon`."""
+    ::hc_available()`. `wordforms`/`lexicon` come from `to_gold.rows_to_wordforms_and_lexicon`.
+
+    Sampling is shuffled with a fixed seed before slicing to `sample` — `wordforms` is in row order,
+    which (for row-order-derived gold) skews toward whichever source document happens to sort first."""
+    import random
+
     from engine.hc import run_parse
 
     # Same convention as `gold/goldio.py::load_gold`: a lemma's gloss is its lexicon entry's
     # first sense, keyed by `word` (the lemma's surface form).
     lemma_gloss = {e["word"]: e["senses"][0] for e in lexicon if e.get("senses")}
-    wf = wordforms[:sample]
-    surfaces = list({w["surface"] for w in wf})
+    wf = wordforms if len(wordforms) <= sample else random.Random(0).sample(wordforms, sample)
+    surfaces = list({w.get("parse_surface", w["surface"]) for w in wf})
     parses = run_parse(model, surfaces, chunk_size=25, chunk_timeout=25, templated=False)
     return score_parses(wf, lemma_gloss, parses)

@@ -1,0 +1,178 @@
+{
+  "pair": "swh",
+  "paradigm": "P2",
+  "secs": 110.4,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 183,
+      "proposed": 15,
+      "cov_before": 0.7483,
+      "cov_after": 0.775,
+      "delta": 0.0267,
+      "amb": 3.18,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 166,
+      "proposed": 4,
+      "cov_before": 0.775,
+      "cov_after": 0.79,
+      "delta": 0.015,
+      "amb": 3.3,
+      "kept": true
+    }
+  ],
+  "roots_added": 19,
+  "added": [
+    {
+      "form": "tund",
+      "gloss": "fru",
+      "prob": 0.5
+    },
+    {
+      "form": "imo",
+      "gloss": "mon",
+      "prob": 1.0
+    },
+    {
+      "form": "erod",
+      "gloss": "herod",
+      "prob": 0.75
+    },
+    {
+      "form": "liend",
+      "gloss": "came",
+      "prob": 0.667
+    },
+    {
+      "form": "ak",
+      "gloss": "bro",
+      "prob": 0.5
+    },
+    {
+      "form": "kutan",
+      "gloss": "things",
+      "prob": 1.0
+    },
+    {
+      "form": "hai",
+      "gloss": "ent",
+      "prob": 0.5
+    },
+    {
+      "form": "kaj",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "iri",
+      "gloss": "secre",
+      "prob": 0.75
+    },
+    {
+      "form": "poke",
+      "gloss": "ved",
+      "prob": 1.0
+    },
+    {
+      "form": "wezi",
+      "gloss": "con",
+      "prob": 1.0
+    },
+    {
+      "form": "ich",
+      "gloss": "eye",
+      "prob": 0.833
+    },
+    {
+      "form": "anang",
+      "gloss": "son",
+      "prob": 0.5
+    },
+    {
+      "form": "ereza",
+      "gloss": "son",
+      "prob": 1.0
+    },
+    {
+      "form": "ira",
+      "gloss": "said",
+      "prob": 1.0
+    },
+    {
+      "form": "ti",
+      "gloss": "tre",
+      "prob": 0.5
+    },
+    {
+      "form": "dog",
+      "gloss": "lea",
+      "prob": 0.5
+    },
+    {
+      "form": "liposiki",
+      "gloss": "heard",
+      "prob": 0.75
+    },
+    {
+      "form": "ang",
+      "gloss": "saw",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.5733,
+    "ambiguity": 3.9,
+    "enumeration_debt": 31,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.05,
+      "gold_parsed": 0.725,
+      "missed": [
+        "nawaambia",
+        "enzi",
+        "mwenu",
+        "daudi",
+        "nuru",
+        "pilato",
+        "miaka",
+        "mkate",
+        "mengi",
+        "sabato",
+        "uongo",
+        "duniani",
+        "mtumwa",
+        "kuja",
+        "alikuja",
+        "matunda",
+        "hai",
+        "ambapo",
+        "mwalimu",
+        "wanadamu",
+        "ushuhuda",
+        "njema",
+        "hakika",
+        "kinyume",
+        "kutoa",
+        "simoni",
+        "mbili",
+        "kuingia",
+        "akaenda",
+        "pili",
+        "wanawake",
+        "ahadi",
+        "yuda",
+        "kichwa",
+        "abrahamu",
+        "mariamu",
+        "waandishi",
+        "kula"
+      ]
+    },
+    "roots": 494,
+    "affixes": 72
+  }
+}

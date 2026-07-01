@@ -1,0 +1,158 @@
+{
+  "glottocode": "arap1274",
+  "pair_key": "pg_arap1274",
+  "manifest": {
+    "glottocode": "arap1274",
+    "language": "Arapaho",
+    "pair_key": "pg_arap1274",
+    "rows_train_total": 36776,
+    "rows_train_english_meta": 36771,
+    "rows_train_segmented": 36771,
+    "gold_rows": 300,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 35770,
+    "gold_counts": {
+      "wordforms": 1071,
+      "lexicon": 560
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.5833,
+    "delta": 0.5833,
+    "final_ambiguity": 3.37,
+    "lexicon": {
+      "roots": 495,
+      "glossed": 455,
+      "glossed_frac": 0.9192,
+      "affix_glosses_inferred": 5
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.5833,
+          "ambiguity": 8.27
+        },
+        "templated": {
+          "coverage": 0.5833,
+          "ambiguity": 3.37
+        },
+        "templated+pos": {
+          "coverage": 0.5333,
+          "ambiguity": 2.73
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 32,
+        "prefix2": 30,
+        "prefix3": 29,
+        "prefix4": 25,
+        "suffix1": 36,
+        "suffix2": 35,
+        "suffix3": 32,
+        "suffix4": 30
+      }
+    },
+    "harmony_families": {
+      "h": [
+        "eih",
+        "h",
+        "hee",
+        "hei",
+        "hi",
+        "hu"
+      ],
+      "w": [
+        "w",
+        "wo"
+      ],
+      "n": [
+        "in",
+        "ini",
+        "n",
+        "nii",
+        "no",
+        "noo",
+        "oen",
+        "ooni",
+        "uuno"
+      ],
+      "t": [
+        "et",
+        "ot",
+        "otei",
+        "tii",
+        "to"
+      ],
+      "p": [
+        "p",
+        "uup"
+      ],
+      "3": [
+        "3ei",
+        "3i",
+        "i3i",
+        "o3",
+        "o3i"
+      ],
+      "nt": [
+        "ent",
+        "nit",
+        "noto",
+        "ntou"
+      ],
+      "c": [
+        "ce",
+        "iic"
+      ],
+      "b": [
+        "b",
+        "be",
+        "bii"
+      ]
+    },
+    "enumeration_debt": 29
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.26,
+    "lemma_recall": 0.145,
+    "feature_recall": 0.14,
+    "miss_parse": [
+      "hebesiibeih'in",
+      "hokokiy",
+      "'oo",
+      "hee3ebe'inowoo",
+      "3owo3nooo",
+      "hesibee3i'",
+      "nih'eeneisiini",
+      "nihneenii3owoon",
+      "yeini3i'",
+      "ne'nii'P",
+      "neih'e",
+      "tihno'eeckoohunoo"
+    ],
+    "miss_lemma": [
+      "too3ihoot->too3ih",
+      "woo3eeni3i->woo3ee",
+      "wohei->wohei",
+      "3iikonibetooot->3iikonibetooot",
+      "yein->yein",
+      "neneenit->neneeni",
+      "neneenit->neneeni",
+      "hiko3einoo3itoono->ko3ein",
+      "woow->woow",
+      "heeyou->heeyou"
+    ],
+    "miss_feat": [
+      "heisonoonin=['12POSS', '2S.IMPERF']",
+      "hiniisonoon=['3S']"
+    ]
+  },
+  "secs": 199.2
+}

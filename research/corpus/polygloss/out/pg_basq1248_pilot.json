@@ -1,0 +1,146 @@
+{
+  "glottocode": "basq1248",
+  "pair_key": "pg_basq1248",
+  "manifest": {
+    "glottocode": "basq1248",
+    "language": "Basque",
+    "pair_key": "pg_basq1248",
+    "rows_train_total": 745,
+    "rows_train_english_meta": 631,
+    "rows_train_segmented": 331,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 1128,
+    "gold_counts": {
+      "wordforms": 588,
+      "lexicon": 295
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.7857,
+    "delta": 0.7857,
+    "final_ambiguity": 1.57,
+    "lexicon": {
+      "roots": 506,
+      "glossed": 309,
+      "glossed_frac": 0.6107,
+      "affix_glosses_inferred": 3
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.7857,
+          "ambiguity": 2.02
+        },
+        "templated": {
+          "coverage": 0.7857,
+          "ambiguity": 1.57
+        },
+        "templated+pos": {
+          "coverage": 0.75,
+          "ambiguity": 1.38
+        }
+      },
+      "slots": {
+        "infix1": 3,
+        "prefix1": 10,
+        "prefix2": 2,
+        "suffix1": 23,
+        "suffix2": 11,
+        "suffix3": 10,
+        "suffix4": 5
+      }
+    },
+    "harmony_families": {
+      "k": [
+        "ak",
+        "ek",
+        "k",
+        "ko"
+      ],
+      "b": [
+        "b",
+        "be"
+      ],
+      "t": [
+        "ait",
+        "it",
+        "t",
+        "ta"
+      ],
+      "n": [
+        "in",
+        "n"
+      ],
+      "l": [
+        "ela",
+        "la"
+      ],
+      "g": [
+        "go",
+        "ig"
+      ],
+      "zk": [
+        "izk",
+        "zuek"
+      ],
+      "z": [
+        "ez",
+        "z"
+      ]
+    },
+    "enumeration_debt": 12
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.635,
+    "lemma_recall": 0.1475,
+    "feature_recall": 0.07,
+    "miss_parse": [
+      "dardaraerazi",
+      "Ele",
+      "(Hik",
+      "paper",
+      "Pellok",
+      "astiro",
+      "urik",
+      "emanØ",
+      "zaldiari",
+      "nahi]",
+      "sagar",
+      "Arras"
+    ],
+    "miss_lemma": [
+      "zaitut->zaitu",
+      "ibai->ibai",
+      "aita->aita",
+      "amari->ama",
+      "bazkaltzen->bazkal",
+      "garbitzen->garbi",
+      "bazkaldu->bazkal",
+      "dago->go",
+      "egiten->egiten",
+      "gorria->gorri"
+    ],
+    "miss_feat": [
+      "gizonak=['ERG', 'the']",
+      "emakumea=['the']",
+      "umeak=['DEF', 'E']",
+      "gizona=['the']",
+      "emakumea=['det']",
+      "amak=['ERG']",
+      "liburua=['the']",
+      "gizona=['the']",
+      "gizona=['the']",
+      "emakumea=['the']",
+      "liburua=['the']",
+      "ordaindu=['Asp(perfect)']"
+    ]
+  },
+  "secs": 166.0
+}

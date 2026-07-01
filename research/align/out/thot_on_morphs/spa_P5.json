@@ -1,0 +1,234 @@
+{
+  "pair": "spa",
+  "paradigm": "P5",
+  "secs": 114.8,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 170,
+      "proposed": 42,
+      "cov_before": 0.7333,
+      "cov_after": 0.815,
+      "delta": 0.0817,
+      "amb": 2.54,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 123,
+      "proposed": 5,
+      "cov_before": 0.815,
+      "cov_after": 0.825,
+      "delta": 0.01,
+      "amb": 2.53,
+      "kept": true
+    }
+  ],
+  "roots_added": 47,
+  "added": [
+    {
+      "form": "ve",
+      "gloss": "see",
+      "prob": 0.75
+    },
+    {
+      "form": "lla",
+      "gloss": "called",
+      "prob": 0.5
+    },
+    {
+      "form": "da",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "amé",
+      "gloss": "amen",
+      "prob": 0.5
+    },
+    {
+      "form": "levantó",
+      "gloss": "arose",
+      "prob": 1.0
+    },
+    {
+      "form": "doctrin",
+      "gloss": "teach",
+      "prob": 1.0
+    },
+    {
+      "form": "jude",
+      "gloss": "judea",
+      "prob": 0.857
+    },
+    {
+      "form": "demonio",
+      "gloss": "demons",
+      "prob": 1.0
+    },
+    {
+      "form": "tomó",
+      "gloss": "took",
+      "prob": 1.0
+    },
+    {
+      "form": "desiert",
+      "gloss": "ness",
+      "prob": 0.5
+    },
+    {
+      "form": "ho",
+      "gloss": "today",
+      "prob": 0.667
+    },
+    {
+      "form": "ir",
+      "gloss": "wrath",
+      "prob": 1.0
+    },
+    {
+      "form": "gendró",
+      "gloss": "father",
+      "prob": 0.587
+    },
+    {
+      "form": "jacob",
+      "gloss": "james",
+      "prob": 1.0
+    },
+    {
+      "form": "jos",
+      "gloss": "joseph",
+      "prob": 1.0
+    },
+    {
+      "form": "barc",
+      "gloss": "boat",
+      "prob": 1.0
+    },
+    {
+      "form": "vendrá",
+      "gloss": "come",
+      "prob": 1.0
+    },
+    {
+      "form": "so",
+      "gloss": "stood",
+      "prob": 1.0
+    },
+    {
+      "form": "ovej",
+      "gloss": "ing",
+      "prob": 0.5
+    },
+    {
+      "form": "jud",
+      "gloss": "judah",
+      "prob": 1.0
+    },
+    {
+      "form": "diab",
+      "gloss": "devil",
+      "prob": 0.667
+    },
+    {
+      "form": "presen",
+      "gloss": "gift",
+      "prob": 0.75
+    },
+    {
+      "form": "necesida",
+      "gloss": "need",
+      "prob": 1.0
+    },
+    {
+      "form": "trand",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "levánta",
+      "gloss": "arise",
+      "prob": 1.0
+    },
+    {
+      "form": "junt",
+      "gloss": "king",
+      "prob": 1.0
+    },
+    {
+      "form": "beb",
+      "gloss": "drink",
+      "prob": 0.5
+    },
+    {
+      "form": "rá",
+      "gloss": "give",
+      "prob": 0.75
+    },
+    {
+      "form": "to",
+      "gloss": "take",
+      "prob": 1.0
+    },
+    {
+      "form": "llegaro",
+      "gloss": "came",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.68,
+    "ambiguity": 2.24,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.025,
+      "gold_parsed": 0.775,
+      "missed": [
+        "maestro",
+        "gracias",
+        "escribas",
+        "decir",
+        "galilea",
+        "viene",
+        "sentado",
+        "juntamente",
+        "viendo",
+        "fruto",
+        "ancianos",
+        "saber",
+        "piedra",
+        "apóstoles",
+        "siervos",
+        "david",
+        "comer",
+        "cerca",
+        "justo",
+        "fin",
+        "asimismo",
+        "multitud",
+        "esperanza",
+        "años",
+        "cabeza",
+        "corazones",
+        "pilato",
+        "recibido",
+        "temor",
+        "maría",
+        "poco",
+        "eterna",
+        "aunque",
+        "potencia",
+        "monte",
+        "sabiduría",
+        "da",
+        "entró",
+        "mandamiento"
+      ]
+    },
+    "roots": 597,
+    "affixes": 64
+  }
+}

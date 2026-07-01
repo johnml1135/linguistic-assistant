@@ -1,0 +1,171 @@
+{
+  "pair": "ind",
+  "paradigm": "P3",
+  "secs": 97.9,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 194,
+      "proposed": 14,
+      "cov_before": 0.7083,
+      "cov_after": 0.7367,
+      "delta": 0.0283,
+      "amb": 3.89,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 177,
+      "proposed": 4,
+      "cov_before": 0.7367,
+      "cov_after": 0.7433,
+      "delta": 0.0067,
+      "amb": 3.9,
+      "kept": true
+    }
+  ],
+  "roots_added": 18,
+  "added": [
+    {
+      "form": "herodes",
+      "gloss": "herod",
+      "prob": 0.75
+    },
+    {
+      "form": "oho",
+      "gloss": "tre",
+      "prob": 0.714
+    },
+    {
+      "form": "yembuh",
+      "gloss": "hea",
+      "prob": 0.667
+    },
+    {
+      "form": "anda",
+      "gloss": "one",
+      "prob": 1.0
+    },
+    {
+      "form": "ghakim",
+      "gloss": "judg",
+      "prob": 1.0
+    },
+    {
+      "form": "turun",
+      "gloss": "son",
+      "prob": 0.5
+    },
+    {
+      "form": "langi",
+      "gloss": "behold",
+      "prob": 1.0
+    },
+    {
+      "form": "hasil",
+      "gloss": "fru",
+      "prob": 1.0
+    },
+    {
+      "form": "sebu",
+      "gloss": "called",
+      "prob": 1.0
+    },
+    {
+      "form": "kobus",
+      "gloss": "son",
+      "prob": 1.0
+    },
+    {
+      "form": "gelap",
+      "gloss": "ness",
+      "prob": 1.0
+    },
+    {
+      "form": "neger",
+      "gloss": "herod",
+      "prob": 0.5
+    },
+    {
+      "form": "bawa",
+      "gloss": "led",
+      "prob": 0.5
+    },
+    {
+      "form": "jujur",
+      "gloss": "tell",
+      "prob": 1.0
+    },
+    {
+      "form": "ibu",
+      "gloss": "became",
+      "prob": 0.5
+    },
+    {
+      "form": "ghasil",
+      "gloss": "tre",
+      "prob": 0.714
+    },
+    {
+      "form": "anggap",
+      "gloss": "called",
+      "prob": 1.0
+    },
+    {
+      "form": "hilang",
+      "gloss": "one",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.56,
+    "ambiguity": 4.63,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.1,
+      "gold_parsed": 0.75,
+      "missed": [
+        "daerah",
+        "bertemu",
+        "tuan",
+        "penting",
+        "perintah",
+        "menyelamatkan",
+        "mencoba",
+        "maupun",
+        "berteriak",
+        "menyembah",
+        "mengerti",
+        "bernama",
+        "perkataan",
+        "surat",
+        "berkumpul",
+        "apapun",
+        "daud",
+        "tahun",
+        "domba",
+        "masa",
+        "biasa",
+        "anggota",
+        "pintu",
+        "menderita",
+        "betapa",
+        "kemampuan",
+        "moyang",
+        "pohon",
+        "berjalan",
+        "minum",
+        "menyadari",
+        "sebenarnya",
+        "mengutus",
+        "meskipun",
+        "bahasa",
+        "memang"
+      ]
+    },
+    "roots": 543,
+    "affixes": 60
+  }
+}

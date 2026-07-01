@@ -1,0 +1,155 @@
+{
+  "glottocode": "mauw1238",
+  "pair_key": "pg_mauw1238",
+  "manifest": {
+    "glottocode": "mauw1238",
+    "language": "Mauwake",
+    "pair_key": "pg_mauw1238",
+    "rows_train_total": 2133,
+    "rows_train_english_meta": 2133,
+    "rows_train_segmented": 1963,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 2124,
+    "gold_counts": {
+      "wordforms": 158,
+      "lexicon": 111
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.9057,
+    "delta": 0.9057,
+    "final_ambiguity": 2.54,
+    "lexicon": {
+      "roots": 625,
+      "glossed": 353,
+      "glossed_frac": 0.5648,
+      "affix_glosses_inferred": 0
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.9057,
+          "ambiguity": 4.26
+        },
+        "templated": {
+          "coverage": 0.9057,
+          "ambiguity": 2.54
+        },
+        "templated+pos": {
+          "coverage": 0.8491,
+          "ambiguity": 2.08
+        }
+      },
+      "slots": {
+        "prefix1": 24,
+        "prefix2": 15,
+        "prefix3": 13,
+        "prefix4": 11,
+        "suffix1": 36,
+        "suffix2": 20,
+        "suffix3": 14,
+        "suffix4": 8
+      }
+    },
+    "harmony_families": {
+      "r": [
+        "ora",
+        "r",
+        "ra",
+        "ur"
+      ],
+      "w": [
+        "aw",
+        "iw",
+        "w",
+        "wi"
+      ],
+      "n": [
+        "an",
+        "en",
+        "n",
+        "na"
+      ],
+      "k": [
+        "ak",
+        "ek",
+        "ik",
+        "k",
+        "ok"
+      ],
+      "y": [
+        "eya",
+        "iya",
+        "y"
+      ],
+      "s": [
+        "asa",
+        "s"
+      ],
+      "mk": [
+        "emik",
+        "mik"
+      ],
+      "rk": [
+        "rek",
+        "rik",
+        "rika"
+      ],
+      "mm": [
+        "mama",
+        "muma",
+        "omem"
+      ],
+      "ww": [
+        "owaw",
+        "wowa"
+      ]
+    },
+    "enumeration_debt": 22
+  },
+  "gold_benchmark": {
+    "tested": 158,
+    "parse_rate": 0.4873,
+    "lemma_recall": 0.1772,
+    "feature_recall": 0.1519,
+    "miss_parse": [
+      "O",
+      "…",
+      "Yo",
+      "kookalekamna",
+      "…",
+      "moˈma",
+      "[moˈma",
+      "eˈnimeka]",
+      ">",
+      "sirasira",
+      "[[mera",
+      "eka]"
+    ],
+    "miss_lemma": [
+      "somek->somek",
+      "ikeya->ik",
+      "emeria->emeria",
+      "aawowa->aaw",
+      "enep->en",
+      "wuak->wu",
+      "soopowa->soop",
+      "maa->maa",
+      "gelemutitik->gelemuti",
+      "gelemutitik->gelemuti"
+    ],
+    "miss_feat": [
+      "samosamora=['RDP']",
+      "ufowa=['NMZ']",
+      "imenapna=['SS.SEQ', 'TP']",
+      "maemikemik=['1/3p', 'PA', 'SS.SIM', 'be']"
+    ]
+  },
+  "secs": 187.7
+}

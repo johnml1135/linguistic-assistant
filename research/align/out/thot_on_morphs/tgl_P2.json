@@ -1,0 +1,235 @@
+{
+  "pair": "tgl",
+  "paradigm": "P2",
+  "secs": 98.7,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 238,
+      "proposed": 28,
+      "cov_before": 0.6483,
+      "cov_after": 0.7117,
+      "delta": 0.0633,
+      "amb": 5.14,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 203,
+      "proposed": 2,
+      "cov_before": 0.7117,
+      "cov_after": 0.7183,
+      "delta": 0.0067,
+      "amb": 5.11,
+      "kept": true
+    }
+  ],
+  "roots_added": 30,
+  "added": [
+    {
+      "form": "liwana",
+      "gloss": "ght",
+      "prob": 0.5
+    },
+    {
+      "form": "ulat",
+      "gloss": "rit",
+      "prob": 1.0
+    },
+    {
+      "form": "kit",
+      "gloss": "ere",
+      "prob": 0.5
+    },
+    {
+      "form": "oo",
+      "gloss": "ere",
+      "prob": 1.0
+    },
+    {
+      "form": "dakila",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "ust",
+      "gloss": "ever",
+      "prob": 1.0
+    },
+    {
+      "form": "undok",
+      "gloss": "oun",
+      "prob": 0.5
+    },
+    {
+      "form": "sd",
+      "gloss": "behold",
+      "prob": 1.0
+    },
+    {
+      "form": "herodes",
+      "gloss": "herod",
+      "prob": 0.9
+    },
+    {
+      "form": "ngyari",
+      "gloss": "come",
+      "prob": 0.5
+    },
+    {
+      "form": "inun",
+      "gloss": "father",
+      "prob": 1.0
+    },
+    {
+      "form": "tindi",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "simula",
+      "gloss": "rea",
+      "prob": 1.0
+    },
+    {
+      "form": "tup",
+      "gloss": "ing",
+      "prob": 0.5
+    },
+    {
+      "form": "igay",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "dakil",
+      "gloss": "great",
+      "prob": 1.0
+    },
+    {
+      "form": "bubuti",
+      "gloss": "good",
+      "prob": 1.0
+    },
+    {
+      "form": "bibigay",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "lihim",
+      "gloss": "secre",
+      "prob": 0.5
+    },
+    {
+      "form": "punt",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "lay",
+      "gloss": "away",
+      "prob": 0.5
+    },
+    {
+      "form": "igy",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "nanakaw",
+      "gloss": "rou",
+      "prob": 0.5
+    },
+    {
+      "form": "kikini",
+      "gloss": "hea",
+      "prob": 0.5
+    },
+    {
+      "form": "lalakih",
+      "gloss": "men",
+      "prob": 0.75
+    },
+    {
+      "form": "aghuhukom",
+      "gloss": "judg",
+      "prob": 0.667
+    },
+    {
+      "form": "hukom",
+      "gloss": "judg",
+      "prob": 1.0
+    },
+    {
+      "form": "diyabl",
+      "gloss": "evil",
+      "prob": 0.8
+    },
+    {
+      "form": "kini",
+      "gloss": "heard",
+      "prob": 1.0
+    },
+    {
+      "form": "tanggap",
+      "gloss": "ved",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.5133,
+    "ambiguity": 7.17,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.45,
+      "missed": [
+        "krus",
+        "david",
+        "galilea",
+        "liwanag",
+        "nagsalita",
+        "pinagpala",
+        "kasulatan",
+        "pilato",
+        "eskriba",
+        "bumalik",
+        "bagong",
+        "taon",
+        "nakatatanda",
+        "kilala",
+        "pagkain",
+        "dahilan",
+        "trono",
+        "binigyan",
+        "guro",
+        "pamamahinga",
+        "nakikita",
+        "bato",
+        "maria",
+        "tinanong",
+        "sakit",
+        "kumain",
+        "alipin",
+        "kagalakan",
+        "pinuno",
+        "lubos",
+        "pupunta",
+        "karunungan",
+        "patungkol",
+        "damit",
+        "iniwan",
+        "bangka",
+        "nararapat",
+        "ibibigay",
+        "kabilang",
+        "una"
+      ]
+    },
+    "roots": 355,
+    "affixes": 36
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "glottocode": "natu1246",
+  "pair_key": "pg_natu1246",
+  "manifest": {
+    "glottocode": "natu1246",
+    "language": "Natügu",
+    "pair_key": "pg_natu1246",
+    "rows_train_total": 786,
+    "rows_train_english_meta": 786,
+    "rows_train_segmented": 786,
+    "gold_rows": 99,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 2579,
+    "gold_counts": {
+      "wordforms": 864,
+      "lexicon": 322
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.4667,
+    "delta": 0.4667,
+    "final_ambiguity": 1.48,
+    "lexicon": {
+      "roots": 670,
+      "glossed": 467,
+      "glossed_frac": 0.697,
+      "affix_glosses_inferred": 7
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.4667,
+          "ambiguity": 1.96
+        },
+        "templated": {
+          "coverage": 0.4667,
+          "ambiguity": 1.48
+        },
+        "templated+pos": {
+          "coverage": 0.3917,
+          "ambiguity": 1.32
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 24,
+        "prefix2": 10,
+        "prefix3": 4,
+        "suffix1": 33,
+        "suffix2": 19,
+        "suffix3": 10,
+        "suffix4": 5
+      }
+    },
+    "harmony_families": {
+      "k": [
+        "k",
+        "ki"
+      ],
+      "m": [
+        "m",
+        "me",
+        "mu"
+      ],
+      "ng": [
+        "ng",
+        "nge"
+      ],
+      "l": [
+        "l",
+        "le"
+      ],
+      "n": [
+        "na",
+        "ne",
+        "ni",
+        "nou"
+      ],
+      "b": [
+        "ba",
+        "bae",
+        "bo"
+      ],
+      "kr": [
+        "kr",
+        "kra"
+      ],
+      "s": [
+        "s",
+        "sae"
+      ]
+    },
+    "enumeration_debt": 12
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.465,
+    "lemma_recall": 0.1875,
+    "feature_recall": 0.15,
+    "miss_parse": [
+      "x",
+      ".",
+      "aletikrngq",
+      ".",
+      "Mzli",
+      ",",
+      ".",
+      ",",
+      ",",
+      "Natqgu",
+      "Aijz",
+      "."
+    ],
+    "miss_lemma": [
+      "olvz->olvz",
+      "badr->badr",
+      "nidr->nidr",
+      "kabzle->ka",
+      "trkatr->trka",
+      "tqvzokr->vz",
+      "dckta->dckta",
+      "nyz->nyz",
+      "dztudr->dztu",
+      "naonrx->naonrx"
+    ],
+    "miss_feat": [
+      "tqlipekr=['1AUGI', 'COS', 'RL']",
+      "nangi=['IRR']",
+      "trtenge=['1MINII']",
+      "nzalvztrngr=['NMLZ', 'NMLZ1']",
+      "trtenge=['1MINII']",
+      "nalikr=['1AUGI', 'IRR']",
+      "trtenge=['1MINII']",
+      "rpimoubz=['PDIR.YON', 'again']",
+      "nzalvztrngr=['NMLZ', 'NMLZ1']",
+      "lipe=['COS']",
+      "nzalvztrngr=['NMLZ', 'NMLZ1']",
+      "dzbedr=['3AUGII']"
+    ]
+  },
+  "secs": 172.3
+}

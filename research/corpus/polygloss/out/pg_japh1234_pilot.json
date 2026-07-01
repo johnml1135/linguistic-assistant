@@ -1,0 +1,122 @@
+{
+  "glottocode": "japh1234",
+  "pair_key": "pg_japh1234",
+  "manifest": {
+    "glottocode": "japh1234",
+    "language": "Japhug",
+    "pair_key": "pg_japh1234",
+    "rows_train_total": 3534,
+    "rows_train_english_meta": 3534,
+    "rows_train_segmented": 3505,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 6779,
+    "gold_counts": {
+      "wordforms": 466,
+      "lexicon": 253
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.6417,
+    "delta": 0.6417,
+    "final_ambiguity": 1.62,
+    "lexicon": {
+      "roots": 525,
+      "glossed": 339,
+      "glossed_frac": 0.6457,
+      "affix_glosses_inferred": 3
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.6417,
+          "ambiguity": 2.0
+        },
+        "templated": {
+          "coverage": 0.6417,
+          "ambiguity": 1.62
+        },
+        "templated+pos": {
+          "coverage": 0.5917,
+          "ambiguity": 1.37
+        }
+      },
+      "slots": {
+        "infix1": 2,
+        "prefix1": 30,
+        "prefix2": 24,
+        "prefix3": 19,
+        "prefix4": 15,
+        "suffix1": 11,
+        "suffix2": 3
+      }
+    },
+    "harmony_families": {
+      "t": [
+        "t",
+        "tu"
+      ],
+      "r": [
+        "ra",
+        "ri"
+      ],
+      "k": [
+        "k",
+        "ku"
+      ]
+    },
+    "enumeration_debt": 3
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.5425,
+    "lemma_recall": 0.17,
+    "feature_recall": 0.115,
+    "miss_parse": [
+      "taʁndo",
+      "[kʰramba",
+      "ʑa",
+      "[ɯpi",
+      "nɯʑɤnɯraʁ",
+      "ɕa",
+      "kɯrɤrɤt",
+      "ɲɤmbinɯ",
+      "rgaa",
+      "atʰɯɤ<nɯ>kʰu",
+      "tɤsno",
+      "tɯse"
+    ],
+    "miss_lemma": [
+      "pjɤtu->tu",
+      "iɕqʰa->iɕqʰa",
+      "nɯtɕu->nɯtɕu",
+      "ra->ra",
+      "kɯxtɕi->kɯ",
+      "ŋu->ŋu",
+      "kɯfse->kɯ",
+      "tɤɬoʁ->tɤ",
+      "ɕaŋtaʁ->ɕaŋtaʁ",
+      "mɯ́jcʰa->mɯ́j"
+    ],
+    "miss_feat": [
+      "nɤmbro=['2SG.POSS']",
+      "ɯnmaʁ=['3SG.POSS']",
+      "nɯtɕɯ=['3PL.POSS']",
+      "ɯmdoʁ=['3SG.POSS']",
+      "ɯnmaʁ=['3SG.POSS']",
+      "mɤcʰa=['NEG']",
+      "ɯrʑaβ=['3SG.POSS']",
+      "ɯjme=['3SG.POSS']",
+      "tɤri=['INDEF.POSS']",
+      "amu=['1SG.POSS']",
+      "ɯrʑaβ=['3SG.POSS']",
+      "tɤmtʰɯm=['INDEF.POSS']"
+    ]
+  },
+  "secs": 192.3
+}

@@ -1,0 +1,111 @@
+{
+  "glottocode": "lezg1247",
+  "pair_key": "pg_lezg1247",
+  "manifest": {
+    "glottocode": "lezg1247",
+    "language": "Lezgian",
+    "pair_key": "pg_lezg1247",
+    "rows_train_total": 646,
+    "rows_train_english_meta": 646,
+    "rows_train_segmented": 635,
+    "gold_rows": 53,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 1774,
+    "gold_counts": {
+      "wordforms": 505,
+      "lexicon": 253
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.4432,
+    "delta": 0.4432,
+    "final_ambiguity": 2.33,
+    "lexicon": {
+      "roots": 388,
+      "glossed": 388,
+      "glossed_frac": 1.0,
+      "affix_glosses_inferred": 1
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.4545,
+          "ambiguity": 4.88
+        },
+        "templated": {
+          "coverage": 0.4432,
+          "ambiguity": 2.33
+        },
+        "templated+pos": {
+          "coverage": 0.4091,
+          "ambiguity": 1.86
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 34,
+        "prefix2": 10,
+        "prefix3": 5,
+        "prefix4": 1,
+        "suffix1": 42,
+        "suffix2": 18,
+        "suffix3": 11,
+        "suffix4": 3
+      }
+    },
+    "harmony_families": {},
+    "enumeration_debt": 0
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.465,
+    "lemma_recall": 0.125,
+    "feature_recall": 0.075,
+    "miss_parse": [
+      "акунтӀа",
+      "хъсанвилер",
+      "аскандае",
+      "Хырдалане",
+      ":",
+      ".",
+      "домкультурададие",
+      "канди",
+      "лугьунна",
+      "объектдилайдилай",
+      "гъвечи",
+      ","
+    ],
+    "miss_lemma": [
+      "материални->материал",
+      "канизва->кани",
+      "гада->гада",
+      "гьадакай->гьада",
+      "хтуннани->хтун",
+      "вахт->вахт",
+      "вичди->вич",
+      "завай->за",
+      "са->са",
+      "лугьуда->лугьу"
+    ],
+    "miss_feat": [
+      "лагьанва=['PERF']",
+      "ваз=['DAT']",
+      "мадни=['FOC']",
+      "гевгьерардин=['ERG', 'GEN']",
+      "вучда=['ENT']",
+      "пачагьдиз=['DAT', 'DIR']",
+      "хъсандик=['DIR', 'SBSS']",
+      "шивдихъ=['ERG', 'POESS']",
+      "вучдин=['ERG', 'GEN']",
+      "аналай=['EL', 'SPSS']",
+      "аналай=['EL', 'SPSS']",
+      "ярдиз=['DAT', 'DIR']"
+    ]
+  },
+  "secs": 164.2
+}

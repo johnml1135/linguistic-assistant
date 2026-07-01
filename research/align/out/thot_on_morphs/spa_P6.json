@@ -1,0 +1,233 @@
+{
+  "pair": "spa",
+  "paradigm": "P6",
+  "secs": 105.8,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 170,
+      "proposed": 57,
+      "cov_before": 0.7333,
+      "cov_after": 0.8417,
+      "delta": 0.1083,
+      "amb": 2.53,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 107,
+      "proposed": 4,
+      "cov_before": 0.8417,
+      "cov_after": 0.85,
+      "delta": 0.0083,
+      "amb": 2.52,
+      "kept": true
+    }
+  ],
+  "roots_added": 61,
+  "added": [
+    {
+      "form": "ve",
+      "gloss": "consider",
+      "prob": 1.0
+    },
+    {
+      "form": "lla",
+      "gloss": "called",
+      "prob": 0.5
+    },
+    {
+      "form": "mon",
+      "gloss": "mountain",
+      "prob": 0.667
+    },
+    {
+      "form": "da",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "solamen",
+      "gloss": "friends",
+      "prob": 1.0
+    },
+    {
+      "form": "amé",
+      "gloss": "amen",
+      "prob": 1.0
+    },
+    {
+      "form": "levantó",
+      "gloss": "arose",
+      "prob": 1.0
+    },
+    {
+      "form": "doctrin",
+      "gloss": "teaching",
+      "prob": 1.0
+    },
+    {
+      "form": "jude",
+      "gloss": "judea",
+      "prob": 1.0
+    },
+    {
+      "form": "tiniebl",
+      "gloss": "darkness",
+      "prob": 1.0
+    },
+    {
+      "form": "demonio",
+      "gloss": "demons",
+      "prob": 1.0
+    },
+    {
+      "form": "tomó",
+      "gloss": "took",
+      "prob": 1.0
+    },
+    {
+      "form": "desiert",
+      "gloss": "wilderness",
+      "prob": 1.0
+    },
+    {
+      "form": "do",
+      "gloss": "beloved",
+      "prob": 0.5
+    },
+    {
+      "form": "ho",
+      "gloss": "today",
+      "prob": 0.667
+    },
+    {
+      "form": "ir",
+      "gloss": "wrath",
+      "prob": 1.0
+    },
+    {
+      "form": "gendró",
+      "gloss": "became",
+      "prob": 0.562
+    },
+    {
+      "form": "mu",
+      "gloss": "least",
+      "prob": 0.6
+    },
+    {
+      "form": "jacob",
+      "gloss": "james",
+      "prob": 1.0
+    },
+    {
+      "form": "jos",
+      "gloss": "joseph",
+      "prob": 1.0
+    },
+    {
+      "form": "dent",
+      "gloss": "inwardly",
+      "prob": 0.5
+    },
+    {
+      "form": "barc",
+      "gloss": "boat",
+      "prob": 1.0
+    },
+    {
+      "form": "vendrá",
+      "gloss": "come",
+      "prob": 1.0
+    },
+    {
+      "form": "generació",
+      "gloss": "genealogy",
+      "prob": 0.5
+    },
+    {
+      "form": "niñ",
+      "gloss": "young",
+      "prob": 0.529
+    },
+    {
+      "form": "so",
+      "gloss": "stood",
+      "prob": 1.0
+    },
+    {
+      "form": "ovej",
+      "gloss": "clothing",
+      "prob": 1.0
+    },
+    {
+      "form": "vest",
+      "gloss": "clothing",
+      "prob": 0.667
+    },
+    {
+      "form": "sataná",
+      "gloss": "satan",
+      "prob": 1.0
+    },
+    {
+      "form": "vestido",
+      "gloss": "clothing",
+      "prob": 1.0
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.7267,
+    "ambiguity": 2.18,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.05,
+      "gold_parsed": 0.825,
+      "missed": [
+        "maestro",
+        "gracias",
+        "escribas",
+        "decir",
+        "galilea",
+        "viene",
+        "sentado",
+        "juntamente",
+        "viendo",
+        "fruto",
+        "ancianos",
+        "saber",
+        "piedra",
+        "apóstoles",
+        "siervos",
+        "david",
+        "comer",
+        "cerca",
+        "justo",
+        "fin",
+        "asimismo",
+        "multitud",
+        "esperanza",
+        "años",
+        "cabeza",
+        "corazones",
+        "pilato",
+        "recibido",
+        "temor",
+        "maría",
+        "poco",
+        "eterna",
+        "aunque",
+        "potencia",
+        "sabiduría",
+        "da",
+        "entró",
+        "mandamiento"
+      ]
+    },
+    "roots": 611,
+    "affixes": 64
+  }
+}

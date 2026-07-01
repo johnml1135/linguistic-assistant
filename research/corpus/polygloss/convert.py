@@ -100,8 +100,11 @@ def is_english_metalanguage(row: PolyglossRow) -> bool:
     return row.metalanguage.strip().lower() == "english"
 
 
-def to_parallel_row(row: PolyglossRow) -> ParallelRow:
+def to_parallel_row(row: PolyglossRow, *, extra_word_chars: str = "") -> ParallelRow:
     """(translation_tokens, transcription_tokens) — the pivot ("source") side is the metalanguage
     translation, the induced ("target") side is the object-language transcription, matching the
-    `(src, tgt)` convention `corpus/ebible/read.py::VerseRow` already uses."""
-    return tokenize(row.translation), tokenize(row.transcription)
+    `(src, tgt)` convention `corpus/ebible/read.py::VerseRow` already uses.
+
+    `extra_word_chars` (see `corpus/polygloss/orthography.py`) only applies to the transcription
+    (target-language) side — it's a target-orthography exception, not a pivot/English one."""
+    return tokenize(row.translation), tokenize(row.transcription, extra_word_chars=extra_word_chars)

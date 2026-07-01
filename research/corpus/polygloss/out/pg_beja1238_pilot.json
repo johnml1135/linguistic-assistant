@@ -1,0 +1,163 @@
+{
+  "glottocode": "beja1238",
+  "pair_key": "pg_beja1238",
+  "manifest": {
+    "glottocode": "beja1238",
+    "language": "Beja",
+    "pair_key": "pg_beja1238",
+    "rows_train_total": 5805,
+    "rows_train_english_meta": 5663,
+    "rows_train_segmented": 5663,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 7069,
+    "gold_counts": {
+      "wordforms": 644,
+      "lexicon": 331
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.5417,
+    "delta": 0.5417,
+    "final_ambiguity": 2.65,
+    "lexicon": {
+      "roots": 425,
+      "glossed": 374,
+      "glossed_frac": 0.88,
+      "affix_glosses_inferred": 3
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.5417,
+          "ambiguity": 4.95
+        },
+        "templated": {
+          "coverage": 0.5417,
+          "ambiguity": 2.65
+        },
+        "templated+pos": {
+          "coverage": 0.5167,
+          "ambiguity": 2.39
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 19,
+        "prefix2": 15,
+        "prefix3": 14,
+        "prefix4": 16,
+        "suffix1": 35,
+        "suffix2": 32,
+        "suffix3": 24,
+        "suffix4": 19
+      }
+    },
+    "harmony_families": {
+      "j": [
+        "ej",
+        "j"
+      ],
+      "ː": [
+        "iː",
+        "oː",
+        "ː"
+      ],
+      "d": [
+        "d",
+        "da"
+      ],
+      "t": [
+        "it",
+        "t",
+        "ti"
+      ],
+      "k": [
+        "ak",
+        "k",
+        "ka"
+      ],
+      "hːb": [
+        "heːb",
+        "hoːb"
+      ],
+      "n": [
+        "n",
+        "na",
+        "ni",
+        "on"
+      ],
+      "w": [
+        "w",
+        "wa"
+      ],
+      "ːb": [
+        "eːb",
+        "ːb"
+      ],
+      "m": [
+        "m",
+        "om",
+        "um"
+      ],
+      "ːn": [
+        "aːn",
+        "oːn",
+        "ːni"
+      ]
+    },
+    "enumeration_debt": 18
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.455,
+    "lemma_recall": 0.1575,
+    "feature_recall": 0.0775,
+    "miss_parse": [
+      "<<pr>ʃuhuːdwa>",
+      "miraːj",
+      "mʔaːʔa",
+      "tʔiteːnaːtu",
+      "kataːb",
+      "melja",
+      "iktiːnneːt",
+      "nifʔiː",
+      "girʃeː",
+      "whaːʃoː",
+      "<<ui>amaː>",
+      "miskiːnaːb"
+    ],
+    "miss_lemma": [
+      "timmarri->marri",
+      "ikatineː->kati",
+      "dʔijaːb->dʔi",
+      "oːkna->kna",
+      "oːkna->kna",
+      "naːt->naː",
+      "naːt->naː",
+      "baja->baj",
+      "hiːdaːj->hiːdaːj",
+      "haːʃ->haːʃ"
+    ],
+    "miss_feat": [
+      "uːtak=['DEF.SG.M.NOM']",
+      "rhani=['IPFV.1SG']",
+      "mʔaːn=['IMP.PL']",
+      "ʃagaːb=['INDF.M.ACC']",
+      "uːtag=['DEF.SG.M.NOM']",
+      "taki=['COP.3SG']",
+      "oːmhiːn=['DEF.SG.M.ACC']",
+      "ʃagaːb=['INDF.M.ACC']",
+      "itaki=['DEF.M', 'GEN']",
+      "oːbhar=['DEF.SG.M.ACC']",
+      "tʔaːneːb=['L', 'LOC.PL']",
+      "oːtak=['DEF.SG.M.ACC']"
+    ]
+  },
+  "secs": 187.3
+}

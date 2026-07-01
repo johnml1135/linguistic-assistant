@@ -1,0 +1,91 @@
+{
+  "pair": "hin",
+  "paradigm": "P4",
+  "secs": 37.3,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 136,
+      "proposed": 2,
+      "cov_before": 0.7733,
+      "cov_after": 0.7767,
+      "delta": 0.0033,
+      "amb": 1.6,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 134,
+      "proposed": 0,
+      "kept": false,
+      "reason": "no confident proposals"
+    }
+  ],
+  "roots_added": 2,
+  "added": [
+    {
+      "form": "आग",
+      "gloss": "fire",
+      "prob": 0.667
+    },
+    {
+      "form": "धन",
+      "gloss": "where",
+      "prob": 0.6
+    }
+  ],
+  "split_map_size": 24,
+  "score": {
+    "coverage": 0.4933,
+    "ambiguity": 1.41,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.025,
+      "gold_parsed": 0.5,
+      "missed": [
+        "स्वामी",
+        "पूरा",
+        "जगह",
+        "बीच",
+        "रखता",
+        "अच्छा",
+        "धार्मिकता",
+        "उपदेश",
+        "21",
+        "आशा",
+        "फल",
+        "खड़े",
+        "शान्ति",
+        "रहता",
+        "रखा",
+        "मार्ग",
+        "18",
+        "आकाश",
+        "बिना",
+        "तैयार",
+        "चेले",
+        "धर्मी",
+        "प्रधान",
+        "रोटी",
+        "सत्य",
+        "चले",
+        "जाना",
+        "15",
+        "विरोध",
+        "क्षमा",
+        "रहते",
+        "अन्यजातियों",
+        "शमौन",
+        "लिए",
+        "नाश",
+        "तीन",
+        "मर",
+        "खड़ा",
+        "22"
+      ]
+    },
+    "roots": 552,
+    "affixes": 36
+  }
+}

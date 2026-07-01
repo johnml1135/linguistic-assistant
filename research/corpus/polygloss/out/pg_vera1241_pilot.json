@@ -1,0 +1,134 @@
+{
+  "glottocode": "vera1241",
+  "pair_key": "pg_vera1241",
+  "manifest": {
+    "glottocode": "vera1241",
+    "language": "Vera'a",
+    "pair_key": "pg_vera1241",
+    "rows_train_total": 1955,
+    "rows_train_english_meta": 1931,
+    "rows_train_segmented": 1908,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 1622,
+    "gold_counts": {
+      "wordforms": 1460,
+      "lexicon": 379
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.8272,
+    "delta": 0.8272,
+    "final_ambiguity": 2.28,
+    "lexicon": {
+      "roots": 631,
+      "glossed": 446,
+      "glossed_frac": 0.7068,
+      "affix_glosses_inferred": 1
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.8272,
+          "ambiguity": 3.03
+        },
+        "templated": {
+          "coverage": 0.8272,
+          "ambiguity": 2.28
+        },
+        "templated+pos": {
+          "coverage": 0.7778,
+          "ambiguity": 1.87
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 20,
+        "prefix2": 10,
+        "prefix3": 1,
+        "suffix1": 34,
+        "suffix2": 16,
+        "suffix3": 14,
+        "suffix4": 6
+      }
+    },
+    "harmony_families": {
+      "m": [
+        "m",
+        "ma"
+      ],
+      "v": [
+        "ov",
+        "v",
+        "va"
+      ],
+      "s": [
+        "s",
+        "se",
+        "su"
+      ],
+      "g": [
+        "g",
+        "ga",
+        "gi"
+      ],
+      "r": [
+        "r",
+        "ra"
+      ]
+    },
+    "enumeration_debt": 8
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.635,
+    "lemma_recall": 0.15,
+    "feature_recall": 0.1125,
+    "miss_parse": [
+      "'ōn",
+      "0mul",
+      "va'ē",
+      "me'",
+      "'isim̄ēre",
+      "gaitōk0",
+      "'ōn",
+      "0vidir",
+      "'ōg",
+      "Dōl",
+      "rōvrōv'en",
+      "'uwam̄ēre"
+    ],
+    "miss_lemma": [
+      "van->van",
+      "din̄->din̄",
+      "lōlō->lōlō",
+      "tek->tek",
+      "ne->ne",
+      "gitok->gitok",
+      "ser->ser",
+      "lēn->n",
+      "van->van",
+      "inin->inin"
+    ],
+    "miss_feat": [
+      "vōwal=['NUM']",
+      "ban=['ART']",
+      "vōwal=['NUM']",
+      "sin=['ART']",
+      "wunvan=['ART']",
+      "sogin=['3SG', 'ART']",
+      "bak=['TAM2']",
+      "reksen=['ART']",
+      "vōwal=['NUM']",
+      "wom=['TAM1']",
+      "ban=['ART']",
+      "ban=['ART']"
+    ]
+  },
+  "secs": 162.2
+}

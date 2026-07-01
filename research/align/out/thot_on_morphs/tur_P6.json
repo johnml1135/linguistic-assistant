@@ -1,0 +1,222 @@
+{
+  "pair": "tur",
+  "paradigm": "P6",
+  "secs": 119.7,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 237,
+      "proposed": 60,
+      "cov_before": 0.6367,
+      "cov_after": 0.7567,
+      "delta": 0.12,
+      "amb": 1.78,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 169,
+      "proposed": 7,
+      "cov_before": 0.7567,
+      "cov_after": 0.77,
+      "delta": 0.0133,
+      "amb": 1.78,
+      "kept": true
+    }
+  ],
+  "roots_added": 67,
+  "added": [
+    {
+      "form": "çocuk",
+      "gloss": "children",
+      "prob": 1.0
+    },
+    {
+      "form": "ye",
+      "gloss": "earth",
+      "prob": 1.0
+    },
+    {
+      "form": "açıkç",
+      "gloss": "openly",
+      "prob": 1.0
+    },
+    {
+      "form": "buyru",
+      "gloss": "concerning",
+      "prob": 0.5
+    },
+    {
+      "form": "efret",
+      "gloss": "hate",
+      "prob": 1.0
+    },
+    {
+      "form": "merhamet",
+      "gloss": "merciful",
+      "prob": 1.0
+    },
+    {
+      "form": "yahud",
+      "gloss": "judah",
+      "prob": 1.0
+    },
+    {
+      "form": "ral",
+      "gloss": "king",
+      "prob": 0.5
+    },
+    {
+      "form": "hoşnut",
+      "gloss": "heavens",
+      "prob": 1.0
+    },
+    {
+      "form": "dol",
+      "gloss": "full",
+      "prob": 1.0
+    },
+    {
+      "form": "yiyip",
+      "gloss": "consume",
+      "prob": 0.667
+    },
+    {
+      "form": "babasıyd",
+      "gloss": "became",
+      "prob": 0.673
+    },
+    {
+      "form": "rke",
+      "gloss": "according",
+      "prob": 1.0
+    },
+    {
+      "form": "yol",
+      "gloss": "leads",
+      "prob": 0.667
+    },
+    {
+      "form": "bırakıp",
+      "gloss": "left",
+      "prob": 0.6
+    },
+    {
+      "form": "yapt",
+      "gloss": "commanded",
+      "prob": 1.0
+    },
+    {
+      "form": "budu",
+      "gloss": "pleased",
+      "prob": 0.5
+    },
+    {
+      "form": "layı",
+      "gloss": "worthy",
+      "prob": 1.0
+    },
+    {
+      "form": "öldü",
+      "gloss": "dead",
+      "prob": 1.0
+    },
+    {
+      "form": "yüce",
+      "gloss": "glory",
+      "prob": 1.0
+    },
+    {
+      "form": "hirodes",
+      "gloss": "herod",
+      "prob": 1.0
+    },
+    {
+      "form": "ses",
+      "gloss": "voice",
+      "prob": 1.0
+    },
+    {
+      "form": "ent",
+      "gloss": "hill",
+      "prob": 1.0
+    },
+    {
+      "form": "gel",
+      "gloss": "offer",
+      "prob": 0.5
+    },
+    {
+      "form": "yapa",
+      "gloss": "liken",
+      "prob": 1.0
+    },
+    {
+      "form": "henüz",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "al",
+      "gloss": "arise",
+      "prob": 0.667
+    },
+    {
+      "form": "zin",
+      "gloss": "adultery",
+      "prob": 0.5
+    },
+    {
+      "form": "ant",
+      "gloss": "swear",
+      "prob": 0.5
+    },
+    {
+      "form": "bugü",
+      "gloss": "today",
+      "prob": 0.667
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.5667,
+    "ambiguity": 1.4,
+    "enumeration_debt": 10,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.325,
+      "gold_parsed": 0.65,
+      "missed": [
+        "yer",
+        "peygamberlik",
+        "yazılmış",
+        "vay",
+        "doğruluk",
+        "buyruk",
+        "merhamet",
+        "buyurdu",
+        "izin",
+        "kız",
+        "yahuda",
+        "hoşnut",
+        "yiyecek",
+        "yazıcılar",
+        "ürün",
+        "yüz",
+        "yiyip",
+        "ateş",
+        "moşe",
+        "denilen",
+        "erkek",
+        "geldiğini",
+        "yol",
+        "inkâr",
+        "verildi",
+        "aralarında",
+        "yemek"
+      ]
+    },
+    "roots": 367,
+    "affixes": 52
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "pair": "swh",
+  "paradigm": "P1",
+  "secs": 105.4,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 183,
+      "proposed": 60,
+      "cov_before": 0.7483,
+      "cov_after": 0.8767,
+      "delta": 0.1283,
+      "amb": 3.37,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 116,
+      "proposed": 6,
+      "cov_before": 0.8767,
+      "cov_after": 0.885,
+      "delta": 0.0083,
+      "amb": 3.4,
+      "kept": true
+    }
+  ],
+  "roots_added": 66,
+  "added": [
+    {
+      "form": "awaambi",
+      "gloss": "tell",
+      "prob": 1.0
+    },
+    {
+      "form": "enzi",
+      "gloss": "throne",
+      "prob": 1.0
+    },
+    {
+      "form": "daudi",
+      "gloss": "david",
+      "prob": 1.0
+    },
+    {
+      "form": "ia",
+      "gloss": "old",
+      "prob": 1.0
+    },
+    {
+      "form": "kat",
+      "gloss": "bread",
+      "prob": 0.75
+    },
+    {
+      "form": "ong",
+      "gloss": "false",
+      "prob": 0.667
+    },
+    {
+      "form": "tund",
+      "gloss": "fruit",
+      "prob": 0.7
+    },
+    {
+      "form": "we",
+      "gloss": "allow",
+      "prob": 1.0
+    },
+    {
+      "form": "imo",
+      "gloss": "simon",
+      "prob": 1.0
+    },
+    {
+      "form": "yud",
+      "gloss": "judah",
+      "prob": 0.5
+    },
+    {
+      "form": "ria",
+      "gloss": "mary",
+      "prob": 1.0
+    },
+    {
+      "form": "andishi",
+      "gloss": "scribes",
+      "prob": 1.0
+    },
+    {
+      "form": "yu",
+      "gloss": "murders",
+      "prob": 0.5
+    },
+    {
+      "form": "iw",
+      "gloss": "stone",
+      "prob": 1.0
+    },
+    {
+      "form": "erod",
+      "gloss": "herod",
+      "prob": 0.9
+    },
+    {
+      "form": "srae",
+      "gloss": "israel",
+      "prob": 1.0
+    },
+    {
+      "form": "liend",
+      "gloss": "came",
+      "prob": 0.667
+    },
+    {
+      "form": "ek",
+      "gloss": "alone",
+      "prob": 0.5
+    },
+    {
+      "form": "vazi",
+      "gloss": "clothing",
+      "prob": 1.0
+    },
+    {
+      "form": "fa",
+      "gloss": "dead",
+      "prob": 0.5
+    },
+    {
+      "form": "afi",
+      "gloss": "heart",
+      "prob": 1.0
+    },
+    {
+      "form": "olot",
+      "gloss": "anything",
+      "prob": 1.0
+    },
+    {
+      "form": "kutan",
+      "gloss": "multitudes",
+      "prob": 0.5
+    },
+    {
+      "form": "vizuri",
+      "gloss": "clearly",
+      "prob": 0.5
+    },
+    {
+      "form": "heta",
+      "gloss": "satan",
+      "prob": 1.0
+    },
+    {
+      "form": "izi",
+      "gloss": "commandments",
+      "prob": 1.0
+    },
+    {
+      "form": "so",
+      "gloss": "face",
+      "prob": 0.5
+    },
+    {
+      "form": "ishi",
+      "gloss": "lived",
+      "prob": 1.0
+    },
+    {
+      "form": "dhaha",
+      "gloss": "gold",
+      "prob": 1.0
+    },
+    {
+      "form": "hai",
+      "gloss": "moment",
+      "prob": 0.5
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.8,
+    "ambiguity": 3.62,
+    "enumeration_debt": 31,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.275,
+      "gold_parsed": 0.95,
+      "missed": [
+        "mwenu",
+        "nuru",
+        "pilato",
+        "miaka",
+        "mengi",
+        "sabato",
+        "duniani",
+        "mtumwa",
+        "kuja",
+        "alikuja",
+        "hai",
+        "ambapo",
+        "mwalimu",
+        "wanadamu",
+        "ushuhuda",
+        "njema",
+        "hakika",
+        "kinyume",
+        "kutoa",
+        "mbili",
+        "kuingia",
+        "akaenda",
+        "pili",
+        "wanawake",
+        "ahadi",
+        "yuda",
+        "kichwa",
+        "abrahamu",
+        "kula"
+      ]
+    },
+    "roots": 541,
+    "affixes": 72
+  }
+}

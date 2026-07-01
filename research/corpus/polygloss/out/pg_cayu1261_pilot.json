@@ -1,0 +1,140 @@
+{
+  "glottocode": "cayu1261",
+  "pair_key": "pg_cayu1261",
+  "manifest": {
+    "glottocode": "cayu1261",
+    "language": "Cayuga",
+    "pair_key": "pg_cayu1261",
+    "rows_train_total": 3045,
+    "rows_train_english_meta": 3045,
+    "rows_train_segmented": 2152,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 3730,
+    "gold_counts": {
+      "wordforms": 266,
+      "lexicon": 203
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.175,
+    "delta": 0.175,
+    "final_ambiguity": 1.29,
+    "lexicon": {
+      "roots": 445,
+      "glossed": 426,
+      "glossed_frac": 0.9573,
+      "affix_glosses_inferred": 0
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.1917,
+          "ambiguity": 2.09
+        },
+        "templated": {
+          "coverage": 0.175,
+          "ambiguity": 1.29
+        },
+        "templated+pos": {
+          "coverage": 0.1333,
+          "ambiguity": 1.0
+        }
+      },
+      "slots": {
+        "infix1": 4,
+        "prefix1": 47,
+        "prefix2": 20,
+        "prefix3": 15,
+        "prefix4": 10,
+        "suffix1": 19,
+        "suffix2": 5,
+        "suffix3": 1
+      }
+    },
+    "harmony_families": {
+      "n": [
+        "n",
+        "ni",
+        "nó"
+      ],
+      "h": [
+        "h",
+        "ih",
+        "áh"
+      ],
+      "d": [
+        "da",
+        "de"
+      ],
+      "t": [
+        "it",
+        "ot",
+        "t",
+        "tó"
+      ],
+      "g": [
+        "g",
+        "gi"
+      ],
+      "ˀ": [
+        "éˀ",
+        "ˀ"
+      ],
+      "hˀ": [
+        "héˀ",
+        "hóˀ"
+      ],
+      ":": [
+        "a:",
+        "í:"
+      ]
+    },
+    "enumeration_debt": 12
+  },
+  "gold_benchmark": {
+    "tested": 266,
+    "parse_rate": 0.1353,
+    "lemma_recall": 0.0263,
+    "feature_recall": 0.0075,
+    "miss_parse": [
+      "hakowaneh",
+      "hatetse?s",
+      "ekhni:no'",
+      "ahóhto:'",
+      "hotkwe'ta'",
+      "ne:kyé",
+      "ehsthaˀ",
+      "ganǫhsa̱ˀsǫ:ˀah",
+      "dewagehęnaˀtraˀehsdǫhǫgyeˀ",
+      "a/økyęda̱hkwaˀ",
+      "gatgíˀtraˀ",
+      "heyó:gyǫ:"
+    ],
+    "miss_lemma": [
+      "hokweh->h",
+      "hǫ́:gweh->ǫ́:gwe",
+      "…neˀ->…neˀ",
+      "hagehsotgęhę́:ˀ->hagehsotgęhę́:ˀ",
+      "ahsgwaˀ->ahsgw",
+      "oríhwaˀ->ríhw",
+      "i:ˀgeh->ˀgeh",
+      "niyǫ́:sˀah->ni",
+      "ohsno:wé:ˀah->hsno:wé:",
+      "nigęhné:sˀah->ni"
+    ],
+    "miss_feat": [
+      "hokweh=['KA', 'STAT']",
+      "hęnǫ́:gweh=['3NS.M.A']",
+      "owí:yaˀ=['', '3S.P']",
+      "akyę́da̱hkwaˀ=['']",
+      "onę́hę:ˀ=['', '3S.P']"
+    ]
+  },
+  "secs": 165.6
+}

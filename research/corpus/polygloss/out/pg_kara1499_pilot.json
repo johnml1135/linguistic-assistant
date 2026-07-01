@@ -1,0 +1,150 @@
+{
+  "glottocode": "kara1499",
+  "pair_key": "pg_kara1499",
+  "manifest": {
+    "glottocode": "kara1499",
+    "language": "Kalamang",
+    "pair_key": "pg_kara1499",
+    "rows_train_total": 1892,
+    "rows_train_english_meta": 1873,
+    "rows_train_segmented": 1267,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 2127,
+    "gold_counts": {
+      "wordforms": 831,
+      "lexicon": 435
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.5849,
+    "delta": 0.5849,
+    "final_ambiguity": 2.76,
+    "lexicon": {
+      "roots": 425,
+      "glossed": 325,
+      "glossed_frac": 0.7647,
+      "affix_glosses_inferred": 1
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.5849,
+          "ambiguity": 4.95
+        },
+        "templated": {
+          "coverage": 0.5849,
+          "ambiguity": 2.76
+        },
+        "templated+pos": {
+          "coverage": 0.5094,
+          "ambiguity": 1.91
+        }
+      },
+      "slots": {
+        "infix1": 1,
+        "prefix1": 23,
+        "prefix2": 15,
+        "prefix3": 9,
+        "prefix4": 2,
+        "suffix1": 31,
+        "suffix2": 16,
+        "suffix3": 9,
+        "suffix4": 5
+      }
+    },
+    "harmony_families": {
+      "n": [
+        "aun",
+        "n",
+        "na",
+        "ne",
+        "un"
+      ],
+      "k": [
+        "ak",
+        "ka",
+        "ki",
+        "ko"
+      ],
+      "t": [
+        "at",
+        "et",
+        "t",
+        "ta",
+        "tu"
+      ],
+      "m": [
+        "m",
+        "ma",
+        "mu"
+      ],
+      "r": [
+        "r",
+        "ra",
+        "ruo"
+      ],
+      "nn": [
+        "nin",
+        "nun"
+      ],
+      "gg": [
+        "gga",
+        "ggo"
+      ]
+    },
+    "enumeration_debt": 17
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.63,
+    "lemma_recall": 0.25,
+    "feature_recall": 0.145,
+    "miss_parse": [
+      "*tara",
+      "poupun",
+      "nemies",
+      "siamar",
+      "kitkadok",
+      "ewa∼wa∼ewawain",
+      "…",
+      "gonggin",
+      "didirasun",
+      "birat",
+      "Mama",
+      "jumat"
+    ],
+    "miss_lemma": [
+      "kuru->kuru",
+      "taikoni->taikon",
+      "manan->nan",
+      "kosarun->kosarun",
+      "paruata->parua",
+      "koyet->koyet",
+      "ye->ye",
+      "marua->marua",
+      "koyet->koyet",
+      "supaya->supaya"
+    ],
+    "miss_feat": [
+      "rorun=['3POSS']",
+      "lengunko=['3SG', 'LOC']",
+      "kometta=['NFIN']",
+      "muapan=['1SG.POSS']",
+      "jietet=['']",
+      "temunun=['NMLZ']",
+      "koni=['OBJQNT']",
+      "keweun=['3POSS']",
+      "keweuna=['3POSS', 'FOC']",
+      "kadenun=['3POSS']",
+      "keweuna=['3POSS', 'FOC']",
+      "lengun=['3POSS']"
+    ]
+  },
+  "secs": 193.1
+}

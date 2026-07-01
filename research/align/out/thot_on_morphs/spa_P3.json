@@ -1,0 +1,179 @@
+{
+  "pair": "spa",
+  "paradigm": "P3",
+  "secs": 94.9,
+  "history": [
+    {
+      "cycle": 1,
+      "unparsed": 170,
+      "proposed": 15,
+      "cov_before": 0.7333,
+      "cov_after": 0.7617,
+      "delta": 0.0283,
+      "amb": 2.61,
+      "kept": true
+    },
+    {
+      "cycle": 2,
+      "unparsed": 153,
+      "proposed": 4,
+      "cov_before": 0.7617,
+      "cov_after": 0.7717,
+      "delta": 0.01,
+      "amb": 2.63,
+      "kept": true
+    }
+  ],
+  "roots_added": 19,
+  "added": [
+    {
+      "form": "lla",
+      "gloss": "called",
+      "prob": 0.5
+    },
+    {
+      "form": "da",
+      "gloss": "give",
+      "prob": 1.0
+    },
+    {
+      "form": "amé",
+      "gloss": "men",
+      "prob": 1.0
+    },
+    {
+      "form": "vendrá",
+      "gloss": "come",
+      "prob": 1.0
+    },
+    {
+      "form": "niñ",
+      "gloss": "young",
+      "prob": 0.5
+    },
+    {
+      "form": "ovej",
+      "gloss": "ing",
+      "prob": 1.0
+    },
+    {
+      "form": "ñan",
+      "gloss": "row",
+      "prob": 1.0
+    },
+    {
+      "form": "trand",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "junt",
+      "gloss": "king",
+      "prob": 1.0
+    },
+    {
+      "form": "damiento",
+      "gloss": "lea",
+      "prob": 1.0
+    },
+    {
+      "form": "rá",
+      "gloss": "give",
+      "prob": 0.5
+    },
+    {
+      "form": "llegaro",
+      "gloss": "came",
+      "prob": 1.0
+    },
+    {
+      "form": "bienaventurado",
+      "gloss": "blessed",
+      "prob": 0.529
+    },
+    {
+      "form": "ré",
+      "gloss": "things",
+      "prob": 1.0
+    },
+    {
+      "form": "mpoc",
+      "gloss": "neither",
+      "prob": 0.5
+    },
+    {
+      "form": "vi",
+      "gloss": "came",
+      "prob": 0.5
+    },
+    {
+      "form": "gendró",
+      "gloss": "became",
+      "prob": 0.534
+    },
+    {
+      "form": "dies",
+      "gloss": "ght",
+      "prob": 1.0
+    },
+    {
+      "form": "subió",
+      "gloss": "ent",
+      "prob": 0.5
+    }
+  ],
+  "split_map_size": null,
+  "score": {
+    "coverage": 0.5733,
+    "ambiguity": 2.44,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.025,
+      "gold_parsed": 0.8,
+      "missed": [
+        "maestro",
+        "gracias",
+        "escribas",
+        "decir",
+        "galilea",
+        "viene",
+        "sentado",
+        "juntamente",
+        "viendo",
+        "fruto",
+        "ancianos",
+        "saber",
+        "piedra",
+        "apóstoles",
+        "siervos",
+        "david",
+        "comer",
+        "cerca",
+        "justo",
+        "fin",
+        "asimismo",
+        "multitud",
+        "esperanza",
+        "años",
+        "cabeza",
+        "corazones",
+        "pilato",
+        "recibido",
+        "temor",
+        "maría",
+        "poco",
+        "eterna",
+        "aunque",
+        "potencia",
+        "monte",
+        "sabiduría",
+        "da",
+        "entró",
+        "mandamiento"
+      ]
+    },
+    "roots": 569,
+    "affixes": 64
+  }
+}

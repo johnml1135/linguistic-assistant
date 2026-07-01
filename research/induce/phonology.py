@@ -30,6 +30,14 @@ HARMONY_CLASSES: dict[str, dict[str, set[str]]] = {
         "E": set("ie"),
         "O": set("uo"),
     },
+    "tur": {
+        # Turkish two-axis vowel harmony (buyuk/kucuk unlu uyumu — see Lewis 1967 "Turkish Grammar" and
+        # Underhill 1976): "A"-harmony affixes (plural -lar/-ler, ablative -dan/-den, locative -da/-de)
+        # alternate front/back on a LOW vowel; "I"-harmony affixes (possessive -im/-im/-um/-um, copula
+        # -dir/-dir/-dur/-dur) alternate on a HIGH vowel across BOTH front/back and rounding (4-way).
+        "A": set("ae"),
+        "I": set("iıüu"),
+    },
 }
 
 

@@ -1,0 +1,193 @@
+{
+  "glottocode": "dolg1241",
+  "pair_key": "pg_dolg1241",
+  "manifest": {
+    "glottocode": "dolg1241",
+    "language": "Dolgan",
+    "pair_key": "pg_dolg1241",
+    "rows_train_total": 10252,
+    "rows_train_english_meta": 10144,
+    "rows_train_segmented": 10143,
+    "gold_rows": 300,
+    "gold_source_split": "train",
+    "align_backend": "eflomal",
+    "target_word_types": 15885,
+    "gold_counts": {
+      "wordforms": 1648,
+      "lexicon": 507
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.8833,
+    "delta": 0.8833,
+    "final_ambiguity": 2.35,
+    "lexicon": {
+      "roots": 625,
+      "glossed": 429,
+      "glossed_frac": 0.6864,
+      "affix_glosses_inferred": 15
+    },
+    "morphotactics": {
+      "chosen": "templated+pos",
+      "templated": true,
+      "pos_aware": true,
+      "variants": {
+        "unordered": {
+          "coverage": 0.8917,
+          "ambiguity": 4.64
+        },
+        "templated": {
+          "coverage": 0.8917,
+          "ambiguity": 3.16
+        },
+        "templated+pos": {
+          "coverage": 0.8833,
+          "ambiguity": 2.35
+        }
+      },
+      "slots": {
+        "prefix1": 13,
+        "prefix2": 11,
+        "prefix3": 5,
+        "prefix4": 1,
+        "suffix1": 72,
+        "suffix2": 64,
+        "suffix3": 59,
+        "suffix4": 48
+      }
+    },
+    "harmony_families": {
+      "r": [
+        "ar",
+        "or",
+        "r",
+        "ur"
+      ],
+      "m": [
+        "em",
+        "m"
+      ],
+      "n": [
+        "an",
+        "in",
+        "n",
+        "na",
+        "ni"
+      ],
+      "l": [
+        "l",
+        "la",
+        "ula"
+      ],
+      "nn": [
+        "nn",
+        "nne"
+      ],
+      "gɨn": [
+        "gɨn",
+        "gɨna"
+      ],
+      "g": [
+        "ga",
+        "ge",
+        "go",
+        "og"
+      ],
+      "t": [
+        "t",
+        "ta",
+        "te"
+      ],
+      "ŋ": [
+        "iŋ",
+        "uŋ",
+        "ŋ"
+      ],
+      "tr": [
+        "tar",
+        "ter"
+      ],
+      "bn": [
+        "bin",
+        "bun"
+      ],
+      "bt": [
+        "bit",
+        "but"
+      ],
+      "h": [
+        "h",
+        "he"
+      ],
+      "gn": [
+        "gun",
+        "igin"
+      ],
+      "ttn": [
+        "ttan",
+        "tten"
+      ],
+      "d": [
+        "d",
+        "da"
+      ],
+      "k": [
+        "k",
+        "uk"
+      ],
+      "br": [
+        "bar",
+        "ber"
+      ]
+    },
+    "enumeration_debt": 28
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.6075,
+    "lemma_recall": 0.1275,
+    "feature_recall": 0.05,
+    "miss_parse": [
+      "nʼu͡oŋuhutun",
+      "edʼiːjin",
+      "kolbuja",
+      "tɨːtatɨːta",
+      "hereppitin",
+      "kɨrgɨttarɨgar",
+      "ɨ͡aldʼɨt",
+      "edʼiːjderbin",
+      "dʼi͡etiger",
+      "kolbujaga",
+      "gilbeŋniːller",
+      "egelle"
+    ],
+    "miss_lemma": [
+      "gini->gini",
+      "bu->bu",
+      "abaːhɨ->abaːhɨ",
+      "ol->ol",
+      "oguru͡o->oguru͡o",
+      "kajanɨ->kaja",
+      "ihitten->ih",
+      "hu͡ok->hu͡ok",
+      "tu͡olkulaːta->tu͡olkulaː",
+      "bu͡olu͡om->bu͡ol"
+    ],
+    "miss_feat": [
+      "barbɨt=['PST2.[3SG]']",
+      "baran=['CVB.SEQ']",
+      "barbɨtɨn=['3SG', 'GEN', 'PTCP.PST']",
+      "kelen=['CVB.SEQ']",
+      "bu͡olan=['CVB.SEQ']",
+      "kelbite=['3SG', 'PST2']",
+      "aːttaːbɨttar=['3PL', 'PST2', 'VBZ']",
+      "hirinen=['3SG', 'INSTR']",
+      "tuːgu=['ACC']",
+      "barɨta=['3SG.[NOM]']",
+      "hirge=['DAT/LOC']",
+      "bu͡olan=['CVB.SEQ']"
+    ]
+  },
+  "secs": 188.2
+}

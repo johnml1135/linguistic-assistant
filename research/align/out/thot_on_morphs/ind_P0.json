@@ -1,0 +1,328 @@
+{
+  "pair": "ind",
+  "paradigm": "P0",
+  "secs": 68.5,
+  "tdd_result": {
+    "pair": "ind",
+    "iterations": 34,
+    "base_coverage": 0.0,
+    "final_coverage": 0.5667,
+    "delta": 0.5667,
+    "final_ambiguity": 2.12,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.5667,
+          "ambiguity": 4.09
+        },
+        "templated": {
+          "coverage": 0.5667,
+          "ambiguity": 2.12
+        },
+        "templated+pos": {
+          "coverage": 0.525,
+          "ambiguity": 1.65
+        }
+      },
+      "slots": {
+        "infix1": 13,
+        "prefix1": 25,
+        "prefix2": 14,
+        "prefix3": 11,
+        "prefix4": 3,
+        "suffix1": 22,
+        "suffix2": 16,
+        "suffix3": 12,
+        "suffix4": 5
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 340,
+        "verb": 69,
+        "prep": 29,
+        "pron": 24,
+        "det": 22,
+        "conj": 17,
+        "adj": 12,
+        "num": 5,
+        "adv": 4,
+        "ptcl": 3
+      },
+      "affixes_with_msa": 37,
+      "affixes_total": 60
+    },
+    "lexicon": {
+      "roots": 525,
+      "glossed": 342,
+      "glossed_frac": 0.6514,
+      "affix_glosses_inferred": 7
+    },
+    "affixes_kept": [
+      "ke",
+      "lah",
+      "ber",
+      "nya",
+      "se",
+      "i",
+      "me",
+      "kan",
+      "men",
+      "p",
+      "pun",
+      "mu",
+      "di",
+      "ter",
+      "sen",
+      "kah",
+      "ed",
+      "an",
+      "n",
+      "at",
+      "si",
+      "b",
+      "ku",
+      "esu",
+      "beg",
+      "up",
+      "ani",
+      "ya",
+      "mau",
+      "ya",
+      "et",
+      "mo",
+      "en",
+      "tahu",
+      "k",
+      "pada",
+      "enj",
+      "t",
+      "ma",
+      "ga",
+      "wi",
+      "ng",
+      "t",
+      "pen",
+      "mata",
+      "au",
+      "m",
+      "ers",
+      "em",
+      "ud",
+      "er",
+      "id",
+      "bi",
+      "ena",
+      "kebu",
+      "ye",
+      "at",
+      "m",
+      "ja",
+      "ant"
+    ],
+    "harmony_families": {
+      "k": [
+        "k",
+        "ke",
+        "ku"
+      ],
+      "s": [
+        "esu",
+        "se",
+        "si"
+      ],
+      "m": [
+        "em",
+        "m",
+        "ma",
+        "mau",
+        "me",
+        "mo",
+        "mu"
+      ],
+      "p": [
+        "p",
+        "up"
+      ],
+      "pn": [
+        "pen",
+        "pun"
+      ],
+      "d": [
+        "di",
+        "ed",
+        "id",
+        "ud"
+      ],
+      "n": [
+        "an",
+        "ani",
+        "en",
+        "ena",
+        "n"
+      ],
+      "t": [
+        "at",
+        "et",
+        "t"
+      ],
+      "b": [
+        "b",
+        "bi"
+      ],
+      "y": [
+        "ya",
+        "ye"
+      ]
+    },
+    "enumeration_debt": 23,
+    "phonology": {
+      "enumeration_debt_before": 23,
+      "enumeration_debt_after": 23,
+      "affixes_removed": 0,
+      "collapsed": [],
+      "needs_review": [
+        {
+          "members": [
+            "k",
+            "ke",
+            "ku"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "esu",
+            "se",
+            "si"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "em",
+            "m",
+            "ma",
+            "mau",
+            "me",
+            "mo",
+            "mu"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "p",
+            "up"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "pen",
+            "pun"
+          ],
+          "reason": "differing position is not a harmony vowel"
+        },
+        {
+          "members": [
+            "di",
+            "ed",
+            "id",
+            "ud"
+          ],
+          "reason": "not a single-position alternation"
+        },
+        {
+          "members": [
+            "an",
+            "ani",
+            "en",
+            "ena",
+            "n"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "at",
+            "et",
+            "t"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "b",
+            "bi"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ya",
+            "ye"
+          ],
+          "reason": "differing position is not a harmony vowel"
+        }
+      ],
+      "rules_proposed": []
+    }
+  },
+  "score": {
+    "coverage": 0.48,
+    "ambiguity": 4.67,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.075,
+      "gold_parsed": 0.7,
+      "missed": [
+        "daerah",
+        "bertemu",
+        "tuan",
+        "penting",
+        "perintah",
+        "menyelamatkan",
+        "mencoba",
+        "maupun",
+        "berteriak",
+        "menyembah",
+        "mengerti",
+        "bernama",
+        "perkataan",
+        "surat",
+        "berkumpul",
+        "apapun",
+        "daud",
+        "tahun",
+        "domba",
+        "masa",
+        "biasa",
+        "anggota",
+        "pintu",
+        "menderita",
+        "betapa",
+        "kemampuan",
+        "herodes",
+        "moyang",
+        "pohon",
+        "berjalan",
+        "minum",
+        "menyadari",
+        "sebenarnya",
+        "mengutus",
+        "meskipun",
+        "bahasa",
+        "memang"
+      ]
+    },
+    "roots": 525,
+    "affixes": 60
+  }
+}

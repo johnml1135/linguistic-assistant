@@ -1,0 +1,343 @@
+{
+  "pair": "spa",
+  "paradigm": "P0",
+  "secs": 70.3,
+  "tdd_result": {
+    "pair": "spa",
+    "iterations": 39,
+    "base_coverage": 0.0,
+    "final_coverage": 0.5583,
+    "delta": 0.5583,
+    "final_ambiguity": 2.12,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.5583,
+          "ambiguity": 2.49
+        },
+        "templated": {
+          "coverage": 0.5583,
+          "ambiguity": 2.12
+        },
+        "templated+pos": {
+          "coverage": 0.5083,
+          "ambiguity": 1.8
+        }
+      },
+      "slots": {
+        "infix1": 3,
+        "prefix1": 25,
+        "prefix2": 4,
+        "suffix1": 36,
+        "suffix2": 28,
+        "suffix3": 21,
+        "suffix4": 16
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 373,
+        "verb": 59,
+        "pron": 41,
+        "det": 25,
+        "prep": 17,
+        "conj": 13,
+        "adj": 11,
+        "num": 7,
+        "adv": 3,
+        "ptcl": 1
+      },
+      "affixes_with_msa": 45,
+      "affixes_total": 64
+    },
+    "lexicon": {
+      "roots": 550,
+      "glossed": 328,
+      "glossed_frac": 0.5964,
+      "affix_glosses_inferred": 2
+    },
+    "affixes_kept": [
+      "s",
+      "por",
+      "n",
+      "vos",
+      "el",
+      "es",
+      "nos",
+      "o",
+      "tra",
+      "alg",
+      "man",
+      "ning",
+      "fu",
+      "r",
+      "de",
+      "u",
+      "los",
+      "a",
+      "pu",
+      "la",
+      "en",
+      "is",
+      "al",
+      "ía",
+      "migo",
+      "asi",
+      "aun",
+      "ma",
+      "ma",
+      "mos",
+      "ido",
+      "ab",
+      "y",
+      "d",
+      "ta",
+      "hec",
+      "fi",
+      "ero",
+      "en",
+      "vol",
+      "qui",
+      "ama",
+      "díce",
+      "díjo",
+      "ozco",
+      "réis",
+      "vi",
+      "lo",
+      "que",
+      "e",
+      "as",
+      "te",
+      "áis",
+      "dó",
+      "da",
+      "er",
+      "cari",
+      "nzó",
+      "no",
+      "ro",
+      "rta",
+      "go",
+      "re",
+      "é"
+    ],
+    "harmony_families": {
+      "s": [
+        "as",
+        "asi",
+        "es",
+        "is",
+        "s",
+        "áis"
+      ],
+      "n": [
+        "aun",
+        "en",
+        "n",
+        "no"
+      ],
+      "l": [
+        "al",
+        "el",
+        "la",
+        "lo"
+      ],
+      "f": [
+        "fi",
+        "fu"
+      ],
+      "r": [
+        "er",
+        "ero",
+        "r",
+        "re",
+        "ro"
+      ],
+      "d": [
+        "d",
+        "da",
+        "de",
+        "dó",
+        "ido"
+      ],
+      "m": [
+        "ama",
+        "ma"
+      ],
+      "t": [
+        "ta",
+        "te"
+      ],
+      "q": [
+        "que",
+        "qui"
+      ]
+    },
+    "enumeration_debt": 23,
+    "phonology": {
+      "enumeration_debt_before": 23,
+      "enumeration_debt_after": 23,
+      "affixes_removed": 0,
+      "collapsed": [],
+      "needs_review": [
+        {
+          "members": [
+            "as",
+            "asi",
+            "es",
+            "is",
+            "s",
+            "áis"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "aun",
+            "en",
+            "n",
+            "no"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "al",
+            "el",
+            "la",
+            "lo"
+          ],
+          "reason": "not a single-position alternation"
+        },
+        {
+          "members": [
+            "fi",
+            "fu"
+          ],
+          "reason": "differing position is not a harmony vowel"
+        },
+        {
+          "members": [
+            "er",
+            "ero",
+            "r",
+            "re",
+            "ro"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "d",
+            "da",
+            "de",
+            "dó",
+            "ido"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ama",
+            "ma"
+          ],
+          "reason": "members differ in length"
+        },
+        {
+          "members": [
+            "ta",
+            "te"
+          ],
+          "reason": "differing position is not a harmony vowel"
+        },
+        {
+          "members": [
+            "que",
+            "qui"
+          ],
+          "reason": "differing position is not a harmony vowel"
+        }
+      ],
+      "rules_proposed": [
+        {
+          "rule": "epenthesis",
+          "archiphoneme": "-(e)s",
+          "members": [
+            "s",
+            "es"
+          ],
+          "conditioning": "epenthetic -e- inserted before -s when the stem ends in a consonant"
+        }
+      ]
+    },
+    "gold": {
+      "n": 45,
+      "gold_recall": 0.9556,
+      "gold_parsed": 0.9778,
+      "missed": [
+        "monte",
+        "discípulo"
+      ]
+    }
+  },
+  "score": {
+    "coverage": 0.5067,
+    "ambiguity": 2.53,
+    "enumeration_debt": 23,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.725,
+      "missed": [
+        "maestro",
+        "gracias",
+        "escribas",
+        "decir",
+        "galilea",
+        "viene",
+        "sentado",
+        "juntamente",
+        "viendo",
+        "fruto",
+        "ancianos",
+        "saber",
+        "piedra",
+        "apóstoles",
+        "siervos",
+        "david",
+        "comer",
+        "cerca",
+        "justo",
+        "fin",
+        "asimismo",
+        "multitud",
+        "esperanza",
+        "años",
+        "cabeza",
+        "corazones",
+        "pilato",
+        "recibido",
+        "temor",
+        "maría",
+        "llama",
+        "poco",
+        "eterna",
+        "aunque",
+        "potencia",
+        "monte",
+        "sabiduría",
+        "da",
+        "entró",
+        "mandamiento"
+      ]
+    },
+    "roots": 550,
+    "affixes": 64
+  }
+}

@@ -1,0 +1,2708 @@
+[
+  {
+    "glottocode": "arap1274",
+    "pair_key": "pg_arap1274",
+    "manifest": {
+      "glottocode": "arap1274",
+      "language": "Arapaho",
+      "pair_key": "pg_arap1274",
+      "rows_train_total": 36776,
+      "rows_train_english_meta": 36771,
+      "rows_train_segmented": 36771,
+      "gold_rows": 300,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 35770,
+      "gold_counts": {
+        "wordforms": 1071,
+        "lexicon": 560
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.5833,
+      "delta": 0.5833,
+      "final_ambiguity": 3.37,
+      "lexicon": {
+        "roots": 495,
+        "glossed": 455,
+        "glossed_frac": 0.9192,
+        "affix_glosses_inferred": 5
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.5833,
+            "ambiguity": 8.27
+          },
+          "templated": {
+            "coverage": 0.5833,
+            "ambiguity": 3.37
+          },
+          "templated+pos": {
+            "coverage": 0.5333,
+            "ambiguity": 2.73
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 32,
+          "prefix2": 30,
+          "prefix3": 29,
+          "prefix4": 25,
+          "suffix1": 36,
+          "suffix2": 35,
+          "suffix3": 32,
+          "suffix4": 30
+        }
+      },
+      "harmony_families": {
+        "h": [
+          "eih",
+          "h",
+          "hee",
+          "hei",
+          "hi",
+          "hu"
+        ],
+        "w": [
+          "w",
+          "wo"
+        ],
+        "n": [
+          "in",
+          "ini",
+          "n",
+          "nii",
+          "no",
+          "noo",
+          "oen",
+          "ooni",
+          "uuno"
+        ],
+        "t": [
+          "et",
+          "ot",
+          "otei",
+          "tii",
+          "to"
+        ],
+        "p": [
+          "p",
+          "uup"
+        ],
+        "3": [
+          "3ei",
+          "3i",
+          "i3i",
+          "o3",
+          "o3i"
+        ],
+        "nt": [
+          "ent",
+          "nit",
+          "noto",
+          "ntou"
+        ],
+        "c": [
+          "ce",
+          "iic"
+        ],
+        "b": [
+          "b",
+          "be",
+          "bii"
+        ]
+      },
+      "enumeration_debt": 29
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.5575,
+      "lemma_recall": 0.2625,
+      "feature_recall": 0.2425,
+      "miss_parse": [
+        "hebesiibeih'in",
+        "hokokiy",
+        "hee3ebe'inowoo",
+        "3owo3nooo",
+        "hesibee3i'",
+        "nih'eeneisiini",
+        "nihneenii3owoon",
+        "tihno'eeckoohunoo",
+        "niitoneinoohok",
+        "hebixoo3ooo",
+        "noo3oneihit",
+        "touyoono"
+      ],
+      "miss_lemma": [
+        "'oo->'oo",
+        "yeini3i'->yeini",
+        "ne'nii'P->ne'",
+        "neih'e->ih'e",
+        "nih'iit->nih'iit",
+        "beteenP->beteen",
+        "hiniisih'iit->niisih'iit",
+        "tih'iisiini'->tih'iisiini'",
+        "'oh->'oh",
+        "heetP->P"
+      ],
+      "miss_feat": [
+        "niihei'inou'u=['1S', 'IMPERF']",
+        "nihbi'P=['PAST', 'pause']",
+        "nihbi'P=['PAST', 'pause']",
+        "heisonoonin=['12POSS', '2S.IMPERF']",
+        "hiniisonoon=['3S']",
+        "nih'iit=['3.S', 'PAST']",
+        "heetP=['pause']",
+        "hinenno'=['NA.PL']"
+      ]
+    },
+    "secs": 218.4,
+    "typology_note": "Algonquian, polysynthetic — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "vera1241",
+    "pair_key": "pg_vera1241",
+    "manifest": {
+      "glottocode": "vera1241",
+      "language": "Vera'a",
+      "pair_key": "pg_vera1241",
+      "rows_train_total": 1955,
+      "rows_train_english_meta": 1931,
+      "rows_train_segmented": 1908,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 1622,
+      "gold_counts": {
+        "wordforms": 1460,
+        "lexicon": 379
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.8272,
+      "delta": 0.8272,
+      "final_ambiguity": 2.28,
+      "lexicon": {
+        "roots": 631,
+        "glossed": 446,
+        "glossed_frac": 0.7068,
+        "affix_glosses_inferred": 1
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.8272,
+            "ambiguity": 3.03
+          },
+          "templated": {
+            "coverage": 0.8272,
+            "ambiguity": 2.28
+          },
+          "templated+pos": {
+            "coverage": 0.7778,
+            "ambiguity": 1.87
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 20,
+          "prefix2": 10,
+          "prefix3": 1,
+          "suffix1": 34,
+          "suffix2": 16,
+          "suffix3": 14,
+          "suffix4": 6
+        }
+      },
+      "harmony_families": {
+        "m": [
+          "m",
+          "ma"
+        ],
+        "v": [
+          "ov",
+          "v",
+          "va"
+        ],
+        "s": [
+          "s",
+          "se",
+          "su"
+        ],
+        "g": [
+          "g",
+          "ga",
+          "gi"
+        ],
+        "r": [
+          "r",
+          "ra"
+        ]
+      },
+      "enumeration_debt": 8
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.82,
+      "lemma_recall": 0.195,
+      "feature_recall": 0.15,
+      "miss_parse": [
+        "0mul",
+        "gaitōk0",
+        "0vidir",
+        "ul0",
+        "bēlēl",
+        "0vovon̄odo",
+        "0gil",
+        "mērmēr",
+        "gako",
+        "wan",
+        "vanvan0",
+        "RESTART]"
+      ],
+      "miss_lemma": [
+        "van->van",
+        "'ōn->'ō",
+        "din̄->din̄",
+        "lōlō->lōlō",
+        "tek->tek",
+        "ne->ne",
+        "va'ē->va'ē",
+        "gitok->gitok",
+        "me'->me'",
+        "ser->ser"
+      ],
+      "miss_feat": [
+        "vōwal=['NUM']",
+        "rōvrōv'en=['ART', 'RED']",
+        "ban=['ART']",
+        "vōwal=['NUM']",
+        "sin=['ART']",
+        "wunvan=['ART']",
+        "sogin=['3SG', 'ART']",
+        "bak=['TAM2']",
+        "reksen=['ART']",
+        "mama'=['RED']",
+        "vōwal=['NUM']",
+        "wom=['TAM1']"
+      ]
+    },
+    "secs": 165.9,
+    "typology_note": "Oceanic (Vanuatu) — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "dido1241",
+    "pair_key": "pg_dido1241",
+    "manifest": {
+      "glottocode": "dido1241",
+      "language": "Tsez",
+      "pair_key": "pg_dido1241",
+      "rows_train_total": 3626,
+      "rows_train_english_meta": 3625,
+      "rows_train_segmented": 3623,
+      "gold_rows": 300,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 7725,
+      "gold_counts": {
+        "wordforms": 2916,
+        "lexicon": 681
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.725,
+      "delta": 0.725,
+      "final_ambiguity": 2.75,
+      "lexicon": {
+        "roots": 695,
+        "glossed": 520,
+        "glossed_frac": 0.7482,
+        "affix_glosses_inferred": 8
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.725,
+            "ambiguity": 3.92
+          },
+          "templated": {
+            "coverage": 0.725,
+            "ambiguity": 2.75
+          },
+          "templated+pos": {
+            "coverage": 0.6333,
+            "ambiguity": 2.3
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 29,
+          "prefix2": 24,
+          "prefix3": 18,
+          "prefix4": 13,
+          "suffix1": 45,
+          "suffix2": 36,
+          "suffix3": 35,
+          "suffix4": 21
+        }
+      },
+      "harmony_families": {
+        "n": [
+          "an",
+          "anu",
+          "n",
+          "ni",
+          "no",
+          "on"
+        ],
+        "b": [
+          "abi",
+          "b",
+          "bo"
+        ],
+        "r": [
+          "er",
+          "or",
+          "r",
+          "ru"
+        ],
+        "s": [
+          "es",
+          "osi",
+          "s",
+          "si"
+        ],
+        "y": [
+          "ay",
+          "y",
+          "yo"
+        ],
+        "q": [
+          "eq",
+          "oq",
+          "q"
+        ],
+        "z": [
+          "ez",
+          "z"
+        ],
+        "ł": [
+          "ał",
+          "ł",
+          "łi"
+        ],
+        "k": [
+          "k",
+          "uk"
+        ],
+        "ž": [
+          "ž",
+          "ži"
+        ]
+      },
+      "enumeration_debt": 22
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.69,
+      "lemma_recall": 0.2725,
+      "feature_recall": 0.15,
+      "miss_parse": [
+        "riłs",
+        "c’oxč’ua",
+        "gedbi",
+        "t’umibi",
+        "ezu~oƛ’ˤux",
+        "k’ačaɣˤa",
+        "amru",
+        "biqiya",
+        "žek’ubi",
+        "boboru",
+        "ʕoƛnon",
+        "yˤaɣˤiłn"
+      ],
+      "miss_lemma": [
+        "diz->di",
+        "di->di",
+        "zown->zow",
+        "ik’ia->ik’i",
+        "ričiƛƛin->iči",
+        "yičin->iči",
+        "žawab->žawab",
+        "ɣudi->ɣudi",
+        "sida->sida",
+        "roɣn->oɣ"
+      ],
+      "miss_feat": [
+        "tełxor=['AD.LAT']",
+        "tełn=['TOP']",
+        "šebiƛin=['QUOT']",
+        "bełiquz=['GEN2']",
+        "bełiqus=['GEN1']",
+        "maħorn=['TOP']",
+        "bežet’ani=['DEF', 'DISTR', 'I.PL']",
+        "idur=['LAT']",
+        "miq=['POSS.ESS']",
+        "esirn=['PFV.CVB']",
+        "bełiqana=['ERG']",
+        "miq=['POSS.ESS']"
+      ]
+    },
+    "secs": 184.7,
+    "typology_note": "Nakh-Daghestanian, ergative — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "lezg1247",
+    "pair_key": "pg_lezg1247",
+    "manifest": {
+      "glottocode": "lezg1247",
+      "language": "Lezgian",
+      "pair_key": "pg_lezg1247",
+      "rows_train_total": 646,
+      "rows_train_english_meta": 646,
+      "rows_train_segmented": 635,
+      "gold_rows": 53,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 1774,
+      "gold_counts": {
+        "wordforms": 505,
+        "lexicon": 253
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.4432,
+      "delta": 0.4432,
+      "final_ambiguity": 2.33,
+      "lexicon": {
+        "roots": 388,
+        "glossed": 388,
+        "glossed_frac": 1.0,
+        "affix_glosses_inferred": 1
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.4545,
+            "ambiguity": 4.88
+          },
+          "templated": {
+            "coverage": 0.4432,
+            "ambiguity": 2.33
+          },
+          "templated+pos": {
+            "coverage": 0.4091,
+            "ambiguity": 1.86
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 34,
+          "prefix2": 10,
+          "prefix3": 5,
+          "prefix4": 1,
+          "suffix1": 42,
+          "suffix2": 18,
+          "suffix3": 11,
+          "suffix4": 3
+        }
+      },
+      "harmony_families": {},
+      "enumeration_debt": 0
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.4925,
+      "lemma_recall": 0.1325,
+      "feature_recall": 0.075,
+      "miss_parse": [
+        "хъсанвилер",
+        "аскандае",
+        "Хырдалане",
+        ":",
+        ".",
+        "домкультурададие",
+        "канди",
+        "лугьунна",
+        "объектдилайдилай",
+        "гъвечи",
+        ",",
+        "»,"
+      ],
+      "miss_lemma": [
+        "материални->материал",
+        "акунтӀа->акун",
+        "канизва->кани",
+        "гада->гада",
+        "гьадакай->гьада",
+        "хтуннани->хтун",
+        "вахт->вахт",
+        "вичди->вич",
+        "завай->за",
+        "са->са"
+      ],
+      "miss_feat": [
+        "лагьанва=['PERF']",
+        "ваз=['DAT']",
+        "мадни=['FOC']",
+        "кӀарасарар=['PL']",
+        "кицӀз=['DAT']",
+        "гевгьерардин=['ERG', 'GEN']",
+        "вучда=['ENT']",
+        "пачагьдиз=['DAT', 'DIR']",
+        "хъсандик=['DIR', 'SBSS']",
+        "шивдихъ=['ERG', 'POESS']",
+        "вучдин=['ERG', 'GEN']",
+        "хьанватӀа=['COND', 'PERF']"
+      ]
+    },
+    "secs": 172.7,
+    "typology_note": "Nakh-Daghestanian, ergative — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "nyan1302",
+    "pair_key": "pg_nyan1302",
+    "manifest": {
+      "glottocode": "nyan1302",
+      "language": "Nyangbo",
+      "pair_key": "pg_nyan1302",
+      "rows_train_total": 1221,
+      "rows_train_english_meta": 1221,
+      "rows_train_segmented": 1221,
+      "gold_rows": 248,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 4,
+      "gold_counts": {
+        "wordforms": 835,
+        "lexicon": 263
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.7,
+      "delta": 0.7,
+      "final_ambiguity": 2.14,
+      "lexicon": {
+        "roots": 435,
+        "glossed": 1,
+        "glossed_frac": 0.0023,
+        "affix_glosses_inferred": 0
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.7,
+            "ambiguity": 2.36
+          },
+          "templated": {
+            "coverage": 0.7,
+            "ambiguity": 2.14
+          },
+          "templated+pos": {
+            "coverage": 0.7,
+            "ambiguity": 2.14
+          }
+        },
+        "slots": {
+          "prefix1": 17,
+          "prefix2": 11,
+          "prefix3": 2,
+          "suffix1": 7,
+          "suffix2": 2
+        }
+      },
+      "harmony_families": {
+        "b": [
+          "ab",
+          "b",
+          "be"
+        ],
+        "k": [
+          "ek",
+          "k"
+        ]
+      },
+      "enumeration_debt": 3
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.7625,
+      "lemma_recall": 0.0,
+      "feature_recall": 0.0,
+      "miss_parse": [
+        "amaneɛ́",
+        "bɔbatsyu",
+        "badakpɛ́",
+        "eletéɛ́",
+        "bɔpá",
+        "bawɔ̃sɔ̃",
+        "ónú",
+        "ohe",
+        "óvũnɔ",
+        "bunyí",
+        "kɔ",
+        "butsiɖi"
+      ],
+      "miss_lemma": [
+        "kɛlɛ->kɛlɛ",
+        "ɔbhɛtɛ->bhɛtɛ",
+        "kliso->kliso",
+        "ɔbhɛtɛ->bhɛtɛ",
+        "bɔlɛ->bɔ",
+        "soɔ->so",
+        "mɛ->mɛ",
+        "mɛ->mɛ",
+        "kishi->shi",
+        "akɔlɔ->kɔlɔ"
+      ],
+      "miss_feat": []
+    },
+    "secs": 158.2,
+    "typology_note": "Niger-Congo (Kwa) — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "ainu1240",
+    "pair_key": "pg_ainu1240",
+    "manifest": {
+      "glottocode": "ainu1240",
+      "language": "Hokkaido Ainu",
+      "pair_key": "pg_ainu1240",
+      "rows_train_total": 6726,
+      "rows_train_english_meta": 6699,
+      "rows_train_segmented": 6698,
+      "gold_rows": 300,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 2993,
+      "gold_counts": {
+        "wordforms": 310,
+        "lexicon": 135
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.7167,
+      "delta": 0.7167,
+      "final_ambiguity": 2.81,
+      "lexicon": {
+        "roots": 450,
+        "glossed": 334,
+        "glossed_frac": 0.7422,
+        "affix_glosses_inferred": 0
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.7333,
+            "ambiguity": 4.97
+          },
+          "templated": {
+            "coverage": 0.7167,
+            "ambiguity": 2.81
+          },
+          "templated+pos": {
+            "coverage": 0.5417,
+            "ambiguity": 1.89
+          }
+        },
+        "slots": {
+          "infix1": 2,
+          "prefix1": 44,
+          "prefix2": 34,
+          "prefix3": 27,
+          "prefix4": 18,
+          "suffix1": 46,
+          "suffix2": 29,
+          "suffix3": 13,
+          "suffix4": 1
+        }
+      },
+      "harmony_families": {
+        "n": [
+          "an",
+          "en",
+          "in",
+          "n",
+          "ne",
+          "no",
+          "nu",
+          "on",
+          "un"
+        ],
+        "s": [
+          "as",
+          "eas",
+          "is",
+          "s",
+          "se",
+          "si"
+        ],
+        "k": [
+          "k",
+          "ka",
+          "ke",
+          "ki",
+          "ko",
+          "oka"
+        ],
+        "p": [
+          "ap",
+          "p",
+          "pa",
+          "pe",
+          "po",
+          "up"
+        ],
+        "h": [
+          "h",
+          "ha",
+          "he",
+          "hi",
+          "ho",
+          "hu",
+          "uhu"
+        ],
+        "y": [
+          "ay",
+          "uy",
+          "y",
+          "yu"
+        ],
+        "r": [
+          "ara",
+          "eori",
+          "ra",
+          "re",
+          "ri",
+          "ru"
+        ],
+        "c": [
+          "aca",
+          "c",
+          "ci",
+          "ic"
+        ],
+        "sr": [
+          "sir",
+          "sore"
+        ],
+        "kr": [
+          "kar",
+          "kor"
+        ],
+        "m": [
+          "m",
+          "mo"
+        ],
+        "t": [
+          "ot",
+          "ta",
+          "to"
+        ],
+        "wn": [
+          "iwne",
+          "wen"
+        ]
+      },
+      "enumeration_debt": 46
+    },
+    "gold_benchmark": {
+      "tested": 310,
+      "parse_rate": 0.9032,
+      "lemma_recall": 0.171,
+      "feature_recall": 0.1516,
+      "miss_parse": [
+        "aeyayramekotep",
+        ",",
+        "e",
+        ",",
+        "aeyayramekotep",
+        "ae",
+        "itanki",
+        "p",
+        "aewkoysoytak.'",
+        "auhuyka",
+        "uweus",
+        "aeyayramekotep"
+      ],
+      "miss_lemma": [
+        "ani->ani",
+        "sukean->suke",
+        "pe->pe",
+        "ka->ka",
+        "isam->isam",
+        "kus->kus",
+        "imaype->ma",
+        "akor->kor",
+        "son->son",
+        "akire.\"->ki"
+      ],
+      "miss_feat": [
+        "haweoka=['POSS', 'exist.PL']",
+        "ehawean=['2SG.S', 'POSS', 'exist.SG']",
+        "soyne=['COP']",
+        "ehawean=['2SG.S', 'POSS', 'exist.SG']",
+        "iki=['APASS']",
+        "hawean.\"=['POSS', 'exist.SG']"
+      ]
+    },
+    "secs": 176.8,
+    "typology_note": "isolate, polysynthetic — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "ruul1235",
+    "pair_key": "pg_ruul1235",
+    "manifest": {
+      "glottocode": "ruul1235",
+      "language": "Ruuli",
+      "pair_key": "pg_ruul1235",
+      "rows_train_total": 2158,
+      "rows_train_english_meta": 2098,
+      "rows_train_segmented": 2094,
+      "gold_rows": 300,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 3718,
+      "gold_counts": {
+        "wordforms": 966,
+        "lexicon": 438
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.925,
+      "delta": 0.925,
+      "final_ambiguity": 2.82,
+      "lexicon": {
+        "roots": 675,
+        "glossed": 377,
+        "glossed_frac": 0.5585,
+        "affix_glosses_inferred": 8
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.925,
+            "ambiguity": 4.13
+          },
+          "templated": {
+            "coverage": 0.925,
+            "ambiguity": 2.82
+          },
+          "templated+pos": {
+            "coverage": 0.875,
+            "ambiguity": 1.88
+          }
+        },
+        "slots": {
+          "prefix1": 56,
+          "prefix2": 31,
+          "prefix3": 27,
+          "prefix4": 19,
+          "suffix1": 39,
+          "suffix2": 16,
+          "suffix3": 5,
+          "suffix4": 2
+        }
+      },
+      "harmony_families": {
+        "β": [
+          "β",
+          "βa",
+          "βu"
+        ],
+        "n": [
+          "n",
+          "na",
+          "ni",
+          "no"
+        ],
+        "βn": [
+          "βona",
+          "βuni"
+        ],
+        "t": [
+          "te",
+          "ti"
+        ],
+        "l": [
+          "l",
+          "la",
+          "li"
+        ],
+        "ː": [
+          "aː",
+          "eː",
+          "oː",
+          "ː"
+        ],
+        "ŋg": [
+          "ŋg",
+          "ŋge"
+        ],
+        "k": [
+          "eku",
+          "k",
+          "ku",
+          "ok",
+          "oku"
+        ],
+        "w": [
+          "w",
+          "wo"
+        ],
+        "g": [
+          "g",
+          "og",
+          "ug"
+        ],
+        "nt": [
+          "nitu",
+          "ntu"
+        ],
+        "j": [
+          "j",
+          "jo",
+          "oj"
+        ],
+        "m": [
+          "m",
+          "ma",
+          "mu"
+        ],
+        "r": [
+          "ire",
+          "ru"
+        ],
+        "βː": [
+          "eβiː",
+          "oβuː",
+          "βaː"
+        ],
+        "sː": [
+          "eseː",
+          "siː"
+        ],
+        "c": [
+          "c",
+          "ca",
+          "ci"
+        ],
+        "ːm": [
+          "ːmi",
+          "ːmu"
+        ]
+      },
+      "enumeration_debt": 32
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.655,
+      "lemma_recall": 0.0775,
+      "feature_recall": 0.0675,
+      "miss_parse": [
+        "mbakusuːβira",
+        "nokwaːtira",
+        "omukozi",
+        "kasozi",
+        "leːro",
+        "caiman",
+        "<<fs>tin>",
+        "akamere",
+        "<<ui>musaiza>",
+        "βuruːli",
+        "aːmpi",
+        "amufaːku"
+      ],
+      "miss_lemma": [
+        "wafunajo->w",
+        "onaːncweːzi->naːncweːzi",
+        "awo->awo",
+        "ako->ako",
+        "muno->muno",
+        "okwiːjaku->okwiːjaku",
+        "gamuwa->w",
+        "iswe->iswe",
+        "nomukaire->mukaire",
+        "awo->awo"
+      ],
+      "miss_feat": [
+        "okulja=['AUG', 'FV', 'INF']",
+        "najete=['FOC']",
+        "najete=['FOC']",
+        "okuljaːjo=['23.LOC', 'AUG', 'FV', 'INF']"
+      ]
+    },
+    "secs": 188.4,
+    "typology_note": "Bantu, non-Swahili subgroup — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "natu1246",
+    "pair_key": "pg_natu1246",
+    "manifest": {
+      "glottocode": "natu1246",
+      "language": "Natügu",
+      "pair_key": "pg_natu1246",
+      "rows_train_total": 786,
+      "rows_train_english_meta": 786,
+      "rows_train_segmented": 786,
+      "gold_rows": 99,
+      "gold_source_split": "test",
+      "align_backend": "eflomal",
+      "target_word_types": 2579,
+      "gold_counts": {
+        "wordforms": 864,
+        "lexicon": 322
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.4667,
+      "delta": 0.4667,
+      "final_ambiguity": 1.48,
+      "lexicon": {
+        "roots": 670,
+        "glossed": 467,
+        "glossed_frac": 0.697,
+        "affix_glosses_inferred": 7
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.4667,
+            "ambiguity": 1.96
+          },
+          "templated": {
+            "coverage": 0.4667,
+            "ambiguity": 1.48
+          },
+          "templated+pos": {
+            "coverage": 0.3917,
+            "ambiguity": 1.32
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 24,
+          "prefix2": 10,
+          "prefix3": 4,
+          "suffix1": 33,
+          "suffix2": 19,
+          "suffix3": 10,
+          "suffix4": 5
+        }
+      },
+      "harmony_families": {
+        "k": [
+          "k",
+          "ki"
+        ],
+        "m": [
+          "m",
+          "me",
+          "mu"
+        ],
+        "ng": [
+          "ng",
+          "nge"
+        ],
+        "l": [
+          "l",
+          "le"
+        ],
+        "n": [
+          "na",
+          "ne",
+          "ni",
+          "nou"
+        ],
+        "b": [
+          "ba",
+          "bae",
+          "bo"
+        ],
+        "kr": [
+          "kr",
+          "kra"
+        ],
+        "s": [
+          "s",
+          "sae"
+        ]
+      },
+      "enumeration_debt": 12
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.53,
+      "lemma_recall": 0.19,
+      "feature_recall": 0.1525,
+      "miss_parse": [
+        "x",
+        ".",
+        "aletikrngq",
+        ".",
+        ",",
+        ".",
+        ",",
+        ",",
+        ".",
+        ".",
+        "kxetutingq",
+        "tzrtctxngr"
+      ],
+      "miss_lemma": [
+        "olvz->olvz",
+        "badr->badr",
+        "Mzli->Mzli",
+        "nidr->nidr",
+        "kabzle->ka",
+        "trkatr->trka",
+        "Natqgu->Natqgu",
+        "Aijz->Aijz",
+        "tqvzokr->vz",
+        "dckta->dckta"
+      ],
+      "miss_feat": [
+        "tqlipekr=['1AUGI', 'COS', 'RL']",
+        "nangi=['IRR']",
+        "trtenge=['1MINII']",
+        "nzalvztrngr=['NMLZ', 'NMLZ1']",
+        "trtenge=['1MINII']",
+        "nalikr=['1AUGI', 'IRR']",
+        "trtenge=['1MINII']",
+        "rpimoubz=['PDIR.YON', 'again']",
+        "nzalvztrngr=['NMLZ', 'NMLZ1']",
+        "lipe=['COS']",
+        "nzalvztrngr=['NMLZ', 'NMLZ1']",
+        "dzbedr=['3AUGII']"
+      ]
+    },
+    "secs": 179.2,
+    "typology_note": "Oceanic (Reef-Santa Cruz) — test split",
+    "status": "ok"
+  },
+  {
+    "glottocode": "cayu1261",
+    "pair_key": "pg_cayu1261",
+    "manifest": {
+      "glottocode": "cayu1261",
+      "language": "Cayuga",
+      "pair_key": "pg_cayu1261",
+      "rows_train_total": 3045,
+      "rows_train_english_meta": 3045,
+      "rows_train_segmented": 2152,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 3730,
+      "gold_counts": {
+        "wordforms": 266,
+        "lexicon": 203
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.175,
+      "delta": 0.175,
+      "final_ambiguity": 1.29,
+      "lexicon": {
+        "roots": 445,
+        "glossed": 426,
+        "glossed_frac": 0.9573,
+        "affix_glosses_inferred": 0
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.1917,
+            "ambiguity": 2.09
+          },
+          "templated": {
+            "coverage": 0.175,
+            "ambiguity": 1.29
+          },
+          "templated+pos": {
+            "coverage": 0.1333,
+            "ambiguity": 1.0
+          }
+        },
+        "slots": {
+          "infix1": 4,
+          "prefix1": 47,
+          "prefix2": 20,
+          "prefix3": 15,
+          "prefix4": 10,
+          "suffix1": 19,
+          "suffix2": 5,
+          "suffix3": 1
+        }
+      },
+      "harmony_families": {
+        "n": [
+          "n",
+          "ni",
+          "nó"
+        ],
+        "h": [
+          "h",
+          "ih",
+          "áh"
+        ],
+        "d": [
+          "da",
+          "de"
+        ],
+        "t": [
+          "it",
+          "ot",
+          "t",
+          "tó"
+        ],
+        "g": [
+          "g",
+          "gi"
+        ],
+        "ˀ": [
+          "éˀ",
+          "ˀ"
+        ],
+        "hˀ": [
+          "héˀ",
+          "hóˀ"
+        ],
+        ":": [
+          "a:",
+          "í:"
+        ]
+      },
+      "enumeration_debt": 12
+    },
+    "gold_benchmark": {
+      "tested": 266,
+      "parse_rate": 0.1353,
+      "lemma_recall": 0.0263,
+      "feature_recall": 0.0075,
+      "miss_parse": [
+        "hakowaneh",
+        "hatetse?s",
+        "ekhni:no'",
+        "ahóhto:'",
+        "hotkwe'ta'",
+        "ne:kyé",
+        "ehsthaˀ",
+        "ganǫhsa̱ˀsǫ:ˀah",
+        "dewagehęnaˀtraˀehsdǫhǫgyeˀ",
+        "a/økyęda̱hkwaˀ",
+        "gatgíˀtraˀ",
+        "heyó:gyǫ:"
+      ],
+      "miss_lemma": [
+        "hokweh->h",
+        "hǫ́:gweh->ǫ́:gwe",
+        "…neˀ->…neˀ",
+        "hagehsotgęhę́:ˀ->hagehsotgęhę́:ˀ",
+        "ahsgwaˀ->ahsgw",
+        "oríhwaˀ->ríhw",
+        "i:ˀgeh->ˀgeh",
+        "niyǫ́:sˀah->ni",
+        "ohsno:wé:ˀah->hsno:wé:",
+        "nigęhné:sˀah->ni"
+      ],
+      "miss_feat": [
+        "hokweh=['KA', 'STAT']",
+        "hęnǫ́:gweh=['3NS.M.A']",
+        "owí:yaˀ=['', '3S.P']",
+        "akyę́da̱hkwaˀ=['']",
+        "onę́hę:ˀ=['', '3S.P']"
+      ]
+    },
+    "secs": 165.6,
+    "typology_note": "Iroquoian, polysynthetic — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "japh1234",
+    "pair_key": "pg_japh1234",
+    "manifest": {
+      "glottocode": "japh1234",
+      "language": "Japhug",
+      "pair_key": "pg_japh1234",
+      "rows_train_total": 3534,
+      "rows_train_english_meta": 3534,
+      "rows_train_segmented": 3505,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 6779,
+      "gold_counts": {
+        "wordforms": 466,
+        "lexicon": 253
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.6417,
+      "delta": 0.6417,
+      "final_ambiguity": 1.62,
+      "lexicon": {
+        "roots": 525,
+        "glossed": 339,
+        "glossed_frac": 0.6457,
+        "affix_glosses_inferred": 3
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.6417,
+            "ambiguity": 2.0
+          },
+          "templated": {
+            "coverage": 0.6417,
+            "ambiguity": 1.62
+          },
+          "templated+pos": {
+            "coverage": 0.5917,
+            "ambiguity": 1.37
+          }
+        },
+        "slots": {
+          "infix1": 2,
+          "prefix1": 30,
+          "prefix2": 24,
+          "prefix3": 19,
+          "prefix4": 15,
+          "suffix1": 11,
+          "suffix2": 3
+        }
+      },
+      "harmony_families": {
+        "t": [
+          "t",
+          "tu"
+        ],
+        "r": [
+          "ra",
+          "ri"
+        ],
+        "k": [
+          "k",
+          "ku"
+        ]
+      },
+      "enumeration_debt": 3
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.5725,
+      "lemma_recall": 0.1775,
+      "feature_recall": 0.12,
+      "miss_parse": [
+        "taʁndo",
+        "[kʰramba",
+        "ʑa",
+        "nɯʑɤnɯraʁ",
+        "ɕa",
+        "kɯrɤrɤt",
+        "ɲɤmbinɯ",
+        "rgaa",
+        "atʰɯɤ<nɯ>kʰu",
+        "tɤsno",
+        "tɯse",
+        "kɤfstɯn"
+      ],
+      "miss_lemma": [
+        "pjɤtu->tu",
+        "iɕqʰa->iɕqʰa",
+        "nɯtɕu->nɯtɕu",
+        "ra->ra",
+        "[ɯpi->pi",
+        "kɯxtɕi->kɯ",
+        "ŋu->ŋu",
+        "kɯfse->kɯ",
+        "tɤɬoʁ->tɤ",
+        "ɕaŋtaʁ->ɕaŋtaʁ"
+      ],
+      "miss_feat": [
+        "nɤmbro=['2SG.POSS']",
+        "ɯnmaʁ=['3SG.POSS']",
+        "nɯtɕɯ=['3PL.POSS']",
+        "ɯmdoʁ=['3SG.POSS']",
+        "ɯnmaʁ=['3SG.POSS']",
+        "mɤcʰa=['NEG']",
+        "ɯrʑaβ=['3SG.POSS']",
+        "ɯjme=['3SG.POSS']",
+        "tɤri=['INDEF.POSS']",
+        "amu=['1SG.POSS']",
+        "ɯrʑaβ=['3SG.POSS']",
+        "tɤmtʰɯm=['INDEF.POSS']"
+      ]
+    },
+    "secs": 201.7,
+    "typology_note": "Sino-Tibetan (Gyalrongic), polysynthetic agreement — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "beja1238",
+    "pair_key": "pg_beja1238",
+    "manifest": {
+      "glottocode": "beja1238",
+      "language": "Beja",
+      "pair_key": "pg_beja1238",
+      "rows_train_total": 5805,
+      "rows_train_english_meta": 5663,
+      "rows_train_segmented": 5663,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 7069,
+      "gold_counts": {
+        "wordforms": 644,
+        "lexicon": 331
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.5417,
+      "delta": 0.5417,
+      "final_ambiguity": 2.65,
+      "lexicon": {
+        "roots": 425,
+        "glossed": 374,
+        "glossed_frac": 0.88,
+        "affix_glosses_inferred": 3
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.5417,
+            "ambiguity": 4.95
+          },
+          "templated": {
+            "coverage": 0.5417,
+            "ambiguity": 2.65
+          },
+          "templated+pos": {
+            "coverage": 0.5167,
+            "ambiguity": 2.39
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 19,
+          "prefix2": 15,
+          "prefix3": 14,
+          "prefix4": 16,
+          "suffix1": 35,
+          "suffix2": 32,
+          "suffix3": 24,
+          "suffix4": 19
+        }
+      },
+      "harmony_families": {
+        "j": [
+          "ej",
+          "j"
+        ],
+        "ː": [
+          "iː",
+          "oː",
+          "ː"
+        ],
+        "d": [
+          "d",
+          "da"
+        ],
+        "t": [
+          "it",
+          "t",
+          "ti"
+        ],
+        "k": [
+          "ak",
+          "k",
+          "ka"
+        ],
+        "hːb": [
+          "heːb",
+          "hoːb"
+        ],
+        "n": [
+          "n",
+          "na",
+          "ni",
+          "on"
+        ],
+        "w": [
+          "w",
+          "wa"
+        ],
+        "ːb": [
+          "eːb",
+          "ːb"
+        ],
+        "m": [
+          "m",
+          "om",
+          "um"
+        ],
+        "ːn": [
+          "aːn",
+          "oːn",
+          "ːni"
+        ]
+      },
+      "enumeration_debt": 18
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.4575,
+      "lemma_recall": 0.1575,
+      "feature_recall": 0.0775,
+      "miss_parse": [
+        "<<pr>ʃuhuːdwa>",
+        "miraːj",
+        "mʔaːʔa",
+        "tʔiteːnaːtu",
+        "kataːb",
+        "melja",
+        "iktiːnneːt",
+        "nifʔiː",
+        "girʃeː",
+        "whaːʃoː",
+        "<<ui>amaː>",
+        "miskiːnaːb"
+      ],
+      "miss_lemma": [
+        "timmarri->marri",
+        "ikatineː->kati",
+        "dʔijaːb->dʔi",
+        "oːkna->kna",
+        "oːkna->kna",
+        "naːt->naː",
+        "naːt->naː",
+        "baja->baj",
+        "hiːdaːj->hiːdaːj",
+        "haːʃ->haːʃ"
+      ],
+      "miss_feat": [
+        "uːtak=['DEF.SG.M.NOM']",
+        "rhani=['IPFV.1SG']",
+        "mʔaːn=['IMP.PL']",
+        "ʃagaːb=['INDF.M.ACC']",
+        "uːtag=['DEF.SG.M.NOM']",
+        "taki=['COP.3SG']",
+        "oːmhiːn=['DEF.SG.M.ACC']",
+        "ʃagaːb=['INDF.M.ACC']",
+        "itaki=['DEF.M', 'GEN']",
+        "oːbhar=['DEF.SG.M.ACC']",
+        "tʔaːneːb=['L', 'LOC.PL']",
+        "oːtak=['DEF.SG.M.ACC']"
+      ]
+    },
+    "secs": 208.5,
+    "typology_note": "Cushitic (Afro-Asiatic) — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "dolg1241",
+    "pair_key": "pg_dolg1241",
+    "manifest": {
+      "glottocode": "dolg1241",
+      "language": "Dolgan",
+      "pair_key": "pg_dolg1241",
+      "rows_train_total": 10252,
+      "rows_train_english_meta": 10144,
+      "rows_train_segmented": 10143,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 15885,
+      "gold_counts": {
+        "wordforms": 1648,
+        "lexicon": 507
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.8833,
+      "delta": 0.8833,
+      "final_ambiguity": 2.35,
+      "lexicon": {
+        "roots": 625,
+        "glossed": 429,
+        "glossed_frac": 0.6864,
+        "affix_glosses_inferred": 15
+      },
+      "morphotactics": {
+        "chosen": "templated+pos",
+        "templated": true,
+        "pos_aware": true,
+        "variants": {
+          "unordered": {
+            "coverage": 0.8917,
+            "ambiguity": 4.64
+          },
+          "templated": {
+            "coverage": 0.8917,
+            "ambiguity": 3.16
+          },
+          "templated+pos": {
+            "coverage": 0.8833,
+            "ambiguity": 2.35
+          }
+        },
+        "slots": {
+          "prefix1": 13,
+          "prefix2": 11,
+          "prefix3": 5,
+          "prefix4": 1,
+          "suffix1": 72,
+          "suffix2": 64,
+          "suffix3": 59,
+          "suffix4": 48
+        }
+      },
+      "harmony_families": {
+        "r": [
+          "ar",
+          "or",
+          "r",
+          "ur"
+        ],
+        "m": [
+          "em",
+          "m"
+        ],
+        "n": [
+          "an",
+          "in",
+          "n",
+          "na",
+          "ni"
+        ],
+        "l": [
+          "l",
+          "la",
+          "ula"
+        ],
+        "nn": [
+          "nn",
+          "nne"
+        ],
+        "gɨn": [
+          "gɨn",
+          "gɨna"
+        ],
+        "g": [
+          "ga",
+          "ge",
+          "go",
+          "og"
+        ],
+        "t": [
+          "t",
+          "ta",
+          "te"
+        ],
+        "ŋ": [
+          "iŋ",
+          "uŋ",
+          "ŋ"
+        ],
+        "tr": [
+          "tar",
+          "ter"
+        ],
+        "bn": [
+          "bin",
+          "bun"
+        ],
+        "bt": [
+          "bit",
+          "but"
+        ],
+        "h": [
+          "h",
+          "he"
+        ],
+        "gn": [
+          "gun",
+          "igin"
+        ],
+        "ttn": [
+          "ttan",
+          "tten"
+        ],
+        "d": [
+          "d",
+          "da"
+        ],
+        "k": [
+          "k",
+          "uk"
+        ],
+        "br": [
+          "bar",
+          "ber"
+        ]
+      },
+      "enumeration_debt": 28
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.6225,
+      "lemma_recall": 0.1275,
+      "feature_recall": 0.05,
+      "miss_parse": [
+        "nʼu͡oŋuhutun",
+        "edʼiːjin",
+        "kolbuja",
+        "tɨːtatɨːta",
+        "hereppitin",
+        "kɨrgɨttarɨgar",
+        "ɨ͡aldʼɨt",
+        "edʼiːjderbin",
+        "dʼi͡etiger",
+        "kolbujaga",
+        "gilbeŋniːller",
+        "egelle"
+      ],
+      "miss_lemma": [
+        "gini->gini",
+        "bu->bu",
+        "abaːhɨ->abaːhɨ",
+        "ol->ol",
+        "oguru͡o->oguru͡o",
+        "kajanɨ->kaja",
+        "ihitten->ih",
+        "hu͡ok->hu͡ok",
+        "tu͡olkulaːta->tu͡olkulaː",
+        "bu͡olu͡om->bu͡ol"
+      ],
+      "miss_feat": [
+        "barbɨt=['PST2.[3SG]']",
+        "baran=['CVB.SEQ']",
+        "barbɨtɨn=['3SG', 'GEN', 'PTCP.PST']",
+        "kelen=['CVB.SEQ']",
+        "bu͡olan=['CVB.SEQ']",
+        "kelbite=['3SG', 'PST2']",
+        "aːttaːbɨttar=['3PL', 'PST2', 'VBZ']",
+        "hirinen=['3SG', 'INSTR']",
+        "tuːgu=['ACC']",
+        "barɨta=['3SG.[NOM]']",
+        "hirge=['DAT/LOC']",
+        "bu͡olan=['CVB.SEQ']"
+      ]
+    },
+    "secs": 204.9,
+    "typology_note": "Turkic (Siberia), agglutinative — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "kama1378",
+    "pair_key": "pg_kama1378",
+    "manifest": {
+      "glottocode": "kama1378",
+      "language": "Kamas",
+      "pair_key": "pg_kama1378",
+      "rows_train_total": 9402,
+      "rows_train_english_meta": 9266,
+      "rows_train_segmented": 9266,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 5547,
+      "gold_counts": {
+        "wordforms": 891,
+        "lexicon": 258
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.8167,
+      "delta": 0.8167,
+      "final_ambiguity": 2.11,
+      "lexicon": {
+        "roots": 600,
+        "glossed": 389,
+        "glossed_frac": 0.6483,
+        "affix_glosses_inferred": 6
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.8167,
+            "ambiguity": 2.46
+          },
+          "templated": {
+            "coverage": 0.8167,
+            "ambiguity": 2.11
+          },
+          "templated+pos": {
+            "coverage": 0.775,
+            "ambiguity": 1.97
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 18,
+          "prefix2": 5,
+          "prefix3": 1,
+          "suffix1": 40,
+          "suffix2": 27,
+          "suffix3": 18,
+          "suffix4": 12
+        }
+      },
+      "harmony_families": {
+        "ʔ": [
+          "aʔi",
+          "ʔ",
+          "ʔi"
+        ],
+        "k": [
+          "ak",
+          "k",
+          "ka",
+          "ku"
+        ],
+        "n": [
+          "an",
+          "n"
+        ],
+        "m": [
+          "am",
+          "em",
+          "m",
+          "om"
+        ],
+        "z": [
+          "iz",
+          "ze",
+          "zi"
+        ],
+        "ml": [
+          "mal",
+          "mol"
+        ],
+        "l": [
+          "el",
+          "l"
+        ],
+        "d": [
+          "d",
+          "di"
+        ]
+      },
+      "enumeration_debt": 14
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.66,
+      "lemma_recall": 0.2275,
+      "feature_recall": 0.1075,
+      "miss_parse": [
+        "ĭmbinʼibudʼ",
+        "amitun",
+        "našto",
+        "multʼanə",
+        "kutʼümnie",
+        "kĭškit",
+        "saʔməluʔpam",
+        "bʼeʔ",
+        "dʼăbaktərləbaʔ",
+        "keʔbdezʼiʔ",
+        "šamnak",
+        "bʼeʔ"
+      ],
+      "miss_lemma": [
+        "izittə->i",
+        "uja->uja",
+        "ige->i",
+        "ipek->ipek",
+        "nagur->nagur",
+        "amoraʔ->amor",
+        "keʔbde->keʔbde",
+        "iʔgö->iʔgö",
+        "gibər->gibər",
+        "tănan->tănan"
+      ],
+      "miss_feat": [
+        "maʔnəl=['2SG', 'LAT']",
+        "măndərzittə=['FRQ', 'INF.LAT']",
+        "udam=['NOM/GEN/ACC.1SG']",
+        "amzittə=['INF.LAT']",
+        "kallam=['1SG', 'FUT']",
+        "kanzittə=['INF.LAT']",
+        "tüžöjəm=['ACC', 'EP']",
+        "amnaʔ=['IMP.2SG']",
+        "udam=['NOM/GEN/ACC.1SG']",
+        "ulum=['NOM/GEN/ACC.1SG']",
+        "amaʔ=['EP', 'IMP.2SG']",
+        "kanaʔ=['CNG', 'EP']"
+      ]
+    },
+    "secs": 196.3,
+    "typology_note": "Uralic (Samoyedic) — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "selk1253",
+    "pair_key": "pg_selk1253",
+    "manifest": {
+      "glottocode": "selk1253",
+      "language": "Selkup",
+      "pair_key": "pg_selk1253",
+      "rows_train_total": 2596,
+      "rows_train_english_meta": 2555,
+      "rows_train_segmented": 2554,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 6326,
+      "gold_counts": {
+        "wordforms": 1366,
+        "lexicon": 624
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.85,
+      "delta": 0.85,
+      "final_ambiguity": 1.92,
+      "lexicon": {
+        "roots": 575,
+        "glossed": 399,
+        "glossed_frac": 0.6939,
+        "affix_glosses_inferred": 3
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.85,
+            "ambiguity": 2.3
+          },
+          "templated": {
+            "coverage": 0.85,
+            "ambiguity": 1.92
+          },
+          "templated+pos": {
+            "coverage": 0.8,
+            "ambiguity": 1.7
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 10,
+          "prefix2": 6,
+          "suffix1": 40,
+          "suffix2": 30,
+          "suffix3": 25,
+          "suffix4": 20
+        }
+      },
+      "harmony_families": {
+        "m": [
+          "m",
+          "om"
+        ],
+        "n": [
+          "en",
+          "n",
+          "na",
+          "on"
+        ],
+        "t": [
+          "at",
+          "it",
+          "t",
+          "ta"
+        ],
+        "j": [
+          "j",
+          "ja"
+        ],
+        "q": [
+          "q",
+          "qu"
+        ]
+      },
+      "enumeration_debt": 9
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.4775,
+      "lemma_recall": 0.13,
+      "feature_recall": 0.12,
+      "miss_parse": [
+        "čʼiqəlʼkijoıːmpɔːtɨn",
+        "tɔːqɨltɨmpɨkkijoıːmpɔːtɨn",
+        "točʼčʼot",
+        "kur",
+        "šittälʼa",
+        "surɨčʼčʼɨj",
+        "muktut",
+        "amirla",
+        "taq",
+        "čʼontɨka",
+        "čʼaǯat",
+        "tuːntɨla"
+      ],
+      "miss_lemma": [
+        "tɨm->tɨm",
+        "qalaıːmpatɨ->qala",
+        "ɔːtaiːmtɨ->ɔːta",
+        "sompɨla->sompɨla",
+        "man->man",
+        "ira->ira",
+        "pakta->pakta",
+        "tap->tap",
+        "no->no",
+        "toːna->toːna"
+      ],
+      "miss_feat": [
+        "kət=['LOC.ADV']",
+        "Nat=['GEN']",
+        "kət=['LOC.ADV']",
+        "iman=['GEN']"
+      ]
+    },
+    "secs": 202.4,
+    "typology_note": "Uralic (Samoyedic) — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "nngg1234",
+    "pair_key": "pg_nngg1234",
+    "manifest": {
+      "glottocode": "nngg1234",
+      "language": "N‖ng",
+      "pair_key": "pg_nngg1234",
+      "rows_train_total": 2218,
+      "rows_train_english_meta": 2124,
+      "rows_train_segmented": 2121,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 740,
+      "gold_counts": {
+        "wordforms": 842,
+        "lexicon": 239
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.8649,
+      "delta": 0.8649,
+      "final_ambiguity": 2.16,
+      "lexicon": {
+        "roots": 397,
+        "glossed": 257,
+        "glossed_frac": 0.6474,
+        "affix_glosses_inferred": 1
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.8649,
+            "ambiguity": 3.0
+          },
+          "templated": {
+            "coverage": 0.8649,
+            "ambiguity": 2.16
+          },
+          "templated+pos": {
+            "coverage": 0.7838,
+            "ambiguity": 1.86
+          }
+        },
+        "slots": {
+          "prefix1": 22,
+          "prefix2": 6,
+          "prefix3": 1,
+          "prefix4": 1,
+          "suffix1": 10,
+          "suffix2": 2
+        }
+      },
+      "harmony_families": {
+        "k": [
+          "k",
+          "ka",
+          "ke",
+          "ki"
+        ],
+        "ǂ": [
+          "ǂ",
+          "ǂee"
+        ]
+      },
+      "enumeration_debt": 4
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.59,
+      "lemma_recall": 0.29,
+      "feature_recall": 0.2525,
+      "miss_parse": [
+        "<<fm>koffie>",
+        "kxʼuu",
+        "bau",
+        "ǁʼuin",
+        "ǀʼhunna",
+        "ǀqxʼae",
+        "ǃoon",
+        "ǀkxʼoan",
+        "nǁ",
+        "ǁʼorake",
+        "kanǃuin",
+        "khuuǁʼng"
+      ],
+      "miss_lemma": [
+        "dyaqnn->dyaqnn",
+        "ng->ng",
+        "na->na",
+        "ǀqoeke->ǀqoe",
+        "ǁaun->ǁaun",
+        "saa->saa",
+        "ǁhoe->ǁhoe",
+        "ǂhaun->ǂhaun",
+        "hoo->hoo",
+        "dyaqann->dyaqann"
+      ],
+      "miss_feat": [
+        "ǁxaea=['?']",
+        "kanǂoqno=['INAL']",
+        "hngke=['3PL']",
+        "koke=['PL']",
+        "ǂaoa=['?']",
+        "kanǂoqno=['INAL']",
+        "kanǂoqno=['INAL']",
+        "ǁxaea=['?']",
+        "ǀaia=['IMP.SG']",
+        "ǁxaea=['?']",
+        "kanǂoqno=['INAL']",
+        "kanǂoqno=['INAL']"
+      ]
+    },
+    "secs": 170.6,
+    "typology_note": "Tuu/Khoisan, click language — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "mauw1238",
+    "pair_key": "pg_mauw1238",
+    "manifest": {
+      "glottocode": "mauw1238",
+      "language": "Mauwake",
+      "pair_key": "pg_mauw1238",
+      "rows_train_total": 2133,
+      "rows_train_english_meta": 2133,
+      "rows_train_segmented": 1963,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 2124,
+      "gold_counts": {
+        "wordforms": 158,
+        "lexicon": 111
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.9057,
+      "delta": 0.9057,
+      "final_ambiguity": 2.54,
+      "lexicon": {
+        "roots": 625,
+        "glossed": 353,
+        "glossed_frac": 0.5648,
+        "affix_glosses_inferred": 0
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.9057,
+            "ambiguity": 4.26
+          },
+          "templated": {
+            "coverage": 0.9057,
+            "ambiguity": 2.54
+          },
+          "templated+pos": {
+            "coverage": 0.8491,
+            "ambiguity": 2.08
+          }
+        },
+        "slots": {
+          "prefix1": 24,
+          "prefix2": 15,
+          "prefix3": 13,
+          "prefix4": 11,
+          "suffix1": 36,
+          "suffix2": 20,
+          "suffix3": 14,
+          "suffix4": 8
+        }
+      },
+      "harmony_families": {
+        "r": [
+          "ora",
+          "r",
+          "ra",
+          "ur"
+        ],
+        "w": [
+          "aw",
+          "iw",
+          "w",
+          "wi"
+        ],
+        "n": [
+          "an",
+          "en",
+          "n",
+          "na"
+        ],
+        "k": [
+          "ak",
+          "ek",
+          "ik",
+          "k",
+          "ok"
+        ],
+        "y": [
+          "eya",
+          "iya",
+          "y"
+        ],
+        "s": [
+          "asa",
+          "s"
+        ],
+        "mk": [
+          "emik",
+          "mik"
+        ],
+        "rk": [
+          "rek",
+          "rik",
+          "rika"
+        ],
+        "mm": [
+          "mama",
+          "muma",
+          "omem"
+        ],
+        "ww": [
+          "owaw",
+          "wowa"
+        ]
+      },
+      "enumeration_debt": 22
+    },
+    "gold_benchmark": {
+      "tested": 158,
+      "parse_rate": 0.7152,
+      "lemma_recall": 0.2342,
+      "feature_recall": 0.1899,
+      "miss_parse": [
+        "O",
+        "…",
+        "kookalekamna",
+        "…",
+        "moˈma",
+        "[moˈma",
+        "eˈnimeka]",
+        ">",
+        "sirasira",
+        "miiw(a)aasa[2]",
+        "inow(a)",
+        "omow(a)"
+      ],
+      "miss_lemma": [
+        "somek->somek",
+        "ikeya->ik",
+        "Yo->Yo",
+        "emeria->emeria",
+        "aawowa->aaw",
+        "enep->en",
+        "wuak->wu",
+        "soopowa->soop",
+        "[[mera->[[mera",
+        "enowa]->en"
+      ],
+      "miss_feat": [
+        "samosamora=['RDP']",
+        "uuwow(a)=['NMZ']",
+        "ufowa=['NMZ']",
+        "imenapna=['SS.SEQ', 'TP']",
+        "maakemik…=['1/3p', 'PA']",
+        "maakek,]=['3s', 'PA']",
+        "maemikemik=['1/3p', 'PA', 'SS.SIM', 'be']"
+      ]
+    },
+    "secs": 191.3,
+    "typology_note": "Trans-New Guinea — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "kara1499",
+    "pair_key": "pg_kara1499",
+    "manifest": {
+      "glottocode": "kara1499",
+      "language": "Kalamang",
+      "pair_key": "pg_kara1499",
+      "rows_train_total": 1892,
+      "rows_train_english_meta": 1873,
+      "rows_train_segmented": 1267,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 2127,
+      "gold_counts": {
+        "wordforms": 831,
+        "lexicon": 435
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.5849,
+      "delta": 0.5849,
+      "final_ambiguity": 2.76,
+      "lexicon": {
+        "roots": 425,
+        "glossed": 325,
+        "glossed_frac": 0.7647,
+        "affix_glosses_inferred": 1
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.5849,
+            "ambiguity": 4.95
+          },
+          "templated": {
+            "coverage": 0.5849,
+            "ambiguity": 2.76
+          },
+          "templated+pos": {
+            "coverage": 0.5094,
+            "ambiguity": 1.91
+          }
+        },
+        "slots": {
+          "infix1": 1,
+          "prefix1": 23,
+          "prefix2": 15,
+          "prefix3": 9,
+          "prefix4": 2,
+          "suffix1": 31,
+          "suffix2": 16,
+          "suffix3": 9,
+          "suffix4": 5
+        }
+      },
+      "harmony_families": {
+        "n": [
+          "aun",
+          "n",
+          "na",
+          "ne",
+          "un"
+        ],
+        "k": [
+          "ak",
+          "ka",
+          "ki",
+          "ko"
+        ],
+        "t": [
+          "at",
+          "et",
+          "t",
+          "ta",
+          "tu"
+        ],
+        "m": [
+          "m",
+          "ma",
+          "mu"
+        ],
+        "r": [
+          "r",
+          "ra",
+          "ruo"
+        ],
+        "nn": [
+          "nin",
+          "nun"
+        ],
+        "gg": [
+          "gga",
+          "ggo"
+        ]
+      },
+      "enumeration_debt": 17
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.6575,
+      "lemma_recall": 0.255,
+      "feature_recall": 0.15,
+      "miss_parse": [
+        "poupun",
+        "nemies",
+        "siamar",
+        "kitkadok",
+        "ewa∼wa∼ewawain",
+        "…",
+        "gonggin",
+        "didirasun",
+        "birat",
+        "jumat",
+        "tebolsuban",
+        "kelekko"
+      ],
+      "miss_lemma": [
+        "kuru->kuru",
+        "taikoni->taikon",
+        "manan->nan",
+        "*tara->*tara",
+        "kosarun->kosarun",
+        "paruata->parua",
+        "koyet->koyet",
+        "ye->ye",
+        "marua->marua",
+        "koyet->koyet"
+      ],
+      "miss_feat": [
+        "rorun=['3POSS']",
+        "lengunko=['3SG', 'LOC']",
+        "kometta=['NFIN']",
+        "muapan=['1SG.POSS']",
+        "jietet=['']",
+        "temunun=['NMLZ']",
+        "koni=['OBJQNT']",
+        "keweun=['3POSS']",
+        "keweuna=['3POSS', 'FOC']",
+        "kadenun=['3POSS']",
+        "keweuna=['3POSS', 'FOC']",
+        "lengun=['3POSS']"
+      ]
+    },
+    "secs": 204.8,
+    "typology_note": "Papuan isolate — train holdout",
+    "status": "ok"
+  },
+  {
+    "glottocode": "basq1248",
+    "pair_key": "pg_basq1248",
+    "manifest": {
+      "glottocode": "basq1248",
+      "language": "Basque",
+      "pair_key": "pg_basq1248",
+      "rows_train_total": 745,
+      "rows_train_english_meta": 631,
+      "rows_train_segmented": 331,
+      "gold_rows": 300,
+      "gold_source_split": "train",
+      "align_backend": "eflomal",
+      "target_word_types": 1128,
+      "gold_counts": {
+        "wordforms": 588,
+        "lexicon": 295
+      }
+    },
+    "induction": {
+      "base_coverage": 0.0,
+      "final_coverage": 0.7857,
+      "delta": 0.7857,
+      "final_ambiguity": 1.57,
+      "lexicon": {
+        "roots": 506,
+        "glossed": 309,
+        "glossed_frac": 0.6107,
+        "affix_glosses_inferred": 3
+      },
+      "morphotactics": {
+        "chosen": "templated",
+        "templated": true,
+        "pos_aware": false,
+        "variants": {
+          "unordered": {
+            "coverage": 0.7857,
+            "ambiguity": 2.02
+          },
+          "templated": {
+            "coverage": 0.7857,
+            "ambiguity": 1.57
+          },
+          "templated+pos": {
+            "coverage": 0.75,
+            "ambiguity": 1.38
+          }
+        },
+        "slots": {
+          "infix1": 3,
+          "prefix1": 10,
+          "prefix2": 2,
+          "suffix1": 23,
+          "suffix2": 11,
+          "suffix3": 10,
+          "suffix4": 5
+        }
+      },
+      "harmony_families": {
+        "k": [
+          "ak",
+          "ek",
+          "k",
+          "ko"
+        ],
+        "b": [
+          "b",
+          "be"
+        ],
+        "t": [
+          "ait",
+          "it",
+          "t",
+          "ta"
+        ],
+        "n": [
+          "in",
+          "n"
+        ],
+        "l": [
+          "ela",
+          "la"
+        ],
+        "g": [
+          "go",
+          "ig"
+        ],
+        "zk": [
+          "izk",
+          "zuek"
+        ],
+        "z": [
+          "ez",
+          "z"
+        ]
+      },
+      "enumeration_debt": 12
+    },
+    "gold_benchmark": {
+      "tested": 400,
+      "parse_rate": 0.805,
+      "lemma_recall": 0.1775,
+      "feature_recall": 0.085,
+      "miss_parse": [
+        "dardaraerazi",
+        "Ele",
+        "(Hik",
+        "paper",
+        "astiro",
+        "urik",
+        "zaldiari",
+        "sagar",
+        "Arras",
+        "nintzan",
+        "banenkike",
+        "egunero"
+      ],
+      "miss_lemma": [
+        "Pellok->Pellok",
+        "zaitut->zaitu",
+        "ibai->ibai",
+        "aita->aita",
+        "amari->ama",
+        "emanØ->eman",
+        "bazkaltzen->bazkal",
+        "garbitzen->garbi",
+        "bazkaldu->bazkal",
+        "dago->go"
+      ],
+      "miss_feat": [
+        "gizonak=['ERG', 'the']",
+        "emakumea=['the']",
+        "umeak=['DEF', 'E']",
+        "gizona=['the']",
+        "emakumea=['det']",
+        "[hartuko].=['Asp(perfect)', 'T']",
+        "amak=['ERG']",
+        "liburua=['the']",
+        "gizona=['the']",
+        "gizona=['the']",
+        "emakumea=['the']",
+        "liburua=['the']"
+      ]
+    },
+    "secs": 173.8,
+    "typology_note": "isolate, ergative — train holdout",
+    "status": "ok"
+  }
+]

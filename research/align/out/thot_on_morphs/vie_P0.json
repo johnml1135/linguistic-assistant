@@ -1,0 +1,162 @@
+{
+  "pair": "vie",
+  "paradigm": "P0",
+  "secs": 36.7,
+  "tdd_result": {
+    "pair": "vie",
+    "iterations": 21,
+    "base_coverage": 0.0,
+    "final_coverage": 0.1667,
+    "delta": 0.1667,
+    "final_ambiguity": 1.25,
+    "amb_cap": 5.0,
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.175,
+          "ambiguity": 1.86
+        },
+        "templated": {
+          "coverage": 0.1667,
+          "ambiguity": 1.25
+        },
+        "templated+pos": {
+          "coverage": 0.125,
+          "ambiguity": 1.2
+        }
+      },
+      "slots": {
+        "prefix1": 12,
+        "suffix1": 23,
+        "suffix2": 1
+      }
+    },
+    "pos": {
+      "applied": false,
+      "roots_by_pos": {
+        "noun": 252,
+        "verb": 59,
+        "prep": 32,
+        "pron": 31,
+        "adj": 22,
+        "conj": 16,
+        "det": 15,
+        "num": 8,
+        "ptcl": 6,
+        "adv": 4
+      },
+      "affixes_with_msa": 26,
+      "affixes_total": 35
+    },
+    "lexicon": {
+      "roots": 445,
+      "glossed": 427,
+      "glossed_frac": 0.9596,
+      "affix_glosses_inferred": 0
+    },
+    "affixes_kept": [
+      "g",
+      "ng",
+      "c",
+      "k",
+      "h",
+      "s",
+      "n",
+      "d",
+      "a",
+      "ến",
+      "ên",
+      "t",
+      "nh",
+      "m",
+      "c",
+      "i",
+      "êm",
+      "ờng",
+      "n",
+      "p",
+      "êng",
+      "ếu",
+      "ếp",
+      "ết",
+      "o",
+      "ớng",
+      "m",
+      "p",
+      "êu",
+      "ệu",
+      "u",
+      "tr",
+      "x",
+      "th",
+      "đ"
+    ],
+    "harmony_families": {},
+    "enumeration_debt": 0,
+    "phonology": {
+      "enumeration_debt_before": 0,
+      "enumeration_debt_after": 0,
+      "affixes_removed": 0,
+      "collapsed": [],
+      "needs_review": [],
+      "rules_proposed": []
+    }
+  },
+  "score": {
+    "coverage": 0.14,
+    "ambiguity": 1.43,
+    "enumeration_debt": 0,
+    "gold": {
+      "n": 40,
+      "gold_recall": 0.0,
+      "gold_parsed": 0.175,
+      "missed": [
+        "tâm",
+        "luận",
+        "ma",
+        "núi",
+        "tà",
+        "giả",
+        "cai",
+        "tạ",
+        "dâng",
+        "tình",
+        "thay",
+        "dựng",
+        "hằng",
+        "chào",
+        "đẹp",
+        "thử",
+        "nhớ",
+        "vẹn",
+        "rõ",
+        "coi",
+        "đổ",
+        "lão",
+        "thăm",
+        "đêm",
+        "nguyền",
+        "trách",
+        "giá",
+        "phụ",
+        "thuyền",
+        "mạnh",
+        "sách",
+        "ít",
+        "vẫn",
+        "lãnh",
+        "nạn",
+        "khóc",
+        "khổ",
+        "giàu",
+        "dõi",
+        "thường"
+      ]
+    },
+    "roots": 445,
+    "affixes": 35
+  }
+}

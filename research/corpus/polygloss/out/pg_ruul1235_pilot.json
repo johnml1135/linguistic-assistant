@@ -1,0 +1,189 @@
+{
+  "glottocode": "ruul1235",
+  "pair_key": "pg_ruul1235",
+  "manifest": {
+    "glottocode": "ruul1235",
+    "language": "Ruuli",
+    "pair_key": "pg_ruul1235",
+    "rows_train_total": 2158,
+    "rows_train_english_meta": 2098,
+    "rows_train_segmented": 2094,
+    "gold_rows": 300,
+    "gold_source_split": "test",
+    "align_backend": "eflomal",
+    "target_word_types": 3718,
+    "gold_counts": {
+      "wordforms": 966,
+      "lexicon": 438
+    }
+  },
+  "induction": {
+    "base_coverage": 0.0,
+    "final_coverage": 0.925,
+    "delta": 0.925,
+    "final_ambiguity": 2.82,
+    "lexicon": {
+      "roots": 675,
+      "glossed": 377,
+      "glossed_frac": 0.5585,
+      "affix_glosses_inferred": 8
+    },
+    "morphotactics": {
+      "chosen": "templated",
+      "templated": true,
+      "pos_aware": false,
+      "variants": {
+        "unordered": {
+          "coverage": 0.925,
+          "ambiguity": 4.13
+        },
+        "templated": {
+          "coverage": 0.925,
+          "ambiguity": 2.82
+        },
+        "templated+pos": {
+          "coverage": 0.875,
+          "ambiguity": 1.88
+        }
+      },
+      "slots": {
+        "prefix1": 56,
+        "prefix2": 31,
+        "prefix3": 27,
+        "prefix4": 19,
+        "suffix1": 39,
+        "suffix2": 16,
+        "suffix3": 5,
+        "suffix4": 2
+      }
+    },
+    "harmony_families": {
+      "β": [
+        "β",
+        "βa",
+        "βu"
+      ],
+      "n": [
+        "n",
+        "na",
+        "ni",
+        "no"
+      ],
+      "βn": [
+        "βona",
+        "βuni"
+      ],
+      "t": [
+        "te",
+        "ti"
+      ],
+      "l": [
+        "l",
+        "la",
+        "li"
+      ],
+      "ː": [
+        "aː",
+        "eː",
+        "oː",
+        "ː"
+      ],
+      "ŋg": [
+        "ŋg",
+        "ŋge"
+      ],
+      "k": [
+        "eku",
+        "k",
+        "ku",
+        "ok",
+        "oku"
+      ],
+      "w": [
+        "w",
+        "wo"
+      ],
+      "g": [
+        "g",
+        "og",
+        "ug"
+      ],
+      "nt": [
+        "nitu",
+        "ntu"
+      ],
+      "j": [
+        "j",
+        "jo",
+        "oj"
+      ],
+      "m": [
+        "m",
+        "ma",
+        "mu"
+      ],
+      "r": [
+        "ire",
+        "ru"
+      ],
+      "βː": [
+        "eβiː",
+        "oβuː",
+        "βaː"
+      ],
+      "sː": [
+        "eseː",
+        "siː"
+      ],
+      "c": [
+        "c",
+        "ca",
+        "ci"
+      ],
+      "ːm": [
+        "ːmi",
+        "ːmu"
+      ]
+    },
+    "enumeration_debt": 32
+  },
+  "gold_benchmark": {
+    "tested": 400,
+    "parse_rate": 0.655,
+    "lemma_recall": 0.0775,
+    "feature_recall": 0.0675,
+    "miss_parse": [
+      "mbakusuːβira",
+      "nokwaːtira",
+      "omukozi",
+      "kasozi",
+      "leːro",
+      "caiman",
+      "<<fs>tin>",
+      "akamere",
+      "<<ui>musaiza>",
+      "βuruːli",
+      "aːmpi",
+      "amufaːku"
+    ],
+    "miss_lemma": [
+      "wafunajo->w",
+      "onaːncweːzi->naːncweːzi",
+      "awo->awo",
+      "ako->ako",
+      "muno->muno",
+      "okwiːjaku->okwiːjaku",
+      "gamuwa->w",
+      "iswe->iswe",
+      "nomukaire->mukaire",
+      "awo->awo"
+    ],
+    "miss_feat": [
+      "okulja=['AUG', 'FV', 'INF']",
+      "najete=['FOC']",
+      "najete=['FOC']",
+      "okuljaːjo=['23.LOC', 'AUG', 'FV', 'INF']"
+    ]
+  },
+  "secs": 179.7
+}
