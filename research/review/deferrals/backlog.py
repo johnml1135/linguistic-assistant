@@ -31,7 +31,7 @@ def _dedup(records: list[dict]) -> list[dict]:
 
 
 def gather(pair: str, *, use_propose: bool = True, use_discover: bool = True, use_morph: bool = False,
-           backend: str = "hmm", discover_top: int = 20, extra_records: list[dict] | None = None) -> list[dict]:
+           backend: str = "eflomal", discover_top: int = 20, extra_records: list[dict] | None = None) -> list[dict]:
     """Collect `defer` records from every enabled source (de-duplicated)."""
     records: list[dict] = list(extra_records or [])
     if use_propose:
@@ -69,7 +69,7 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=["spa", "ind", "tgl", "swh"])
-    ap.add_argument("--backend", default="hmm", help="hmm (THOT) | cooccur (offline)")
+    ap.add_argument("--backend", default="eflomal", help="eflomal (THOT) | cooccur (offline)")
     ap.add_argument("--no-discover", action="store_true", help="skip concept-driven lexeme discovery")
     ap.add_argument("--no-propose", action="store_true", help="skip existing model defer records")
     ap.add_argument("--discover-top", type=int, default=20)

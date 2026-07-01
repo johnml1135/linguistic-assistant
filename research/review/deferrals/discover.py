@@ -144,7 +144,7 @@ def missing_concepts(rows, gt, gold: dict, *, top: int = 20) -> tuple[list[str],
     return missing, by_src, tgt_freq
 
 
-def run(pair: str, *, backend: str = "hmm", top: int = 15, ticket: bool = False, sample: int = 0) -> dict:
+def run(pair: str, *, backend: str = "eflomal", top: int = 15, ticket: bool = False, sample: int = 0) -> dict:
     gold = load_gold(pair)
     rows = load_corpus(pair, sample)
     gt, used = align([(s, t) for _, s, t in rows], backend=backend,
@@ -191,7 +191,7 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=["spa", "ind", "tgl", "swh"])
-    ap.add_argument("--backend", default="hmm", help="hmm (THOT) | cooccur (offline)")
+    ap.add_argument("--backend", default="eflomal", help="eflomal (THOT) | cooccur (offline)")
     ap.add_argument("--top", type=int, default=15)
     ap.add_argument("--sample", type=int, default=0)
     ap.add_argument("--ticket", action="store_true", help="emit deferral tickets for the reports")

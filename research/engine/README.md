@@ -1,7 +1,7 @@
 # `golden/` — HermitCrab grammar model + virtuous-cycle harness (origin-agnostic)
 
 The reusable morphology engine + improvement loop. **It does not own where the gold comes
-from.** The gold origin is now eBible parallel text + statistical word glosses (THOT HMM) +
+from.** The gold origin is now eBible parallel text + statistical word glosses (THOT Eflomal) +
 FieldWorks data (see the `golden-pair-selection` work) — the SIGMORPHON-IGT golden set that
 used to live here, its built lexicons, and its parser were removed.
 
@@ -28,6 +28,6 @@ contract; everything below is independent of the source.
 
 ## Status
 Engine + harness intact and origin-agnostic. The freeze/ingest pipeline for the new origin
-(eBible/THOT-HMM/FieldWorks → `MorphWord`s → frozen per-language gold) is the next piece;
+(eBible/THOT-Eflomal/FieldWorks → `MorphWord`s → frozen per-language gold) is the next piece;
 once it populates `golden/<glottocode>/`, `research/eval` and `research/assess` run against it
 unchanged.

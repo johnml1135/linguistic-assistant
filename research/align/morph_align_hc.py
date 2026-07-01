@@ -118,7 +118,10 @@ def _agrees(marker_type: str, hc_gloss: str, source_word: str) -> bool:
     g = (hc_gloss or "").lower()
     s = source_word.lower()
     gt = {t for t in g.replace("|", " ").replace(";", " ").replace("=", " ").split() if t}
-    return s in gt or s == g or any(s in t or t in s for t in gt if len(t) > 2)
+    # the substring fallback is only meaningful for tokens long enough that overlap isn't coincidental
+    # (a 1-2 letter source word like "a"/"in" trivially substring-matches inside grammar tags like
+    # "ADJ"/"IND", which is a spurious collision, not real agreement).
+    return s in gt or s == g or (len(s) > 2 and any(s in t or t in s for t in gt if len(t) > 2))
 
 
 def assemble_markers(streams: list[tuple[str, int, list[dict]]], table, affix_feats: dict[str, dict],
@@ -187,7 +190,7 @@ def build_streams(pair: str, model: LangModel, verses, *, chunk_timeout: int = 2
     return streams, morph_rows
 
 
-def run(pair: str, *, backend: str = "hmm", sample: int = 0, apply: bool = False) -> dict:
+def run(pair: str, *, backend: str = "eflomal", sample: int = 0, apply: bool = False) -> dict:
     """Full pipeline: HC parse → morpheme stream → THOT align → markers → route. Writes JSONL + summary."""
     from gold.goldio import FROZEN, load_gold
     from gold.hc_coverage import build_reference_model
@@ -260,7 +263,7 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=["spa", "ind", "tgl", "swh"])
-    ap.add_argument("--backend", default="hmm", help="hmm (THOT, required) | cooccur (offline tests only)")
+    ap.add_argument("--backend", default="eflomal", help="eflomal (THOT, required) | cooccur (offline tests only)")
     ap.add_argument("--sample", type=int, default=0, help="cap verses (0 = all)")
     ap.add_argument("--apply", action="store_true", help="emit deltas for accepted markers")
     args = ap.parse_args(argv)

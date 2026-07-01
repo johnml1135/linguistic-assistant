@@ -106,7 +106,7 @@ See `learning_paradigms_plan.md` for the trunk design + the per-language paradig
 | `gold/` | golden-set compiler/loader + HC-validated word→gloss round-trip + reference compile |
 | `golden_sets/` | **golden RULES** — the frozen per-language lexicon/morphology oracle (see its README) |
 | `induce/` | the TDD induction cycle + THOT↔HC co-training (`tdd.py`, `cotrain.py`, `accumulate.py`) |
-| `align/` | statistical word/morpheme alignment (THOT HMM via `sil-machine`, co-occurrence fallback) |
+| `align/` | statistical word/morpheme alignment (THOT Eflomal via `sil-machine`, co-occurrence fallback) |
 | `propose/` | the propose core (`Case → ChangeSet`) + `harness/` (provider-agnostic `LLMClient` + registry) |
 | `review/` | **the review layer** — see below |
 | `review/deltas/` | **LEAF** — the confidence-routed delta store (the write source-of-truth; see its README) |
@@ -126,7 +126,7 @@ Managed with **[uv](https://docs.astral.sh/uv/)**; deps pinned in `uv.lock`. `re
 ```bash
 cd research
 uv sync                    # core (anthropic, httpx)
-uv sync --extra align      # + sil-machine[thot] (THOT HMM) for alignment
+uv sync --extra align      # + sil-machine[thot]>=1.9 (THOT Eflomal) for alignment
 uv sync --extra audio      # + allosaurus / faster-whisper (optional phone evidence)
 uv sync --extra data-prep  # + flexlibs (Windows + FieldWorks only)
 ```

@@ -128,7 +128,7 @@
         "endpoint": "heuristic",
         "review": "promote",
         "verdicts": {
-          "promote": 10,
+          "promote": 14,
           "defer": 0,
           "reject": 0
         }

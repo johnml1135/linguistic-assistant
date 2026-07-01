@@ -263,7 +263,7 @@ def _word_alignment(pair: str, sample: int):
     from align import align
     from align.morph_align_hc import _verses
     verses = _verses(pair, sample)
-    table, _used = align([(src, tgt) for _ref, src, tgt in verses], backend="hmm",
+    table, _used = align([(src, tgt) for _ref, src, tgt in verses], backend="eflomal",
                          allow_cooccur_fallback=False)
     return verses, table
 

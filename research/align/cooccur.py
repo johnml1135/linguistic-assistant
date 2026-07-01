@@ -1,6 +1,6 @@
 """A dependency-free co-occurrence (Dice) aligner — the deterministic offline fallback + CI backend.
 
-Not a replacement for THOT HMM on real data; it's a baseline that runs anywhere with no native
+Not a replacement for THOT Eflomal on real data; it's a baseline that runs anywhere with no native
 build, so the gloss pipeline and tests work offline. Deterministic.
 """
 

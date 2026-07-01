@@ -52,7 +52,7 @@ _POS_LIBLCM = {"noun": "Noun", "verb": "Verb", "adj": "Adjective", "adv": "Adver
 
 
 def assess(pair: str, *, endpoint: str = "mock", words: list[str] | None = None, sample: int = 200,
-           k: int = 6, backend: str = "hmm") -> dict[str, dict]:
+           k: int = 6, backend: str = "eflomal") -> dict[str, dict]:
     """word → Gemma's assessment {gloss, gloss_en, pos (LibLCM), conf, alt} over the aligner's ranked
     candidates + the word's verses. Pivot-language-agnostic — the model reads whatever the verses are in."""
     from align.aligner import align as align_corpus
@@ -76,7 +76,7 @@ def assess(pair: str, *, endpoint: str = "mock", words: list[str] | None = None,
     return out
 
 
-def run(pair: str, *, endpoint: str = "mock", sample: int = 12, k: int = 6, backend: str = "hmm") -> list[dict]:
+def run(pair: str, *, endpoint: str = "mock", sample: int = 12, k: int = 6, backend: str = "eflomal") -> list[dict]:
     a = assess(pair, endpoint=endpoint, sample=sample, k=k, backend=backend)
     return [{"word": w, "aligner_top1": v["aligner_top1"], "pick": v} for w, v in a.items()]
 

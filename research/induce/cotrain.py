@@ -93,7 +93,7 @@ def _align_table(pair: str, model, sample: int):
     from align import align
     verses = _verses(pair, sample)
     _streams, morph_rows = build_streams(pair, model, verses)
-    table, _used = align(morph_rows, backend="hmm", allow_cooccur_fallback=False)
+    table, _used = align(morph_rows, backend="eflomal", allow_cooccur_fallback=False)
     return table
 
 

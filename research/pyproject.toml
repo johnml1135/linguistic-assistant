@@ -16,14 +16,20 @@ data-prep = [
 ]
 # Statistical word-alignment (a second, probabilistic source of word glosses alongside the
 # deterministic Apertium bidix). `sil-machine[thot]` is cross-platform (Windows/macOS/Linux, CPU):
-# we use its THOT HMM aligner. Deliberately NO torch/transformers/GPU extras. See research/align/.
+# we use its THOT Eflomal aligner (native to sil-thot, not the standalone POSIX-only `eflomal`
+# package). Deliberately NO torch/transformers/GPU extras. See research/align/.
 align = [
-    "sil-machine[thot]>=1.8",
+    "sil-machine[thot]>=1.9",
 ]
 # Optional audio evidence add-on; not part of the default loop.
 audio = [
     "allosaurus>=1.0",
     "faster-whisper>=1.1",
+]
+# Fetching the (gated) PolyGloss corpus for the blind-benchmark pilot; see
+# research/Polygloss_integration.md and research/corpus/polygloss/.
+polygloss = [
+    "datasets>=2.19",
 ]
 
 [build-system]

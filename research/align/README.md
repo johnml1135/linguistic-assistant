@@ -5,13 +5,16 @@ parallel corpus (English ↔ target), complementing the *deterministic* Apertium
 (`research/bilingual/`). Output = candidate `bilingual/*` sense links for a skill/human to confirm.
 
 ```
-verse-aligned rows ──▶ align (THOT HMM | co-occurrence) ──▶ GlossTable
+verse-aligned rows ──▶ align (THOT Eflomal | co-occurrence) ──▶ GlossTable
                    ──▶ gloss_table_to_sense_link_ops ──▶ candidate bilingual.sense_link.add ops
 ```
 
-## Backends (auto-selected: THOT HMM → co-occurrence)
-- **THOT HMM** (`sil-machine[thot]`, `machine.translation.word_align_corpus(aligner="hmm")`) —
-  cross-platform (Windows/macOS/Linux, CPU, no GPU); the quality backend.
+## Backends (auto-selected: THOT Eflomal → co-occurrence)
+- **THOT Eflomal** (`sil-machine[thot]>=1.9`, `machine.translation.word_align_corpus(aligner="eflomal")`) —
+  cross-platform (Windows/macOS/Linux, CPU, no GPU); the quality backend. This is THOT's native
+  Eflomal model (`sil-thot>=3.5`, C++, Windows wheels included) — **not** the standalone POSIX-only
+  `eflomal` PyPI package (source-only, no Windows build). Superseded the plain HMM aligner: same
+  cross-platform footprint, better sparse-data behavior on these short low-resource verse corpora.
 - **co-occurrence (Dice)** — dependency-free, deterministic; the **offline/CI** path (used by tests).
 
 All produce symmetrized links → `build_gloss_table` → ranked target→source glosses.
@@ -19,7 +22,7 @@ All produce symmetrized links → `build_gloss_table` → ranked target→source
 ## Install (uv)
 ```bash
 cd research
-uv sync --extra align         # sil-machine[thot] — cross-platform (Windows/macOS/Linux, CPU)
+uv sync --extra align         # sil-machine[thot]>=1.9 — cross-platform (Windows/macOS/Linux, CPU)
 ```
 The dependency set is pinned in `research/uv.lock`. No torch/transformers/GPU extras. The `.venv`
 for this repo is a **Windows** environment; run from PowerShell, not WSL.
@@ -40,7 +43,7 @@ token(s), grammatical features for affixes, confidence, agrees-with-HC).
 - HC's echoed morph *forms* are corrupted, but its **gloss line is exact** — so segmentation is recovered
   by mapping each gloss back to its grammar construct (`gloss_index`), and the root surface form by
   **peeling** the known affix forms off the word. Words HC can't parse are kept whole + flagged `unparsed`.
-- **THOT is required, no silent fallback** (`backend="hmm"`, fallback disabled); `cooccur` is for tests.
+- **THOT is required, no silent fallback** (`backend="eflomal"`, fallback disabled); `cooccur` is for tests.
 - Routing: two concurring signals (THOT high-prob ∩ HC gloss) → **accept** (raise the gold affix gloss /
   root sense via a `deltas/` op); everything else **defers** — `to_deferral_records` turns the high-value
   tail into `deferrals/` tickets. Function morphemes are noisy, so it defers aggressively (precision over
@@ -48,10 +51,12 @@ token(s), grammatical features for affixes, confidence, agrees-with-HC).
 - Supersedes `cycle/morph_align.py`'s **greedy** segmentation with HC-verified segmentation + markers.
 
 ```bash
-uv run --extra align python -m align.morph_align_hc --pair swh --backend hmm --sample 400 [--apply]
+uv run --extra align python -m align.morph_align_hc --pair swh --backend eflomal --sample 400 [--apply]
 ```
-Measured (swh, 400 verses): ~9k morpheme markers, ~31% accepted (THOT∩HC), TAM prefix-complexes
-(nime/nina/nili) surfaced. Spec: the OpenSpec `morpheme-alignment` change.
+Measured (swh, 400 verses): ~9k morpheme markers; TAM prefix-complexes (nime/nina/nili) surfaced.
+See `align/eflomal_vs_hmm.md` for the accept-rate comparison against the retired `hmm` backend. Spec:
+the OpenSpec `morpheme-alignment` change (predates the eflomal switch; describes the original
+HMM-backed design).
 
 ## How it fits
 - It's the **statistical** half of word-gloss discovery; the Apertium bidix is the **symbolic** half.

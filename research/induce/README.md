@@ -39,7 +39,7 @@ identity-only grammar), giving the substrate future Spanish rules (e.g. the `-s/
 already induced as two allomorphs) will build on.
 
 Word glosses come from `golden/_sources/ebible/<pair>/glosses.tsv`, built with **statistical alignment**
-(THOT HMM; vs the co-occurrence fallback) over the NT (latest build: swh 7948 verses, ind 7936,
+(THOT Eflomal; vs the co-occurrence fallback) over the NT (latest build: swh 7948 verses, ind 7936,
 tgl 7948, spa 7948 English↔target). Sharper seed glosses ⇒ cleaner roots ⇒ more of the affix budget
 spent on real morphology.
 
@@ -127,7 +127,7 @@ deterministic baseline.
 - **`morph_align.py`** (feedback edge). The base alignment glosses whole *words* (to the lemma), so
   affixes never get a gloss. After a run dumps its grammar (`out/<pair>_model.json`), `morph_align`
   segments each word into morphemes and **re-aligns English ↔ morphemes** → per-morpheme glosses incl.
-  affix functions (`de`→of, `en`→in, `nos`→us). `python cycle/morph_align.py --pair spa [--backend hmm]`.
+  affix functions (`de`→of, `en`→in, `nos`→us). `python cycle/morph_align.py --pair spa [--backend eflomal]`.
 - **`llm_propose.py`** (judgment). Curates each affix's evidence (side, slot, attaching POS, aligned
   English, examples) and asks a model for a structured analysis (label/category/gloss/confidence/
   rationale). Backend is **swappable by config** via `harness/`: `opus` (claude-opus-4-8) now;

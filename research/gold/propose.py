@@ -72,7 +72,7 @@ def _apply_accepted(pair: str, accepted: list[dict]) -> dict:
     return {"updated": updated, "added": added}
 
 
-def propose(pair: str, *, endpoint: str, sample: int = 120, backend: str = "hmm", apply: bool = False,
+def propose(pair: str, *, endpoint: str, sample: int = 120, backend: str = "eflomal", apply: bool = False,
             target: str = "frequent") -> dict:
     gold = load_gold(pair)
     gglo = gold.get("glosses", {})
@@ -117,7 +117,7 @@ def propose(pair: str, *, endpoint: str, sample: int = 120, backend: str = "hmm"
             "accept_examples": accepted[:10]}
 
 
-def propose_morph(pair: str, *, endpoint: str, top: int = 14, k: int = 5, backend: str = "hmm") -> dict:
+def propose_morph(pair: str, *, endpoint: str, top: int = 14, k: int = 5, backend: str = "eflomal") -> dict:
     """Gemma names AFFIX FUNCTIONS from base→derived evidence, same accept/defer gate. The MORPHOLOGY
     half: high-confidence affix labels are raised; ambiguous affixes defer to a user."""
     from align.aligner import align as align_corpus
@@ -178,7 +178,7 @@ def propose_morph(pair: str, *, endpoint: str, top: int = 14, k: int = 5, backen
             "precision_high": round(correct_hi / accepted, 4) if accepted else 0.0, "examples": rows[:10]}
 
 
-def propose_morph_seg(pair: str, *, endpoint: str, top: int = 16, k: int = 5, backend: str = "hmm") -> dict:
+def propose_morph_seg(pair: str, *, endpoint: str, top: int = 16, k: int = 5, backend: str = "eflomal") -> dict:
     """MORPHOLOGY for languages with no UniMorph: Gemma names the functions of UNSUPERVISED-segmented
     affixes (discovered from eBible) from base→derived evidence, same accept/defer gate. This is how the
     thin languages (tgl/swh) get morphology — no dictionary, alignment+segmentation+model only."""

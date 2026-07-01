@@ -152,7 +152,7 @@ def survey(pair: str, *, sample: int = 0, min_count: int = 8) -> dict:
     model = build_reference_model(pair)
     verses = _verses(pair, sample)
     streams, morph_rows = build_streams(pair, model, verses)
-    table, _used = align(morph_rows, backend="hmm", allow_cooccur_fallback=False)
+    table, _used = align(morph_rows, backend="eflomal", allow_cooccur_fallback=False)
     inv = vowel_inventory(pair)
 
     def cls(seg: str) -> str:

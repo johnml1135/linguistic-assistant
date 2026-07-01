@@ -17,7 +17,7 @@ steady-state virtuous cycle; its output (a morpheme→gloss table, esp. affix fu
 next cycle and is the evidence the LLM propose step (llm_propose.py) reasons over.
 
 Standalone: reconstructs the model from `cycle/out/<pair>_model.json` (written by tdd.py) and the pair's
-`parallel.jsonl`. Default backend is the offline co-occurrence aligner; `--backend hmm` uses THOT.
+`parallel.jsonl`. Default backend is the offline co-occurrence aligner; `--backend eflomal` uses THOT.
 """
 
 from __future__ import annotations
@@ -150,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=list(PAIR_DIR))
-    ap.add_argument("--backend", default="cooccur", help="cooccur|hmm|auto")
+    ap.add_argument("--backend", default="cooccur", help="cooccur|eflomal|auto")
     args = ap.parse_args(argv)
     s = run(args.pair, backend=args.backend)
     print(f"[{args.pair}] morpheme alignment ({s['backend']}): {s['morphemes']} morphemes glossed, "

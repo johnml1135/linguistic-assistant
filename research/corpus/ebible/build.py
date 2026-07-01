@@ -82,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
 
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", nargs="+", default=["swh", "ind", "tgl", "spa"], help=f"targets: {sorted(TARGETS)}")
-    ap.add_argument("--backend", default="auto", help="auto|hmm|cooccur")
+    ap.add_argument("--backend", default="auto", help="auto|eflomal|cooccur")
     ap.add_argument("--no-fetch", action="store_true", help="use already-downloaded sources")
     args = ap.parse_args(argv)
     for t in args.pair:

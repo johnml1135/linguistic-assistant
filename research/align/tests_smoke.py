@@ -33,7 +33,7 @@ def test_alignment_is_deterministic():
 def test_auto_falls_back_to_cooccur_offline():
     # No THOT installed in CI → auto must fall back, not crash.
     _table, used = align(FIXTURE_ROWS, backend="auto")
-    assert used in {"hmm", "cooccur"}
+    assert used in {"eflomal", "cooccur"}
 
 
 def test_gloss_ops_validate_as_bilingual_change_set():

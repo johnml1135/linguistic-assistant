@@ -21,7 +21,7 @@ _THIS = Path(__file__).resolve()
 sys.path.insert(0, str(_THIS.parents[1]))
 
 from align.aligner import align as align_corpus  # noqa: E402
-from align.backends import hmm_available as _hmm_available  # noqa: E402
+from align.backends import eflomal_available as _eflomal_available  # noqa: E402
 
 from gold.align_gloss import _verses  # noqa: E402
 from gold.compile import PAIR_DIR  # noqa: E402
@@ -33,20 +33,20 @@ from gold.goldio import load_gold  # noqa: E402
 PIVOT_LANG = "en"
 
 
-def reconstruct(pair: str, *, backend: str = "hmm", endpoint: str | None = None,
+def reconstruct(pair: str, *, backend: str = "eflomal", endpoint: str | None = None,
                 pos_baseline: bool = False, words: list[str] | None = None, sample: int = 400):
     """eBible-only reconstruction. The aligner supplies ranked candidate glosses (language-agnostic); the
     ASSESSMENT (which gloss, what POS) is the model's job (`--endpoint` = Gemma/…), reading the word's
     verses + candidates. `pos_baseline` projects POS from the English pivot via `cycle.pos.pos_of` — a
     cheap CALIBRATION-ONLY baseline (valid only when the pivot is English), never the generic path.
     THOT required; no silent co-occurrence fallback."""
-    if backend == "hmm" and not _hmm_available():
+    if backend == "eflomal" and not _eflomal_available():
         raise RuntimeError(
-            "THOT HMM aligner unavailable — refusing to silently degrade to co-occurrence. "
+            "THOT Eflomal aligner unavailable — refusing to silently degrade to co-occurrence. "
             "Run under `uv run python …` (install: `uv sync --extra align`); or pass --backend cooccur explicitly.")
     if endpoint:
         from gold.sense_pick import assess
-        return assess(pair, endpoint=endpoint, words=words, sample=sample, backend=backend), f"hmm+assess:{endpoint}"
+        return assess(pair, endpoint=endpoint, words=words, sample=sample, backend=backend), f"eflomal+assess:{endpoint}"
     verses = _verses(pair)
     gt, used = align_corpus([(src, tgt) for src, tgt in verses], backend=backend, allow_cooccur_fallback=False)
     _pos_of = None
@@ -66,7 +66,7 @@ def reconstruct(pair: str, *, backend: str = "hmm", endpoint: str | None = None,
     return out, used
 
 
-def score(pair: str, *, backend: str = "hmm", endpoint: str | None = None,
+def score(pair: str, *, backend: str = "eflomal", endpoint: str | None = None,
           pos_baseline: bool = False, sample: int = 400) -> dict:
     gold = load_gold(pair)
     gpos, gglo = gold.get("pos", {}), gold.get("glosses", {})
@@ -152,8 +152,8 @@ def main(argv: list[str] | None = None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--pair", required=True, choices=list(PAIR_DIR))
-    ap.add_argument("--backend", choices=["hmm", "cooccur"], default="hmm",
-                    help="hmm (THOT, required by default — fails if absent, no silent degrade); "
+    ap.add_argument("--backend", choices=["eflomal", "cooccur"], default="eflomal",
+                    help="eflomal (THOT, required by default — fails if absent, no silent degrade); "
                          "cooccur = explicit weak baseline")
     ap.add_argument("--endpoint", default=None,
                     help="model for the ASSESSMENT (gloss+POS): ollama (Gemma) | vllm (Qwen) | opus | mock. "

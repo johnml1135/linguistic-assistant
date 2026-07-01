@@ -25,7 +25,7 @@ fetch (vref + texts) ──▶ read (verse-align, NT-only, tokenize) ──▶ a
 ```
 
 `fetch` uses stdlib urllib (idempotent). `read` tokenizes with machine.py's `LatinWordTokenizer`
-when installed, else a Unicode regex. `align` uses THOT HMM when available, else the deterministic
+when installed, else a Unicode regex. `align` uses THOT Eflomal when available, else the deterministic
 co-occurrence fallback (`research/align/`).
 
 ## Run

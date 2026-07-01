@@ -161,7 +161,7 @@ def prepare(pair: str, morpheme: str, kind: str = "prefix", *, sample: int = 0) 
     verses = _verses(pair, sample)
     english_by_ref = {ref: src for ref, src, _tgt in verses}
     streams, _morph_rows = build_streams(pair, model, verses)
-    table, _used = align(_morph_rows, backend="hmm", allow_cooccur_fallback=False)
+    table, _used = align(_morph_rows, backend="eflomal", allow_cooccur_fallback=False)
     occ = morpheme_occurrences(pair, morpheme, kind, streams, english_by_ref, table, pos_of)
     return {"pair": pair, "morpheme": morpheme, "kind": kind, "occ": occ, "table": table,
             "streams": streams, "english_by_ref": english_by_ref, "pos_of": pos_of,
@@ -183,7 +183,7 @@ def realign_distributions(ctx: dict, env_spec: dict, *, align_fn=None) -> dict:
     {label, spec, dist_in, dist_out, n_in, n_out, coverage}."""
     if align_fn is None:
         from align import align as _al
-        align_fn = lambda rows: _al(rows, backend="hmm", allow_cooccur_fallback=False)[0]  # noqa: E731
+        align_fn = lambda rows: _al(rows, backend="eflomal", allow_cooccur_fallback=False)[0]  # noqa: E731
     pair, morpheme, kind = ctx["pair"], ctx["morpheme"], ctx["kind"]
     label, fn = compile_env(env_spec)
     streams, english_by_ref, pos_of = ctx["streams"], ctx["english_by_ref"], ctx["pos_of"]
